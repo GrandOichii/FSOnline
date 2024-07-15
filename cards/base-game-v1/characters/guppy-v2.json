@@ -1,0 +1,11 @@
+{
+    "Key": "guppy-v2",
+    "Name": "Guppy",
+    "Health": 2,
+    "Attack": 1,
+    "Text": "{T}: Play an additional Loot card this turn.",
+    "StartingItems": [
+        "infestation-v2"
+    ],
+    "script": "guppy-v1.lua"
+}
