@@ -1,0 +1,376 @@
+- dynamic card text
+- stack effect text
+- activated abilities
+    - cost
+        - tapping
+        - removing counters
+        - paying coins
+            - reducing the amount of coins payed to activate abilties
+        - discarding loot cards
+        - paying life
+        - destroying controlled items
+        - donating items
+        - self-destruction
+    - cancelling abilities of a specific type
+    - activating other players' abilities
+    - forbidding item activations
+    - forbidding activating items n times per turn
+- effects
+    - "may" effects
+    - choosing players
+    - until end of turn effects
+    - at the end of turn effects
+    - "the next time your turn ends"
+    - checking current player
+    - choice (yes/no)
+    - taking extra turns
+    - skipping turns
+    - modyfying numerical values in cards
+    - forbidding item/character recharging during recharge step
+    - "bidding" for shop items
+    - conditional forbidding of recharing items
+    - "while charged" effects
+    - taking extra turns
+    - trinkets
+    - numerical value modification
+    - knowing the amount of deaths per turn
+    - taxing other players for attacks
+    - setting amount of item recharing during recharge step
+    - setting max hand size
+    - adding attack opportunities
+        - optional
+        - required
+        - specific monster
+        - monster deck
+    - cancelling abilities
+        - abilities with {tap} in their cost
+        - abilities with {$} in their cost
+    - cancelling loot cards
+    - ending the turn
+    - killing players
+    - choosing
+        - choosing card effect (XIV. Temperance)
+        - conditional forbidding of choosing
+            - choosing players
+            - choosing items
+            - by loot cards
+            - by abilities
+    - putting resolved loot cards on the bottom of the loot deck
+    - taking extra turns
+    - looking at players' hands
+    - voting
+        - additional votes
+        - voting for monsters and players
+    - rewards
+        - modifying fight rewards
+        - conditional reward doubling
+    - players
+        - named counters
+        - killing players
+        - death
+            - death prevention
+            - disabling coin losing/item destruction on death
+            - death replacement effects
+        - choosing players
+    - monsters
+        - changing to an item upon death
+        - counters
+            - counters with effects
+        - indomitable label
+        - curses
+        - events
+        - discarding monsters
+        - dice value
+            - modifying monsters' dice values
+        - healing monsters to full hp, knowing the amount of damage healed
+        - death replacement effects
+        - putting filtered cards from discard on top of monster deck
+        - putting filtered cards from discard to a monster slot
+
+    - stack
+        - effect cancelling
+        - loot card copying
+    - shop
+        - putting shop items into discard
+        - stealing shop items
+        - modifying the cost of shop items
+        - modifying the amount of purchases per turn
+    - attacking
+        - forcing attacks
+
+        - cancelling attacks
+        - additional attacks
+        - having other players also participating in the battle
+        - damage prevention on specific attack rolls
+        - attacking players
+    - hand
+        - revealing hand
+        - choosing card in opponent's hand
+        - looking at a hand
+        - swapping cards with opponent
+        - putting cards from hand on top of deck
+        - wheeling
+        - stealing cards
+    - items/treasure
+        - item destruction
+            - shop item destruction
+        - entering play deactivated
+        - swapping cards with opponents
+        - putting cards underneath items
+        - item levels
+        - flipping items
+        - item filtering
+        - item recharging
+        - gaining treasure
+        - counters
+        - named counters
+        - losing all effects
+        - becoming souls
+        - item destruction
+        - dynamic ability gaining
+        - dynamic ability loss
+        - stealing items
+        - labels (guppy, eternal)
+            - adding labels
+        - becoming a copy of an item (indefinately, until end of turn)
+        - copying activated abilties of in-play items
+        - rerolling items
+        - "haunt" cards
+        - playing with a revealed hand
+        - being able to attack items
+        - putting cards underneath items
+        - soul entering under a player's control trigger
+        - conditional coin gain trigger
+    - rooms
+        - discarding rooms
+        - enter play trigger
+        - forbidding discarding rooms
+    - dice
+        - rerolling
+        - adding or subtracting points
+        - on specific dice rolled
+            - checking the type of dice rolled (attack roll)
+        - 'classic roller'
+        - remembering dice rolls in turn
+        - roll modification
+        - changing the result of a dice
+        - changing the result of the next roll to a specific value
+        - rolling again
+    - loot
+        - ambush loot cards
+        - forbidding playing loot cards
+        - forbidding playing n loot cards
+        - looting
+        - discarding loot
+        - stealing loot cards from hand
+        - playing additional loot cards
+        - playing copies of cards in hand
+        - revealing the top card of the loot deck
+        - copying cards from the top of the loot deck
+        - copying the next loot card being played
+        - giving curses to players from the top of the deck
+        - forcing to play loot cards if able
+        - revealing the top card of loot deck
+            - being able to play the top revealed card from loot deck
+    - damage
+        - damage prevention for players
+            - conditional
+            - additional effects after prevention
+        - damage prevention for monsters
+        - "next" damage prevention
+        - dealing damage to monsters
+        - dealing damage to players
+        - replacing the amount of damage dealt to monsters/players
+        - nullifying damage on specific attack rolls
+        - damage from loot cards
+        - damage redirection
+        - forbidding monster attacking
+    - deck
+        - looking at top cards of deck
+        - reordering cards from the top of deck
+        - milling
+        - deck searching
+    - coins
+        - gaining coins
+        - stealing coins
+    - triggers
+        - item enter play trigger
+        - trigger limitations (the FIRST TIME you take damage, ...)
+        - on taking damage trigger
+        - turn start trigger
+        - turn end trigger
+        - on death trigger
+        - on dealing combat damage trigger
+        - monster kill trigger
+            - knowing who killed the monster
+        - conditional triggers
+        - on item flip
+        - another player death trigger
+        - reward gain trigger
+        - soul gain trigger
+        - attack declaration trigger
+        - item activation trigger
+        - on death before paying penalties trigger
+        - rolling the same result n times per turn trigger
+        - attack roll miss trigger
+        - n-th counter put on item trigger
+        - on player killing trigger
+            - knowing who killed the player
+        - purchase trigger
+            - purchase from shop
+            - purchase from top of treasure deck
+        - item gain trigger
+        - item purchase trigger
+        - attack declaration on monster trigger
+        - monster reaching a certain amount of life left trigger
+    - discard
+        - putting cards from discard on top of deck
+    - attack
+        - player attack modification
+        - monter attack modification
+        - monster attack setting
+    - health
+        - player health modification
+    - attack
+        - player attack modification
+        - forcing players to attack a specific monster this turn
+        - forcing players to attack a specific player this turn
+    - replacement effects
+        - gaining coins replacement effect
+        - roll result replacement effects (each time a player WOULD roll)
+        - death penalty replacement effects
+        - item destruction replacement effects
+        - damage replacement effects
+        - amount of looted cards replacement effects
+        - choosing which monster to attack replacement effects (on attack declaration)
+        - amount of treasures gained replacement effects
+        - roll miss/hit status replacement effects
+        - forbidding discarding loot cards and losings coins
+            - by abilities
+            - by death penalties
+    - souls
+        - forbidding soul gaining
+        - stealing souls
+        - soul abilities
+        - soul triggers
+        - soul state modifiers
+        - soul replacement effects
+    - bonus souls
+        - amount of cards in hand check
+        - amount of coins check
+        - amount of items labeled check
+        - bonus souls counters
+        (prefer active player)
+
+- characters
+    - renaming characters until end of turn
+    - losing all character abilities until end of turn
+    - starting with random starting item
+    - deciding who goes first based on character
+    - flipping characters
+    - replacing characters with characters from outside the game (starting item included)
+
+-= Notes =-
+
+P.H.D. - replacement effect
+
+-= Difficult cards =-
+
+Three Dollar Bill - damage dealing replacement effect, has roll
+Guppy's Hairball - damage dealing replacement effect, has roll
+Poker Chip - coing gaining replacement effect, has roll
+
+-= Important rules =-
+
+- All abilities on event cards, unless otherwise specified, are triggered abilities (see Abilities) that trigger when the card enters play. If an event card has multiple abilities they will all trigger when the event enters play, unless otherwise specified.
+
+- If an event leaves play, its abilities are removed from the stack.
+
+- A character card may list a starting item. This is a triggered ability that functions when the card enters play and causes the player that controls that character to put that starting item card under their control.
+
+- There are 3 stats: Health, Evasion, and Attack.
+
+- If a card has the 3+ player only symbol, it means it should be removed when playing the game solo or with only 2 players. If you come across a card with this icon whilst playing solo or with 2 players, simply put it to one side and replace it with another card of the same type.
+
+- If a card moves from one game zone to another at any point it is considered a new object. Any abilities that would have targeted it before it moved game zone will fizzle as they would no longer be able to find it.
+
+- When an object enters play, it is considered a separate entity from anything that it may have been previously related to. For example, if a monster is covered and leaves play, then is later uncovered, it isn’t considered the same monster from before it was covered.
+
+- In the unlikely event that a deck ever runs out of cards, you immediately shuffle the appropriate discard pile and make that the new deck.
+
+- Abilities consist of non-gray colored text, called effect text, that is written in a card’s text box.
+
+- Targets of abilities are chosen when that ability is put onto the stack, not when it resolves. If the target is no longer valid when the ability does resolve, then that ability will fizzle (be canceled by the game).
+-- For example, an ability that said “Choose a deactivated item. Destroy it.” would fizzle if the chosen item isn’t still deactivated when it resolves.
+
+-  Targets chosen when an ability is put on the stack are specified after a ↷ or $ symbol, after the trigger of a triggered ability, or in the first line of a loot ability, but before the first period in that ability. Anything after that point will be performed on resolution of the ability.
+
+- Some abilities have costs. Costs are any effect text that is followed by a colon, except when that text is used as an indicator for a roll ability.
+
+- Activated abilities on rooms can only be used by the active player.
+
+- Triggered abilities are denoted by the words “when,” “whenever,” and “at,” or timing phrases such as “each time,” “every other time,” or “the first time”.
+
+- When a triggered ability’s conditions are met, it is put onto the stack the next time any player would receive priority. 
+
+- If multiple triggered abilities are triggered at once, any abilities controlled by the game (such as triggered abilities on monsters) are put on the stack first in an order decided by the active player. Any abilities controlled by players are put onto the stack next. If any one player controls multiple triggered abilities that trigger at the same time, they get to choose the order those abilities are put onto the stack.
+
+- Some triggered abilities have circled numbers. This indicates that these abilities trigger whenever any roll resolves as that circled number regardless of the context in which that roll was made.
+
+- Any ability written on a loot card is a loot ability, unless it’s a triggered ability, activated ability, or static ability. Loot abilities are performed when the loot resolves.
+
+- Trinket is a triggered ability that appears on loot cards that means “When this loot resolves, it becomes an item. Gain it.” Trinket only functions while on the stack. Unless otherwise specified, all other effect text on a trinket only functions while in play.
+
+- Roll abilities are denoted by the text “roll-”. Roll abilities create a dice roll and a triggered ability that checks the result of the dice roll created by the roll ability. Roll abilities are put onto the stack after the ability that created them resolves. The triggered ability is always put onto the stack after the roll is made. Both the dice roll and the triggered ability created are considered to be controlled by the player who makes the dice roll.
+
+- If two replacement effects replace the same event, the player affected by the replacement effect (e.g. the active player if it is a part of a turn or phase that is being replaced, the player gaining ¢, loot, or treasure if that is what is being replaced, etc.) gets to choose the order in which they apply. Most of the time, both will still take place. There are some situations where two replacement effects are mutually exclusive. In these situations, whichever one is applied first will change the event to a state where the other replacement effect won’t then be applied.
+
+- The name of a card is defined by the text within its title box. Some abilities may give an additional name to a card. Abilities that convey an additional name to a card are worded as “This is also named [cardname]” and function in all zones including outside the game.
+
+- If an ability uses the word ‘and’ to link two things, it means that the second part is dependent on the first part. For example, if an ability said ‘Discard a loot card and loot 2.’, you would only loot 2 if you had been able to discard a loot card. The same is not true if the word ‘then’ is used. If the ability was instead worded as ‘Discard a loot card, then loot 2.’ the player would still loot 2 even if they weren’t able to discard a loot card. A period (e.g. Discard a loot card. Loot 2.) would function the same way as ‘then’, with the loot 2 not caring about what has come before it.
+
+- If multiple effects allowing you to attack other players exist at the same time and specify that players have a different evasion stat, the effect that was created most recently takes precedence.
+
+- If death is canceled, the object that would’ve died heals until it has at least 1 HP, unless otherwise specified.
+
+- When an ability is copied, that ability is simply put on the stack. It is the ability itself that is copied, and no costs associated with activating that ability would have to be paid unless otherwise specified. 
+
+- If a card says to add a counter, without any further specification, it means to add a generic counter.
+
+- Named counters still count as counters for any abilities that refer to them.
+
+- Counters put on a player are tied to that specific player, and will not be removed even if their character changes. Counters put on a player’s character, however, are tied specifically to the character, not the player, and would be removed if the character was to change.
+
+- ... if a card becomes covered in a slot, it is considered to have left play.
+
+- Objects cannot go below 0HP. If an object with an HP stat has 0HP at any point, its death is put on the stack the next time any player would receive priority.
+
+- An object with 0HP can still take damage, but that damage won’t be marked on the object, and won’t make it go below 0.
+
+- To deal damage to an object, that much damage is put on the stack targeting that object. When that damage resolves, that much damage is marked on the object (if it has more than 0 HP). The damage source is the object with the ability dealing the damage, or the controller of that same object. The damage source is only considered to have dealt damage when the damage resolves, not simply when it is put on the stack.
+
+- If no object is specified, there is an implicit ‘you’ at the start of the ability (e.g. “Take 1 damage” means “You take 1 damage”).
+
+- Any damage marked on a player is tied to the player themself rather than their character card. If that player was to switch character cards, they would retain any marked damage they had before the switch. Similarly, if a player flips their character card, they retain any damage marked on them.
+
+- You can’t deal or take 0 damage. If you miss an attack roll against a monster that has an attack stat of 0, or an ability says to deal or take 0 damage, no damage is put on the stack, and nothing happens.
+
+- If an object’s max HP is reduced, if it has any marked damage, an equal amount of damage is also removed. This is not considered healing. For example, if a player has 2 max HP and 1 marked damage (and therefore currently 1 HP remaining), 1 damage is removed if their max HP is reduced to 1 HP. This means that they would still be on 1 HP. If, for the sake of this example, we consider each point of max HP as a ‘heart container’ that can individually have one damage marked on it and become empty, it is the empty heart container that is lost when the max HP is reduced.
+
+- If an object that has damage marked on it stops having an HP stat for any reason, that damage is removed.
+
+- To destroy/kill, the object being destroyed/killed has its HP set to 0 if it has an HP stat. If the object doesn’t die despite having 0 HP, or doesn’t have an HP stat, it is moved to discard. Characters and eternal objects are not moved to discard if they are destroyed or killed.
+
+- If an ability instructs you to double the number of ¢ a player has, that player gains x¢, where x is the number of ¢ they have.
+
+- If an ability targets multiple objects controlled by one player, for example “Reroll each item you control”, the player who controls the objects gets to decide the order in which the objects are affected.
+
+- If an ability targets every item in play, for example “Reroll each item in play”, shop items are rerolled last, after each player rerolls each of their items in turn order, starting with the player who controls the ability, or the active player if the ability is controlled by the game.
+
+- If an ability says that “Each player dies” or “Each player takes x damage”, the players will still die or take damage in turn order, starting with the player who controls the ability (or the active player if the ability is controlled by the game). This means that the deaths and instances of damage are actually added to the stack in reverse order in this case, so that they then resolve in turn order.
+
+- When an ability says that something happens to each monster, for example “Each monster takes 1 damage”, it is the player that controls that ability that gets to choose the order. If the ability is controlled by the game, it will be the active player who chooses.
+
+- If an ability says “Each player and each monster dies”, monsters would die first, followed by players. The ordering of monster and player deaths would be decided as above.
+
+(Stopped at Gaining and Giving)
