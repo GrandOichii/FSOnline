@@ -1,13 +1,13 @@
 {
-    "cards": {
-        "characters": [
+    "Cards": {
+        "Characters": [
             "characters/guppy-v2.json"
         ],
-        "loot": [
-            "loot/3-cents-v2.json"
-        ],
-        "starting-items": [
+        "StartingItems": [
             "starting-items/infestation-v2.json"
+        ],
+        "Loot": [
+            "loot/3-cents-v2.json"
         ]
     }
 }

@@ -6,9 +6,10 @@ FS.Labels = {
     Eternal = 'Eternal'
 }
 
--- common effects
+-- common
 FS.C = {}
 
+-- common effects
 FS.C.Effect = {}
 
 function FS.C.Effect.GainCoins(amount)
@@ -43,6 +44,25 @@ function FS.C.Effect.Discard(amount)
     end
 end
 
+-- common costs (for activated abilities)
+FS.C.Cost = {}
+
+function FS.C.Cost.Tap()
+    local result = {}
+
+    function result:Pay(me)
+        -- TODO tap card
+        return true
+    end
+
+    function result:Check(me)
+        -- TODO check if card is tapped
+        return true
+    end
+
+    return result
+end
+
 -- builders
 FS.B = {}
 
@@ -52,7 +72,7 @@ function FS.B.Loot()
 
     result.Effect = {}
 
-    -- add common effect(s)
+    -- add common effect(s) (these are considered "and" effectgs - if one fails, the rest fill not be executed)
     function result.Effect:Common(...)
         local funcs = {...}
         assert(#funcs > 0, 'provided 0 common effect functions in result.Effect:Common function')
@@ -114,7 +134,8 @@ function FS.B.Item()
     return result
 end
 
-function FS.B.ActivatedAbility()
+function FS.B.ActivatedAbility(effectText)
+    -- TODO use effectText
     local result = {}
 
     -- build activated ability

@@ -44,4 +44,8 @@ public struct MatchConfig {
     /// Include cards labeled as 3+ event in a 2-player match
     /// </summary>
     public required bool ForceInclude3PlusCards { get; set; }
+    /// <summary>
+    /// Is the first player chosen randomly (otherwise the first player will be the first one that was added to the match)
+    /// </summary>
+    public required bool RandomFirstPlayer { get; set; }
 }
