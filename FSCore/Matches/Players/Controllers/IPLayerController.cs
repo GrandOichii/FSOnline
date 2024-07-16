@@ -15,5 +15,5 @@ public interface IPlayerController {
     /// </summary>
     /// <param name="match">Parent match</param>
     /// <param name="playerIdx">Player index</param>
-    public Task Cleanup(Match match, int playerIdx);
+    public Task CleanUp(Match match, int playerIdx);
 }

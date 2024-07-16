@@ -7,5 +7,5 @@
     "StartingItems": [
         "infestation-v2"
     ],
-    "script": "guppy-v1.lua"
+    "Script": "guppy-v2.lua"
 }

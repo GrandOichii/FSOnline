@@ -1,0 +1,18 @@
+PlayerCount: 2
+CoinPool: 100
+InitialTreasureSlots: 2
+InitialMonsterSlots: 2
+InitialRoomSlots: 2
+BonusSoulCount: 3
+InitialDealLoot: 3
+InitialDealCoins: 3
+SoulsToWin: 4
+ForceInclude3PlusCards: yes
+RandomFirstPlayer: yes
+MaxHandSize: 10
+LootCards:
+  3-cents-v2: 60
+Characters:
+  - guppy-v2
+StartingItems:
+  - infestation-v2
