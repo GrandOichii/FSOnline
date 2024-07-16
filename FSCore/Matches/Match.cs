@@ -60,6 +60,12 @@ public class Match {
     /// </summary>
     public int CoinPool { get; private set; }
 
+    #region Decks
+
+    public Deck LootDeck { get; }
+
+    #endregion
+
     /// <summary>
     /// Shows whether the match is active (no winner is yet decided)
     /// </summary>
@@ -81,6 +87,9 @@ public class Match {
             CurPlayerIdx = Rng.Next() % 2;
         Players = new();
         WinnerIdx = -1;
+
+        LootDeck = new(this, true);
+        // TODO populate loot deck in setup
 
         LogInfo("Running setup script");
         LState.DoString(setupScript);
