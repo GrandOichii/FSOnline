@@ -17,6 +17,12 @@ public class ConsolePlayerController : IPlayerController
     {
         return Task.CompletedTask;
     }
+
+    public Task Update(Match match, int playerIdx)
+    {
+        // TODO
+        return Task.CompletedTask;
+    }
 }
 
 public class Program {

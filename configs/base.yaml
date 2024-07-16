@@ -10,6 +10,10 @@ SoulsToWin: 4
 ForceInclude3PlusCards: yes
 RandomFirstPlayer: yes
 MaxHandSize: 10
+StrictMode: yes
+PurchaseCountDefault: 1
+AttackCountDefault: 1
+LootPlay: 1
 LootCards:
   3-cents-v2: 60
 Characters:

@@ -24,6 +24,10 @@ public class Player {
     /// Amount of coins the player has
     /// </summary>
     public int Coins { get; private set; }
+    /// <summary>
+    /// Amount of loot cards the player can play for this turn
+    /// </summary>
+    public int LootPlays { get; private set; }
 
     /// <summary>
     /// Name of the player that will be used for system logging
@@ -151,5 +155,13 @@ public class Player {
 
     public async Task PromptToDiscardRoom() {
         // TODO
+    }
+
+    public void AddLootPlayForTurn() {
+        LootPlays += Match.Config.LootPlay;
+    }
+
+    public void RemoveLootPlays() {
+        LootPlays = 0;
     }
 }

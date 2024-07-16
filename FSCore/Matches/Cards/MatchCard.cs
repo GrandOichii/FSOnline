@@ -21,4 +21,10 @@ public class MatchCard {
 
         // TODO create script
     }
+
+    public bool IsCardType(string type) {
+        return Template.Type == type;
+    }
+
+    public bool IsLoot() => IsCardType("Loot");
 }

@@ -15,12 +15,16 @@ public class StartPhase : IPhase
 
     public async Task PostEmit(Match match, int playerIdx)
     {
+        await match.ResolveStack();
+
         // loot step
         var player = match.GetPlayer(playerIdx);
         await player.LootCards(
             match.Config.LootStepLootAmount, 
             LootReasons.LootPhase(match.LState)
         );
+
+        await match.ResolveStack();
     }
 
 }

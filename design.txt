@@ -231,6 +231,7 @@
         - monster attack setting
     - health
         - player health modification
+        - limiting amount of health healed at the end of turn
     - attack
         - player attack modification
         - forcing players to attack a specific monster this turn

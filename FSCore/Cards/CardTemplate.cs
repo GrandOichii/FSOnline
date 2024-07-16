@@ -13,6 +13,10 @@ public class CardTemplate {
     /// </summary>
     public required string Name { get; set; }
     /// <summary>
+    /// Card type
+    /// </summary>
+    public required string Type { get; set; }
+    /// <summary>
     /// Printed card Health stat
     /// </summary>
     public int Health { get; set; } = -1;

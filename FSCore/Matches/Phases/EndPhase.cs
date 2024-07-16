@@ -9,6 +9,8 @@ public class EndPhase : IPhase
 
     public async Task PostEmit(Match match, int playerIdx)
     {
+        await match.ResolveStack();
+
         var player = match.GetPlayer(playerIdx);
 
         await player.DiscardToHandSize();
@@ -17,10 +19,15 @@ public class EndPhase : IPhase
         // pass the turn to the next player
         match.AdvanceCurrentPlayerIdx();
 
-        // TODO heal all players
+        foreach (var p in match.Players) {
+            p.RemoveLootPlays();
+            // TODO heal all players
+        }
         // TODO heal all monsters
         // TODO heal all rooms
         // TODO clear all "till end of turn" effects
+
+        match.TurnEnded = false;
     }
 
     public Task PreEmit(Match match, int playerIdx)

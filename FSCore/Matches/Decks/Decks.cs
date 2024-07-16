@@ -1,5 +1,8 @@
 namespace FSCore.Matches.Decks;
 
+/// <summary>
+/// Deck of MatchCards
+/// </summary>
 public class Deck {
     /// <summary>
     /// Parent match
@@ -36,11 +39,11 @@ public class Deck {
     }
 
     /// <summary>
-    /// Populates the deck using card templates
+    /// Populates the deck with cards
     /// </summary>
-    /// <param name="cards">Card templates</param>
-    public void Populate(List<CardTemplate> cards) {
-        Cards = new(cards.Select(c => new MatchCard(Match, c)).ToList());
+    /// <param name="cards">Cards</param>
+    public void Populate(List<MatchCard> cards) {
+        Cards = new(cards);
     }
 
     /// <summary>
@@ -48,5 +51,23 @@ public class Deck {
     /// </summary>
     public void Shuffle() {
         Cards = Common.Shuffled(Cards, Match.Rng);
+    }
+
+    /// <summary>
+    /// Removes the top <c>amount</c> cards from deck, if size is less than <c>amount</c>, remove all instead
+    /// </summary>
+    /// <param name="amount">Number of cards to be removed</param>
+    /// <returns>Removed cards</returns>
+    public List<MatchCard> RemoveTop(int amount) {
+        var result = new List<MatchCard>();
+
+        while (amount > 0) {
+            if (Size == 0) break;
+
+            result.Add(Top);
+            --amount;
+        }
+
+        return result;
     }
 }

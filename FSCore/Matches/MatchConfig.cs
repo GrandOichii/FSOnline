@@ -68,4 +68,20 @@ public struct MatchConfig {
     /// Keys of starting items
     /// </summary>
     public required List<string> StartingItems { get; set; }
+    /// <summary>
+    /// Shows whether the match will be more prone to crashing after a player provides unknown actions, tries to pass a turn when can't, e.t.c.
+    /// </summary>
+    public required bool StrictMode { get; set; }
+    /// <summary>
+    /// Default maximum amount of shop items a player can purchase per turn
+    /// </summary>
+    public required int PurchaseCountDefault { get; set; }
+    /// <summary>
+    /// Default maximum amount of times a player can attack per turn
+    /// </summary>
+    public required int AttackCountDefault { get; set; }
+    /// <summary>
+    /// Default amount of loot cards a player can play per turn
+    /// </summary>
+    public required int LootPlay { get; set; }
 }
