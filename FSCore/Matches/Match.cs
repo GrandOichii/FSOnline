@@ -444,4 +444,11 @@ public class Match {
 
     #endregion
 
+    public void PotentialError(string errMsg) {
+        if (Config.StrictMode)
+            LogError(errMsg);
+
+        LogWarning(errMsg);
+    }
+
 }

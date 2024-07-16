@@ -23,4 +23,12 @@ public interface IPlayerController {
     /// <param name="match">Match</param>
     /// <param name="playerIdx">Player index</param>
     public Task Update(Match match, int playerIdx);
+    /// <summary>
+    /// Prompts the player to perform an action
+    /// </summary>
+    /// <param name="match">Parent match</param>
+    /// <param name="options">Available actions</param>
+    /// <param name="playerIdx">Player index</param>
+    /// <returns>Action string</returns>
+    public Task<string> PromptAction(Match match, int playerIdx, IEnumerable<string> options);
 }

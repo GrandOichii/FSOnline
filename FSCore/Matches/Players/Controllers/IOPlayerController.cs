@@ -15,14 +15,28 @@ public class IOPlayerController : IPlayerController
     public IOPlayerController(IIOHandler handler) {
         _handler = handler;
     }
- 
+
+    /// <summary>
+    /// Write new personalized data
+    /// </summary>
+    /// <param name="data">New match data</param>
     private async Task WriteData(PersonalizedData data) {
         var json = JsonSerializer.Serialize(data);
         await _handler.Write(json);
     }
 
-    private static Dictionary<string, string> OptionsToDict<T>(List<T> options) {
-        return options.Select((o, i) => new {o, i}).ToDictionary(e => e.i.ToString(), e => e.o!.ToString()!);
+    /// <summary>
+    /// Turns the provided list to the args value
+    /// </summary>
+    /// <param name="list">List of values</param>
+    /// <returns>Args value</returns>
+    private static Dictionary<string, object> ToArgs<T>(IEnumerable<T> options) where T : class {
+        return options.Select(
+            (o, i) => new {o, i}
+        ).ToDictionary(
+            e => e.i.ToString(), 
+            e => (object)e.o // TODO this looks bad
+        );
     }
 
     public async Task Update(Match match, int playerIdx)
@@ -44,5 +58,16 @@ public class IOPlayerController : IPlayerController
     public async Task CleanUp(Match match, int playerIdx)
     {
         await _handler.Close();
+    }
+
+    public async Task<string> PromptAction(Match match, int playerIdx, IEnumerable<string> options)
+    {
+        await WriteData(new(match, playerIdx) {
+            Request = "PromptAction",
+            Hint = "",
+            Args = ToArgs(options),
+        });
+       
+        throw new NotImplementedException();
     }
 }

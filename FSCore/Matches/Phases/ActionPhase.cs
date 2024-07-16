@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
 namespace FSCore.Matches.Phases;
@@ -55,7 +56,10 @@ public class ActionPhase : IPhase
             var words = action.Split(" ");
             var actionWord = words[0];
             if (!ACTION_MAP.ContainsKey(actionWord)) {
-                if (match.Config.StrictMode) continue;
+                if (!match.Config.StrictMode) {
+                    match.LogWarning($"Unknown action word from player {player.LogName}: {actionWord}");
+                    continue;
+                }
 
                 throw new UnknownActionException($"Unknown action from player {player.LogName}: {action}");
             }
@@ -63,12 +67,25 @@ public class ActionPhase : IPhase
             await ACTION_MAP[actionWord].Exec(match, playerIdx, words);
 
             if (!match.Active || match.TurnEnded) return;
-
         }
     }
 
-    private async Task<string> PromptAction(Player player) {
-        return "";
+    /// <summary>
+    /// Prompts the player to perform an action
+    /// </summary>
+    /// <param name="player">Player</param>
+    /// <returns>Action string</returns>
+    /// <exception cref="MatchException"></exception>
+    private static async Task<string> PromptAction(Player player) {
+        var options = new List<string>();
+        foreach (var action in ACTION_MAP.Values)
+            options.AddRange(action.GetAvailable(player.Match, player.Idx));
+
+        
+        if (options.Count == 0) {
+            throw new MatchException($"Player {player.LogName} doens't have any available actions");
+        }
+        return await player.Controller.PromptAction(player.Match, player.Idx, options);
     }
 
     public Task PreEmit(Match match, int playerIdx)
