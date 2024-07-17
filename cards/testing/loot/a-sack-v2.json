@@ -1,0 +1,7 @@
+{
+    "Key": "a-sack-v2",
+    "Name": "A Sack",
+    "Type": "Loot",
+    "Text": "Loot 3.",
+    "Script": "a-sack-v2.lua"
+}

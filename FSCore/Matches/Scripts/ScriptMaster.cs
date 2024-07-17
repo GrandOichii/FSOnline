@@ -28,6 +28,21 @@ public class ScriptMaster {
         }
     }
 
-    // TODO add lua commands
+    [LuaCommand]
+    public void AddCoins(int playerIdx, int amount) {
+        var player = _match.GetPlayer(playerIdx);
+        player.GainCoins(amount)
+            .Wait();
+    }
+
+    [LuaCommand]
+    public void LootCards(int playerIdx, int amount, StackEffect parentEffect) {
+        var player = _match.GetPlayer(playerIdx);
+
+        player.LootCards(
+            amount,
+            LootReasons.Effect(_match.LState, parentEffect)
+        ).Wait();
+    }
 
 }

@@ -25,6 +25,7 @@ public class ActionPhase : IPhase
     /// </summary>
     private static readonly List<IAction> ACTIONS = new() {
         new PassAction(),
+        new PlayLootAction(),
     };
 
     /// <summary>
@@ -42,8 +43,8 @@ public class ActionPhase : IPhase
 
     public async Task PostEmit(Match match, int playerIdx)
     {
-        var player = match.GetPlayer(playerIdx);
-        player.AddLootPlayForTurn();
+        var current = match.GetPlayer(playerIdx);
+        current.AddLootPlayForTurn();
         
         string action;
 
@@ -51,6 +52,7 @@ public class ActionPhase : IPhase
             await match.ReloadState();
             if (!match.Active) return;
 
+            var player = match.GetPriorityPlayer();
             action = await PromptAction(player);
 
             var words = action.Split(" ");
@@ -64,7 +66,8 @@ public class ActionPhase : IPhase
                 throw new UnknownActionException($"Unknown action from player {player.LogName}: {action}");
             }
 
-            await ACTION_MAP[actionWord].Exec(match, playerIdx, words);
+            await ACTION_MAP[actionWord].Exec(match, player.Idx, words);
+            await match.ResolveStack();
 
             if (!match.Active || match.TurnEnded) return;
         }

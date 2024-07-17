@@ -11,5 +11,9 @@ public static class LootReasons {
             {"type", "initial_deal"},
         });
 
-    // TODO add others
+    public static LuaTable Effect(Lua state, StackEffect effect)
+        => LuaUtility.CreateTable(state, new() {
+            {"type", "effect"},
+            {"stackEffect", effect},
+        });
 }

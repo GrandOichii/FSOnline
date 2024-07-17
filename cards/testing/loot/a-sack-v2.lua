@@ -1,10 +1,10 @@
 -- status: implemented
 
 function _Create()
-    -- Gain 3c.
+    -- Loot 3.
     return FS.B.Loot()
         .Effect:Common(
-            FS.C.Effect.GainCoins(3)
+            FS.C.Effect.Loot(3)
         )
     :Build()
 end

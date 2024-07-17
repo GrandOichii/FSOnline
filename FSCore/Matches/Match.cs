@@ -7,11 +7,6 @@ namespace FSCore.Matches;
 /// </summary>
 public class Match {
     /// <summary>
-    /// Action that the player wants to pass priority
-    /// </summary>
-    public readonly static string PASS_ACTION = "p";
-
-    /// <summary>
     /// Turn structure
     /// </summary>
     private static readonly List<IPhase> _phases = new(){
@@ -20,6 +15,10 @@ public class Match {
         new EndPhase(),
     };
 
+    /// <summary>
+    /// Card ID generator
+    /// </summary>
+    public IIDGenerator CardIDGenerator { get; set; } = new BasicIDGenerator();
     /// <summary>
     /// Random number generator
     /// </summary>
@@ -65,13 +64,13 @@ public class Match {
     /// </summary>
     public int CoinPool { get; private set; }
     /// <summary>
-    /// Index of the player with priority
-    /// </summary>
-    public int PriorityPlayerIdx { get; private set; }
-    /// <summary>
     /// Indicates whether the current player's turn has ended
     /// </summary>
     public bool TurnEnded { get; set; }
+    /// <summary>
+    /// Effect stack
+    /// </summary>
+    public Stack Stack { get; }
 
     #region Decks
 
@@ -102,8 +101,8 @@ public class Match {
             CurPlayerIdx = Rng.Next() % 2;
         Players = new();
         WinnerIdx = -1;
-        PriorityPlayerIdx = -1;
 
+        Stack = new(this);
         LootDeck = new(this, true);
         DeckIndex = new() {
             { DeckType.LOOT, LootDeck },
@@ -297,7 +296,7 @@ public class Match {
     /// </summary>
     public void AdvanceCurrentPlayerIdx() {
         // TODO more complex
-        CurPlayerIdx = (CurPlayerIdx + 1) % Players.Count;
+        CurPlayerIdx = NextInTurnOrder(CurPlayerIdx);
     }
 
     /// <summary>
@@ -403,7 +402,21 @@ public class Match {
     /// <param name="amount">Amount of cards to be removed</param>
     /// <returns>Removed cards</returns>
     public List<MatchCard> RemoveCardsFromTopOfLootDeck(int amount) {
-        return LootDeck.RemoveTop(amount);
+        var result = LootDeck.RemoveTop(amount);
+
+        LogInfo($"Removed {result.Count} cards from the loot deck");
+
+        return result;
+    }
+
+    /// <summary>
+    /// Places the card into the loot discard
+    /// </summary>
+    /// <param name="card">Match card</param>
+    public void PlaceIntoLootDiscard(MatchCard card) {
+        LootDeck.PlaceIntoDiscard(card);
+
+        LogInfo($"Card {card.LogName} is put into discard of loot deck");
     }
 
     #endregion
@@ -418,10 +431,23 @@ public class Match {
     #region Stack
 
     /// <summary>
-    /// Initiates passing prioroty between players, until all stack effects are resolved
+    /// Get the player with priority/current player
     /// </summary>
+    /// <returns>Player with priority/current player</returns>
+    public Player GetPriorityPlayer() {
+        var pIdx = Stack.PriorityIdx;
+        if (pIdx != -1) {
+            return Players[pIdx];
+        }
+        return CurrentPlayer;
+    }
+
+    /// <summary>
+    /// TODO add docs
+    /// </summary>
+    /// <returns></returns>
     public async Task ResolveStack() {
-        // TODO
+        await Stack.Resolve();
     }
 
     /// <summary>
@@ -429,17 +455,21 @@ public class Match {
     /// </summary>
     /// <param name="player">Action owner</param>
     public async Task ProcessPass(Player player) {
-        // TODO 
-        // check if there are any effects on the stack 
-            // there are
-                // check the owner idx of the last effect, 
-                    // if equal to player.Idx
-                    // if isn't equal to player.Idx
-                        // pass priority
-                // return false
-            // there are none
-                // check if player.Idx is equal to the current player. if true, return true, else throw an exception, because that shouldn't ever happen
-                // try to end the turn
+        var shouldEnd = await Stack.ProcessPass(player);
+        if (!shouldEnd) return;
+
+        // check if turn should end
+        if (player.Idx == CurPlayerIdx) {
+            TurnEnded = true;
+            return;
+        }
+
+        throw new MatchException($"Unknown scenario: player {player.LogName} tried to pass, but didn't have a reason to");
+    }
+
+    public async Task PlaceOnStack(int ownerIdx, HandMatchCard card) {
+        var effect = new LootCardStackEffect(this, ownerIdx, card.Card);
+        Stack.AddEffect(effect);
     }
 
     #endregion
@@ -451,4 +481,22 @@ public class Match {
         LogWarning(errMsg);
     }
 
+    #region Card IDs
+
+    /// <summary>
+    /// Generate a new ID for a match card
+    /// </summary>
+    /// <returns>New ID</returns>
+    public string GenerateCardID() {
+        var result = CardIDGenerator.Next();
+        LogInfo($"Generated match card ID: {result}");
+        return result;
+    }
+
+    #endregion
+
+    public int NextInTurnOrder(int playerIdx) {
+        // TODO change if there are cards that change the turn order
+        return (playerIdx + 1) % Players.Count;
+    }
 }

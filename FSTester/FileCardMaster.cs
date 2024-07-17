@@ -27,7 +27,8 @@ public class FileCardMaster : ICardMaster
             ;
             var script = File.ReadAllText(dataPath + ".lua");
             card.Script = script;
-            index.Add(card.Name, card);
+            index.Add(card.Key, card);
+            System.Console.WriteLine("Loaded card " + card.Key);
         }
     }
 
@@ -39,7 +40,8 @@ public class FileCardMaster : ICardMaster
             ;
             var script = File.ReadAllText(dataPath + ".lua");
             card.Script = script;
-            index.Add(card.Name, card);
+            index.Add(card.Key, card);
+            System.Console.WriteLine("Loaded character card " + card.Key);
         }
     }
 

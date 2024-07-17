@@ -65,9 +65,18 @@ public class Deck {
             if (Size == 0) break;
 
             result.Add(Top);
+            Cards.RemoveLast();
             --amount;
         }
 
         return result;
+    }
+
+    /// <summary>
+    /// Places the card into discard (if discard is not null)
+    /// </summary>
+    /// <param name="card">Match card</param>
+    public void PlaceIntoDiscard(MatchCard card) {
+        Discard?.Add(card);
     }
 }

@@ -160,7 +160,7 @@
         - ambush loot cards
         - forbidding playing loot cards
         - forbidding playing n loot cards
-        - looting
+v        - looting
         - discarding loot
         - stealing loot cards from hand
         - playing additional loot cards
@@ -191,7 +191,7 @@
         - milling
         - deck searching
     - coins
-        - gaining coins
+v        - gaining coins
         - stealing coins
     - triggers
         - item enter play trigger
@@ -277,9 +277,9 @@ P.H.D. - replacement effect
 
 -= Difficult cards =-
 
-Three Dollar Bill - damage dealing replacement effect, has roll
-Guppy's Hairball - damage dealing replacement effect, has roll
-Poker Chip - coing gaining replacement effect, has roll
+Three Dollar Bill - damage dealing replacement effect, has roll - since damage is placed on the stack, create an effect that will modify the damage dealt directly on the stack
+Guppy's Hairball - damage dealing replacement effect, has roll - --||--
+Poker Chip - coing gaining replacement effect, has roll - check in the rules, does gaining coins use the stack
 
 -= Important rules =-
 
@@ -373,5 +373,3 @@ Poker Chip - coing gaining replacement effect, has roll
 - When an ability says that something happens to each monster, for example “Each monster takes 1 damage”, it is the player that controls that ability that gets to choose the order. If the ability is controlled by the game, it will be the active player who chooses.
 
 - If an ability says “Each player and each monster dies”, monsters would die first, followed by players. The ordering of monster and player deaths would be decided as above.
-
-(Stopped at Gaining and Giving)

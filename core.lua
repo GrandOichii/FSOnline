@@ -13,35 +13,50 @@ FS.C = {}
 FS.C.Effect = {}
 
 function FS.C.Effect.GainCoins(amount)
-    return function (effect)
-        -- TODO implement in ScriptMaster
-        AddCoins(effect.OwnerIdx, amount)
+    local result = {}
+
+    function result.Effect(stackEffect)
+        AddCoins(stackEffect.OwnerIdx, amount)
         return true
     end
+
+    return result
 end
 
 function FS.C.Effect.GainTreasure(amount)
-    return function (effect)
+    local result = {}
+
+    function result.Effect(stackEffect)
         -- TODO implement in ScriptMaster
-        GainTreasure(effect.OwnerIdx, amount)
+        GainTreasure(stackEffect.OwnerIdx, amount)
         return true
     end
+
+    return result
 end
 
 function FS.C.Effect.Loot(amount)
-    return function (effect)
+    local result = {}
+
+    function result.Effect(stackEffect)
         -- TODO implement in ScriptMaster
-        LootCards(effect.OwnerIdx, amount)
+        LootCards(stackEffect.OwnerIdx, amount, stackEffect)
         return true
     end
+
+    return result
 end
 
 function FS.C.Effect.Discard(amount)
-    return function (effect)
+    local result = {}
+
+    function result.Effect(stackEffect)
         -- TODO
 
         return true
     end
+
+    return result
 end
 
 -- common costs (for activated abilities)
@@ -70,15 +85,28 @@ FS.B = {}
 function FS.B.Loot()
     local result = {}
 
+    result.effectGroups = {}
+
     result.Effect = {}
 
-    -- add common effect(s) (these are considered "and" effectgs - if one fails, the rest fill not be executed)
+    -- add common effect(s) (these are considered "and" effects - if one fails, the rest fill not be executed)
     function result.Effect:Common(...)
-        local funcs = {...}
-        assert(#funcs > 0, 'provided 0 common effect functions in result.Effect:Common function')
+        local commons = {...}
+        assert(#commons > 0, 'provided 0 common effect functions in result.Effect:Common function')
 
-        -- TODO
-        return self
+        local group = {}
+        for _, common in ipairs(commons) do
+            -- effects
+            group[#group+1] = common.Effect
+            -- costs
+            -- TODO
+            -- targets
+            -- TODO
+        end
+
+        result.effectGroups[#result.effectGroups+1] = group
+
+        return result
     end
 
     function result.Effect:Custom(...)
@@ -88,7 +116,25 @@ function FS.B.Loot()
     end
 
     function result:Build()
-        -- TODO construct loot card object and return
+        local card = {}
+
+        local e = {
+            effect = function (stackEffect)
+                local execGroup = function (group)
+                    for _, e in ipairs(group) do
+                        if not e(stackEffect) then
+                            return
+                        end
+                    end
+                end
+                for _, group in ipairs(self.effectGroups) do
+                    execGroup(group)
+                end
+            end
+        }
+        card.Effects = {e}
+
+        return card
     end
 
     return result

@@ -3,7 +3,7 @@ namespace FSCore.Matches.Actions;
 
 public class PassAction : IAction
 {
-    public string ActionWord() => "p";
+    public string ActionWord() => "pass";
 
     public async Task Exec(Match match, int playerIdx, string[] args)
     {

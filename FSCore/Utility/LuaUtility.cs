@@ -151,10 +151,13 @@ static class LuaUtility {
     /// <param name="table">Lua table</param>
     /// <param name="name">Name of the field</param>
     /// <typeparam name="T">Type of the value</typeparam>
-    /// <returns>Long value</returns>    
+    /// <returns>Long value</returns>
     static public T TableGet<T>(LuaTable table, string name) where T : class {
-        var f = table[name] as T 
+        var raw = table[name]
             ?? throw new GetLuaTableException(table, "Failed to get T " + name + " from Lua table ")
+        ;
+        var f = raw as T 
+            ?? throw new GetLuaTableException(table, $"Failed to cast value \"{name}\" of type {raw.GetType()} to type {typeof(T)}");
         ;
         return f;
     }

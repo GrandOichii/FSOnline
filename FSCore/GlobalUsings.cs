@@ -12,3 +12,5 @@ global using FSCore.Matches.Players;
 global using FSCore.Matches.Players.Controllers;
 global using FSCore.Matches.Decks;
 global using FSCore.Matches.Actions;
+global using FSCore.Matches.StackEffects;
+global using FSCore.Matches.Effects;

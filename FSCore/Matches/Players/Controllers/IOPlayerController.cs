@@ -2,14 +2,34 @@ using System.Text.Json;
 
 namespace FSCore.Matches.Players.Controllers;
 
+/// <summary>
+/// Player input and output handler
+/// </summary>
 public interface IIOHandler {
+    /// <summary>
+    /// Reads a string
+    /// </summary>
+    /// <returns>The read string</returns>
     public Task<string> Read();
+    /// <summary>
+    /// Writes a string
+    /// </summary>
+    /// <param name="msg">Message</param>
     public Task Write(string msg);
+    /// <summary>
+    /// Closes the IIOHandler
+    /// </summary>
     public Task Close();
 }
 
+/// <summary>
+/// Input-output based player controller
+/// </summary>
 public class IOPlayerController : IPlayerController
 {
+    /// <summary>
+    /// Input and output handler
+    /// </summary>
     private readonly IIOHandler _handler;
 
     public IOPlayerController(IIOHandler handler) {

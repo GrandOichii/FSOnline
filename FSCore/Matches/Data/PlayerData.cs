@@ -1,11 +1,30 @@
 namespace FSCore.Matches.Data;
 
-public class PlayerData {
+public readonly struct PlayerData {
     // public int HandSize { get; }
     // public List<CardData> VisibleHandCards { get; }
 
-    public PlayerData(Player player) {
-        // TODO
+    /// <summary>
+    /// Player name
+    /// </summary>
+    public string Name { get; }
+    /// <summary>
+    /// Player index
+    /// </summary>
+    public int Idx { get; }
+    /// <summary>
+    /// Amount of coins the player has
+    /// </summary>
+    public int Coins { get; }
+    /// <summary>
+    /// Amount of loot cards a player can play
+    /// </summary>
+    public int LootPlays { get; }
 
+    public PlayerData(Player player) {
+        Name = player.Name;
+        Idx = player.Idx;
+        Coins = player.Coins;
+        LootPlays = player.LootPlays;
     }
 }

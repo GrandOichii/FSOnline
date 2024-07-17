@@ -7,7 +7,7 @@ public struct MatchConfig {
     /// <summary>
     /// Number of players
     /// </summary>
-    public required int PlayerCount { get; set; }
+    public required int PlayerCount { get; set; } // TODO remove this
     /// <summary>
     /// Total coin pool, set to -1 for unlimited coin count
     /// </summary>

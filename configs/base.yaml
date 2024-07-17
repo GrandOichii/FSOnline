@@ -13,9 +13,11 @@ MaxHandSize: 10
 StrictMode: yes
 PurchaseCountDefault: 1
 AttackCountDefault: 1
-LootPlay: 1
+LootStepLootAmount: 1
+LootPlay: 10 # TODO change to 1
 LootCards:
   3-cents-v2: 60
+  a-sack-v2: 60
 Characters:
   - guppy-v2
 StartingItems:
