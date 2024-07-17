@@ -23,9 +23,16 @@ public class MatchCard {
     /// </summary>
     public MatchCardState State { get; private set; }
 
-    #region Effects
+    #region Effects and Abilities
 
-    public List<CardEffect> CardEffects { get; }
+    /// <summary>
+    /// Loot effects
+    /// </summary>
+    public EffectList Effects { get; }
+    /// <summary>
+    /// Activated abilities
+    /// </summary>
+    public List<ActivatedAbility> ActivatedAbilities { get; }
 
     #endregion
 
@@ -38,31 +45,30 @@ public class MatchCard {
         Match = match;
         Template = template;
 
-        // TODO create script
-        CardEffects = new();
-        ExecuteScript();
+        // script execution
+        Match.LState.DoString(Template.Script);
+        var creationF = LuaUtility.GetGlobalF(Match.LState, CARD_CREATION_FNAME);
+        var returned = creationF.Call();
+        var data = LuaUtility.GetReturnAs<LuaTable>(returned);
+
+        // effects
+        Effects = new(LuaUtility.TableGet<LuaTable>(data, "Effects"));
+
+        // activated abilities
+        var activatedAbilities = LuaUtility.TableGet<LuaTable>(data, "ActivatedAbilities");
+        ActivatedAbilities = activatedAbilities.Values.Cast<object>()
+            .Select(
+                o => new ActivatedAbility(
+                    o as LuaTable 
+                        ?? throw new MatchException($"Expected activated ability to be a table, but found {o.GetType()}")
+                )
+            )
+            .ToList();
 
         ID = match.GenerateCardID();
 
         // Initial state
         State = new(this);
-    }
-
-    private void ExecuteScript() {
-        Match.LState.DoString(Template.Script);
-
-        var creationF = LuaUtility.GetGlobalF(Match.LState, CARD_CREATION_FNAME);
-        var returned = creationF.Call();
-        var data = LuaUtility.GetReturnAs<LuaTable>(returned);
-
-        var effectsTable = LuaUtility.TableGet<LuaTable>(data, "Effects");
-
-        foreach (var o in effectsTable.Values) {
-            var table = o as LuaTable
-                ?? throw new MatchException($"Expected card effect to be a table, but found {o.GetType()}")
-            ;
-            CardEffects.Add(new(this, table));
-        }
     }
 
     public bool IsCardType(string type) {
@@ -76,9 +82,10 @@ public class MatchCard {
     public bool IsNamed(string name) => State.Names.Contains(name);
 
     public void ExecuteCardEffects(StackEffect stackEffect) {
-        // TODO targets (and costs?)
-
-        foreach (var effect in CardEffects)
-            effect.Execute(stackEffect);
+        try {
+            Effects.Execute(stackEffect);
+        } catch (Exception e) {
+            throw new MatchException($"Failed to execute CardEffect of card {LogName}", e);
+        }
     }
 }

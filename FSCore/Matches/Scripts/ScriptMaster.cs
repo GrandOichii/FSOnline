@@ -53,4 +53,10 @@ public class ScriptMaster {
             .Wait();
     }
 
+    [LuaCommand]
+    public void AddLootPlay(int playerIdx, int amount) {
+        var player = _match.GetPlayer(playerIdx);
+        player.AddLootPlay(amount);
+    }
+
 }

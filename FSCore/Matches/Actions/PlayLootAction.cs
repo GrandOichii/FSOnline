@@ -7,7 +7,7 @@ public class PlayLootAction : IAction
     public async Task Exec(Match match, int playerIdx, string[] args)
     {
         if (args.Length != 2) {
-            match.PotentialError($"Invalid amount of arguments for action \"{ActionWord()}\": {args.Length} (args: {string.Join(' ', args)})");
+            match.PotentialError($"Expected args count of \"{ActionWord()}\" to be 1, but found {args.Length} (args: {string.Join(' ', args)})");
             return;
         }
 

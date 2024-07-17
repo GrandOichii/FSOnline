@@ -473,6 +473,11 @@ public class Match {
         Stack.AddEffect(effect);
     }
 
+    public async Task PlaceOnStack(ActivatedAbility ability, InPlayMatchCard card, Player owner) {
+        // TODO
+        
+    }
+
     #endregion
 
     public void PotentialError(string errMsg) {
@@ -509,7 +514,7 @@ public class Match {
 
     #region In-play cards
 
-    public InPlayMatchCard GetInPlayCardOrDefault(string ipid) {
+    public InPlayMatchCard? GetInPlayCardOrDefault(string ipid) {
         foreach (var player in Players) {
             var result = player.GetInPlayCardOrDefault(ipid);
             if (result is not null) return result;

@@ -8,7 +8,7 @@ public class PassAction : IAction
     public async Task Exec(Match match, int playerIdx, string[] args)
     {
         if (args.Length != 1) {
-            match.PotentialError($"Expected args count of PassAction to be 1, but found {args.Length} (args: {string.Join(' ', args)})");
+            match.PotentialError($"Expected args count of \"{ActionWord()}\" to be 1, but found {args.Length} (args: {string.Join(' ', args)})");
             return;
         }
 

@@ -211,7 +211,15 @@ public class Player {
     /// Adds a number of loot plays for the turn
     /// </summary>
     public void AddLootPlayForTurn() {
-        LootPlays += Match.Config.LootPlay;
+        AddLootPlay(Match.Config.LootPlay);
+    }
+
+    /// <summary>
+    /// Adds loot plays
+    /// </summary>
+    /// <param name="amount">Amount of loot plays</param>
+    public void AddLootPlay(int amount) {
+        LootPlays += amount;
     }
 
     /// <summary>
@@ -266,10 +274,14 @@ public class Player {
     }
 
     public InPlayMatchCard? GetInPlayCardOrDefault(string ipid) {
-        if (Character.IPID == ipid) return Character;
+        return InPlayCards().FirstOrDefault(c => c.IPID == ipid);
+    }
 
+    public List<InPlayMatchCard> InPlayCards() {
         // TODO items
-
-        return null;
+        var result = new List<InPlayMatchCard>(){
+            Character
+        };
+        return result;
     }
 }

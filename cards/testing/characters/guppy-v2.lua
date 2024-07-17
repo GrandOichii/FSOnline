@@ -3,5 +3,5 @@
 function _Create()
     return FS.B.Character()
         :Basic()
-        :Build()
+    :Build()
 end

@@ -9,8 +9,9 @@ public class Effect {
     /// </summary>
     public LuaFunction EffectFunc { get; }
 
-    public Effect(LuaTable data) {
-        EffectFunc = LuaUtility.TableGet<LuaFunction>(data, "effect");
+    public Effect(LuaFunction func) {
+        // EffectFunc = LuaUtility.TableGet<LuaFunction>(data, "effect");
+        EffectFunc = func;
     }
 
     /// <summary>

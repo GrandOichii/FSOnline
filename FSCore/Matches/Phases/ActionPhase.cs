@@ -26,6 +26,7 @@ public class ActionPhase : IPhase
     private static readonly List<IAction> ACTIONS = new() {
         new PassAction(),
         new PlayLootAction(),
+        new ActivateAction(),
     };
 
     /// <summary>
