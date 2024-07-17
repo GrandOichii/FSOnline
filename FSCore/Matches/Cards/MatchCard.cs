@@ -79,6 +79,6 @@ public class MatchCard {
         // TODO targets (and costs?)
 
         foreach (var effect in CardEffects)
-            effect.ExecuteEffect(stackEffect);
+            effect.Execute(stackEffect);
     }
 }

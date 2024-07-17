@@ -65,4 +65,13 @@ public class FileCardMaster : ICardMaster
     {
         return Task.FromResult(_characterIndex[key]);
     }
+
+    public Task<CharacterCardTemplate> GetRandomCharacter(Random rng)
+    {
+        return Task.FromResult(
+            _characterIndex.ElementAt(
+                rng.Next() % _characterIndex.Count
+            ).Value
+        );
+    }
 }

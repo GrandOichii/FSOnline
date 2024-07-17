@@ -45,4 +45,12 @@ public class ScriptMaster {
         ).Wait();
     }
 
+    [LuaCommand]
+    public void TapCard(string ipid) {
+        var item = _match.GetInPlayCard(ipid);
+
+        item.Tap()
+            .Wait();
+    }
+
 }

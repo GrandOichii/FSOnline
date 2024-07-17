@@ -32,19 +32,24 @@ public class Player {
     /// Player's hand
     /// </summary>
     public List<HandMatchCard> Hand { get; }
+    /// <summary>
+    /// Character card
+    /// </summary>
+    public CharacterMatchCard Character { get; }
 
     /// <summary>
     /// Name of the player that will be used for system logging
     /// </summary>
     public string LogName => Name + $" [{Idx}]";
 
-    public Player(Match match, string name, int idx, IPlayerController controller) {
+    public Player(Match match, string name, int idx, CharacterCardTemplate characterTemplate, IPlayerController controller) {
         Match = match;
         Name = name;
         Idx = idx;
         Controller = controller;
 
         Hand = new();
+        Character = new(match, characterTemplate);
     }
 
     /// <summary>
@@ -258,5 +263,13 @@ public class Player {
         // TODO add update
 
         return true;
+    }
+
+    public InPlayMatchCard? GetInPlayCardOrDefault(string ipid) {
+        if (Character.IPID == ipid) return Character;
+
+        // TODO items
+
+        return null;
     }
 }

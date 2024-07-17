@@ -3,29 +3,26 @@ namespace FSCore.Matches.Effects;
 /// <summary>
 /// Effect of a card
 /// </summary>
-public class CardEffect {
+public class CardEffect : Effect {
     /// <summary>
     /// Parent card
     /// </summary>
     public MatchCard Card { get; }
-    /// <summary>
-    /// Effect function
-    /// </summary>
-    public LuaFunction EffectFunc { get; }
 
-    public CardEffect(MatchCard card, LuaTable data) {
+    public CardEffect(MatchCard card, LuaTable data)
+        :base(data) 
+    {
         Card = card;
 
-        EffectFunc = LuaUtility.TableGet<LuaFunction>(data, "effect");
     }
 
     /// <summary>
     /// Execute the effect
     /// </summary>
     /// <param name="stackEffect">Parent stack effect</param>
-    public void ExecuteEffect(StackEffect stackEffect) {
+    public override void Execute(StackEffect stackEffect) {
         try {
-            EffectFunc.Call(stackEffect);
+            base.Execute(stackEffect);
         } catch (Exception e) {
             throw new MatchException($"Failed to execute CardEffect of card {Card.LogName}", e);
         }

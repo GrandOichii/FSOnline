@@ -130,7 +130,7 @@ public class Program {
             File.ReadAllText("../configs/base.yaml")
         );
 
-        await TcpMatch(config, 2, 1);
+        await TcpMatch(config, 2, 0);
         return;
 
         var cm = new FileCardMaster();

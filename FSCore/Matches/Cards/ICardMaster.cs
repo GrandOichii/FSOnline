@@ -27,4 +27,10 @@ public interface ICardMaster {
     /// <param name="key">Character card key</param>
     /// <returns>Character card template associated with the given key</returns>
     public Task<CharacterCardTemplate> GetCharacter(string key);
+    /// <summary>
+    /// Fetch a random character card
+    /// </summary>
+    /// <param name="rng">Random number generator</param>
+    /// <returns>Random character card template</returns>
+    public Task<CharacterCardTemplate> GetRandomCharacter(Random rng);
 }

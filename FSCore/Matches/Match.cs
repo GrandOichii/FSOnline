@@ -152,15 +152,19 @@ public class Match {
     /// <param name="name"></param>
     /// <param name="controller"></param>
     /// <returns></returns>
-    public async Task AddPlayer(string name, IPlayerController controller) {
+    public async Task AddPlayer(string name, IPlayerController controller, string characterKey = "") {
         if (Players.Count == Config.MaxPlayerCount)
             throw new MatchException($"tried to add another player to the match, while it is already full (max player count: {Config.MaxPlayerCount})");
 
-        // TODO character
+        var character = string.IsNullOrEmpty(characterKey)
+            ? await _cardMaster.GetRandomCharacter(Rng)
+            : await _cardMaster.GetCharacter(characterKey);
+
         var player = new Player(
             this,
             name,
             Players.Count,
+            character,
             controller
         );
 
@@ -490,10 +494,35 @@ public class Match {
         return result;
     }
 
+    public string GenerateInPlayID() {
+        var result = "i" + CardIDGenerator.Next();
+        LogInfo($"Generated item match card ID: {result}");
+        return result;
+    }
+
     #endregion
 
     public int NextInTurnOrder(int playerIdx) {
         // TODO change if there are cards that change the turn order
         return (playerIdx + 1) % Players.Count;
     }
+
+    #region In-play cards
+
+    public InPlayMatchCard GetInPlayCardOrDefault(string ipid) {
+        foreach (var player in Players) {
+            var result = player.GetInPlayCardOrDefault(ipid);
+            if (result is not null) return result;
+        }
+
+        return null;
+    }
+
+    public InPlayMatchCard GetInPlayCard(string ipid) {
+        return GetInPlayCardOrDefault(ipid)
+            ?? throw new MatchException($"Failed to get in-play card with IPID {ipid}")
+        ;
+    }
+
+    #endregion
 }

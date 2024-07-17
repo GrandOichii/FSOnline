@@ -39,7 +39,6 @@ function FS.C.Effect.Loot(amount)
     local result = {}
 
     function result.Effect(stackEffect)
-        -- TODO implement in ScriptMaster
         LootCards(stackEffect.OwnerIdx, amount, stackEffect)
         return true
     end
@@ -67,6 +66,7 @@ function FS.C.Cost.Tap()
 
     function result:Pay(me)
         -- TODO tap card
+        TapCard(me.IPID)
         return true
     end
 
