@@ -27,13 +27,13 @@ public class ActivateAction : IAction
 
         var ability = card.GetActivatedAbility(abilityIdx);
         if (!ability.CanBeActivatedBy(card, player)) {
-            throw new MatchException($"Activated ability activation check of card {card.Card.LogName} failed during execution by player {player.LogName}");
+            throw new MatchException($"Activated ability activation check of card {card.LogName} failed during execution by player {player.LogName}");
         }
 
         var payed = ability.PayCosts(card, player);
         if (!payed) return;
 
-        match.LogInfo($"Player {player.LogName} activated ability {abilityIdx} of card {card.Card.LogName}");
+        match.LogInfo($"Player {player.LogName} activated ability {abilityIdx} of card {card.LogName}");
 
         await match.PlaceOnStack(ability, card, player);
     }
@@ -41,7 +41,7 @@ public class ActivateAction : IAction
     public IEnumerable<string> GetAvailable(Match match, int playerIdx)
     {
         var player = match.GetPlayer(playerIdx);
-        var cards = player.InPlayCards();
+        var cards = player.GetInPlayCards();
         foreach (var card in cards) {
             var abilities = card.GetActivatedAbilities();
             for (int i = 0; i < abilities.Count; i++) {

@@ -34,7 +34,7 @@ public class ActivatedAbility {
             var returned = CheckFunc.Call(card, player);
             return LuaUtility.GetReturnAsBool(returned);
         } catch (Exception e) {
-            throw new MatchException($"Exception during check execution of activated ability of card {card.Card.LogName} by player {player.LogName}", e);
+            throw new MatchException($"Exception during check execution of activated ability of card {card.LogName} by player {player.LogName}", e);
         }
     }
 
@@ -43,7 +43,7 @@ public class ActivatedAbility {
             var returned = CostFunc.Call(card, player);
             return LuaUtility.GetReturnAsBool(returned);
         } catch (Exception e) {
-            throw new MatchException($"Exception during cost execution of activated ability of card {card.Card.LogName} by player {player.LogName}", e);
+            throw new MatchException($"Exception during cost execution of activated ability of card {card.LogName} by player {player.LogName}", e);
         }
     }
 

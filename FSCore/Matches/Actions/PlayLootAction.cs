@@ -21,7 +21,7 @@ public class PlayLootAction : IAction
 
         var played = await player.TryPlayCard(card);
         if (!played) {
-            match.PotentialError($"Player {player.LogName} tried to play card {card.Card.LogName}, bu failed to");
+            match.PotentialError($"Player {player.LogName} tried to play card {card.Card.LogName}, but failed to");
             return;
         }
     }

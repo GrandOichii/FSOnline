@@ -36,6 +36,10 @@ public class Player {
     /// Character card
     /// </summary>
     public CharacterMatchCard Character { get; }
+    /// <summary>
+    /// Controlled items
+    /// </summary>
+    public List<OwnedInPlayMatchCard> Items { get; }
 
     /// <summary>
     /// Name of the player that will be used for system logging
@@ -49,6 +53,7 @@ public class Player {
         Controller = controller;
 
         Hand = new();
+        Items = new();
         Character = new(match, this, characterTemplate);
     }
 
@@ -57,6 +62,8 @@ public class Player {
     /// </summary>
     public async Task Setup() {
         await Controller.Setup(Match, Idx);
+
+        await AddStartingItems();
 
         await LootCards(
             Match.Config.InitialDealLoot,
@@ -180,11 +187,12 @@ public class Player {
     #region Recharging
 
     /// <summary>
-    /// Recharges all items the player has under their control
+    /// Untaps (recharges) all items the player has under their control
     /// </summary>
-    public async Task RechargeAll() {
-        // TODO recharge character
-        // TODO recharge items
+    public async Task UntapAll() {
+        foreach (var card in GetInPlayCards()) {
+            await card.Untap();
+        }
     }
 
     #endregion
@@ -264,7 +272,6 @@ public class Player {
         await PayCostsToPlay(card);
 
         ShouldRemoveFromHand(card);
-        // TODO place loot card onto the stack
 
         await Match.PlaceOnStack(Idx, card);
 
@@ -273,17 +280,39 @@ public class Player {
         return true;
     }
 
-    public InPlayMatchCard? GetInPlayCardOrDefault(string ipid) {
-        return InPlayCards().FirstOrDefault(c => c.IPID == ipid);
+    #region In-play cards
+
+    public async Task GainItem(OwnedInPlayMatchCard card) {
+        // TODO trigger
+        // TODO add to update
+
+        Items.Add(card);
+
+        Match.LogInfo($"Player {LogName} gained item {card.LogName}");
     }
 
-    public List<InPlayMatchCard> InPlayCards() {
-        // TODO items
-        var result = new List<InPlayMatchCard>(){
+    public InPlayMatchCard? GetInPlayCardOrDefault(string ipid) {
+        return GetInPlayCards().FirstOrDefault(c => c.IPID == ipid);
+    }
+
+    public List<InPlayMatchCard> GetInPlayCards() {
+        var result = new List<InPlayMatchCard>(Items) {
             Character
         };
         return result;
     }
+
+    /// <summary>
+    /// Add starting items of the character
+    /// </summary>
+    public async Task AddStartingItems() {
+        var items = await Match.CreateStartingItems(this, Character.GetTemplate());
+        foreach (var item in items) {
+            await GainItem(item);
+        }
+    }
+
+    #endregion
 
     public void PayCoins(int amount) {
         Coins -= amount;
@@ -294,4 +323,6 @@ public class Player {
 
         // TODO add update
     }
+
+
 }

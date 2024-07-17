@@ -551,5 +551,20 @@ public class Match {
         ;
     }
 
+    public async Task<List<OwnedInPlayMatchCard>> CreateStartingItems(Player owner, CharacterCardTemplate characterTemplate) {
+        var result = new List<OwnedInPlayMatchCard>();
+
+        foreach (var key in characterTemplate.StartingItems) {
+            var template = await _cardMaster.Get(key);
+            var card = new OwnedInPlayMatchCard(
+                new MatchCard(this, template),
+                owner
+            );
+            result.Add(card);
+        }
+
+        return result;
+    }
+
     #endregion
 }

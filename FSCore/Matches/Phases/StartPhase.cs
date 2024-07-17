@@ -10,7 +10,7 @@ public class StartPhase : IPhase
     public async Task PreEmit(Match match, int playerIdx)
     {
         var player = match.GetPlayer(playerIdx);
-        await player.RechargeAll();
+        await player.UntapAll();
     }
 
     public async Task PostEmit(Match match, int playerIdx)

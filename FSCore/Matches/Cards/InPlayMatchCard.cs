@@ -20,6 +20,8 @@ public class InPlayMatchCard {
         IPID = card.Match.GenerateInPlayID();
     }
 
+    public string LogName => $"{Card.Template.Name} [{IPID} ({Card.ID})]";
+
     /// <summary>
     /// Tap the card
     /// </summary>

@@ -14,6 +14,7 @@ function _Create()
                 )
                 :Build()
         )
-        :Label(FS.Labels.Eternal)
+        -- TODO add back
+        -- :Label(FS.Labels.Eternal)
     :Build()
 end
