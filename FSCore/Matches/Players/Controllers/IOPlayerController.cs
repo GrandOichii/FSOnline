@@ -87,7 +87,7 @@ public class IOPlayerController : IPlayerController
             Hint = "",
             Args = ToArgs(options),
         });
-       
-        throw new NotImplementedException();
+
+        return await _handler.Read();
     }
 }

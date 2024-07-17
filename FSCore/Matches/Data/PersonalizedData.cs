@@ -29,6 +29,11 @@ public class PersonalizedData {
         PlayerIdx = playerIdx;
 
         Match = new(match);
-        // TODO
+        foreach (var playerData in Match.Players) {
+            var player = match.GetPlayer(playerData.Idx);
+            foreach (var card in player.Hand)
+                if (card.State.VisibleTo.Contains(playerIdx))
+                    playerData.VisibleHandCards.Add(new(card.Card));
+        }
     }
 }

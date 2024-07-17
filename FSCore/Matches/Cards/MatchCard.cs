@@ -54,7 +54,6 @@ public class MatchCard {
         var creationF = LuaUtility.GetGlobalF(Match.LState, CARD_CREATION_FNAME);
         var returned = creationF.Call();
         var data = LuaUtility.GetReturnAs<LuaTable>(returned);
-        System.Console.WriteLine(data);
 
         var effectsTable = LuaUtility.TableGet<LuaTable>(data, "Effects");
 

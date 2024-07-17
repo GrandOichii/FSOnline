@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System.Net;
+using System.Net.Sockets;
+using System.Reflection;
 using FSCore.Matches;
 using FSCore.Matches.Players.Controllers;
 using Microsoft.Extensions.Logging;
@@ -67,10 +69,69 @@ public class Program {
         return deserializer.Deserialize<MatchConfig>(text);
     }
 
+    public static async Task TcpMatch(MatchConfig config, int playerCount, int realPlayerCount) {
+        var cm = new FileCardMaster();
+        cm.Load("../cards/testing");
+
+        var address = IPAddress.Any;
+        int port = 9090;
+        var endpoint = new IPEndPoint(address, port);
+        TcpListener listener = new(endpoint);
+        listener.Start();
+
+        var match = new Match(config, 0, cm, File.ReadAllText("../core.lua")){
+            Logger = LoggerFactory
+                .Create(builder => builder.AddConsole())
+                .CreateLogger("Match")
+        };
+
+        for (int i = 0; i < realPlayerCount; i++) {
+            await AddTCPPlayer(listener, match);
+        }
+
+        for (int i = 0; i < playerCount - realPlayerCount; i++) {
+            await AddConsolePlayer(match);
+        }
+
+        try {
+            await match.Run();
+        } catch (Exception e) {
+            PrintException(e);
+        } finally {
+            listener.Stop();
+        }
+    }
+
+    public static async Task AddConsolePlayer(Match match) {
+        var c = new ConsolePlayerController();
+
+        string name = "ConsolePlayer";
+        // TODO prompt player name with default name
+
+        await match.AddPlayer(name, c);
+    }
+
+    public static async Task AddTCPPlayer(TcpListener listener, Match match) {
+        System.Console.WriteLine("Waiting for connection...");
+        var client = new TcpIOHandler(listener.AcceptTcpClient());
+
+        // read name 
+        System.Console.WriteLine("Connection established, reading name...");
+        var name = await client.Read();
+        // var name = "TcpPlayer";
+
+        System.Console.WriteLine($"Read name {name}, creating controller");
+        var controller = new IOPlayerController(client);
+        await match.AddPlayer(name, controller);
+    }
+
     public static async Task Main(string[] args) {
         var config = ReadConfigYAML(
             File.ReadAllText("../configs/base.yaml")
         );
+
+        await TcpMatch(config, 2, 1);
+        return;
 
         var cm = new FileCardMaster();
         cm.Load("../cards/testing");

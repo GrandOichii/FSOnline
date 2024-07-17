@@ -153,8 +153,8 @@ public class Match {
     /// <param name="controller"></param>
     /// <returns></returns>
     public async Task AddPlayer(string name, IPlayerController controller) {
-        if (Players.Count == Config.PlayerCount)
-            throw new MatchException($"tried to add another player to the match, while it is already full (player count: {Config.PlayerCount})");
+        if (Players.Count == Config.MaxPlayerCount)
+            throw new MatchException($"tried to add another player to the match, while it is already full (max player count: {Config.MaxPlayerCount})");
 
         // TODO character
         var player = new Player(
@@ -172,9 +172,6 @@ public class Match {
     /// </summary>
     /// <exception cref="MatchException"></exception>
     public async Task Run() {
-        if (Players.Count != Config.PlayerCount) 
-            throw new MatchException($"tried to start a {Config.PlayerCount}-player match with {Players.Count} players");
-
         await SetupDecks();
         await SetupView();
         await SetupPlayers();

@@ -1,4 +1,4 @@
-PlayerCount: 2
+MaxPlayerCount: 4
 CoinPool: 100
 InitialTreasureSlots: 2
 InitialMonsterSlots: 2

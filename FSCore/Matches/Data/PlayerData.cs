@@ -1,9 +1,6 @@
 namespace FSCore.Matches.Data;
 
 public readonly struct PlayerData {
-    // public int HandSize { get; }
-    // public List<CardData> VisibleHandCards { get; }
-
     /// <summary>
     /// Player name
     /// </summary>
@@ -20,11 +17,23 @@ public readonly struct PlayerData {
     /// Amount of loot cards a player can play
     /// </summary>
     public int LootPlays { get; }
+    /// <summary>
+    /// Hand size
+    /// </summary>
+    public int HandSize { get; }
+    /// <summary>
+    /// Cards, that are visible
+    /// </summary>
+    public List<CardData> VisibleHandCards { get; }
+
 
     public PlayerData(Player player) {
         Name = player.Name;
         Idx = player.Idx;
         Coins = player.Coins;
         LootPlays = player.LootPlays;
+
+        HandSize = player.Hand.Count;
+        VisibleHandCards = new();
     }
 }

@@ -5,9 +5,9 @@ namespace FSCore.Matches;
 /// </summary>
 public struct MatchConfig {
     /// <summary>
-    /// Number of players
+    /// Maximum amount of players allowed to join the match
     /// </summary>
-    public required int PlayerCount { get; set; } // TODO remove this
+    public required int MaxPlayerCount { get; set; }
     /// <summary>
     /// Total coin pool, set to -1 for unlimited coin count
     /// </summary>
