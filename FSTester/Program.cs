@@ -107,8 +107,11 @@ public class Program {
 
         string name = "ConsolePlayer";
         // TODO prompt player name with default name
+        // TODO prompt player with character key
 
-        await match.AddPlayer(name, c);
+        var chKey = "bum-bo-v2";
+
+        await match.AddPlayer(name, c, chKey);
     }
 
     public static async Task AddTCPPlayer(TcpListener listener, Match match) {
@@ -120,9 +123,13 @@ public class Program {
         var name = await client.Read();
         // var name = "TcpPlayer";
 
+        System.Console.WriteLine("Name received, reading character key...");
+        var chKey = await client.Read();
+        // TODO validate
+
         System.Console.WriteLine($"Read name {name}, creating controller");
         var controller = new IOPlayerController(client);
-        await match.AddPlayer(name, controller);
+        await match.AddPlayer(name, controller, chKey);
     }
 
     public static async Task Main(string[] args) {

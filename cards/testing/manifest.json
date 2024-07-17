@@ -1,10 +1,12 @@
 {
     "Cards": {
         "Characters": [
-            "characters/guppy-v2"
+            "characters/guppy-v2",
+            "characters/bum-bo-v2"
         ],
         "StartingItems": [
-            "starting-items/infestation-v2"
+            "starting-items/infestation-v2",
+            "starting-items/bag-o-trash-v2"
         ],
         "Loot": [
             "loot/3-cents-v2",
