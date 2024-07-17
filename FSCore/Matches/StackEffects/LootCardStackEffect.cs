@@ -16,7 +16,6 @@ public class LootCardStackEffect : StackEffect
 
     public override async Task Resolve()
     {
-        // TODO resolve actual effect
         Card.ExecuteCardEffects(this);
 
         // TODO some cards put themselves into other zones

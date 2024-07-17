@@ -49,7 +49,7 @@ public class Player {
         Controller = controller;
 
         Hand = new();
-        Character = new(match, characterTemplate);
+        Character = new(match, this, characterTemplate);
     }
 
     /// <summary>
@@ -283,5 +283,15 @@ public class Player {
             Character
         };
         return result;
+    }
+
+    public void PayCoins(int amount) {
+        Coins -= amount;
+        if (Coins < 0)
+            throw new MatchException($"Player {LogName} payed {amount} coins, which resulted in their balance being equal to {Coins}");
+
+        Match.AddToCoinPool(amount);
+
+        // TODO add update
     }
 }

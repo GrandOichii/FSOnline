@@ -33,6 +33,8 @@ public class ActivateAction : IAction
         var payed = ability.PayCosts(card, player);
         if (!payed) return;
 
+        match.LogInfo($"Player {player.LogName} activated ability {abilityIdx} of card {card.Card.LogName}");
+
         await match.PlaceOnStack(ability, card, player);
     }
 

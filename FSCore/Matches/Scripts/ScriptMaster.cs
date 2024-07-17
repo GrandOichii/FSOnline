@@ -59,4 +59,10 @@ public class ScriptMaster {
         player.AddLootPlay(amount);
     }
 
+    [LuaCommand]
+    public void PayCoins(int playerIdx, int amount) {
+        var player = _match.GetPlayer(playerIdx);
+        player.PayCoins(amount);
+    }
+
 }

@@ -3,6 +3,7 @@
         "AddCoins",
         "LootCards",
         "TapCard",
-        "AddLootPlay"
+        "AddLootPlay",
+        "PayCoins"
     ]
 }

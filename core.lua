@@ -67,6 +67,22 @@ function FS.C.Cost.Tap()
     return result
 end
 
+function FS.C.Cost.PayCoins(amount)
+    local result = {}
+
+    function result.Pay(me, player)
+        -- TODO ask permission to pay
+        PayCoins(player.Idx, amount)
+        return true
+    end
+
+    function result.Check(me, player)
+        return player.Coins >= amount
+    end
+
+    return result
+end
+
 -- builders
 FS.B = {}
 

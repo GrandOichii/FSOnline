@@ -46,4 +46,12 @@ public class ActivatedAbility {
             throw new MatchException($"Exception during cost execution of activated ability of card {card.Card.LogName} by player {player.LogName}", e);
         }
     }
+
+    public void ExecuteEffects(StackEffect stackEffect) {
+        try {
+            Effects.Execute(stackEffect);
+        } catch (Exception e) {
+            throw new MatchException($"Failed to execute Effects of activated ability", e);
+        }
+    }
 }

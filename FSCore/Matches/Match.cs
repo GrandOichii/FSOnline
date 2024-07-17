@@ -395,6 +395,12 @@ public class Match {
         return amount;
     }
 
+    public void AddToCoinPool(int amount) {
+        CoinPool += amount;
+        if (CoinPool > Config.CoinPool)
+            throw new MatchException($"Unexpected scenario: coin pool is larger than provided in configuration (expected: {Config.CoinPool}, actual: {CoinPool})");
+    }
+
     #region Deck manipulation
 
     /// <summary>
@@ -468,18 +474,34 @@ public class Match {
         throw new MatchException($"Unknown scenario: player {player.LogName} tried to pass, but didn't have a reason to");
     }
 
+    /// <summary>
+    /// Place loot card on the stack
+    /// </summary>
+    /// <param name="ownerIdx">Effect owner</param>
+    /// <param name="card">Loot card</param>
     public async Task PlaceOnStack(int ownerIdx, HandMatchCard card) {
         var effect = new LootCardStackEffect(this, ownerIdx, card.Card);
         Stack.AddEffect(effect);
     }
 
+    /// <summary>
+    /// Place card activation on stack
+    /// </summary>
+    /// <param name="ability">Activated ability</param>
+    /// <param name="card">Activated card</param>
+    /// <param name="owner"></param>
+    /// <returns></returns>
     public async Task PlaceOnStack(ActivatedAbility ability, InPlayMatchCard card, Player owner) {
-        // TODO
-        
+        var effect = new ActivatedAbilityStackEffect(ability, card, owner);
+        Stack.AddEffect(effect);
     }
 
     #endregion
 
+    /// <summary>
+    /// Throw exception if strict mode is enabled, else log a warning to system logger
+    /// </summary>
+    /// <param name="errMsg">Error message</param>
     public void PotentialError(string errMsg) {
         if (Config.StrictMode)
             LogError(errMsg);

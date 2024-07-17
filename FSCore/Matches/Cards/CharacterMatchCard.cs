@@ -1,10 +1,10 @@
 
 namespace FSCore.Matches.Cards;
 
-public class CharacterMatchCard : InPlayMatchCard
+public class CharacterMatchCard : OwnedInPlayMatchCard
 {
-    public CharacterMatchCard(Match match, CharacterCardTemplate template)
-        : base(new(match, template))
+    public CharacterMatchCard(Match match, Player owner, CharacterCardTemplate template)
+        : base(new(match, template), owner)
     {
 
     }
