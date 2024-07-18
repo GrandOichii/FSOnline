@@ -422,4 +422,29 @@ public class Player : IStateModifier {
         foreach (var card in cards)
             card.UpdateState();
     }
+
+    #region Choice
+
+    /// <summary>
+    /// Prompts the user a string from a list of options and checks it's validity
+    /// </summary>
+    /// <param name="options">List of string options</param>
+    /// <param name="hint">Hint</param>
+    /// <returns>The picked valid string</returns>
+    /// <exception cref="MatchException"></exception>
+    public async Task<string> ChooseString(List<string> options, string hint) {
+        while (true) {
+            var result = await Controller.ChooseString(Match, Idx, options, hint);
+
+            if (!options.Contains(result)) {
+                if (Match.Config.StrictMode)
+                    throw new MatchException($"Invalid choice for picking option - {result} (player: {LogName})");
+                continue;
+            }
+
+            return result;
+        }
+    }
+
+    #endregion
 }

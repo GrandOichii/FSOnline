@@ -27,8 +27,17 @@ public interface IPlayerController {
     /// Prompts the player to perform an action
     /// </summary>
     /// <param name="match">Parent match</param>
-    /// <param name="options">Available actions</param>
     /// <param name="playerIdx">Player index</param>
+    /// <param name="options">Available actions</param>
     /// <returns>Action string</returns>
     public Task<string> PromptAction(Match match, int playerIdx, IEnumerable<string> options);
+    /// <summary>
+    /// Prompt the user to pick from a list of options
+    /// </summary>
+    /// <param name="match">Parent match</param>
+    /// <param name="playerIdx">Player index</param>
+    /// <param name="options">List of string options</param>
+    /// <param name="hint">Hint</param>
+    /// <returns>Picked string</returns>
+    public Task<string> ChooseString(Match match, int playerIdx, List<string> options, string hint);
 }

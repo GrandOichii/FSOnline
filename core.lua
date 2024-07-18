@@ -34,7 +34,6 @@ end
 
 function FS.C.Effect.GainTreasure(amount)
     return function (stackEffect)
-        -- TODO implement in ScriptMaster
         GainTreasure(stackEffect.OwnerIdx, amount)
         return true
     end
@@ -77,7 +76,9 @@ function FS.C.Cost.DestroyMe()
     local result = {}
 
     function result.Pay(me, player, stackEffect)
-        -- TODO ask player for permission
+        if not FS.C.Choose.YesNo(player.Idx, 'Destroy '..me:GetFormattedName()..'?') then
+            return false
+        end
         DestroyItem(me.IPID)
         return true
     end
@@ -333,4 +334,10 @@ function FS.B.ActivatedAbility(costText, effectText)
     end
 
     return result
+end
+
+FS.C.Choose = {}
+
+function FS.C.Choose.YesNo(playerIdx, hint)
+    return PromptString(playerIdx, {'Yes', 'No'}, hint) == 'Yes'
 end

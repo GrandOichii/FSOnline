@@ -28,6 +28,20 @@ public class ConsolePlayerController : IPlayerController
         }
     }
 
+    public async Task<string> ChooseString(Match match, int playerIdx, List<string> options, string hint)
+    {
+        System.Console.WriteLine("(ChooseString)");
+        System.Console.WriteLine(hint);
+        System.Console.WriteLine("Options:");
+        foreach (var option in options)
+            System.Console.WriteLine("\t" + option);
+            
+        var result = Console.ReadLine()
+            ?? throw new Exception("Failed to read player action in PromptAction")
+        ;
+        return result;
+    }
+
     public Task CleanUp(Match match, int playerIdx)
     {
         throw new NotImplementedException();

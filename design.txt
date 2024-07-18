@@ -10,7 +10,7 @@ v        - paying coins
         - paying life
         - destroying controlled items
         - donating items
-        - self-destruction
+v        - self-destruction
     - cancelling abilities of a specific type
     - activating other players' abilities
     - forbidding item activations
@@ -22,7 +22,7 @@ v        - paying coins
     - at the end of turn effects
     - "the next time your turn ends"
     - checking current player
-    - choice (yes/no)
+v    - choice (yes/no)
     - taking extra turns
     - skipping turns
     - modyfying numerical values in cards

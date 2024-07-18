@@ -22,6 +22,10 @@ public class InPlayMatchCard : IStateModifier {
 
     public string LogName => $"{Card.Template.Name} [{IPID} ({Card.ID})]";
 
+    public virtual string GetFormattedName() {
+        return $"{{ip:{LogName}}}";
+    }
+
     /// <summary>
     /// Tap the card
     /// </summary>

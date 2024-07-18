@@ -112,4 +112,18 @@ public class ScriptMaster {
 
     [LuaCommand]
     public Player GetPlayer(int playerIdx) => _match.GetPlayer(playerIdx);
+
+    [LuaCommand]
+    public string PromptString(int playerIdx, LuaTable optionsTable, string hint) {
+        var player = _match.GetPlayer(playerIdx);
+
+        List<string> options = new();
+        foreach (var v in optionsTable.Values)
+            options.Add((string)v);
+
+        var result = player.ChooseString(options, hint)
+            .GetAwaiter().GetResult();
+
+        return result;
+    }
 }
