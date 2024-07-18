@@ -23,7 +23,8 @@ LootCards:
   # a-sack-v2: 60
   # counterfeit-penny-v2: 60
   # orange-green-pills-v2: 60
-  chunk-of-amber-warp: 60
+  # chunk-of-amber-warp: 60
+  portable-slot-machine-v2: 60
 Characters:
   - guppy-v2
 StartingItems:
