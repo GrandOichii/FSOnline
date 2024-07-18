@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://ddddfdt5spw6e"]
+[gd_scene load_steps=2 format=3 uid="uid://ddddfdt5spw6e"]
+
+[ext_resource type="PackedScene" uid="uid://clo8to0jhyrli" path="res://v1/Matches/ConnectedMatch.tscn" id="1_vfpml"]
 
 [node name="Root" type="Node"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="ConnectedMatch" parent="MarginContainer" instance=ExtResource("1_vfpml")]
+layout_mode = 2

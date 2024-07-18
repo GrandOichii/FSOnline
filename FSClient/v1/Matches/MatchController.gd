@@ -1,5 +1,5 @@
 extends Node
-class_name ControllerScene
+class_name MatchController
 
 signal Update(update: Variant)
 signal Response(msg: String)
@@ -19,13 +19,13 @@ func set_last_update(update: Variant):
 func set_match_info(info: Variant):
 	match_info = info
 
-#func can_play(card: Variant) -> bool:
-	#if last_update.Request != 'PromptAction':
-		#return false
-	#return ('p ' + card.ID) in last_update.Args.values()
-	#
-#func play(card: Variant):
-	#send('p ' + card.ID)
+func can_play(card: Variant) -> bool:
+	if last_update.Request != 'PromptAction':
+		return false
+	return ('p ' + card.ID) in last_update.Args.values()
+
+func play(card: Variant):
+	send('p ' + card.ID)
 	
 #func can_activate(in_play_card: Variant) -> bool:
 	#if last_update.Request != 'PromptAction':

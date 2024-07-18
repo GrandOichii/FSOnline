@@ -13,8 +13,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_a65y4")
-HandCardPackedScene = ExtResource("3_c68wf")
+item_scene = ExtResource("4_fjgs5")
+hand_card_scene = ExtResource("3_c68wf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -89,7 +92,8 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 
-[node name="CharacterScene" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" instance=ExtResource("4_quxqk")]
+[node name="Character" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" instance=ExtResource("4_quxqk")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
@@ -98,6 +102,7 @@ size_flags_horizontal = 3
 horizontal_scroll_mode = 0
 
 [node name="Items" type="HFlowContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -110,9 +115,6 @@ layout_mode = 2
 
 [node name="InPlayCardScene3" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
-
-[node name="CardScene" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items/InPlayCardScene3/CenterContainer/Control" index="0"]
-rotation = 1.5708
 
 [node name="InPlayCardScene4" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2

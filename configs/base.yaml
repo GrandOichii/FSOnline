@@ -19,29 +19,28 @@ LootPlay: 1
 # LootPlay: 100
 
 LootCards:
-  # 3-cents-v2: 60
-  # a-sack-v2: 60
-  # counterfeit-penny-v2: 60
-  # orange-green-pills-v2: 60
-  # chunk-of-amber-warp: 60
-  # portable-slot-machine-v2: 60
-  xvii-the-stars-v2: 60
+  3-cents-v2: 10
+  a-sack-v2: 10
+  counterfeit-penny-v2: 10
+  orange-green-pills-v2: 10
+  chunk-of-amber-warp: 10
+  xvii-the-stars-v2: 10
 Treasures:
-  # - mystery-sack-v2
-  # - portable-slot-machine-v2
-  # - the-butter-bean-v2
-  # - pageant-boy-v2
+  - mystery-sack-v2
+  - portable-slot-machine-v2
+  - the-butter-bean-v2
+  - pageant-boy-v2
   - box-v2
-  - box-v2
-  - box-v2
-  - box-v2
-  - box-v2
-  - box-v2
-  - box-v2
-  - box-v2
-  - box-v2
-  - box-v2
-  - box-v2
+  # - box-v2
+  # - box-v2
+  # - box-v2
+  # - box-v2
+  # - box-v2
+  # - box-v2
+  # - box-v2
+  # - box-v2
+  # - box-v2
+  # - box-v2
 Characters:
   - guppy-v2
 StartingItems:

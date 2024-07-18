@@ -5,6 +5,10 @@ namespace FSCore.Matches.Data;
 /// </summary>
 public class CardData {
     /// <summary>
+    /// Card key
+    /// </summary>
+    public string Key { get; }
+    /// <summary>
     /// Card name(s)
     /// </summary>
     public List<string> Names { get; }
@@ -15,6 +19,7 @@ public class CardData {
 
     public CardData(MatchCard card) {
         ID = card.ID;
+        Key = card.Template.Key;
 
         Names = new(card.Names());
     }

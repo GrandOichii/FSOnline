@@ -30,6 +30,7 @@ offset_bottom = -508.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e6qev")
+current_player_color = Color(0, 0.839216, 0, 1)
 
 [node name="Bg" type="PanelContainer" parent="."]
 unique_name_in_owner = true

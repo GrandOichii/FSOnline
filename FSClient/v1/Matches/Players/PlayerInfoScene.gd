@@ -1,7 +1,9 @@
 extends Control
 class_name PlayerInfoScene
 
-@onready var Bg = %Bg
+@export var current_player_color: Color
+
+@onready var Bg: PanelContainer = %Bg
 @onready var PlayerName = %PlayerName
 @onready var Coins = %Coins
 @onready var LootPlays = %LootPlays
@@ -9,6 +11,8 @@ class_name PlayerInfoScene
 @onready var PurchaseOpportunities = %PurchaseOpportunities
 @onready var Health = %Health
 @onready var Attack = %Attack
+
+@onready var _default_bg_color: Color = Bg.get('theme_override_styles/panel').bg_color
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,3 +38,16 @@ func set_health(health: int):
 
 func set_attack(attack: int):
 	Attack.text = str(attack)
+	
+func load_snapshot(snapshot: Variant, player_idx: int):
+	var player = snapshot.Players[player_idx]
+	set_player_name(player.Name + ' [' + str(player_idx) + ']')
+	set_coins(player.Coins)
+	set_loot_plays(player.LootPlays)
+	
+	set_bg_color(_default_bg_color)
+	if snapshot.CurPlayerIdx == player_idx:
+		set_bg_color(current_player_color)
+	
+func set_bg_color(color: Color):
+	Bg.get('theme_override_styles/panel').bg_color = color

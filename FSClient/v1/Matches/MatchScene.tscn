@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq604p6filu2h"]
+[gd_scene load_steps=4 format=3 uid="uid://bq604p6filu2h"]
 
 [ext_resource type="Script" path="res://v1/Matches/MatchScene.gd" id="1_5tr14"]
+[ext_resource type="Texture2D" uid="uid://c2srlpd22820d" path="res://assets/bg_tile.png" id="2_f6mni"]
 [ext_resource type="PackedScene" uid="uid://c0j3qjge22ei4" path="res://v1/Matches/Boards/BoardScene.tscn" id="2_ukb4f"]
 
 [node name="MatchScene" type="Control"]
@@ -20,13 +21,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Board" type="Control" parent="HBoxContainer"]
-unique_name_in_owner = true
+[node name="Control" type="Control" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 5.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Board"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,26 +34,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Board/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Control/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/Board/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/Control/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Display: "
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer/Board/VBoxContainer/HBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/Control/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 item_count = 1
 selected = 0
 popup/item_0/text = "Grid"
 popup/item_0/id = 0
 
-[node name="Boards" type="Control" parent="HBoxContainer/Board/VBoxContainer"]
+[node name="Boards" type="Control" parent="HBoxContainer/Control/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GridBoard" parent="HBoxContainer/Board/VBoxContainer/Boards" instance=ExtResource("2_ukb4f")]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Control/VBoxContainer/Boards"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f6mni")
+stretch_mode = 1
+
+[node name="Board" parent="HBoxContainer/Control/VBoxContainer/Boards" instance=ExtResource("2_ukb4f")]
 unique_name_in_owner = true
 layout_mode = 1
 
@@ -94,4 +104,4 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[connection signal="item_selected" from="HBoxContainer/Board/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="HBoxContainer/Control/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]

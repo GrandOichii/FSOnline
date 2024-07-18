@@ -25,7 +25,14 @@ public readonly struct PlayerData {
     /// Cards, that are visible
     /// </summary>
     public List<CardData> VisibleHandCards { get; }
-
+    /// <summary>
+    /// Character card
+    /// </summary>
+    public OwnedCardData Character { get; }
+    /// <summary>
+    /// Owned items
+    /// </summary>
+    public List<OwnedCardData> Items { get; }
 
     public PlayerData(Player player) {
         Name = player.Name;
@@ -33,7 +40,9 @@ public readonly struct PlayerData {
         Coins = player.Coins;
         LootPlays = player.LootPlays;
 
+        Character = new(player.Character);
         HandSize = player.Hand.Count;
         VisibleHandCards = new();
+        Items = player.Items.Select(item => new OwnedCardData(item)).ToList();
     }
 }

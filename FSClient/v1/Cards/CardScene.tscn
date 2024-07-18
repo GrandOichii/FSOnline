@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2s3cqas6maos"]
+[gd_scene load_steps=7 format=3 uid="uid://c2s3cqas6maos"]
 
 [ext_resource type="Texture2D" uid="uid://coc1p7rl5x6ip" path="res://assets/images/card/cards/3-cents-v2.png" id="1_oq06u"]
 [ext_resource type="Texture2D" uid="uid://dbsttoe2t228y" path="res://assets/images/card/cards/guppy-v2.png" id="1_tfuyw"]
 [ext_resource type="Script" path="res://v1/Cards/CardScene.gd" id="1_xf4km"]
+[ext_resource type="Resource" uid="uid://dk2vd8k0k3uch" path="res://v1/CardImages1.tres" id="2_vn1br"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npfr2"]
 resource_local_to_scene = true
@@ -27,6 +28,7 @@ offset_right = 310.0
 offset_bottom = 420.0
 pivot_offset = Vector2(155, 210)
 script = ExtResource("1_xf4km")
+images = ExtResource("2_vn1br")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 visible = false
@@ -42,7 +44,7 @@ modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 2
 texture = ExtResource("1_oq06u")
 
-[node name="Border" type="PanelContainer" parent="."]
+[node name="Bg" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -50,26 +52,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_npfr2")
 
-[node name="MarginContainer" type="MarginContainer" parent="Border"]
+[node name="MarginContainer" type="MarginContainer" parent="Bg"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="Border/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Bg/MarginContainer"]
 clip_contents = true
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x0utk")
 
-[node name="Art" type="TextureRect" parent="Border/MarginContainer/PanelContainer"]
+[node name="Art" type="TextureRect" parent="Bg/MarginContainer/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("1_tfuyw")
 expand_mode = 5
-stretch_mode = 3
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

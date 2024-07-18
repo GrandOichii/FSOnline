@@ -13,13 +13,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gtxyk")
-start_fullscreen = null
-player_name = null
-character_key = null
-address = null
-port = null
+start_fullscreen = false
+character_key = "bum-bo-v2"
 
-[node name="MatchScene" parent="." instance=ExtResource("2_ktxgd")]
+[node name="Match" parent="." instance=ExtResource("2_ktxgd")]
+unique_name_in_owner = true
 layout_mode = 1
 
 [node name="Connection" parent="." instance=ExtResource("3_ac0ba")]
@@ -80,4 +78,5 @@ text = "<options diplayed here>"
 
 [connection signal="Connected" from="Connection" to="." method="_on_connection_connected"]
 [connection signal="MessageReceived" from="Connection" to="." method="_on_connection_message_received"]
+[connection signal="Response" from="Controller" to="." method="_on_controller_response"]
 [connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/HBoxContainer/SendButton" to="." method="_on_send_button_pressed"]

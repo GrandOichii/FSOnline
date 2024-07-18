@@ -18,6 +18,7 @@ signal MatchInfoReceived(Variant)
 @onready var Request = %Request
 @onready var Hint = %Hint
 @onready var Options = %Options
+@onready var Match = %Match
 
 var _update: Variant
 
@@ -27,6 +28,7 @@ func _ready():
 	
 	print('connecting...')
 	Connection.Connect(address, int(port))
+	Match.set_controller(Controller)
 
 func process_match_info(match_info: Variant):
 	Controller.set_match_info(match_info)
@@ -34,7 +36,7 @@ func process_match_info(match_info: Variant):
 	print(match_info)
 
 func process_update(update: Variant):
-	#Controller.set_last_update(update)
+	Controller.set_last_update(update)
 #
 	Hint.text = update.Hint
 	Request.text = update.Request
@@ -42,19 +44,12 @@ func process_update(update: Variant):
 	for key in update.Args:
 		text += key + ': ' + update.Args[key] + '\n'
 	Options.text = text
-	#
-	#if update.Request == 'PromptLandscapePlacement':
-		#var landscapes = []
-		#for key in update.Args:
-			#for i in int(update.Args[key]):
-				#landscapes += [key]
-		#Connection.Write('|'.join(landscapes))
-		#return
+	
+	Match.load_snapshot(update.Match)
 	#if update.Request == 'PickOption':
 		#setup_pick_string(update)
 		#return
 	#
-	#update_hand(update)
 
 # signal connections
 
@@ -80,3 +75,6 @@ func _on_connection_message_received(message):
 func _on_send_button_pressed():
 	Connection.Write(Action.text)
 	Action.text = ''
+
+func _on_controller_response(msg: String):
+	Connection.Write(msg)

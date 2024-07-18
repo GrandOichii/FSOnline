@@ -35,6 +35,7 @@ rotation = 1.5708
 texture = ExtResource("1_epn4y")
 
 [node name="TextureRect3" type="SubViewportContainer" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(150, 110)
 layout_mode = 2
 size_flags_vertical = 3

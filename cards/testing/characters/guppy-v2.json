@@ -5,9 +5,7 @@
     "Health": 2,
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
-    "TODO": "set Infestation as starting item",
     "StartingItems": [
-        "portable-slot-machine-v2",
         "infestation-v2"
     ],
     "Script": "guppy-v2.lua"

@@ -149,7 +149,7 @@ public class Program {
     public static async Task TcpLoop(MatchConfig config) {
         while (true) {
             try {
-                await TcpMatch(config, 2, 1);
+                await TcpMatch(config, 3, 1);
             } catch (Exception) {
 
             }

@@ -21,15 +21,17 @@ size_flags_vertical = 3
 
 [node name="PlayerScene" parent="Top" instance=ExtResource("1_a37rh")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="PlayerScene2" parent="Top" instance=ExtResource("1_a37rh")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
 
 [node name="DecksRow" parent="." instance=ExtResource("2_eiuwh")]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="."]
 layout_mode = 2
 
 [node name="Bottom" type="HBoxContainer" parent="."]
@@ -40,10 +42,6 @@ size_flags_vertical = 3
 
 [node name="PlayerScene" parent="Bottom" instance=ExtResource("1_a37rh")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="PlayerScene2" parent="Bottom" instance=ExtResource("1_a37rh")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3

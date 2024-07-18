@@ -1,9 +1,20 @@
-[gd_resource type="Resource" script_class="CardImages" load_steps=7 format=3 uid="uid://dk2vd8k0k3uch"]
+[gd_resource type="Resource" script_class="CardImages" load_steps=29 format=3 uid="uid://dk2vd8k0k3uch"]
 
 [ext_resource type="Script" path="res://v1/CardImages.gd" id="1_boc33"]
 [ext_resource type="Texture2D" uid="uid://dbsttoe2t228y" path="res://assets/images/card/cards/guppy-v2.png" id="1_exema"]
 [ext_resource type="Script" path="res://v1/CardImage.gd" id="1_v0pgv"]
 [ext_resource type="Texture2D" uid="uid://cf1i0n28kfvwq" path="res://assets/images/card/cards/infestation-v2.png" id="3_sbr37"]
+[ext_resource type="Texture2D" uid="uid://c2ocg4bffwk67" path="res://assets/images/card/cards/xvii-the-stars-v2.png" id="4_2217t"]
+[ext_resource type="Texture2D" uid="uid://chkxrjpu3vhuc" path="res://assets/images/card/cards/a-sack-v2.png" id="5_c5yaf"]
+[ext_resource type="Texture2D" uid="uid://b342tuudwtov5" path="res://assets/images/card/cards/orange-green-pills-v2.png" id="6_fjqt1"]
+[ext_resource type="Texture2D" uid="uid://boqggbjrtjt1h" path="res://assets/images/card/cards/counterfeit-penny-v2.png" id="7_h06k1"]
+[ext_resource type="Texture2D" uid="uid://l1v7auflft31" path="res://assets/images/card/cards/bum-bo-v2.png" id="8_b2wcj"]
+[ext_resource type="Texture2D" uid="uid://sc8881bpsdvb" path="res://assets/images/card/cards/portable-slot-machine-v2.png" id="9_738sw"]
+[ext_resource type="Texture2D" uid="uid://dvxv7wd07fy7l" path="res://assets/images/card/cards/mystery-sack-v2.png" id="10_f2ljd"]
+[ext_resource type="Texture2D" uid="uid://dl3txsroomki3" path="res://assets/images/card/cards/pageant-boy-v2.png" id="11_c6c0a"]
+[ext_resource type="Texture2D" uid="uid://c01474h5ea3kr" path="res://assets/images/card/cards/the-butter-bean-v2.png" id="12_5q3pe"]
+[ext_resource type="Texture2D" uid="uid://c3ks4or7pbp73" path="res://assets/images/card/cards/bag-o-trash-v2.png" id="13_jg5xm"]
+[ext_resource type="Texture2D" uid="uid://bvse1hesm11i0" path="res://assets/images/card/cards/box-v2.png" id="14_xpud7"]
 
 [sub_resource type="Resource" id="Resource_3qwmf"]
 script = ExtResource("1_v0pgv")
@@ -15,6 +26,61 @@ script = ExtResource("1_v0pgv")
 card_key = "infestation-v2"
 image = ExtResource("3_sbr37")
 
+[sub_resource type="Resource" id="Resource_k1c4c"]
+script = ExtResource("1_v0pgv")
+card_key = "xvii-the-stars-v2"
+image = ExtResource("4_2217t")
+
+[sub_resource type="Resource" id="Resource_vt8mp"]
+script = ExtResource("1_v0pgv")
+card_key = "a-sack-v2"
+image = ExtResource("5_c5yaf")
+
+[sub_resource type="Resource" id="Resource_rmb1q"]
+script = ExtResource("1_v0pgv")
+card_key = "orange-green-pills-v2"
+image = ExtResource("6_fjqt1")
+
+[sub_resource type="Resource" id="Resource_1ampk"]
+script = ExtResource("1_v0pgv")
+card_key = "counterfeit-penny-v2"
+image = ExtResource("7_h06k1")
+
+[sub_resource type="Resource" id="Resource_pbjhe"]
+script = ExtResource("1_v0pgv")
+card_key = "bum-bo-v2"
+image = ExtResource("8_b2wcj")
+
+[sub_resource type="Resource" id="Resource_4krbf"]
+script = ExtResource("1_v0pgv")
+card_key = "portable-slot-machine-v2"
+image = ExtResource("9_738sw")
+
+[sub_resource type="Resource" id="Resource_lb85l"]
+script = ExtResource("1_v0pgv")
+card_key = "mystery-sack-v2"
+image = ExtResource("10_f2ljd")
+
+[sub_resource type="Resource" id="Resource_d4gxl"]
+script = ExtResource("1_v0pgv")
+card_key = "pageant-boy-v2"
+image = ExtResource("11_c6c0a")
+
+[sub_resource type="Resource" id="Resource_s36j7"]
+script = ExtResource("1_v0pgv")
+card_key = "the-butter-bean-v2"
+image = ExtResource("12_5q3pe")
+
+[sub_resource type="Resource" id="Resource_jangg"]
+script = ExtResource("1_v0pgv")
+card_key = "bag-o-trash-v2"
+image = ExtResource("13_jg5xm")
+
+[sub_resource type="Resource" id="Resource_1f3i8"]
+script = ExtResource("1_v0pgv")
+card_key = "box-v2"
+image = ExtResource("14_xpud7")
+
 [resource]
 script = ExtResource("1_boc33")
-Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew")])
+Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew"), SubResource("Resource_k1c4c"), SubResource("Resource_vt8mp"), SubResource("Resource_rmb1q"), SubResource("Resource_1ampk"), SubResource("Resource_pbjhe"), SubResource("Resource_4krbf"), SubResource("Resource_lb85l"), SubResource("Resource_d4gxl"), SubResource("Resource_s36j7"), SubResource("Resource_jangg"), SubResource("Resource_1f3i8")])

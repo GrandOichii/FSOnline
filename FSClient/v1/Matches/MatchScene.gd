@@ -1,6 +1,8 @@
 extends Control
 class_name MatchScene
 
+@onready var Board = %Board
+
 var _board_index = []
 
 func _ready():
@@ -8,7 +10,14 @@ func _ready():
 		_board_index.append(board)
 		
 func load_match_info(match_info: Variant):
-	pass
+	Board.load_match_info(match_info)
+	
+func load_snapshot(snapshot: Variant):
+	Board.load_snapshot(snapshot)
+	# TODO
+	
+func set_controller(controller: MatchController):
+	Board.set_controller(controller)
 
 # signal connections
 
