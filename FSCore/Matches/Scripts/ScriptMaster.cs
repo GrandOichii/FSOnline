@@ -93,4 +93,14 @@ public class ScriptMaster {
             .Wait()
         ;
     }
+
+    [LuaCommand]
+    public LuaTable GainTreasure(int playerIdx, int amount) {
+        var result = _match
+            .GetPlayer(playerIdx)
+            .GainTreasure(amount)
+        .GetAwaiter().GetResult();
+
+        return LuaUtility.CreateTable(_match.LState, result);
+    }
 }

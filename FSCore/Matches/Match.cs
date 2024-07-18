@@ -77,8 +77,18 @@ public class Match {
 
     #region Decks
 
+    /// <summary>
+    /// Loot deck and discard
+    /// </summary>
     public Deck LootDeck { get; }
+    /// <summary>
+    /// Treasure deck and discard
+    /// </summary>
+    public Deck TreasureDeck { get; }
 
+    /// <summary>
+    /// Index of all decks
+    /// </summary>
     public Dictionary<DeckType, Deck> DeckIndex { get; }
 
     #endregion
@@ -107,10 +117,11 @@ public class Match {
 
         Stack = new(this);
         LootDeck = new(this, true);
+        TreasureDeck = new(this, true);
         DeckIndex = new() {
             { DeckType.LOOT, LootDeck },
+            { DeckType.TREASURE, TreasureDeck },
         };
-        // TODO populate loot deck in setup
 
         LogInfo("Running setup script");
         LState.DoString(setupScript);
@@ -211,7 +222,11 @@ public class Match {
         LootDeck.Populate(lootCards);
 
         // treasure deck
-        // TODO
+        var treasureCards = new List<MatchCard>();
+        foreach (var key in Config.Treasures)
+            treasureCards.Add(new MatchCard(this, await _cardMaster.Get(key)));
+
+        TreasureDeck.Populate(treasureCards);
 
         // monster deck
         // TODO
@@ -430,6 +445,19 @@ public class Match {
         var result = LootDeck.RemoveTop(amount);
 
         LogInfo($"Removed {result.Count} cards from the loot deck");
+
+        return result;
+    }
+
+    /// <summary>
+    /// Remove the top N cards from the treasure deck
+    /// </summary>
+    /// <param name="amount">Amount of cards to be removed</param>
+    /// <returns>Removed cards</returns>
+    public List<MatchCard> RemoveCardsFromTopOfTreasureDeck(int amount) {
+        var result = TreasureDeck.RemoveTop(amount);
+
+        LogInfo($"Removed {result.Count} cards from the treasure deck");
 
         return result;
     }

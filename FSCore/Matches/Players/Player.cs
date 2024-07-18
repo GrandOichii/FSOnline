@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace FSCore.Matches.Players;
 
 /// <summary>
@@ -320,6 +322,22 @@ public class Player : IStateModifier {
     }
 
     #region In-play cards
+
+    public async Task<List<OwnedInPlayMatchCard>> GainTreasure(int amount) {
+        // TODO calculate actual amount
+
+        var cards = Match.RemoveCardsFromTopOfTreasureDeck(amount);
+
+        var result = new List<OwnedInPlayMatchCard>();
+        
+        foreach (var card in cards) {
+            var c = new OwnedInPlayMatchCard(card, this);
+            await Match.PlaceOwnedCard(c);
+            result.Add(c);
+        }
+
+        return result;
+    }
 
     /// <summary>
     /// Gain control of item

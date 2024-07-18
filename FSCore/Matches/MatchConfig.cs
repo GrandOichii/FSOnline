@@ -69,6 +69,10 @@ public struct MatchConfig {
     /// </summary>
     public required List<string> StartingItems { get; set; }
     /// <summary>
+    /// Keys of treasures
+    /// </summary>
+    public required List<string> Treasures { get; set; }
+    /// <summary>
     /// Shows whether the match will be more prone to crashing after a player provides unknown actions, tries to pass a turn when can't, e.t.c.
     /// </summary>
     public required bool StrictMode { get; set; }
