@@ -9,6 +9,7 @@
         "Roll",
         "LoseCoins",
         "Recharge",
-        "DestroyItem"
+        "DestroyItem",
+        "GetPlayer"
     ]
 }

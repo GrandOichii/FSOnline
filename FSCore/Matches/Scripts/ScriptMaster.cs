@@ -109,4 +109,7 @@ public class ScriptMaster {
 
         return LuaUtility.CreateTable(_match.LState, result);
     }
+
+    [LuaCommand]
+    public Player GetPlayer(int playerIdx) => _match.GetPlayer(playerIdx);
 }

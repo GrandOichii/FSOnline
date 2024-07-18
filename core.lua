@@ -313,10 +313,13 @@ function FS.B.ActivatedAbility(costText, effectText)
             end
         }
 
+        return result.Effect:Custom(effect)
+    end
+
+    function result.Effect:Custom(effect)
         result.effectGroups[#result.effectGroups+1] = {effect}
         return result
     end
-
 
     -- TODO repeated code
     -- add common effect(s)

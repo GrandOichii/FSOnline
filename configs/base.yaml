@@ -15,8 +15,8 @@ PurchaseCountDefault: 1
 AttackCountDefault: 1
 LootStepLootAmount: 1
 
-# LootPlay: 1
-LootPlay: 100
+LootPlay: 1
+# LootPlay: 100
 
 LootCards:
   # 3-cents-v2: 60
@@ -30,7 +30,18 @@ Treasures:
   # - mystery-sack-v2
   # - portable-slot-machine-v2
   # - the-butter-bean-v2
-  - pageant-boy-v2
+  # - pageant-boy-v2
+  - box-v2
+  - box-v2
+  - box-v2
+  - box-v2
+  - box-v2
+  - box-v2
+  - box-v2
+  - box-v2
+  - box-v2
+  - box-v2
+  - box-v2
 Characters:
   - guppy-v2
 StartingItems:

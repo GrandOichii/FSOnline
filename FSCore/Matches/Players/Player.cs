@@ -252,6 +252,7 @@ public class Player : IStateModifier {
     /// </summary>
     /// <param name="amount">Amount of loot plays</param>
     public void AddLootPlay(int amount) {
+        if (LootPlays < 0) return;
         LootPlays += amount;
     }
 
@@ -270,7 +271,7 @@ public class Player : IStateModifier {
     public bool CanPlay(HandMatchCard card) {
         // TODO add more checks
 
-        return card.State.LootCost <= LootPlays;
+        return LootPlays < 0 || card.State.LootCost <= LootPlays;
     }
 
     /// <summary>
@@ -286,9 +287,11 @@ public class Player : IStateModifier {
             return false;
         }
 
-        LootPlays--;
-        if (LootPlays < 0)
-            throw new MatchException($"Unexpected scenario: player payed loot cost for card {card.Card.LogName}, which resulted in their loot plays being equal to {LootPlays}");
+        if (LootPlays > 0) {
+            LootPlays--;
+            if (LootPlays < 0)
+                throw new MatchException($"Unexpected scenario: player payed loot cost for card {card.Card.LogName}, which resulted in their loot plays being equal to {LootPlays}");
+        }
 
         return true;
     }
