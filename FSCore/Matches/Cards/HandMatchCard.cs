@@ -34,4 +34,18 @@ public class HandMatchCard : IStateModifier {
     {
         // TODO
     }
+
+    public bool PayCosts(StackEffect stackEffect) {
+        var costs = Card.LootCosts;
+
+        // TODO catch exceptions
+        foreach (var cost in costs) {
+            var returned = cost.Call(stackEffect);
+            var payed = LuaUtility.GetReturnAsBool(returned);
+            if (!payed)
+                return false;
+        }
+
+        return true;
+    }
 }

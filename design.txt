@@ -31,7 +31,7 @@ v        - paying coins
     - conditional forbidding of recharing items
     - "while charged" effects
     - taking extra turns
-    - trinkets
+v    - trinkets
     - numerical value modification
     - knowing the amount of deaths per turn
     - taxing other players for attacks

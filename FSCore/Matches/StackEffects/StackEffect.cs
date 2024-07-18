@@ -9,10 +9,16 @@ public abstract class StackEffect {
     /// Index of the owner
     /// </summary>
     public int OwnerIdx { get; }
+    /// <summary>
+    /// Rolls results
+    /// </summary>
+    public List<int> Rolls { get; }
 
     public StackEffect(Match match, int ownerIdx) {
         Match = match;
         OwnerIdx = ownerIdx;
+        
+        Rolls = new();
     }
 
     /// <summary>

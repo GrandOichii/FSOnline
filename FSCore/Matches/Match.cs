@@ -493,12 +493,17 @@ public class Match {
     }
 
     /// <summary>
-    /// Place loot card on the stack
+    /// Remove the top effect of the stack
     /// </summary>
-    /// <param name="ownerIdx">Effect owner</param>
-    /// <param name="card">Loot card</param>
-    public async Task PlaceOnStack(int ownerIdx, HandMatchCard card) {
-        var effect = new LootCardStackEffect(this, ownerIdx, card.Card);
+    public void RemoveTopOfStack() {
+        Stack.Effects.Remove(Stack.Top);
+    }
+
+    /// <summary>
+    /// Palce an effect on top of the stack
+    /// </summary>
+    /// <param name="effect">Stack effect</param>
+    public async Task PlaceOnStack(StackEffect effect) {
         Stack.AddEffect(effect);
     }
 
@@ -511,6 +516,16 @@ public class Match {
     /// <returns></returns>
     public async Task PlaceOnStack(ActivatedAbility ability, InPlayMatchCard card, Player owner) {
         var effect = new ActivatedAbilityStackEffect(ability, card, owner);
+        Stack.AddEffect(effect);
+    }
+
+    /// <summary>
+    /// Roll a dice and place the result onto the stack
+    /// </summary>
+    /// <param name="parent">Parent effect</param>
+    /// <returns></returns>
+    public async Task AddRoll(StackEffect parent) {
+        var effect = new RollStackEffect(this, parent);
         Stack.AddEffect(effect);
     }
 

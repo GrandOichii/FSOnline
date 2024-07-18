@@ -32,9 +32,16 @@ public class MatchCard {
     /// </summary>
     public EffectList Effects { get; }
     /// <summary>
+    /// Costs for playing as a loot card
+    /// </summary>
+    public List<LuaFunction> LootCosts { get; }
+    /// <summary>
     /// Activated abilities
     /// </summary>
     public List<ActivatedAbility> ActivatedAbilities { get; }
+    /// <summary>
+    /// State modifiers
+    /// </summary>
     public Dictionary<ModificationLayer, List<LuaFunction>> StateModifiers { get; }
 
     #endregion
@@ -69,6 +76,14 @@ public class MatchCard {
             Effects = new(LuaUtility.TableGet<LuaTable>(data, "Effects"));
         } catch (Exception e) {
             throw new MatchException($"Failed to get effects for card {template.Name}", e);
+        }
+
+        // loot costs
+        try {
+            LootCosts = LuaUtility.TableGet<LuaTable>(data, "LootCosts")
+                .Values.Cast<LuaFunction>().ToList();
+        } catch (Exception e) {
+            throw new MatchException($"Failed to get loot costs for card {template.Name}", e);
         }
 
         // activated abilities

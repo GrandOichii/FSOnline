@@ -74,4 +74,14 @@ public class ScriptMaster {
             .Wait();
     }
 
+    [LuaCommand]
+    public void Roll(StackEffect parentEffect) {
+        _match.AddRoll(parentEffect)
+            .Wait();
+    }
+
+    [LuaCommand]
+    public void LoseCoins(int playerIdx, int amount) {
+        _match.GetPlayer(playerIdx).LoseCoins(amount);
+    }
 }

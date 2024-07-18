@@ -5,6 +5,8 @@
         "TapCard",
         "AddLootPlay",
         "PayCoins",
-        "CreateOwnedItem"
+        "CreateOwnedItem",
+        "Roll",
+        "LoseCoins"
     ]
 }

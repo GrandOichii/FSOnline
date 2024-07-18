@@ -100,14 +100,13 @@ function FS.B.Card()
     result.activatedAbilities = {}
     result.labels = {}
     result.stateModifiers = {}
+    result.lootCosts = {}
 
     function result:Build()
-        local card = {
-            Effects = {},
-            ActivatedAbilities = {},
-        }
+        local card = {}
 
         -- effects
+        card.Effects = {}
         for _, group in ipairs(self.effectGroups) do
             card.Effects[#card.Effects+1] = function (stackEffect)
                 for _, e in ipairs(group) do
@@ -127,6 +126,9 @@ function FS.B.Card()
         -- state modifiers
         card.StateModifiers = result.stateModifiers
 
+        -- additional loot costs
+        card.LootCosts = result.lootCosts
+
         return card
     end
 
@@ -139,6 +141,16 @@ function FS.B.Card()
 
         result.effectGroups[#result.effectGroups+1] = commons
 
+        return result
+    end
+
+    function result.Effect:Roll(effect)
+        result.lootCosts[#result.lootCosts+1] = function (stackEffect)
+            Roll(stackEffect)
+            return true
+        end
+
+        result.effectGroups[#result.effectGroups+1] = {effect}
         return result
     end
 

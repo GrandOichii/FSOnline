@@ -276,12 +276,19 @@ public class Player : IStateModifier {
     /// </summary>
     /// <param name="card">Loot card</param>
     /// <returns></returns>
-    public async Task PayCostsToPlay(HandMatchCard card) {
+    public async Task<bool> PayCostsToPlay(HandMatchCard card, StackEffect effect) {
         // TODO additional costs
+
+        var payed = card.PayCosts(effect);
+        if (!payed) {
+            return false;
+        }
 
         LootPlays--;
         if (LootPlays < 0)
             throw new MatchException($"Unexpected scenario: player payed loot cost for card {card.Card.LogName}, which resulted in their loot plays being equal to {LootPlays}");
+
+        return true;
     }
 
     /// <summary>
@@ -292,13 +299,20 @@ public class Player : IStateModifier {
     public async Task<bool> TryPlayCard(HandMatchCard card) {
         if (!CanPlay(card)) return false;
 
-        await PayCostsToPlay(card);
+        var stackEffect = new LootCardStackEffect(Match, Idx, card.Card);
+        await Match.PlaceOnStack(stackEffect);
+
+        var payed = await PayCostsToPlay(card, stackEffect);
+
+        if (!payed) {
+            Match.RemoveTopOfStack();
+            Match.LogInfo($"Player {LogName} decided not to pay costs for loot card {card.Card.LogName}");
+            return false;
+        }
 
         Match.LogInfo($"Player {LogName} played loot card {card.Card.LogName}");
 
         ShouldRemoveFromHand(card);
-
-        await Match.PlaceOnStack(Idx, card);
 
         // TODO add update
 
@@ -351,6 +365,12 @@ public class Player : IStateModifier {
         Match.AddToCoinPool(amount);
 
         // TODO add update
+    }
+
+    public void LoseCoins(int amount) {
+        Coins -= amount;
+        if (Coins < 0)
+            Coins = 0;
     }
 
     public void Modify(ModificationLayer layer)

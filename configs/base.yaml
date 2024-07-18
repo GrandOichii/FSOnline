@@ -14,12 +14,15 @@ StrictMode: no
 PurchaseCountDefault: 1
 AttackCountDefault: 1
 LootStepLootAmount: 1
+
 # LootPlay: 1
 LootPlay: 100
+
 LootCards:
   # 3-cents-v2: 60
   # a-sack-v2: 60
-  counterfeit-penny-v2: 60
+  # counterfeit-penny-v2: 60
+  orange-green-pills-v2: 60
 Characters:
   - guppy-v2
 StartingItems:
