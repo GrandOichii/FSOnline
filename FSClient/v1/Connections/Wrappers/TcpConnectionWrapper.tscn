@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm7qx5i6mbe4m"]
+
+[ext_resource type="Script" path="res://v1/Connections/Wrappers/TcpConnectionWrapper.cs" id="1_oi27r"]
+
+[node name="TcpConnectionWrapper" type="Node"]
+script = ExtResource("1_oi27r")

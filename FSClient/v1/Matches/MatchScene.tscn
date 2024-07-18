@@ -1,0 +1,97 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq604p6filu2h"]
+
+[ext_resource type="Script" path="res://v1/Matches/MatchScene.gd" id="1_5tr14"]
+[ext_resource type="PackedScene" uid="uid://c0j3qjge22ei4" path="res://v1/Matches/Boards/BoardScene.tscn" id="2_ukb4f"]
+
+[node name="MatchScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5tr14")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Board" type="Control" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Board"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Board/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Board/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Display: "
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/Board/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+item_count = 1
+selected = 0
+popup/item_0/text = "Grid"
+popup/item_0/id = 0
+
+[node name="Boards" type="Control" parent="HBoxContainer/Board/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridBoard" parent="HBoxContainer/Board/VBoxContainer/Boards" instance=ExtResource("2_ukb4f")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="VBoxContainer" type="VSplitContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StackTopLabel" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Will resolve next"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StackScroll" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="StackPlaceholder" type="Control" parent="HBoxContainer/VBoxContainer/VBoxContainer/StackScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LogsScroll" type="ScrollContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Logs" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/LogsScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="item_selected" from="HBoxContainer/Board/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]

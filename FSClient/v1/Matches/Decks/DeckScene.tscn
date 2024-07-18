@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr526xrbf0vuf"]
+
+[ext_resource type="Texture2D" uid="uid://csyxdaajx2e0t" path="res://assets/images/card/backs/loot-card-back.png" id="1_epn4y"]
+[ext_resource type="Script" path="res://v1/Matches/Decks/DeckScene.gd" id="1_s6xd0"]
+
+[node name="DeckScene" type="AspectRatioContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1850.0
+offset_bottom = -1276.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s6xd0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="SubViewportContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 110)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/TextureRect"]
+handle_input_locally = false
+size = Vector2i(150, 110)
+render_target_update_mode = 4
+
+[node name="Top" type="TextureRect" parent="VBoxContainer/TextureRect/SubViewport"]
+unique_name_in_owner = true
+offset_left = 150.0
+offset_right = 260.0
+offset_bottom = 150.0
+rotation = 1.5708
+texture = ExtResource("1_epn4y")
+
+[node name="TextureRect3" type="SubViewportContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 110)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/TextureRect3"]
+handle_input_locally = false
+size = Vector2i(150, 110)
+render_target_update_mode = 4
+
+[node name="TopDiscarded" type="TextureRect" parent="VBoxContainer/TextureRect3/SubViewport"]
+unique_name_in_owner = true
+offset_left = 150.0
+offset_right = 260.0
+offset_bottom = 150.0
+rotation = 1.5708
+texture = ExtResource("1_epn4y")

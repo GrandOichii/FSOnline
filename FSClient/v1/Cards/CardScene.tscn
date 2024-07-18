@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2s3cqas6maos"]
+
+[ext_resource type="Texture2D" uid="uid://coc1p7rl5x6ip" path="res://assets/images/card/cards/3-cents-v2.png" id="1_oq06u"]
+[ext_resource type="Texture2D" uid="uid://dbsttoe2t228y" path="res://assets/images/card/cards/guppy-v2.png" id="1_tfuyw"]
+[ext_resource type="Script" path="res://v1/Cards/CardScene.gd" id="1_xf4km"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npfr2"]
+resource_local_to_scene = true
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0utk"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="CardScene" type="Control"]
+custom_minimum_size = Vector2(310, 420)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 310.0
+offset_bottom = 420.0
+pivot_offset = Vector2(155, 210)
+script = ExtResource("1_xf4km")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ref" type="TextureRect" parent="CenterContainer"]
+modulate = Color(1, 1, 1, 0.470588)
+layout_mode = 2
+texture = ExtResource("1_oq06u")
+
+[node name="Border" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_npfr2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Border"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="Border/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x0utk")
+
+[node name="Art" type="TextureRect" parent="Border/MarginContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_tfuyw")
+expand_mode = 5
+stretch_mode = 3
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

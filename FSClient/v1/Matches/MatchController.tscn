@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://rmlfsnippese"]
+
+[ext_resource type="Script" path="res://v1/Matches/MatchController.gd" id="1_rmg53"]
+
+[node name="MatchController" type="Node"]
+script = ExtResource("1_rmg53")

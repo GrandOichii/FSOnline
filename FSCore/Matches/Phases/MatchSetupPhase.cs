@@ -5,10 +5,7 @@ namespace FSCore.Matches.Phases;
 /// </summary>
 public class MatchSetupPhase : IPhase
 {
-    public string GetName()
-    {
-        throw new MatchException("shouldn't attempt to get name of MatchSetupPhase");
-    }
+    public string GetName() => "match_setup";
 
     public Task PostEmit(Match match, int playerIdx)
     {

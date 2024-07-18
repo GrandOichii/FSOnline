@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://mshpwejycofa"]
+
+[ext_resource type="PackedScene" uid="uid://c2s3cqas6maos" path="res://v1/Cards/CardScene.tscn" id="1_mp11h"]
+
+[node name="InPlayCardScene" type="Control"]
+custom_minimum_size = Vector2(168, 168)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1832.0
+offset_bottom = -1332.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="CardScene" parent="CenterContainer/Control" instance=ExtResource("1_mp11h")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -210.0
+offset_right = 155.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)

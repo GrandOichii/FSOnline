@@ -1,0 +1,150 @@
+[gd_scene load_steps=6 format=3 uid="uid://bubt07vujk7c2"]
+
+[ext_resource type="Script" path="res://v1/Matches/Players/PlayerInfoScene.gd" id="1_e6qev"]
+[ext_resource type="Texture2D" uid="uid://bxkfvvho52r2o" path="res://assets/icons/health.png" id="1_kr7p0"]
+[ext_resource type="Texture2D" uid="uid://uf2xula7on4q" path="res://assets/icons/attack.png" id="2_1g41k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xnno"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mnmvp"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="PlayerInfoScene" type="Control"]
+custom_minimum_size = Vector2(150, 140)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1002.0
+offset_bottom = -508.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e6qev")
+
+[node name="Bg" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6xnno")
+
+[node name="MarginContainer" type="MarginContainer" parent="Bg"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="Bg/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mnmvp")
+
+[node name="MarginContainer" type="MarginContainer" parent="Bg/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bg/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerName" type="Label" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "PlayerName"
+
+[node name="HSeparator" type="HSeparator" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Coins" type="Label" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "5$"
+horizontal_alignment = 1
+
+[node name="LootPlays" type="Label" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1 LP"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="AttackOpportunities" type="Label" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1 Ao"
+horizontal_alignment = 1
+
+[node name="PurchaseOpportunities" type="Label" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "2 Po"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Health" type="Label" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "2"
+
+[node name="TextureRect" type="TextureRect" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_kr7p0")
+expand_mode = 3
+
+[node name="VSeparator" type="VSeparator" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Attack" type="Label" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1"
+
+[node name="TextureRect" type="TextureRect" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_1g41k")
+expand_mode = 3

@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0j3qjge22ei4"]
+
+[ext_resource type="PackedScene" uid="uid://biyxdvf4nphhb" path="res://v1/Matches/Players/PlayerScene.tscn" id="1_a37rh"]
+[ext_resource type="Script" path="res://v1/Matches/Boards/BoardScene.gd" id="1_vvxrg"]
+[ext_resource type="PackedScene" uid="uid://bwu5mhj6eoxou" path="res://v1/Matches/DecksRow.tscn" id="2_eiuwh"]
+
+[node name="BoardScene" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vvxrg")
+player_scene = ExtResource("1_a37rh")
+
+[node name="Top" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerScene" parent="Top" instance=ExtResource("1_a37rh")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerScene2" parent="Top" instance=ExtResource("1_a37rh")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DecksRow" parent="." instance=ExtResource("2_eiuwh")]
+layout_mode = 2
+
+[node name="Bottom" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerScene" parent="Bottom" instance=ExtResource("1_a37rh")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerScene2" parent="Bottom" instance=ExtResource("1_a37rh")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

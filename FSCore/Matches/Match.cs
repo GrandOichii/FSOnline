@@ -326,8 +326,22 @@ public class Match {
     /// Reloads the state and pushes the updates
     /// </summary>
     public async Task ReloadState() {
-        // TODO
         await SoftReloadState();
+
+        // TODO check dead players/cards/monsters
+
+        await PushUpdates();
+    }
+
+    public async Task PushUpdates() {
+        if (View is not null) {
+            await View.Update(this);
+        }
+        // TODO
+        
+        foreach (var player in Players) {
+            await player.UpdateController();
+        }
     }
 
     public async Task SoftReloadState() {

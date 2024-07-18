@@ -146,10 +146,23 @@ public class Program {
         await match.AddPlayer(name, controller, chKey);
     }
 
+    public static async Task TcpLoop(MatchConfig config) {
+        while (true) {
+            try {
+                await TcpMatch(config, 2, 1);
+            } catch (Exception) {
+
+            }
+        }
+    }
+
     public static async Task Main(string[] args) {
         var config = ReadConfigYAML(
             File.ReadAllText("../configs/base.yaml")
         );
+
+        await TcpLoop(config);
+        return;
 
         await TcpMatch(config, 2, 0);
         return;

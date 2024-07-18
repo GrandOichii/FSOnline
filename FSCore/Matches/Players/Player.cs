@@ -447,4 +447,9 @@ public class Player : IStateModifier {
     }
 
     #endregion
+
+    public async Task UpdateController() {
+        await Controller.Update(Match, Idx);
+    }
+
 }

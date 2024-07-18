@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://clo8to0jhyrli"]
+
+[ext_resource type="Script" path="res://v1/Matches/ConnectedMatch.gd" id="1_gtxyk"]
+[ext_resource type="PackedScene" uid="uid://bq604p6filu2h" path="res://v1/Matches/MatchScene.tscn" id="2_ktxgd"]
+[ext_resource type="PackedScene" uid="uid://cm7qx5i6mbe4m" path="res://v1/Connections/Wrappers/TcpConnectionWrapper.tscn" id="3_ac0ba"]
+[ext_resource type="PackedScene" uid="uid://rmlfsnippese" path="res://v1/Matches/MatchController.tscn" id="4_bj5ne"]
+
+[node name="ConnectedMatch" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gtxyk")
+start_fullscreen = null
+player_name = null
+character_key = null
+address = null
+port = null
+
+[node name="MatchScene" parent="." instance=ExtResource("2_ktxgd")]
+layout_mode = 1
+
+[node name="Connection" parent="." instance=ExtResource("3_ac0ba")]
+unique_name_in_owner = true
+
+[node name="Controller" parent="." instance=ExtResource("4_bj5ne")]
+unique_name_in_owner = true
+
+[node name="Windows" type="Node" parent="."]
+
+[node name="ActionWindow" type="Window" parent="Windows"]
+title = "Action window"
+position = Vector2i(1480, 910)
+size = Vector2i(500, 400)
+
+[node name="MarginContainer" type="MarginContainer" parent="Windows/ActionWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Windows/ActionWindow/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Windows/ActionWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Action" type="LineEdit" parent="Windows/ActionWindow/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter action"
+
+[node name="SendButton" type="Button" parent="Windows/ActionWindow/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " Send "
+
+[node name="Request" type="Label" parent="Windows/ActionWindow/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "<action here>"
+
+[node name="Hint" type="Label" parent="Windows/ActionWindow/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "<hint desplayed here>"
+
+[node name="Options" type="RichTextLabel" parent="Windows/ActionWindow/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "<options diplayed here>"
+
+[connection signal="Connected" from="Connection" to="." method="_on_connection_connected"]
+[connection signal="MessageReceived" from="Connection" to="." method="_on_connection_message_received"]
+[connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/HBoxContainer/SendButton" to="." method="_on_send_button_pressed"]
