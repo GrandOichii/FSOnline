@@ -84,4 +84,13 @@ public class ScriptMaster {
     public void LoseCoins(int playerIdx, int amount) {
         _match.GetPlayer(playerIdx).LoseCoins(amount);
     }
+
+    [LuaCommand]
+    public void Recharge(string ipid) {
+        var item = _match.GetInPlayCard(ipid);
+
+        item.Untap()
+            .Wait()
+        ;
+    }
 }

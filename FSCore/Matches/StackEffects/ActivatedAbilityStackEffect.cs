@@ -1,5 +1,3 @@
-
-
 namespace FSCore.Matches.StackEffects;
 
 public class ActivatedAbilityStackEffect : StackEffect

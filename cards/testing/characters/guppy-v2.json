@@ -5,9 +5,9 @@
     "Health": 2,
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
-    "TODO": "remove Mystery Sack as starting item",
+    "TODO": "set Infestation as starting item",
     "StartingItems": [
-        "mystery-sack-v2",
+        "the-butter-bean-v2",
         "infestation-v2"
     ],
     "Script": "guppy-v2.lua"
