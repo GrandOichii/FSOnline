@@ -8,6 +8,9 @@
             "starting-items/infestation-v2",
             "starting-items/bag-o-trash-v2"
         ],
+        "Treasures": [
+            "treasures/mystery-sack-v2"
+        ],
         "TODO": "add Counterfeit penny and implement it",
         "Loot": [
             "loot/3-cents-v2",

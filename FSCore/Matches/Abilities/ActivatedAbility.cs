@@ -43,9 +43,9 @@ public class ActivatedAbility {
         }
     }
 
-    public bool PayCosts(InPlayMatchCard card, Player player) {
+    public bool PayCosts(InPlayMatchCard card, Player player, StackEffect stackEffect) {
         try {
-            var returned = CostFunc.Call(card, player);
+            var returned = CostFunc.Call(card, player, stackEffect);
             return LuaUtility.GetReturnAsBool(returned);
         } catch (Exception e) {
             throw new MatchException($"Exception during cost execution of activated ability of card {card.LogName} by player {player.LogName}", e);

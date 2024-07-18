@@ -508,18 +508,6 @@ public class Match {
     }
 
     /// <summary>
-    /// Place card activation on stack
-    /// </summary>
-    /// <param name="ability">Activated ability</param>
-    /// <param name="card">Activated card</param>
-    /// <param name="owner"></param>
-    /// <returns></returns>
-    public async Task PlaceOnStack(ActivatedAbility ability, InPlayMatchCard card, Player owner) {
-        var effect = new ActivatedAbilityStackEffect(ability, card, owner);
-        Stack.AddEffect(effect);
-    }
-
-    /// <summary>
     /// Roll a dice and place the result onto the stack
     /// </summary>
     /// <param name="parent">Parent effect</param>

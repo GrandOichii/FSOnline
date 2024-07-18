@@ -61,7 +61,7 @@ FS.C.Cost = {}
 function FS.C.Cost.Tap()
     local result = {}
 
-    function result.Pay(me, player)
+    function result.Pay(me, player, stackEffect)
         TapCard(me.IPID)
         return true
     end
@@ -77,7 +77,7 @@ end
 function FS.C.Cost.PayCoins(amount)
     local result = {}
 
-    function result.Pay(me, player)
+    function result.Pay(me, player, stackEffect)
         -- TODO ask permission to pay
         PayCoins(player.Idx, amount)
         return true
@@ -261,9 +261,9 @@ function FS.B.ActivatedAbility(costText, effectText)
                 end
                 return true
             end,
-            Cost = function (me, player)
+            Cost = function (me, player, stackEffect)
                 for _, cost in ipairs(result.costs) do
-                    if not cost.Pay(me, player) then
+                    if not cost.Pay(me, player, stackEffect) then
                         return false
                     end
                 end
@@ -281,6 +281,22 @@ function FS.B.ActivatedAbility(costText, effectText)
             result.costs[#result.costs+1] = cost
         end
 
+        return result
+    end
+
+    -- TODO repeated code
+    function result.Effect:Roll(effect)
+        result.costs[#result.costs+1] = {
+            Check = function (me, player)
+                return true
+            end,
+            Pay = function (me, player, stackEffect)
+                Roll(stackEffect)
+                return true
+            end
+        }
+
+        result.effectGroups[#result.effectGroups+1] = {effect}
         return result
     end
 
