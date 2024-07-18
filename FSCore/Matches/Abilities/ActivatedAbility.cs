@@ -2,9 +2,13 @@ namespace FSCore.Matches.Abilities;
 
 public class ActivatedAbility {
     /// <summary>
-    /// Ability text
+    /// Ability cost text
     /// </summary>
-    public string Text { get; }
+    public string CostText { get; }
+    /// <summary>
+    /// Ability effect text
+    /// </summary>
+    public string EffectText { get; }
     /// <summary>
     /// Check function
     /// </summary>
@@ -20,7 +24,8 @@ public class ActivatedAbility {
 
     public ActivatedAbility(LuaTable table) {
 
-        Text = LuaUtility.TableGet<string>(table, "Text");
+        CostText = LuaUtility.TableGet<string>(table, "CostText");
+        EffectText = LuaUtility.TableGet<string>(table, "EffectText");
         CheckFunc = LuaUtility.TableGet<LuaFunction>(table, "Check");
         CostFunc = LuaUtility.TableGet<LuaFunction>(table, "Cost");
         Effects = new(LuaUtility.TableGet<LuaTable>(table, "Effects"));

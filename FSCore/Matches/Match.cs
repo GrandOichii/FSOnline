@@ -14,6 +14,9 @@ public class Match {
         new ActionPhase(),
         new EndPhase(),
     };
+    private static readonly List<ModificationLayer> MODIFICATION_LAYERS = new() {
+        ModificationLayer.COIN_GAIN_AMOUNT,
+    };
 
     /// <summary>
     /// Card ID generator
@@ -305,6 +308,21 @@ public class Match {
     /// </summary>
     public async Task ReloadState() {
         // TODO
+        await SoftReloadState();
+    }
+
+    public async Task SoftReloadState() {
+        // players
+        foreach (var player in Players)
+            player.UpdateState();
+
+        foreach (var layer in MODIFICATION_LAYERS)
+            foreach (var player in Players) 
+                player.Modify(layer);
+        
+        // TODO rooms
+        // TODO monsters
+        // TODO treasure
     }
 
     /// <summary>
@@ -564,6 +582,13 @@ public class Match {
         }
 
         return result;
+    }
+
+    public async Task PlaceOwnedCard(OwnedInPlayMatchCard card) {
+        // TODO enter play effects
+        LogInfo($"Item {card.LogName} enters play");
+
+        await card.Owner.GainItem(card);
     }
 
     #endregion

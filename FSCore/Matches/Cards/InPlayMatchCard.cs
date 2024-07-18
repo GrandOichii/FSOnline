@@ -1,6 +1,6 @@
 namespace FSCore.Matches.Cards;
 
-public class InPlayMatchCard {
+public class InPlayMatchCard : IStateModifier {
     /// <summary>
     /// Original card
     /// </summary>
@@ -61,5 +61,26 @@ public class InPlayMatchCard {
 
     public ActivatedAbility GetActivatedAbility(int idx) {
         return GetActivatedAbilities()[idx];
+    }
+
+    public List<LuaFunction> GetStateModifiers(ModificationLayer layer) {
+        // TODO use abilities from state
+        if (!Card.StateModifiers.ContainsKey(layer))
+            return new();
+        return Card.StateModifiers[layer];
+    }
+
+    public void Modify(ModificationLayer layer)
+    {
+        // TODO catch exception
+        var stateModifiers = GetStateModifiers(layer);
+        foreach (var mod in stateModifiers) {
+            mod.Call(this);
+        }
+    }
+
+    public void UpdateState()
+    {
+        // TODO
     }
 }

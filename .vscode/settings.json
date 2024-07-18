@@ -4,6 +4,7 @@
         "LootCards",
         "TapCard",
         "AddLootPlay",
-        "PayCoins"
+        "PayCoins",
+        "CreateOwnedItem"
     ]
 }

@@ -3,7 +3,13 @@ FS = {}
 
 -- card labels
 FS.Labels = {
-    Eternal = 'Eternal'
+    Eternal = 'Eternal',
+    Trinket = 'Trinket'
+}
+
+-- modification layers
+FS.ModLayers = {
+    COIN_GAIN_AMOUNT = 1
 }
 
 -- common
@@ -67,6 +73,7 @@ function FS.C.Cost.Tap()
     return result
 end
 
+-- TODO replacement effects affect how much is required to pay
 function FS.C.Cost.PayCoins(amount)
     local result = {}
 
@@ -89,24 +96,39 @@ FS.B = {}
 function FS.B.Card()
     local result = {}
 
-    -- TODO add labels
-
     result.effectGroups = {}
     result.activatedAbilities = {}
+    result.labels = {}
+    result.stateModifiers = {}
 
-    function result:PreBuild()
-        return {
+    function result:Build()
+        local card = {
             Effects = {},
             ActivatedAbilities = {},
         }
+
+        -- effects
+        for _, group in ipairs(self.effectGroups) do
+            card.Effects[#card.Effects+1] = function (stackEffect)
+                for _, e in ipairs(group) do
+                    if not e(stackEffect) then
+                        return
+                    end
+                end
+            end
+        end
+
+        -- activate abilities
+        card.ActivatedAbilities = result.activatedAbilities
+
+        -- labels
+        card.Labels = result.labels
+
+        -- state modifiers
+        card.StateModifiers = result.stateModifiers
+
+        return card
     end
-
-    return result
-end
-
--- loot card builder
-function FS.B.Loot()
-    local result = FS.B.Card()
 
     result.Effect = {}
 
@@ -120,27 +142,46 @@ function FS.B.Loot()
         return result
     end
 
-    function result.Effect:Custom(...)
-        -- TODO
-
+    -- add activated ability
+    function result:ActivatedAbility(aa)
+        result.activatedAbilities[#result.activatedAbilities+1] = aa
         return self
     end
 
-    function result:Build()
-        local card = result:PreBuild()
+    -- add label to card
+    function result:Label(label)
+        result.labels[#result.labels+1] = label
+        return self
+    end
 
-        -- effects
-        for _, group in ipairs(self.effectGroups) do
-            card.Effects[#card.Effects+1] = function (stackEffect)
-                for _, e in ipairs(group) do
-                    if not e(stackEffect) then
-                        return
-                    end
-                end
-            end
+    result.State = {}
+    function result.State:Raw(layer, func)
+        if result.stateModifiers[layer] == nil then
+            result.stateModifiers[layer] = {}
         end
+        local t = result.stateModifiers[layer]
+        t[#t+1] = func
+        return result
+    end
 
-        return card
+    return result
+end
+
+-- loot card builder
+function FS.B.Loot()
+    local result = FS.B.Card()
+
+    function result:Trinket()
+        self:Label(FS.Labels.Trinket)
+
+        self.effectGroups[#self.effectGroups+1] = {function (lootStackEffect)
+            lootStackEffect.GoesToDiscard = false
+            local card = lootStackEffect.Card
+
+            CreateOwnedItem(card, lootStackEffect.OwnerIdx)
+        end}
+
+        return self
     end
 
     return result
@@ -152,7 +193,7 @@ function FS.B.Character()
 
     function result:Basic()
         result:ActivatedAbility(
-            FS.B.ActivatedAbility('{T}: Play an additional Loot card this turn.')
+            FS.B.ActivatedAbility('{T}', 'Play an additional Loot card this turn.')
                 .Cost:Common(
                     FS.C.Cost.Tap()
                 )
@@ -171,31 +212,10 @@ end
 function FS.B.Item()
     local result = FS.B.Card()
 
-    -- build item card
-    function result:Build()
-        local item = result:PreBuild()
-
-        item.ActivatedAbilities = result.activatedAbilities
-
-        return item
-    end
-
-    -- add activated ability
-    function result:ActivatedAbility(aa)
-        result.activatedAbilities[#result.activatedAbilities+1] = aa
-        return self
-    end
-
-    -- -- add label to card
-    -- function result:Label(label)
-    --     -- TODO add label to result
-    --     return self
-    -- end
-
     return result
 end
 
-function FS.B.ActivatedAbility(effectText)
+function FS.B.ActivatedAbility(costText, effectText)
     local result = {}
 
     result.costs = {}
@@ -219,7 +239,8 @@ function FS.B.ActivatedAbility(effectText)
         end
 
         return {
-            Text = effectText,
+            EffectText = effectText,
+            CostText = costText,
             Check = function (me, player)
                 for _, cost in ipairs(result.costs) do
                     if not cost.Check(me, player) then

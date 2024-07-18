@@ -2,9 +2,9 @@
 - stack effect text
 - activated abilities
     - cost
-        - tapping
+v        - tapping
         - removing counters
-        - paying coins
+v        - paying coins
             - reducing the amount of coins payed to activate abilties
         - discarding loot cards
         - paying life
@@ -120,7 +120,7 @@
         - item levels
         - flipping items
         - item filtering
-        - item recharging
+v        - item recharging
         - gaining treasure
         - counters
         - named counters
@@ -136,7 +136,7 @@
         - copying activated abilties of in-play items
         - rerolling items
         - "haunt" cards
-        - playing with a revealed hand
+v         - playing with a revealed hand
         - being able to attack items
         - putting cards underneath items
         - soul entering under a player's control trigger
@@ -163,7 +163,7 @@
 v        - looting
         - discarding loot
         - stealing loot cards from hand
-        - playing additional loot cards
+v        - playing additional loot cards
         - playing copies of cards in hand
         - revealing the top card of the loot deck
         - copying cards from the top of the loot deck

@@ -63,7 +63,7 @@ public struct MatchConfig {
     /// <summary>
     /// Keys of character cards
     /// </summary>
-    public required List<string> Characters { get; set; }
+    public required List<string> Characters { get; set; } // TODO not yet used
     /// <summary>
     /// Keys of starting items
     /// </summary>

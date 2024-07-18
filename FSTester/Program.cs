@@ -109,7 +109,7 @@ public class Program {
         // TODO prompt player name with default name
         // TODO prompt player with character key
 
-        var chKey = "bum-bo-v2";
+        var chKey = "guppy-v2";
 
         await match.AddPlayer(name, c, chKey);
     }

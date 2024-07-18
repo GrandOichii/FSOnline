@@ -3,7 +3,7 @@ namespace FSCore.Matches.Players;
 /// <summary>
 /// Participant of a match
 /// </summary>
-public class Player {
+public class Player : IStateModifier {
     /// <summary>
     /// Parent match
     /// </summary>
@@ -40,6 +40,10 @@ public class Player {
     /// Controlled items
     /// </summary>
     public List<OwnedInPlayMatchCard> Items { get; }
+    /// <summary>
+    /// State
+    /// </summary>
+    public PlayerState State { get; private set; }
 
     /// <summary>
     /// Name of the player that will be used for system logging
@@ -55,6 +59,8 @@ public class Player {
         Hand = new();
         Items = new();
         Character = new(match, this, characterTemplate);
+        // Initial state
+        State = new(this);
     }
 
     /// <summary>
@@ -165,13 +171,30 @@ public class Player {
 
     #endregion
 
+    private int ModCoinGain(int amount) {
+        var initial = amount;
+        try {
+            foreach (var mod in State.CoinGainModifiers) {
+                System.Console.WriteLine("CALL");
+                var returned = mod.Call(this, amount);
+                System.Console.WriteLine("PARSE");
+                System.Console.WriteLine(returned[0]);
+                amount = LuaUtility.GetReturnAsInt(returned);
+                System.Console.WriteLine("END");
+            }
+            return amount;
+        } catch (Exception e) {
+            throw new MatchException($"Failed to modify coin gain amount for player {LogName} (initial amount: {amount})");
+        }
+    }
+
     /// <summary>
     /// Gives the player coins
     /// </summary>
     /// <param name="amount">Initial amount of coins to be given to the player</param>
     /// <returns>Resulting amount of coins given to the player</returns>
     public async Task<int> GainCoins(int amount) {
-        // TODO modify the actual amount using static state modifiers/replacement effects
+        amount = ModCoinGain(amount);
 
         var taken = Match.TakeCoins(amount);
         Coins += taken;
@@ -271,6 +294,8 @@ public class Player {
 
         await PayCostsToPlay(card);
 
+        Match.LogInfo($"Player {LogName} played loot card {card.Card.LogName}");
+
         ShouldRemoveFromHand(card);
 
         await Match.PlaceOnStack(Idx, card);
@@ -282,6 +307,10 @@ public class Player {
 
     #region In-play cards
 
+    /// <summary>
+    /// Gain control of item
+    /// </summary>
+    /// <param name="card">Item card</param>
     public async Task GainItem(OwnedInPlayMatchCard card) {
         // TODO trigger
         // TODO add to update
@@ -291,12 +320,12 @@ public class Player {
         Match.LogInfo($"Player {LogName} gained item {card.LogName}");
     }
 
-    public InPlayMatchCard? GetInPlayCardOrDefault(string ipid) {
+    public OwnedInPlayMatchCard? GetInPlayCardOrDefault(string ipid) {
         return GetInPlayCards().FirstOrDefault(c => c.IPID == ipid);
     }
 
-    public List<InPlayMatchCard> GetInPlayCards() {
-        var result = new List<InPlayMatchCard>(Items) {
+    public List<OwnedInPlayMatchCard> GetInPlayCards() {
+        var result = new List<OwnedInPlayMatchCard>(Items) {
             Character
         };
         return result;
@@ -324,5 +353,28 @@ public class Player {
         // TODO add update
     }
 
+    public void Modify(ModificationLayer layer)
+    {
+        // hand
+        foreach (var card in Hand)
+            card.Modify(layer);
 
+        // in-play cards
+        var cards = GetInPlayCards();
+        foreach (var card in cards)
+            card.Modify(layer);
+    }
+
+    public void UpdateState()
+    {
+        State = new(this);
+        // hand
+        foreach (var card in Hand)
+            card.UpdateState();
+
+        // in-play cards
+        var cards = GetInPlayCards();
+        foreach (var card in cards)
+            card.UpdateState();
+    }
 }

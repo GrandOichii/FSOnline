@@ -13,6 +13,8 @@ public class PassAction : IAction
         }
 
         var player = match.GetPlayer(playerIdx);
+
+        match.LogInfo($"Player {player.LogName} passes");
         await match.ProcessPass(player);
     }
 

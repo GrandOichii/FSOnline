@@ -105,6 +105,16 @@ static class LuaUtility {
         return result;
     }
 
+    static public int GetReturnAsInt(object[] returned, int index=0) {
+        CheckIndex(returned, index);
+        try {
+            var result = Convert.ToInt32(returned[index]);
+            return result;
+        } catch (Exception) {
+            throw new ConvertLuaException("Return value in index " + index + " is not an int");
+        }
+    }
+
     /// <summary>
     /// Selects the return value at specified index and returns it as a bool
     /// </summary>

@@ -3,7 +3,7 @@ namespace FSCore.Matches.Cards;
 /// <summary>
 /// Hand wrapper for a Match Card
 /// </summary>
-public class HandMatchCard {
+public class HandMatchCard : IStateModifier {
     /// <summary>
     /// Original card
     /// </summary>
@@ -23,5 +23,15 @@ public class HandMatchCard {
 
         // Initial state
         State = new(this);
+    }
+
+    public void UpdateState()
+    {
+        State = new(this);
+    }
+
+    public void Modify(ModificationLayer layer)
+    {
+        // TODO
     }
 }

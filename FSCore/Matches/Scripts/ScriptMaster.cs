@@ -65,4 +65,13 @@ public class ScriptMaster {
         player.PayCoins(amount);
     }
 
+    [LuaCommand]
+    public void CreateOwnedItem(MatchCard card, int ownerIdx) {
+        var owner = _match.GetPlayer(ownerIdx);
+        var result = new OwnedInPlayMatchCard(card, owner);
+        
+        _match.PlaceOwnedCard(result)
+            .Wait();
+    }
+
 }
