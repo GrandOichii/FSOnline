@@ -207,7 +207,7 @@ public class Match {
             var amount = pair.Value;
             var card = await _cardMaster.Get(pair.Key);
             for (int i = 0; i < amount; i++) {
-                result.Add(new(this, card));
+                result.Add(new(this, card, DeckType.LOOT));
             }
         }
         return result;
@@ -224,7 +224,11 @@ public class Match {
         // treasure deck
         var treasureCards = new List<MatchCard>();
         foreach (var key in Config.Treasures)
-            treasureCards.Add(new MatchCard(this, await _cardMaster.Get(key)));
+            treasureCards.Add(new MatchCard(
+                this,
+                await _cardMaster.Get(key),
+                DeckType.TREASURE
+            ));
 
         TreasureDeck.Populate(treasureCards);
 
@@ -437,6 +441,23 @@ public class Match {
     #region Deck manipulation
 
     /// <summary>
+    /// Place the card into it's origin deck
+    /// </summary>
+    /// <param name="card">Match card</param>
+    /// <returns></returns>
+    public async Task PlaceIntoDiscard(MatchCard card) {
+        if (card.DeckOrigin is null) {
+            throw new MatchException($"Tried to put card {card.LogName} into discard, while it has no deck origin");
+        }
+
+        DeckType origin = (DeckType)card.DeckOrigin;
+        var deck = DeckIndex[origin];
+        deck.PlaceIntoDiscard(card);
+
+        LogInfo($"Card {card.LogName} was put into discard of deck {card.DeckOrigin}");
+    }
+
+    /// <summary>
     /// Remove the top N cards from the loot deck
     /// </summary>
     /// <param name="amount">Amount of cards to be removed</param>
@@ -460,16 +481,6 @@ public class Match {
         LogInfo($"Removed {result.Count} cards from the treasure deck");
 
         return result;
-    }
-
-    /// <summary>
-    /// Places the card into the loot discard
-    /// </summary>
-    /// <param name="card">Match card</param>
-    public void PlaceIntoLootDiscard(MatchCard card) {
-        LootDeck.PlaceIntoDiscard(card);
-
-        LogInfo($"Card {card.LogName} is put into discard of loot deck");
     }
 
     #endregion
@@ -620,6 +631,17 @@ public class Match {
         LogInfo($"Item {card.LogName} enters play");
 
         await card.Owner.GainItem(card);
+    }
+
+    public async Task DestroyItem(string ipid) {
+        var card = GetInPlayCard(ipid);
+
+        // TODO check if is shop item
+        if (card is OwnedInPlayMatchCard ownedCard) {
+            await ownedCard.Owner.RemoveItem(ownedCard);
+        }
+
+        await PlaceIntoDiscard(card.Card);
     }
 
     #endregion

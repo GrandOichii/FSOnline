@@ -95,6 +95,12 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public void DestroyItem(string ipid) {
+        _match.DestroyItem(ipid)
+            .Wait();
+    }
+
+    [LuaCommand]
     public LuaTable GainTreasure(int playerIdx, int amount) {
         var result = _match
             .GetPlayer(playerIdx)

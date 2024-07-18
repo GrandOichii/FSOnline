@@ -25,6 +25,6 @@ public class LootCardStackEffect : StackEffect
 
         // some cards put themselves into other zones !!! Trinkets
         if (GoesToDiscard)
-            Match.PlaceIntoLootDiscard(Card);
+            await Match.PlaceIntoDiscard(Card);
     }
 }

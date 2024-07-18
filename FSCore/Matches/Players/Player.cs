@@ -339,6 +339,10 @@ public class Player : IStateModifier {
         return result;
     }
 
+    public async Task RemoveItem(OwnedInPlayMatchCard card) {
+        Items.Remove(card);
+    }
+
     /// <summary>
     /// Gain control of item
     /// </summary>

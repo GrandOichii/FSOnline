@@ -73,6 +73,23 @@ function FS.C.Cost.Tap()
     return result
 end
 
+function FS.C.Cost.DestroyMe()
+    local result = {}
+
+    function result.Pay(me, player, stackEffect)
+        -- TODO ask player for permission
+        DestroyItem(me.IPID)
+        return true
+    end
+
+    function result.Check(me, player)
+        -- TODO check if can be destroyed (is eternal)
+        return true
+    end
+
+    return result
+end
+
 -- TODO replacement effects affect how much is required to pay
 function FS.C.Cost.PayCoins(amount)
     local result = {}

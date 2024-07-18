@@ -24,6 +24,10 @@ public class MatchCard {
     /// State
     /// </summary>
     public MatchCardState State { get; private set; }
+    /// <summary>
+    /// Deck origin
+    /// </summary>
+    public DeckType? DeckOrigin { get; }
 
     #region Effects and Abilities
 
@@ -56,9 +60,10 @@ public class MatchCard {
     /// </summary>
     public string LogName => $"{Template.Name} [{ID}]";
 
-    public MatchCard(Match match, CardTemplate template) {
+    public MatchCard(Match match, CardTemplate template, DeckType? deckOrigin = null) {
         Match = match;
         Template = template;
+        DeckOrigin = deckOrigin;
 
         // script execution
         LuaTable data;

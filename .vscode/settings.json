@@ -8,6 +8,7 @@
         "CreateOwnedItem",
         "Roll",
         "LoseCoins",
-        "Recharge"
+        "Recharge",
+        "DestroyItem"
     ]
 }

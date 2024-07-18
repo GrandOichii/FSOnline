@@ -27,9 +27,10 @@ LootCards:
   # portable-slot-machine-v2: 60
   xvii-the-stars-v2: 60
 Treasures:
-  - mystery-sack-v2
-  - portable-slot-machine-v2
-  - the-butter-bean-v2
+  # - mystery-sack-v2
+  # - portable-slot-machine-v2
+  # - the-butter-bean-v2
+  - pageant-boy-v2
 Characters:
   - guppy-v2
 StartingItems:
