@@ -60,6 +60,7 @@ func load_items(snapshot: Variant):
 		var ipid = item.get_ipid()
 		if not ipid in ipids:
 			item.queue_free()
+			continue
 		item.load_snapshot(index[ipid])
 		(ipids as Array).erase(ipid)
 

@@ -21,6 +21,9 @@ signal MatchInfoReceived(Variant)
 @onready var Match = %Match
 
 var _update: Variant
+var _match_info: Variant
+
+var _auto_response = null
 
 func _ready():
 	if start_fullscreen:
@@ -31,6 +34,7 @@ func _ready():
 	Match.set_controller(Controller)
 
 func process_match_info(match_info: Variant):
+	_match_info = match_info
 	Controller.set_match_info(match_info)
 	Match.load_match_info(match_info)
 	print(match_info)
@@ -49,7 +53,36 @@ func process_update(update: Variant):
 	#if update.Request == 'PickOption':
 		#setup_pick_string(update)
 		#return
-	#
+	
+func _input(e):
+	if e.is_action_pressed('yield_until_empty_stack'):
+		_auto_response = func(data):
+			if Controller.can_perform_action():
+				if len(data.Match.Stack.Effects) == 0:
+					_auto_response = null
+					return
+				if not Controller.can_pass():
+					_auto_response = null
+					return
+				send_pass()
+		_auto_response.call(_update)
+		return
+	if e.is_action_pressed('yield_until_turn'):
+		_auto_response = func(data):
+			if Controller.can_perform_action():
+				if not Controller.can_pass():
+					_auto_response = null
+					return
+				if data.Match.CurPlayerIdx == _match_info.PlayerIdx:
+					_auto_response = null
+					return
+				send_pass()
+		if Controller.can_pass():
+			send_pass()
+		return
+		
+func send_pass():
+	Connection.Write('pass')
 
 # signal connections
 
@@ -61,13 +94,14 @@ func _on_connection_message_received(message):
 	var json = JSON.new()
 	var error = json.parse(message)
 	if error != OK:
-		print("JSON Parse Error: ", json.get_error_message(), " in ", message, " at line ", json.get_error_line())
 		return
 	var data = json.data
 	if 'Request' in data:
 		_update = data
 		process_update(data)
 		UpdateReceived.emit(data)
+		if _auto_response != null:
+			_auto_response.call(data)
 		return
 	process_match_info(data)
 	MatchInfoReceived.emit(data)
@@ -80,4 +114,4 @@ func _on_controller_response(msg: String):
 	Connection.Write(msg)
 
 func _on_pass_button_pressed():
-	Connection.Write('pass')
+	send_pass()

@@ -27,6 +27,14 @@ func can_play(card: Variant) -> bool:
 func play(card: Variant):
 	send('p ' + card.ID)
 	
+func can_perform_action() -> bool:
+	return last_update.Request == 'PromptAction'
+	
+func can_pass() -> bool:
+	if last_update.Request != 'PromptAction':
+		return false
+	return 'pass' in last_update.Args.values()
+	
 func can_activate(in_play_card: Variant) -> bool:
 	if last_update.Request != 'PromptAction':
 		return false

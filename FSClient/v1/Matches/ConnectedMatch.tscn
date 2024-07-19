@@ -30,7 +30,7 @@ unique_name_in_owner = true
 
 [node name="ActionWindow" type="Window" parent="Windows"]
 title = "Action window"
-position = Vector2i(1108, 497)
+position = Vector2i(1084, 335)
 size = Vector2i(500, 400)
 
 [node name="MarginContainer" type="MarginContainer" parent="Windows/ActionWindow"]
