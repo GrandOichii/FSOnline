@@ -1,4 +1,3 @@
-
 namespace FSCore.Matches.Data;
 
 public class ActivatedAbilityStackEffectData : StackEffectData

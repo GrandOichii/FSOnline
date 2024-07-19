@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://biyxdvf4nphhb"]
+[gd_scene load_steps=9 format=3 uid="uid://biyxdvf4nphhb"]
 
 [ext_resource type="Script" path="res://v1/Matches/Players/PlayerScene.gd" id="1_a65y4"]
 [ext_resource type="PackedScene" uid="uid://bubt07vujk7c2" path="res://v1/Matches/Players/PlayerInfoScene.tscn" id="1_we11k"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://mshpwejycofa" path="res://v1/Matches/Cards/InPlayCardScene.tscn" id="4_fjgs5"]
 [ext_resource type="PackedScene" uid="uid://dvrd3ff574735" path="res://v1/Matches/Players/CharacterScene.tscn" id="4_quxqk"]
 [ext_resource type="Script" path="res://v1/Behaviors/OwnedCardBehavior.gd" id="6_dp1ca"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoh5s"]
+resource_local_to_scene = true
+bg_color = Color(0, 1, 0, 0)
 
 [sub_resource type="Resource" id="Resource_mp8gh"]
 resource_local_to_scene = true
@@ -41,152 +45,157 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Bg" type="PanelContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xoh5s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Bg"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Bg/VBoxContainer"]
 layout_mode = 2
 
-[node name="Info" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_we11k")]
+[node name="Info" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer" instance=ExtResource("1_we11k")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 vertical_scroll_mode = 0
 
-[node name="Hand" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
+[node name="Hand" type="HBoxContainer" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HandCardScene" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
+[node name="HandCardScene" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
 layout_mode = 2
 
-[node name="HandCardScene2" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
+[node name="HandCardScene2" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
 layout_mode = 2
 
-[node name="HandCardScene3" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
+[node name="HandCardScene3" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
 layout_mode = 2
 
-[node name="HandCardScene4" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
+[node name="HandCardScene4" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
 layout_mode = 2
 
-[node name="HandCardScene5" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
+[node name="HandCardScene5" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
 layout_mode = 2
 
-[node name="HandCardScene6" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
+[node name="HandCardScene6" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
 layout_mode = 2
 
-[node name="HandCardScene7" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
+[node name="HandCardScene7" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
 layout_mode = 2
 
-[node name="HandCardScene8" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
+[node name="HandCardScene8" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
 layout_mode = 2
 
-[node name="HandCardScene9" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
+[node name="HandCardScene9" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
 layout_mode = 2
 
-[node name="HandCardScene10" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
+[node name="HandCardScene10" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
 layout_mode = 2
 
-[node name="HandCardScene11" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
+[node name="HandCardScene11" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer/ScrollContainer/Hand" instance=ExtResource("3_c68wf")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Bg/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 
-[node name="Character" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" instance=ExtResource("4_quxqk")]
+[node name="Character" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/VBoxContainer" instance=ExtResource("4_quxqk")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_scroll_mode = 0
 
-[node name="Items" type="HFlowContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer"]
+[node name="Items" type="HFlowContainer" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InPlayCardScene" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene2" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene2" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene3" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene3" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="Card" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items/InPlayCardScene3/CenterContainer/Control" index="0"]
+[node name="Card" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items/InPlayCardScene3/CenterContainer/Control" index="0"]
 Behavior = SubResource("Resource_mp8gh")
 
-[node name="InPlayCardScene4" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene4" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene5" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene5" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene6" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene6" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene7" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene7" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene8" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene8" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene9" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene9" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene10" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene10" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene11" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene11" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene12" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene12" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene13" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene13" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene14" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene14" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene15" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene15" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene16" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene16" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene17" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene17" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene18" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene18" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene19" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene19" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene20" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene20" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene21" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene21" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene22" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene22" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[node name="InPlayCardScene23" parent="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
+[node name="InPlayCardScene23" parent="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items" instance=ExtResource("4_fjgs5")]
 layout_mode = 2
 
-[editable path="MarginContainer/VBoxContainer/HBoxContainer2/ScrollContainer/Items/InPlayCardScene3"]
+[editable path="MarginContainer/Bg/VBoxContainer/HBoxContainer2/ScrollContainer/Items/InPlayCardScene3"]

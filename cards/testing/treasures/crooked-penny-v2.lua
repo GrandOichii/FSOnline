@@ -1,8 +1,7 @@
 function _Create()
     return FS.B.Item()
         :ActivatedAbility(
-            FS.B.ActivatedAbility('{T}', 'Choose a player, then roll- that player gains {cent} equal to the result.')
-                -- TODO tap
+            FS.B.ActivatedAbility('{T}', 'Choose a player, then roll-\n1-3: double the amount of {cent} they have.\n4-6: that player loses all {cent}.')
                 .Cost:Common(
                     FS.C.Cost:Tap()
                 )
@@ -13,9 +12,15 @@ function _Create()
                 )
                 .Effect:Roll(
                     function (stackEffect)
-                        local roll = stackEffect.Rolls[0]
                         local pIdx = tonumber(stackEffect.Targets[0].Value)
-                        AddCoins(pIdx, roll)
+                        local roll = stackEffect.Rolls[0]
+                        local amount = GetPlayer(pIdx).Coins
+                        if roll < 4 then
+                            -- TODO? is "doubling" considered "gaining"
+                            AddCoins(pIdx, amount)
+                            return
+                        end
+                        LoseCoins(pIdx, amount)
                     end
                 )
             :Build()

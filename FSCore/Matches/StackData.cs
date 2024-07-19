@@ -8,11 +8,11 @@ public readonly struct StackData {
     /// <summary>
     /// Stack effects
     /// </summary>
-    public List<StackEffectData> Effects { get; }
+    public List<object> Effects { get; }
 
     public StackData(Stack stack) {
         PriorityIdx = stack.PriorityIdx;
 
-        Effects = stack.Effects.Select(e => e.ToData()).ToList();
+        Effects = stack.Effects.Select(e => e.ToData()).ToList<object>();
     }
 }

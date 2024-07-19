@@ -43,11 +43,22 @@ func can_activate(in_play_card: Variant) -> bool:
 		if v.begins_with('a ' + str(in_play_card.IPID) + ' '):
 			return true
 	return false
-	#
+	
 func activate(in_play_card: Variant):
 	# !FIXME only activates the first ability of card
 	send('a ' + str(in_play_card.IPID) + ' 0')
 	
+func can_choose_player(player_idx: int) -> bool:
+	if last_update.Request != 'ChoosePlayer':
+		return false
+	for v in last_update.Args.values():
+		if v == player_idx:
+			return true
+	return false
+	
+func choose_player(player_idx: int):
+	send(str(player_idx))
+
 #func can_pick_card_in_hand(hand_idx: int) -> bool:
 	#if last_update.Request != 'PickCardInHand':
 		#return false

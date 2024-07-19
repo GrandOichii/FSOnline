@@ -10,6 +10,7 @@ class_name PlayerScene
 @onready var Hand = %Hand
 @onready var Items = %Items
 @onready var Character = %Character
+@onready var Bg = %Bg
 
 var player_idx: int
 var _controller: MatchController
@@ -24,6 +25,9 @@ func _ready():
 		Items.remove_child(Items.get_child(0))
 		
 func set_controller(controller: MatchController):
+	# info
+	Info.set_controller(controller)
+	
 	# character
 	Character.set_controller(controller)
 	
@@ -41,6 +45,11 @@ func set_player_idx(idx: int):
 
 func load_snapshot(snapshot: Variant):
 	Info.load_snapshot(snapshot, player_idx)
+	var color: Color = Bg.get('theme_override_styles/panel').bg_color
+	color.a = 0
+	if player_idx == snapshot.CurPlayerIdx:
+		color.a = .1
+	Bg.get('theme_override_styles/panel').bg_color = color
 	load_hand(snapshot)
 
 	var player = snapshot.Players[player_idx]

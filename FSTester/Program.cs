@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Text.Json;
 using FSCore.Matches;
 using FSCore.Matches.Players.Controllers;
 using Microsoft.Extensions.Logging;
@@ -183,6 +184,12 @@ public class Program {
         }
     }
 
+    public class A {
+        public string Name { get; set; }
+    }
+    public class B : A {
+        public string Another { get; set; }
+    }
     public static async Task Main(string[] args) {
         var config = ReadConfigYAML(
             File.ReadAllText("../configs/base.yaml")

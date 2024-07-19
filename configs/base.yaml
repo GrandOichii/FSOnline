@@ -26,20 +26,21 @@ LootCards:
   chunk-of-amber-warp: 10
   xvii-the-stars-v2: 10
 Treasures:
-  - mystery-sack-v2
-  - portable-slot-machine-v2
-  - the-butter-bean-v2
-  - pageant-boy-v2
-  - box-v2
+  # - mystery-sack-v2
+  # - portable-slot-machine-v2
+  # - the-butter-bean-v2
+  # - pageant-boy-v2
   # - box-v2
-  # - box-v2
-  # - box-v2
-  # - box-v2
-  # - box-v2
-  # - box-v2
-  # - box-v2
-  # - box-v2
-  # - box-v2
+  - crooked-penny-v2
+  - crooked-penny-v2
+  - crooked-penny-v2
+  - crooked-penny-v2
+  - crooked-penny-v2
+  - crooked-penny-v2
+  - crooked-penny-v2
+  - crooked-penny-v2
+  - crooked-penny-v2
+  - crooked-penny-v2
   # - box-v2
 Characters:
   - guppy-v2

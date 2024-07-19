@@ -17,7 +17,7 @@ v        - self-destruction
     - forbidding activating items n times per turn
 - effects
     - "may" effects
-    - choosing players
+v    - choosing players
     - until end of turn effects
     - at the end of turn effects
     - "the next time your turn ends"
