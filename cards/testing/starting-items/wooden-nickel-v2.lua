@@ -10,7 +10,8 @@ function _Create()
                 .Effect:Roll(
                     function (stackEffect)
                         local roll = stackEffect.Rolls[0]
-                        local pIdx = tonumber(stackEffect.Targets[0])
+                        local pIdx = tonumber(stackEffect.Targets[0].Value)
+                        print(pIdx, roll)
                         AddCoins(pIdx, roll)
                     end
                 )
