@@ -58,6 +58,14 @@ func can_choose_player(player_idx: int) -> bool:
 	
 func choose_player(player_idx: int):
 	send(str(player_idx))
+	
+func can_choose_stack_effect(sid: String) -> bool:
+	if last_update.Request != 'ChooseStackEffect':
+		return false
+	return sid in last_update.Args.values()
+
+func choose_stack_effect(sid: String):
+	send(str(sid))
 
 #func can_pick_card_in_hand(hand_idx: int) -> bool:
 	#if last_update.Request != 'PickCardInHand':
