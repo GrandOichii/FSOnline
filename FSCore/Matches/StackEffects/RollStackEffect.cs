@@ -1,4 +1,5 @@
 
+
 namespace FSCore.Matches.StackEffects;
 
 public class RollStackEffect : StackEffect
@@ -33,4 +34,6 @@ public class RollStackEffect : StackEffect
     {
         Parent.Rolls.Add(Value);
     }
+
+    public override StackEffectData ToData() => new RollStackEffectData(this);
 }

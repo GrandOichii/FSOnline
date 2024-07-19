@@ -595,6 +595,20 @@ public class Match {
         return result;
     }
 
+    /// <summary>
+    /// Generate a new ID for a stack effect
+    /// </summary>
+    /// <returns>New ID</returns>
+    public string GenerateStackID() {
+        var result = "s" + CardIDGenerator.Next();
+        LogInfo($"Generated stack effect ID: {result}");
+        return result;
+    }
+
+    /// <summary>
+    /// Generate a new ID for an in-play match card
+    /// </summary>
+    /// <returns>New ID</returns>
     public string GenerateInPlayID() {
         var result = "i" + CardIDGenerator.Next();
         LogInfo($"Generated item match card ID: {result}");

@@ -1,3 +1,4 @@
+
 namespace FSCore.Matches.StackEffects;
 
 public class ActivatedAbilityStackEffect : StackEffect
@@ -24,4 +25,6 @@ public class ActivatedAbilityStackEffect : StackEffect
     {
         Ability.ExecuteEffects(this);
     }
+
+    public override StackEffectData ToData() => new ActivatedAbilityStackEffectData(this);
 }

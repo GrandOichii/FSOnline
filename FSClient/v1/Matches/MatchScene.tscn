@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq604p6filu2h"]
+[gd_scene load_steps=5 format=3 uid="uid://bq604p6filu2h"]
 
 [ext_resource type="Script" path="res://v1/Matches/MatchScene.gd" id="1_5tr14"]
+[ext_resource type="PackedScene" uid="uid://c13opuwxeaul8" path="res://v1/Matches/StackEffects/StackEffectScene.tscn" id="2_0una2"]
 [ext_resource type="Texture2D" uid="uid://c2srlpd22820d" path="res://assets/bg_tile.png" id="2_f6mni"]
 [ext_resource type="PackedScene" uid="uid://c0j3qjge22ei4" path="res://v1/Matches/Boards/BoardScene.tscn" id="2_ukb4f"]
 
@@ -12,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5tr14")
+stack_effect_scene = ExtResource("2_0una2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -88,7 +90,8 @@ layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="StackPlaceholder" type="Control" parent="HBoxContainer/VBoxContainer/VBoxContainer/StackScroll"]
+[node name="Stack" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer/StackScroll"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

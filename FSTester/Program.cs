@@ -104,7 +104,8 @@ public class Program {
         }
 
         for (int i = 0; i < playerCount - realPlayerCount; i++) {
-            await AddConsolePlayer(match);
+            await AddRandomPlayer(match);
+            // await AddConsolePlayer(match);
         }
 
         try {
@@ -114,6 +115,18 @@ public class Program {
         } finally {
             listener.Stop();
         }
+    }
+
+    public static async Task AddRandomPlayer(Match match) {
+        var c = new RandomPlayerController(0, 200);
+
+        string name = "RandomPlayer";
+        // TODO prompt player name with default name
+        // TODO prompt player with character key
+
+        var chKey = "guppy-v2";
+
+        await match.AddPlayer(name, c, chKey);
     }
 
     public static async Task AddConsolePlayer(Match match) {

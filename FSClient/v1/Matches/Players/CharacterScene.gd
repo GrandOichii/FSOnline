@@ -8,3 +8,6 @@ func _ready():
 
 func load_snapshot(snapshot: Variant):
 	Card.load_snapshot(snapshot)
+	
+func set_controller(controller: MatchController):
+	Card.set_controller(controller)

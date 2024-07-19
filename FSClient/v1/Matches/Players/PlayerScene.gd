@@ -24,6 +24,9 @@ func _ready():
 		Items.remove_child(Items.get_child(0))
 		
 func set_controller(controller: MatchController):
+	# character
+	Character.set_controller(controller)
+	
 	# hand
 	_controller = controller
 	for card: HandCardScene in Hand.get_children():

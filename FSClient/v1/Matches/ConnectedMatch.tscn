@@ -30,7 +30,7 @@ unique_name_in_owner = true
 
 [node name="ActionWindow" type="Window" parent="Windows"]
 title = "Action window"
-position = Vector2i(1480, 910)
+position = Vector2i(1108, 497)
 size = Vector2i(500, 400)
 
 [node name="MarginContainer" type="MarginContainer" parent="Windows/ActionWindow"]
@@ -60,6 +60,10 @@ placeholder_text = "Enter action"
 layout_mode = 2
 text = " Send "
 
+[node name="PassButton" type="Button" parent="Windows/ActionWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Pass"
+
 [node name="Request" type="Label" parent="Windows/ActionWindow/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -80,3 +84,4 @@ text = "<options diplayed here>"
 [connection signal="MessageReceived" from="Connection" to="." method="_on_connection_message_received"]
 [connection signal="Response" from="Controller" to="." method="_on_controller_response"]
 [connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/HBoxContainer/SendButton" to="." method="_on_send_button_pressed"]
+[connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/PassButton" to="." method="_on_pass_button_pressed"]

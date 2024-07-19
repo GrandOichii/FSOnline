@@ -1,4 +1,5 @@
 
+
 namespace FSCore.Matches.StackEffects;
 
 public class LootCardStackEffect : StackEffect
@@ -27,4 +28,6 @@ public class LootCardStackEffect : StackEffect
         if (GoesToDiscard)
             await Match.PlaceIntoDiscard(Card);
     }
+
+    public override StackEffectData ToData() => new LootCardStackEffectData(this);
 }

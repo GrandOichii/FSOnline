@@ -1,12 +1,18 @@
 namespace FSCore.Matches;
 
-public class StackData {
+public readonly struct StackData {
     /// <summary>
     /// Index of the player with priority
     /// </summary>
-    public int PriorityIdx { get; set; }
+    public int PriorityIdx { get; }
+    /// <summary>
+    /// Stack effects
+    /// </summary>
+    public List<StackEffectData> Effects { get; }
 
     public StackData(Stack stack) {
         PriorityIdx = stack.PriorityIdx;
+
+        Effects = stack.Effects.Select(e => e.ToData()).ToList();
     }
 }

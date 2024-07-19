@@ -78,3 +78,6 @@ func _on_send_button_pressed():
 
 func _on_controller_response(msg: String):
 	Connection.Write(msg)
+
+func _on_pass_button_pressed():
+	Connection.Write('pass')
