@@ -1,6 +1,10 @@
 -- core object
 FS = {}
 
+FS.TargetTypes = {
+    PLAYER = 0
+}
+
 -- card labels
 FS.Labels = {
     Eternal = 'Eternal',
@@ -328,7 +332,8 @@ function FS.B.ActivatedAbility(costText, effectText)
         hint = hint or 'Choose a player'
         result.costs[#result.costs+1] = {
             Check = function (me, player)
-                return filterFunc(me, player)
+                return #filterFunc(me, player) > 0
+                -- return true
             end,
             Pay = function (me, player, stackEffect)
                 local options = filterFunc(me, player)
@@ -337,11 +342,12 @@ function FS.B.ActivatedAbility(costText, effectText)
                     indicies[#indicies+1] = p.Idx
                 end
                 -- TODO add optional
-                local target = ChoosePlayer(player.Idx, options, hint)
-                
+                local target = ChoosePlayer(player.Idx, indicies, hint)
+                AddTarget(stackEffect, FS.TargetTypes.PLAYER, tostring(target))
+
                 return true
             end
-        }        
+        }
         return result
     end
 
@@ -376,11 +382,17 @@ function FS.F.Player()
     function result:Do()
         local res = {}
         local players = GetPlayers()
-        for _, player in ipairs(players) do
+        local filter = function (player)
             for _, f in ipairs(result.filters) do
-                if f(player) then
-                    res[#res+1] = player
+                if not f(player) then
+                    return false
                 end
+            end
+            return true
+        end
+        for _, player in ipairs(players) do
+            if filter(player) then
+                res[#res+1] = player
             end
         end
         return res

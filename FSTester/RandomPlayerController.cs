@@ -25,6 +25,12 @@ public class RandomPlayerController : IPlayerController
         return GetRandom(options);
     }
 
+    public async Task<int> ChoosePlayer(Match match, int playerIdx, List<int> options, string hint)
+    {
+        await Task.Delay(_delay);
+        return GetRandom(options);
+    }
+
     public Task CleanUp(Match match, int playerIdx)
     {
         return Task.CompletedTask;

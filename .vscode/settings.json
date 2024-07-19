@@ -13,6 +13,8 @@
         "GetPlayer",
         "PromptString",
         "GainTreasure",
-        "GetPlayers"
+        "GetPlayers",
+        "ChoosePlayer",
+        "AddTarget"
     ]
 }

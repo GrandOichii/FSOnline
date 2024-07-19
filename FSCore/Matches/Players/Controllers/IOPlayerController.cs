@@ -105,7 +105,7 @@ public class IOPlayerController : IPlayerController
     public async Task<int> ChoosePlayer(Match match, int playerIdx, List<int> options, string hint)
     {
         await WriteData(new(match, playerIdx) {
-            Request = "ChooseString",
+            Request = "ChoosePlayer",
             Hint = hint,
             Args = ToArgs(options),
         });

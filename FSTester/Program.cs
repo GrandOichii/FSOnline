@@ -42,6 +42,20 @@ public class ConsolePlayerController : IPlayerController
         return result;
     }
 
+    public async Task<int> ChoosePlayer(Match match, int playerIdx, List<int> options, string hint)
+    {
+        System.Console.WriteLine("(ChoosePlayer)");
+        System.Console.WriteLine(hint);
+        System.Console.WriteLine("Options:");
+        foreach (var option in options)
+            System.Console.WriteLine($"\t{option} - ({match.GetPlayer(option).LogName})");
+            
+        var result = Console.ReadLine()
+            ?? throw new Exception("Failed to read player choice in PromptAction")
+        ;
+        return int.Parse(result);
+    }
+
     public Task CleanUp(Match match, int playerIdx)
     {
         throw new NotImplementedException();

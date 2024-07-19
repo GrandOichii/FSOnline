@@ -142,4 +142,12 @@ public class ScriptMaster {
 
         return result;
     }
+
+    [LuaCommand]
+    public void AddTarget(StackEffect effect, int type, string value) {
+        effect.Targets.Add(new(
+            (TargetType)type,
+            value
+        ));
+    }
 }

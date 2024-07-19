@@ -46,7 +46,7 @@ func process_update(update: Variant):
 	Request.text = update.Request
 	var text = ''
 	for key in update.Args:
-		text += key + ': ' + update.Args[key] + '\n'
+		text += key + ': ' + str(update.Args[key]) + '\n'
 	Options.text = text
 	
 	Match.load_snapshot(update.Match)
