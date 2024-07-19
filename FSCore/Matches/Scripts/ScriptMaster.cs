@@ -126,4 +126,20 @@ public class ScriptMaster {
 
         return result;
     }
+
+    [LuaCommand]
+    public LuaTable GetPlayers() {
+        return LuaUtility.CreateTable(_match.LState, _match.Players);
+    }
+
+    [LuaCommand]
+    public int ChoosePlayer(int playerIdx, LuaTable optionsTable, string hint) {
+        var options = LuaUtility.ParseTable(optionsTable);
+
+        var player = _match.GetPlayer(playerIdx);
+        var result = player.ChoosePlayer(options, hint)
+            .GetAwaiter().GetResult();
+
+        return result;
+    }
 }

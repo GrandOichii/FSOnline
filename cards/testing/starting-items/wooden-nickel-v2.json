@@ -1,0 +1,7 @@
+{
+    "Key": "wooden-nickel",
+    "Name": "Infestation",
+    "Type": "Item",
+    "Text": "{T}: choose a player, then roll- that player gains {cent} equal to the result.",
+    "Script": "wooden-nickel.lua"
+}

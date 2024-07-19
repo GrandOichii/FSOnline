@@ -322,6 +322,29 @@ function FS.B.ActivatedAbility(costText, effectText)
         return result
     end
 
+    result.Target = {}
+
+    function result.Target:Player(filterFunc, hint)
+        hint = hint or 'Choose a player'
+        result.costs[#result.costs+1] = {
+            Check = function (me, player)
+                return filterFunc(me, player)
+            end,
+            Pay = function (me, player, stackEffect)
+                local options = filterFunc(me, player)
+                local indicies = {}
+                for _, p in ipairs(options) do
+                    indicies[#indicies+1] = p.Idx
+                end
+                -- TODO add optional
+                local target = ChoosePlayer(player.Idx, options, hint)
+                
+                return true
+            end
+        }        
+        return result
+    end
+
     -- TODO repeated code
     -- add common effect(s)
     function result.Effect:Common(...)
@@ -340,4 +363,28 @@ FS.C.Choose = {}
 
 function FS.C.Choose.YesNo(playerIdx, hint)
     return PromptString(playerIdx, {'Yes', 'No'}, hint) == 'Yes'
+end
+
+-- filters
+FS.F = {}
+
+function FS.F.Player()
+    local result = {}
+
+    result.filters = {}
+
+    function result:Do()
+        local res = {}
+        local players = GetPlayers()
+        for _, player in ipairs(players) do
+            for _, f in ipairs(result.filters) do
+                if f(player) then
+                    res[#res+1] = player
+                end
+            end
+        end
+        return res
+    end
+
+    return result
 end

@@ -15,3 +15,4 @@ global using FSCore.Matches.Actions;
 global using FSCore.Matches.StackEffects;
 global using FSCore.Matches.Effects;
 global using FSCore.Matches.Abilities;
+global using FSCore.Matches.Targets;

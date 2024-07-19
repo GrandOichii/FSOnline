@@ -57,10 +57,10 @@ func process_update(update: Variant):
 func _input(e):
 	if e.is_action_pressed('yield_until_empty_stack'):
 		_auto_response = func(data):
+			if len(data.Match.Stack.Effects) == 0:
+				_auto_response = null
+				return
 			if Controller.can_perform_action():
-				if len(data.Match.Stack.Effects) == 0:
-					_auto_response = null
-					return
 				if not Controller.can_pass():
 					_auto_response = null
 					return
@@ -80,6 +80,8 @@ func _input(e):
 		if Controller.can_pass():
 			send_pass()
 		return
+	if e.is_action_pressed('pass'):
+		send_pass()
 		
 func send_pass():
 	Connection.Write('pass')

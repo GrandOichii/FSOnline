@@ -17,6 +17,10 @@ public abstract class StackEffect {
     /// Rolls results
     /// </summary>
     public List<int> Rolls { get; }
+    /// <summary>
+    /// Effect targets
+    /// </summary>
+    public List<Target> Targets { get; }
 
     public StackEffect(Match match, int ownerIdx) {
         Match = match;
@@ -24,6 +28,7 @@ public abstract class StackEffect {
         
         SID = match.GenerateStackID();
         Rolls = new();
+        Targets = new();
     }
 
     /// <summary>

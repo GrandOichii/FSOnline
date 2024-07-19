@@ -50,7 +50,7 @@ public class IOPlayerController : IPlayerController
     /// </summary>
     /// <param name="list">List of values</param>
     /// <returns>Args value</returns>
-    private static Dictionary<string, object> ToArgs<T>(IEnumerable<T> options) where T : class {
+    private static Dictionary<string, object> ToArgs<T>(IEnumerable<T> options) where T : notnull {
         return options.Select(
             (o, i) => new {o, i}
         ).ToDictionary(
@@ -100,5 +100,16 @@ public class IOPlayerController : IPlayerController
         });
 
         return await _handler.Read();
+     }
+
+    public async Task<int> ChoosePlayer(Match match, int playerIdx, List<int> options, string hint)
+    {
+        await WriteData(new(match, playerIdx) {
+            Request = "ChooseString",
+            Hint = hint,
+            Args = ToArgs(options),
+        });
+
+        return int.Parse(await _handler.Read());
      }
 }

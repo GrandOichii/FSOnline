@@ -171,4 +171,23 @@ static class LuaUtility {
         ;
         return f;
     }
+
+    static public List<int> ParseTable(LuaTable table) {
+        var result = new List<int>();
+
+        foreach (var v in table.Values)
+            result.Add(Convert.ToInt32(v));
+
+        return result;
+
+    }
+
+    static public List<T> ParseTable<T>(LuaTable table) {
+        var result = new List<T>();
+
+        foreach (var v in table.Values)
+            result.Add((T)v);
+
+        return result;
+    }
 }

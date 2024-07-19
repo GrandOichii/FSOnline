@@ -2,6 +2,7 @@
     "Cards": {
         "Characters": [
             "characters/guppy-v2",
+            "characters/the-keeper-v2",
             "characters/bum-bo-v2"
         ],
         "StartingItems": [

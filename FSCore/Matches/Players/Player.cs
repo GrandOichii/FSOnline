@@ -446,10 +446,25 @@ public class Player : IStateModifier {
         }
     }
 
+    public async Task<int> ChoosePlayer(List<int> options, string hint, bool optional=false) {
+        while (true) {
+            var result = await Controller.ChoosePlayer(Match, Idx, options, hint);
+
+            if (!options.Contains(result)) {
+                if (Match.Config.StrictMode)
+                    throw new MatchException($"Invalid choice for picking player - {result} (player: {LogName})");
+                continue;
+            }
+
+            return result;
+        }
+    }
+
     #endregion
 
     public async Task UpdateController() {
         await Controller.Update(Match, Idx);
     }
+
 
 }

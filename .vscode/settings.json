@@ -12,6 +12,7 @@
         "DestroyItem",
         "GetPlayer",
         "PromptString",
-        "GainTreasure"
+        "GainTreasure",
+        "GetPlayers"
     ]
 }
