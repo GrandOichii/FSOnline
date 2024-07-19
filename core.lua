@@ -2,7 +2,8 @@
 FS = {}
 
 FS.TargetTypes = {
-    PLAYER = 0
+    PLAYER = 0,
+    STACK_EFFECT = 1,
 }
 
 -- card labels
@@ -333,7 +334,6 @@ function FS.B.ActivatedAbility(costText, effectText)
         result.costs[#result.costs+1] = {
             Check = function (me, player)
                 return #filterFunc(me, player) > 0
-                -- return true
             end,
             Pay = function (me, player, stackEffect)
                 local options = filterFunc(me, player)
@@ -344,6 +344,28 @@ function FS.B.ActivatedAbility(costText, effectText)
                 -- TODO add optional
                 local target = ChoosePlayer(player.Idx, indicies, hint)
                 AddTarget(stackEffect, FS.TargetTypes.PLAYER, tostring(target))
+
+                return true
+            end
+        }
+        return result
+    end
+
+    function result.Target:StackEffect(filterFunc, hint)
+        hint = hint or 'Choose a stack effect'
+        result.costs[#result.costs+1] = {
+            Check = function (me, player)
+                return #filterFunc(me, player) > 0
+            end,
+            Pay = function (me, player, stackEffect)
+                local options = filterFunc(me, player)
+                local indicies = {}
+                for _, e in ipairs(options) do
+                    indicies[#indicies+1] = e.SID
+                end
+                -- TODO add optional
+                local target = ChooseStackEffect(player.Idx, indicies, hint)
+                AddTarget(stackEffect, FS.TargetTypes.STACK_EFFECT, target)
 
                 return true
             end
@@ -374,7 +396,7 @@ end
 -- filters
 FS.F = {}
 
-function FS.F.Player()
+function FS.F.Players()
     local result = {}
 
     result.filters = {}
@@ -396,6 +418,40 @@ function FS.F.Player()
             end
         end
         return res
+    end
+
+    return result
+end
+
+function FS.F.StackEffect()
+    local result = {}
+
+    result.filters = {}
+
+    function result:Do()
+        local res = {}
+        local stackEffects = GetStackEffects()
+        local filter = function (stackEffect)
+            for _, f in ipairs(result.filters) do
+                if not f(stackEffect) then
+                    return false
+                end
+            end
+            return true
+        end
+        for _, stackEffect in ipairs(stackEffects) do
+            if filter(stackEffect) then
+                res[#res+1] = stackEffect
+            end
+        end
+        return res
+    end
+
+    function result:Rolls()
+        result.filters[#result.filters+1] = function (stackEffect)
+            return IsRollStackEffect(stackEffect)
+        end
+        return result
     end
 
     return result

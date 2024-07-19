@@ -22,7 +22,7 @@ LootCards:
   3-cents-v2: 10
   a-sack-v2: 10
   counterfeit-penny-v2: 10
-  orange-green-pills-v2: 10
+  orange-green-pills-v2: 100
   chunk-of-amber-warp: 10
   xvii-the-stars-v2: 10
 Treasures:
@@ -45,6 +45,8 @@ Treasures:
 Characters:
   - guppy-v2
   - the-keeper-v2
+  - isaac-v2
 StartingItems:
   - infestation-v2
   - wooden-nickel-v2
+  - the-d6-v2

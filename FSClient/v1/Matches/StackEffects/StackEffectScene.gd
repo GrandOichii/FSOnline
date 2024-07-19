@@ -20,6 +20,7 @@ func load_snapshot(snapshot: Variant):
 	Type.text = snapshot.Type
 	set_type(snapshot.Type)
 	set_sid(snapshot.SID)
+	Details.text = ''
 	if snapshot.Type in _type_action_map:
 		_type_action_map[snapshot.Type].call(snapshot)
 	

@@ -2,11 +2,13 @@
     "Cards": {
         "Characters": [
             "characters/guppy-v2",
+            "characters/isaac-v2",
             "characters/the-keeper-v2",
             "characters/bum-bo-v2"
         ],
         "StartingItems": [
             "starting-items/infestation-v2",
+            "starting-items/the-d6-v2",
             "starting-items/wooden-nickel-v2",
             "starting-items/bag-o-trash-v2"
         ],

@@ -49,4 +49,10 @@ public class RandomPlayerController : IPlayerController
     }
 
     public async Task Update(Match match, int playerI) { }
+
+    public async Task<string> ChooseStackEffect(Match match, int playerIdx, List<string> options, string hint)
+    {
+        await Task.Delay(_delay);
+        return GetRandom(options);
+    }
 }

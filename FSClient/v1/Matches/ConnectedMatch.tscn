@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gtxyk")
 start_fullscreen = false
-character_key = "the-keeper-v2"
+character_key = "isaac-v2"
 
 [node name="Match" parent="." instance=ExtResource("2_ktxgd")]
 unique_name_in_owner = true

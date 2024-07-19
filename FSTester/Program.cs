@@ -52,9 +52,23 @@ public class ConsolePlayerController : IPlayerController
             System.Console.WriteLine($"\t{option} - ({match.GetPlayer(option).LogName})");
             
         var result = Console.ReadLine()
-            ?? throw new Exception("Failed to read player choice in PromptAction")
+            ?? throw new Exception("Failed to read player choice in ChoosePlayer")
         ;
         return int.Parse(result);
+    }
+
+    public async Task<string> ChooseStackEffect(Match match, int playerIdx, List<string> options, string hint)
+    {
+        System.Console.WriteLine("(ChooseStackEffect)");
+        System.Console.WriteLine(hint);
+        System.Console.WriteLine("Options:");
+        foreach (var option in options)
+            System.Console.WriteLine($"\t{option}");
+            
+        var result = Console.ReadLine()
+            ?? throw new Exception("Failed to read SID choice in ChooseStackEffect")
+        ;
+        return result;
     }
 
     public Task CleanUp(Match match, int playerIdx)

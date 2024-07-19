@@ -49,4 +49,13 @@ public interface IPlayerController {
     /// <param name="hint">Hint</param>
     /// <returns>Chosen player index</returns>
     public Task<int> ChoosePlayer(Match match, int playerIdx, List<int> options, string hint);
+    /// <summary>
+    /// Prompt the user to pick a stack effect SID from a list of options
+    /// </summary>
+    /// <param name="match">Parent match</param>
+    /// <param name="playerIdx">Player index</param>
+    /// <param name="options">List of stack IDs</param>
+    /// <param name="hint">Hint</param>
+    /// <returns>Chosen player index</returns>
+    public Task<string> ChooseStackEffect(Match match, int playerIdx, List<string> options, string hint);
 }

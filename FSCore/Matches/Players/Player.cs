@@ -459,6 +459,20 @@ public class Player : IStateModifier {
             return result;
         }
     }
+    
+    public async Task<string> ChooseStackEffect(List<string> options, string hint, bool optional=false) {
+        while (true) {
+            var result = await Controller.ChooseStackEffect(Match, Idx, options, hint);
+
+            if (!options.Contains(result)) {
+                if (Match.Config.StrictMode)
+                    throw new MatchException($"Invalid choice for picking stack effect - {result} (player: {LogName})");
+                continue;
+            }
+
+            return result;
+        }
+    }
 
     #endregion
 

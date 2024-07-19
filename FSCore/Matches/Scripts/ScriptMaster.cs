@@ -144,10 +144,45 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public string ChooseStackEffect(int playerIdx, LuaTable optionsTable, string hint) {
+        var options = LuaUtility.ParseTable<string>(optionsTable);
+
+        var player = _match.GetPlayer(playerIdx);
+        var result = player.ChooseStackEffect(options, hint)
+            .GetAwaiter().GetResult();
+
+        return result;
+
+    }
+
+    [LuaCommand]
     public void AddTarget(StackEffect effect, int type, string value) {
         effect.Targets.Add(new(
             (TargetType)type,
             value
         ));
+    }
+
+    [LuaCommand]
+    public void RerollDice(StackEffect stackEffect) {
+        if (stackEffect is not RollStackEffect rollEffect)
+            throw new MatchException($"Tried to reroll a non-roll stack effect: {stackEffect}");
+
+        rollEffect.Reroll();
+    }
+
+    [LuaCommand]
+    public LuaTable GetStackEffects() {
+        return LuaUtility.CreateTable(_match.LState, _match.Stack.Effects);
+    }
+
+    [LuaCommand]
+    public bool IsRollStackEffect(StackEffect stackEffect) {
+        return stackEffect is RollStackEffect;
+    }
+
+    [LuaCommand]
+    public StackEffect GetStackEffect(string sid) {
+        return _match.Stack.Effects.First(se => se.SID == sid);
     }
 }

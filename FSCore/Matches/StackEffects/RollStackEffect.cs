@@ -36,4 +36,13 @@ public class RollStackEffect : StackEffect
     }
 
     public override StackEffectData ToData() => new RollStackEffectData(this);
+
+    /// <summary>
+    /// Rerolls the value
+    /// </summary>
+    public void Reroll() {
+        Match.LogInfo($"Roll stack effect {SID} reroll request");
+
+        SetValue();
+    }
 }

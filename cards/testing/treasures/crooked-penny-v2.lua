@@ -7,7 +7,7 @@ function _Create()
                 )
                 .Target:Player(
                     function (me, player)
-                        return FS.F.Player():Do()
+                        return FS.F.Players():Do()
                     end
                 )
                 .Effect:Roll(

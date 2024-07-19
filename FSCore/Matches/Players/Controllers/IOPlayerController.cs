@@ -112,4 +112,15 @@ public class IOPlayerController : IPlayerController
 
         return int.Parse(await _handler.Read());
      }
+
+    public async Task<string> ChooseStackEffect(Match match, int playerIdx, List<string> options, string hint)
+    {
+        await WriteData(new(match, playerIdx) {
+            Request = "ChooseStackEffect",
+            Hint = hint,
+            Args = ToArgs(options),
+        });
+
+        return await _handler.Read();    
+    }
 }
