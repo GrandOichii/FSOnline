@@ -37,6 +37,14 @@ function FS.C.Effect.AddLootPlay(amount)
     end
 end
 
+function FS.C.Effect.RerollTargetRoll(target_idx)
+    return function (stackEffect)
+        -- TODO assert stack effect type
+        local effect = GetStackEffect(stackEffect.Targets[target_idx].Value)
+        RerollDice(effect)
+    end
+end
+
 function FS.C.Effect.GainTreasure(amount)
     return function (stackEffect)
         GainTreasure(stackEffect.OwnerIdx, amount)
