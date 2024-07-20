@@ -15,7 +15,8 @@ FS.Labels = {
 
 -- modification layers
 FS.ModLayers = {
-    COIN_GAIN_AMOUNT = 1
+    COIN_GAIN_AMOUNT = 1,
+    ROLL_REPLACEMENT_EFFECTS = 2,
 }
 
 -- common
@@ -426,8 +427,8 @@ function FS.B.Card()
         return self
     end
 
-    result.State = {}
-    function result.State:Raw(layer, func)
+    result.Static = {}
+    function result.Static:Raw(layer, func)
         if result.stateModifiers[layer] == nil then
             result.stateModifiers[layer] = {}
         end

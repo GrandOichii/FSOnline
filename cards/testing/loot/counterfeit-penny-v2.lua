@@ -3,7 +3,7 @@
 function _Create()
     return FS.B.Loot()
         :Trinket()
-        .State:Raw(
+        .Static:Raw(
             FS.ModLayers.COIN_GAIN_AMOUNT,
             function (me)
                 local pState = me.Owner.State

@@ -18,16 +18,23 @@ public class RollStackEffect : StackEffect
     {
         Parent = parent;
 
-        RandomizeValue();
+        Roll();
     }
 
     /// <summary>
     /// Sets the roll value to a random value between 1 and 6
     /// </summary>
-    private void RandomizeValue() {
+    private void Roll() {
         Value = Match.Rng.Next(1, 7);
 
         Match.LogInfo($"Player {Match.GetPlayer(Parent.OwnerIdx).LogName} rolled a {Value}");
+
+        var owner = Match.GetPlayer(OwnerIdx);
+        foreach (var repEffect in owner.State.RollReplacementEffects) {
+            var returned = repEffect.Call(this);
+            var stop = !LuaUtility.GetReturnAsBool(returned);
+            if (stop) break;
+        }
     }
 
     public void SetValue(int value) {
@@ -51,7 +58,7 @@ public class RollStackEffect : StackEffect
     public void Reroll() {
         Match.LogInfo($"Roll stack effect {SID} reroll request");
 
-        RandomizeValue();
+        Roll();
     }
 
     public void Modify(int mod) {
