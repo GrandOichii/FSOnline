@@ -18,6 +18,10 @@ public class ActivatedAbility {
     /// </summary>
     public LuaFunction CostFunc { get; }
     /// <summary>
+    /// Check function for if the effect should fizzle
+    /// </summary>
+    public LuaFunction FizzleCheck { get; }
+    /// <summary>
     /// Effects
     /// </summary>
     public EffectList Effects { get; }
@@ -29,6 +33,17 @@ public class ActivatedAbility {
         CheckFunc = LuaUtility.TableGet<LuaFunction>(table, "Check");
         CostFunc = LuaUtility.TableGet<LuaFunction>(table, "Cost");
         Effects = new(LuaUtility.TableGet<LuaTable>(table, "Effects"));
+        FizzleCheck = LuaUtility.TableGet<LuaFunction>(table, "FizzleCheck");
+    }
+
+    public bool ShouldFizzle(StackEffect effect) {
+        try {
+            var returned = FizzleCheck.Call(effect);
+            return !LuaUtility.GetReturnAsBool(returned);
+        } catch (Exception e) {
+            throw new MatchException($"Exception during fizzle check execution of activated ability {effect.SID}", e);
+        }
+
     }
 
     public bool CanBeActivatedBy(InPlayMatchCard card, Player player) {

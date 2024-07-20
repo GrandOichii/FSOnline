@@ -22,7 +22,11 @@ public class LootCardStackEffect : StackEffect
 
     public override async Task Resolve()
     {
-        Card.ExecuteCardEffects(this);
+        if (!Card.ShouldFizzle(this)) {
+            Card.ExecuteCardEffects(this);
+        } else {
+            Match.LogInfo($"Loot card {Card.LogName} fizzles");
+        }
 
         // some cards put themselves into other zones !!! Trinkets
         if (GoesToDiscard)

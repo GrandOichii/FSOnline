@@ -11,7 +11,7 @@ function _Create()
                     FS.C.Effect.Loot(2),
                     FS.C.Effect.Discard(1)
                 )
-                :Build()
+            :Build()
         )
         :Label(FS.Labels.Eternal)
     :Build()

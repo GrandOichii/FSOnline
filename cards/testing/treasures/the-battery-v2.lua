@@ -7,7 +7,10 @@ function _Create()
                 )
                 .Target:Item(
                     function (me, player)
-                        return FS.F.Items():Except(me.IPID):Do()
+                        return FS.F.Items()
+                            :Rechargeable()
+                            :Except(me.IPID)
+                            :Do()
                     end
                 )
                 .Effect:Common(

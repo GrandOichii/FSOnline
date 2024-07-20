@@ -23,6 +23,10 @@ public class ActivatedAbilityStackEffect : StackEffect
 
     public override async Task Resolve()
     {
+        if (Ability.ShouldFizzle(this)) {
+            Match.LogInfo($"Activated ability stack effect {SID} of card {Card.LogName} fizzles");
+            return;
+        }
         Ability.ExecuteEffects(this);
     }
 

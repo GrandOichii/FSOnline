@@ -44,6 +44,10 @@ public class MatchCard {
     /// </summary>
     public List<LuaFunction> LootChecks { get; }
     /// <summary>
+    /// Check function for fizzling loot effect
+    /// </summary>
+    public LuaFunction FizzleCheck { get; }
+    /// <summary>
     /// Activated abilities
     /// </summary>
     public List<ActivatedAbility> ActivatedAbilities { get; }
@@ -103,6 +107,9 @@ public class MatchCard {
             throw new MatchException($"Failed to get loot checks for card {template.Name}", e);
         }
 
+        // loot fizzle check
+        FizzleCheck = LuaUtility.TableGet<LuaFunction>(data, "FizzleCheck");
+
         // activated abilities
         try {
             var activatedAbilities = LuaUtility.TableGet<LuaTable>(data, "ActivatedAbilities");
@@ -137,6 +144,8 @@ public class MatchCard {
 
         // Initial state
         State = new(this);
+
+        Match.LogInfo($"Constructed card {LogName}");
     }
 
     public Dictionary<ModificationLayer, List<LuaFunction>> ExtractStateModifiers(LuaTable data) {
@@ -170,6 +179,16 @@ public class MatchCard {
             Effects.Execute(stackEffect);
         } catch (Exception e) {
             throw new MatchException($"Failed to execute CardEffect of card {LogName}", e);
+        }
+    }
+
+
+    public bool ShouldFizzle(StackEffect effect) {
+        try {
+            var returned = FizzleCheck.Call(effect);
+            return !LuaUtility.GetReturnAsBool(returned);
+        } catch (Exception e) {
+            throw new MatchException($"Exception during fizzle check execution of loot card {LogName}, effect: {effect.SID}", e);
         }
     }
 

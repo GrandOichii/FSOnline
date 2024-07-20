@@ -265,6 +265,8 @@ function FS.B.Card()
     result.stateModifiers = {}
     result.lootCosts = {}
     result.lootChecks = {}
+    result.lootTargets = {}
+    result.lootFizzleChecks = {}
 
     function result:Build()
         local card = {}
@@ -291,10 +293,25 @@ function FS.B.Card()
         card.StateModifiers = result.stateModifiers
 
         -- additional loot costs
-        card.LootCosts = result.lootCosts
+        card.LootCosts = {}
+        for _, target in ipairs(result.lootTargets) do
+            card.LootCosts[#card.LootCosts+1] = target
+        end
+        for _, cost in ipairs(result.lootCosts) do
+            card.LootCosts[#card.LootCosts+1] = cost
+        end
 
         -- addditional loot checks
         card.LootChecks = result.lootChecks
+
+        card.FizzleCheck = function (stackEffect)
+            for _, check in ipairs(result.lootFizzleChecks) do
+                if not check(stackEffect) then
+                    return false
+                end
+            end
+            return true
+        end
 
         return card
     end
@@ -323,14 +340,37 @@ function FS.B.Card()
 
     result.Target = {}
 
-    function result.Target:StackEffect(filterFunc, hint)
-        hint = hint or 'Choose stack effect'
-        -- TODO
+    function result.Target._AddFizzleCheck(filterFunc, extractFunc)
+        local targetIdx = #result.lootTargets
+
+        result.lootFizzleChecks[#result.lootFizzleChecks+1] = function (stackEffect)
+            local target = stackEffect.Targets[targetIdx].Value
+            -- TODO kinda sketchy
+            local options = filterFunc(stackEffect.Card, GetPlayer(stackEffect.OwnerIdx))
+            for _, o in ipairs(options) do
+                if extractFunc(o) == target then
+                    return true
+                end
+            end
+            return false
+        end
+    end
+
+    function result.Target._AddLootCheck(filterFunc)
         result.lootChecks[#result.lootChecks+1] = function (player)
             return #filterFunc(player) > 0
         end
+    end
 
-        result.lootCosts[#result.lootCosts+1] = function (stackEffect)
+    function result.Target:StackEffect(filterFunc, hint)
+        hint = hint or 'Choose stack effect'
+
+        result.Target._AddFizzleCheck(filterFunc, function (effect)
+            return effect.SID
+        end)
+        result.Target._AddLootCheck(filterFunc)
+
+        result.lootTargets[#result.lootTargets+1] = function (stackEffect)
             local player = GetPlayer(stackEffect.OwnerIdx)
             local options = filterFunc(player)
             local indicies = {}
@@ -350,11 +390,12 @@ function FS.B.Card()
     function result.Target:Item(filterFunc, hint)
         hint = hint or 'Choose an Item'
 
-        result.lootChecks[#result.lootChecks+1] = function (player)
-            return #filterFunc(player) > 0
-        end
+        result.Target._AddFizzleCheck(filterFunc, function (item)
+            return item.IPID
+        end)
+        result.Target._AddLootCheck(filterFunc)
 
-        result.lootCosts[#result.lootCosts+1] = function (stackEffect)
+        result.lootTargets[#result.lootTargets+1] = function (stackEffect)
             local player = GetPlayer(stackEffect.OwnerIdx)
             local options = filterFunc(player)
             local ipids = {}
@@ -450,7 +491,10 @@ function FS.B.ActivatedAbility(costText, effectText)
     local result = {}
 
     result.costs = {}
+    result.targets = {}
     result.effectGroups = {}
+    result.checks = {}
+    result.fizzleChecks = {}
 
     result.Cost = {}
     result.Effect = {}
@@ -473,6 +517,11 @@ function FS.B.ActivatedAbility(costText, effectText)
             EffectText = effectText,
             CostText = costText,
             Check = function (me, player)
+                for _, target in ipairs(result.targets) do
+                    if not target.Check(me, player) then
+                        return false
+                    end
+                end
                 for _, cost in ipairs(result.costs) do
                     if not cost.Check(me, player) then
                         return false
@@ -481,6 +530,11 @@ function FS.B.ActivatedAbility(costText, effectText)
                 return true
             end,
             Cost = function (me, player, stackEffect)
+                for _, target in ipairs(result.targets) do
+                    if not target.Pay(me, player, stackEffect) then
+                        return false
+                    end
+                end
                 for _, cost in ipairs(result.costs) do
                     if not cost.Pay(me, player, stackEffect) then
                         return false
@@ -488,7 +542,15 @@ function FS.B.ActivatedAbility(costText, effectText)
                 end
                 return true
             end,
-            Effects = effects
+            Effects = effects,
+            FizzleCheck = function (stackEffect)
+                for _, check in ipairs(result.fizzleChecks) do
+                    if not check(stackEffect) then
+                        return false
+                    end
+                end
+                return true
+            end
         }
     end
 
@@ -525,9 +587,30 @@ function FS.B.ActivatedAbility(costText, effectText)
 
     result.Target = {}
 
+    function result.Target._AddFizzleCheck(filterFunc, extractFunc)
+        local targetIdx = #result.targets
+
+        result.fizzleChecks[#result.fizzleChecks+1] = function (stackEffect)
+            local target = stackEffect.Targets[targetIdx].Value
+            local options = filterFunc(stackEffect.Card, GetPlayer(stackEffect.OwnerIdx))
+            for _, o in ipairs(options) do
+                if extractFunc(o) == target then
+                    return true
+                end
+            end
+            return false
+        end
+
+        return result
+    end
+
     function result.Target:Player(filterFunc, hint)
         hint = hint or 'Choose a player'
-        result.costs[#result.costs+1] = {
+        result.Target._AddFizzleCheck(filterFunc, function (player)
+            return player.Idx
+        end)
+
+        result.targets[#result.targets+1] = {
             Check = function (me, player)
                 return #filterFunc(me, player) > 0
             end,
@@ -547,34 +630,12 @@ function FS.B.ActivatedAbility(costText, effectText)
         return result
     end
 
-
-    -- function result.Target:Item(filterFunc, hint)
-    --     hint = hint or 'Choose an Item'
-
-    --     result.lootChecks[#result.lootChecks+1] = function (player)
-    --         return #filterFunc(player) > 0
-    --     end
-
-    --     result.lootCosts[#result.lootCosts+1] = function (stackEffect)
-    --         local player = GetPlayer(stackEffect.OwnerIdx)
-    --         local options = filterFunc(player)
-    --         local ipids = {}
-    --         for _, item in ipairs(options) do
-    --             ipids[#ipids+1] = item.IPID
-    --         end
-
-
-    --         -- TODO add optional
-    --         local ipid = ChooseItem(player.Idx, ipids, hint)
-    --         AddTarget(stackEffect, FS.TargetTypes.ITEM, ipid)
-
-    --         return true
-    --     end
-
-    --     return result
-    -- end
     function result.Target:Item(filterFunc, hint)
         hint = hint or 'Choose an item'
+        result.Target._AddFizzleCheck(filterFunc, function (item)
+            return item.IPID
+        end)
+
         result.costs[#result.costs+1] = {
             Check = function (me, player)
                 return #filterFunc(me, player) > 0
@@ -593,9 +654,12 @@ function FS.B.ActivatedAbility(costText, effectText)
         return result
     end
 
-    
     function result.Target:StackEffect(filterFunc, hint)
         hint = hint or 'Choose a stack effect'
+        result.Target._AddFizzleCheck(filterFunc, function (effect)
+            return effect.SID
+        end)
+
         result.costs[#result.costs+1] = {
             Check = function (me, player)
                 return #filterFunc(me, player) > 0
@@ -615,8 +679,6 @@ function FS.B.ActivatedAbility(costText, effectText)
         }
         return result
     end
-
-
 
     -- TODO repeated code
     -- add common effect(s)
