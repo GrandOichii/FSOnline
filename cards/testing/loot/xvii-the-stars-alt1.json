@@ -1,0 +1,7 @@
+{
+    "Key": "xvii-the-stars-alt1",
+    "Name": "XVII. The Stars",
+    "Type": "Loot",
+    "Text": "Each player gains +1 Treasure, then you gain +1 Treasure.",
+    "Script": "xvii-the-stars-alt1.lua"
+}

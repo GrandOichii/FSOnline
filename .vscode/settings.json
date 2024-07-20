@@ -36,6 +36,7 @@
         "IsOwned",
         "StealItem",
         "GetItemOrDefault",
-        "SetRollValue"
+        "SetRollValue",
+        "GetPlayersInTurnOrder"
     ]
 }

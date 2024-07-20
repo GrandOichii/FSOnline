@@ -150,8 +150,8 @@ public class Program {
         TcpListener listener = new(endpoint);
         listener.Start();
 
-        var seed = 0;
-        seed = new Random().Next();
+        var seed = 1;
+        // seed = new Random().Next();
         
         var match = new Match(config, seed, cm, File.ReadAllText("../core.lua")){
             Logger = LoggerFactory

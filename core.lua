@@ -26,6 +26,22 @@ FS.C = {}
 -- common effects
 FS.C.Effect = {}
 
+function FS.C.Effect._ApplyToPlayer(effect, filterFunc)
+    filterFunc = filterFunc or function (stackEffect)
+        return FS.F.Players():Idx(stackEffect.OwnerIdx):Do()
+    end
+    return function (stackEffect)
+        -- TODO just stops mid resolving?
+        local players = filterFunc(stackEffect)
+        for _, player in ipairs(players) do
+            if not effect(player, stackEffect) then
+                return false
+            end
+        end
+        return true
+    end
+end
+
 function FS.C.Effect.PutGenericCountersOnMe(amount)
     return function (stackEffect)
         assert(IsAbilityActivation(stackEffect), 'Provided a non-ability-activation stack effect for FS.C.Effect.PutGenericCountersOnMe')
@@ -35,18 +51,18 @@ function FS.C.Effect.PutGenericCountersOnMe(amount)
     end
 end
 
-function FS.C.Effect.GainCoins(amount)
-    return function (stackEffect)
-        AddCoins(stackEffect.OwnerIdx, amount)
+function FS.C.Effect.GainCoins(amount, filterFunc)
+    return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
+        AddCoins(player.Idx, amount)
         return true
-    end
+    end, filterFunc)
 end
 
-function FS.C.Effect.AddLootPlay(amount)
-    return function (stackEffect)
-        AddLootPlay(stackEffect.OwnerIdx, amount)
+function FS.C.Effect.AddLootPlay(amount, filterFunc)
+    return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
+        AddLootPlay(player.Idx, amount)
         return true
-    end
+    end, filterFunc)
 end
 
 function FS.C.Effect.RerollTargetRoll(target_idx)
@@ -133,18 +149,18 @@ function FS.C.Effect.ModifyTargetRoll(target_idx, options, hint)
     end
 end
 
-function FS.C.Effect.GainTreasure(amount)
-    return function (stackEffect)
-        GainTreasure(stackEffect.OwnerIdx, amount)
+function FS.C.Effect.GainTreasure(amount, filterFunc)
+    return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
+        GainTreasure(player.Idx, amount)
         return true
-    end
+    end, filterFunc)
 end
 
-function FS.C.Effect.Loot(amount)
-    return function (stackEffect)
-        LootCards(stackEffect.OwnerIdx, amount, stackEffect)
+function FS.C.Effect.Loot(amount, filterFunc)
+    return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
+        LootCards(player.Idx, amount, stackEffect)
         return true
-    end
+    end, filterFunc)
 end
 
 -- TODO change hint to hintFunc
@@ -609,7 +625,7 @@ function FS.B.ActivatedAbility(costText, effectText)
     function result.Target:Player(filterFunc, hint)
         hint = hint or 'Choose a player'
         result.Target._AddFizzleCheck(filterFunc, function (player)
-            return player.Idx
+            return tostring(player.Idx)
         end)
 
         result.targets[#result.targets+1] = {
@@ -710,9 +726,10 @@ function FS.F.Players()
 
     result.filters = {}
 
-    function result:Do()
+    function result:Do(first)
+        first = first or 0
         local res = {}
-        local players = GetPlayers()
+        local players = GetPlayersInTurnOrder(first)
         local filter = function (player)
             for _, f in ipairs(result.filters) do
                 if not f(player) then
@@ -727,6 +744,13 @@ function FS.F.Players()
             end
         end
         return res
+    end
+
+    function result:Idx(player_idx)
+        result.filters[#result.filters+1] = function (player)
+            return player.Idx == player_idx
+        end
+        return result
     end
 
     return result

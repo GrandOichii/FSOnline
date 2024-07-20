@@ -133,6 +133,20 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public LuaTable GetPlayersInTurnOrder(int firstIdx) {
+        var result = new List<int>();
+
+        var cur = firstIdx;
+        while (true) {
+            result.Add(cur);
+            cur = _match.NextInTurnOrder(cur);
+            if (cur == result[0]) break;
+        }
+
+        return LuaUtility.CreateTable(_match.LState, result.Select(idx => _match.GetPlayer(idx)).ToList());
+    }
+
+    [LuaCommand]
     public int ChoosePlayer(int playerIdx, LuaTable optionsTable, string hint) {
         var options = LuaUtility.ParseTable(optionsTable);
 

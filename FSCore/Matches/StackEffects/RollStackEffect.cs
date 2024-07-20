@@ -32,7 +32,6 @@ public class RollStackEffect : StackEffect
 
         // TODO request player to order replacement effects
         var owner = Match.GetPlayer(OwnerIdx);
-        System.Console.WriteLine(owner.State.RollReplacementEffects.Count);
         foreach (var repEffect in owner.State.RollReplacementEffects) {
             var returned = repEffect.Call(this);
             var stop = !LuaUtility.GetReturnAsBool(returned);

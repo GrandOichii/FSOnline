@@ -1,3 +1,6 @@
+-- status: implemented
+-- TODO too low level
+
 function _Create()
     return FS.B.Item()
         :ActivatedAbility(

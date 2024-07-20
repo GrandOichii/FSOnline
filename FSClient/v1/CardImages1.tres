@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardImages" load_steps=71 format=3 uid="uid://dk2vd8k0k3uch"]
+[gd_resource type="Resource" script_class="CardImages" load_steps=73 format=3 uid="uid://dk2vd8k0k3uch"]
 
 [ext_resource type="Script" path="res://v1/CardImages.gd" id="1_boc33"]
 [ext_resource type="Texture2D" uid="uid://dbsttoe2t228y" path="res://assets/images/card/cards/guppy-v2.png" id="1_exema"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://bhtwb2dddcn14" path="res://assets/images/card/cards/dads-lost-coin-v2.png" id="33_4yqlh"]
 [ext_resource type="Texture2D" uid="uid://drycnuojqqq5o" path="res://assets/images/card/cards/moms-purse-v2.png" id="34_mlgx4"]
 [ext_resource type="Texture2D" uid="uid://bt22f8ymr8r2h" path="res://assets/images/card/cards/lucky-toe-requiem.png" id="35_1r8gj"]
+[ext_resource type="Texture2D" uid="uid://cema7v203ch3n" path="res://assets/images/card/cards/xvii-the-stars-alt1.png" id="36_f5xyy"]
 
 [sub_resource type="Resource" id="Resource_3qwmf"]
 script = ExtResource("1_v0pgv")
@@ -207,6 +208,11 @@ script = ExtResource("1_v0pgv")
 card_key = "lucky-toe-requiem"
 image = ExtResource("35_1r8gj")
 
+[sub_resource type="Resource" id="Resource_ae238"]
+script = ExtResource("1_v0pgv")
+card_key = "xvii-the-stars-alt1"
+image = ExtResource("36_f5xyy")
+
 [resource]
 script = ExtResource("1_boc33")
-Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew"), SubResource("Resource_k1c4c"), SubResource("Resource_vt8mp"), SubResource("Resource_rmb1q"), SubResource("Resource_1ampk"), SubResource("Resource_pbjhe"), SubResource("Resource_4krbf"), SubResource("Resource_lb85l"), SubResource("Resource_d4gxl"), SubResource("Resource_s36j7"), SubResource("Resource_jangg"), SubResource("Resource_1f3i8"), SubResource("Resource_s3iab"), SubResource("Resource_ycocx"), SubResource("Resource_840ki"), SubResource("Resource_dktxc"), SubResource("Resource_wys4p"), SubResource("Resource_37bwl"), SubResource("Resource_k6xgr"), SubResource("Resource_h03qq"), SubResource("Resource_dtlai"), SubResource("Resource_s1yg2"), SubResource("Resource_li4hp"), SubResource("Resource_meq3s"), SubResource("Resource_3pbr1"), SubResource("Resource_pk4ov"), SubResource("Resource_pjcyp"), SubResource("Resource_s6870"), SubResource("Resource_0pklk"), SubResource("Resource_8mng4"), SubResource("Resource_ijmhs"), SubResource("Resource_ljg01"), SubResource("Resource_hlenv")])
+Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew"), SubResource("Resource_k1c4c"), SubResource("Resource_vt8mp"), SubResource("Resource_rmb1q"), SubResource("Resource_1ampk"), SubResource("Resource_pbjhe"), SubResource("Resource_4krbf"), SubResource("Resource_lb85l"), SubResource("Resource_d4gxl"), SubResource("Resource_s36j7"), SubResource("Resource_jangg"), SubResource("Resource_1f3i8"), SubResource("Resource_s3iab"), SubResource("Resource_ycocx"), SubResource("Resource_840ki"), SubResource("Resource_dktxc"), SubResource("Resource_wys4p"), SubResource("Resource_37bwl"), SubResource("Resource_k6xgr"), SubResource("Resource_h03qq"), SubResource("Resource_dtlai"), SubResource("Resource_s1yg2"), SubResource("Resource_li4hp"), SubResource("Resource_meq3s"), SubResource("Resource_3pbr1"), SubResource("Resource_pk4ov"), SubResource("Resource_pjcyp"), SubResource("Resource_s6870"), SubResource("Resource_0pklk"), SubResource("Resource_8mng4"), SubResource("Resource_ijmhs"), SubResource("Resource_ljg01"), SubResource("Resource_hlenv"), SubResource("Resource_ae238")])

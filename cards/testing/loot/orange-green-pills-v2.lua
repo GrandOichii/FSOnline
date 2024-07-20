@@ -19,7 +19,9 @@ function _Create()
                 return
             end
 
-            FS.C.Effect.GainCoins(amount)(stackEffect)
+            FS.C.Effect.GainCoins(amount, function (effect)
+                return FS.F.Players():Do(effect.OwnerIdx)
+            end)(stackEffect)
         end)
     :Build()
 end

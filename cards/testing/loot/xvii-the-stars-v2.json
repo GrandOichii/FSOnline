@@ -2,6 +2,6 @@
     "Key": "xvii-the-stars-v2",
     "Name": "XVII. The Stars",
     "Type": "Loot",
-    "Text": "Gain +1 Treasure",
+    "Text": "Gain +1 Treasure.",
     "Script": "xvii-the-stars-v2.lua"
 }
