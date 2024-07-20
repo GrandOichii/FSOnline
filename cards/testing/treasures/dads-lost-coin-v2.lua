@@ -1,4 +1,5 @@
--- status: not tested
+-- status: implemented
+-- TODO too low-level
 
 function _Create()
     return FS.B.Item()
@@ -10,8 +11,9 @@ function _Create()
                 for _, player in ipairs(players) do
                     player.State.RollReplacementEffects:Add(function (rollStackEffect)
                         local roll = rollStackEffect.Value
-                        if rollStackEffect ~= 1 then
-                            return
+                        if roll ~= 1 then
+
+                            return true
                         end
                         local accept = FS.C.Choose.YesNo(me.Owner.Idx, 'Player '..player.Name..' rolled a '..roll..'. Force them to reroll?')
                         if not accept then

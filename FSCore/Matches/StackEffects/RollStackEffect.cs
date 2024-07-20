@@ -25,11 +25,14 @@ public class RollStackEffect : StackEffect
     /// Sets the roll value to a random value between 1 and 6
     /// </summary>
     private void Roll() {
-        Value = Match.Rng.Next(1, 7);
+        // Value = Match.Rng.Next(1, 7);
+        Value = 1;
 
         Match.LogInfo($"Player {Match.GetPlayer(Parent.OwnerIdx).LogName} rolled a {Value}");
 
+        // TODO request player to order replacement effects
         var owner = Match.GetPlayer(OwnerIdx);
+        System.Console.WriteLine(owner.State.RollReplacementEffects.Count);
         foreach (var repEffect in owner.State.RollReplacementEffects) {
             var returned = repEffect.Call(this);
             var stop = !LuaUtility.GetReturnAsBool(returned);

@@ -24,10 +24,10 @@ LootCards:
   a-sack-v2: 10
   counterfeit-penny-v2: 10
   orange-green-pills-v2: 10
-  chunk-of-amber-warp: 10
+  chunk-of-amber-warp: 100
   xvii-the-stars-v2: 10
   dice-shard-v2: 10
-  lil-battery-v2: 100
+  lil-battery-v2: 10
 Treasures:
   # - mystery-sack-v2
   # - portable-slot-machine-v2
@@ -40,6 +40,7 @@ Treasures:
   # - pay-to-play-v2
   # - libra-v2
   - dads-lost-coin-v2
+  - sacred-heart-v2
   - the-battery-v2
   - the-battery-v2
   - the-battery-v2

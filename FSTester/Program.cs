@@ -157,7 +157,8 @@ public class Program {
         };
 
         for (int i = 0; i < realPlayerCount; i++) {
-            await AddTCPPlayer(listener, match);
+            // await AddTCPPlayer(listener, match);
+            await AddConsolePlayer(match);
         }
 
         for (int i = 0; i < playerCount - realPlayerCount; i++) {
@@ -193,7 +194,7 @@ public class Program {
         // TODO prompt player name with default name
         // TODO prompt player with character key
 
-        var chKey = "guppy-v2";
+        var chKey = "the-keeper-v2";
 
         await match.AddPlayer(name, c, chKey);
     }
@@ -219,7 +220,7 @@ public class Program {
     public static async Task TcpLoop(MatchConfig config) {
         while (true) {
             try {
-                await TcpMatch(config, 3, 1);
+                await TcpMatch(config, 2, 1);
                 // return;
             } catch (Exception e) {
                 PrintException(e);

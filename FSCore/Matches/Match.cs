@@ -16,6 +16,7 @@ public class Match {
     };
     private static readonly List<ModificationLayer> MODIFICATION_LAYERS = new() {
         ModificationLayer.COIN_GAIN_AMOUNT,
+        ModificationLayer.ROLL_REPLACEMENT_EFFECTS,
     };
 
     /// <summary>
@@ -592,7 +593,7 @@ public class Match {
     /// <returns>New ID</returns>
     public string GenerateCardID() {
         var result = CardIDGenerator.Next();
-        LogInfo($"Generated match card ID: {result}");
+        // LogInfo($"Generated match card ID: {result}");
         return result;
     }
 
@@ -602,7 +603,7 @@ public class Match {
     /// <returns>New ID</returns>
     public string GenerateStackID() {
         var result = "s" + CardIDGenerator.Next();
-        LogInfo($"Generated stack effect ID: {result}");
+        // LogInfo($"Generated stack effect ID: {result}");
         return result;
     }
 
@@ -612,7 +613,7 @@ public class Match {
     /// <returns>New ID</returns>
     public string GenerateInPlayID() {
         var result = "i" + CardIDGenerator.Next();
-        LogInfo($"Generated item match card ID: {result}");
+        // LogInfo($"Generated item match card ID: {result}");
         return result;
     }
 
