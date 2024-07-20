@@ -5,7 +5,7 @@ function _Create()
             -- TODO is "destroy this" considered part of the cost?
             FS.B.ActivatedAbility('{T}', 'Destroy this. If you do, you may play any number of additional loot cards till end of turn.')
                 .Cost:Common(
-                    FS.C.Cost:Tap()
+                    FS.C.Cost.Tap()
                 )
                 .Effect:Custom(function (stackEffect)
                     local owner = GetPlayer(stackEffect.OwnerIdx)

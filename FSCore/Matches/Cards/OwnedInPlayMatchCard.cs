@@ -5,11 +5,15 @@ public class OwnedInPlayMatchCard : InPlayMatchCard
     /// <summary>
     /// Card owner
     /// </summary>
-    public Player Owner { get; }
+    public Player Owner { get; private set; }
 
     public OwnedInPlayMatchCard(MatchCard card, Player owner)
         : base(card)
     {
+        Owner = owner;
+    }
+
+    public void SetOwner(Player owner) {
         Owner = owner;
     }
 

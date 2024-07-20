@@ -3,7 +3,7 @@ function _Create()
         :ActivatedAbility(
             FS.B.ActivatedAbility('{T}', 'Choose a player, then roll- that player gains {cent} equal to the result.')
                 .Cost:Common(
-                    FS.C.Cost:Tap()
+                    FS.C.Cost.Tap()
                 )
                 .Target:Player(
                     function (me, player)

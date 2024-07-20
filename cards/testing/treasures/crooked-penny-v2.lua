@@ -3,7 +3,7 @@ function _Create()
         :ActivatedAbility(
             FS.B.ActivatedAbility('{T}', 'Choose a player, then roll-\n1-3: double the amount of {cent} they have.\n4-6: that player loses all {cent}.')
                 .Cost:Common(
-                    FS.C.Cost:Tap()
+                    FS.C.Cost.Tap()
                 )
                 .Target:Player(
                     function (me, player)

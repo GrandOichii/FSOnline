@@ -1,0 +1,7 @@
+{
+    "Key": "pay-to-play-v2",
+    "Name": "Pay to Play",
+    "Type": "Item",
+    "Text": "Pay 10{cent}:\nSteal a non-eternal item a player controls.",
+    "Script": "pay-to-play-v2.lua"
+}

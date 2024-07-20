@@ -22,9 +22,9 @@ LootPlay: 1
 LootCards:
   3-cents-v2: 10
   a-sack-v2: 10
-  counterfeit-penny-v2: 100
+  counterfeit-penny-v2: 10
   orange-green-pills-v2: 10
-  chunk-of-amber-warp: 100
+  chunk-of-amber-warp: 10
   xvii-the-stars-v2: 10
   dice-shard-v2: 10
   lil-battery-v2: 10
@@ -37,6 +37,7 @@ Treasures:
   - crooked-penny-v2
   - the-battery-v2
   - the-d20-v2
+  - pay-to-play-v2
   # - the-battery-v2
   # - the-battery-v2
   # - the-battery-v2

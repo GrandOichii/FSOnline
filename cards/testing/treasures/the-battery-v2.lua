@@ -3,7 +3,7 @@ function _Create()
         :ActivatedAbility(
             FS.B.ActivatedAbility('{T}', 'Recharge another item.')
                 .Cost:Common(
-                    FS.C.Cost:Tap()
+                    FS.C.Cost.Tap()
                 )
                 .Target:Item(
                     function (me, player)

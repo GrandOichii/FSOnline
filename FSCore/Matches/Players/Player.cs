@@ -359,7 +359,10 @@ public class Player : IStateModifier {
     }
 
     public async Task RemoveItem(OwnedInPlayMatchCard card) {
-        Items.Remove(card);
+        var removed = Items.Remove(card);
+        if (!removed)
+            throw new MatchException($"Failed to remove item {card.LogName} from player {LogName}");
+        // TODO add to update
     }
 
     /// <summary>
@@ -373,6 +376,12 @@ public class Player : IStateModifier {
         Items.Add(card);
 
         Match.LogInfo($"Player {LogName} gained item {card.LogName}");
+    }
+
+    public async Task LoseItem(OwnedInPlayMatchCard card) {
+        await RemoveItem(card);
+
+        // TODO trigger
     }
 
     public OwnedInPlayMatchCard? GetInPlayCardOrDefault(string ipid) {

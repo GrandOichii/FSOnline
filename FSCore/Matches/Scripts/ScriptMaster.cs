@@ -267,4 +267,19 @@ public class ScriptMaster {
             .Wait();
     }
 
+    [LuaCommand]
+    public bool IsOwned(InPlayMatchCard card) {
+        return card is OwnedInPlayMatchCard;
+    }
+
+    [LuaCommand]
+    public void StealItem(int playerIdx, string ipid) {
+        _match.StealItem(playerIdx, ipid)
+            .Wait();
+    }
+
+    [LuaCommand]
+    public InPlayMatchCard? GetItemOrDefault(string ipid) {
+        return _match.GetItemOrDefault(ipid);
+    }
 }

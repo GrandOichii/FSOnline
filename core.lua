@@ -69,7 +69,26 @@ function FS.C.Effect.RerollTargetItem(target_idx)
     return function (stackEffect)
         local ipid = stackEffect.Targets[target_idx].Value
 
+        -- TODO fizzle if no targets left
+        if GetItemOrDefault(ipid) == nil then
+            return
+        end
+
+
         RerollItem(ipid)
+    end
+end
+
+function FS.C.Effect.StealTargetItem(target_idx)
+    return function (stackEffect)
+        local ipid = stackEffect.Targets[target_idx].Value
+
+        -- TODO fizzle if no targets left
+        if GetItemOrDefault(ipid) == nil then
+            return
+        end
+
+        StealItem(stackEffect.OwnerIdx, ipid)
     end
 end
 
@@ -709,6 +728,14 @@ function FS.F.Items()
         result.filters[#result.filters+1] = function (item)
             return not item:HasLabel(FS.Labels.Eternal)
         end
+        return result
+    end
+
+    function result:ControlledByPlayer()
+        result.filters[#result.filters+1] = function (item)
+            return IsOwned(item)
+        end
+
         return result
     end
 

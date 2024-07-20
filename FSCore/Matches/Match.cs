@@ -461,6 +461,7 @@ public class Match {
     /// <returns></returns>
     public async Task PlaceIntoDiscard(MatchCard card) {
         if (card.DeckOrigin is null) {
+            return;
             throw new MatchException($"Tried to put card {card.LogName} into discard, while it has no deck origin");
         }
 
@@ -624,6 +625,20 @@ public class Match {
 
     #region In-play cards
 
+    public async Task StealItem(int playerIdx, string ipid) {
+        var item = GetInPlayCard(ipid);
+        var newOwner = GetPlayer(playerIdx);
+
+        if (item is OwnedInPlayMatchCard ownedItem) {
+            await ownedItem.Owner.LoseItem(ownedItem);
+            await newOwner.GainItem(ownedItem);
+            ownedItem.SetOwner(newOwner);
+            return;
+        }
+
+        // TODO
+    }
+
     public async Task RerollItem(string ipid) {
         var item = GetInPlayCard(ipid);
 
@@ -650,6 +665,10 @@ public class Match {
             result.AddRange(player.Items);
 
         return result;
+    }
+
+    public InPlayMatchCard? GetItemOrDefault(string ipid) {
+        return GetItems().FirstOrDefault(item => item.IPID == ipid);
     }
 
     public InPlayMatchCard? GetInPlayCardOrDefault(string ipid) {
