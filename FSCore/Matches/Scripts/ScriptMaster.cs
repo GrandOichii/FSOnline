@@ -216,6 +216,11 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public bool IsTrigger(StackEffect stackEffect) {
+        return stackEffect is TriggeredAbilityStackEffect;
+    }
+
+    [LuaCommand]
     public StackEffect GetStackEffect(string sid) {
         return _match.Stack.Effects.First(se => se.SID == sid);
     }

@@ -96,9 +96,20 @@ public class Stack {
         // TODO add update
     }
 
-    public async Task Resolve() {
+    public async Task Resolve(bool breakIfPass) {
+        while (true) {
+            await Match.ReloadState();
+            if (!Match.Active) return;
 
+            var player = Match.GetPriorityPlayer();
+            await player.PerformAction();
+            if (Effects.Count > 0) continue;
+            if (breakIfPass) return;
+
+            if (!Match.Active || Match.TurnEnded) return;
+        }
     }
+
 
     public void QueueTrigger(QueuedTrigger trigger) {
         QueuedTriggers.Enqueue(trigger);

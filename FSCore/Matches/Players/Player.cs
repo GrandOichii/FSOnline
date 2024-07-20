@@ -7,6 +7,26 @@ namespace FSCore.Matches.Players;
 /// </summary>
 public class Player : IStateModifier {
     /// <summary>
+    /// Setup-list of actions a player can make
+    /// </summary>
+    private static readonly List<IAction> ACTIONS = new() {
+        new PassAction(),
+        new PlayLootAction(),
+        new ActivateAction(),
+    };
+
+    /// <summary>
+    /// Player action index
+    /// </summary>
+    private static readonly Dictionary<string, IAction> ACTION_MAP = new(){};
+
+    static Player() {
+        foreach (var action in ACTIONS) {
+            ACTION_MAP.Add(action.ActionWord(), action);
+        }
+    }
+
+    /// <summary>
     /// Parent match
     /// </summary>
     public Match Match { get; }
@@ -560,5 +580,27 @@ public class Player : IStateModifier {
         await Controller.Update(Match, Idx);
     }
 
+    public async Task PerformAction() {
+        var options = new List<string>();
+        foreach (var a in ACTION_MAP.Values)
+            options.AddRange(a.GetAvailable(Match, Idx));
+        
+        if (options.Count == 0) {
+            throw new MatchException($"Player {LogName} doens't have any available actions");
+        }
+        var action = await PromptAction(options);
 
+        var words = action.Split(" ");
+        var actionWord = words[0];
+        if (!ACTION_MAP.ContainsKey(actionWord)) {
+            if (!Match.Config.StrictMode) {
+                Match.LogWarning($"Unknown action word from player {LogName}: {actionWord}");
+                return;
+            }
+
+            throw new UnknownActionException($"Unknown action from player {LogName}: {action}");
+        }
+
+        await ACTION_MAP[actionWord].Exec(Match, Idx, words);
+    }
 }

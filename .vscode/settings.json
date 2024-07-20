@@ -37,6 +37,7 @@
         "StealItem",
         "GetItemOrDefault",
         "SetRollValue",
-        "GetPlayersInTurnOrder"
+        "GetPlayersInTurnOrder",
+        "IsTrigger"
     ]
 }

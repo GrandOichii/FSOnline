@@ -98,6 +98,15 @@ function FS.C.Effect.RechargeTarget(target_idx)
     end
 end
 
+function FS.C.Effect.RechargeMe()
+    return function (stackEffect)
+        assert(IsAbilityActivation(stackEffect) or IsTrigger(stackEffect), 'Provided a non-ability stack effect for FS.C.Effect.RechargeMe')
+
+        local card = stackEffect.Card
+        Recharge(card.IPID)
+    end
+end
+
 function FS.C.Effect.RerollTargetItem(target_idx)
     return function (stackEffect)
         local ipid = stackEffect.Targets[target_idx].Value
@@ -773,6 +782,21 @@ function FS.B.TriggeredAbility(effectText)
             end
         }
 
+        return result
+    end
+
+    -- TODO add player filter
+    function result.On:TurnEnd()
+        result.trigger = 'turn_end'
+
+        result.costs[#result.costs+1] = {
+            Check = function (me, player, args)
+                return args.playerIdx == player.Idx
+            end,
+            Pay = function (me, player, stackEffect, args)
+                return true
+            end
+        }
 
         return result
     end

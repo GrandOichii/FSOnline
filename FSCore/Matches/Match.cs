@@ -306,7 +306,8 @@ public class Match {
                 CurrentPhase = phase;
                 var phaseName = CurrentPhase.GetName();
                 await phase.PreEmit(this, CurPlayerIdx);
-                await Emit(phaseName, new(){ {"playerI", CurPlayerIdx} });
+                await Emit(phaseName, new(){ {"playerIdx", CurPlayerIdx} });
+                await DequeueTriggers();
                 await phase.PostEmit(this, CurPlayerIdx);
                 
                 await ReloadState();
@@ -500,8 +501,8 @@ public class Match {
     /// TODO add docs
     /// </summary>
     /// <returns></returns>
-    public async Task ResolveStack() {
-        await Stack.Resolve();
+    public async Task ResolveStack(bool breakIfPass = false) {
+        await Stack.Resolve(breakIfPass);
     }
 
     /// <summary>

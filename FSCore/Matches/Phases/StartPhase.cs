@@ -15,8 +15,6 @@ public class StartPhase : IPhase
 
     public async Task PostEmit(Match match, int playerIdx)
     {
-        await match.ResolveStack();
-
         // loot step
         var player = match.GetPlayer(playerIdx);
         await player.LootCards(
@@ -24,7 +22,8 @@ public class StartPhase : IPhase
             LootReasons.LootPhase(match.LState)
         );
 
-        await match.ResolveStack();
+        if (match.Stack.Effects.Count > 0)
+            await match.ResolveStack(true);
     }
 
 }

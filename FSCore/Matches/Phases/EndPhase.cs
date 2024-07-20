@@ -9,7 +9,8 @@ public class EndPhase : IPhase
 
     public async Task PostEmit(Match match, int playerIdx)
     {
-        await match.ResolveStack();
+        if (match.Stack.Effects.Count > 0)
+            await match.ResolveStack(true);
 
         var player = match.GetPlayer(playerIdx);
 

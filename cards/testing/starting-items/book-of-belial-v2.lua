@@ -26,6 +26,14 @@ function _Create()
                 )
                 :Build()
         )
+        :TriggeredAbility(
+            FS.B.TriggeredAbility('At the end of your turn, recharge this.')
+                .On:TurnEnd()
+                .Effect:Common(
+                    FS.C.Effect.RechargeMe()
+                )
+            :Build()
+        )
         -- TODO add trigger
         :Label(FS.Labels.Eternal)
     :Build()
