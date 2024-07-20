@@ -8,7 +8,10 @@ var player_idx: int
 var hand_idx: int
 
 func _ready():
-	pass # Replace with function body.
+	adjust_minimum_size()
+	
+func adjust_minimum_size():
+	custom_minimum_size = Card.size * Card.scale
 	
 func set_controller(controller: MatchController):
 	Card.set_controller(controller)

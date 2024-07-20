@@ -7,7 +7,10 @@ class_name InPlayCardScene
 var _last = null
 
 func _ready():
-	pass # Replace with function body.
+	adjust_minimum_size()
+	
+func adjust_minimum_size():
+	custom_minimum_size = Vector2(Card.size.y, Card.size.y) * Card.scale	
 	
 func set_controller(controller: MatchController):
 	Card.set_controller(controller)
