@@ -1,0 +1,7 @@
+{
+    "Key": "dice-shard-v2",
+    "Name": "Dice Shard",
+    "Type": "Loot",
+    "Text": "Choose a dice roll. Its controller rerolls it.",
+    "Script": "dice-shard-v2.lua"
+}

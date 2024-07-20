@@ -35,6 +35,21 @@ public class HandMatchCard : IStateModifier {
         // TODO
     }
 
+    public bool CanPlay(Player player) {
+        var checks = Card.LootChecks;
+
+        // TODO catch exceptions
+        foreach (var check in checks) {
+            var returned = check.Call(this, player);
+            var payed = LuaUtility.GetReturnAsBool(returned);
+            if (!payed)
+                return false;
+        }
+
+        return true;
+
+    }
+
     public bool PayCosts(StackEffect stackEffect) {
         var costs = Card.LootCosts;
 

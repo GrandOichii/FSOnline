@@ -269,7 +269,7 @@ public class Player : IStateModifier {
     /// <param name="card">Hand card</param>
     /// <returns>True, if none of the play checks failed</returns>
     public bool CanPlay(HandMatchCard card) {
-        // TODO add more checks
+        if (!card.CanPlay(this)) return false;
 
         return LootPlays < 0 || card.State.LootCost <= LootPlays;
     }

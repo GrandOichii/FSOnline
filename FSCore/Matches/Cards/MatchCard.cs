@@ -40,6 +40,10 @@ public class MatchCard {
     /// </summary>
     public List<LuaFunction> LootCosts { get; }
     /// <summary>
+    /// Checks for playing as a loot card
+    /// </summary>
+    public List<LuaFunction> LootChecks { get; }
+    /// <summary>
     /// Activated abilities
     /// </summary>
     public List<ActivatedAbility> ActivatedAbilities { get; }
@@ -89,6 +93,14 @@ public class MatchCard {
                 .Values.Cast<LuaFunction>().ToList();
         } catch (Exception e) {
             throw new MatchException($"Failed to get loot costs for card {template.Name}", e);
+        }
+
+        // loot checks
+        try {
+            LootChecks = LuaUtility.TableGet<LuaTable>(data, "LootChecks")
+                .Values.Cast<LuaFunction>().ToList();
+        } catch (Exception e) {
+            throw new MatchException($"Failed to get loot checks for card {template.Name}", e);
         }
 
         // activated abilities

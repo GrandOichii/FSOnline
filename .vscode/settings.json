@@ -19,6 +19,7 @@
         "RerollDice",
         "GetStackEffect",
         "GetStackEffects",
-        "IsRollStackEffect"
+        "IsRollStackEffect",
+        "ChooseStackEffect"
     ]
 }

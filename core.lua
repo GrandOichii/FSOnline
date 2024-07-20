@@ -132,6 +132,7 @@ function FS.B.Card()
     result.labels = {}
     result.stateModifiers = {}
     result.lootCosts = {}
+    result.lootChecks = {}
 
     function result:Build()
         local card = {}
@@ -160,6 +161,9 @@ function FS.B.Card()
         -- additional loot costs
         card.LootCosts = result.lootCosts
 
+        -- addditional loot checks
+        card.LootChecks = result.lootChecks
+
         return card
     end
 
@@ -182,6 +186,33 @@ function FS.B.Card()
         end
 
         result.effectGroups[#result.effectGroups+1] = {effect}
+        return result
+    end
+
+    result.Target = {}
+
+    function result.Target:StackEffect(filterFunc, hint)
+        hint = hint or 'Choose stack effect'
+        -- TODO
+        result.lootChecks[#result.lootChecks+1] = function (player)
+            print(#filterFunc(player))
+            return #filterFunc(player) > 0
+        end
+
+        result.lootCosts[#result.lootCosts+1] = function (stackEffect)
+            local player = GetPlayer(stackEffect.OwnerIdx)
+            local options = filterFunc(player)
+            local indicies = {}
+            for _, e in ipairs(options) do
+                indicies[#indicies+1] = e.SID
+            end
+            -- TODO add optional
+            local target = ChooseStackEffect(player.Idx, indicies, hint)
+            AddTarget(stackEffect, FS.TargetTypes.STACK_EFFECT, target)
+
+            return true
+        end
+
         return result
     end
 
