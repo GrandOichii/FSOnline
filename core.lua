@@ -57,6 +57,16 @@ function FS.C.Effect.RerollTargetRoll(target_idx)
     end
 end
 
+function FS.C.Effect.SetTargetRoll(target_idx, value)
+    return function (stackEffect)
+        local effect = GetStackEffect(stackEffect.Targets[target_idx].Value)
+
+        assert(IsRollStackEffect(effect), 'Provided a non-roll target stack effect for FS.C.Effect.ModifyTargetRoll')
+
+        SetRollValue(effect, value)
+    end
+end
+
 function FS.C.Effect.RechargeTarget(target_idx)
     return function (stackEffect)
         local ipid = stackEffect.Targets[target_idx].Value

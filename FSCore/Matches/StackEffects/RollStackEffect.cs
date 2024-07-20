@@ -18,21 +18,29 @@ public class RollStackEffect : StackEffect
     {
         Parent = parent;
 
-        SetValue();
+        RandomizeValue();
     }
 
     /// <summary>
     /// Sets the roll value to a random value between 1 and 6
     /// </summary>
-    private void SetValue() {
+    private void RandomizeValue() {
         Value = Match.Rng.Next(1, 7);
 
         Match.LogInfo($"Player {Match.GetPlayer(Parent.OwnerIdx).LogName} rolled a {Value}");
     }
 
+    public void SetValue(int value) {
+        Value = value;
+
+        Match.LogInfo($"Roll value of roll {SID} is set to {Value}");
+    }
+
     public override async Task Resolve()
     {
         Parent.Rolls.Add(Value);
+
+        // TODO add trigger
     }
 
     public override StackEffectData ToData() => new RollStackEffectData(this);
@@ -43,7 +51,7 @@ public class RollStackEffect : StackEffect
     public void Reroll() {
         Match.LogInfo($"Roll stack effect {SID} reroll request");
 
-        SetValue();
+        RandomizeValue();
     }
 
     public void Modify(int mod) {

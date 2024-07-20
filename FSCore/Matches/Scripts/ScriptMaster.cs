@@ -171,6 +171,14 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public void SetRollValue(StackEffect stackEffect, int value) {
+        if (stackEffect is not RollStackEffect rollEffect)
+            throw new MatchException($"Tried to reroll a non-roll stack effect: {stackEffect}");
+
+        rollEffect.SetValue(value);
+    }
+
+    [LuaCommand]
     public void ModRoll(StackEffect stackEffect, int mod) {
         if (stackEffect is not RollStackEffect rollEffect)
             throw new MatchException($"Tried to modify a non-roll stack effect: {stackEffect}");
