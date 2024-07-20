@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://v1/Behaviors/HandCardBehavior.gd" id="3_ewr4w"]
 [ext_resource type="Texture2D" uid="uid://csyxdaajx2e0t" path="res://assets/images/card/backs/loot-card-back.png" id="3_lovxm"]
 
-[sub_resource type="Resource" id="Resource_fjpia"]
+[sub_resource type="Resource" id="Resource_kcgug"]
 resource_local_to_scene = true
 script = ExtResource("3_ewr4w")
 DefaultColor = Color(0, 0, 0, 1)
@@ -15,13 +15,13 @@ choose_color = Color(0.592157, 0, 0, 1)
 choose_hover_color = Color(0.984314, 0, 0, 1)
 
 [node name="HandCardScene" type="Control"]
-custom_minimum_size = Vector2(124, 168)
+custom_minimum_size = Vector2(155, 210)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1876.0
-offset_bottom = -1332.0
+offset_right = -1845.0
+offset_bottom = -1290.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7c7qi")
@@ -36,8 +36,8 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.4, 0.4)
-Behavior = SubResource("Resource_fjpia")
+scale = Vector2(0.5, 0.5)
+Behavior = SubResource("Resource_kcgug")
 
 [node name="Overlay" type="TextureRect" parent="."]
 unique_name_in_owner = true
