@@ -72,6 +72,7 @@ public class Stack {
         await top.Resolve();
 
         Effects.Remove(top);
+        PriorityIdx = Match.CurPlayerIdx;
         if (Effects.Count == 0) {
             Match.LogInfo("Stack is now empty");
             PriorityIdx = -1;

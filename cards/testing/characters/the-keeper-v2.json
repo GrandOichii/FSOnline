@@ -6,7 +6,6 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
-        "moms-purse-v2",
         "wooden-nickel-v2"
     ],
     "Script": "the-keeper-v2.lua"

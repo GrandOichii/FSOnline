@@ -20,12 +20,18 @@ signal MatchInfoReceived(Variant)
 @onready var Options = %Options
 @onready var Match = %Match
 
+@onready var ChooseStringWindow = %ChooseStringWindow
+@onready var ChooseStringText = %ChooseStringText
+@onready var ChooseStringButtons = %ChooseStringButtons
+
 var _update: Variant
 var _match_info: Variant
 
 var _auto_response = null
 
 func _ready():
+	ChooseStringWindow.hide()
+	
 	if start_fullscreen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
@@ -51,9 +57,9 @@ func process_update(update: Variant):
 		text += key + ': ' + str(update.Args[key]) + '\n'
 	Options.text = text
 	
-	#if update.Request == 'PickOption':
-		#setup_pick_string(update)
-		#return
+	if update.Request == 'ChooseString':
+		setup_pick_string(update)
+		return
 	
 func _input(e):
 	if e.is_action_pressed('yield_until_empty_stack'):
@@ -86,6 +92,20 @@ func _input(e):
 		
 func send_pass():
 	Connection.Write('pass')
+
+func setup_pick_string(update: Variant):
+	ChooseStringText.text = update.Hint
+	ChooseStringWindow.show()
+	while (ChooseStringButtons.get_child_count() > 0):
+		ChooseStringButtons.remove_child(ChooseStringButtons.get_child(0))
+	for option in update.Args.values():
+		var b = Button.new()
+		ChooseStringButtons.add_child(b)
+		b.text = option
+		var action = func():
+			Connection.Write(option)
+			ChooseStringWindow.hide()
+		b.pressed.connect(action)
 
 # signal connections
 

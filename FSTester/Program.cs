@@ -150,15 +150,18 @@ public class Program {
         TcpListener listener = new(endpoint);
         listener.Start();
 
-        var match = new Match(config, 0, cm, File.ReadAllText("../core.lua")){
+        var seed = 0;
+        seed = new Random().Next();
+        
+        var match = new Match(config, seed, cm, File.ReadAllText("../core.lua")){
             Logger = LoggerFactory
                 .Create(builder => builder.AddConsole())
                 .CreateLogger("Match")
         };
 
         for (int i = 0; i < realPlayerCount; i++) {
-            // await AddTCPPlayer(listener, match);
-            await AddConsolePlayer(match);
+            await AddTCPPlayer(listener, match);
+            // await AddConsolePlayer(match);
         }
 
         for (int i = 0; i < playerCount - realPlayerCount; i++) {
@@ -182,9 +185,9 @@ public class Program {
         // TODO prompt player name with default name
         // TODO prompt player with character key
 
-        var chKey = "guppy-v2";
+        // var chKey = "guppy-v2";
 
-        await match.AddPlayer(name, c, chKey);
+        await match.AddPlayer(name, c);
     }
 
     public static async Task AddConsolePlayer(Match match) {
@@ -220,7 +223,7 @@ public class Program {
     public static async Task TcpLoop(MatchConfig config) {
         while (true) {
             try {
-                await TcpMatch(config, 2, 1);
+                await TcpMatch(config, 3, 1);
                 // return;
             } catch (Exception e) {
                 PrintException(e);
