@@ -16,6 +16,7 @@ public class Match {
     };
     private static readonly List<ModificationLayer> MODIFICATION_LAYERS = new() {
         ModificationLayer.COIN_GAIN_AMOUNT,
+        ModificationLayer.LOOT_AMOUNT,
         ModificationLayer.ROLL_REPLACEMENT_EFFECTS,
     };
 

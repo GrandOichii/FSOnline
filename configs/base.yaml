@@ -21,10 +21,10 @@ LootPlay: 1
 
 LootCards:
   3-cents-v2: 10
-  a-sack-v2: 10
+  a-sack-v2: 1000
   counterfeit-penny-v2: 10
   orange-green-pills-v2: 10
-  chunk-of-amber-warp: 100
+  chunk-of-amber-warp: 10
   xvii-the-stars-v2: 10
   dice-shard-v2: 10
   lil-battery-v2: 10
@@ -41,6 +41,7 @@ Treasures:
   # - libra-v2
   - dads-lost-coin-v2
   - sacred-heart-v2
+  - moms-purse-v2
   - the-battery-v2
   - the-battery-v2
   - the-battery-v2

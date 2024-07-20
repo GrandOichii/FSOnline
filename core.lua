@@ -17,6 +17,7 @@ FS.Labels = {
 FS.ModLayers = {
     COIN_GAIN_AMOUNT = 1,
     ROLL_REPLACEMENT_EFFECTS = 2,
+    LOOT_AMOUNT = 3,
 }
 
 -- common

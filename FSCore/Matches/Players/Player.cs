@@ -101,10 +101,15 @@ public class Player : IStateModifier {
     /// <returns>Resulting amount of cards drawn by the player</returns>
     /// <exception cref="MatchException"></exception>
     public async Task<int> LootCards(int amount, LuaTable reason, LootSource source = LootSource.DETERMINE) {
-        // TODO modify the amount of cards to be looted
-        // TODO determine loot source
+        // TODO catch exception
+
         if (source == LootSource.DETERMINE)
             source = LootSource.LOOT_DECK;
+
+        foreach (var modifier in State.LootAmountModifiers) {
+            var returned = modifier.Call(this, amount, reason);
+            amount = LuaUtility.GetReturnAsInt(returned);
+        }
 
         return source switch
         {

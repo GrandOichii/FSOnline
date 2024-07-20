@@ -3,6 +3,7 @@ namespace FSCore.Matches;
 public enum ModificationLayer {
     COIN_GAIN_AMOUNT = 1,
     ROLL_REPLACEMENT_EFFECTS = 2,
+    LOOT_AMOUNT = 3,
 }
 
 /// <summary>
