@@ -18,7 +18,7 @@ public class Effect {
     /// Execute the effect
     /// </summary>
     /// <param name="stackEffect">Parent stack effect</param>
-    public virtual void Execute(StackEffect stackEffect) {
-        EffectFunc.Call(stackEffect);
+    public virtual void Execute(StackEffect stackEffect, LuaTable? args = null) {
+        EffectFunc.Call(stackEffect, args);
     }
 }

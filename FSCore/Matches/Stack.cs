@@ -16,6 +16,10 @@ public class Stack {
     /// Index of the player with priority
     /// </summary>
     public int PriorityIdx { get; set; }
+    /// <summary>
+    /// Queued triggers
+    /// </summary>
+    public Queue<QueuedTrigger> QueuedTriggers { get; }
 
     /// <summary>
     /// Top effect
@@ -37,6 +41,7 @@ public class Stack {
 
         Effects = new();
         PriorityIdx = -1;
+        QueuedTriggers = new();
     }
 
     /// <summary>
@@ -94,4 +99,9 @@ public class Stack {
     public async Task Resolve() {
 
     }
+
+    public void QueueTrigger(QueuedTrigger trigger) {
+        QueuedTriggers.Enqueue(trigger);
+    }
+    
 }

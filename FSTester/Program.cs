@@ -160,8 +160,8 @@ public class Program {
         };
 
         for (int i = 0; i < realPlayerCount; i++) {
-            await AddTCPPlayer(listener, match);
-            // await AddConsolePlayer(match);
+            // await AddTCPPlayer(listener, match);
+            await AddConsolePlayer(match);
         }
 
         for (int i = 0; i < playerCount - realPlayerCount; i++) {
@@ -224,9 +224,10 @@ public class Program {
         while (true) {
             try {
                 await TcpMatch(config, 3, 1);
-                // return;
+                return;
             } catch (Exception e) {
                 PrintException(e);
+                return;
             }
         }
     }

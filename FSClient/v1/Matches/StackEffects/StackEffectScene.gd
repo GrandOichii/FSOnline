@@ -14,7 +14,8 @@ class_name StackEffectScene
 var _type_map = {
 	'roll': 'Roll',
 	'loot_play': 'Loot card',
-	'ability_activation': 'Ability activation'
+	'ability_activation': 'Ability activation',
+	'ability_trigger': 'Triggered ability'
 }
 
 var _type_action_map = {

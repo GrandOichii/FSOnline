@@ -1,7 +1,7 @@
 namespace FSCore.Matches.Data;
 
 // TODO inherit from AbilityStackEffectData
-public class ActivatedAbilityStackEffectData : StackEffectData
+public class TriggeredAbilityStackEffectData : StackEffectData
 {
     // TODO more
     /// <summary>
@@ -12,13 +12,18 @@ public class ActivatedAbilityStackEffectData : StackEffectData
     /// In-play ID of parent card
     /// </summary>
     public string IPID { get; }
+    /// <summary>
+    /// Trigger type
+    /// </summary>
+    public string TriggerType { get; }
 
-    public ActivatedAbilityStackEffectData(ActivatedAbilityStackEffect effect)
+    public TriggeredAbilityStackEffectData(TriggeredAbilityStackEffect effect)
         : base(effect)
     {
         IPID = effect.Card.IPID;
         EffectText = effect.Ability.EffectText;
+        TriggerType = effect.Trigger.Trigger;
 
-        Type = "ability_activation";
+        Type = "ability_trigger";
     }
 }

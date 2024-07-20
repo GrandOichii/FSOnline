@@ -20,8 +20,8 @@ public class EffectList {
     /// Execute all effects
     /// </summary>
     /// <param name="stackEffect">Parent stack effect</param>
-    public void Execute(StackEffect stackEffect) {
+    public void Execute(StackEffect stackEffect, LuaTable? args = null) {
         foreach (var effect in Effects)
-            effect.Execute(stackEffect);
+            effect.Execute(stackEffect, args);
     }
 }

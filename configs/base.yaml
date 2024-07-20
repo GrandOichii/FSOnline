@@ -24,34 +24,40 @@ LootCards:
   a-sack-v2: 10
   counterfeit-penny-v2: 10
   orange-green-pills-v2: 10
-  chunk-of-amber-warp: 10
-  xvii-the-stars-v2: 100
+  chunk-of-amber-warp: 1000
+  xvii-the-stars-v2: 10
   dice-shard-v2: 10
   lil-battery-v2: 10
   lucky-toe-requiem: 10
   xvii-the-stars-alt1: 10
 Treasures:
-  - mystery-sack-v2
-  - portable-slot-machine-v2
-  - the-butter-bean-v2
-  - pageant-boy-v2
-  - box-v2
-  - crooked-penny-v2
-  - the-battery-v2
-  - the-d20-v2
-  - pay-to-play-v2
-  - libra-v2
-  - dads-lost-coin-v2
-  - sacred-heart-v2
-  - moms-purse-v2
+  # - mystery-sack-v2
+  # - portable-slot-machine-v2
+  # - the-butter-bean-v2
   # - pageant-boy-v2
-  # - pageant-boy-v2
-  # - pageant-boy-v2
-  # - pageant-boy-v2
-  # - pageant-boy-v2
-  # - pageant-boy-v2
-  # - pageant-boy-v2
-  # - pageant-boy-v2
+  # - box-v2
+  # - crooked-penny-v2
+  # - the-battery-v2
+  # - the-d20-v2
+  # - pay-to-play-v2
+  # - libra-v2
+  # - dads-lost-coin-v2
+  # - sacred-heart-v2
+  # - moms-purse-v2
+  # - the-relic-v2
+  - eye-of-greed-v2
+  - eye-of-greed-v2
+  - eye-of-greed-v2
+  - eye-of-greed-v2
+  - eye-of-greed-v2
+  - eye-of-greed-v2
+  - eye-of-greed-v2
+  - eye-of-greed-v2
+  - eye-of-greed-v2
+  - eye-of-greed-v2
+  - eye-of-greed-v2
+  - eye-of-greed-v2
+  - eye-of-greed-v2
 Characters:
   - guppy-v2
   - the-keeper-v2

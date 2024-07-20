@@ -146,4 +146,16 @@ public class InPlayMatchCard : IStateModifier {
         // TODO change with state
         return Card.Labels.Contains(label);
     }
+
+    public List<TriggeredAbility> GetTriggeredAbilities() {
+        // TODO
+        return Card.TriggeredAbilities;
+    }
+
+    public async Task ProcessTrigger(QueuedTrigger trigger) {
+        var abilities = GetTriggeredAbilities();
+        foreach (var ability in abilities) {
+            await ability.TryTrigger(this, trigger);
+        } 
+    }
 }

@@ -52,6 +52,10 @@ public class MatchCard {
     /// </summary>
     public List<ActivatedAbility> ActivatedAbilities { get; }
     /// <summary>
+    /// Triggered abilities
+    /// </summary>
+    public List<TriggeredAbility> TriggeredAbilities { get; }
+    /// <summary>
     /// State modifiers
     /// </summary>
     public Dictionary<ModificationLayer, List<LuaFunction>> StateModifiers { get; }
@@ -123,6 +127,21 @@ public class MatchCard {
                 .ToList();
         } catch (Exception e) {
             throw new MatchException($"Failed to get activated abilities for card {template.Name}", e);
+        }
+
+        // triggered abilities
+        try {
+            var triggeredAbilities = LuaUtility.TableGet<LuaTable>(data, "TriggeredAbilities");
+            TriggeredAbilities = triggeredAbilities.Values.Cast<object>()
+                .Select(
+                    o => new TriggeredAbility(
+                        o as LuaTable 
+                            ?? throw new MatchException($"Expected triggered ability to be a table, but found {o.GetType()}")
+                    )
+                )
+                .ToList();
+        } catch (Exception e) {
+            throw new MatchException($"Failed to get triggered abilities for card {template.Name}", e);
         }
 
         // labels

@@ -330,6 +330,8 @@ public class Match {
     public async Task ReloadState() {
         await SoftReloadState();
 
+        await DequeueTriggers();
+
         // TODO check dead players/cards/monsters
 
         await PushUpdates();
@@ -360,6 +362,30 @@ public class Match {
         // TODO treasure
     }
 
+    #region Triggers
+
+    public async Task DequeueTriggers() {
+        // TODO
+        while (Stack.QueuedTriggers.Count > 0) {
+            var trigger = Stack.QueuedTriggers.Dequeue();
+            await ProcessTrigger(trigger);
+        }
+    }
+
+    private async Task ProcessTrigger(QueuedTrigger trigger) {
+        // TODO shop items
+        // TODO monsters
+        // TODO rooms
+        // player-owned items
+        foreach (var player in Players) {
+            var items = player.GetInPlayCards();
+            // TODO prompt the player to order the effects
+            foreach (var item in items) {
+                await item.ProcessTrigger(trigger);
+            }
+        }
+    }
+
     /// <summary>
     /// Emits a trigger
     /// </summary>
@@ -372,64 +398,11 @@ public class Match {
             logMessage += $"{pair.Key}:{pair.Value} ";
         }
         LogInfo(logMessage);
-        await ReloadState();
-
-        // TODO check cards
-
-        // foreach (var player in LastState.Players) {
-        //     // heroes
-        //     var hero = player.Original.Hero;
-        //     if (hero is not null && hero.TriggeredAbilities.Count > 0) {
-        //         foreach (var trigger in hero.TriggeredAbilities) {
-        //             var on = trigger.Trigger;
-        //             if (on != trigger) continue;
-
-        //             var canTrigger = trigger.ExecCheck(player, argsTable);
-        //             if (!canTrigger) {
-        //                 continue;
-        //             }
-
-        //             var payedCosts = trigger.ExecCosts(player, argsTable);
-        //             if (!payedCosts) {
-        //                 continue;
-        //             }
-
-        //             LogInfo($"Hero card {hero.LogFriendlyName} triggers!");
-        //             trigger.ExecEffect(player, argsTable);
-        //         }
-        //     }
-
-        //     // landscapes
-        //     foreach (var lane in player.Landscapes) {
-        //         var cards = new List<InPlayCardState>();
-        //         if (lane.Creature is not null && lane.Creature.TriggeredAbilities.Count > 0) {
-        //             cards.Add(lane.Creature);
-        //         }
-        //         cards.AddRange(lane.Buildings);
-        //         foreach (var card in cards) {
-        //             foreach (var trigger in card.TriggeredAbilities) {
-        //                 var on = trigger.Trigger;
-        //                 if (on != trigger) continue;
-
-        //                 var canTrigger = trigger.ExecCheck(player, card, lane.Original.Idx, argsTable);
-        //                 if (!canTrigger) {
-        //                     continue;
-        //                 }
-
-        //                 var payedCosts = trigger.ExecCosts(player, card, lane.Original.Idx, argsTable);
-        //                 if (!payedCosts) {
-        //                     continue;
-        //                 }
-
-        //                 LogInfo($"Card {card.Original.Card.LogFriendlyName} triggers!");
-        //                 trigger.ExecEffect(player, card, lane.Original.Idx, argsTable);
-        //             }
-        //         }
-        //     }
-        // }
-
-        LogInfo($"Finished emitting {trigger}");
+        var queued = new QueuedTrigger(trigger, argsTable);
+        Stack.QueueTrigger(queued);
     }
+
+    #endregion
 
     /// <summary>
     /// Remove coins from the pool

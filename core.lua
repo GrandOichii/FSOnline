@@ -20,6 +20,11 @@ FS.ModLayers = {
     LOOT_AMOUNT = 3,
 }
 
+-- triggers
+FS.Triggers = {
+    ROLL = 'roll'
+}
+
 -- common
 FS.C = {}
 
@@ -279,8 +284,10 @@ function FS.B.Card()
 
     result.effectGroups = {}
     result.activatedAbilities = {}
+    result.triggeredAbilities = {}
     result.labels = {}
     result.stateModifiers = {}
+
     result.lootCosts = {}
     result.lootChecks = {}
     result.lootTargets = {}
@@ -301,8 +308,11 @@ function FS.B.Card()
             end
         end
 
-        -- activate abilities
+        -- activated abilities
         card.ActivatedAbilities = result.activatedAbilities
+
+        -- triggered abilities
+        card.TriggeredAbilities = result.triggeredAbilities
 
         -- labels
         card.Labels = result.labels
@@ -435,7 +445,13 @@ function FS.B.Card()
     -- add activated ability
     function result:ActivatedAbility(aa)
         result.activatedAbilities[#result.activatedAbilities+1] = aa
-        return self
+        return result
+    end
+
+    -- add triggered ability
+    function result:TriggeredAbility(ta)
+        result.triggeredAbilities[#result.triggeredAbilities+1] = ta
+        return result
     end
 
     -- add label to card
@@ -505,71 +521,83 @@ function FS.B.Item()
     return result
 end
 
-function FS.B.ActivatedAbility(costText, effectText)
+function FS.B._Ability(effectText)
     local result = {}
 
     result.costs = {}
     result.targets = {}
     result.effectGroups = {}
-    result.checks = {}
     result.fizzleChecks = {}
 
     result.Cost = {}
     result.Effect = {}
 
-    -- build activated ability
-    function result:Build()
+    result.builders = {}
+
+    result.builders[#result.builders+1] = function (ability)
         -- TODO repeated code
+
         local effects = {}
-        for _, group in ipairs(self.effectGroups) do
-            effects[#effects+1] = function (stackEffect)
+
+        for _, group in ipairs(result.effectGroups) do
+            effects[#effects+1] = function (stackEffect, args)
                 for _, e in ipairs(group) do
-                    if not e(stackEffect) then
+                    if not e(stackEffect, args) then
                         return
                     end
                 end
             end
         end
 
-        return {
-            EffectText = effectText,
-            CostText = costText,
-            Check = function (me, player)
-                for _, target in ipairs(result.targets) do
-                    if not target.Check(me, player) then
-                        return false
-                    end
+        ability.EffectText = effectText
+
+        ability.Check = function (me, player, args)
+            for _, target in ipairs(result.targets) do
+                if not target.Check(me, player, args) then
+                    return false
                 end
-                for _, cost in ipairs(result.costs) do
-                    if not cost.Check(me, player) then
-                        return false
-                    end
-                end
-                return true
-            end,
-            Cost = function (me, player, stackEffect)
-                for _, target in ipairs(result.targets) do
-                    if not target.Pay(me, player, stackEffect) then
-                        return false
-                    end
-                end
-                for _, cost in ipairs(result.costs) do
-                    if not cost.Pay(me, player, stackEffect) then
-                        return false
-                    end
-                end
-                return true
-            end,
-            Effects = effects,
-            FizzleCheck = function (stackEffect)
-                for _, check in ipairs(result.fizzleChecks) do
-                    if not check(stackEffect) then
-                        return false
-                    end
-                end
-                return true
             end
-        }
+            for _, cost in ipairs(result.costs) do
+                if not cost.Check(me, player, args) then
+                    return false
+                end
+            end
+            return true
+        end
+
+        ability.Cost = function (me, player, stackEffect, args)
+            for _, target in ipairs(result.targets) do
+                if not target.Pay(me, player, stackEffect, args) then
+                    return false
+                end
+            end
+            for _, cost in ipairs(result.costs) do
+                if not cost.Pay(me, player, stackEffect, args) then
+                    return false
+                end
+            end
+            return true
+        end
+
+        ability.Effects = effects
+
+        ability.FizzleCheck = function (stackEffect)
+            for _, check in ipairs(result.fizzleChecks) do
+                if not check(stackEffect) then
+                    return false
+                end
+            end
+            return true
+        end
+    end
+
+    -- build activated ability
+    function result:Build()
+        local ability = {}
+        for _, b in ipairs(result.builders) do
+            b(ability)
+        end
+        return ability
     end
 
     -- add common cost(s)
@@ -705,6 +733,46 @@ function FS.B.ActivatedAbility(costText, effectText)
         assert(#commons > 0, 'provided 0 common effect functions in result.Effect:Common function (for ActivatedAbility)')
 
         result.effectGroups[#result.effectGroups+1] = commons
+
+        return result
+    end
+
+    return result
+end
+
+function FS.B.ActivatedAbility(costText, effectText)
+    local result = FS.B._Ability(effectText)
+
+    result.builders[#result.builders+1] = function (ability)
+        ability.CostText = costText
+    end
+
+    return result
+end
+
+function FS.B.TriggeredAbility(effectText)
+    local result = FS.B._Ability(effectText)
+
+    result.trigger = {}
+
+    result.On = {}
+
+    result.builders[#result.builders+1] = function (ability)
+        ability.Trigger = result.trigger
+    end
+
+    function result.On:Roll(check)
+        result.trigger = FS.Triggers.ROLL
+
+        result.costs[#result.costs+1] = {
+            Check = function (me, player, args)
+                return check(me, player, args)
+            end,
+            Pay = function (me, player, stackEffect, args)
+                return true
+            end
+        }
+
 
         return result
     end
