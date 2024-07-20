@@ -624,6 +624,24 @@ public class Match {
 
     #region In-play cards
 
+    public async Task RerollItem(string ipid) {
+        var item = GetInPlayCard(ipid);
+
+        await DestroyItem(ipid);
+
+        if (item is OwnedInPlayMatchCard ownedItem) {
+            var owner = ownedItem.Owner;
+            var result = await owner.GainTreasureRaw(1);
+            if (result.Count == 0) {
+                LogInfo($"Item {item.LogName} of player {owner.LogName} was rerolled with no replacement");
+                return;
+            }
+            LogInfo($"Item {item.LogName} of player {owner.LogName} was rerolled into {result[0].LogName}");
+        }
+
+        // TODO if was treasure item, refill treasure slots
+    }
+
     public List<InPlayMatchCard> GetItems() {
         var result = new List<InPlayMatchCard>();
 

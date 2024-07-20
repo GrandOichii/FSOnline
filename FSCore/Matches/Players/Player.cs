@@ -181,12 +181,8 @@ public class Player : IStateModifier {
         var initial = amount;
         try {
             foreach (var mod in State.CoinGainModifiers) {
-                System.Console.WriteLine("CALL");
                 var returned = mod.Call(this, amount);
-                System.Console.WriteLine("PARSE");
-                System.Console.WriteLine(returned[0]);
                 amount = LuaUtility.GetReturnAsInt(returned);
-                System.Console.WriteLine("END");
             }
             return amount;
         } catch (Exception e) {
@@ -345,6 +341,10 @@ public class Player : IStateModifier {
     public async Task<List<OwnedInPlayMatchCard>> GainTreasure(int amount) {
         // TODO calculate actual amount
 
+        return await GainTreasureRaw(amount);
+    }
+
+    public async Task<List<OwnedInPlayMatchCard>> GainTreasureRaw(int amount) {
         var cards = Match.RemoveCardsFromTopOfTreasureDeck(amount);
 
         var result = new List<OwnedInPlayMatchCard>();
@@ -446,7 +446,6 @@ public class Player : IStateModifier {
             if (!options.Contains(result)) {
                 if (Match.Config.StrictMode)
                     throw new MatchException($"Invalid choice for picking action - {result} (player: {LogName})");
-                System.Console.WriteLine("NO");
                 continue;
             }
 

@@ -65,6 +65,14 @@ function FS.C.Effect.RechargeTarget(target_idx)
     end
 end
 
+function FS.C.Effect.RerollTargetItem(target_idx)
+    return function (stackEffect)
+        local ipid = stackEffect.Targets[target_idx].Value
+
+        RerollItem(ipid)
+    end
+end
+
 function FS.C.Effect.ModifyTargetRoll(target_idx, options, hint)
     hint = hint or 'Choose roll modifier'
     return function (stackEffect)
@@ -695,6 +703,17 @@ function FS.F.Items()
             return item.Tapped
         end
         return result
+    end
+
+    function result:NonEternal()
+        result.filters[#result.filters+1] = function (item)
+            return not item:HasLabel(FS.Labels.Eternal)
+        end
+        return result
+    end
+
+    function result:Rerollable()
+        return result:NonEternal()
     end
 
     function result:Except(ipid)

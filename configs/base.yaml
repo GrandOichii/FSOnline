@@ -22,28 +22,29 @@ LootPlay: 1
 LootCards:
   3-cents-v2: 10
   a-sack-v2: 10
-  counterfeit-penny-v2: 10
+  counterfeit-penny-v2: 100
   orange-green-pills-v2: 10
   chunk-of-amber-warp: 100
-  xvii-the-stars-v2: 100
+  xvii-the-stars-v2: 10
   dice-shard-v2: 10
   lil-battery-v2: 10
 Treasures:
-  # - mystery-sack-v2
-  # - portable-slot-machine-v2
-  # - the-butter-bean-v2
-  # - pageant-boy-v2
-  # - box-v2
-  # - crooked-penny-v2
+  - mystery-sack-v2
+  - portable-slot-machine-v2
+  - the-butter-bean-v2
+  - pageant-boy-v2
+  - box-v2
+  - crooked-penny-v2
   - the-battery-v2
-  - the-battery-v2
-  - the-battery-v2
-  - the-battery-v2
-  - the-battery-v2
-  - the-battery-v2
-  - the-battery-v2
-  - the-battery-v2
-  - the-battery-v2
+  - the-d20-v2
+  # - the-battery-v2
+  # - the-battery-v2
+  # - the-battery-v2
+  # - the-battery-v2
+  # - the-battery-v2
+  # - the-battery-v2
+  # - the-battery-v2
+  # - the-battery-v2
 Characters:
   - guppy-v2
   - the-keeper-v2

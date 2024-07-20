@@ -175,7 +175,7 @@ public class Program {
     }
 
     public static async Task AddRandomPlayer(Match match) {
-        var c = new RandomPlayerController(0, 100);
+        var c = new RandomPlayerController(0, 50);
 
         string name = "RandomPlayer";
         // TODO prompt player name with default name

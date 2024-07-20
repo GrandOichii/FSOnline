@@ -134,7 +134,7 @@ v        - counters
             - adding labels
         - becoming a copy of an item (indefinately, until end of turn)
         - copying activated abilties of in-play items
-        - rerolling items
+v        - rerolling items
         - "haunt" cards
 v         - playing with a revealed hand
         - being able to attack items

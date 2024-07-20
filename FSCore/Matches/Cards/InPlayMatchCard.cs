@@ -25,7 +25,6 @@ public class InPlayMatchCard : IStateModifier {
 
         IPID = card.Match.GenerateInPlayID();
         Counters = new();
-        System.Console.WriteLine(Tapped);
     }
 
     public string LogName => $"{Card.Template.Name} [{IPID} ({Card.ID})]";
@@ -143,5 +142,8 @@ public class InPlayMatchCard : IStateModifier {
 
     #endregion
 
-
+    public bool HasLabel(string label) {
+        // TODO change with state
+        return Card.Labels.Contains(label);
+    }
 }

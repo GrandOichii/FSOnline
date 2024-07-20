@@ -261,4 +261,10 @@ public class ScriptMaster {
         return LuaUtility.CreateTable(_match.LState, _match.GetItems());
     }
 
+    [LuaCommand]
+    public void RerollItem(string ipid) {
+        _match.RerollItem(ipid)
+            .Wait();
+    }
+
 }
