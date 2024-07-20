@@ -6,6 +6,8 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
+        "guppys-eye-v2",
+        "the-d20-v2",
         "book-of-belial-v2"
     ],
     "Script": "judas-v2.lua"

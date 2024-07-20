@@ -10,7 +10,8 @@ FS.TargetTypes = {
 -- card labels
 FS.Labels = {
     Eternal = 'Eternal',
-    Trinket = 'Trinket'
+    Trinket = 'Trinket',
+    Guppys = 'Guppy\'s'
 }
 
 -- modification layers
@@ -18,6 +19,7 @@ FS.ModLayers = {
     COIN_GAIN_AMOUNT = 1,
     ROLL_REPLACEMENT_EFFECTS = 2,
     LOOT_AMOUNT = 3,
+    HAND_CARD_VISIBILITY = 4,
 }
 
 -- triggers

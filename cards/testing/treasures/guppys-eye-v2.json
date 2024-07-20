@@ -1,0 +1,7 @@
+{
+    "Key": "guppys-eye-v2",
+    "Name": "Guppy's Eye",
+    "Type": "Item",
+    "Text": "Each other player plays with their hand revealed.",
+    "Script": "guppys-eye-v2.lua"
+}

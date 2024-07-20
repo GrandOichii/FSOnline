@@ -18,6 +18,7 @@ public class Match {
         ModificationLayer.COIN_GAIN_AMOUNT,
         ModificationLayer.LOOT_AMOUNT,
         ModificationLayer.ROLL_REPLACEMENT_EFFECTS,
+        ModificationLayer.HAND_CARD_VISIBILITY,
     };
 
     /// <summary>
