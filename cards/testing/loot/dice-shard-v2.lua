@@ -5,7 +5,7 @@ function _Create()
     return FS.B.Loot()
         .Target:StackEffect(
             function (player)
-                return FS.F.StackEffect():Rolls():Do()
+                return FS.F.StackEffects():Rolls():Do()
             end
         )
         .Effect:Common(

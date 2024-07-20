@@ -624,6 +624,16 @@ public class Match {
 
     #region In-play cards
 
+    public List<InPlayMatchCard> GetItems() {
+        var result = new List<InPlayMatchCard>();
+
+        // TODO treasures
+        foreach (var player in Players)
+            result.AddRange(player.Items);
+
+        return result;
+    }
+
     public InPlayMatchCard? GetInPlayCardOrDefault(string ipid) {
         foreach (var player in Players) {
             var result = player.GetInPlayCardOrDefault(ipid);

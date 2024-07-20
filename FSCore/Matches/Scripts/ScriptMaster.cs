@@ -211,6 +211,18 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public string ChooseItem(int playerIdx, LuaTable optionsTable, string hint) {
+        var options = LuaUtility.ParseTable<string>(optionsTable);
+
+        var player = _match.GetPlayer(playerIdx);
+        var result = player.ChooseItem(options, hint)
+            .GetAwaiter().GetResult();
+
+        return result;
+   
+    }
+
+    [LuaCommand]
     public void DiscardFromHand(int playerIdx, int handIdx) {
         var player = _match.GetPlayer(playerIdx);
         player.DiscardFromHand(handIdx)
@@ -243,4 +255,10 @@ public class ScriptMaster {
         item.RemoveCounters(amount)
             .Wait();
     }
+
+    [LuaCommand]
+    public LuaTable GetItems() {
+        return LuaUtility.CreateTable(_match.LState, _match.GetItems());
+    }
+
 }

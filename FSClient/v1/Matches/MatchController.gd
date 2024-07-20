@@ -78,5 +78,14 @@ func can_choose_card_in_hand(hand_idx: int) -> bool:
 func choose_card_in_hand(hand_idx: int):
 	send(str(hand_idx))
 
+func can_choose_in_play(ipid: String) -> bool:
+	# TODO sketchy
+	if last_update.Request != 'ChooseItem':
+		return false
+	return ipid in last_update.Args.values()
+
+func choose_in_play(ipid: String):
+	send(ipid)
+
 func send(msg: String):
 	Response.emit(msg)

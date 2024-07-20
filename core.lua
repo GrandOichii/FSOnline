@@ -4,6 +4,7 @@ FS = {}
 FS.TargetTypes = {
     PLAYER = 0,
     STACK_EFFECT = 1,
+    ITEM = 2,
 }
 
 -- card labels
@@ -53,6 +54,14 @@ function FS.C.Effect.RerollTargetRoll(target_idx)
         assert(IsRollStackEffect(effect), 'Provided a non-roll target stack effect for FS.C.Effect.ModifyTargetRoll')
 
         RerollDice(effect)
+    end
+end
+
+function FS.C.Effect.RechargeTarget(target_idx)
+    return function (stackEffect)
+        local ipid = stackEffect.Targets[target_idx].Value
+
+        Recharge(ipid)
     end
 end
 
@@ -294,6 +303,32 @@ function FS.B.Card()
             -- TODO add optional
             local target = ChooseStackEffect(player.Idx, indicies, hint)
             AddTarget(stackEffect, FS.TargetTypes.STACK_EFFECT, target)
+
+            return true
+        end
+
+        return result
+    end
+
+    function result.Target:Item(filterFunc, hint)
+        hint = hint or 'Choose an Item'
+
+        result.lootChecks[#result.lootChecks+1] = function (player)
+            return #filterFunc(player) > 0
+        end
+
+        result.lootCosts[#result.lootCosts+1] = function (stackEffect)
+            local player = GetPlayer(stackEffect.OwnerIdx)
+            local options = filterFunc(player)
+            local ipids = {}
+            for _, item in ipairs(options) do
+                ipids[#ipids+1] = item.IPID
+            end
+
+
+            -- TODO add optional
+            local ipid = ChooseItem(player.Idx, ipids, hint)
+            AddTarget(stackEffect, FS.TargetTypes.ITEM, ipid)
 
             return true
         end
@@ -547,7 +582,7 @@ function FS.F.Players()
     return result
 end
 
-function FS.F.StackEffect()
+function FS.F.StackEffects()
     local result = {}
 
     result.filters = {}
@@ -574,6 +609,41 @@ function FS.F.StackEffect()
     function result:Rolls()
         result.filters[#result.filters+1] = function (stackEffect)
             return IsRollStackEffect(stackEffect)
+        end
+        return result
+    end
+
+    return result
+end
+
+function FS.F.Items()
+    local result = {}
+
+    result.filters = {}
+
+    function result:Do()
+        local res = {}
+        local stackEffects = GetItems()
+        local filter = function (item)
+            for _, f in ipairs(result.filters) do
+                if not f(item) then
+                    return false
+                end
+            end
+            return true
+        end
+        for _, item in ipairs(stackEffects) do
+            if filter(item) then
+                res[#res+1] = item
+            end
+        end
+        return res
+    end
+
+    function result:Rechargeable()
+        result.filters[#result.filters+1] = function (item)
+            -- TODO some effect prohibit this
+            return item.Tapped
         end
         return result
     end

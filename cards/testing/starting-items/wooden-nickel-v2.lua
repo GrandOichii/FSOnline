@@ -2,7 +2,6 @@ function _Create()
     return FS.B.Item()
         :ActivatedAbility(
             FS.B.ActivatedAbility('{T}', 'Choose a player, then roll- that player gains {cent} equal to the result.')
-                -- TODO tap
                 .Cost:Common(
                     FS.C.Cost:Tap()
                 )
@@ -20,5 +19,6 @@ function _Create()
                 )
             :Build()
         )
+        :Label(FS.Labels.Eternal)
     :Build()
 end

@@ -473,6 +473,27 @@ public class Player : IStateModifier {
         }
     }
 
+    /// <summary>
+    /// Prompts the user an item choice from a list of options and checks it's validity
+    /// </summary>
+    /// <param name="options">List of item in-play IDs</param>
+    /// <param name="hint">Hint</param>
+    /// <returns>The picked valid IPID</returns>
+    /// <exception cref="MatchException"></exception>
+    public async Task<string> ChooseItem(List<string> options, string hint) {
+        while (true) {
+            var result = await Controller.ChooseItem(Match, Idx, options, hint);
+
+            if (!options.Contains(result)) {
+                if (Match.Config.StrictMode)
+                    throw new MatchException($"Invalid choice for picking item IPID - {result} (player: {LogName})");
+                continue;
+            }
+
+            return result;
+        }
+    }
+
     public async Task<int> ChoosePlayer(List<int> options, string hint, bool optional=false) {
         while (true) {
             var result = await Controller.ChoosePlayer(Match, Idx, options, hint);

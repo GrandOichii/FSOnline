@@ -6,6 +6,7 @@ namespace FSCore.Matches.Targets;
 public enum TargetType {
     PLAYER,
     STACK_EFFECT,
+    ITEM,
 }
 
 /// <summary>

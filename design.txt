@@ -3,7 +3,7 @@
 - activated abilities
     - cost
 v        - tapping
-        - removing counters
+v        - removing counters
 v        - paying coins
             - reducing the amount of coins payed to activate abilties
         - discarding loot cards
@@ -122,7 +122,7 @@ v    - trinkets
         - item filtering
 v        - item recharging
         - gaining treasure
-        - counters
+v        - counters
         - named counters
         - losing all effects
         - becoming souls

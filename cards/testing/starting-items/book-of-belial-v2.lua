@@ -9,7 +9,7 @@ function _Create()
                 )
                 .Target:StackEffect(
                     function (me, player)
-                        return FS.F.StackEffect():Rolls():Do()
+                        return FS.F.StackEffects():Rolls():Do()
                     end
                 )
                 .Effect:Common(

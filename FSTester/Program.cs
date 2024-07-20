@@ -114,7 +114,21 @@ public class ConsolePlayerController : IPlayerController
         var result = Console.ReadLine()
             ?? throw new Exception("Failed to read hand index choice in ChooseCardInHand")
         ;
-        return Task.FromResult(int.Parse(result));   
+        return Task.FromResult(int.Parse(result));
+    }
+
+    public Task<string> ChooseItem(Match match, int playerIdx, List<string> options, string hint)
+    {
+        System.Console.WriteLine("(ChooseItem)");
+        System.Console.WriteLine(hint);
+        System.Console.WriteLine("Options:");
+        foreach (var option in options)
+            System.Console.WriteLine($"\t{option} - {match.GetInPlayCard(option).LogName}");
+            
+        var result = Console.ReadLine()
+            ?? throw new Exception("Failed to read item IPID choice in ChooseCardInHand")
+        ;
+        return Task.FromResult(result);   
     }
 }
 
@@ -212,12 +226,6 @@ public class Program {
         }
     }
 
-    public class A {
-        public string Name { get; set; }
-    }
-    public class B : A {
-        public string Another { get; set; }
-    }
     public static async Task Main(string[] args) {
         var config = ReadConfigYAML(
             File.ReadAllText("../configs/base.yaml")

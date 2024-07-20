@@ -28,6 +28,9 @@
         "IsAbilityActivation",
         "PutGenericCounters",
         "GetCountersCount",
-        "RemoveCounters"
+        "RemoveCounters",
+        "GetInPlayItem",
+        "GetItems",
+        "ChooseItem"
     ]
 }
