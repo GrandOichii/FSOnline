@@ -23,6 +23,15 @@ FS.C = {}
 -- common effects
 FS.C.Effect = {}
 
+function FS.C.Effect.PutGenericCountersOnMe(amount)
+    return function (stackEffect)
+        assert(IsAbilityActivation(stackEffect), 'Provided a non-ability-activation stack effect for FS.C.Effect.PutGenericCountersOnMe')
+
+        local card = stackEffect.Card
+        PutGenericCounters(card.IPID, amount)
+    end
+end
+
 function FS.C.Effect.GainCoins(amount)
     return function (stackEffect)
         AddCoins(stackEffect.OwnerIdx, amount)
@@ -90,20 +99,25 @@ function FS.C.Effect.Loot(amount)
     end
 end
 
+-- TODO change hint to hintFunc
 function FS.C.Effect.Discard(amount, hint)
     hint = hint or 'Choose a card to discard'
     return function (stackEffect)
-        local player_idx = stackEffect.OwnerIdx
-        local hand = GetPlayer(player_idx).Hand
-        local indicies = {}
-        for i = 0, hand.Count - 1 do
-            indicies[#indicies+1] = i
+        -- TODO could be better
+        for di = 0, amount - 1 do
+            local player_idx = stackEffect.OwnerIdx
+            local hand = GetPlayer(player_idx).Hand
+            local indicies = {}
+            for i = 0, hand.Count - 1 do
+                indicies[#indicies+1] = i
+            end
+            if #indicies == 0 then
+                return false
+            end
+            local choice = ChooseCardInHand(player_idx, indicies, hint)
+            DiscardFromHand(player_idx, choice)
+            SoftReloadState()
         end
-        if #indicies == 0 then
-            return false
-        end
-        local choice = ChooseCardInHand(player_idx, indicies, hint)
-        DiscardFromHand(player_idx, choice)
 
         return true
     end
@@ -122,6 +136,36 @@ function FS.C.Cost.Tap()
 
     function result.Check(me, player)
         return not me.Tapped
+    end
+
+    return result
+end
+
+function FS.C.Cost.RemoveCounters(amount)
+    local result = {}
+
+    function result.Pay(me, player, stackEffect)
+        RemoveCounters(me.IPID, amount)
+        return true
+    end
+
+    function result.Check(me, player)
+        return GetCountersCount(me.IPID) >= amount
+    end
+
+    return result
+end
+
+function FS.C.Cost.DiscardLoot(amount, hint)
+    local result = {}
+
+    function result.Pay(me, player, stackEffect)
+        FS.C.Effect.Discard(amount, hint)(stackEffect)
+        return true
+    end
+
+    function result.Check(me, player)
+        return player.Hand.Count >= amount
     end
 
     return result

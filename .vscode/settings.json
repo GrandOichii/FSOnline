@@ -24,6 +24,10 @@
         "ModRoll",
         "ChooseCardInHand",
         "DiscardFromHand",
-        "SoftReloadState"
+        "SoftReloadState",
+        "IsAbilityActivation",
+        "PutGenericCounters",
+        "GetCountersCount",
+        "RemoveCounters"
     ]
 }

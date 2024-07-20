@@ -161,7 +161,7 @@ v        - rerolling
         - forbidding playing loot cards
         - forbidding playing n loot cards
 v        - looting
-        - discarding loot
+v        - discarding loot
         - stealing loot cards from hand
 v        - playing additional loot cards
         - playing copies of cards in hand

@@ -43,7 +43,7 @@ func process_update(update: Variant):
 	Match.load_snapshot(update.Match)
 
 	Controller.set_last_update(update)
-#
+
 	Hint.text = update.Hint
 	Request.text = update.Request
 	var text = ''

@@ -189,6 +189,11 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public bool IsAbilityActivation(StackEffect stackEffect) {
+        return stackEffect is ActivatedAbilityStackEffect;
+    }
+
+    [LuaCommand]
     public StackEffect GetStackEffect(string sid) {
         return _match.Stack.Effects.First(se => se.SID == sid);
     }
@@ -215,6 +220,27 @@ public class ScriptMaster {
     [LuaCommand]
     public void SoftReloadState() {
         _match.SoftReloadState()
+            .Wait();
+    }
+
+    [LuaCommand]
+    public void PutGenericCounters(string ipid, int amount) {
+        var item = _match.GetInPlayCard(ipid);
+
+        item.AddCounters(amount)
+            .Wait();
+    }
+
+    [LuaCommand]
+    public int GetCountersCount(string ipid) {
+        var item = _match.GetInPlayCard(ipid);
+        return item.GetCountersCount();
+    }
+
+    [LuaCommand]
+    public void RemoveCounters(string ipid, int amount) {
+        var item = _match.GetInPlayCard(ipid);
+        item.RemoveCounters(amount)
             .Wait();
     }
 }

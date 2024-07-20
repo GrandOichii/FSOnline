@@ -435,6 +435,21 @@ public class Player : IStateModifier {
             card.UpdateState();
     }
 
+    public async Task<string> PromptAction(List<string> options) {
+        while (true) {
+            var result = await Controller.PromptAction(Match, Idx, options);
+
+            if (!options.Contains(result)) {
+                if (Match.Config.StrictMode)
+                    throw new MatchException($"Invalid choice for picking action - {result} (player: {LogName})");
+                System.Console.WriteLine("NO");
+                continue;
+            }
+
+            return result;
+        }
+    }
+
     #region Choice
 
     /// <summary>

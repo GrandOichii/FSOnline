@@ -89,7 +89,8 @@ public class ActionPhase : IPhase
         if (options.Count == 0) {
             throw new MatchException($"Player {player.LogName} doens't have any available actions");
         }
-        return await player.Controller.PromptAction(player.Match, player.Idx, options);
+        
+        return await player.PromptAction(options);
     }
 
     public Task PreEmit(Match match, int playerIdx)
