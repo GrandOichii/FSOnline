@@ -18,9 +18,9 @@ func set_controller(controller: MatchController):
 		Behavior.set_controller(controller)
 	
 func load_snapshot(snapshot: Variant):
+	set_key(snapshot.Key)
 	if Behavior != null:
 		Behavior.load_snapshot(snapshot)
-	set_key(snapshot.Key)
 
 func set_key(key: String):
 	if _prev_key == key:

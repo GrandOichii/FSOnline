@@ -1,0 +1,7 @@
+{
+    "Key": "book-of-belial-v2",
+    "Name": "Book of Belial",
+    "Type": "Item",
+    "Text": "{T}: Add or subtract 1 from a roll.\nAt the end of your turn, recharge this.",
+    "Script": "book-of-belial-v2.lua"
+}

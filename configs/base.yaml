@@ -22,10 +22,10 @@ LootCards:
   3-cents-v2: 10
   a-sack-v2: 10
   counterfeit-penny-v2: 10
-  orange-green-pills-v2: 100
-  chunk-of-amber-warp: 10
+  orange-green-pills-v2: 10
+  chunk-of-amber-warp: 100
   xvii-the-stars-v2: 10
-  dice-shard-v2: 100
+  dice-shard-v2: 10
 Treasures:
   # - mystery-sack-v2
   # - portable-slot-machine-v2
@@ -47,7 +47,9 @@ Characters:
   - guppy-v2
   - the-keeper-v2
   - isaac-v2
+  - judas-v2
 StartingItems:
   - infestation-v2
   - wooden-nickel-v2
+  - book-of-belial-v2
   - the-d6-v2

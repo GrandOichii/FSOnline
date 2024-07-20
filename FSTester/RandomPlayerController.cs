@@ -55,4 +55,10 @@ public class RandomPlayerController : IPlayerController
         await Task.Delay(_delay);
         return GetRandom(options);
     }
+
+    public async Task<int> ChooseCardInHand(Match match, int playerIdx, List<int> options, string hint)
+    {
+        await Task.Delay(_delay);
+        return GetRandom(options);
+    }
 }

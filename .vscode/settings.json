@@ -20,6 +20,10 @@
         "GetStackEffect",
         "GetStackEffects",
         "IsRollStackEffect",
-        "ChooseStackEffect"
+        "ChooseStackEffect",
+        "ModRoll",
+        "ChooseCardInHand",
+        "DiscardFromHand",
+        "SoftReloadState"
     ]
 }

@@ -18,6 +18,7 @@ func set_player_idx(idx: int):
 	
 func set_hand_idx(idx: int):
 	hand_idx = idx
+	Card.Behavior.set_hand_idx(idx)
 	
 func load_snapshot(snapshot: Variant):
 	var player = snapshot.Players[player_idx]
@@ -29,5 +30,6 @@ func load_snapshot(snapshot: Variant):
 	
 	# card is visible
 	Overlay.hide()
-	Card.load_snapshot(player.VisibleHandCards[hand_idx])
 	Card.Behavior.set_visible(true)
+	Card.load_snapshot(player.VisibleHandCards[hand_idx])
+	

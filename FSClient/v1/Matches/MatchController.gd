@@ -67,13 +67,16 @@ func can_choose_stack_effect(sid: String) -> bool:
 func choose_stack_effect(sid: String):
 	send(str(sid))
 
-#func can_pick_card_in_hand(hand_idx: int) -> bool:
-	#if last_update.Request != 'PickCardInHand':
-		#return false
-	#return str(hand_idx) in last_update.Args.values()
-	#
-#func pick_card_in_hand(hand_idx: int):
-	#send(str(hand_idx))
+func can_choose_card_in_hand(hand_idx: int) -> bool:
+	if last_update.Request != 'ChooseCardInHand':
+		return false
+	for v in last_update.Args.values():
+		if v == hand_idx:
+			return true
+	return false
+	
+func choose_card_in_hand(hand_idx: int):
+	send(str(hand_idx))
 
 func send(msg: String):
 	Response.emit(msg)

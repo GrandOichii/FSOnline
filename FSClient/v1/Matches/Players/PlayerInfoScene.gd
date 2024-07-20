@@ -21,10 +21,6 @@ class_name PlayerInfoScene
 var _controller: MatchController
 var _player_idx: int
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-	
 func set_controller(controller: MatchController):
 	_controller = controller
 	_controller.Update.connect(on_update)

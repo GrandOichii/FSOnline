@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardImages" load_steps=43 format=3 uid="uid://dk2vd8k0k3uch"]
+[gd_resource type="Resource" script_class="CardImages" load_steps=49 format=3 uid="uid://dk2vd8k0k3uch"]
 
 [ext_resource type="Script" path="res://v1/CardImages.gd" id="1_boc33"]
 [ext_resource type="Texture2D" uid="uid://dbsttoe2t228y" path="res://assets/images/card/cards/guppy-v2.png" id="1_exema"]
@@ -22,6 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://b6s1pqv7cd81r" path="res://assets/images/card/cards/isaac-v2.png" id="19_wxn0t"]
 [ext_resource type="Texture2D" uid="uid://bfkd5kb0q6qv0" path="res://assets/images/card/cards/the-d6-v2.png" id="20_ngyda"]
 [ext_resource type="Texture2D" uid="uid://cn3kklxee1h3u" path="res://assets/images/card/cards/dice-shard-v2.png" id="21_n8wcb"]
+[ext_resource type="Texture2D" uid="uid://dthvgvfi3eac1" path="res://assets/images/card/cards/judas-v2.png" id="22_q0d5t"]
+[ext_resource type="Texture2D" uid="uid://d33xk0numi72q" path="res://assets/images/card/cards/book-of-belial-v2.png" id="23_lo0v6"]
+[ext_resource type="Texture2D" uid="uid://btv8exuhn2ta1" path="res://assets/images/card/cards/chunk-of-amber-warp.png" id="24_rdowv"]
 
 [sub_resource type="Resource" id="Resource_3qwmf"]
 script = ExtResource("1_v0pgv")
@@ -123,6 +126,21 @@ script = ExtResource("1_v0pgv")
 card_key = "dice-shard-v2"
 image = ExtResource("21_n8wcb")
 
+[sub_resource type="Resource" id="Resource_h03qq"]
+script = ExtResource("1_v0pgv")
+card_key = "judas-v2"
+image = ExtResource("22_q0d5t")
+
+[sub_resource type="Resource" id="Resource_dtlai"]
+script = ExtResource("1_v0pgv")
+card_key = "book-of-belial-v2"
+image = ExtResource("23_lo0v6")
+
+[sub_resource type="Resource" id="Resource_s1yg2"]
+script = ExtResource("1_v0pgv")
+card_key = "chunk-of-amber-warp"
+image = ExtResource("24_rdowv")
+
 [resource]
 script = ExtResource("1_boc33")
-Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew"), SubResource("Resource_k1c4c"), SubResource("Resource_vt8mp"), SubResource("Resource_rmb1q"), SubResource("Resource_1ampk"), SubResource("Resource_pbjhe"), SubResource("Resource_4krbf"), SubResource("Resource_lb85l"), SubResource("Resource_d4gxl"), SubResource("Resource_s36j7"), SubResource("Resource_jangg"), SubResource("Resource_1f3i8"), SubResource("Resource_s3iab"), SubResource("Resource_ycocx"), SubResource("Resource_840ki"), SubResource("Resource_dktxc"), SubResource("Resource_wys4p"), SubResource("Resource_37bwl"), SubResource("Resource_k6xgr")])
+Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew"), SubResource("Resource_k1c4c"), SubResource("Resource_vt8mp"), SubResource("Resource_rmb1q"), SubResource("Resource_1ampk"), SubResource("Resource_pbjhe"), SubResource("Resource_4krbf"), SubResource("Resource_lb85l"), SubResource("Resource_d4gxl"), SubResource("Resource_s36j7"), SubResource("Resource_jangg"), SubResource("Resource_1f3i8"), SubResource("Resource_s3iab"), SubResource("Resource_ycocx"), SubResource("Resource_840ki"), SubResource("Resource_dktxc"), SubResource("Resource_wys4p"), SubResource("Resource_37bwl"), SubResource("Resource_k6xgr"), SubResource("Resource_h03qq"), SubResource("Resource_dtlai"), SubResource("Resource_s1yg2")])

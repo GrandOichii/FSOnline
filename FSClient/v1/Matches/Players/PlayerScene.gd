@@ -91,8 +91,8 @@ func load_hand(snapshot: Variant):
 		Hand.add_child(child)
 		
 		var hand_card = child as HandCardScene
-		hand_card.set_player_idx(player_idx)
 		hand_card.set_controller(_controller)
+		hand_card.set_player_idx(player_idx)
 		
 	var hi = 0
 	for hand_card in Hand.get_children():

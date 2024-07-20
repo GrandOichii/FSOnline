@@ -123,4 +123,15 @@ public class IOPlayerController : IPlayerController
 
         return await _handler.Read();    
     }
+
+    public async Task<int> ChooseCardInHand(Match match, int playerIdx, List<int> options, string hint)
+    {
+        await WriteData(new(match, playerIdx) {
+            Request = "ChooseCardInHand",
+            Hint = hint,
+            Args = ToArgs(options),
+        });
+
+        return int.Parse(await _handler.Read());
+    }
 }

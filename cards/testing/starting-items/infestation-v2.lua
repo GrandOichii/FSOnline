@@ -8,9 +8,8 @@ function _Create()
                     FS.C.Cost.Tap()
                 )
                 .Effect:Common(
-                    FS.C.Effect.Loot(2)
-                    -- TODO add back
-                    -- FS.C.Effect.Discard(1)
+                    FS.C.Effect.Loot(2),
+                    FS.C.Effect.Discard(1)
                 )
                 :Build()
         )

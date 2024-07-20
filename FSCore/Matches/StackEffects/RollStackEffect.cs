@@ -45,4 +45,14 @@ public class RollStackEffect : StackEffect
 
         SetValue();
     }
+
+    public void Modify(int mod) {
+        var prev = Value;
+        Value += mod;
+
+        if (Value < 1 || Value > 6) 
+            throw new MatchException($"Roll modification led to roll value being set to {Value} (original: {prev}, mod: {mod})");
+
+        Match.LogInfo($"Modified roll value {prev} -> {Value}");
+    }
 }

@@ -146,7 +146,7 @@ v         - playing with a revealed hand
         - enter play trigger
         - forbidding discarding rooms
     - dice
-        - rerolling
+v        - rerolling
         - adding or subtracting points
         - on specific dice rolled
             - checking the type of dice rolled (attack roll)

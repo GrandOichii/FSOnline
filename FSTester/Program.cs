@@ -102,6 +102,20 @@ public class ConsolePlayerController : IPlayerController
         // TODO
         return Task.CompletedTask;
     }
+
+    public Task<int> ChooseCardInHand(Match match, int playerIdx, List<int> options, string hint)
+    {
+        System.Console.WriteLine("(ChooseCardInHand)");
+        System.Console.WriteLine(hint);
+        System.Console.WriteLine("Options:");
+        foreach (var option in options)
+            System.Console.WriteLine($"\t{option} - {match.GetPlayer(playerIdx).Hand[option].Card.LogName}");
+            
+        var result = Console.ReadLine()
+            ?? throw new Exception("Failed to read hand index choice in ChooseCardInHand")
+        ;
+        return Task.FromResult(int.Parse(result));   
+    }
 }
 
 public class Program {
@@ -192,8 +206,8 @@ public class Program {
         while (true) {
             try {
                 await TcpMatch(config, 3, 1);
-            } catch (Exception) {
-
+            } catch (Exception e) {
+                PrintException(e);
             }
         }
     }

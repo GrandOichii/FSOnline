@@ -152,7 +152,6 @@ public class ScriptMaster {
             .GetAwaiter().GetResult();
 
         return result;
-
     }
 
     [LuaCommand]
@@ -172,6 +171,14 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public void ModRoll(StackEffect stackEffect, int mod) {
+        if (stackEffect is not RollStackEffect rollEffect)
+            throw new MatchException($"Tried to modify a non-roll stack effect: {stackEffect}");
+
+        rollEffect.Modify(mod);
+    }
+
+    [LuaCommand]
     public LuaTable GetStackEffects() {
         return LuaUtility.CreateTable(_match.LState, _match.Stack.Effects);
     }
@@ -184,5 +191,30 @@ public class ScriptMaster {
     [LuaCommand]
     public StackEffect GetStackEffect(string sid) {
         return _match.Stack.Effects.First(se => se.SID == sid);
+    }
+
+    // TODO only allows to pick a card in your own hand
+    [LuaCommand]
+    public int ChooseCardInHand(int playerIdx, LuaTable optionsTable, string hint) {
+        var options = LuaUtility.ParseTable(optionsTable);
+
+        var player = _match.GetPlayer(playerIdx);
+        var result = player.ChooseCardInHand(options, hint)
+            .GetAwaiter().GetResult();
+
+        return result;
+    }
+
+    [LuaCommand]
+    public void DiscardFromHand(int playerIdx, int handIdx) {
+        var player = _match.GetPlayer(playerIdx);
+        player.DiscardFromHand(handIdx)
+            .Wait();
+    }
+
+    [LuaCommand]
+    public void SoftReloadState() {
+        _match.SoftReloadState()
+            .Wait();
     }
 }

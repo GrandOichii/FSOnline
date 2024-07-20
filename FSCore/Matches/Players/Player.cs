@@ -186,7 +186,7 @@ public class Player : IStateModifier {
             }
             return amount;
         } catch (Exception e) {
-            throw new MatchException($"Failed to modify coin gain amount for player {LogName} (initial amount: {amount})");
+            throw new MatchException($"Failed to modify coin gain amount for player {LogName} (initial amount: {initial})", e);
         }
     }
 
@@ -223,6 +223,18 @@ public class Player : IStateModifier {
     #endregion
 
     #region Discard
+
+    public async Task DiscardFromHand(int handIdx) {
+        var card = Hand[handIdx];
+        var removed = RemoveFromHand(card);
+        if (!removed)
+            throw new MatchException($"Failed to remove card {card.Card.LogName} from hand of player {LogName} (idx: {handIdx})");
+
+        await Match.PlaceIntoDiscard(card.Card);
+
+        // TODO add trigger
+        // TODO add update
+    }
 
     /// <summary>
     /// Forces the player to discard to hand size
@@ -467,6 +479,21 @@ public class Player : IStateModifier {
             if (!options.Contains(result)) {
                 if (Match.Config.StrictMode)
                     throw new MatchException($"Invalid choice for picking stack effect - {result} (player: {LogName})");
+                continue;
+            }
+
+            return result;
+        }
+    }
+    
+    
+    public async Task<int> ChooseCardInHand(List<int> options, string hint, bool optional=false) {
+        while (true) {
+            var result = await Controller.ChooseCardInHand(Match, Idx, options, hint);
+
+            if (!options.Contains(result)) {
+                if (Match.Config.StrictMode)
+                    throw new MatchException($"Invalid choice for picking card in hand - {result} (player: {LogName})");
                 continue;
             }
 

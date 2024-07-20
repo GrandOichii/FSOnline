@@ -39,9 +39,40 @@ end
 
 function FS.C.Effect.RerollTargetRoll(target_idx)
     return function (stackEffect)
-        -- TODO assert stack effect type
         local effect = GetStackEffect(stackEffect.Targets[target_idx].Value)
+
+        assert(IsRollStackEffect(effect), 'Provided a non-roll target stack effect for FS.C.Effect.ModifyTargetRoll')
+
         RerollDice(effect)
+    end
+end
+
+function FS.C.Effect.ModifyTargetRoll(target_idx, options, hint)
+    hint = hint or 'Choose roll modifier'
+    return function (stackEffect)
+        local rollStackEffect = GetStackEffect(stackEffect.Targets[target_idx].Value)
+
+        assert(IsRollStackEffect(rollStackEffect), 'Provided a non-roll target stack effect for FS.C.Effect.ModifyTargetRoll')
+
+        local rolled = rollStackEffect.Value
+        local optionsIndex = {}
+        local optionsT = {}
+        for _, pair in ipairs(options) do
+            if rolled + pair.mod >= 1 and rolled + pair.mod <= 6 then
+                optionsT[#optionsT+1] = pair.option
+                optionsIndex[pair.option] = pair.mod
+            end
+        end
+
+        assert(#optionsT > 0, 'Provided invalid options table for FS.C.Effect.ModifyTargetRoll (optionsT table is empty)')
+
+        local choice = optionsT[1]
+        if #optionsT > 1 then
+            choice = PromptString(stackEffect.OwnerIdx, optionsT, hint)
+        end
+
+        local mod = optionsIndex[choice]
+        ModRoll(rollStackEffect, mod)
     end
 end
 
@@ -59,9 +90,20 @@ function FS.C.Effect.Loot(amount)
     end
 end
 
-function FS.C.Effect.Discard(amount)
+function FS.C.Effect.Discard(amount, hint)
+    hint = hint or 'Choose a card to discard'
     return function (stackEffect)
-        -- TODO
+        local player_idx = stackEffect.OwnerIdx
+        local hand = GetPlayer(player_idx).Hand
+        local indicies = {}
+        for i = 0, hand.Count - 1 do
+            indicies[#indicies+1] = i
+        end
+        if #indicies == 0 then
+            return false
+        end
+        local choice = ChooseCardInHand(player_idx, indicies, hint)
+        DiscardFromHand(player_idx, choice)
 
         return true
     end
@@ -195,7 +237,6 @@ function FS.B.Card()
         hint = hint or 'Choose stack effect'
         -- TODO
         result.lootChecks[#result.lootChecks+1] = function (player)
-            print(#filterFunc(player))
             return #filterFunc(player) > 0
         end
 

@@ -40,6 +40,8 @@ func process_match_info(match_info: Variant):
 	print(match_info)
 
 func process_update(update: Variant):
+	Match.load_snapshot(update.Match)
+
 	Controller.set_last_update(update)
 #
 	Hint.text = update.Hint
@@ -49,7 +51,6 @@ func process_update(update: Variant):
 		text += key + ': ' + str(update.Args[key]) + '\n'
 	Options.text = text
 	
-	Match.load_snapshot(update.Match)
 	#if update.Request == 'PickOption':
 		#setup_pick_string(update)
 		#return
