@@ -1,0 +1,7 @@
+{
+    "Key": "the-battery-v2",
+    "Name": "The Battery",
+    "Type": "Item",
+    "Text": "{T}: Recharge another item.",
+    "Script": "the-battery-v2.lua"
+}

@@ -88,4 +88,8 @@ public struct MatchConfig {
     /// Default amount of loot cards a player can play per turn
     /// </summary>
     public required int LootPlay { get; set; }
+    /// <summary>
+    /// Shows whether character cards start the match already tapped
+    /// </summary>
+    public required bool CharactersStartTapped { get; set; }
 }

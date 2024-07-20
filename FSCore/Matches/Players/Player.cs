@@ -61,6 +61,7 @@ public class Player : IStateModifier {
         Hand = new();
         Items = new();
         Character = new(match, this, characterTemplate);
+
         // Initial state
         State = new(this);
     }
@@ -70,6 +71,9 @@ public class Player : IStateModifier {
     /// </summary>
     public async Task Setup() {
         await Controller.Setup(Match, Idx);
+
+        if (Match.Config.CharactersStartTapped)
+            Character.Tapped = true;
 
         await AddStartingItems();
 

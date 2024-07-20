@@ -14,7 +14,7 @@ public class InPlayMatchCard : IStateModifier {
     /// <summary>
     /// Shows whether the card is tapped (deactivated)
     /// </summary>
-    public bool Tapped { get; private set; }
+    public bool Tapped { get; set; } = false;
     /// <summary>
     /// List of counters
     /// </summary>
@@ -25,6 +25,7 @@ public class InPlayMatchCard : IStateModifier {
 
         IPID = card.Match.GenerateInPlayID();
         Counters = new();
+        System.Console.WriteLine(Tapped);
     }
 
     public string LogName => $"{Card.Template.Name} [{IPID} ({Card.ID})]";

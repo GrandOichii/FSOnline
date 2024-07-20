@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardImages" load_steps=55 format=3 uid="uid://dk2vd8k0k3uch"]
+[gd_resource type="Resource" script_class="CardImages" load_steps=57 format=3 uid="uid://dk2vd8k0k3uch"]
 
 [ext_resource type="Script" path="res://v1/CardImages.gd" id="1_boc33"]
 [ext_resource type="Texture2D" uid="uid://dbsttoe2t228y" path="res://assets/images/card/cards/guppy-v2.png" id="1_exema"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://ymlwftl6k1tm" path="res://assets/images/card/cards/the-hoarder-requiem.png" id="25_q0j7b"]
 [ext_resource type="Texture2D" uid="uid://b2h43y1qevi3w" path="res://assets/images/card/cards/bag-of-crafting-requiem.png" id="26_pdj45"]
 [ext_resource type="Texture2D" uid="uid://0mh2et25tlkp" path="res://assets/images/card/cards/lil-battery-v2.png" id="27_jbqju"]
+[ext_resource type="Texture2D" uid="uid://5hm3j5yenfkl" path="res://assets/images/card/cards/the-battery-v2.png" id="28_almhx"]
 
 [sub_resource type="Resource" id="Resource_3qwmf"]
 script = ExtResource("1_v0pgv")
@@ -156,9 +157,14 @@ image = ExtResource("26_pdj45")
 
 [sub_resource type="Resource" id="Resource_3pbr1"]
 script = ExtResource("1_v0pgv")
-card_key = "lil-battery-v2"
+card_key = "lil-battery"
 image = ExtResource("27_jbqju")
+
+[sub_resource type="Resource" id="Resource_pk4ov"]
+script = ExtResource("1_v0pgv")
+card_key = "the-battery-v2"
+image = ExtResource("28_almhx")
 
 [resource]
 script = ExtResource("1_boc33")
-Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew"), SubResource("Resource_k1c4c"), SubResource("Resource_vt8mp"), SubResource("Resource_rmb1q"), SubResource("Resource_1ampk"), SubResource("Resource_pbjhe"), SubResource("Resource_4krbf"), SubResource("Resource_lb85l"), SubResource("Resource_d4gxl"), SubResource("Resource_s36j7"), SubResource("Resource_jangg"), SubResource("Resource_1f3i8"), SubResource("Resource_s3iab"), SubResource("Resource_ycocx"), SubResource("Resource_840ki"), SubResource("Resource_dktxc"), SubResource("Resource_wys4p"), SubResource("Resource_37bwl"), SubResource("Resource_k6xgr"), SubResource("Resource_h03qq"), SubResource("Resource_dtlai"), SubResource("Resource_s1yg2"), SubResource("Resource_li4hp"), SubResource("Resource_meq3s"), SubResource("Resource_3pbr1")])
+Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew"), SubResource("Resource_k1c4c"), SubResource("Resource_vt8mp"), SubResource("Resource_rmb1q"), SubResource("Resource_1ampk"), SubResource("Resource_pbjhe"), SubResource("Resource_4krbf"), SubResource("Resource_lb85l"), SubResource("Resource_d4gxl"), SubResource("Resource_s36j7"), SubResource("Resource_jangg"), SubResource("Resource_1f3i8"), SubResource("Resource_s3iab"), SubResource("Resource_ycocx"), SubResource("Resource_840ki"), SubResource("Resource_dktxc"), SubResource("Resource_wys4p"), SubResource("Resource_37bwl"), SubResource("Resource_k6xgr"), SubResource("Resource_h03qq"), SubResource("Resource_dtlai"), SubResource("Resource_s1yg2"), SubResource("Resource_li4hp"), SubResource("Resource_meq3s"), SubResource("Resource_3pbr1"), SubResource("Resource_pk4ov")])

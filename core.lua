@@ -510,6 +510,53 @@ function FS.B.ActivatedAbility(costText, effectText)
         return result
     end
 
+
+    -- function result.Target:Item(filterFunc, hint)
+    --     hint = hint or 'Choose an Item'
+
+    --     result.lootChecks[#result.lootChecks+1] = function (player)
+    --         return #filterFunc(player) > 0
+    --     end
+
+    --     result.lootCosts[#result.lootCosts+1] = function (stackEffect)
+    --         local player = GetPlayer(stackEffect.OwnerIdx)
+    --         local options = filterFunc(player)
+    --         local ipids = {}
+    --         for _, item in ipairs(options) do
+    --             ipids[#ipids+1] = item.IPID
+    --         end
+
+
+    --         -- TODO add optional
+    --         local ipid = ChooseItem(player.Idx, ipids, hint)
+    --         AddTarget(stackEffect, FS.TargetTypes.ITEM, ipid)
+
+    --         return true
+    --     end
+
+    --     return result
+    -- end
+    function result.Target:Item(filterFunc, hint)
+        hint = hint or 'Choose an item'
+        result.costs[#result.costs+1] = {
+            Check = function (me, player)
+                return #filterFunc(me, player) > 0
+            end,
+            Pay = function (me, player, stackEffect)
+                local options = filterFunc(me, player)
+                local ipids = {}
+                for _, item in ipairs(options) do
+                    ipids[#ipids+1] = item.IPID
+                end
+                local ipid = ChooseItem(player.Idx, ipids, hint)
+                AddTarget(stackEffect, FS.TargetTypes.ITEM, ipid)
+                return true
+            end
+        }
+        return result
+    end
+
+    
     function result.Target:StackEffect(filterFunc, hint)
         hint = hint or 'Choose a stack effect'
         result.costs[#result.costs+1] = {
@@ -531,6 +578,8 @@ function FS.B.ActivatedAbility(costText, effectText)
         }
         return result
     end
+
+
 
     -- TODO repeated code
     -- add common effect(s)
@@ -644,6 +693,13 @@ function FS.F.Items()
         result.filters[#result.filters+1] = function (item)
             -- TODO some effect prohibit this
             return item.Tapped
+        end
+        return result
+    end
+
+    function result:Except(ipid)
+        result.filters[#result.filters+1] = function (item)
+            return item.IPID ~= ipid
         end
         return result
     end

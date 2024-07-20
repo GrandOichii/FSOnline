@@ -14,6 +14,7 @@ StrictMode: no
 PurchaseCountDefault: 1
 AttackCountDefault: 1
 LootStepLootAmount: 1
+CharactersStartTapped: yes
 
 LootPlay: 1
 # LootPlay: 100
@@ -24,26 +25,25 @@ LootCards:
   counterfeit-penny-v2: 10
   orange-green-pills-v2: 10
   chunk-of-amber-warp: 100
-  xvii-the-stars-v2: 10
+  xvii-the-stars-v2: 100
   dice-shard-v2: 10
-  lil-battery-v2: 100
+  lil-battery-v2: 10
 Treasures:
   # - mystery-sack-v2
   # - portable-slot-machine-v2
   # - the-butter-bean-v2
   # - pageant-boy-v2
   # - box-v2
-  - crooked-penny-v2
-  - crooked-penny-v2
-  - crooked-penny-v2
-  - crooked-penny-v2
-  - crooked-penny-v2
-  - crooked-penny-v2
-  - crooked-penny-v2
-  - crooked-penny-v2
-  - crooked-penny-v2
-  - crooked-penny-v2
-  # - box-v2
+  # - crooked-penny-v2
+  - the-battery-v2
+  - the-battery-v2
+  - the-battery-v2
+  - the-battery-v2
+  - the-battery-v2
+  - the-battery-v2
+  - the-battery-v2
+  - the-battery-v2
+  - the-battery-v2
 Characters:
   - guppy-v2
   - the-keeper-v2
