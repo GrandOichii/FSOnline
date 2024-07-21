@@ -219,6 +219,7 @@ public class Match {
         for (int i = 0; i < Config.InitialTreasureSlots; i++) {
             var slot = new TreasureSlot(TreasureDeck, i);
             await slot.Fill();
+            TreasureSlots.Add(slot);
         }
 
         // monsters
@@ -708,7 +709,7 @@ public class Match {
 
     public async Task PlaceOwnedCard(OwnedInPlayMatchCard card) {
         // TODO enter play effects
-        LogInfo($"Item {card.LogName} enters play");
+        LogInfo($"Item {card.LogName} enters play under control of {card.Owner.LogName}");
 
         await card.Owner.GainItem(card);
     }

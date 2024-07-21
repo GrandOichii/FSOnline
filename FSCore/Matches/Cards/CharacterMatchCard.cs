@@ -4,7 +4,7 @@ namespace FSCore.Matches.Cards;
 public class CharacterMatchCard : OwnedInPlayMatchCard
 {
     public CharacterMatchCard(Match match, Player owner, CharacterCardTemplate template)
-        : base(new(match, template), owner)
+        : base(new MatchCard(match, template), owner)
     {
 
     }

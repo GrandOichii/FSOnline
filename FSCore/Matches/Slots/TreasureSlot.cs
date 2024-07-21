@@ -9,5 +9,5 @@ public class TreasureSlot : Slot
 
     }
 
-
+    public override SlotData GetData() => new SlotData(this);
 }

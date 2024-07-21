@@ -381,6 +381,15 @@ public class Player : IStateModifier {
 
     #region In-play cards
 
+    public async Task GainControl(TreasureSlot slot) {
+        var card = slot.Card
+            ?? throw new MatchException($"Player {LogName} tried to gain control of treasure slot item at index [{slot.Idx}], which is empty");
+
+        await slot.Fill();
+        var newCard = new OwnedInPlayMatchCard(card, this);
+        await Match.PlaceOwnedCard(newCard);
+    }
+
     public async Task<List<OwnedInPlayMatchCard>> GainTreasure(int amount) {
         // TODO calculate actual amount
 
@@ -482,11 +491,14 @@ public class Player : IStateModifier {
     }
 
     public List<int> AvailableToPurchase() {
-        var indicies = new List<int> {-1};
+        var indicies = new List<int>();
+        if (Match.TreasureDeck.Size > 0) indicies.Add(-1);
+
         indicies.AddRange(Match.TreasureSlots.Select(slot => slot.Idx));
 
         var result = new List<int>();
         foreach (var idx in indicies) {
+            if (Match.TreasureSlots[idx].Card is null) continue;
             if (Coins < CostOfSlot(idx)) continue;
             result.Add(idx);
         }

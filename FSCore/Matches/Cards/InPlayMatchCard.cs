@@ -10,7 +10,7 @@ public class InPlayMatchCard : IStateModifier {
     /// <summary>
     /// Item ID
     /// </summary>
-    public string IPID { get; }
+    public string IPID { get; protected set; }
     /// <summary>
     /// Shows whether the card is tapped (deactivated)
     /// </summary>
@@ -18,7 +18,7 @@ public class InPlayMatchCard : IStateModifier {
     /// <summary>
     /// List of counters
     /// </summary>
-    public Dictionary<string, Counter> Counters { get; }
+    public Dictionary<string, Counter> Counters { get; protected set; }
     /// <summary>
     /// State
     /// </summary>

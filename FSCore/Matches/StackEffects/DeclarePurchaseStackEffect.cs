@@ -10,11 +10,9 @@ public class DeclarePurchaseStackEffect : StackEffect {
 
     public override async Task Resolve()
     {
-        // TODO
         var owner = Match.GetPlayer(OwnerIdx);
 
-        // TODO this has to happen in Player
-        var slot = -1;
+        var slot = await owner.ChooseItemToPurchase();
 
         bool payed = owner.TryPayCoinsForSlot(slot);
         if (!payed) {
@@ -27,6 +25,8 @@ public class DeclarePurchaseStackEffect : StackEffect {
             await owner.GainTreasureRaw(1);
             return;
         }
+
+        await owner.GainControl(Match.TreasureSlots[slot]);
     }
 
     public override StackEffectData ToData() => new DeclarePurchaseStackEffectData(this);

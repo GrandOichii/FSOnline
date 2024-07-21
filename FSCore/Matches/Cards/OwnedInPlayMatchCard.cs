@@ -13,6 +13,16 @@ public class OwnedInPlayMatchCard : InPlayMatchCard
         Owner = owner;
     }
 
+    public OwnedInPlayMatchCard(InPlayMatchCard original, Player owner)
+        : base (original.Card)
+    {
+        Owner = owner;
+        IPID = original.IPID;
+
+        Tapped = original.Tapped;
+        Counters = original.Counters;
+    }
+
     public void SetOwner(Player owner) {
         Owner = owner;
     }
