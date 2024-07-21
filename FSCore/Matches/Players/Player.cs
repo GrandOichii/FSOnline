@@ -270,7 +270,15 @@ public class Player : IStateModifier {
     /// Forces the player to discard to hand size
     /// </summary>
     public async Task DiscardToHandSize() {
-        // TODO
+        // TODO modify max hand size
+        var maxHandSize = Match.Config.MaxHandSize;
+
+        while (Hand.Count > maxHandSize) {
+            var options = new List<int>();
+            for (int i = 0; i < Hand.Count; i++) options.Add(i);
+            var idx = await ChooseCardInHand(options, $"Choose a card to discard (to hand size: {maxHandSize})");
+            await DiscardFromHand(idx);
+        }
     }
 
     #endregion

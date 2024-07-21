@@ -4,7 +4,7 @@ InitialTreasureSlots: 2
 InitialMonsterSlots: 2
 InitialRoomSlots: 2
 BonusSoulCount: 3
-InitialDealLoot: 3
+InitialDealLoot: 10
 InitialDealCoins: 3
 SoulsToWin: 4
 ForceInclude3PlusCards: yes
