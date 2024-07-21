@@ -11,11 +11,4 @@ public class ActivatedAbility : Ability {
     {
         CostText = LuaUtility.TableGet<string>(table, "CostText");
     }
-
-    public bool CanBeActivatedBy(InPlayMatchCard card, Player player) {
-        if (!card.CanBeActivatedBy(player)) return false;
-        // TODO other checks
-
-        return ExecuteCheck(card, player);
-    }
 }

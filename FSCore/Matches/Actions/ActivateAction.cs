@@ -30,10 +30,10 @@ public class ActivateAction : IAction
             throw new MatchException($"Activated ability activation check of card {card.LogName} failed during execution by player {player.LogName}");
         }
 
-        var effect = new ActivatedAbilityStackEffect(ability, card, player);
+        var effect = new ActivatedAbilityStackEffect(ability.Ability, card, player);
         await match.PlaceOnStack(effect);
 
-        var payed = ability.PayCosts(card, player, effect);
+        var payed = ability.Ability.PayCosts(card, player, effect);
         if (!payed) {
             match.RemoveTopOfStack();
             match.LogInfo($"Player {player.LogName} decided not to pay activation costs for activated ability {abilityIdx} of card {card.LogName}");

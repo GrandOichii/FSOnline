@@ -19,12 +19,19 @@ public class InPlayMatchCard : IStateModifier {
     /// List of counters
     /// </summary>
     public Dictionary<string, Counter> Counters { get; }
+    /// <summary>
+    /// State
+    /// </summary>
+    public InPlayMatchCardState State { get; private set; }
 
     public InPlayMatchCard(MatchCard card) {
         Card = card;
 
         IPID = card.Match.GenerateInPlayID();
         Counters = new();
+
+        // Initial state
+        State = new(this);
     }
 
     public string LogName => $"{Card.Template.Name} [{IPID} ({Card.ID})]";
@@ -56,9 +63,9 @@ public class InPlayMatchCard : IStateModifier {
     /// Gets all of the activated abilities of the card
     /// </summary>
     /// <returns>Activated abilities</returns>
-    public List<ActivatedAbility> GetActivatedAbilities() {
+    public List<ActivatedAbilityWrapper> GetActivatedAbilities() {
         // TODO use state
-        return Card.ActivatedAbilities;
+        return State.ActivatedAbilities;
     }
 
     /// <summary>
@@ -70,7 +77,7 @@ public class InPlayMatchCard : IStateModifier {
         return true;
     }
 
-    public ActivatedAbility GetActivatedAbility(int idx) {
+    public ActivatedAbilityWrapper GetActivatedAbility(int idx) {
         return GetActivatedAbilities()[idx];
     }
 
@@ -93,6 +100,7 @@ public class InPlayMatchCard : IStateModifier {
     public void UpdateState()
     {
         // TODO
+        State = new(this);
     }
 
     #region Counters

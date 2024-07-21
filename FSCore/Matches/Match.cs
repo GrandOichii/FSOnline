@@ -20,6 +20,7 @@ public class Match {
         ModificationLayer.ROLL_REPLACEMENT_EFFECTS,
         ModificationLayer.HAND_CARD_VISIBILITY,
         ModificationLayer.LOOT_PLAY_RESTRICTIONS,
+        ModificationLayer.ITEM_ACTIVATION_RESTRICTIONS,
     };
 
     /// <summary>

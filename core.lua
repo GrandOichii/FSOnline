@@ -21,6 +21,7 @@ FS.ModLayers = {
     LOOT_AMOUNT = 3,
     HAND_CARD_VISIBILITY = 4,
     LOOT_PLAY_RESTRICTIONS = 5,
+    ITEM_ACTIVATION_RESTRICTIONS = 6,
 }
 
 -- triggers
@@ -873,6 +874,13 @@ function FS.F.Players()
         return result
     end
 
+    function result:Except(player_idx)
+        result.filters[#result.filters+1] = function (player)
+            return player.Idx ~= player_idx
+        end
+        return result
+    end
+
     return result
 end
 
@@ -971,6 +979,14 @@ function FS.F.Items()
     function result:Except(ipid)
         result.filters[#result.filters+1] = function (item)
             return item.IPID ~= ipid
+        end
+        return result
+    end
+
+    function result:NotControlledBy(idx)
+        result.filters[#result.filters+1] = function (item)
+            -- TODO assert that is owned item
+            return item.Owner.Idx ~= idx
         end
         return result
     end
