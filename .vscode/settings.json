@@ -39,6 +39,11 @@
         "SetRollValue",
         "GetPlayersInTurnOrder",
         "IsTrigger",
-        "GetCurPlayerIdx"
+        "GetCurPlayerIdx",
+        "GetShopSlots",
+        "DiscardFromPlay"
+    ],
+    "Lua.diagnostics.disable": [
+        "empty-block"
     ]
 }

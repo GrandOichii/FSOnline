@@ -65,6 +65,10 @@ text = " Send "
 layout_mode = 2
 text = "Pass"
 
+[node name="PurchaseButton" type="Button" parent="Windows/ActionWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Declare purchase"
+
 [node name="Request" type="Label" parent="Windows/ActionWindow/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -90,7 +94,7 @@ text = "<options diplayed here>"
 [node name="ChooseStringWindow" type="Window" parent="Windows"]
 unique_name_in_owner = true
 initial_position = 2
-size = Vector2i(300, 100)
+size = Vector2i(410, 200)
 transient = true
 exclusive = true
 theme = ExtResource("5_xe5mv")
@@ -132,3 +136,4 @@ text = "No"
 [connection signal="Response" from="Controller" to="." method="_on_controller_response"]
 [connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/HBoxContainer/SendButton" to="." method="_on_send_button_pressed"]
 [connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/PassButton" to="." method="_on_pass_button_pressed"]
+[connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/PurchaseButton" to="." method="_on_purchase_button_pressed"]

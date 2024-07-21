@@ -631,6 +631,27 @@ public class Match {
 
     #region In-play cards
 
+    public async Task DiscardFromPlay(string ipid) {
+        await DiscardFromPlay(GetInPlayCard(ipid));
+    }
+
+    public async Task DiscardFromPlay(InPlayMatchCard card) {
+        // TODO check if is shop item
+        if (card is OwnedInPlayMatchCard ownedCard) {
+            LogInfo($"Removing card {ownedCard.LogName} from player {ownedCard.Owner.LogName}");
+            await ownedCard.Owner.RemoveItem(ownedCard);
+        }
+        foreach (var slot in TreasureSlots) {
+            if (slot.Card == card) {
+                LogInfo($"Removing card {card.LogName} from {slot.Name} slot [{slot.Idx}]");
+                await slot.Fill();
+                break;
+            }
+        }
+
+        await PlaceIntoDiscard(card.Card);
+    }
+
     public async Task StealItem(int playerIdx, string ipid) {
         var item = GetInPlayCard(ipid);
         var newOwner = GetPlayer(playerIdx);
@@ -682,6 +703,9 @@ public class Match {
             var result = player.GetInPlayCardOrDefault(ipid);
             if (result is not null) return result;
         }
+        foreach (var slot in TreasureSlots)
+            if (slot.Card is not null && slot.Card.IPID == ipid)
+                return slot.Card;
 
         return null;
     }
@@ -716,13 +740,11 @@ public class Match {
 
     public async Task DestroyItem(string ipid) {
         var card = GetInPlayCard(ipid);
+        await DestroyItem(card);
+    }
 
-        // TODO check if is shop item
-        if (card is OwnedInPlayMatchCard ownedCard) {
-            await ownedCard.Owner.RemoveItem(ownedCard);
-        }
-
-        await PlaceIntoDiscard(card.Card);
+    public async Task DestroyItem(InPlayMatchCard card) {
+        await DiscardFromPlay(card);
     }
 
     #endregion

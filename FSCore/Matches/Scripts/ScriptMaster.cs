@@ -101,6 +101,13 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public void DiscardFromPlay(string ipid) {
+        System.Console.WriteLine(ipid);
+        _match.DiscardFromPlay(ipid)
+            .Wait();
+    }
+
+    [LuaCommand]
     public LuaTable GainTreasure(int playerIdx, int amount) {
         var result = _match
             .GetPlayer(playerIdx)
@@ -313,5 +320,10 @@ public class ScriptMaster {
     [LuaCommand]
     public int GetCurPlayerIdx() {
         return _match.CurPlayerIdx;
+    }
+
+    [LuaCommand]
+    public LuaTable GetShopSlots() {
+        return LuaUtility.CreateTable(_match.LState, _match.TreasureSlots);
     }
 }

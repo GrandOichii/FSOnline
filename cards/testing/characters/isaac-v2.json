@@ -6,7 +6,6 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
-        "trinity-shield-v2",
         "the-d6-v2"
     ],
     "Script": "isaac-v2.lua"

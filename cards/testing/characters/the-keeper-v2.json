@@ -6,7 +6,7 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
-        "trinity-shield-v2",
+        "restock-v2",
         "wooden-nickel-v2"
     ],
     "Script": "the-keeper-v2.lua"

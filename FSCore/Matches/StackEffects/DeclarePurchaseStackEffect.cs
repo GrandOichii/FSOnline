@@ -12,6 +12,12 @@ public class DeclarePurchaseStackEffect : StackEffect {
     {
         var owner = Match.GetPlayer(OwnerIdx);
 
+        var available = owner.AvailableToPurchase();
+        if (available.Count == 0) {
+            Match.LogInfo($"Player {owner.LogName} failed to pay the cost to purchase an item");
+            return;
+        }
+
         var slot = await owner.ChooseItemToPurchase();
 
         bool payed = owner.TryPayCoinsForSlot(slot);

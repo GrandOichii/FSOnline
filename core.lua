@@ -830,6 +830,22 @@ function FS.B.TriggeredAbility(effectText)
         return result
     end
 
+    -- TODO add player filter
+    function result.On:TurnStart()
+        result.trigger = 'turn_start'
+
+        result.costs[#result.costs+1] = {
+            Check = function (me, player, args)
+                return args.playerIdx == player.Idx
+            end,
+            Pay = function (me, player, stackEffect, args)
+                return true
+            end
+        }
+
+        return result
+    end
+
     return result
 end
 

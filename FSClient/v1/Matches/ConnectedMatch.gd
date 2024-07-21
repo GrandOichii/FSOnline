@@ -92,6 +92,9 @@ func _input(e):
 		
 func send_pass():
 	Connection.Write('pass')
+	
+func send_declare_purchase():
+	Connection.Write('dp')
 
 func setup_pick_string(update: Variant):
 	ChooseStringText.text = update.Hint
@@ -138,3 +141,6 @@ func _on_controller_response(msg: String):
 
 func _on_pass_button_pressed():
 	send_pass()
+
+func _on_purchase_button_pressed():
+	send_declare_purchase()
