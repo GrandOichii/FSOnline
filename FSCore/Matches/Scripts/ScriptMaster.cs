@@ -309,4 +309,9 @@ public class ScriptMaster {
     public InPlayMatchCard? GetItemOrDefault(string ipid) {
         return _match.GetItemOrDefault(ipid);
     }
+
+    [LuaCommand]
+    public int GetCurPlayerIdx() {
+        return _match.CurPlayerIdx;
+    }
 }

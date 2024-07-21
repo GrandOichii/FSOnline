@@ -38,6 +38,15 @@ public class HandMatchCard : IStateModifier {
     public bool CanPlay(Player player) {
         var checks = Card.LootChecks;
 
+        // TODO merge these - on HandMatchCardState initialization fill PlayRestrictions with Card.LootChecks
+
+        // TODO catch exceptions
+        foreach (var restriction in State.PlayRestrictions) {
+            var returned = restriction.Call(this, player);
+            if (!LuaUtility.GetReturnAsBool(returned))
+                return false;
+        }
+
         // TODO catch exceptions
         foreach (var check in checks) {
             var returned = check.Call(this, player);

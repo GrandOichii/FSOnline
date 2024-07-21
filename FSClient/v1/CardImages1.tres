@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardImages" load_steps=85 format=3 uid="uid://dk2vd8k0k3uch"]
+[gd_resource type="Resource" script_class="CardImages" load_steps=87 format=3 uid="uid://dk2vd8k0k3uch"]
 
 [ext_resource type="Script" path="res://v1/CardImages.gd" id="1_boc33"]
 [ext_resource type="Texture2D" uid="uid://dbsttoe2t228y" path="res://assets/images/card/cards/guppy-v2.png" id="1_exema"]
@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://beoi6yxcaotcc" path="res://assets/images/card/cards/shiny-rock-v2.png" id="40_c0bcf"]
 [ext_resource type="Texture2D" uid="uid://dr38rc8ucflj0" path="res://assets/images/card/cards/guppys-tail-v2.png" id="41_3ypva"]
 [ext_resource type="Texture2D" uid="uid://c1cftbh4w6ssu" path="res://assets/images/card/cards/hourglass-v2.png" id="42_3aubw"]
+[ext_resource type="Texture2D" uid="uid://yuqag4ogplwb" path="res://assets/images/card/cards/trinity-shield-v2.png" id="43_j2u68"]
 
 [sub_resource type="Resource" id="Resource_3qwmf"]
 script = ExtResource("1_v0pgv")
@@ -249,6 +250,11 @@ script = ExtResource("1_v0pgv")
 card_key = "hourglass-v2"
 image = ExtResource("42_3aubw")
 
+[sub_resource type="Resource" id="Resource_2ycky"]
+script = ExtResource("1_v0pgv")
+card_key = "trinity-shield-v2"
+image = ExtResource("43_j2u68")
+
 [resource]
 script = ExtResource("1_boc33")
-Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew"), SubResource("Resource_k1c4c"), SubResource("Resource_vt8mp"), SubResource("Resource_rmb1q"), SubResource("Resource_1ampk"), SubResource("Resource_pbjhe"), SubResource("Resource_4krbf"), SubResource("Resource_lb85l"), SubResource("Resource_d4gxl"), SubResource("Resource_s36j7"), SubResource("Resource_jangg"), SubResource("Resource_1f3i8"), SubResource("Resource_s3iab"), SubResource("Resource_ycocx"), SubResource("Resource_840ki"), SubResource("Resource_dktxc"), SubResource("Resource_wys4p"), SubResource("Resource_37bwl"), SubResource("Resource_k6xgr"), SubResource("Resource_h03qq"), SubResource("Resource_dtlai"), SubResource("Resource_s1yg2"), SubResource("Resource_li4hp"), SubResource("Resource_meq3s"), SubResource("Resource_3pbr1"), SubResource("Resource_pk4ov"), SubResource("Resource_pjcyp"), SubResource("Resource_s6870"), SubResource("Resource_0pklk"), SubResource("Resource_8mng4"), SubResource("Resource_ijmhs"), SubResource("Resource_ljg01"), SubResource("Resource_hlenv"), SubResource("Resource_ae238"), SubResource("Resource_54g27"), SubResource("Resource_mujbm"), SubResource("Resource_gst8a"), SubResource("Resource_py6xk"), SubResource("Resource_a0xm1"), SubResource("Resource_168ja")])
+Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew"), SubResource("Resource_k1c4c"), SubResource("Resource_vt8mp"), SubResource("Resource_rmb1q"), SubResource("Resource_1ampk"), SubResource("Resource_pbjhe"), SubResource("Resource_4krbf"), SubResource("Resource_lb85l"), SubResource("Resource_d4gxl"), SubResource("Resource_s36j7"), SubResource("Resource_jangg"), SubResource("Resource_1f3i8"), SubResource("Resource_s3iab"), SubResource("Resource_ycocx"), SubResource("Resource_840ki"), SubResource("Resource_dktxc"), SubResource("Resource_wys4p"), SubResource("Resource_37bwl"), SubResource("Resource_k6xgr"), SubResource("Resource_h03qq"), SubResource("Resource_dtlai"), SubResource("Resource_s1yg2"), SubResource("Resource_li4hp"), SubResource("Resource_meq3s"), SubResource("Resource_3pbr1"), SubResource("Resource_pk4ov"), SubResource("Resource_pjcyp"), SubResource("Resource_s6870"), SubResource("Resource_0pklk"), SubResource("Resource_8mng4"), SubResource("Resource_ijmhs"), SubResource("Resource_ljg01"), SubResource("Resource_hlenv"), SubResource("Resource_ae238"), SubResource("Resource_54g27"), SubResource("Resource_mujbm"), SubResource("Resource_gst8a"), SubResource("Resource_py6xk"), SubResource("Resource_a0xm1"), SubResource("Resource_168ja"), SubResource("Resource_2ycky")])

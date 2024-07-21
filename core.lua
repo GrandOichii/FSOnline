@@ -20,6 +20,7 @@ FS.ModLayers = {
     ROLL_REPLACEMENT_EFFECTS = 2,
     LOOT_AMOUNT = 3,
     HAND_CARD_VISIBILITY = 4,
+    LOOT_PLAY_RESTRICTIONS = 5,
 }
 
 -- triggers

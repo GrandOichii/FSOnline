@@ -13,11 +13,16 @@ public class HandMatchCardState {
     /// Loot cost
     /// </summary>
     public int LootCost { get; }
+    /// <summary>
+    /// Additional play restrictions
+    /// </summary>
+    public List<LuaFunction> PlayRestrictions { get; }
 
     public HandMatchCardState(HandMatchCard original) {
         Original = original;
 
         VisibleTo = new() { Original.Owner.Idx };
         LootCost = 1;
+        PlayRestrictions = new();
     }
 }

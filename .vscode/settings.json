@@ -38,6 +38,7 @@
         "GetItemOrDefault",
         "SetRollValue",
         "GetPlayersInTurnOrder",
-        "IsTrigger"
+        "IsTrigger",
+        "GetCurPlayerIdx"
     ]
 }
