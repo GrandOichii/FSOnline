@@ -361,12 +361,29 @@ public class Match {
     /// </summary>
     public async Task ReloadState() {
         await SoftReloadState();
+        await CheckWinners();
+        if (!Active) return;
 
         await DequeueTriggers();
 
         // TODO check dead players/cards/monsters
 
         await PushUpdates();
+    }
+
+    /// <summary>
+    /// Checks whether any of the players are considered as winners
+    /// </summary>
+    /// <returns></returns>
+    public async Task CheckWinners() {
+        // TODO? multiple winners
+
+        foreach (var player in Players) {
+            if (player.Wins()) {
+                WinnerIdx = player.Idx;
+                return;
+            }
+        }
     }
 
     public async Task PushUpdates() {
@@ -632,12 +649,17 @@ public class Match {
 
     #region In-play cards
 
+    public async Task OnCardEnteredPlay(InPlayMatchCard card) {
+        await Emit("item_enter", new() {
+            { "Card", card },
+        });
+    }
+
     public async Task DiscardFromPlay(string ipid) {
         await DiscardFromPlay(GetInPlayCard(ipid));
     }
 
-    public async Task DiscardFromPlay(InPlayMatchCard card) {
-        // TODO check if is shop item
+    public async Task RemoveFromPlay(InPlayMatchCard card) {
         if (card is OwnedInPlayMatchCard ownedCard) {
             LogInfo($"Removing card {ownedCard.LogName} from player {ownedCard.Owner.LogName}");
             await ownedCard.Owner.RemoveItem(ownedCard);
@@ -649,7 +671,10 @@ public class Match {
                 break;
             }
         }
+    }
 
+    public async Task DiscardFromPlay(InPlayMatchCard card) {
+        await RemoveFromPlay(card);
         await PlaceIntoDiscard(card.Card);
     }
 
@@ -747,6 +772,8 @@ public class Match {
         // TODO enter play effects
         LogInfo($"Item {card.LogName} enters play under control of {card.Owner.LogName}");
 
+        await OnCardEnteredPlay(card);
+
         await card.Owner.GainItem(card);
     }
 
@@ -757,6 +784,22 @@ public class Match {
 
     public async Task DestroyItem(InPlayMatchCard card) {
         await DiscardFromPlay(card);
+    }
+
+    #endregion
+
+    #region Souls
+
+    public async Task AddSoulCard(int playerIdx, MatchCard card) {
+        var player = GetPlayer(playerIdx);
+        var soul = new SoulCard(card);
+
+        // TODO this should be done in player
+        player.Souls.Add(soul);
+        LogInfo($"Player {player.LogName} gained soul card {card.LogName}");
+
+        // TODO trigger
+        // TODO update
     }
 
     #endregion

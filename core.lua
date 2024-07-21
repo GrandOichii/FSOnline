@@ -28,7 +28,8 @@ FS.ModLayers = {
 -- triggers
 FS.Triggers = {
     ROLL = 'roll',
-    ITEM_ACTIVATION = 'item_activation'
+    ITEM_ACTIVATION = 'item_activation',
+    ITEM_ENTER = 'item_enter',
 }
 
 -- common
@@ -801,6 +802,23 @@ function FS.B.TriggeredAbility(effectText)
         return result
     end
 
+    -- TODO add filter func for which items are considered
+    function result.On:EnterPlay(check)
+        result.trigger = FS.Triggers.ITEM_ENTER
+
+        result.costs[#result.costs+1] = {
+            Check = function (me, player, args)
+                return check(me, player, args)
+            end,
+            Pay = function (me, player, stackEffect, args)
+                return true
+            end
+        }
+
+        return result
+    end
+
+    -- TODO add filter func for which items are activated
     function result.On:ItemActivation(check)
         result.trigger = FS.Triggers.ITEM_ACTIVATION
 

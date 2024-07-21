@@ -102,7 +102,6 @@ public class ScriptMaster {
 
     [LuaCommand]
     public void DiscardFromPlay(string ipid) {
-        System.Console.WriteLine(ipid);
         _match.DiscardFromPlay(ipid)
             .Wait();
     }
@@ -330,5 +329,17 @@ public class ScriptMaster {
     [LuaCommand]
     public bool IsShopItem(InPlayMatchCard card) {
         return _match.TreasureSlots.FirstOrDefault(slot => slot.Card == card) is not null;
+    }
+
+    [LuaCommand]
+    public void AddSoulCard(int playerIdx, MatchCard card) {
+        _match.AddSoulCard(playerIdx, card)
+            .Wait();
+    }
+
+    [LuaCommand]
+    public void RemoveFromPlay(string ipid) {
+        _match.RemoveFromPlay(_match.GetInPlayCard(ipid))
+            .Wait();
     }
 }

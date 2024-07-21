@@ -43,6 +43,8 @@ public abstract class Slot {
         Source.Match.LogInfo($"Card {card.LogName} is put into {Name} slot [{Idx}]");
         Card = new(card);
 
+        await Source.Match.OnCardEnteredPlay(Card);
+
         // TODO execute card entering effects
     }
 

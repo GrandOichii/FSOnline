@@ -71,6 +71,10 @@ public class Player : IStateModifier {
     /// State
     /// </summary>
     public PlayerState State { get; private set; }
+    /// <summary>
+    /// Player's soul cards
+    /// </summary>
+    public List<SoulCard> Souls { get; }
 
     /// <summary>
     /// Name of the player that will be used for system logging
@@ -83,12 +87,24 @@ public class Player : IStateModifier {
         Idx = idx;
         Controller = controller;
 
+        Character = new(match, this, characterTemplate);
         Hand = new();
         Items = new();
-        Character = new(match, this, characterTemplate);
+        Souls = new();
 
         // Initial state
         State = new(this);
+    }
+
+    public bool Wins() {
+        // TODO other effects
+
+        var count = 0;
+        foreach (var card in Souls)
+            count += card.GetSoulValue();
+
+        // TODO some cards modify required soul count to win
+        return count >= Match.Config.SoulsToWin;
     }
 
     /// <summary>

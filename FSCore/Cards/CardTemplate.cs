@@ -36,4 +36,8 @@ public class CardTemplate {
     /// Lua script for generating a card object
     /// </summary>
     public required string Script { get; set; }
+    /// <summary>
+    /// Soul value of a card
+    /// </summary>
+    public int SoulValue { get; set; } = 0;
 }

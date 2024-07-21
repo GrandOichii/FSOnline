@@ -4,7 +4,7 @@ InitialTreasureSlots: 2
 InitialMonsterSlots: 2
 InitialRoomSlots: 2
 BonusSoulCount: 3
-InitialDealLoot: 10
+InitialDealLoot: 3
 InitialDealCoins: 3
 SoulsToWin: 4
 ForceInclude3PlusCards: yes
@@ -31,6 +31,7 @@ LootCards:
   lil-battery-v2: 10
   lucky-toe-requiem: 10
   xvii-the-stars-alt1: 10
+  lost-soul-v2: 10
 Treasures:
   - mystery-sack-v2
   - portable-slot-machine-v2

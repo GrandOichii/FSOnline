@@ -42,7 +42,9 @@
         "GetCurPlayerIdx",
         "GetShopSlots",
         "DiscardFromPlay",
-        "IsShopItem"
+        "IsShopItem",
+        "AddSoulCard",
+        "RemoveFromPlay"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"
