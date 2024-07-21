@@ -15,9 +15,7 @@ function _Create()
                 .Effect:Common(
                     FS.C.Effect.SetTargetRoll(0, 3)
                 )
-                :Build()
+            :Build()
         )
-        -- TODO add trigger
-        :Label(FS.Labels.Eternal)
     :Build()
 end

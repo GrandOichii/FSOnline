@@ -24,7 +24,8 @@ FS.ModLayers = {
 
 -- triggers
 FS.Triggers = {
-    ROLL = 'roll'
+    ROLL = 'roll',
+    ITEM_ACTIVATION = 'item_activation'
 }
 
 -- common
@@ -97,6 +98,14 @@ function FS.C.Effect.RechargeTarget(target_idx)
         local ipid = stackEffect.Targets[target_idx].Value
 
         Recharge(ipid)
+    end
+end
+
+function FS.C.Effect.DeactivateTarget(target_idx)
+    return function (stackEffect)
+        local ipid = stackEffect.Targets[target_idx].Value
+
+        TapCard(ipid)
     end
 end
 
@@ -180,6 +189,7 @@ function FS.C.Effect.Loot(amount, filterFunc)
 end
 
 -- TODO change hint to hintFunc
+-- TODO change to _ApplyToPlayer
 function FS.C.Effect.Discard(amount, hint)
     hint = hint or 'Choose a card to discard'
     return function (stackEffect)
@@ -787,6 +797,21 @@ function FS.B.TriggeredAbility(effectText)
         return result
     end
 
+    function result.On:ItemActivation(check)
+        result.trigger = FS.Triggers.ITEM_ACTIVATION
+
+        result.costs[#result.costs+1] = {
+            Check = function (me, player, args)
+                return check(me, player, args)
+            end,
+            Pay = function (me, player, stackEffect, args)
+                return true
+            end
+        }
+
+        return result
+    end
+
     -- TODO add player filter
     function result.On:TurnEnd()
         result.trigger = 'turn_end'
@@ -912,6 +937,13 @@ function FS.F.Items()
         result.filters[#result.filters+1] = function (item)
             -- TODO some effect prohibit this
             return item.Tapped
+        end
+        return result
+    end
+
+    function result:Deactivatable()
+        result.filters[#result.filters+1] = function (item)
+            return not item.Tapped
         end
         return result
     end

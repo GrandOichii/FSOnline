@@ -40,6 +40,11 @@ public class ActivateAction : IAction
             return;
         }
 
+        await match.Emit("item_activation", new() {
+            { "Item", card },
+            { "Ability", ability }
+        });
+
         match.LogInfo($"Player {player.LogName} activated ability {abilityIdx} of card {card.LogName}");
     }
 
