@@ -41,7 +41,8 @@
         "IsTrigger",
         "GetCurPlayerIdx",
         "GetShopSlots",
-        "DiscardFromPlay"
+        "DiscardFromPlay",
+        "IsShopItem"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

@@ -477,9 +477,15 @@ public class Player : IStateModifier {
     /// <param name="slot">Shop slot, -1 for top of treasure deck</param>
     /// <returns>The item's cost</returns>
     public int CostOfSlot(int slot) {
-        // TODO calculate final cost
+        // TODO catch exceptions
+        var result = Match.Config.PurchaseCost;
 
-        return Match.Config.PurchaseCost;
+        foreach (var mod in State.PurchaseCostModifiers) {
+            var returned = mod.Call(slot, result);
+            result = LuaUtility.GetReturnAsInt(returned);
+        }
+        
+        return result;
     }
 
     public bool TryPayCoinsForSlot(int slot) {
@@ -552,8 +558,6 @@ public class Player : IStateModifier {
             return result;
         }
     }
-
-
 
     #region Choice
 

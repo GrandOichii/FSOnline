@@ -326,4 +326,9 @@ public class ScriptMaster {
     public LuaTable GetShopSlots() {
         return LuaUtility.CreateTable(_match.LState, _match.TreasureSlots);
     }
+
+    [LuaCommand]
+    public bool IsShopItem(InPlayMatchCard card) {
+        return _match.TreasureSlots.FirstOrDefault(slot => slot.Card == card) is not null;
+    }
 }

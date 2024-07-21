@@ -15,7 +15,7 @@ PurchaseCountDefault: 1
 AttackCountDefault: 1
 LootStepLootAmount: 1
 CharactersStartTapped: yes
-PurchaseCost: 3
+PurchaseCost: 10
 
 LootPlay: 1
 # LootPlay: 100
@@ -53,6 +53,7 @@ Treasures:
   - hourglass-v2
   - trinity-shield-v2
   - restock-v2
+  - a-dollar-uoi
   # - eye-of-greed-v2
   # - eye-of-greed-v2
   # - eye-of-greed-v2

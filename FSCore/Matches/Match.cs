@@ -21,6 +21,7 @@ public class Match {
         ModificationLayer.HAND_CARD_VISIBILITY,
         ModificationLayer.LOOT_PLAY_RESTRICTIONS,
         ModificationLayer.ITEM_ACTIVATION_RESTRICTIONS,
+        ModificationLayer.PURCHASE_COST,
     };
 
     /// <summary>
@@ -663,7 +664,15 @@ public class Match {
             return;
         }
 
-        // TODO
+        foreach (var slot in TreasureSlots) {
+            var card = slot.Card;
+            if (card is null || card.IPID != ipid) continue;
+            await slot.Fill();
+            await newOwner.GainItem(new(card, newOwner));
+            return;
+        }
+
+        throw new MatchException($"Failed to find source of item {item.LogName} to steal to player {newOwner.LogName}");
     }
 
     public async Task RerollItem(string ipid) {
@@ -687,9 +696,12 @@ public class Match {
     public List<InPlayMatchCard> GetItems() {
         var result = new List<InPlayMatchCard>();
 
-        // TODO treasures
         foreach (var player in Players)
             result.AddRange(player.Items);
+
+        foreach (var slot in TreasureSlots)
+            if (slot.Card is not null)
+                result.Add(slot.Card);
 
         return result;
     }

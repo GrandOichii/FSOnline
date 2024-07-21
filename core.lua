@@ -22,6 +22,7 @@ FS.ModLayers = {
     HAND_CARD_VISIBILITY = 4,
     LOOT_PLAY_RESTRICTIONS = 5,
     ITEM_ACTIVATION_RESTRICTIONS = 6,
+    PURCHASE_COST = 7
 }
 
 -- triggers
@@ -956,6 +957,13 @@ function FS.F.Items()
             end
         end
         return res
+    end
+
+    function result:InShop()
+        result.filters[#result.filters+1] = function (item)
+            return IsShopItem(item)
+        end
+        return result
     end
 
     function result:Rechargeable()

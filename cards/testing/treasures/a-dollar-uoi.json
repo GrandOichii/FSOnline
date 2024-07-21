@@ -1,0 +1,7 @@
+{
+    "Key": "a-dollar-uoi",
+    "Name": "A Dollar!",
+    "Type": "Item",
+    "Text": "Destroy this: Steal all shop items.",
+    "Script": "a-dollar-uoi.lua"
+}

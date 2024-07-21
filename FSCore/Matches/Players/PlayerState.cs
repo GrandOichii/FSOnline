@@ -7,6 +7,7 @@ public class PlayerState {
 
     public List<LuaFunction> CoinGainModifiers { get; }
     public List<LuaFunction> LootAmountModifiers { get; }
+    public List<LuaFunction> PurchaseCostModifiers { get; }
 
     #endregion
 
@@ -23,5 +24,6 @@ public class PlayerState {
         CoinGainModifiers = new();
         LootAmountModifiers = new();
         RollReplacementEffects = new();
+        PurchaseCostModifiers = new();
     }
 }

@@ -1,0 +1,7 @@
+{
+    "Key": "steamy-sale-v2",
+    "Name": "Steamy Sale!",
+    "Type": "Item",
+    "Text": "Shop items you purchase cost 5{cent} less.",
+    "Script": "steamy-sale-v2.lua"
+}

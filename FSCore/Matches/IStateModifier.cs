@@ -7,6 +7,7 @@ public enum ModificationLayer {
     HAND_CARD_VISIBILITY = 4,
     LOOT_PLAY_RESTRICTIONS = 5,
     ITEM_ACTIVATION_RESTRICTIONS = 6,
+    PURCHASE_COST = 7,
 }
 
 /// <summary>
