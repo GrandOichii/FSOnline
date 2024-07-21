@@ -130,6 +130,19 @@ public class ConsolePlayerController : IPlayerController
         ;
         return Task.FromResult(result);   
     }
+
+    public Task<int> ChooseItemToPurchase(Match match, int playerIdx, List<int> options)
+    {
+        System.Console.WriteLine("(ChooseItemToPurchase)");
+        System.Console.WriteLine("Options:");
+        foreach (var option in options)
+            System.Console.WriteLine($"\t{option} - " + (option > 0 ? match.TreasureSlots[option].Card!.LogName : "Top treasure deck"));
+            
+        var result = Console.ReadLine()
+            ?? throw new Exception("Failed to read treasure slot in ChooseItemToPurchase")
+        ;
+        return Task.FromResult(int.Parse(result));   
+    }
 }
 
 public class Program {
@@ -160,8 +173,8 @@ public class Program {
         };
 
         for (int i = 0; i < realPlayerCount; i++) {
-            await AddTCPPlayer(listener, match);
-            // await AddConsolePlayer(match);
+            // await AddTCPPlayer(listener, match);
+            await AddConsolePlayer(match);
         }
 
         for (int i = 0; i < playerCount - realPlayerCount; i++) {

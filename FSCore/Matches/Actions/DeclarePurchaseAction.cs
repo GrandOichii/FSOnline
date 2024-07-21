@@ -13,9 +13,14 @@ public class DeclarePurchaseAction : IAction
         }
 
         // TODO should be done in Player
-        match.GetPlayer(playerIdx).PurchaseOpportunities--;
+        var player = match.GetPlayer(playerIdx);
+
+        // TODO is this supposed to be here or during resolution
+        player.PurchaseOpportunities--;
 
         var effect = new DeclarePurchaseStackEffect(match, playerIdx);
+
+        match.LogInfo($"Player {player.LogName} declares a purchase");
         await match.PlaceOnStack(effect);
 
         // TODO trigger
@@ -32,7 +37,7 @@ public class DeclarePurchaseAction : IAction
         if (player.PurchaseOpportunities == 0) yield break;
 
         // TODO check purchase cost of each individual shop item/top of treasure deck
-        if (player.Coins < match.Config.PurchaseCost) yield break;
+        if (player.AvailableToPurchase().Count == 0) yield break;
 
         yield return ActionWord();        
     }

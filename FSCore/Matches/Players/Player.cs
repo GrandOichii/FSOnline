@@ -460,6 +460,42 @@ public class Player : IStateModifier {
         // TODO add update
     }
 
+    #region Shops
+
+    /// <summary>
+    /// Get the cost of buying the item at the designated shop slot
+    /// </summary>
+    /// <param name="slot">Shop slot, -1 for top of treasure deck</param>
+    /// <returns>The item's cost</returns>
+    public int CostOfSlot(int slot) {
+        // TODO calculate final cost
+
+        return Match.Config.PurchaseCost;
+    }
+
+    public bool TryPayCoinsForSlot(int slot) {
+        var cost = CostOfSlot(slot);
+        if (Coins < cost) return false;
+
+        PayCoins(cost);
+        return true;
+    }
+
+    public List<int> AvailableToPurchase() {
+        var indicies = new List<int> {-1};
+        indicies.AddRange(Match.TreasureSlots.Select(slot => slot.Idx));
+
+        var result = new List<int>();
+        foreach (var idx in indicies) {
+            if (Coins < CostOfSlot(idx)) continue;
+            result.Add(idx);
+        }
+
+        return result;
+    }
+
+    #endregion
+
     public void LoseCoins(int amount) {
         Coins -= amount;
         if (Coins < 0)
@@ -504,6 +540,8 @@ public class Player : IStateModifier {
             return result;
         }
     }
+
+
 
     #region Choice
 
@@ -577,7 +615,6 @@ public class Player : IStateModifier {
         }
     }
     
-    
     public async Task<int> ChooseCardInHand(List<int> options, string hint, bool optional=false) {
         while (true) {
             var result = await Controller.ChooseCardInHand(Match, Idx, options, hint);
@@ -585,6 +622,22 @@ public class Player : IStateModifier {
             if (!options.Contains(result)) {
                 if (Match.Config.StrictMode)
                     throw new MatchException($"Invalid choice for picking card in hand - {result} (player: {LogName})");
+                continue;
+            }
+
+            return result;
+        }
+    }
+
+    public async Task<int> ChooseItemToPurchase() {
+        var options = AvailableToPurchase();
+
+        while (true) {
+            var result = await Controller.ChooseItemToPurchase(Match, Idx, options);
+
+            if (!options.Contains(result)) {
+                if (Match.Config.StrictMode)
+                    throw new MatchException($"Invalid choice for picking slot index to purchase - {result} (player: {LogName})");
                 continue;
             }
 

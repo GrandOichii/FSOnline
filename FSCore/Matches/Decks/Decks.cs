@@ -60,6 +60,7 @@ public class Deck {
     /// <returns>Removed cards</returns>
     public List<MatchCard> RemoveTop(int amount) {
         var result = new List<MatchCard>();
+        // TODO reshuffle discard into the deck if found to be emoty
 
         while (amount > 0) {
             if (Size == 0) break;

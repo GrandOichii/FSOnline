@@ -145,4 +145,15 @@ public class IOPlayerController : IPlayerController
 
         return await _handler.Read();
     }
+
+    public async Task<int> ChooseItemToPurchase(Match match, int playerIdx, List<int> options)
+    {
+        await WriteData(new(match, playerIdx) {
+            Request = "ChooseItemToPurchase",
+            Hint = "",
+            Args = ToArgs(options),
+        });
+
+        return int.Parse(await _handler.Read());
+    }
 }

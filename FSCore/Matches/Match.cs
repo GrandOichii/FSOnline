@@ -98,6 +98,12 @@ public class Match {
 
     #endregion
 
+    #region Slots
+
+    public List<TreasureSlot> TreasureSlots { get; }
+
+    #endregion
+
     /// <summary>
     /// Shows whether the match is active (no winner is yet decided)
     /// </summary>
@@ -123,6 +129,7 @@ public class Match {
         Stack = new(this);
         LootDeck = new(this, true);
         TreasureDeck = new(this, true);
+        TreasureSlots = new();
         DeckIndex = new() {
             { DeckType.LOOT, LootDeck },
             { DeckType.TREASURE, TreasureDeck },
@@ -195,11 +202,30 @@ public class Match {
     /// </summary>
     /// <exception cref="MatchException"></exception>
     public async Task Run() {
-        await SetupDecks();
         await SetupView();
+        await SetupDecks();
+        await SetupSlots();
         await SetupPlayers();
         await Turns();
         await CleanUp();
+    }
+
+    /// <summary>
+    /// Setup the slots
+    /// </summary>
+    public async Task SetupSlots() {
+        // treasure
+        LogInfo($"Filling treasure slots (initial count: {Config.InitialTreasureSlots})");
+        for (int i = 0; i < Config.InitialTreasureSlots; i++) {
+            var slot = new TreasureSlot(TreasureDeck, i);
+            await slot.Fill();
+        }
+
+        // monsters
+        // TODO
+
+        // rooms
+        // TODO
     }
 
     /// <summary>

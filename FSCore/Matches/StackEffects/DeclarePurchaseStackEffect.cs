@@ -12,9 +12,21 @@ public class DeclarePurchaseStackEffect : StackEffect {
     {
         // TODO
         var owner = Match.GetPlayer(OwnerIdx);
+
         // TODO this has to happen in Player
-        owner.PayCoins(Match.Config.PurchaseCost);
-        await owner.GainTreasureRaw(1);
+        var slot = -1;
+
+        bool payed = owner.TryPayCoinsForSlot(slot);
+        if (!payed) {
+            Match.LogInfo($"Player {owner.LogName} failed to pay the cost to purchase an item");
+            return;
+        }
+
+        if (slot == -1) {
+            Match.LogInfo($"Player {owner.LogName} purchases the top card of the treasure deck");
+            await owner.GainTreasureRaw(1);
+            return;
+        }
     }
 
     public override StackEffectData ToData() => new DeclarePurchaseStackEffectData(this);

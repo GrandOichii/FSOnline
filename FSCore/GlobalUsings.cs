@@ -17,3 +17,4 @@ global using FSCore.Matches.Effects;
 global using FSCore.Matches.Abilities;
 global using FSCore.Matches.Targets;
 global using FSCore.Matches.Counters;
+global using FSCore.Matches.Slots;
