@@ -15,6 +15,5 @@ function _Create()
                 end)
             end
         )
-        :Label(FS.Labels.Guppys)
     :Build()
 end

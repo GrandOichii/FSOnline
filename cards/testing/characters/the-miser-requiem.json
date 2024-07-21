@@ -1,0 +1,12 @@
+{
+    "Key": "the-miser-requiem",
+    "Name": "The Miser",
+    "Type": "Character",
+    "Health": 2,
+    "Attack": 1,
+    "Text": "{T}: Play an additional Loot card this turn.",
+    "StartingItems": [
+        "keepers-bargain-requiem"
+    ],
+    "Script": "the-miser-v2.lua"
+}
