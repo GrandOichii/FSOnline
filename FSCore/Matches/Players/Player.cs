@@ -498,7 +498,7 @@ public class Player : IStateModifier {
 
         var result = new List<int>();
         foreach (var idx in indicies) {
-            if (Match.TreasureSlots[idx].Card is null) continue;
+            if (idx > 0 && Match.TreasureSlots[idx].Card is null) continue;
             if (Coins < CostOfSlot(idx)) continue;
             result.Add(idx);
         }

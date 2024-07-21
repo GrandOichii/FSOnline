@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds20e1mpqpej7"]
+
+[ext_resource type="Script" path="res://v1/Matches/Slots/TreasureSlotScene.gd" id="1_redgo"]
+[ext_resource type="PackedScene" uid="uid://c2s3cqas6maos" path="res://v1/Cards/CardScene.tscn" id="2_qtxdm"]
+[ext_resource type="Script" path="res://v1/Behaviors/ShopItemBehavior.gd" id="3_raccu"]
+
+[sub_resource type="Resource" id="Resource_ehbx7"]
+resource_local_to_scene = true
+script = ExtResource("3_raccu")
+purchase_color = Color(0.405755, 0.405755, 0, 1)
+purchase_hover_color = Color(0.741808, 0.741808, 5.79163e-07, 1)
+default_color = Color(0, 0, 0, 1)
+choose_color = Color(0.498039, 0, 0, 1)
+choose_hover_color = Color(1, 0, 0, 1)
+
+[node name="TreasureSlotScene" type="AspectRatioContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1690.0
+offset_bottom = -1045.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_redgo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="CardWrapper" type="Control" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(310, 420)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Card" parent="VBoxContainer/CardWrapper" instance=ExtResource("2_qtxdm")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+Behavior = SubResource("Resource_ehbx7")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Cost" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "COST HERE"

@@ -7,6 +7,7 @@ class_name BoardScene
 
 @onready var Top = %Top
 @onready var Bottom = %Bottom
+@onready var DecksRow = %DecksRow
 
 var _controller: MatchController
 
@@ -22,6 +23,7 @@ func set_controller(controller: MatchController):
 		player.set_controller(controller)
 	for player: PlayerScene in Bottom.get_children():
 		player.set_controller(controller)
+	DecksRow.set_controller(controller)
 
 func load_match_info(match_info: Variant):
 	for i in match_info.PlayerCount:
@@ -52,6 +54,7 @@ func load_snapshot(snapshot: Variant):
 		player.load_snapshot(snapshot)
 	for player: PlayerScene in Bottom.get_children():
 		player.load_snapshot(snapshot)
+	DecksRow.load_snapshot(snapshot)
 	
 func player_count() -> int:
 	return Top.get_child_count() + Bottom.get_child_count()

@@ -5,7 +5,6 @@ class_name OwnedCardBehavior
 @export var can_activate_color: Color
 @export var can_activate_hover_color: Color
 
-
 func can_activate():
 	if Controller == null:
 		return false

@@ -173,8 +173,8 @@ public class Program {
         };
 
         for (int i = 0; i < realPlayerCount; i++) {
-            // await AddTCPPlayer(listener, match);
-            await AddConsolePlayer(match);
+            await AddTCPPlayer(listener, match);
+            // await AddConsolePlayer(match);
         }
 
         for (int i = 0; i < playerCount - realPlayerCount; i++) {

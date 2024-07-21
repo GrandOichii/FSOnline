@@ -86,6 +86,17 @@ func can_choose_in_play(ipid: String) -> bool:
 
 func choose_in_play(ipid: String):
 	send(ipid)
+	
+func can_purchase(idx: int):
+	if last_update.Request != 'ChooseItemToPurchase':
+		return false
+	for v in last_update.Args.values():
+		if v == idx:
+			return true
+	return false
+	
+func purchase(idx: int):
+	send(str(idx))
 
 func send(msg: String):
 	Response.emit(msg)

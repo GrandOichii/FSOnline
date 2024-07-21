@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://biyxdvf4nphhb" path="res://v1/Matches/Players/PlayerScene.tscn" id="1_a37rh"]
 [ext_resource type="Script" path="res://v1/Matches/Boards/BoardScene.gd" id="1_vvxrg"]
-[ext_resource type="PackedScene" uid="uid://bwu5mhj6eoxou" path="res://v1/Matches/DecksRow.tscn" id="2_eiuwh"]
+[ext_resource type="PackedScene" uid="uid://bwu5mhj6eoxou" path="res://v1/Matches/DecksRowScene.tscn" id="3_1ydp3"]
 
 [node name="BoardScene" type="VBoxContainer"]
 anchors_preset = 15
@@ -28,7 +28,8 @@ layout_mode = 2
 [node name="HSeparator" type="HSeparator" parent="."]
 layout_mode = 2
 
-[node name="DecksRow" parent="." instance=ExtResource("2_eiuwh")]
+[node name="DecksRow" parent="." instance=ExtResource("3_1ydp3")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="HSeparator2" type="HSeparator" parent="."]
