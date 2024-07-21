@@ -52,6 +52,7 @@ func load_snapshot(snapshot: Variant, player_idx: int):
 	set_player_name(player.Name + ' [' + str(player_idx) + ']')
 	set_coins(player.Coins)
 	set_loot_plays(player.LootPlays)
+	set_purchase_opportunities(player.PurchaseOpportunities)
 	
 func set_bg_color(color: Color):
 	Bg.get('theme_override_styles/panel').bg_color = color

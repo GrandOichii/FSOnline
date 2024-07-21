@@ -18,6 +18,10 @@ public readonly struct PlayerData {
     /// </summary>
     public int LootPlays { get; }
     /// <summary>
+    /// Amount of items a player can purchase
+    /// </summary>
+    public int PurchaseOpportunities { get; }
+    /// <summary>
     /// Hand size
     /// </summary>
     public int HandSize { get; }
@@ -39,6 +43,7 @@ public readonly struct PlayerData {
         Idx = player.Idx;
         Coins = player.Coins;
         LootPlays = player.LootPlays;
+        PurchaseOpportunities = player.PurchaseOpportunities;
 
         Character = new(player.Character);
         HandSize = player.Hand.Count;

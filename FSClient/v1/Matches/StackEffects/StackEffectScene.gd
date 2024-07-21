@@ -15,7 +15,8 @@ var _type_map = {
 	'roll': 'Roll',
 	'loot_play': 'Loot card',
 	'ability_activation': 'Ability activation',
-	'ability_trigger': 'Triggered ability'
+	'ability_trigger': 'Triggered ability',
+	'purchase_declaration': 'Purchase declaration'
 }
 
 var _type_action_map = {

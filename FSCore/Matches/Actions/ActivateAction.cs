@@ -8,7 +8,7 @@ public class ActivateAction : IAction
     public async Task Exec(Match match, int playerIdx, string[] args)
     {
         if (args.Length != 3) {
-            match.PotentialError($"Expected args count of \"{ActionWord()}\" to be 1, but found {args.Length} (args: {string.Join(' ', args)})");
+            match.PotentialError($"Expected args count of \"{ActionWord()}\" to be 3, but found {args.Length} (args: {string.Join(' ', args)})");
             return;
         }
 

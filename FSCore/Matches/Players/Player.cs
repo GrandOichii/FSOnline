@@ -13,6 +13,7 @@ public class Player : IStateModifier {
         new PassAction(),
         new PlayLootAction(),
         new ActivateAction(),
+        new DeclarePurchaseAction(),
     };
 
     /// <summary>
@@ -50,6 +51,10 @@ public class Player : IStateModifier {
     /// Amount of loot cards the player can play for this turn
     /// </summary>
     public int LootPlays { get; private set; }
+    /// <summary>
+    /// Amount of treasure cards a player can purchase
+    /// </summary>
+    public int PurchaseOpportunities { get; set; } // TODO change to private set;
     /// <summary>
     /// Player's hand
     /// </summary>
@@ -293,11 +298,24 @@ public class Player : IStateModifier {
         LootPlays += amount;
     }
 
+    public void AddPurchaseOpportunitiesForTurn() {
+        AddPurchaseOpportunities(Match.Config.PurchaseCountDefault);
+    }
+
+    public void AddPurchaseOpportunities(int amount) {
+        if (PurchaseOpportunities < 0) return;
+        PurchaseOpportunities += amount;
+    }
+
     /// <summary>
     /// Removes all loot plays from the player
     /// </summary>
     public void RemoveLootPlays() {
         LootPlays = 0;
+    }
+
+    public void RemovePurchaseOpportunities() {
+        PurchaseOpportunities = 0;
     }
 
     /// <summary>

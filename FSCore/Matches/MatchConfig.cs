@@ -92,4 +92,8 @@ public struct MatchConfig {
     /// Shows whether character cards start the match already tapped
     /// </summary>
     public required bool CharactersStartTapped { get; set; }
+    /// <summary>
+    /// Initial coin cost to purchase an item from the shop/top of treasure deck
+    /// </summary>
+    public required int PurchaseCost { get; set; }
 }
