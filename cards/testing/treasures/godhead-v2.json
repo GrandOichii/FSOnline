@@ -1,0 +1,7 @@
+{
+    "Key": "godhead-v2",
+    "Name": "Godhead",
+    "Type": "Item",
+    "Text": "{T}: Change the result of a dice roll to a 1 or 6.",
+    "Script": "godhead-v2.lua"
+}

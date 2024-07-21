@@ -149,7 +149,7 @@ function FS.C.Effect.StealTargetItem(target_idx)
 end
 
 function FS.C.Effect.ModifyTargetRoll(target_idx, options, hint)
-    hint = hint or 'Choose roll modifier'
+    hint = hint or 'Choose what to do with roll'
     return function (stackEffect)
         local rollStackEffect = GetStackEffect(stackEffect.Targets[target_idx].Value)
 
@@ -159,9 +159,10 @@ function FS.C.Effect.ModifyTargetRoll(target_idx, options, hint)
         local optionsIndex = {}
         local optionsT = {}
         for _, pair in ipairs(options) do
-            if rolled + pair.mod >= 1 and rolled + pair.mod <= 6 then
+            local potential = pair.modFunc(rolled)
+            if potential >= 1 and potential <= 6 then
                 optionsT[#optionsT+1] = pair.option
-                optionsIndex[pair.option] = pair.mod
+                optionsIndex[pair.option] = pair.modFunc
             end
         end
 
@@ -172,8 +173,8 @@ function FS.C.Effect.ModifyTargetRoll(target_idx, options, hint)
             choice = PromptString(stackEffect.OwnerIdx, optionsT, hint)
         end
 
-        local mod = optionsIndex[choice]
-        ModRoll(rollStackEffect, mod)
+        local modFunc = optionsIndex[choice]
+        SetRollValue(rollStackEffect, modFunc(rolled))
     end
 end
 

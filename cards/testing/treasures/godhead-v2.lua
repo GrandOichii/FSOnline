@@ -3,7 +3,7 @@
 function _Create()
     return FS.B.Item()
         :ActivatedAbility(
-            FS.B.ActivatedAbility('{T}', 'Add or subtract 1 from a roll.')
+            FS.B.ActivatedAbility('{T}', 'Change the result of a dice roll to a 1 or 6.')
                 .Cost:Common(
                     FS.C.Cost.Tap()
                 )
@@ -15,29 +15,20 @@ function _Create()
                 .Effect:Common(
                     FS.C.Effect.ModifyTargetRoll(0, {
                         {
-                            option = 'Add 1',
+                            option = 'Set to 1',
                             modFunc = function (roll)
-                                return roll + 1
+                                return 1
                             end
                         },
                         {
-                            option = 'Subtract 1',
+                            option = 'Set to 6',
                             modFunc = function (roll)
-                                return roll - 1
+                                return 6
                             end
                         }
                     })
                 )
                 :Build()
         )
-        :TriggeredAbility(
-            FS.B.TriggeredAbility('At the end of your turn, recharge this.')
-                .On:TurnEnd()
-                .Effect:Common(
-                    FS.C.Effect.RechargeMe()
-                )
-            :Build()
-        )
-        :Label(FS.Labels.Eternal)
     :Build()
 end
