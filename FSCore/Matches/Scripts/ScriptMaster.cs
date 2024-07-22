@@ -95,9 +95,9 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
-    public void DestroyItem(string ipid) {
-        _match.DestroyItem(ipid)
-            .Wait();
+    public bool DestroyItem(string ipid) {
+        return _match.DestroyItem(ipid)
+            .GetAwaiter().GetResult();
     }
 
     [LuaCommand]

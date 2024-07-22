@@ -16,7 +16,7 @@ function _Create()
                         if not IsPresent(me.IPID) then
                             return false
                         end
-                        
+
                         RemoveFromPlay(me.IPID)
                         AddSoulCard(me.Owner.Idx, me.Card)
                         return true

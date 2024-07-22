@@ -24,6 +24,7 @@ FS.ModLayers = {
     ITEM_ACTIVATION_RESTRICTIONS = 6,
     PURCHASE_COST = 7,
     LAST = 8,
+    ITEM_DESTRUCTION_REPLACEMENT_EFFECTS = 9,
 }
 
 -- triggers

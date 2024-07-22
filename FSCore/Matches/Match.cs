@@ -22,6 +22,7 @@ public class Match {
         ModificationLayer.LOOT_PLAY_RESTRICTIONS,
         ModificationLayer.ITEM_ACTIVATION_RESTRICTIONS,
         ModificationLayer.PURCHASE_COST,
+        ModificationLayer.ITEM_DESTRUCTION_REPLACEMENT_EFFECTS,
 
         ModificationLayer.LAST,
     };
@@ -798,13 +799,21 @@ public class Match {
         await card.Owner.GainItem(card);
     }
 
-    public async Task DestroyItem(string ipid) {
+    public async Task<bool> DestroyItem(string ipid) {
         var card = GetInPlayCard(ipid);
-        await DestroyItem(card);
+        return await DestroyItem(card);
     }
 
-    public async Task DestroyItem(InPlayMatchCard card) {
+    public async Task<bool> DestroyItem(InPlayMatchCard card) {
+        // TODO catch exceptions
+        foreach (var effect in card.State.DestructionReplacementEffects) {
+            var returned = effect.Call(card);
+            if (LuaUtility.GetReturnAsBool(returned)) return false;
+        }
+
+
         await DiscardFromPlay(card);
+        return true;
     }
 
     #endregion

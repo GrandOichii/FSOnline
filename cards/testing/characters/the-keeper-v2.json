@@ -6,6 +6,7 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
+        "the-chest-v2",
         "the-d20-v2",
         "wooden-nickel-v2"
     ],
