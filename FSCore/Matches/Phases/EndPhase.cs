@@ -23,6 +23,7 @@ public class EndPhase : IPhase
         foreach (var p in match.Players) {
             p.RemoveLootPlays();
             p.RemovePurchaseOpportunities();
+            p.RollHistory.Clear();
             // TODO heal all players
         }
         // TODO heal all monsters

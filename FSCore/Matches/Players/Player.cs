@@ -75,6 +75,10 @@ public class Player : IStateModifier {
     /// Player's soul cards
     /// </summary>
     public List<SoulCard> Souls { get; }
+    /// <summary>
+    /// History of rolls performed by the player (resets after each turn)
+    /// </summary>
+    public List<int> RollHistory { get; set; }
 
     /// <summary>
     /// Name of the player that will be used for system logging
@@ -91,6 +95,7 @@ public class Player : IStateModifier {
         Hand = new();
         Items = new();
         Souls = new();
+        RollHistory = new();
 
         // Initial state
         State = new(this);

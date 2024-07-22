@@ -28,11 +28,11 @@ LootCards:
   chunk-of-amber-warp: 10
   xvii-the-stars-v2: 10
   dice-shard-v2: 10
-  lil-battery-v2: 10
+  lil-battery-v2: 1000
   lucky-toe-requiem: 10
   xvii-the-stars-alt1: 10
   lost-soul-v2: 10
-  perthro-requiem: 100
+  perthro-requiem: 10
 Treasures:
   - keepers-box-requiem
   - portable-slot-machine-v2
@@ -88,3 +88,4 @@ BonusSouls:
   - soul-of-greed-v2
   - soul-of-gluttony-v2
   - soul-of-guppy-v2
+  - strawberry-warp
