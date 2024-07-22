@@ -18,13 +18,13 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [node name="StackEffectScene" type="Control"]
-custom_minimum_size = Vector2(340, 130)
+custom_minimum_size = Vector2(340, 200)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1660.0
-offset_bottom = -1370.0
+offset_bottom = -1300.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tcsnx")

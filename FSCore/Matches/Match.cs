@@ -794,12 +794,7 @@ public class Match {
         var player = GetPlayer(playerIdx);
         var soul = new SoulCard(card);
 
-        // TODO this should be done in player
-        player.Souls.Add(soul);
-        LogInfo($"Player {player.LogName} gained soul card {card.LogName}");
-
-        // TODO trigger
-        // TODO update
+        await player.AddSoulCard(soul);
     }
 
     #endregion

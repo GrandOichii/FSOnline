@@ -714,4 +714,22 @@ public class Player : IStateModifier {
 
         await ACTION_MAP[actionWord].Exec(Match, Idx, words);
     }
+
+    #region Souls
+
+    public async Task AddSoulCard(SoulCard card) {
+        // TODO check if can gain souls
+
+        Souls.Add(card);
+        Match.LogInfo($"Player {LogName} gained soul card {card.Original.LogName}");
+
+        await Match.Emit("soul_enter", new() {
+            { "Owner", this },
+            { "Card", card },
+        });
+        
+        // TODO update
+    }
+
+    #endregion
 }

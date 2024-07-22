@@ -342,4 +342,9 @@ public class ScriptMaster {
         _match.RemoveFromPlay(_match.GetInPlayCard(ipid))
             .Wait();
     }
+
+    [LuaCommand]
+    public bool IsPresent(string ipid) {
+        return _match.GetInPlayCardOrDefault(ipid) is not null;
+    }
 }

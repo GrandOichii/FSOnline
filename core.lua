@@ -30,6 +30,7 @@ FS.Triggers = {
     ROLL = 'roll',
     ITEM_ACTIVATION = 'item_activation',
     ITEM_ENTER = 'item_enter',
+    SOUL_ENTER = 'soul_enter',
 }
 
 -- common
@@ -56,10 +57,12 @@ end
 
 function FS.C.Effect.PutGenericCountersOnMe(amount)
     return function (stackEffect)
-        assert(IsAbilityActivation(stackEffect), 'Provided a non-ability-activation stack effect for FS.C.Effect.PutGenericCountersOnMe')
+        -- TODO change to IsAbilityStackEffect
+        assert(IsAbilityActivation(stackEffect) or IsTrigger(stackEffect), 'Provided a non-ability-activation stack effect for FS.C.Effect.PutGenericCountersOnMe')
 
         local card = stackEffect.Card
         PutGenericCounters(card.IPID, amount)
+        return true
     end
 end
 
@@ -84,6 +87,7 @@ function FS.C.Effect.RerollTargetRoll(target_idx)
         assert(IsRollStackEffect(effect), 'Provided a non-roll target stack effect for FS.C.Effect.ModifyTargetRoll')
 
         RerollDice(effect)
+        return true
     end
 end
 
@@ -94,6 +98,7 @@ function FS.C.Effect.SetTargetRoll(target_idx, value)
         assert(IsRollStackEffect(effect), 'Provided a non-roll target stack effect for FS.C.Effect.ModifyTargetRoll')
 
         SetRollValue(effect, value)
+        return true
     end
 end
 
@@ -102,6 +107,7 @@ function FS.C.Effect.RechargeTarget(target_idx)
         local ipid = stackEffect.Targets[target_idx].Value
 
         Recharge(ipid)
+        return true
     end
 end
 
@@ -110,6 +116,7 @@ function FS.C.Effect.DeactivateTarget(target_idx)
         local ipid = stackEffect.Targets[target_idx].Value
 
         TapCard(ipid)
+        return true
     end
 end
 
@@ -119,20 +126,15 @@ function FS.C.Effect.RechargeMe()
 
         local card = stackEffect.Card
         Recharge(card.IPID)
+        return true
     end
 end
 
 function FS.C.Effect.RerollTargetItem(target_idx)
     return function (stackEffect)
         local ipid = stackEffect.Targets[target_idx].Value
-
-        -- TODO fizzle if no targets left
-        if GetItemOrDefault(ipid) == nil then
-            return
-        end
-
-
         RerollItem(ipid)
+        return true
     end
 end
 
@@ -140,12 +142,8 @@ function FS.C.Effect.StealTargetItem(target_idx)
     return function (stackEffect)
         local ipid = stackEffect.Targets[target_idx].Value
 
-        -- TODO fizzle if no targets left
-        if GetItemOrDefault(ipid) == nil then
-            return
-        end
-
         StealItem(stackEffect.OwnerIdx, ipid)
+        return true
     end
 end
 
@@ -176,6 +174,7 @@ function FS.C.Effect.ModifyTargetRoll(target_idx, options, hint)
 
         local modFunc = optionsIndex[choice]
         SetRollValue(rollStackEffect, modFunc(rolled))
+        return true
     end
 end
 
@@ -789,6 +788,21 @@ function FS.B.TriggeredAbility(effectText)
 
     function result.On:Roll(check)
         result.trigger = FS.Triggers.ROLL
+
+        result.costs[#result.costs+1] = {
+            Check = function (me, player, args)
+                return check(me, player, args)
+            end,
+            Pay = function (me, player, stackEffect, args)
+                return true
+            end
+        }
+
+        return result
+    end
+
+    function result.On:SoulEnter(check)
+        result.trigger = FS.Triggers.SOUL_ENTER
 
         result.costs[#result.costs+1] = {
             Check = function (me, player, args)

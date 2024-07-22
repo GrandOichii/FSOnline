@@ -1,0 +1,8 @@
+{
+    "Key": "a-friend-summer",
+    "Name": "A Friend",
+    "Type": "Item",
+    "Text": "Each time a soul enters another player's control, put a counter on this. Then, if this has 3+ counters, it loses all abilities and becomes a soul.",
+    "SoulValue": 1,
+    "Script": "a-friend-summer.lua"
+}

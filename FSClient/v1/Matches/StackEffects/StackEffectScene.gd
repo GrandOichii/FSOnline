@@ -21,7 +21,13 @@ var _type_map = {
 
 var _type_action_map = {
 	'roll': func (snapshot):
-		Details.text = 'Rolled: [color=red]' + str(snapshot.Value) + '[/color]'
+		Details.text = 'Rolled: [color=red]' + str(snapshot.Value) + '[/color]',
+	'loot_play': func (snapshot):
+		Details.text = snapshot.Card.Names[0],
+	'ability_activation': func (snapshot):
+		Details.text = snapshot.EffectText,
+	'ability_trigger': func (snapshot):
+		Details.text = snapshot.EffectText
 }
 
 @onready var _bg_color = default_color

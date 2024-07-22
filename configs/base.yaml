@@ -31,7 +31,7 @@ LootCards:
   lil-battery-v2: 10
   lucky-toe-requiem: 10
   xvii-the-stars-alt1: 10
-  lost-soul-v2: 10
+  lost-soul-v2: 100
 Treasures:
   - mystery-sack-v2
   - portable-slot-machine-v2
@@ -56,6 +56,7 @@ Treasures:
   - restock-v2
   - a-dollar-uoi
   - godhead-v2
+  - a-friend-summer
   # - eye-of-greed-v2
   # - eye-of-greed-v2
   # - eye-of-greed-v2
