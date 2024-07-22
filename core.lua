@@ -33,6 +33,7 @@ FS.Triggers = {
     ITEM_ACTIVATION = 'item_activation',
     ITEM_ENTER = 'item_enter',
     SOUL_ENTER = 'soul_enter',
+    PURCHASE = 'purchase'
 }
 
 -- common
@@ -54,6 +55,12 @@ function FS.C.Effect._ApplyToPlayer(effect, filterFunc)
             end
         end
         return true
+    end
+end
+
+function FS.C.Effect.ExpandShotSlots(amount)
+    return function (stackEffect)
+        ExpandShotSlots(amount)
     end
 end
 
@@ -820,6 +827,21 @@ function FS.B.TriggeredAbility(effectText)
 
     result.builders[#result.builders+1] = function (ability)
         ability.Trigger = result.trigger
+    end
+
+    function result.On:Purchase(check)
+        result.trigger = FS.Triggers.PURCHASE
+
+        result.costs[#result.costs+1] = {
+            Check = function (me, player, args)
+                return check(me, player, args)
+            end,
+            Pay = function (me, player, stackEffect, args)
+                return true
+            end
+        }
+
+        return result
     end
 
     function result.On:Roll(check)

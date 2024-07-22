@@ -4,6 +4,7 @@ namespace FSCore.Matches;
 /// Effect stack
 /// </summary>
 public class Stack {
+    public static readonly int NO_PRIORITY_IDX = -2;
     /// <summary>
     /// Parent match
     /// </summary>
@@ -32,7 +33,7 @@ public class Stack {
     public bool CanPassPriority {
         get {
             // TODO add more
-            return PriorityIdx != -1 && Effects.Count > 0;
+            return PriorityIdx != NO_PRIORITY_IDX && Effects.Count > 0;
         }
     }
 
@@ -40,7 +41,7 @@ public class Stack {
         Match = match;
 
         Effects = new();
-        PriorityIdx = -1;
+        PriorityIdx = NO_PRIORITY_IDX;
         QueuedTriggers = new();
     }
 
@@ -57,7 +58,10 @@ public class Stack {
         Match.LogInfo($"New priority player index: {PriorityIdx}");
 
         var top = Top;
-        if (PriorityIdx == top.OwnerIdx) {
+        var topOwner = top.OwnerIdx > 0
+            ? top.OwnerIdx
+            : Match.CurPlayerIdx;
+        if (PriorityIdx == topOwner) {
             // if (top.OwnerIdx != player.Idx) {
             //     throw new MatchException($"Unexpected scenario: resolving top of stack effect, owned by idx {top.OwnerIdx}, by player {player.LogName}");
             // }
@@ -80,7 +84,7 @@ public class Stack {
         PriorityIdx = Match.CurPlayerIdx;
         if (Effects.Count == 0) {
             Match.LogInfo("Stack is now empty");
-            PriorityIdx = -1;
+            PriorityIdx = NO_PRIORITY_IDX;
         }
     }
 

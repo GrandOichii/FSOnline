@@ -413,9 +413,15 @@ public class Player : IStateModifier {
         var card = slot.Card
             ?? throw new MatchException($"Player {LogName} tried to gain control of treasure slot item at index [{slot.Idx}], which is empty");
 
-        await slot.Fill();
         var newCard = new OwnedInPlayMatchCard(card, this);
-        await Match.PlaceOwnedCard(newCard);
+
+        await Match.Emit("purchase", new() {
+            { "Player", this },
+            { "Card", newCard },
+        });
+        await slot.Fill();
+
+        await Match.PlaceOwnedCard(newCard, false);
     }
 
     public async Task<List<OwnedInPlayMatchCard>> GainTreasure(int amount) {

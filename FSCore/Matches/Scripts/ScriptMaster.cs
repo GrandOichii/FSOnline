@@ -357,4 +357,10 @@ public class ScriptMaster {
 
         return removed;
     }
+
+    [LuaCommand]
+    public void ExpandShotSlots(int amount) {
+        _match.ExpandShotSlots(amount)
+            .Wait();
+    }
 }

@@ -455,6 +455,10 @@ public class Match {
                 await item.ProcessTrigger(trigger);
             }
         }
+
+        foreach (var slot in TreasureSlots) {
+            await slot.ProcessTrigger(trigger);
+        }
     }
 
     /// <summary>
@@ -561,7 +565,7 @@ public class Match {
     /// <returns>Player with priority/current player</returns>
     public Player GetPriorityPlayer() {
         var pIdx = Stack.PriorityIdx;
-        if (pIdx != -1) {
+        if (pIdx >= 0) {
             return Players[pIdx];
         }
         return CurrentPlayer;
@@ -790,11 +794,12 @@ public class Match {
         return result;
     }
 
-    public async Task PlaceOwnedCard(OwnedInPlayMatchCard card) {
+    public async Task PlaceOwnedCard(OwnedInPlayMatchCard card, bool triggerEnter = true) {
         // TODO enter play effects
         LogInfo($"Item {card.LogName} enters play under control of {card.Owner.LogName}");
 
-        await OnCardEnteredPlay(card);
+        if (triggerEnter)
+            await OnCardEnteredPlay(card);
 
         await card.Owner.GainItem(card);
     }
@@ -825,6 +830,18 @@ public class Match {
         var soul = new SoulCard(card);
 
         await player.AddSoulCard(soul);
+    }
+
+    #endregion
+
+    #region Shop
+
+    public async Task ExpandShotSlots(int amount) {
+        for (int i = 0; i < amount; i++) {
+            var slot = new TreasureSlot(TreasureDeck, i);
+            await slot.Fill();
+            TreasureSlots.Add(slot);           
+        }
     }
 
     #endregion

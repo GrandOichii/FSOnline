@@ -46,7 +46,8 @@
         "AddSoulCard",
         "RemoveFromPlay",
         "IsPresent",
-        "RemoveFromBonusSouls"
+        "RemoveFromBonusSouls",
+        "ExpandShotSlots"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

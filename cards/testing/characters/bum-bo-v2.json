@@ -6,6 +6,7 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
+        "keepers-box-requiem",
         "bag-o-trash-v2"
     ],
     "Script": "bum-bo-v2.lua"
