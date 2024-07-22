@@ -347,4 +347,14 @@ public class ScriptMaster {
     public bool IsPresent(string ipid) {
         return _match.GetInPlayCardOrDefault(ipid) is not null;
     }
+
+    [LuaCommand]
+    public bool RemoveFromBonusSouls(string id) {
+        // TODO
+        var removed = _match.BonusSouls.Remove(
+            _match.BonusSouls.First(card => card.ID == id)
+        );
+
+        return removed;
+    }
 }

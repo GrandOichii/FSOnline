@@ -57,6 +57,11 @@
             "loot/xvii-the-stars-alt1",
             "loot/lost-soul-v2",
             "loot/a-sack-v2"
+        ],
+        "BonusSouls": [
+            "bonus-souls/soul-of-greed-v2",
+            "bonus-souls/soul-of-guppy-v2",
+            "bonus-souls/soul-of-gluttony-v2"
         ]
     }
 }

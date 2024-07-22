@@ -1,7 +1,7 @@
 function _Create()
     return FS.B.Item()
         :ActivatedAbility(
-            FS.B.ActivatedAbility('{T}', 'Recharge another item.')
+            FS.B.ActivatedAbility('{T}', 'Reroll an item.')
                 .Cost:Common(
                     FS.C.Cost.Tap()
                 )

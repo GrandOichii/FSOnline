@@ -15,6 +15,7 @@ class_name PlayerInfoScene
 @onready var PurchaseOpportunities = %PurchaseOpportunities
 @onready var Health = %Health
 @onready var Attack = %Attack
+@onready var Souls = %Souls
 
 @onready var _bg_color: Color = default_color
 
@@ -46,6 +47,9 @@ func set_health(health: int):
 func set_attack(attack: int):
 	Attack.text = str(attack)
 	
+func set_soul_count(soul_count: int):
+	Souls.text = str(soul_count)
+	
 func load_snapshot(snapshot: Variant, player_idx: int):
 	var player = snapshot.Players[player_idx]
 	_player_idx = player.Idx
@@ -53,6 +57,7 @@ func load_snapshot(snapshot: Variant, player_idx: int):
 	set_coins(player.Coins)
 	set_loot_plays(player.LootPlays)
 	set_purchase_opportunities(player.PurchaseOpportunities)
+	set_soul_count(player.SoulCount)
 	
 func set_bg_color(color: Color):
 	Bg.get('theme_override_styles/panel').bg_color = color

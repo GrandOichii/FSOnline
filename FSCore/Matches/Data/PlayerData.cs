@@ -37,6 +37,10 @@ public readonly struct PlayerData {
     /// Owned items
     /// </summary>
     public List<OwnedCardData> Items { get; }
+    /// <summary>
+    /// Total soul count of the player
+    /// </summary>
+    public int SoulCount { get; }
 
     public PlayerData(Player player) {
         Name = player.Name;
@@ -49,5 +53,6 @@ public readonly struct PlayerData {
         HandSize = player.Hand.Count;
         VisibleHandCards = new();
         Items = player.Items.Select(item => new OwnedCardData(item)).ToList();
+        SoulCount = player.SoulCount();
     }
 }

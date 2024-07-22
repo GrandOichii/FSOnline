@@ -96,12 +96,16 @@ public class Player : IStateModifier {
         State = new(this);
     }
 
-    public bool Wins() {
+    public int SoulCount() {
         // TODO other effects
-
-        var count = 0;
+        var result = 0;
         foreach (var card in Souls)
-            count += card.GetSoulValue();
+            result += card.GetSoulValue();
+        return result;
+    }
+
+    public bool Wins() {
+        var count = SoulCount();
 
         // TODO some cards modify required soul count to win
         return count >= Match.Config.SoulsToWin;

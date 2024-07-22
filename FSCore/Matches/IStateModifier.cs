@@ -8,6 +8,7 @@ public enum ModificationLayer {
     LOOT_PLAY_RESTRICTIONS = 5,
     ITEM_ACTIVATION_RESTRICTIONS = 6,
     PURCHASE_COST = 7,
+    LAST = 8,
 }
 
 /// <summary>

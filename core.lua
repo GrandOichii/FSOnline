@@ -22,7 +22,8 @@ FS.ModLayers = {
     HAND_CARD_VISIBILITY = 4,
     LOOT_PLAY_RESTRICTIONS = 5,
     ITEM_ACTIVATION_RESTRICTIONS = 6,
-    PURCHASE_COST = 7
+    PURCHASE_COST = 7,
+    LAST = 8,
 }
 
 -- triggers
@@ -546,6 +547,40 @@ function FS.B.Item()
     return result
 end
 
+-- bouns soul builder
+function FS.B.BonusSoul()
+    local result = FS.B.Card()
+
+    -- TODO? change to player filter
+    function result:Check(predicate)
+        result.Static:Raw(
+            FS.ModLayers.LAST,
+            function (me)
+                local indicies = {}
+                local players = GetPlayers()
+                for _, player in ipairs(players) do
+                    if predicate(player) then
+                        indicies[#indicies+1] = player.Idx
+                    end
+                end
+                if #indicies == 0 then
+                    return
+                end
+                local idx = indicies[1]
+                if #indicies > 1 then
+                    -- TODO prompt current player to choose
+                end
+
+                RemoveFromBonusSouls(me.ID)
+                AddSoulCard(idx, me)
+            end
+        )
+        return result
+    end
+
+    return result
+end
+
 function FS.B._Ability(effectText)
     local result = {}
 
@@ -1021,6 +1056,13 @@ function FS.F.Items()
         return result
     end
 
+    function result:Labeled(label)
+        result.filters[#result.filters+1] = function (item)
+            return item:HasLabel(label)
+        end
+        return result
+    end
+
     function result:ControlledByPlayer()
         result.filters[#result.filters+1] = function (item)
             return IsOwned(item)
@@ -1047,6 +1089,19 @@ function FS.F.Items()
         end
         return result
     end
+
+    function result:ControlledBy(idx)
+        result.filters[#result.filters+1] = function (item)
+            -- TODO assert that is owned item
+            if item.Owner == nil then
+                return false
+            end
+            return item.Owner.Idx == idx
+        end
+        return result
+    end
+
+
 
     return result
 end

@@ -4,7 +4,7 @@ InitialTreasureSlots: 2
 InitialMonsterSlots: 2
 InitialRoomSlots: 2
 BonusSoulCount: 3
-InitialDealLoot: 3
+InitialDealLoot: 8
 InitialDealCoins: 3
 SoulsToWin: 4
 ForceInclude3PlusCards: yes
@@ -15,7 +15,7 @@ PurchaseCountDefault: 1
 AttackCountDefault: 1
 LootStepLootAmount: 1
 CharactersStartTapped: yes
-PurchaseCost: 10
+PurchaseCost: 3
 
 LootPlay: 1
 # LootPlay: 100
@@ -31,7 +31,7 @@ LootCards:
   lil-battery-v2: 10
   lucky-toe-requiem: 10
   xvii-the-stars-alt1: 10
-  lost-soul-v2: 100
+  lost-soul-v2: 10
 Treasures:
   - mystery-sack-v2
   - portable-slot-machine-v2
@@ -57,18 +57,18 @@ Treasures:
   - a-dollar-uoi
   - godhead-v2
   - a-friend-summer
-  # - eye-of-greed-v2
-  # - eye-of-greed-v2
-  # - eye-of-greed-v2
-  # - eye-of-greed-v2
-  # - eye-of-greed-v2
-  # - eye-of-greed-v2
-  # - eye-of-greed-v2
-  # - eye-of-greed-v2
-  # - eye-of-greed-v2
-  # - eye-of-greed-v2
-  # - eye-of-greed-v2
-  # - eye-of-greed-v2
+  # - guppys-tail-v2
+  # - guppys-tail-v2
+  # - guppys-tail-v2
+  # - guppys-tail-v2
+  # - guppys-tail-v2
+  # - guppys-tail-v2
+  # - guppys-tail-v2
+  # - guppys-tail-v2
+  # - guppys-tail-v2
+  # - guppys-tail-v2
+  # - guppys-tail-v2
+  # - guppys-tail-v2
 Characters:
   - guppy-v2
   - the-keeper-v2
@@ -81,3 +81,7 @@ StartingItems:
   - book-of-belial-v2
   - the-d6-v2
   - keepers-bargain-requiem
+BonusSouls:
+  - soul-of-greed-v2
+  - soul-of-gluttony-v2
+  - soul-of-guppy-v2

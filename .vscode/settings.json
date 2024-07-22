@@ -45,7 +45,8 @@
         "IsShopItem",
         "AddSoulCard",
         "RemoveFromPlay",
-        "IsPresent"
+        "IsPresent",
+        "RemoveFromBonusSouls"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

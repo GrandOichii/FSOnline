@@ -22,6 +22,8 @@ public class Match {
         ModificationLayer.LOOT_PLAY_RESTRICTIONS,
         ModificationLayer.ITEM_ACTIVATION_RESTRICTIONS,
         ModificationLayer.PURCHASE_COST,
+
+        ModificationLayer.LAST,
     };
 
     /// <summary>
@@ -80,6 +82,10 @@ public class Match {
     /// Effect stack
     /// </summary>
     public Stack Stack { get; }
+    /// <summary>
+    /// Bonus souls
+    /// </summary>
+    public List<BonusSoulMatchCard> BonusSouls { get; }
 
     #region Decks
 
@@ -131,6 +137,7 @@ public class Match {
         LootDeck = new(this, true);
         TreasureDeck = new(this, true);
         TreasureSlots = new();
+        BonusSouls = new();
         DeckIndex = new() {
             { DeckType.LOOT, LootDeck },
             { DeckType.TREASURE, TreasureDeck },
@@ -265,8 +272,15 @@ public class Match {
 
         TreasureDeck.Populate(treasureCards);
 
-        // monster deck
-        // TODO
+        // bonus souls
+        // TODO sample souls based on Config.BonusSoulCount
+        var souls = new List<BonusSoulMatchCard>();
+        foreach (var key in Config.BonusSouls)
+            souls.Add(new BonusSoulMatchCard(
+                this,
+                await _cardMaster.Get(key)
+            ));
+        BonusSouls.AddRange(souls);
 
         // monster deck
         // TODO
@@ -402,13 +416,20 @@ public class Match {
         foreach (var player in Players)
             player.UpdateState();
 
-        foreach (var layer in MODIFICATION_LAYERS)
+        foreach (var layer in MODIFICATION_LAYERS) {
+            // players
             foreach (var player in Players) 
                 player.Modify(layer);
+
+            // bonus souls
+            var souls = new List<BonusSoulMatchCard>(BonusSouls);
+            foreach (var soul in souls)
+                soul.Modify(layer);
+        }
         
         // TODO rooms
         // TODO monsters
-        // TODO treasure
+        // TODO? treasure
     }
 
     #region Triggers
