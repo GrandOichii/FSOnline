@@ -156,6 +156,15 @@ function FS.C.Effect.StealTargetItem(target_idx)
     end
 end
 
+function FS.C.Effect.StealCoinsFromTarget(target_idx, amount)
+    return function (stackEffect)
+        local idx = tonumber(stackEffect.Targets[target_idx].Value)
+
+        StealCoins(stackEffect.OwnerIdx, idx, amount)
+        return true
+    end
+end
+
 function FS.C.Effect.ModifyTargetRoll(target_idx, options, hint)
     hint = hint or 'Choose what to do with roll'
     return function (stackEffect)
@@ -989,6 +998,13 @@ function FS.F.Players()
         return result
     end
 
+    function result:CoinsGte(amount)
+        result.filters[#result.filters+1] = function (player)
+            return player.Coins >= amount
+        end
+        return result
+    end
+
     return result
 end
 
@@ -1123,8 +1139,6 @@ function FS.F.Items()
         end
         return result
     end
-
-
 
     return result
 end

@@ -47,7 +47,8 @@
         "RemoveFromPlay",
         "IsPresent",
         "RemoveFromBonusSouls",
-        "ExpandShotSlots"
+        "ExpandShotSlots",
+        "StealCoins"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

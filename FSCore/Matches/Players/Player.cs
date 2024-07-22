@@ -254,7 +254,7 @@ public class Player : IStateModifier {
         amount = ModCoinGain(amount);
 
         var taken = Match.TakeCoins(amount);
-        Coins += taken;
+        GainCoinsRaw(taken);
 
         Match.LogInfo($"Player {LogName} gained {taken} coins (expected to gain {amount}), {Match.CoinPool} left in coin pool");
 
@@ -262,6 +262,10 @@ public class Player : IStateModifier {
         // TODO add to update
 
         return taken;
+    }
+
+    public void GainCoinsRaw(int amount) {
+        Coins += amount;
     }
 
     #region Recharging
