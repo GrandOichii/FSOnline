@@ -1,0 +1,7 @@
+{
+    "Key": "perthro-requiem",
+    "Name": "Perthro",
+    "Type": "Loot",
+    "Text": "Reroll an Item.",
+    "Script": "perthro-requiem.lua"
+}
