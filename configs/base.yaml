@@ -18,6 +18,7 @@ CharactersStartTapped: yes
 PurchaseCost: 3
 DeathPenaltyLoot: 1
 DeathPenaltyCoins: 1
+DeathPenaltyItems: 1
 
 LootPlay: 1
 # LootPlay: 100

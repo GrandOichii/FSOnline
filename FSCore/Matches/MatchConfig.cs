@@ -102,4 +102,5 @@ public struct MatchConfig {
     public required int PurchaseCost { get; set; }
     public required int DeathPenaltyLoot { get; set; }
     public required int DeathPenaltyCoins { get; set; }
+    public required int DeathPenaltyItems { get; set; }
 }

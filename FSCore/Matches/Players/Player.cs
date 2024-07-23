@@ -833,7 +833,12 @@ public class Player : IStateModifier {
         // TODO? move this to a Lua script
         // TODO death penalty replacement effects
 
-        // TODO destroy non-eternal item
+        for (int i = 0; i < Match.Config.DeathPenaltyItems; i++) {
+            var ipids = Items.Where(item => !item.HasLabel("Eternal")).Select(item => item.IPID).ToList();
+            if (ipids.Count == 0) break;
+            var ipid = await ChooseItem(ipids, "Choose an item to destroy (for death penalty)");
+            await Match.DestroyItem(ipid);
+        }
 
         // TODO modify the amount of loot cards discarded
         for (int i = 0; i < Match.Config.DeathPenaltyLoot; i++) {
@@ -848,7 +853,6 @@ public class Player : IStateModifier {
         // TODO modify the amount of coins lost
         LoseCoins(Match.Config.DeathPenaltyCoins);
 
-        // TODO tap all items with {T} abilities
         foreach (var item in GetInPlayCards()) {
             // TODO check if item has an activated ability with the "Tap" label
             await item.Tap();
