@@ -1,0 +1,12 @@
+{
+    "Key": "the-dauntless-requiem",
+    "Name": "The Dauntless",
+    "Type": "Character",
+    "Health": 1,
+    "Attack": 1,
+    "Text": "{T}: Play an additional Loot card this turn.",
+    "StartingItems": [
+        "hypercoagulation-requiem"
+    ],
+    "Script": "the-dauntless-requiem.lua"
+}

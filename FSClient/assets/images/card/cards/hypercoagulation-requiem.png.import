@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddm2fpxokydu6"
-path="res://.godot/imported/hypercoagulation-requiem.png-cb6b1635d1d91382ccc4245e79e9552d.ctex"
+uid="uid://co27jj6jeflco"
+path="res://.godot/imported/hypercoagulation-requiem.png-6559b800862392276d977a0c26f4bf21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/card/cards/want/hypercoagulation-requiem.png"
-dest_files=["res://.godot/imported/hypercoagulation-requiem.png-cb6b1635d1d91382ccc4245e79e9552d.ctex"]
+source_file="res://assets/images/card/cards/hypercoagulation-requiem.png"
+dest_files=["res://.godot/imported/hypercoagulation-requiem.png-6559b800862392276d977a0c26f4bf21.ctex"]
 
 [params]
 

@@ -10,6 +10,7 @@
             "characters/the-keeper-v2",
             "characters/dark-judas-v2",
             "characters/lazarus-v2",
+            "characters/the-dauntless-requiem",
             "characters/bum-bo-v2"
         ],
         "StartingItems": [
@@ -22,6 +23,7 @@
             "starting-items/wooden-nickel-v2",
             "starting-items/dark-arts-v2",
             "starting-items/lazarus-rags-v2",
+            "starting-items/hypercoagulation-requiem",
             "starting-items/bag-o-trash-v2"
         ],
         "Treasures": [

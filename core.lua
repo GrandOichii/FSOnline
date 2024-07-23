@@ -1054,12 +1054,12 @@ function FS.B.TriggeredAbility(effectText)
     end
 
     -- TODO add player filter
-    function result.On:TurnEnd()
+    function result.On:TurnEnd(additionalCheck)
         result.trigger = 'turn_end'
 
         result.costs[#result.costs+1] = {
             Check = function (me, player, args)
-                return args.playerIdx == player.Idx
+                return args.playerIdx == player.Idx and (additionalCheck == nil or additionalCheck(me, player, args))
             end,
             Pay = function (me, player, stackEffect, args)
                 return true
@@ -1070,12 +1070,12 @@ function FS.B.TriggeredAbility(effectText)
     end
 
     -- TODO add player filter
-    function result.On:TurnStart()
+    function result.On:TurnStart(additionalCheck)
         result.trigger = 'turn_start'
 
         result.costs[#result.costs+1] = {
             Check = function (me, player, args)
-                return args.playerIdx == player.Idx
+                return args.playerIdx == player.Idx and (additionalCheck == nil or additionalCheck(me, player, args))
             end,
             Pay = function (me, player, stackEffect, args)
                 return true
