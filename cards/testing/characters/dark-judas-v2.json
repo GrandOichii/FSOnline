@@ -1,12 +1,12 @@
 {
-    "Key": "the-empty-requiem",
-    "Name": "The Empty",
+    "Key": "dark-judas-v2",
+    "Name": "Dark Judas",
     "Type": "Character",
     "Health": 2,
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
-        "abyss-requiem"
+        "dark-arts-v2"
     ],
-    "Script": "the-empty-requiem.lua"
+    "Script": "dark-judas-v2.lua"
 }

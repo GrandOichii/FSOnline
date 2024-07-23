@@ -8,6 +8,7 @@
             "characters/the-empty-requiem",
             "characters/the-miser-requiem",
             "characters/the-keeper-v2",
+            "characters/dark-judas-v2",
             "characters/bum-bo-v2"
         ],
         "StartingItems": [
@@ -18,6 +19,7 @@
             "starting-items/keepers-bargain-requiem",
             "starting-items/bag-of-crafting-requiem",
             "starting-items/wooden-nickel-v2",
+            "starting-items/dark-arts-v2",
             "starting-items/bag-o-trash-v2"
         ],
         "Treasures": [
@@ -70,6 +72,7 @@
             "loot/xvii-the-stars-alt1",
             "loot/lost-soul-v2",
             "loot/perthro-requiem",
+            "loot/bible-thump-requiem",
             "loot/bag-lunch-requiem",
             "loot/a-sack-v2"
         ],

@@ -1,6 +1,8 @@
 extends CardBehavior
 class_name HandCardBehavior
 
+# !FIXME if cards are visible in the hands of an opponent, they will be considered a valid choice for ChooseCardInHand
+
 @export_group('Colors')
 @export var DefaultColor: Color
 @export var PlayableColor: Color

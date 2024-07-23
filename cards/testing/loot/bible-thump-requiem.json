@@ -1,0 +1,7 @@
+{
+    "Key": "bible-thump-requiem",
+    "Name": "Bible Thump!",
+    "Type": "Loot",
+    "Text": "Loot 2, then loot 2 for each player that died this turn.",
+    "Script": "bible-thump-requiem.lua"
+}

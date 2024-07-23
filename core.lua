@@ -450,6 +450,15 @@ function FS.B.Card()
         return result
     end
 
+    function result.Effect:Custom(...)
+        local commons = {...}
+        assert(#commons > 0, 'provided 0 custom effect functions in result.Effect:Custom function (for Loot)')
+
+        result.effectGroups[#result.effectGroups+1] = commons
+
+        return result
+    end
+
     function result.Effect:Roll(effect)
         result.lootCosts[#result.lootCosts+1] = function (stackEffect)
             Roll(stackEffect)
@@ -1087,6 +1096,13 @@ function FS.F.Players()
         return result
     end
 
+    function result:DiedThisTurn()
+        result.filters[#result.filters+1] = function (player)
+            return player.IsDead
+        end
+        return result
+    end
+
     function result:Except(player_idx)
         result.filters[#result.filters+1] = function (player)
             return player.Idx ~= player_idx
@@ -1207,6 +1223,10 @@ function FS.F.Items()
     end
 
     function result:Rerollable()
+        return result:NonEternal()
+    end
+
+    function result:Destructable()
         return result:NonEternal()
     end
 

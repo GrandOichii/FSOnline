@@ -20,13 +20,13 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [node name="PlayerInfoScene" type="Control"]
-custom_minimum_size = Vector2(150, 140)
+custom_minimum_size = Vector2(180, 160)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1002.0
-offset_bottom = -508.0
+offset_right = -1820.0
+offset_bottom = -1340.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e6qev")

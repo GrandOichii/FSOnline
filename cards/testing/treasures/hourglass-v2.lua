@@ -13,6 +13,7 @@ function _Create()
                     end
                 )
                 .Effect:Common(
+                    -- TODO make optional
                     FS.C.Effect.DeactivateTarget(0)
                 )
             :Build()

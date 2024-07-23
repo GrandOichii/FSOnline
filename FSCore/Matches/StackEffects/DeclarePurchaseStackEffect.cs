@@ -32,6 +32,7 @@ public class DeclarePurchaseStackEffect : StackEffect {
             return;
         }
 
+        Match.LogInfo($"Player {owner.LogName} purchases item in Shop slot {slot}");
         await owner.GainControl(Match.TreasureSlots[slot]);
     }
 

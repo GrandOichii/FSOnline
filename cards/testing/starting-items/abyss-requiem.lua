@@ -10,7 +10,7 @@ function _Create()
                 )
                 .Target:Item(
                     function (me, player)
-                        return FS.F.Items():ControlledBy(player.Idx):Do()
+                        return FS.F.Items():ControlledBy(player.Idx):Destructable():Do()
                     end,
                     'Choose an Item to sacrifice'
                 )

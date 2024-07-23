@@ -8,7 +8,7 @@ function _Create()
                     FS.C.Cost.Tap()
                 )
                 .Effect:Common(
-                    FS.C.Effect.HandShift(-1)
+                    FS.C.Effect.HandShift(1)
                 )
             :Build()
         )

@@ -11,5 +11,21 @@ function _Create()
                 me.Owner.State.LootPlaysForTurn = me.Owner.State.LootPlaysForTurn + 1
             end
         )
+        :TriggeredAbility(
+            FS.B.TriggeredAbility('Each time you take damage, you may recharge your Character.')
+                .On:PlayedDamaged(function (me, player, args)
+                    return player.Idx == args.Player.Idx
+                end)
+                .Effect:Custom(function (stackEffect)
+                    local character = GetPlayer(stackEffect.OwnerIdx).Character
+                    local accept = FS.C.Choose.YesNo(stackEffect.OwnerIdx, 'Recharge '..character.LogName..'?')
+                    if not accept then
+                        return false
+                    end
+                    Recharge(character.IPID)
+                    return true
+                end)
+            :Build()
+        )
     :Build()
 end

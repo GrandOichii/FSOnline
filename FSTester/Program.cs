@@ -164,7 +164,7 @@ public class Program {
         listener.Start();
 
         var seed = 0;
-        // seed = new Random().Next();
+        seed = new Random().Next();
         
         var match = new Match(config, seed, cm, File.ReadAllText("../core.lua")){
             Logger = LoggerFactory
