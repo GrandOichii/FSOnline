@@ -63,6 +63,7 @@ Treasures:
   - jawbone-v2
   - guppys-head-v2
   - chaos-v2
+  - breakfast-v2
   - belly-button-v2
   # - the-chest-v2
   # - the-chest-v2
@@ -82,12 +83,14 @@ Characters:
   - isaac-v2
   - judas-v2
   - the-miser-requiem
+  - the-empty-requiem
 StartingItems:
   - infestation-v2
   - wooden-nickel-v2
   - book-of-belial-v2
   - the-d6-v2
   - keepers-bargain-requiem
+  - abyss-requiem
 BonusSouls:
   - soul-of-greed-v2
   - soul-of-gluttony-v2

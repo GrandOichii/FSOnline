@@ -4,14 +4,14 @@ namespace FSCore.Matches.Cards;
 /// Game object stats
 /// </summary>
 public class Stats {
-    public int Attack { get; }
-    public int Health { get; }
-    public int? Evasion { get; }
+    public int Attack { get; set; }
+    public int Health { get; set; }
+    public int? Evasion { get; set; }
 
-    public bool CanBeAttacked() {
-        if (Evasion is null) return false;
-        // TODO more
+    // public bool CanBeAttacked() {
+    //     if (Evasion is null) return false;
+    //     // TODO more
 
-        return true;
-    }
+    //     return true;
+    // }
 }

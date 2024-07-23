@@ -385,4 +385,9 @@ public class ScriptMaster {
         _match.GetPlayer(playerIdx).AddToHand(card)
             .Wait();
     }
+
+    [LuaCommand]
+    public InPlayMatchCard GetInPlayCard(string ipid){
+        return _match.GetInPlayCard(ipid);
+    }
 }

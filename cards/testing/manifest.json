@@ -5,6 +5,7 @@
             "characters/judas-v2",
             "characters/isaac-v2",
             "characters/the-hoarder-requiem",
+            "characters/the-empty-requiem",
             "characters/the-miser-requiem",
             "characters/the-keeper-v2",
             "characters/bum-bo-v2"
@@ -13,6 +14,7 @@
             "starting-items/infestation-v2",
             "starting-items/book-of-belial-v2",
             "starting-items/the-d6-v2",
+            "starting-items/abyss-requiem",
             "starting-items/keepers-bargain-requiem",
             "starting-items/bag-of-crafting-requiem",
             "starting-items/wooden-nickel-v2",
@@ -49,6 +51,7 @@
             "treasures/guppys-head-v2",
             "treasures/chaos-v2",
             "treasures/belly-button-v2",
+            "treasures/breakfast-v2",
             "treasures/the-butter-bean-v2"
         ],
         "Loot": [

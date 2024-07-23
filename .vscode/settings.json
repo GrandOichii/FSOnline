@@ -50,7 +50,8 @@
         "ExpandShotSlots",
         "StealCoins",
         "RemoveFromHand",
-        "AddToHand"
+        "AddToHand",
+        "GetInPlayCard"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

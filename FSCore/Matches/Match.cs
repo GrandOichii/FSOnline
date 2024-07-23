@@ -25,6 +25,10 @@ public class Match {
         ModificationLayer.ITEM_DESTRUCTION_REPLACEMENT_EFFECTS,
         ModificationLayer.MOD_MAX_LOOT_PLAYS,
 
+        // player stats
+        ModificationLayer.PLAYER_MAX_HEALTH,
+        ModificationLayer.PLAYER_ATTACK,
+
         ModificationLayer.LAST,
     };
 

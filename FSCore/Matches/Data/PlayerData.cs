@@ -41,6 +41,14 @@ public readonly struct PlayerData {
     /// Total soul count of the player
     /// </summary>
     public int SoulCount { get; }
+    /// <summary>
+    /// Health
+    /// </summary>
+    public int Health { get; }
+    /// <summary>
+    /// Attack
+    /// </summary>
+    public int Attack { get; }
 
     public PlayerData(Player player) {
         Name = player.Name;
@@ -48,6 +56,8 @@ public readonly struct PlayerData {
         Coins = player.Coins;
         LootPlays = player.LootPlays;
         PurchaseOpportunities = player.PurchaseOpportunities;
+        Health = player.State.Stats.Health - player.Damage;
+        Attack = player.State.Stats.Attack;
 
         Character = new(player.Character);
         HandSize = player.Hand.Count;

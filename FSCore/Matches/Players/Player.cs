@@ -79,6 +79,10 @@ public class Player : IStateModifier {
     /// History of rolls performed by the player (resets after each turn)
     /// </summary>
     public List<int> RollHistory { get; set; }
+    /// <summary>
+    /// Amount of damage marked on the player
+    /// </summary>
+    public int Damage { get; set; }
 
     /// <summary>
     /// Name of the player that will be used for system logging
@@ -363,7 +367,7 @@ public class Player : IStateModifier {
     public bool CanPlay(HandMatchCard card) {
         if (!card.CanPlay(this)) return false;
 
-        return LootPlays < 0 || card.State.LootCost <= LootPlays;
+    return LootPlays < 0 || card.State.LootCost <= LootPlays;
     }
 
     /// <summary>
@@ -748,6 +752,14 @@ public class Player : IStateModifier {
         });
         
         // TODO update
+    }
+
+    #endregion
+
+    #region Health
+
+    public void HealToMax() {
+        Damage = 0;
     }
 
     #endregion

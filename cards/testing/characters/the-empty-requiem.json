@@ -1,12 +1,12 @@
 {
-    "Key": "bum-bo-v2",
-    "Name": "Bum-Bo",
+    "Key": "the-empty-requiem",
+    "Name": "The Empty",
     "Type": "Character",
     "Health": 2,
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
-        "bag-o-trash-v2"
+        "abyss-requiem"
     ],
-    "Script": "bum-bo-v2.lua"
+    "Script": "the-empty-requiem.lua"
 }

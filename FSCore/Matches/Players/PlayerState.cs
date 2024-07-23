@@ -3,6 +3,7 @@ namespace FSCore.Matches.Players;
 public class PlayerState {
     public Player Original { get; }
     public int LootPlaysForTurn { get; set; }
+    public Stats Stats { get; }
 
     #region Modifiers
 
@@ -27,5 +28,10 @@ public class PlayerState {
         LootAmountModifiers = new();
         RollReplacementEffects = new();
         PurchaseCostModifiers = new();
+
+        Stats = new() {
+            Attack = original.Character.GetTemplate().Attack,
+            Health = original.Character.GetTemplate().Health,
+        };
     }
 }

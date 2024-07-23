@@ -26,6 +26,8 @@ FS.ModLayers = {
     LAST = 8,
     ITEM_DESTRUCTION_REPLACEMENT_EFFECTS = 9,
     MOD_MAX_LOOT_PLAYS = 10,
+    PLAYER_MAX_HEALTH = 11,
+    PLAYER_ATTACK = 12,
 }
 
 -- triggers
