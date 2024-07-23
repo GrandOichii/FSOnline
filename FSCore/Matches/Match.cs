@@ -9,7 +9,7 @@ public class Match {
     /// <summary>
     /// Turn structure
     /// </summary>
-    private static readonly List<IPhase> _phases = new(){
+    private static readonly List<IPhase> _phases = new() {
         new StartPhase(),
         new ActionPhase(),
         new EndPhase(),
@@ -23,6 +23,7 @@ public class Match {
         ModificationLayer.ITEM_ACTIVATION_RESTRICTIONS,
         ModificationLayer.PURCHASE_COST,
         ModificationLayer.ITEM_DESTRUCTION_REPLACEMENT_EFFECTS,
+        ModificationLayer.MOD_MAX_LOOT_PLAYS,
 
         ModificationLayer.LAST,
     };

@@ -2,6 +2,7 @@ namespace FSCore.Matches.Players;
 
 public class PlayerState {
     public Player Original { get; }
+    public int LootPlaysForTurn { get; set; }
 
     #region Modifiers
 
@@ -20,6 +21,7 @@ public class PlayerState {
     public PlayerState(Player original)
     {
         Original = original;
+        LootPlaysForTurn = original.Match.Config.LootPlay;
 
         CoinGainModifiers = new();
         LootAmountModifiers = new();

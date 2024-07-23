@@ -6,8 +6,7 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
-        "guppys-eye-v2",
-        "chaos-v2",
+        "the-d20-v2",
         "wooden-nickel-v2"
     ],
     "Script": "the-keeper-v2.lua"

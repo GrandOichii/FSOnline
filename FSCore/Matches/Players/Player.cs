@@ -323,7 +323,7 @@ public class Player : IStateModifier {
     /// Adds a number of loot plays for the turn
     /// </summary>
     public void AddLootPlayForTurn() {
-        AddLootPlay(Match.Config.LootPlay);
+        AddLootPlay(State.LootPlaysForTurn);
     }
 
     /// <summary>

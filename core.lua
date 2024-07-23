@@ -25,6 +25,7 @@ FS.ModLayers = {
     PURCHASE_COST = 7,
     LAST = 8,
     ITEM_DESTRUCTION_REPLACEMENT_EFFECTS = 9,
+    MOD_MAX_LOOT_PLAYS = 10,
 }
 
 -- triggers
