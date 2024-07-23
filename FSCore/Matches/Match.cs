@@ -432,6 +432,10 @@ public class Match {
             foreach (var soul in souls)
                 soul.Modify(layer);
         }
+
+        // check player deaths
+        foreach (var player in Players)
+            await player.CheckDead();
         
         // TODO rooms
         // TODO monsters

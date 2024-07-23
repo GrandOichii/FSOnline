@@ -100,4 +100,6 @@ public struct MatchConfig {
     /// Initial coin cost to purchase an item from the shop/top of treasure deck
     /// </summary>
     public required int PurchaseCost { get; set; }
+    public required int DeathPenaltyLoot { get; set; }
+    public required int DeathPenaltyCoins { get; set; }
 }

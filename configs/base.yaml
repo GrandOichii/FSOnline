@@ -16,6 +16,8 @@ AttackCountDefault: 1
 LootStepLootAmount: 1
 CharactersStartTapped: yes
 PurchaseCost: 3
+DeathPenaltyLoot: 1
+DeathPenaltyCoins: 1
 
 LootPlay: 1
 # LootPlay: 100
@@ -35,6 +37,7 @@ LootCards:
   perthro-requiem: 10
   bag-lunch-requiem: 10
   blank-rune-v2: 1000
+  bloody-penny-v2: 10
 Treasures:
   - keepers-box-requiem
   - portable-slot-machine-v2

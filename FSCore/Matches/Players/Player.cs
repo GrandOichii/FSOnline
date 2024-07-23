@@ -83,6 +83,8 @@ public class Player : IStateModifier {
     /// Amount of damage marked on the player
     /// </summary>
     public int Damage { get; set; }
+    public bool IsDead { get; set; }
+    public StackEffect? DeathSource { get; private set; }
 
     /// <summary>
     /// Name of the player that will be used for system logging
@@ -100,6 +102,8 @@ public class Player : IStateModifier {
         Items = new();
         Souls = new();
         RollHistory = new();
+        IsDead = false;
+        DeathSource = null;
 
         // Initial state
         State = new(this);
@@ -367,7 +371,7 @@ public class Player : IStateModifier {
     public bool CanPlay(HandMatchCard card) {
         if (!card.CanPlay(this)) return false;
 
-    return LootPlays < 0 || card.State.LootCost <= LootPlays;
+        return LootPlays < 0 || card.State.LootCost <= LootPlays;
     }
 
     /// <summary>
@@ -760,6 +764,8 @@ public class Player : IStateModifier {
 
     public void HealToMax() {
         Damage = 0;
+        IsDead = false;
+        DeathSource = null;
     }
 
     public async Task ProcessDamage(int amount, StackEffect source) {
@@ -769,11 +775,70 @@ public class Player : IStateModifier {
 
         Match.LogInfo($"Player {LogName} was dealt {amount} damage");
         Damage += amount;
-        if (Damage > State.Stats.Health)
+        if (Damage >= State.Stats.Health) {
             Damage = State.Stats.Health;
+            DeathSource = source;
+            return;
+        }
+    }
+
+    #endregion
+
+    #region Death
+
+    public async Task PushDeath(StackEffect deathSource) {
+        Match.LogInfo($"Death of player {LogName} is pushed onto the stack");
+
+        var effect = new PlayerDeathStackEffect(this, deathSource);
+        await Match.PlaceOnStack(effect);
+    }
+
+    public async Task CheckDead() {
+        if (DeathSource is null) return;
+
+        // dead
+        await PushDeath(DeathSource);
+        DeathSource = null;
+
+        // TODO feels like this shouldn't be here
+        await Match.Emit("player_death_before_penalties", new() {
+            { "Player", this },
+            { "Source", DeathSource },
+        });
+    }
+
+    public async Task ProcessDeath(StackEffect deathSource) {
+        // TODO death replacement effects
+        if (Match.CurPlayerIdx == Idx) {
+            Match.TurnEnded = true;
+        }
+        IsDead = true;
+
+        await PayDeathPenalty(deathSource);
+
+        // TODO death penalty
+        // TODO fizzle all DeclarePurchaseStackEffects
 
         // TODO trigger
+        await Match.Emit("player_death", new() {
+            { "Player", this },
+            { "Source", deathSource },
+        });
         // TODO add update
+    }
+
+    public async Task PayDeathPenalty(StackEffect deathSource) {
+        // TODO? move this to a Lua script
+        // TODO replacement effects
+
+        // TODO destroy non-eternal item
+
+        // TODO discard a loot card
+
+        // TODO modify the amount of coins lost
+        LoseCoins(Match.Config.DeathPenaltyCoins);
+
+        // TODO tap all items with {T} abilities
     }
 
     #endregion
