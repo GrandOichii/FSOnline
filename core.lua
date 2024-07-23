@@ -61,6 +61,16 @@ function FS.C.Effect._ApplyToPlayer(effect, filterFunc)
     end
 end
 
+function FS.C.Effect.SwitchRoll(rollIdx, index)
+    return function (stackEffect)
+        -- TODO check that roll idx exists
+        local roll = stackEffect.Rolls[rollIdx]
+        local action = index[roll]
+        assert(action ~= nil, 'Didn\'t provide scenario for roll value '..roll..' for FS.C.Effect.SwitchRoll')
+        action(stackEffect)
+    end
+end
+
 function FS.C.Effect.ExpandShotSlots(amount)
     return function (stackEffect)
         ExpandShotSlots(amount)
@@ -209,6 +219,13 @@ end
 function FS.C.Effect.Loot(amount, filterFunc)
     return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
         LootCards(player.Idx, amount, stackEffect)
+        return true
+    end, filterFunc)
+end
+
+function FS.C.Effect.DamageToPlayer(amount, filterFunc)
+    return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
+        DealDamageToPlayer(player.Idx, amount, stackEffect)
         return true
     end, filterFunc)
 end

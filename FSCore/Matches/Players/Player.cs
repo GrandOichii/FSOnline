@@ -767,6 +767,7 @@ public class Player : IStateModifier {
         // TODO calculate the final amount of damage
         // TODO use source
 
+        Match.LogInfo($"Player {LogName} was dealt {amount} damage");
         Damage += amount;
         if (Damage > State.Stats.Health)
             Damage = State.Stats.Health;
