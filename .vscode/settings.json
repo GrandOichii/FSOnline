@@ -51,7 +51,8 @@
         "StealCoins",
         "RemoveFromHand",
         "AddToHand",
-        "GetInPlayCard"
+        "GetInPlayCard",
+        "DealDamageToPlayer"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

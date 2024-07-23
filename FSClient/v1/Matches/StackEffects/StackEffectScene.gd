@@ -16,7 +16,8 @@ var _type_map = {
 	'loot_play': 'Loot card',
 	'ability_activation': 'Ability activation',
 	'ability_trigger': 'Triggered ability',
-	'purchase_declaration': 'Purchase declaration'
+	'purchase_declaration': 'Purchase declaration',
+	'damage': 'Damage',
 }
 
 var _type_action_map = {
@@ -27,7 +28,9 @@ var _type_action_map = {
 	'ability_activation': func (snapshot):
 		Details.text = snapshot.EffectText,
 	'ability_trigger': func (snapshot):
-		Details.text = snapshot.EffectText
+		Details.text = snapshot.EffectText,
+	'damage': func(snapshot):
+		Details.text = str(snapshot.Amount)
 }
 
 @onready var _bg_color = default_color

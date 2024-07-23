@@ -30,6 +30,7 @@ public class ActivateAction : IAction
             throw new MatchException($"Activated ability activation check of card {card.LogName} failed during execution by player {player.LogName}");
         }
 
+        // TODO this should be done in ActivatedAbility
         var effect = new ActivatedAbilityStackEffect(ability.Ability, card, player);
         await match.PlaceOnStack(effect);
 

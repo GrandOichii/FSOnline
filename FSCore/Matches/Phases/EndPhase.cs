@@ -24,6 +24,7 @@ public class EndPhase : IPhase
             p.RemoveLootPlays();
             p.RemovePurchaseOpportunities();
             p.RollHistory.Clear();
+            p.HealToMax();
             // TODO heal all players
         }
         // TODO heal all monsters

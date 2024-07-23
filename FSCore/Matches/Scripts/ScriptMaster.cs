@@ -390,4 +390,13 @@ public class ScriptMaster {
     public InPlayMatchCard GetInPlayCard(string ipid){
         return _match.GetInPlayCard(ipid);
     }
+
+    [LuaCommand]
+    public void DealDamageToPlayer(int playerIdx, int amount, StackEffect sourceEffect) {
+        // TODO too low level
+        var owner = _match.GetPlayer(sourceEffect.OwnerIdx);
+        var effect = new DamageStackEffect(owner, amount, sourceEffect, _match.GetPlayer(playerIdx));
+        _match.PlaceOnStack(effect)
+            .Wait();        
+    }
 }

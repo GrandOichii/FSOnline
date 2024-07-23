@@ -22,15 +22,17 @@ public class TriggeredAbility : Ability {
         if (!check) {
             return;
         }
+        var match = card.Card.Match;
 
         var effect = new TriggeredAbilityStackEffect(this, card, owner, trigger);
+        await match.PlaceOnStack(effect);
 
         var payed = PayCosts(card, owner, effect, trigger.Args);
         if (!payed) {
+            match.RemoveTopOfStack();
+
             return;
         }
-
-        await card.Card.Match.PlaceOnStack(effect);
     }
 
     public async Task TryTrigger(InPlayMatchCard card, QueuedTrigger trigger) {

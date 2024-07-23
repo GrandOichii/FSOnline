@@ -756,10 +756,23 @@ public class Player : IStateModifier {
 
     #endregion
 
-    #region Health
+    #region Damage
 
     public void HealToMax() {
         Damage = 0;
+    }
+
+    public async Task ProcessDamage(int amount, StackEffect source) {
+        // TODO calculate whether damage is prevented
+        // TODO calculate the final amount of damage
+        // TODO use source
+
+        Damage += amount;
+        if (Damage > State.Stats.Health)
+            Damage = State.Stats.Health;
+
+        // TODO trigger
+        // TODO add update
     }
 
     #endregion
