@@ -9,6 +9,7 @@
             "characters/the-miser-requiem",
             "characters/the-keeper-v2",
             "characters/dark-judas-v2",
+            "characters/lazarus-v2",
             "characters/bum-bo-v2"
         ],
         "StartingItems": [
@@ -20,6 +21,7 @@
             "starting-items/bag-of-crafting-requiem",
             "starting-items/wooden-nickel-v2",
             "starting-items/dark-arts-v2",
+            "starting-items/lazarus-rags-v2",
             "starting-items/bag-o-trash-v2"
         ],
         "Treasures": [

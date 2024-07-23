@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardImages" load_steps=147 format=3 uid="uid://dk2vd8k0k3uch"]
+[gd_resource type="Resource" script_class="CardImages" load_steps=171 format=3 uid="uid://dk2vd8k0k3uch"]
 
 [ext_resource type="Script" path="res://v1/CardImages.gd" id="1_boc33"]
 [ext_resource type="Texture2D" uid="uid://dbsttoe2t228y" path="res://assets/images/card/cards/guppy-v2.png" id="1_exema"]
@@ -74,6 +74,18 @@
 [ext_resource type="Texture2D" uid="uid://dhy0lwi8fn3cf" path="res://assets/images/card/cards/dark-arts-v2.png" id="71_64edy"]
 [ext_resource type="Texture2D" uid="uid://c8fynyl8po78g" path="res://assets/images/card/cards/dark-judas-v2.png" id="72_ql5hw"]
 [ext_resource type="Texture2D" uid="uid://cbn86a7dkrjlr" path="res://assets/images/card/cards/xiii-death-v2.png" id="73_j6c3c"]
+[ext_resource type="Texture2D" uid="uid://boo1cb4v8i1ua" path="res://assets/images/card/cards/want/the-habit-v2.png" id="74_ndfsm"]
+[ext_resource type="Texture2D" uid="uid://ddm2fpxokydu6" path="res://assets/images/card/cards/want/hypercoagulation-requiem.png" id="74_v4mxo"]
+[ext_resource type="Texture2D" uid="uid://de4s2im2mx0cn" path="res://assets/images/card/cards/want/moms-razor-v2.png" id="74_vshja"]
+[ext_resource type="Texture2D" uid="uid://dkqmal1yonov1" path="res://assets/images/card/cards/want/sticky-nickel-v2.png" id="75_aeh3j"]
+[ext_resource type="Texture2D" uid="uid://y6x3umcdtchq" path="res://assets/images/card/cards/want/experimental-treatment-requiem.png" id="75_xrnr2"]
+[ext_resource type="Texture2D" uid="uid://dflracxeh65sx" path="res://assets/images/card/cards/want/soulbond-requiem.png" id="76_6warr"]
+[ext_resource type="Texture2D" uid="uid://bi1wajebncjls" path="res://assets/images/card/cards/want/shadow-v2.png" id="77_u8t3x"]
+[ext_resource type="Texture2D" uid="uid://c1u616pwvdq4l" path="res://assets/images/card/cards/lazarus-rags-v2.png" id="79_p3eww"]
+[ext_resource type="Texture2D" uid="uid://b2ob61pwt7v4m" path="res://assets/images/card/cards/want/x-wheel-of-fortune-v2.png" id="82_ao6hp"]
+[ext_resource type="Texture2D" uid="uid://1ni5ccbm10sr" path="res://assets/images/card/cards/want/xiv-temperance-v2.png" id="83_je3ph"]
+[ext_resource type="Texture2D" uid="uid://p55xxipw805" path="res://assets/images/card/cards/the-dauntless-requiem.png" id="84_ilgkp"]
+[ext_resource type="Texture2D" uid="uid://dc534x6uwkdxp" path="res://assets/images/card/cards/lazarus-v2.png" id="85_ras08"]
 
 [sub_resource type="Resource" id="Resource_3qwmf"]
 script = ExtResource("1_v0pgv")
@@ -435,6 +447,66 @@ script = ExtResource("1_v0pgv")
 card_key = "xiii-death-v2"
 image = ExtResource("73_j6c3c")
 
+[sub_resource type="Resource" id="Resource_46qer"]
+script = ExtResource("1_v0pgv")
+card_key = "the-habit-v2"
+image = ExtResource("74_ndfsm")
+
+[sub_resource type="Resource" id="Resource_f7l16"]
+script = ExtResource("1_v0pgv")
+card_key = "sticky-nickel-v2"
+image = ExtResource("75_aeh3j")
+
+[sub_resource type="Resource" id="Resource_4wm5m"]
+script = ExtResource("1_v0pgv")
+card_key = "soulbond-requiem"
+image = ExtResource("76_6warr")
+
+[sub_resource type="Resource" id="Resource_sbc0f"]
+script = ExtResource("1_v0pgv")
+card_key = "shadow-v2"
+image = ExtResource("77_u8t3x")
+
+[sub_resource type="Resource" id="Resource_l7w0i"]
+script = ExtResource("1_v0pgv")
+card_key = "moms-razor-v2"
+image = ExtResource("74_vshja")
+
+[sub_resource type="Resource" id="Resource_qrs4w"]
+script = ExtResource("1_v0pgv")
+card_key = "lazarus-rags-v2"
+image = ExtResource("79_p3eww")
+
+[sub_resource type="Resource" id="Resource_sp13e"]
+script = ExtResource("1_v0pgv")
+card_key = "hypercoagulation-requiem"
+image = ExtResource("74_v4mxo")
+
+[sub_resource type="Resource" id="Resource_5e1uc"]
+script = ExtResource("1_v0pgv")
+card_key = "experimental-treatment-requiem"
+image = ExtResource("75_xrnr2")
+
+[sub_resource type="Resource" id="Resource_2ifsj"]
+script = ExtResource("1_v0pgv")
+card_key = "x-wheel-of-fortune-v2"
+image = ExtResource("82_ao6hp")
+
+[sub_resource type="Resource" id="Resource_mpbxw"]
+script = ExtResource("1_v0pgv")
+card_key = "xiv-temperance-v2"
+image = ExtResource("83_je3ph")
+
+[sub_resource type="Resource" id="Resource_nkwe0"]
+script = ExtResource("1_v0pgv")
+card_key = "the-dauntless-requiem"
+image = ExtResource("84_ilgkp")
+
+[sub_resource type="Resource" id="Resource_vfln4"]
+script = ExtResource("1_v0pgv")
+card_key = "lazarus-v2"
+image = ExtResource("85_ras08")
+
 [resource]
 script = ExtResource("1_boc33")
-Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew"), SubResource("Resource_k1c4c"), SubResource("Resource_vt8mp"), SubResource("Resource_rmb1q"), SubResource("Resource_1ampk"), SubResource("Resource_pbjhe"), SubResource("Resource_4krbf"), SubResource("Resource_lb85l"), SubResource("Resource_d4gxl"), SubResource("Resource_s36j7"), SubResource("Resource_jangg"), SubResource("Resource_1f3i8"), SubResource("Resource_s3iab"), SubResource("Resource_ycocx"), SubResource("Resource_840ki"), SubResource("Resource_dktxc"), SubResource("Resource_wys4p"), SubResource("Resource_37bwl"), SubResource("Resource_k6xgr"), SubResource("Resource_h03qq"), SubResource("Resource_dtlai"), SubResource("Resource_s1yg2"), SubResource("Resource_li4hp"), SubResource("Resource_meq3s"), SubResource("Resource_3pbr1"), SubResource("Resource_pk4ov"), SubResource("Resource_pjcyp"), SubResource("Resource_s6870"), SubResource("Resource_0pklk"), SubResource("Resource_8mng4"), SubResource("Resource_ijmhs"), SubResource("Resource_ljg01"), SubResource("Resource_hlenv"), SubResource("Resource_ae238"), SubResource("Resource_54g27"), SubResource("Resource_mujbm"), SubResource("Resource_gst8a"), SubResource("Resource_py6xk"), SubResource("Resource_a0xm1"), SubResource("Resource_168ja"), SubResource("Resource_2ycky"), SubResource("Resource_jjeum"), SubResource("Resource_g0nni"), SubResource("Resource_yl71p"), SubResource("Resource_urema"), SubResource("Resource_0mb20"), SubResource("Resource_u2afk"), SubResource("Resource_xfisc"), SubResource("Resource_dstuw"), SubResource("Resource_4477n"), SubResource("Resource_shecc"), SubResource("Resource_jyb2y"), SubResource("Resource_hxrhe"), SubResource("Resource_pl1tj"), SubResource("Resource_dpkti"), SubResource("Resource_quhde"), SubResource("Resource_7yx8v"), SubResource("Resource_ymxd1"), SubResource("Resource_j0224"), SubResource("Resource_w0b5p"), SubResource("Resource_mgqn6"), SubResource("Resource_px1g4"), SubResource("Resource_wpfqs"), SubResource("Resource_8yg2v"), SubResource("Resource_2trae"), SubResource("Resource_tvd6f"), SubResource("Resource_62824"), SubResource("Resource_cat4a"), SubResource("Resource_mplx4"), SubResource("Resource_2wqsw"), SubResource("Resource_vr68w")])
+Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew"), SubResource("Resource_k1c4c"), SubResource("Resource_vt8mp"), SubResource("Resource_rmb1q"), SubResource("Resource_1ampk"), SubResource("Resource_pbjhe"), SubResource("Resource_4krbf"), SubResource("Resource_lb85l"), SubResource("Resource_d4gxl"), SubResource("Resource_s36j7"), SubResource("Resource_jangg"), SubResource("Resource_1f3i8"), SubResource("Resource_s3iab"), SubResource("Resource_ycocx"), SubResource("Resource_840ki"), SubResource("Resource_dktxc"), SubResource("Resource_wys4p"), SubResource("Resource_37bwl"), SubResource("Resource_k6xgr"), SubResource("Resource_h03qq"), SubResource("Resource_dtlai"), SubResource("Resource_s1yg2"), SubResource("Resource_li4hp"), SubResource("Resource_meq3s"), SubResource("Resource_3pbr1"), SubResource("Resource_pk4ov"), SubResource("Resource_pjcyp"), SubResource("Resource_s6870"), SubResource("Resource_0pklk"), SubResource("Resource_8mng4"), SubResource("Resource_ijmhs"), SubResource("Resource_ljg01"), SubResource("Resource_hlenv"), SubResource("Resource_ae238"), SubResource("Resource_54g27"), SubResource("Resource_mujbm"), SubResource("Resource_gst8a"), SubResource("Resource_py6xk"), SubResource("Resource_a0xm1"), SubResource("Resource_168ja"), SubResource("Resource_2ycky"), SubResource("Resource_jjeum"), SubResource("Resource_g0nni"), SubResource("Resource_yl71p"), SubResource("Resource_urema"), SubResource("Resource_0mb20"), SubResource("Resource_u2afk"), SubResource("Resource_xfisc"), SubResource("Resource_dstuw"), SubResource("Resource_4477n"), SubResource("Resource_shecc"), SubResource("Resource_jyb2y"), SubResource("Resource_hxrhe"), SubResource("Resource_pl1tj"), SubResource("Resource_dpkti"), SubResource("Resource_quhde"), SubResource("Resource_7yx8v"), SubResource("Resource_ymxd1"), SubResource("Resource_j0224"), SubResource("Resource_w0b5p"), SubResource("Resource_mgqn6"), SubResource("Resource_px1g4"), SubResource("Resource_wpfqs"), SubResource("Resource_8yg2v"), SubResource("Resource_2trae"), SubResource("Resource_tvd6f"), SubResource("Resource_62824"), SubResource("Resource_cat4a"), SubResource("Resource_mplx4"), SubResource("Resource_2wqsw"), SubResource("Resource_vr68w"), SubResource("Resource_46qer"), SubResource("Resource_f7l16"), SubResource("Resource_4wm5m"), SubResource("Resource_sbc0f"), SubResource("Resource_l7w0i"), SubResource("Resource_qrs4w"), SubResource("Resource_sp13e"), SubResource("Resource_5e1uc"), SubResource("Resource_2ifsj"), SubResource("Resource_mpbxw"), SubResource("Resource_nkwe0"), SubResource("Resource_vfln4")])
