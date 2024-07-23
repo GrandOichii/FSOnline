@@ -1,0 +1,7 @@
+{
+    "Key": "bag-lunch-requiem",
+    "Name": "Bag Lunch",
+    "Type": "Loot",
+    "Text": "If this would be destroyed, if it has no counters on it, put a counter on it instead.\nYou have +1{health} while this has a counter on it.",
+    "Script": "bag-lunch-requiem.lua"
+}

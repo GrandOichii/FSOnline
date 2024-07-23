@@ -228,10 +228,10 @@ v            - purchase from shop
         - monter attack modification
         - monster attack setting
     - health
-        - player health modification
+v        - player health modification
         - limiting amount of health healed at the end of turn
     - attack
-        - player attack modification
+v        - player attack modification
         - forcing players to attack a specific monster this turn
         - forcing players to attack a specific player this turn
     - replacement effects

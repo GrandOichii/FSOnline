@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardImages" load_steps=129 format=3 uid="uid://dk2vd8k0k3uch"]
+[gd_resource type="Resource" script_class="CardImages" load_steps=131 format=3 uid="uid://dk2vd8k0k3uch"]
 
 [ext_resource type="Script" path="res://v1/CardImages.gd" id="1_boc33"]
 [ext_resource type="Texture2D" uid="uid://dbsttoe2t228y" path="res://assets/images/card/cards/guppy-v2.png" id="1_exema"]
@@ -65,6 +65,7 @@
 [ext_resource type="Texture2D" uid="uid://jkdik27karxh" path="res://assets/images/card/cards/breakfast-v2.png" id="62_jlndu"]
 [ext_resource type="Texture2D" uid="uid://dxghmyiiqfgq0" path="res://assets/images/card/cards/abyss-requiem.png" id="63_g333o"]
 [ext_resource type="Texture2D" uid="uid://b54cpyyxctkgu" path="res://assets/images/card/cards/the-empty-requiem.png" id="64_25r02"]
+[ext_resource type="Texture2D" uid="uid://c72i756q0m2sw" path="res://assets/images/card/cards/bag-lunch-requiem.png" id="65_db3wd"]
 
 [sub_resource type="Resource" id="Resource_3qwmf"]
 script = ExtResource("1_v0pgv")
@@ -381,6 +382,11 @@ script = ExtResource("1_v0pgv")
 card_key = "the-empty-requiem"
 image = ExtResource("64_25r02")
 
+[sub_resource type="Resource" id="Resource_wpfqs"]
+script = ExtResource("1_v0pgv")
+card_key = "bag-lunch-requiem"
+image = ExtResource("65_db3wd")
+
 [resource]
 script = ExtResource("1_boc33")
-Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew"), SubResource("Resource_k1c4c"), SubResource("Resource_vt8mp"), SubResource("Resource_rmb1q"), SubResource("Resource_1ampk"), SubResource("Resource_pbjhe"), SubResource("Resource_4krbf"), SubResource("Resource_lb85l"), SubResource("Resource_d4gxl"), SubResource("Resource_s36j7"), SubResource("Resource_jangg"), SubResource("Resource_1f3i8"), SubResource("Resource_s3iab"), SubResource("Resource_ycocx"), SubResource("Resource_840ki"), SubResource("Resource_dktxc"), SubResource("Resource_wys4p"), SubResource("Resource_37bwl"), SubResource("Resource_k6xgr"), SubResource("Resource_h03qq"), SubResource("Resource_dtlai"), SubResource("Resource_s1yg2"), SubResource("Resource_li4hp"), SubResource("Resource_meq3s"), SubResource("Resource_3pbr1"), SubResource("Resource_pk4ov"), SubResource("Resource_pjcyp"), SubResource("Resource_s6870"), SubResource("Resource_0pklk"), SubResource("Resource_8mng4"), SubResource("Resource_ijmhs"), SubResource("Resource_ljg01"), SubResource("Resource_hlenv"), SubResource("Resource_ae238"), SubResource("Resource_54g27"), SubResource("Resource_mujbm"), SubResource("Resource_gst8a"), SubResource("Resource_py6xk"), SubResource("Resource_a0xm1"), SubResource("Resource_168ja"), SubResource("Resource_2ycky"), SubResource("Resource_jjeum"), SubResource("Resource_g0nni"), SubResource("Resource_yl71p"), SubResource("Resource_urema"), SubResource("Resource_0mb20"), SubResource("Resource_u2afk"), SubResource("Resource_xfisc"), SubResource("Resource_dstuw"), SubResource("Resource_4477n"), SubResource("Resource_shecc"), SubResource("Resource_jyb2y"), SubResource("Resource_hxrhe"), SubResource("Resource_pl1tj"), SubResource("Resource_dpkti"), SubResource("Resource_quhde"), SubResource("Resource_7yx8v"), SubResource("Resource_ymxd1"), SubResource("Resource_j0224"), SubResource("Resource_w0b5p"), SubResource("Resource_mgqn6"), SubResource("Resource_px1g4")])
+Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_3qwmf"), SubResource("Resource_ihxew"), SubResource("Resource_k1c4c"), SubResource("Resource_vt8mp"), SubResource("Resource_rmb1q"), SubResource("Resource_1ampk"), SubResource("Resource_pbjhe"), SubResource("Resource_4krbf"), SubResource("Resource_lb85l"), SubResource("Resource_d4gxl"), SubResource("Resource_s36j7"), SubResource("Resource_jangg"), SubResource("Resource_1f3i8"), SubResource("Resource_s3iab"), SubResource("Resource_ycocx"), SubResource("Resource_840ki"), SubResource("Resource_dktxc"), SubResource("Resource_wys4p"), SubResource("Resource_37bwl"), SubResource("Resource_k6xgr"), SubResource("Resource_h03qq"), SubResource("Resource_dtlai"), SubResource("Resource_s1yg2"), SubResource("Resource_li4hp"), SubResource("Resource_meq3s"), SubResource("Resource_3pbr1"), SubResource("Resource_pk4ov"), SubResource("Resource_pjcyp"), SubResource("Resource_s6870"), SubResource("Resource_0pklk"), SubResource("Resource_8mng4"), SubResource("Resource_ijmhs"), SubResource("Resource_ljg01"), SubResource("Resource_hlenv"), SubResource("Resource_ae238"), SubResource("Resource_54g27"), SubResource("Resource_mujbm"), SubResource("Resource_gst8a"), SubResource("Resource_py6xk"), SubResource("Resource_a0xm1"), SubResource("Resource_168ja"), SubResource("Resource_2ycky"), SubResource("Resource_jjeum"), SubResource("Resource_g0nni"), SubResource("Resource_yl71p"), SubResource("Resource_urema"), SubResource("Resource_0mb20"), SubResource("Resource_u2afk"), SubResource("Resource_xfisc"), SubResource("Resource_dstuw"), SubResource("Resource_4477n"), SubResource("Resource_shecc"), SubResource("Resource_jyb2y"), SubResource("Resource_hxrhe"), SubResource("Resource_pl1tj"), SubResource("Resource_dpkti"), SubResource("Resource_quhde"), SubResource("Resource_7yx8v"), SubResource("Resource_ymxd1"), SubResource("Resource_j0224"), SubResource("Resource_w0b5p"), SubResource("Resource_mgqn6"), SubResource("Resource_px1g4"), SubResource("Resource_wpfqs")])

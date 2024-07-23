@@ -8,8 +8,8 @@ function _Create()
                         return false
                     end
 
-                    RemoveFromPlay(me.IPID)
-                    AddSoulCard(me.Owner.Idx, me.Card)
+                    RemoveFromPlay(card.IPID)
+                    AddSoulCard(card.Owner.Idx, card.Card)
                     return true
                 end)
             end
