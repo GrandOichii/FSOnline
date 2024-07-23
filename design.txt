@@ -1,12 +1,12 @@
 - dynamic card text
-- stack effect text
+v - stack effect text
 - activated abilities
     - cost
 v        - tapping
 v        - removing counters
 v        - paying coins
             - reducing the amount of coins payed to activate abilties
-        - discarding loot cards
+v        - discarding loot cards
         - paying life
         - destroying controlled items
         - donating items
@@ -16,12 +16,12 @@ v        - self-destruction
     - forbidding item activations
     - forbidding activating items n times per turn
 - effects
-    - "may" effects
+v    - "may" effects
 v    - choosing players
     - until end of turn effects
     - at the end of turn effects
     - "the next time your turn ends"
-    - checking current player
+v    - checking current player
 v    - choice (yes/no)
     - taking extra turns
     - skipping turns
@@ -30,13 +30,11 @@ v    - choice (yes/no)
     - "bidding" for shop items
     - conditional forbidding of recharing items
     - "while charged" effects
-    - taking extra turns
 v    - trinkets
-    - numerical value modification
     - knowing the amount of deaths per turn
     - taxing other players for attacks
     - setting amount of item recharing during recharge step
-    - setting max hand size
+v    - setting max hand size
     - adding attack opportunities
         - optional
         - required
@@ -91,9 +89,9 @@ v    - trinkets
         - effect cancelling
         - loot card copying
     - shop
-        - putting shop items into discard
-        - stealing shop items
-        - modifying the cost of shop items
+v        - putting shop items into discard
+v        - stealing shop items
+v        - modifying the cost of shop items
         - modifying the amount of purchases per turn
     - attacking
         - forcing attacks
@@ -109,28 +107,28 @@ v    - trinkets
         - looking at a hand
         - swapping cards with opponent
         - putting cards from hand on top of deck
-        - wheeling
-        - stealing cards
+v        - wheeling
+v        - stealing cards
     - items/treasure
-        - item destruction
-            - shop item destruction
+v        - item destruction
+v            - shop item destruction
         - entering play deactivated
         - swapping cards with opponents
         - putting cards underneath items
         - item levels
-        - flipping items
-        - item filtering
+v        - flipping items
+v        - item filtering
 v        - item recharging
-        - gaining treasure
+v        - gaining treasure
 v        - counters
         - named counters
         - losing all effects
-        - becoming souls
-        - item destruction
+v        - becoming souls
+v        - item destruction
         - dynamic ability gaining
         - dynamic ability loss
-        - stealing items
-        - labels (guppy, eternal)
+v        - stealing items
+v        - labels (guppy, eternal)
             - adding labels
         - becoming a copy of an item (indefinately, until end of turn)
         - copying activated abilties of in-play items
@@ -139,7 +137,7 @@ v        - rerolling items
 v         - playing with a revealed hand
         - being able to attack items
         - putting cards underneath items
-        - soul entering under a player's control trigger
+v        - soul entering under a player's control trigger
         - conditional coin gain trigger
     - rooms
         - discarding rooms
@@ -147,13 +145,13 @@ v         - playing with a revealed hand
         - forbidding discarding rooms
     - dice
 v        - rerolling
-        - adding or subtracting points
+v        - adding or subtracting points
         - on specific dice rolled
             - checking the type of dice rolled (attack roll)
         - 'classic roller'
-        - remembering dice rolls in turn
-        - roll modification
-        - changing the result of a dice
+v        - remembering dice rolls in turn
+v        - roll modification
+v        - changing the result of a dice
         - changing the result of the next roll to a specific value
         - rolling again
     - loot
@@ -190,15 +188,15 @@ v        - playing additional loot cards
         - reordering cards from the top of deck
         - milling
         - deck searching
-    - coins
+v    - coins
 v        - gaining coins
-        - stealing coins
+v        - stealing coins
     - triggers
-        - item enter play trigger
+v        - item enter play trigger
         - trigger limitations (the FIRST TIME you take damage, ...)
         - on taking damage trigger
-        - turn start trigger
-        - turn end trigger
+v        - turn start trigger
+v        - turn end trigger
         - on death trigger
         - on dealing combat damage trigger
         - monster kill trigger
@@ -207,9 +205,9 @@ v        - gaining coins
         - on item flip
         - another player death trigger
         - reward gain trigger
-        - soul gain trigger
+v        - soul gain trigger
         - attack declaration trigger
-        - item activation trigger
+v        - item activation trigger
         - on death before paying penalties trigger
         - rolling the same result n times per turn trigger
         - attack roll miss trigger
@@ -217,7 +215,7 @@ v        - gaining coins
         - on player killing trigger
             - knowing who killed the player
         - purchase trigger
-            - purchase from shop
+v            - purchase from shop
             - purchase from top of treasure deck
         - item gain trigger
         - item purchase trigger
@@ -237,12 +235,12 @@ v        - gaining coins
         - forcing players to attack a specific monster this turn
         - forcing players to attack a specific player this turn
     - replacement effects
-        - gaining coins replacement effect
-        - roll result replacement effects (each time a player WOULD roll)
+v        - gaining coins replacement effect
+v        - roll result replacement effects (each time a player WOULD roll)
         - death penalty replacement effects
-        - item destruction replacement effects
+v        - item destruction replacement effects
         - damage replacement effects
-        - amount of looted cards replacement effects
+v        - amount of looted cards replacement effects
         - choosing which monster to attack replacement effects (on attack declaration)
         - amount of treasures gained replacement effects
         - roll miss/hit status replacement effects
@@ -257,9 +255,9 @@ v        - gaining coins
         - soul state modifiers
         - soul replacement effects
     - bonus souls
-        - amount of cards in hand check
-        - amount of coins check
-        - amount of items labeled check
+v        - amount of cards in hand check
+v        - amount of coins check
+v        - amount of items labeled check
         - bonus souls counters
         (prefer active player)
 
