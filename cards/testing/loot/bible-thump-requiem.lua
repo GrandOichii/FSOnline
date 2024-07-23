@@ -9,7 +9,7 @@ function _Create()
             local amount = #FS.F.Players()
                 :DiedThisTurn()
                 :Do()
-            LootCards(stackEffect.OwnerIdx, amount, stackEffect)
+            LootCards(stackEffect.OwnerIdx, amount * 2, stackEffect)
         end)
     :Build()
 end

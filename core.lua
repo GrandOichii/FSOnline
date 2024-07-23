@@ -116,6 +116,14 @@ function FS.C.Effect.RerollTargetRoll(target_idx)
     end
 end
 
+function FS.C.Effect.KillTargetPlayer(target_idx)
+    return function (stackEffect)
+        local idx = tonumber(stackEffect.Targets[target_idx].Value)
+        KillPlayer(idx, stackEffect)
+        return true
+    end
+end
+
 function FS.C.Effect.SetTargetRoll(target_idx, value)
     return function (stackEffect)
         local effect = GetStackEffect(stackEffect.Targets[target_idx].Value)
@@ -534,10 +542,35 @@ function FS.B.Card()
                 ipids[#ipids+1] = item.IPID
             end
 
-
             -- TODO add optional
             local ipid = ChooseItem(player.Idx, ipids, hint)
             AddTarget(stackEffect, FS.TargetTypes.ITEM, ipid)
+
+            return true
+        end
+
+        return result
+    end
+
+    function result.Target:Player(filterFunc, hint)
+        hint = hint or 'Choose a player'
+
+        result.Target._AddFizzleCheck(filterFunc, function (player)
+            return tostring(player.Idx)
+        end)
+        result.Target._AddLootCheck(filterFunc)
+
+        result.lootTargets[#result.lootTargets+1] = function (stackEffect)
+            local player = GetPlayer(stackEffect.OwnerIdx)
+            local options = filterFunc(player)
+            local indicies = {}
+            for _, p in ipairs(options) do
+                indicies[#indicies+1] = p.Idx
+            end
+
+            -- TODO add optional
+            local idx = ChoosePlayer(player.Idx, indicies, hint)
+            AddTarget(stackEffect, FS.TargetTypes.PLAYER, tostring(idx))
 
             return true
         end

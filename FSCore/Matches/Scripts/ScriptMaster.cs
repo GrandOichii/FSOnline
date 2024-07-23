@@ -399,4 +399,12 @@ public class ScriptMaster {
         _match.PlaceOnStack(effect)
             .Wait();        
     }
+
+    [LuaCommand]
+    public void KillPlayer(int playerIdx, StackEffect source) {
+        var player = _match.GetPlayer(playerIdx);
+        System.Console.WriteLine("PUSH DEATH");
+        player.PushDeath(source)
+            .Wait();
+    }
 }
