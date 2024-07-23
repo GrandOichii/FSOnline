@@ -809,7 +809,7 @@ public class Player : IStateModifier {
 
     public async Task ProcessDeath(StackEffect deathSource) {
         if (IsDead) return;
-        
+
         // TODO death replacement effects
         if (Match.CurPlayerIdx == Idx) {
             Match.TurnEnded = true;
@@ -849,6 +849,10 @@ public class Player : IStateModifier {
         LoseCoins(Match.Config.DeathPenaltyCoins);
 
         // TODO tap all items with {T} abilities
+        foreach (var item in GetInPlayCards()) {
+            // TODO check if item has an activated ability with the "Tap" label
+            await item.Tap();
+        }
     }
 
     #endregion
