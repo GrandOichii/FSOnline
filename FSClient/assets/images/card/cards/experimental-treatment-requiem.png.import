@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y6x3umcdtchq"
-path="res://.godot/imported/experimental-treatment-requiem.png-4aad3e8d5c38d420d72419cbfbeff4bf.ctex"
+uid="uid://bvjp7rakv16b7"
+path="res://.godot/imported/experimental-treatment-requiem.png-8fd7e97ee9098c70bb7a61eed4f81fd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/card/cards/want/experimental-treatment-requiem.png"
-dest_files=["res://.godot/imported/experimental-treatment-requiem.png-4aad3e8d5c38d420d72419cbfbeff4bf.ctex"]
+source_file="res://assets/images/card/cards/experimental-treatment-requiem.png"
+dest_files=["res://.godot/imported/experimental-treatment-requiem.png-8fd7e97ee9098c70bb7a61eed4f81fd5.ctex"]
 
 [params]
 

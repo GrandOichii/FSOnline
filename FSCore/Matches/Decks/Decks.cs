@@ -80,4 +80,21 @@ public class Deck {
     public void PlaceIntoDiscard(MatchCard card) {
         Discard?.Add(card);
     }
+
+    public bool Remove(string id) {
+        var card = Cards.FirstOrDefault(c => c.ID == id);
+        if (card is not null) {
+            Cards.Remove(card);
+            return true;
+        }
+        if (Discard is not null) {
+            card = Discard.FirstOrDefault(c => c.ID == id);
+            if (card is not null) {
+                Discard.Remove(card);
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

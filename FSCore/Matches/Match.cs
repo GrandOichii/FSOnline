@@ -824,8 +824,6 @@ public class Match {
             var returned = effect.Call(card);
             if (LuaUtility.GetReturnAsBool(returned)) return false;
         }
-
-
         await DiscardFromPlay(card);
         return true;
     }

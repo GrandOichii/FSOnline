@@ -241,6 +241,20 @@ function FS.C.Effect.DamageToPlayer(amount, filterFunc)
     end, filterFunc)
 end
 
+function FS.C.Effect.KillOwner()
+    return function (stackEffect)
+        KillPlayer(stackEffect.OwnerIdx, stackEffect)
+    end
+end
+
+function FS.C.Effect.RemoveAndBecomeASoul()
+    return function (stackEffect)
+        local me = stackEffect.Card
+        RemoveFromEverywhere(me.Card.ID)
+        AddSoulCard(me.Owner.Idx, me.Card)
+    end
+end
+
 -- direction: 1 for left, -1 for right
 function FS.C.Effect.HandShift(direction)
     return function (stackEffect)

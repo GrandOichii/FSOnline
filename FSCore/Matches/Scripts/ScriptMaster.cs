@@ -375,9 +375,7 @@ public class ScriptMaster {
     [LuaCommand]
     public void RemoveFromHand(int playerIdx, int handIdx) {
         var player = _match.GetPlayer(playerIdx);
-        System.Console.WriteLine($"{playerIdx} {handIdx}");
         player.Hand.RemoveAt(handIdx);
-        System.Console.WriteLine("REMOVED " + player.Hand.Count);
     }
 
     [LuaCommand]
@@ -403,8 +401,28 @@ public class ScriptMaster {
     [LuaCommand]
     public void KillPlayer(int playerIdx, StackEffect source) {
         var player = _match.GetPlayer(playerIdx);
-        System.Console.WriteLine("PUSH DEATH");
         player.PushDeath(source)
             .Wait();
+    }
+
+    [LuaCommand]
+    public void RemoveFromEverywhere(string id) {
+        // !FIXME failed
+        foreach (var player in _match.Players) {
+            var removed = player.Remove(id);
+            if (removed) return;
+        }
+        foreach (var deck in _match.DeckIndex.Values) {
+            var removed = deck.Remove(id);
+            if (removed) return;
+        }
+
+        var card = _match.BonusSouls.FirstOrDefault(c => c.ID == id);
+        if (card is not null) {
+            _match.BonusSouls.Remove(card);
+            return;
+        }
+
+        throw new MatchException($"Failed to find card with ID {id} to remove");
     }
 }

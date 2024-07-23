@@ -824,6 +824,7 @@ public class Player : IStateModifier {
 
         await PayDeathPenalty(deathSource);
 
+        Match.LogInfo($"Player {LogName} dies");
         // TODO death penalty
         // TODO fizzle all DeclarePurchaseStackEffects
 
@@ -866,4 +867,26 @@ public class Player : IStateModifier {
     }
 
     #endregion
+
+    public bool Remove(string id) {
+        var card = Hand.FirstOrDefault(c => c.Card.ID == id);
+        if (card is not null) {
+            Hand.Remove(card);
+            return true;
+        }
+
+        var iCard = Items.FirstOrDefault(c => c.Card.ID == id);
+        if (iCard is not null) {
+            Items.Remove(iCard);
+            return true;
+        }
+
+        var sCard = Souls.FirstOrDefault(c => c.Original.ID == id);
+        if (sCard is not null) {
+            Souls.Remove(sCard);
+            return true;
+        }
+
+        return false;
+    }
 }

@@ -53,7 +53,8 @@
         "AddToHand",
         "GetInPlayCard",
         "DealDamageToPlayer",
-        "KillPlayer"
+        "KillPlayer",
+        "RemoveFromEverywhere"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

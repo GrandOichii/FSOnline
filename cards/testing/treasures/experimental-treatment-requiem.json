@@ -1,0 +1,8 @@
+{
+    "Key": "experimental-treatment-requiem",
+    "Name": "Experimental Treatment",
+    "Type": "Item",
+    "Text": "Destroy this: Roll-\n1: You die.\n2: Loot 3.\n3: Gain 9{cent}.\n4: Gain +1 treasure.\n5: Gain +2 treasure.\n6: This becomes a soul. gain it.",
+    "SoulValue": 1,
+    "Script": "experimental-treatment-requiem.lua"
+}
