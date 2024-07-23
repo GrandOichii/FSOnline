@@ -205,7 +205,7 @@ public class Player : IStateModifier {
         Hand.Insert(0, handCard);
 
         // TODO? change card zone
-        // TODO trigger
+        // TODO trigger (not draw)
 
         Match.LogInfo($"Card {card.LogName} was put into hand of player {LogName}");
         // TODO add update

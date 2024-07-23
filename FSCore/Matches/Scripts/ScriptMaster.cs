@@ -371,4 +371,18 @@ public class ScriptMaster {
         p2.LoseCoins(amount);
         p1.GainCoinsRaw(amount);
     }
+
+    [LuaCommand]
+    public void RemoveFromHand(int playerIdx, int handIdx) {
+        var player = _match.GetPlayer(playerIdx);
+        System.Console.WriteLine($"{playerIdx} {handIdx}");
+        player.Hand.RemoveAt(handIdx);
+        System.Console.WriteLine("REMOVED " + player.Hand.Count);
+    }
+
+    [LuaCommand]
+    public void AddToHand(int playerIdx, MatchCard card) {
+        _match.GetPlayer(playerIdx).AddToHand(card)
+            .Wait();
+    }
 }

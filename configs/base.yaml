@@ -28,7 +28,7 @@ LootCards:
   chunk-of-amber-warp: 10
   xvii-the-stars-v2: 10
   dice-shard-v2: 10
-  lil-battery-v2: 1000
+  lil-battery-v2: 10
   lucky-toe-requiem: 10
   xvii-the-stars-alt1: 10
   lost-soul-v2: 10
@@ -61,6 +61,8 @@ Treasures:
   - the-chest-v2
   - keepers-box-requiem
   - jawbone-v2
+  - guppys-head-v2
+  - chaos-v2
   # - the-chest-v2
   # - the-chest-v2
   # - the-chest-v2

@@ -210,6 +210,34 @@ function FS.C.Effect.Loot(amount, filterFunc)
     end, filterFunc)
 end
 
+-- direction: 1 for left, -1 for right
+function FS.C.Effect.HandShift(direction)
+    return function (stackEffect)
+        local hands = {}
+        local players = GetPlayers()
+
+        -- record player's hands
+        for _, player in ipairs(players) do
+            local hand = {}
+            for hi = 0, player.Hand.Count - 1 do
+                hand[#hand+1] = player.Hand[0].Card
+                RemoveFromHand(player.Idx, 0)
+            end
+            hands[player.Idx + 1] = hand
+        end
+
+        -- give the cards
+        for idx, hand in ipairs(hands) do
+            local targetIdx = math.fmod(idx - 1 + direction + #players, #players)
+            for _, card in ipairs(hand) do
+                AddToHand(targetIdx, card)
+            end
+        end
+
+        return true
+    end
+end
+
 -- TODO change hint to hintFunc
 -- TODO change to _ApplyToPlayer
 function FS.C.Effect.Discard(amount, hint)

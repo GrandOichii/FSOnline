@@ -48,7 +48,9 @@
         "IsPresent",
         "RemoveFromBonusSouls",
         "ExpandShotSlots",
-        "StealCoins"
+        "StealCoins",
+        "RemoveFromHand",
+        "AddToHand"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"
