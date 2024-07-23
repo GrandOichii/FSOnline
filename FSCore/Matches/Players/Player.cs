@@ -808,6 +808,8 @@ public class Player : IStateModifier {
     }
 
     public async Task ProcessDeath(StackEffect deathSource) {
+        if (IsDead) return;
+        
         // TODO death replacement effects
         if (Match.CurPlayerIdx == Idx) {
             Match.TurnEnded = true;
@@ -829,11 +831,19 @@ public class Player : IStateModifier {
 
     public async Task PayDeathPenalty(StackEffect deathSource) {
         // TODO? move this to a Lua script
-        // TODO replacement effects
+        // TODO death penalty replacement effects
 
         // TODO destroy non-eternal item
 
-        // TODO discard a loot card
+        // TODO modify the amount of loot cards discarded
+        for (int i = 0; i < Match.Config.DeathPenaltyLoot; i++) {
+            if (Hand.Count == 0) break;
+
+            var options = new List<int>();
+            for (int hi = 0; hi < Hand.Count; hi++) options.Add(hi);
+            var idx = await ChooseCardInHand(options, $"Choose a card to discard (for death penalty)");
+            await DiscardFromHand(idx);
+        }
 
         // TODO modify the amount of coins lost
         LoseCoins(Match.Config.DeathPenaltyCoins);
