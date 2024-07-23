@@ -38,7 +38,8 @@ FS.Triggers = {
     SOUL_ENTER = 'soul_enter',
     PURCHASE = 'purchase',
     PLAYER_DEATH_BEFORE_PENALTIES = 'player_death_before_penalties',
-    PLAYER_DEATH = 'player_death'
+    PLAYER_DEATH = 'player_death',
+    PLAYED_DAMAGED = 'player_damaged',
 }
 
 -- common
@@ -886,6 +887,21 @@ function FS.B.TriggeredAbility(effectText)
 
     result.builders[#result.builders+1] = function (ability)
         ability.Trigger = result.trigger
+    end
+
+    function result.On:PlayedDamaged(check)
+        result.trigger = FS.Triggers.PLAYED_DAMAGED
+
+        result.costs[#result.costs+1] = {
+            Check = function (me, player, args)
+                return check(me, player, args)
+            end,
+            Pay = function (me, player, stackEffect, args)
+                return true
+            end
+        }
+
+        return result
     end
 
     function result.On:PlayerDeathBeforePenalties(check)

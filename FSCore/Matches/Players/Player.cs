@@ -778,8 +778,13 @@ public class Player : IStateModifier {
         if (Damage >= State.Stats.Health) {
             Damage = State.Stats.Health;
             DeathSource = source;
-            return;
         }
+
+        await Match.Emit("player_damaged", new() {
+            { "Player", this },
+            { "Amount", amount },
+            { "Source", source },
+        });
     }
 
     #endregion
@@ -798,13 +803,14 @@ public class Player : IStateModifier {
 
         // dead
         await PushDeath(DeathSource);
-        DeathSource = null;
 
         // TODO feels like this shouldn't be here
         await Match.Emit("player_death_before_penalties", new() {
             { "Player", this },
             { "Source", DeathSource },
         });
+
+        DeathSource = null;
     }
 
     public async Task ProcessDeath(StackEffect deathSource) {
