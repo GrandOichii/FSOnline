@@ -22,6 +22,5 @@ function _Create()
                 end)
             :Build()
         )
-        :Label(FS.Labels.Eternal)
     :Build()
 end

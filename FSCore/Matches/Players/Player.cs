@@ -569,6 +569,7 @@ public class Player : IStateModifier {
         Coins -= amount;
         if (Coins < 0)
             Coins = 0;
+        Match.AddToCoinPool(amount);
     }
 
     public void Modify(ModificationLayer layer)

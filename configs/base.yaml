@@ -15,7 +15,7 @@ PurchaseCountDefault: 1
 AttackCountDefault: 1
 LootStepLootAmount: 1
 CharactersStartTapped: yes
-PurchaseCost: 1
+PurchaseCost: 10
 DeathPenaltyLoot: 1
 DeathPenaltyCoins: 1
 DeathPenaltyItems: 1
@@ -42,44 +42,41 @@ LootCards:
   bible-thump-requiem: 10
   xiii-death-v2: 10
 Treasures:
-  # - keepers-box-requiem
-  # - portable-slot-machine-v2
-  # - the-butter-bean-v2
-  # - pageant-boy-v2
-  # - box-v2
-  # - crooked-penny-v2
-  # - the-battery-v2
-  # - the-d20-v2
-  # - pay-to-play-v2
-  # - libra-v2
-  # - dads-lost-coin-v2
-  # - sacred-heart-v2
-  # - moms-purse-v2
-  # - the-relic-v2
-  # - eye-of-greed-v2
-  # - guppys-eye-v2
-  # - shiny-rock-v2
-  # - guppys-tail-v2
-  # - hourglass-v2
-  # - trinity-shield-v2
-  # - restock-v2
-  # - a-dollar-uoi
-  # - godhead-v2
-  # - a-friend-summer
-  # - the-chest-v2
-  # - keepers-box-requiem
-  # - jawbone-v2
-  # - guppys-head-v2
-  # - chaos-v2
-  # - breakfast-v2
-  # - belly-button-v2
-  # - dark-bum-v2
-  # - fanny-pack-v2
+  - keepers-box-requiem
+  - portable-slot-machine-v2
+  - the-butter-bean-v2
+  - pageant-boy-v2
+  - box-v2
+  - crooked-penny-v2
+  - the-battery-v2
+  - the-d20-v2
+  - pay-to-play-v2
+  - libra-v2
+  - dads-lost-coin-v2
+  - sacred-heart-v2
+  - moms-purse-v2
+  - the-relic-v2
+  - eye-of-greed-v2
+  - guppys-eye-v2
+  - shiny-rock-v2
+  - guppys-tail-v2
+  - hourglass-v2
+  - trinity-shield-v2
+  - restock-v2
+  - a-dollar-uoi
+  - godhead-v2
+  - a-friend-summer
+  - the-chest-v2
+  - keepers-box-requiem
+  - jawbone-v2
+  - guppys-head-v2
+  - chaos-v2
+  - breakfast-v2
+  - belly-button-v2
+  - dark-bum-v2
+  - fanny-pack-v2
   - experimental-treatment-requiem
-  - experimental-treatment-requiem
-  - experimental-treatment-requiem
-  - experimental-treatment-requiem
-  - experimental-treatment-requiem
+  - moms-razor-v2
   # - the-chest-v2
   # - the-chest-v2
   # - the-chest-v2

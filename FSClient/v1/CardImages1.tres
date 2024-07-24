@@ -75,10 +75,10 @@
 [ext_resource type="Texture2D" uid="uid://c8fynyl8po78g" path="res://assets/images/card/cards/dark-judas-v2.png" id="72_ql5hw"]
 [ext_resource type="Texture2D" uid="uid://cbn86a7dkrjlr" path="res://assets/images/card/cards/xiii-death-v2.png" id="73_j6c3c"]
 [ext_resource type="Texture2D" uid="uid://boo1cb4v8i1ua" path="res://assets/images/card/cards/want/the-habit-v2.png" id="74_ndfsm"]
-[ext_resource type="Texture2D" uid="uid://de4s2im2mx0cn" path="res://assets/images/card/cards/want/moms-razor-v2.png" id="74_vshja"]
 [ext_resource type="Texture2D" uid="uid://dkqmal1yonov1" path="res://assets/images/card/cards/want/sticky-nickel-v2.png" id="75_aeh3j"]
 [ext_resource type="Texture2D" uid="uid://dflracxeh65sx" path="res://assets/images/card/cards/want/soulbond-requiem.png" id="76_6warr"]
 [ext_resource type="Texture2D" uid="uid://bi1wajebncjls" path="res://assets/images/card/cards/want/shadow-v2.png" id="77_u8t3x"]
+[ext_resource type="Texture2D" uid="uid://bkiycfgm3m3ql" path="res://assets/images/card/cards/moms-razor-v2.png" id="78_8cp42"]
 [ext_resource type="Texture2D" uid="uid://c1u616pwvdq4l" path="res://assets/images/card/cards/lazarus-rags-v2.png" id="79_p3eww"]
 [ext_resource type="Texture2D" uid="uid://co27jj6jeflco" path="res://assets/images/card/cards/hypercoagulation-requiem.png" id="80_3hfrg"]
 [ext_resource type="Texture2D" uid="uid://bvjp7rakv16b7" path="res://assets/images/card/cards/experimental-treatment-requiem.png" id="81_2kn2m"]
@@ -470,7 +470,7 @@ image = ExtResource("77_u8t3x")
 [sub_resource type="Resource" id="Resource_l7w0i"]
 script = ExtResource("1_v0pgv")
 card_key = "moms-razor-v2"
-image = ExtResource("74_vshja")
+image = ExtResource("78_8cp42")
 
 [sub_resource type="Resource" id="Resource_qrs4w"]
 script = ExtResource("1_v0pgv")

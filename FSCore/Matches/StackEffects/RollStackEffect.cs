@@ -25,7 +25,7 @@ public class RollStackEffect : StackEffect
     /// Sets the roll value to a random value between 1 and 6
     /// </summary>
     private void Roll() {
-        Value = Match.Rng.Next(1, 7);
+        // Value = Match.Rng.Next(1, 7);
         Value = 6;
 
         Match.LogInfo($"Player {Match.GetPlayer(Parent.OwnerIdx).LogName} rolled a {Value}");
@@ -48,10 +48,12 @@ public class RollStackEffect : StackEffect
     public override async Task Resolve()
     {
         Parent.Rolls.Add(Value);
-        Match.GetPlayer(OwnerIdx).RollHistory.Add(Value);
+        var player = Match.GetPlayer(OwnerIdx);
+        player.RollHistory.Add(Value);
 
         await Match.Emit("roll", new() {
-            { "Value", Value }
+            { "Value", Value },
+            { "Player", player },
         });
     }
 

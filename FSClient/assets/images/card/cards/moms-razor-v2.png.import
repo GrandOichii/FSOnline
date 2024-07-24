@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de4s2im2mx0cn"
-path="res://.godot/imported/moms-razor-v2.png-e3f6da8234795671949f667058099773.ctex"
+uid="uid://bkiycfgm3m3ql"
+path="res://.godot/imported/moms-razor-v2.png-0c457865fe85c0e6f935a7453be7060c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/card/cards/want/moms-razor-v2.png"
-dest_files=["res://.godot/imported/moms-razor-v2.png-e3f6da8234795671949f667058099773.ctex"]
+source_file="res://assets/images/card/cards/moms-razor-v2.png"
+dest_files=["res://.godot/imported/moms-razor-v2.png-0c457865fe85c0e6f935a7453be7060c.ctex"]
 
 [params]
 
