@@ -98,6 +98,13 @@ function FS.C.Effect.GainCoins(amount, filterFunc)
     end, filterFunc)
 end
 
+function FS.C.Effect.LoseCoins(amount, filterFunc)
+    return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
+        LoseCoins(player.Idx, amount)
+        return true
+    end, filterFunc)
+end
+
 function FS.C.Effect.AddLootPlay(amount, filterFunc)
     return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
         AddLootPlay(player.Idx, amount)

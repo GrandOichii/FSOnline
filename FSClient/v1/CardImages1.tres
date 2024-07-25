@@ -82,7 +82,7 @@
 [ext_resource type="Texture2D" uid="uid://c1u616pwvdq4l" path="res://assets/images/card/cards/lazarus-rags-v2.png" id="79_p3eww"]
 [ext_resource type="Texture2D" uid="uid://co27jj6jeflco" path="res://assets/images/card/cards/hypercoagulation-requiem.png" id="80_3hfrg"]
 [ext_resource type="Texture2D" uid="uid://bvjp7rakv16b7" path="res://assets/images/card/cards/experimental-treatment-requiem.png" id="81_2kn2m"]
-[ext_resource type="Texture2D" uid="uid://b2ob61pwt7v4m" path="res://assets/images/card/cards/want/x-wheel-of-fortune-v2.png" id="82_ao6hp"]
+[ext_resource type="Texture2D" uid="uid://b6dabmgijvmi4" path="res://assets/images/card/cards/x-wheel-of-fortune-v2.png" id="82_0wdca"]
 [ext_resource type="Texture2D" uid="uid://1ni5ccbm10sr" path="res://assets/images/card/cards/want/xiv-temperance-v2.png" id="83_je3ph"]
 [ext_resource type="Texture2D" uid="uid://p55xxipw805" path="res://assets/images/card/cards/the-dauntless-requiem.png" id="84_ilgkp"]
 [ext_resource type="Texture2D" uid="uid://dc534x6uwkdxp" path="res://assets/images/card/cards/lazarus-v2.png" id="85_ras08"]
@@ -490,7 +490,7 @@ image = ExtResource("81_2kn2m")
 [sub_resource type="Resource" id="Resource_2ifsj"]
 script = ExtResource("1_v0pgv")
 card_key = "x-wheel-of-fortune-v2"
-image = ExtResource("82_ao6hp")
+image = ExtResource("82_0wdca")
 
 [sub_resource type="Resource" id="Resource_mpbxw"]
 script = ExtResource("1_v0pgv")

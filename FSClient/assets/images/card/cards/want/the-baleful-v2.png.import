@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2ob61pwt7v4m"
-path="res://.godot/imported/x-wheel-of-fortune-v2.png-41501ed73133f2cb306c41f5d57c1958.ctex"
+uid="uid://3pja7yuac4y3"
+path="res://.godot/imported/the-baleful-v2.png-0afe1e1875ab266d241e084c69b21858.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/card/cards/want/x-wheel-of-fortune-v2.png"
-dest_files=["res://.godot/imported/x-wheel-of-fortune-v2.png-41501ed73133f2cb306c41f5d57c1958.ctex"]
+source_file="res://assets/images/card/cards/want/the-baleful-v2.png"
+dest_files=["res://.godot/imported/the-baleful-v2.png-0afe1e1875ab266d241e084c69b21858.ctex"]
 
 [params]
 
