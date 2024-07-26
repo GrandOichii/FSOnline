@@ -64,7 +64,7 @@ public class HandMatchCard : IStateModifier {
 
         // TODO catch exceptions
         foreach (var cost in costs) {
-            var returned = cost.Call(stackEffect);
+            var returned = cost.Call(this, stackEffect.Match.GetPlayer(stackEffect.OwnerIdx), stackEffect);
             var payed = LuaUtility.GetReturnAsBool(returned);
             if (!payed)
                 return false;

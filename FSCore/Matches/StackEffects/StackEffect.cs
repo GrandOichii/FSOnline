@@ -21,6 +21,10 @@ public abstract class StackEffect {
     /// Effect targets
     /// </summary>
     public List<Target> Targets { get; }
+    /// <summary>
+    /// List of choices
+    /// </summary>
+    public Queue<int> Choices { get; }
 
     public StackEffect(Match match, int ownerIdx) {
         Match = match;
@@ -29,6 +33,7 @@ public abstract class StackEffect {
         SID = match.GenerateStackID();
         Rolls = new();
         Targets = new();
+        Choices = new();
     }
 
     /// <summary>
@@ -40,5 +45,13 @@ public abstract class StackEffect {
     /// </summary>
     /// <returns>Stack effect data</returns>
     abstract public StackEffectData ToData();
+
+    public void AddChoice(int choice) {
+        Choices.Enqueue(choice);
+    }
+
+    public int PopChoice() {
+        return Choices.Dequeue();
+    }
 }
 

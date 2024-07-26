@@ -1,0 +1,7 @@
+{
+    "Key": "xiv-temperance-v2",
+    "Name": "XIV. Temperance",
+    "Type": "Loot",
+    "Text": "Choose one-\nTake 1 Damage and gain 4{cent}.\nTake 2 Damage and gain 8{cent}.",
+    "Script": "xiv-temperance-v2.lua"
+}

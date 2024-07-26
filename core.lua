@@ -467,6 +467,14 @@ function FS.B.Card()
         return card
     end
 
+    -- choose loot effect
+    function result:Choose(choices)
+        result.lootCosts[#result.lootCosts+1] = choices.Pay
+        result.effectGroups[#result.effectGroups+1] = {choices.Effect}
+
+        return result
+    end
+
     result.Effect = {}
 
     -- add common effect(s) (these are considered "and" effects - if one fails, the rest fill not be executed)
@@ -489,7 +497,7 @@ function FS.B.Card()
     end
 
     function result.Effect:Roll(effect)
-        result.lootCosts[#result.lootCosts+1] = function (stackEffect)
+        result.lootCosts[#result.lootCosts+1] = function (me, player, stackEffect)
             Roll(stackEffect)
             return true
         end
@@ -1113,6 +1121,43 @@ FS.C.Choose = {}
 
 function FS.C.Choose.YesNo(playerIdx, hint)
     return PromptString(playerIdx, {'Yes', 'No'}, hint) == 'Yes'
+end
+
+function FS.C.Choose.Effect(...)
+    local choices = {...}
+    local labels = {}
+    local effects = {}
+    for _, choice in ipairs(choices) do
+        labels[#labels+1] = choice.label
+        effects[#effects+1] = choice.effects
+    end
+
+    local result = {}
+
+    function result.Pay(me, player, stackEffect)
+        -- TODO more descriptive hint
+        local choice = PromptString(player.Idx, labels, 'Choose')
+        for idx, label in ipairs(labels) do
+            if label == choice then
+                stackEffect:AddChoice(idx)
+                return true
+            end
+        end
+        error('Invalid choice: '..choice)
+        return true
+    end
+
+    function result.Effect(stackEffect)
+        local choice = stackEffect:PopChoice()
+        for _, e in ipairs(effects[choice]) do
+            local executed = e(stackEffect)
+            if not executed then
+                break
+            end
+        end
+    end
+
+    return result
 end
 
 -- filters

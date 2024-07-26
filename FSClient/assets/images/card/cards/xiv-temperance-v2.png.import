@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1ni5ccbm10sr"
-path="res://.godot/imported/xiv-temperance-v2.png-fc36f0a945665524d6e3649959033d66.ctex"
+uid="uid://cd2jle8ioy2x8"
+path="res://.godot/imported/xiv-temperance-v2.png-f286187ebde42934fef01065c9d06657.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/card/cards/want/xiv-temperance-v2.png"
-dest_files=["res://.godot/imported/xiv-temperance-v2.png-fc36f0a945665524d6e3649959033d66.ctex"]
+source_file="res://assets/images/card/cards/xiv-temperance-v2.png"
+dest_files=["res://.godot/imported/xiv-temperance-v2.png-f286187ebde42934fef01065c9d06657.ctex"]
 
 [params]
 
