@@ -425,4 +425,9 @@ public class ScriptMaster {
 
         throw new MatchException($"Failed to find card with ID {id} to remove");
     }
+
+    [LuaCommand]
+    public int GetSoulCount(int playerIdx) {
+        return _match.GetPlayer(playerIdx).SoulCount();
+    }
 }

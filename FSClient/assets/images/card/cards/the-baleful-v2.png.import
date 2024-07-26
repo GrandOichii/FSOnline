@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3pja7yuac4y3"
-path="res://.godot/imported/the-baleful-v2.png-0afe1e1875ab266d241e084c69b21858.ctex"
+uid="uid://bgbt6t0rp8ncy"
+path="res://.godot/imported/the-baleful-v2.png-217f2043bc06c4fdc3bb59b1807a9b5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/card/cards/want/the-baleful-v2.png"
-dest_files=["res://.godot/imported/the-baleful-v2.png-0afe1e1875ab266d241e084c69b21858.ctex"]
+source_file="res://assets/images/card/cards/the-baleful-v2.png"
+dest_files=["res://.godot/imported/the-baleful-v2.png-217f2043bc06c4fdc3bb59b1807a9b5d.ctex"]
 
 [params]
 

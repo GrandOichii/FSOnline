@@ -54,7 +54,8 @@
         "GetInPlayCard",
         "DealDamageToPlayer",
         "KillPlayer",
-        "RemoveFromEverywhere"
+        "RemoveFromEverywhere",
+        "GetSoulCount"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"
