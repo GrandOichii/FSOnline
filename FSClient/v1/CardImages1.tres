@@ -76,7 +76,7 @@
 [ext_resource type="Texture2D" uid="uid://cbn86a7dkrjlr" path="res://assets/images/card/cards/xiii-death-v2.png" id="73_j6c3c"]
 [ext_resource type="Texture2D" uid="uid://boo1cb4v8i1ua" path="res://assets/images/card/cards/want/the-habit-v2.png" id="74_ndfsm"]
 [ext_resource type="Texture2D" uid="uid://dkqmal1yonov1" path="res://assets/images/card/cards/want/sticky-nickel-v2.png" id="75_aeh3j"]
-[ext_resource type="Texture2D" uid="uid://dflracxeh65sx" path="res://assets/images/card/cards/want/soulbond-requiem.png" id="76_6warr"]
+[ext_resource type="Texture2D" path="res://assets/images/card/cards/soulbond-requiem.png" id="76_7ha5m"]
 [ext_resource type="Texture2D" uid="uid://bi1wajebncjls" path="res://assets/images/card/cards/want/shadow-v2.png" id="77_u8t3x"]
 [ext_resource type="Texture2D" uid="uid://bkiycfgm3m3ql" path="res://assets/images/card/cards/moms-razor-v2.png" id="78_8cp42"]
 [ext_resource type="Texture2D" uid="uid://c1u616pwvdq4l" path="res://assets/images/card/cards/lazarus-rags-v2.png" id="79_p3eww"]
@@ -461,7 +461,7 @@ image = ExtResource("75_aeh3j")
 [sub_resource type="Resource" id="Resource_4wm5m"]
 script = ExtResource("1_v0pgv")
 card_key = "soulbond-requiem"
-image = ExtResource("76_6warr")
+image = ExtResource("76_7ha5m")
 
 [sub_resource type="Resource" id="Resource_sbc0f"]
 script = ExtResource("1_v0pgv")

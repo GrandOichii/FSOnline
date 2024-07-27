@@ -29,6 +29,9 @@ public class Match {
         ModificationLayer.PLAYER_MAX_HEALTH,
         ModificationLayer.PLAYER_ATTACK,
 
+        // death penalty
+        ModificationLayer.DEATH_PENALTY_MODIFIERS,
+
         ModificationLayer.LAST,
     };
 

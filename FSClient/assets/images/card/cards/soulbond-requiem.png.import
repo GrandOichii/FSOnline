@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dflracxeh65sx"
-path="res://.godot/imported/soulbond-requiem.png-7695ca0589b9d44cdda07e70097603db.ctex"
+uid="uid://dxf6gm6easkvn"
+path="res://.godot/imported/soulbond-requiem.png-bb2b7b0c60469bc74e47d35c7db90ad1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/card/cards/want/soulbond-requiem.png"
-dest_files=["res://.godot/imported/soulbond-requiem.png-7695ca0589b9d44cdda07e70097603db.ctex"]
+source_file="res://assets/images/card/cards/soulbond-requiem.png"
+dest_files=["res://.godot/imported/soulbond-requiem.png-bb2b7b0c60469bc74e47d35c7db90ad1.ctex"]
 
 [params]
 

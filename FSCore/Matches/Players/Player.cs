@@ -1,5 +1,3 @@
-using System.Runtime.CompilerServices;
-
 namespace FSCore.Matches.Players;
 
 /// <summary>
@@ -9,17 +7,17 @@ public class Player : IStateModifier {
     /// <summary>
     /// Setup-list of actions a player can make
     /// </summary>
-    private static readonly List<IAction> ACTIONS = new() {
+    private static readonly List<IAction> ACTIONS = [
         new PassAction(),
         new PlayLootAction(),
         new ActivateAction(),
         new DeclarePurchaseAction(),
-    };
+    ];
 
     /// <summary>
     /// Player action index
     /// </summary>
-    private static readonly Dictionary<string, IAction> ACTION_MAP = new(){};
+    private static readonly Dictionary<string, IAction> ACTION_MAP = [];
 
     static Player() {
         foreach (var action in ACTIONS) {
@@ -837,6 +835,26 @@ public class Player : IStateModifier {
         // TODO add update
     }
 
+    private int GetDeathPenaltyCoinLoss() {
+        var result = Match.Config.DeathPenaltyCoins;
+        foreach (var mod in State.DeathPenaltyCoinLoseAmountModifiers) {
+            // TODO catch exceptions
+            var returned = mod.Call(result);
+            result = LuaUtility.GetReturnAsInt(returned);
+        }
+        return result;
+    }
+
+    private int GetDeathPenaltyLootDiscardAmount() {
+        var result = Match.Config.DeathPenaltyLoot;
+        foreach (var mod in State.DeathPenaltyCoinLoseAmountModifiers) {
+            // TODO catch exceptions
+            var returned = mod.Call(result);
+            result = LuaUtility.GetReturnAsInt(returned);
+        }
+        return result;
+    }
+
     public async Task PayDeathPenalty(StackEffect deathSource) {
         // TODO? move this to a Lua script
         // TODO death penalty replacement effects
@@ -849,7 +867,8 @@ public class Player : IStateModifier {
         }
 
         // TODO modify the amount of loot cards discarded
-        for (int i = 0; i < Match.Config.DeathPenaltyLoot; i++) {
+        var lootDiscardAmount = GetDeathPenaltyLootDiscardAmount();
+        for (int i = 0; i < lootDiscardAmount; i++) {
             if (Hand.Count == 0) break;
 
             var options = new List<int>();
@@ -859,7 +878,7 @@ public class Player : IStateModifier {
         }
 
         // TODO modify the amount of coins lost
-        LoseCoins(Match.Config.DeathPenaltyCoins);
+        LoseCoins(GetDeathPenaltyCoinLoss());
 
         foreach (var item in GetInPlayCards()) {
             // TODO check if item has an activated ability with the "Tap" label

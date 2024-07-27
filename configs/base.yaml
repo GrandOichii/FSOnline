@@ -34,13 +34,13 @@ LootCards:
   lil-battery-v2: 10
   lucky-toe-requiem: 10
   xvii-the-stars-alt1: 10
-  lost-soul-v2: 1000
+  lost-soul-v2: 10
   perthro-requiem: 10
   bag-lunch-requiem: 10
   blank-rune-v2: 10
   bloody-penny-v2: 10
   bible-thump-requiem: 10
-  xiii-death-v2: 10
+  xiii-death-v2: 1000
   x-wheel-of-fortune-v2: 10
   xiv-temperance-v2: 10
 Treasures:
@@ -112,6 +112,7 @@ StartingItems:
   - abyss-requiem
   - dark-arts-v2
   - lazarus-rags-v2
+  - soulbond-requiem
 BonusSouls:
   - soul-of-greed-v2
   - soul-of-gluttony-v2

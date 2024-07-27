@@ -13,6 +13,7 @@ public enum ModificationLayer {
     MOD_MAX_LOOT_PLAYS = 10,
     PLAYER_MAX_HEALTH = 11,
     PLAYER_ATTACK = 12,
+    DEATH_PENALTY_MODIFIERS = 13,
 }
 
 /// <summary>

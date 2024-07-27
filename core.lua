@@ -28,6 +28,7 @@ FS.ModLayers = {
     MOD_MAX_LOOT_PLAYS = 10,
     PLAYER_MAX_HEALTH = 11,
     PLAYER_ATTACK = 12,
+    DEATH_PENALTY_MODIFIERS = 13,
 }
 
 -- triggers
@@ -589,8 +590,7 @@ function FS.B.Card()
         end)
         result.Target._AddLootCheck(filterFunc)
 
-        result.lootTargets[#result.lootTargets+1] = function (stackEffect)
-            local player = GetPlayer(stackEffect.OwnerIdx)
+        result.lootTargets[#result.lootTargets+1] = function (me, player, stackEffect)
             local options = filterFunc(player)
             local indicies = {}
             for _, p in ipairs(options) do

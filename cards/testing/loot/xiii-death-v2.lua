@@ -3,7 +3,7 @@
 function _Create()
     return FS.B.Loot()
         .Target:Player(
-            function (player)
+            function (me, player)
                 return FS.F.Players():Do()
             end
         )

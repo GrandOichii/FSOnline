@@ -19,15 +19,24 @@ public class PlayerState {
 
     #endregion
 
+    #region Death
+
+    public List<LuaFunction> DeathPenaltyCoinLoseAmountModifiers { get; }
+    public List<LuaFunction> DeathPenaltyLootDiscardAmountModifiers { get; }
+
+    #endregion
+
     public PlayerState(Player original)
     {
         Original = original;
         LootPlaysForTurn = original.Match.Config.LootPlay;
 
-        CoinGainModifiers = new();
-        LootAmountModifiers = new();
-        RollReplacementEffects = new();
-        PurchaseCostModifiers = new();
+        CoinGainModifiers = [];
+        LootAmountModifiers = [];
+        RollReplacementEffects = [];
+        PurchaseCostModifiers = [];
+        DeathPenaltyCoinLoseAmountModifiers = [];
+        DeathPenaltyLootDiscardAmountModifiers = [];
 
         Stats = new() {
             Attack = original.Character.GetTemplate().Attack,
