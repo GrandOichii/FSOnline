@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boo1cb4v8i1ua"
-path="res://.godot/imported/the-habit-v2.png-b8d37b9dae26e4c36e5bc5e664672ca5.ctex"
+uid="uid://b2oro0smfgf72"
+path="res://.godot/imported/the-habit-v2.png-f8bdc2c977b924178338c81cc9effc78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/card/cards/want/the-habit-v2.png"
-dest_files=["res://.godot/imported/the-habit-v2.png-b8d37b9dae26e4c36e5bc5e664672ca5.ctex"]
+source_file="res://assets/images/card/cards/the-habit-v2.png"
+dest_files=["res://.godot/imported/the-habit-v2.png-f8bdc2c977b924178338c81cc9effc78.ctex"]
 
 [params]
 

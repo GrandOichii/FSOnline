@@ -142,6 +142,12 @@ static class LuaUtility {
         return f;
     }
 
+    static public int GetInt(LuaTable table, string name) {
+        var i = table[name]
+            ?? throw new GetLuaTableException(table, "Failed to get int " + name + " from Lua table ");
+        return Convert.ToInt32(i);
+    }
+
     /// <summary>
     /// Returns Lua table field as bool
     /// </summary>

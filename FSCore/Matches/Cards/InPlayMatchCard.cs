@@ -22,11 +22,14 @@ public class InPlayMatchCard : IStateModifier {
     /// </summary>
     public InPlayMatchCardState State { get; private set; }
 
+    public Dictionary<TriggeredAbility, int> TriggerCountMap { get; }
+
     public InPlayMatchCard(MatchCard card) {
         Card = card;
 
         IPID = card.Match.GenerateInPlayID();
-        Counters = new();
+        Counters = [];
+        TriggerCountMap = [];
 
         // Initial state
         State = new(this);
@@ -81,9 +84,9 @@ public class InPlayMatchCard : IStateModifier {
 
     public List<LuaFunction> GetStateModifiers(ModificationLayer layer) {
         // TODO use abilities from state
-        if (!Card.StateModifiers.ContainsKey(layer))
-            return new();
-        return Card.StateModifiers[layer];
+        if (!Card.StateModifiers.TryGetValue(layer, out List<LuaFunction>? value))
+            return [];
+        return value;
     }
 
     public void Modify(ModificationLayer layer)
@@ -97,7 +100,6 @@ public class InPlayMatchCard : IStateModifier {
 
     public void UpdateState()
     {
-        // TODO
         State = new(this);
     }
 
@@ -108,10 +110,12 @@ public class InPlayMatchCard : IStateModifier {
     /// </summary>
     /// <param name="amount">Amount of counters to add</param>
     public async Task AddCounters(int amount) {
-        if (!Counters.ContainsKey(Counter.GENERIC_NAME)) {
-            Counters.Add(Counter.GENERIC_NAME, new(0));
+        if (!Counters.TryGetValue(Counter.GENERIC_NAME, out Counter? value)) {
+            value = new(0);
+            Counters.Add(Counter.GENERIC_NAME, value);
         }
-        Counters[Counter.GENERIC_NAME].Add(amount);
+
+        value.Add(amount);
     }
 
     /// <summary>
@@ -153,15 +157,31 @@ public class InPlayMatchCard : IStateModifier {
         return Card.Labels.Contains(label);
     }
 
-    public List<TriggeredAbility> GetTriggeredAbilities() {
-        // TODO
-        return Card.TriggeredAbilities;
+    public List<TriggeredAbilityWrapper> GetTriggeredAbilities() {
+        return State.TriggeredAbilities;
     }
 
     public async Task ProcessTrigger(QueuedTrigger trigger) {
         var abilities = GetTriggeredAbilities();
+        // TODO prompt the user to order the triggers
         foreach (var ability in abilities) {
             await ability.TryTrigger(this, trigger);
         } 
+    }
+
+    public int GetTriggerCount(TriggeredAbility ability) {
+        var result = 0;
+        if (TriggerCountMap.TryGetValue(ability, out int value))
+            result = value;
+        return result;
+    }
+
+    public void AddToTriggerCount(TriggeredAbility ability) {
+        TriggerCountMap.TryAdd(ability, 0);
+        TriggerCountMap[ability] = TriggerCountMap[ability] + 1;
+    }
+
+    public void ResetTriggers() {
+        TriggerCountMap.Clear();
     }
 }

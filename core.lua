@@ -151,6 +151,14 @@ function FS.C.Effect.KillTargetPlayer(target_idx)
     end
 end
 
+function FS.C.Effect.DamageToTargetPlayer(target_idx, amount)
+    return function (stackEffect)
+        local idx = tonumber(stackEffect.Targets[target_idx].Value)
+        DealDamageToPlayer(idx, amount, stackEffect)
+        return true
+    end
+end
+
 function FS.C.Effect.SetTargetRoll(target_idx, value)
     return function (stackEffect)
         local effect = GetStackEffect(stackEffect.Targets[target_idx].Value)
@@ -162,9 +170,17 @@ function FS.C.Effect.SetTargetRoll(target_idx, value)
     end
 end
 
-function FS.C.Effect.RechargeTarget(target_idx)
+function FS.C.Effect.RechargeTarget(target_idx, optional)
     return function (stackEffect)
         local ipid = stackEffect.Targets[target_idx].Value
+        optional = optional or false
+        if optional then
+            local accept = FS.C.Choose.YesNo(stackEffect.OwnerIdx, 'Recharge '..GetInPlayCard(ipid).LogName..'?')
+            if not accept then
+                -- TODO? return true
+                return false
+            end
+        end
 
         Recharge(ipid)
         return true
@@ -972,11 +988,18 @@ function FS.B.TriggeredAbility(effectText)
     local result = FS.B._Ability(effectText)
 
     result.trigger = {}
+    result.triggerLimit = -1
 
     result.On = {}
 
     result.builders[#result.builders+1] = function (ability)
         ability.Trigger = result.trigger
+        ability.TriggerLimit = result.triggerLimit
+    end
+
+    function result:Limit(limit)
+        result.triggerLimit = limit
+        return result
     end
 
     function result.On:PlayedDamaged(check)

@@ -3,7 +3,7 @@
 function _Create()
     return FS.B.Item()
         :TriggeredAbility(
-            FS.B.TriggeredAbility('Each time you take damage, loot 1')
+            FS.B.TriggeredAbility('Each time you take damage, loot 1.')
                 .On:PlayedDamaged(function (me, player, args)
                     return player.Idx == args.Player.Idx
                 end)

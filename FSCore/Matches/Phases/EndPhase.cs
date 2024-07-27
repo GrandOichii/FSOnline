@@ -25,7 +25,11 @@ public class EndPhase : IPhase
             p.RemovePurchaseOpportunities();
             p.RollHistory.Clear();
             p.HealToMax();
-            // TODO heal all players
+
+            // reset trigger limits
+            foreach (var card in p.GetInPlayCards()) {
+                card.ResetTriggers();
+            }
         }
         // TODO heal all monsters
         // TODO heal all rooms

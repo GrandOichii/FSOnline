@@ -1,0 +1,7 @@
+{
+    "Key": "the-habit-v2",
+    "Name": "The Habit",
+    "Type": "Item",
+    "Text": "The first time you take damage each turn, you may recharge an item.",
+    "Script": "the-habit-v2.lua"
+}

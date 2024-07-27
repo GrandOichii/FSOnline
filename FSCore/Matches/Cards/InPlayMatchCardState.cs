@@ -1,8 +1,15 @@
 namespace FSCore.Matches.Cards;
 
+/// <summary>
+/// State of in-play card
+/// </summary>
 public class InPlayMatchCardState {
+    /// <summary>
+    /// Original
+    /// </summary>
     public InPlayMatchCard Original { get; }
     public List<ActivatedAbilityWrapper> ActivatedAbilities { get; }
+    public List<TriggeredAbilityWrapper> TriggeredAbilities { get; }
 
     #region Replacement effects
 
@@ -17,6 +24,10 @@ public class InPlayMatchCardState {
             aa => new ActivatedAbilityWrapper(aa)
         ).ToList();
 
-        DestructionReplacementEffects = new();
+        TriggeredAbilities = original.Card.TriggeredAbilities.Select(
+            ta => new TriggeredAbilityWrapper(ta)
+        ).ToList();
+
+        DestructionReplacementEffects = [];
     }
 }
