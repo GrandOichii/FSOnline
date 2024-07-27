@@ -835,7 +835,7 @@ public class Player : IStateModifier {
         // TODO add update
     }
 
-    private int GetDeathPenaltyCoinLoss() {
+    public int GetDeathPenaltyCoinLoss() {
         var result = Match.Config.DeathPenaltyCoins;
         foreach (var mod in State.DeathPenaltyCoinLoseAmountModifiers) {
             // TODO catch exceptions
@@ -845,7 +845,7 @@ public class Player : IStateModifier {
         return result;
     }
 
-    private int GetDeathPenaltyLootDiscardAmount() {
+    public int GetDeathPenaltyLootDiscardAmount() {
         var result = Match.Config.DeathPenaltyLoot;
         foreach (var mod in State.DeathPenaltyCoinLoseAmountModifiers) {
             // TODO catch exceptions
@@ -855,11 +855,24 @@ public class Player : IStateModifier {
         return result;
     }
 
+    public int GetDeathPenaltyDestroyedItemsAmount() {
+        var result = Match.Config.DeathPenaltyItems;
+
+        // TODO
+
+        return result;
+    }
+
     public async Task PayDeathPenalty(StackEffect deathSource) {
         // TODO? move this to a Lua script
-        // TODO death penalty replacement effects
+        // death penalty replacement effects
+        foreach (var effect in State.DeathPenaltyReplacementEffects) {
+            var returned = effect.Call(this, deathSource);
+            if (LuaUtility.GetReturnAsBool(returned)) return;
+        }
 
-        for (int i = 0; i < Match.Config.DeathPenaltyItems; i++) {
+        var itemsAmount = GetDeathPenaltyDestroyedItemsAmount();
+        for (int i = 0; i < itemsAmount; i++) {
             var ipids = Items.Where(item => !item.HasLabel("Eternal")).Select(item => item.IPID).ToList();
             if (ipids.Count == 0) break;
             var ipid = await ChooseItem(ipids, "Choose an item to destroy (for death penalty)");

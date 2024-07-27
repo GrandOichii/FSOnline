@@ -20,7 +20,8 @@ public class PlayerState {
     #endregion
 
     #region Death
-
+    
+    public List<LuaFunction> DeathPenaltyReplacementEffects { get; }
     public List<LuaFunction> DeathPenaltyCoinLoseAmountModifiers { get; }
     public List<LuaFunction> DeathPenaltyLootDiscardAmountModifiers { get; }
 
@@ -37,6 +38,7 @@ public class PlayerState {
         PurchaseCostModifiers = [];
         DeathPenaltyCoinLoseAmountModifiers = [];
         DeathPenaltyLootDiscardAmountModifiers = [];
+        DeathPenaltyReplacementEffects = [];
 
         Stats = new() {
             Attack = original.Character.GetTemplate().Attack,

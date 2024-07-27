@@ -1,4 +1,4 @@
--- status: partially implemented
+-- status: implemented
 -- TODO too low level
 
 function _Create()

@@ -6,9 +6,7 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.\nWhile you control 1 or 2 Souls, you have +1{attack}. If you control 3+ souls, you have +2{attack} instead.",
     "StartingItems": [
-        "godhead-v2",
-        "godhead-v2",
-        "godhead-v2",
+        "shadow-v2",
         "soulbond-requiem"
     ],
     "Script": "the-baleful-requiem.lua"

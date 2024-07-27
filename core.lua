@@ -29,6 +29,7 @@ FS.ModLayers = {
     PLAYER_MAX_HEALTH = 11,
     PLAYER_ATTACK = 12,
     DEATH_PENALTY_MODIFIERS = 13,
+    DEATH_PENALTY_REPLACEMENT_EFFECTS = 14,
 }
 
 -- triggers
@@ -45,6 +46,24 @@ FS.Triggers = {
 
 -- common
 FS.C = {}
+
+function FS.C.GiveLootCards(toIdx, fromIdx, amount)
+    for i = 1, amount do
+        local player_idx = tonumber(fromIdx)
+        local hand = GetPlayer(player_idx).Hand
+        local indicies = {}
+        for hi = 0, hand.Count - 1 do
+            indicies[#indicies+1] = hi
+        end
+        if #indicies == 0 then
+            return false
+        end
+        local choice = ChooseCardInHand(player_idx, indicies, 'Choose a card to give to '..GetPlayer(toIdx).Name)
+        local card = GetPlayer(player_idx).Hand[choice].Card
+        RemoveFromHand(player_idx, choice)
+        AddToHand(toIdx, card)
+    end
+end
 
 -- common effects
 FS.C.Effect = {}
@@ -1119,6 +1138,16 @@ end
 
 FS.C.Choose = {}
 
+function FS.C.Choose.Item(playerIdx, items, hint)
+    local ipids = {}
+    for _, item in ipairs(items) do
+        ipids[#ipids+1] = item.IPID
+    end
+
+    local ipid = ChooseItem(playerIdx, ipids, hint)
+    return ipid
+end
+
 function FS.C.Choose.YesNo(playerIdx, hint)
     return PromptString(playerIdx, {'Yes', 'No'}, hint) == 'Yes'
 end
@@ -1212,6 +1241,13 @@ function FS.F.Players()
     function result:CoinsGte(amount)
         result.filters[#result.filters+1] = function (player)
             return player.Coins >= amount
+        end
+        return result
+    end
+
+    function result:Alive()
+        result.filters[#result.filters+1] = function (player)
+            return not player.IsDead
         end
         return result
     end

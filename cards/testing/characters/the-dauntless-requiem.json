@@ -6,6 +6,9 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
+        "godhead-v2",
+        "godhead-v2",
+        "godhead-v2",
         "hypercoagulation-requiem"
     ],
     "Script": "the-dauntless-requiem.lua"

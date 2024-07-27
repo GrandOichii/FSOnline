@@ -407,7 +407,6 @@ public class ScriptMaster {
 
     [LuaCommand]
     public void RemoveFromEverywhere(string id) {
-        // !FIXME failed
         foreach (var player in _match.Players) {
             var removed = player.Remove(id);
             if (removed) return;

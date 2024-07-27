@@ -4,7 +4,7 @@ function _Create()
     return FS.B.Loot()
         .Target:Player(
             function (me, player)
-                return FS.F.Players():Do()
+                return FS.F.Players():Alive():Do()
             end
         )
         .Effect:Common(

@@ -31,6 +31,7 @@ public class Match {
 
         // death penalty
         ModificationLayer.DEATH_PENALTY_MODIFIERS,
+        ModificationLayer.DEATH_PENALTY_REPLACEMENT_EFFECTS,
 
         ModificationLayer.LAST,
     };

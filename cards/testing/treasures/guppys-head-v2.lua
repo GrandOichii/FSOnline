@@ -15,20 +15,7 @@ function _Create()
                 )
                 .Effect:Custom(
                     function (stackEffect)
-                        -- TODO
-                        local player_idx = tonumber(stackEffect.Targets[0].Value)
-                        local hand = GetPlayer(player_idx).Hand
-                        local indicies = {}
-                        for i = 0, hand.Count - 1 do
-                            indicies[#indicies+1] = i
-                        end
-                        if #indicies == 0 then
-                            return false
-                        end
-                        local choice = ChooseCardInHand(player_idx, indicies, 'Choose a card to give to '..GetPlayer(stackEffect.OwnerIdx).Name)
-                        local card = GetPlayer(player_idx).Hand[choice].Card
-                        RemoveFromHand(player_idx, choice)
-                        AddToHand(stackEffect.OwnerIdx, card)
+                        FS.C.GiveLootCards(stackEffect.OwnerIdx, tonumber(stackEffect.Targets[0].Value), 1)
                     end
                 )
             :Build()
