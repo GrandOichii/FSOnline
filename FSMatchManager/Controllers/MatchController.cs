@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FSMatchManager.Controllers;
 
 [ApiController]
-[Route("v1/Match")]
+[Route("api/v1/Match")]
 public class MatchController(IMatchService matchService) : Controller {
     private readonly IMatchService _matchService = matchService;
 
@@ -22,14 +22,14 @@ public class MatchController(IMatchService matchService) : Controller {
     //     }
     // }
 
-    [HttpPost]
-    public async Task WebSocketCreate(CreateMatchParams config) {
+    [HttpGet("Create")]
+    public async Task WebSocketCreate() {
         if (HttpContext.WebSockets.IsWebSocketRequest) {
             // var userId = this.ExtractClaim(ClaimTypes.NameIdentifier);
             // var userId = "";
 
             try {
-                await _matchService.WebSocketCreate(config, HttpContext.WebSockets);
+                await _matchService.WebSocketCreate(HttpContext.WebSockets);
             } catch (Exception e) {
                 // TODO handle
             }

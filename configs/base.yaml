@@ -43,7 +43,7 @@ LootCards:
   x-wheel-of-fortune-v2: 10
   xiv-temperance-v2: 10
   butter-bean-v2: 10
-  pills-red-v2: 1000
+  pills-red-v2: 10
 Treasures:
   - keepers-box-requiem
   - portable-slot-machine-v2
@@ -70,7 +70,6 @@ Treasures:
   - godhead-v2
   - a-friend-summer
   - the-chest-v2
-  - keepers-box-requiem
   - jawbone-v2
   - guppys-head-v2
   - chaos-v2

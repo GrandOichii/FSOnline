@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.Extensions.Options;
 
 namespace FSMatchManager.Services;
@@ -11,15 +12,19 @@ public class MatchService(IOptions<MatchesSettings> settings) : IMatchService {
         return Task.FromResult(Matches);
     }
 
-    public async Task<MatchProcess> WebSocketCreate(CreateMatchParams creationParams, WebSocketManager wsManager)
+    public async Task<MatchProcess> WebSocketCreate(WebSocketManager wsManager)
     {
         // TODO validate params
         var socket = await wsManager.AcceptWebSocketAsync();
-        var match = new MatchProcess(creationParams);
-        await match.AddWSPlayer(socket);
+        await socket.Write("Send match creation parameters");
+        var paramsRaw = await socket.Read();
+        var creationParams = JsonSerializer.Deserialize<CreateMatchParams>(paramsRaw);
 
+        var match = new MatchProcess(creationParams);
         Matches.Add(match);
-        var _ = match.Configure;
+        var _ = match.Configure();
+
+        await match.AddWSPlayer(socket);
         
         return match;
     }

@@ -10,5 +10,5 @@ public class FailedToCreateMatchException : Exception
 
 public interface IMatchService {
     public Task<List<MatchProcess>> All();
-    public Task<MatchProcess> WebSocketCreate(CreateMatchParams creationParams, WebSocketManager wsManager);
+    public Task<MatchProcess> WebSocketCreate(WebSocketManager wsManager);
 }
