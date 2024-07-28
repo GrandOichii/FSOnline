@@ -91,7 +91,8 @@ func _input(e):
 		send_pass()
 		
 func send_pass():
-	Connection.Write('pass')
+	if Controller.can_pass():
+		Connection.Write('pass')
 	
 func send_declare_purchase():
 	Connection.Write('dp')

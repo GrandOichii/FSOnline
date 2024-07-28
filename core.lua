@@ -359,6 +359,12 @@ function FS.C.Effect.Discard(amount, hint)
     end
 end
 
+function FS.C.Effect.TillEndOfTurn(layer, effect)
+    return function (stackEffect)
+        TillEndOfTurn(layer, effect)
+    end
+end
+
 -- common costs (for activated abilities)
 FS.C.Cost = {}
 

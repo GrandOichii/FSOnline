@@ -33,7 +33,7 @@ public class EndPhase : IPhase
         }
         // TODO heal all monsters
         // TODO heal all rooms
-        // TODO clear all "till end of turn" effects
+        match.TEOTEffects.Clear();
 
         match.TurnEnded = false;
     }

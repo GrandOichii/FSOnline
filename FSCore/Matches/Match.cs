@@ -96,6 +96,10 @@ public class Match {
     /// Bonus souls
     /// </summary>
     public List<BonusSoulMatchCard> BonusSouls { get; }
+    /// <summary>
+    /// "Till end of turn" effects
+    /// </summary>
+    public Dictionary<ModificationLayer, List<LuaFunction>> TEOTEffects { get; }
 
     #region Decks
 
@@ -140,18 +144,19 @@ public class Match {
         CurPlayerIdx = 0;
         if (config.RandomFirstPlayer)
             CurPlayerIdx = Rng.Next() % 2;
-        Players = new();
+        Players = [];
         WinnerIdx = -1;
 
         Stack = new(this);
         LootDeck = new(this, true);
         TreasureDeck = new(this, true);
-        TreasureSlots = new();
-        BonusSouls = new();
+        TreasureSlots = [];
+        BonusSouls = [];
         DeckIndex = new() {
             { DeckType.LOOT, LootDeck },
             { DeckType.TREASURE, TreasureDeck },
         };
+        TEOTEffects = [];
 
         LogInfo("Running setup script");
         LState.DoString(setupScript);
@@ -435,6 +440,14 @@ public class Match {
             var souls = new List<BonusSoulMatchCard>(BonusSouls);
             foreach (var soul in souls)
                 soul.Modify(layer);
+
+            // "till end of turn" effects
+            if (TEOTEffects.TryGetValue(layer, out List<LuaFunction>? mods)) {
+                // TODO catch exceptions
+                foreach (var mod in mods) {
+                    mod.Call();
+                }
+            }
         }
 
         // check player deaths
@@ -444,6 +457,7 @@ public class Match {
         // TODO rooms
         // TODO monsters
         // TODO? treasure
+
     }
 
     #region Triggers

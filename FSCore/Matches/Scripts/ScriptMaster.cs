@@ -439,4 +439,15 @@ public class ScriptMaster {
     public void CancelEffect(string sid) {
         _match.CancelEffect(sid);
     }
+
+    [LuaCommand]
+    public void TillEndOfTurn(int layer, LuaFunction effect) {
+        var key = (ModificationLayer)layer;
+        if (!_match.TEOTEffects.TryGetValue(key, out List<LuaFunction>? list)) {
+            list = [];
+            _match.TEOTEffects.Add(key, list);
+        }
+
+        list.Add(effect);
+    }
 }

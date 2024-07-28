@@ -6,9 +6,6 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
-        "godhead-v2",
-        "godhead-v2",
-        "godhead-v2",
         "abyss-requiem"
     ],
     "Script": "the-empty-requiem.lua"

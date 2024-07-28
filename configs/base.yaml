@@ -21,13 +21,12 @@ DeathPenaltyCoins: 1
 DeathPenaltyItems: 1
 
 LootPlay: 1
-# LootPlay: 100
 
 LootCards:
   3-cents-v2: 10
   a-sack-v2: 10
   counterfeit-penny-v2: 10
-  orange-green-pills-v2: 1000
+  orange-green-pills-v2: 10
   chunk-of-amber-warp: 10
   xvii-the-stars-v2: 10
   dice-shard-v2: 10
@@ -43,7 +42,8 @@ LootCards:
   xiii-death-v2: 10
   x-wheel-of-fortune-v2: 10
   xiv-temperance-v2: 10
-  butter-bean-v2: 1000
+  butter-bean-v2: 10
+  pills-red-v2: 1000
 Treasures:
   - keepers-box-requiem
   - portable-slot-machine-v2
@@ -83,19 +83,8 @@ Treasures:
   - shadow-v2
   - razor-blade-v2
   - the-habit-v2
-  # - the-chest-v2
-  # - the-chest-v2
-  # - the-chest-v2
-  # - the-chest-v2
-  # - the-chest-v2
-  # - the-chest-v2
-  # - the-chest-v2
-  # - the-chest-v2
-  # - the-chest-v2
-  # - the-chest-v2
-  # - the-chest-v2
-  # - the-chest-v2
 Characters:
+  - bum-bo-v2
   - guppy-v2
   - the-keeper-v2
   - isaac-v2
@@ -106,6 +95,7 @@ Characters:
   - lazarus-v2
   - the-dauntless-requiem
   - the-baleful-requiem
+  - the-hoarder-requiem
 StartingItems:
   - hypercoagulation-requiem
   - infestation-v2
@@ -117,6 +107,8 @@ StartingItems:
   - dark-arts-v2
   - lazarus-rags-v2
   - soulbond-requiem
+  - bag-o-trash-v2
+  - bag-of-crafting-requiem
 BonusSouls:
   - soul-of-greed-v2
   - soul-of-gluttony-v2

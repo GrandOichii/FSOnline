@@ -922,4 +922,13 @@ public class Player : IStateModifier {
 
         return false;
     }
+
+    #region Damage prevention
+
+    public int PreventableDamage() {
+        // TODO
+        return 0;
+    }
+
+    #endregion
 }

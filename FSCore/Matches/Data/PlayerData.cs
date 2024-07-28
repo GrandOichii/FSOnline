@@ -49,6 +49,10 @@ public readonly struct PlayerData {
     /// Attack
     /// </summary>
     public int Attack { get; }
+    /// <summary>
+    /// Amount of damage that can be prevented
+    /// </summary>
+    public int PreventableDamage { get; }
 
     public PlayerData(Player player) {
         Name = player.Name;
@@ -59,10 +63,14 @@ public readonly struct PlayerData {
         Health = player.State.Stats.Health - player.Damage;
         Attack = player.State.Stats.Attack;
 
+        PreventableDamage = player.PreventableDamage();
         Character = new(player.Character);
         HandSize = player.Hand.Count;
         VisibleHandCards = new();
         Items = player.Items.Select(item => new OwnedCardData(item)).ToList();
         SoulCount = player.SoulCount();
+
+        System.Console.WriteLine(player.LogName);
+        System.Console.WriteLine(player.State.Stats.Health + " " + player.Damage);
     }
 }

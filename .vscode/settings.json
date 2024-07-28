@@ -57,7 +57,8 @@
         "RemoveFromEverywhere",
         "GetSoulCount",
         "IsLootStackEffect",
-        "CancelEffect"
+        "CancelEffect",
+        "TillEndOfTurn"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"
