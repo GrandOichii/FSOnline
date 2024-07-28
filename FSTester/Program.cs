@@ -10,141 +10,6 @@ using YamlDotNet.Serialization.NamingConventions;
 
 namespace FSTester;
 
-public class ConsolePlayerController : IPlayerController
-{
-    public static void PrintPlayer(Match match, int playerIdx, int indent) {
-        var indentStr = new string('\t', indent);
-
-        var player = match.GetPlayer(playerIdx);
-        System.Console.WriteLine($"{indentStr}[{player.LogName}]");
-        System.Console.WriteLine($"{indentStr}Loot plays: {player.LootPlays}");
-        System.Console.WriteLine($"{indentStr}Coins: {player.Coins}");
-    }
-    public static void PrintStack(Match match) {
-        System.Console.WriteLine("Stack: ");
-        var count = match.Stack.Effects.Count;
-        for (int i = 0; i < count; i++) {
-            var effect = match.Stack.Effects[i];
-            System.Console.WriteLine($"\t{i}: {effect}");
-        }
-    }
-
-    public async Task<string> ChooseString(Match match, int playerIdx, List<string> options, string hint)
-    {
-        System.Console.WriteLine("(ChooseString)");
-        System.Console.WriteLine(hint);
-        System.Console.WriteLine("Options:");
-        foreach (var option in options)
-            System.Console.WriteLine("\t" + option);
-            
-        var result = Console.ReadLine()
-            ?? throw new Exception("Failed to read player action in PromptAction")
-        ;
-        return result;
-    }
-
-    public async Task<int> ChoosePlayer(Match match, int playerIdx, List<int> options, string hint)
-    {
-        System.Console.WriteLine("(ChoosePlayer)");
-        System.Console.WriteLine(hint);
-        System.Console.WriteLine("Options:");
-        foreach (var option in options)
-            System.Console.WriteLine($"\t{option} - ({match.GetPlayer(option).LogName})");
-            
-        var result = Console.ReadLine()
-            ?? throw new Exception("Failed to read player choice in ChoosePlayer")
-        ;
-        return int.Parse(result);
-    }
-
-    public async Task<string> ChooseStackEffect(Match match, int playerIdx, List<string> options, string hint)
-    {
-        System.Console.WriteLine("(ChooseStackEffect)");
-        System.Console.WriteLine(hint);
-        System.Console.WriteLine("Options:");
-        foreach (var option in options)
-            System.Console.WriteLine($"\t{option}");
-            
-        var result = Console.ReadLine()
-            ?? throw new Exception("Failed to read SID choice in ChooseStackEffect")
-        ;
-        return result;
-    }
-
-    public Task CleanUp(Match match, int playerIdx)
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task<string> PromptAction(Match match, int playerIdx, IEnumerable<string> options)
-    {
-        PrintStack(match);
-        System.Console.WriteLine("-----------------");
-        foreach (var player in match.Players)
-            PrintPlayer(match, player.Idx, player.Idx == playerIdx ? 1 : 0);
-        System.Console.WriteLine();
-        System.Console.WriteLine("Options: ");
-        foreach (var option in options)
-            System.Console.WriteLine("\t" + option);
-        var result = Console.ReadLine()
-            ?? throw new Exception("Failed to read player action in PromptAction")
-        ;
-        return result;
-    }
-
-    public Task Setup(Match match, int playerIdx)
-    {
-        return Task.CompletedTask;
-    }
-
-    public Task Update(Match match, int playerIdx)
-    {
-        // TODO
-        return Task.CompletedTask;
-    }
-
-    public Task<int> ChooseCardInHand(Match match, int playerIdx, List<int> options, string hint)
-    {
-        System.Console.WriteLine("(ChooseCardInHand)");
-        System.Console.WriteLine(hint);
-        System.Console.WriteLine("Options:");
-        foreach (var option in options)
-            System.Console.WriteLine($"\t{option} - {match.GetPlayer(playerIdx).Hand[option].Card.LogName}");
-            
-        var result = Console.ReadLine()
-            ?? throw new Exception("Failed to read hand index choice in ChooseCardInHand")
-        ;
-        return Task.FromResult(int.Parse(result));
-    }
-
-    public Task<string> ChooseItem(Match match, int playerIdx, List<string> options, string hint)
-    {
-        System.Console.WriteLine("(ChooseItem)");
-        System.Console.WriteLine(hint);
-        System.Console.WriteLine("Options:");
-        foreach (var option in options)
-            System.Console.WriteLine($"\t{option} - {match.GetInPlayCard(option).LogName}");
-            
-        var result = Console.ReadLine()
-            ?? throw new Exception("Failed to read item IPID choice in ChooseCardInHand")
-        ;
-        return Task.FromResult(result);   
-    }
-
-    public Task<int> ChooseItemToPurchase(Match match, int playerIdx, List<int> options)
-    {
-        System.Console.WriteLine("(ChooseItemToPurchase)");
-        System.Console.WriteLine("Options:");
-        foreach (var option in options)
-            System.Console.WriteLine($"\t{option} - " + (option >= 0 ? match.TreasureSlots[option].Card!.LogName : "Top treasure deck"));
-            
-        var result = Console.ReadLine()
-            ?? throw new Exception("Failed to read treasure slot in ChooseItemToPurchase")
-        ;
-        return Task.FromResult(int.Parse(result));   
-    }
-}
-
 public class Program {
     private static MatchConfig ReadConfigYAML(string text) {
         var deserializer = new DeserializerBuilder()
@@ -245,7 +110,46 @@ public class Program {
         }
     }
 
+    public static async Task TestRandom(int start, int end, bool enableLogging = false) {
+        var config = ReadConfigYAML(
+            File.ReadAllText("../configs/testing.yaml")
+        );
+
+        var cm = new FileCardMaster();
+        cm.Load("../cards/testing");
+
+        for (int i = start; i <= end; i++) {
+            System.Console.WriteLine("Seed: " + i);
+            var match = new Match(config, i, cm, File.ReadAllText("../core.lua"));
+            if (enableLogging)
+                match.Logger = LoggerFactory
+                    .Create(builder => builder.AddConsole())
+                    .CreateLogger("Match");
+            await AddRandomPlayer(match);
+            await AddRandomPlayer(match);
+            try {
+                await match.Run();
+            } catch (Exception e) {
+                PrintException(e);
+                
+                return;
+            }
+        }
+    }
+
     public static async Task Main(string[] args) {
+
+        var seed = -1;
+        if (args.Length >= 1) {
+            seed = int.Parse(args[0]);
+        }
+        if (args.Length >= 2) {
+            var log = false;
+            if (args.Length == 3) log = bool.Parse(args[2]);
+            await TestRandom(seed, int.Parse(args[1]), log);
+            return;
+        }
+
         var config = ReadConfigYAML(
             File.ReadAllText("../configs/base.yaml")
         );

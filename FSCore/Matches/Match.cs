@@ -577,7 +577,6 @@ public class Match {
     /// </summary>
     /// <param name="sid">Stack ID</param>
     public void CancelEffect(string sid) {
-        System.Console.WriteLine(sid);
         var effect = Stack.Effects.First(e => e.SID == sid);
         effect.Cancelled = true;
         Stack.Effects.Remove(effect);

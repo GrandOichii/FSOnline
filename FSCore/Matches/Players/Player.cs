@@ -753,7 +753,7 @@ public class Player : IStateModifier {
             { "Owner", this },
             { "Card", card },
         });
-        
+
         // TODO update
     }
 
