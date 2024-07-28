@@ -1,12 +1,13 @@
 {
-    "Key": "the-miser-requiem",
-    "Name": "The Miser",
+    "Key": "whore-of-babylon-v2",
+    "Name": "Whore of Babylon",
     "Type": "Character",
     "Health": 2,
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
-        "keepers-bargain-requiem"
+        "razor-blade-v2",
+        "gimpy-v2"
     ],
-    "Script": "the-miser-requiem.lua"
+    "Script": "whore-of-babylon-v2.lua"
 }

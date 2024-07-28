@@ -66,11 +66,8 @@ public readonly struct PlayerData {
         PreventableDamage = player.PreventableDamage();
         Character = new(player.Character);
         HandSize = player.Hand.Count;
-        VisibleHandCards = new();
+        VisibleHandCards = [];
         Items = player.Items.Select(item => new OwnedCardData(item)).ToList();
         SoulCount = player.SoulCount();
-
-        System.Console.WriteLine(player.LogName);
-        System.Console.WriteLine(player.State.Stats.Health + " " + player.Damage);
     }
 }

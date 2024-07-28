@@ -13,7 +13,7 @@ function _Create()
         )
         :TriggeredAbility(
             FS.B.TriggeredAbility('Each time you take damage, you may recharge your Character.')
-                .On:PlayedDamaged(function (me, player, args)
+                .On:PlayerDamaged(function (me, player, args)
                     return player.Idx == args.Player.Idx
                 end)
                 .Effect:Custom(function (stackEffect)

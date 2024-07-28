@@ -12,6 +12,7 @@
             "characters/lazarus-v2",
             "characters/the-baleful-requiem",
             "characters/the-dauntless-requiem",
+            "characters/whore-of-babylon-v2",
             "characters/bum-bo-v2"
         ],
         "StartingItems": [
@@ -23,6 +24,7 @@
             "starting-items/bag-of-crafting-requiem",
             "starting-items/wooden-nickel-v2",
             "starting-items/dark-arts-v2",
+            "starting-items/gimpy-v2",
             "starting-items/soulbond-requiem",
             "starting-items/lazarus-rags-v2",
             "starting-items/hypercoagulation-requiem",

@@ -14,7 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gtxyk")
-character_key = "the-baleful-requiem"
+character_key = "whore-of-babylon-v2"
 
 [node name="Match" parent="." instance=ExtResource("2_ktxgd")]
 unique_name_in_owner = true
@@ -119,7 +119,7 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Pick string text here"
 
-[node name="ChooseStringButtons" type="HBoxContainer" parent="Windows/ChooseStringWindow/MarginContainer/VBoxContainer"]
+[node name="ChooseStringButtons" type="VBoxContainer" parent="Windows/ChooseStringWindow/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 

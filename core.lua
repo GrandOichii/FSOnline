@@ -983,6 +983,21 @@ function FS.B._Ability(effectText)
         return result
     end
 
+    function result:Choose(choices)
+        -- TODO change to table
+        result.costs[#result.costs+1] = {
+            Pay = function (me, player, stackEffect)
+                return choices.Pay(me, player, stackEffect)
+            end,
+            Check = function (me, player)
+                return true
+            end
+        }
+        result.effectGroups[#result.effectGroups+1] = {choices.Effect}
+
+        return result
+    end
+
     return result
 end
 
@@ -1014,7 +1029,7 @@ function FS.B.TriggeredAbility(effectText)
         return result
     end
 
-    function result.On:PlayedDamaged(check)
+    function result.On:PlayerDamaged(check)
         result.trigger = FS.Triggers.PLAYED_DAMAGED
 
         result.costs[#result.costs+1] = {

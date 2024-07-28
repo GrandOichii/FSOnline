@@ -5,7 +5,7 @@ function _Create()
         :TriggeredAbility(
             FS.B.TriggeredAbility('The first time you take damage each turn, you may recharge an item')
                 :Limit(1)
-                .On:PlayedDamaged(function (me, player, args)
+                .On:PlayerDamaged(function (me, player, args)
                     return player.Idx == args.Player.Idx
                 end)
                 .Target:Item(
