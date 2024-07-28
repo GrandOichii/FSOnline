@@ -13,6 +13,11 @@ public enum QueuedPlayerStatus {
     WAITING_FOR_DATA,
 
     /// <summary>
+    /// Player data received, waiting for ready confirmation
+    /// </summary>
+    DATA_RECEIVED,
+
+    /// <summary>
     /// Ready to begin the match
     /// </summary>
     READY
@@ -91,8 +96,11 @@ public class QueuedPlayer {
     /// </summary>
     public string? Name
     {
-        get { return _name; }
-        set { _name = value; Changed?.Invoke(); }
+        get => _name;
+        set { 
+            _name = value;
+            Changed?.Invoke();
+        }
     }
 
     /// <summary>

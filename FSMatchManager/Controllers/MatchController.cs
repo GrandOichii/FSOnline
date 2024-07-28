@@ -12,13 +12,39 @@ public class MatchController(IMatchService matchService) : Controller {
         return Ok(await _matchService.All());
     }
 
+    // [HttpPost]
+    // public async Task<IActionResult> Create(CreateMatchParams config) {
+    //     try {
+    //         var result = await _matchService.Create(config);
+    //         return Ok(result);
+    //     } catch (FailedToCreateMatchException e) {
+    //         return BadRequest(e.Message);
+    //     }
+    // }
+
     [HttpPost]
-    public async Task<IActionResult> Create(CreateMatch config) {
-        try {
-            var result = await _matchService.Create(config);
-            return Ok(result);
-        } catch (FailedToCreateMatchException e) {
-            return BadRequest(e.Message);
+    public async Task WebSocketCreate(CreateMatchParams config) {
+        if (HttpContext.WebSockets.IsWebSocketRequest) {
+            // var userId = this.ExtractClaim(ClaimTypes.NameIdentifier);
+            // var userId = "";
+
+            try {
+                await _matchService.WebSocketCreate(config, HttpContext.WebSockets);
+            } catch (Exception e) {
+                // TODO handle
+            }
+
+            // try {
+            //     await _matchService.WSConnect(HttpContext.WebSockets, userId, matchId);
+            // } catch (InvalidMatchIdException) {
+            //     HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest; 
+            // } catch (MatchNotFoundException) {
+            //     HttpContext.Response.StatusCode = (int)HttpStatusCode.NotFound;
+            // } catch (MatchRefusedConnectionException) {
+            //     HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            // }
+        } else {
+            HttpContext.Response.StatusCode = 400;
         }
     }
 }

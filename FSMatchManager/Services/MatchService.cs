@@ -11,14 +11,16 @@ public class MatchService(IOptions<MatchesSettings> settings) : IMatchService {
         return Task.FromResult(Matches);
     }
 
-    public Task<MatchProcess> Create(CreateMatch config)
+    public async Task<MatchProcess> WebSocketCreate(CreateMatchParams creationParams, WebSocketManager wsManager)
     {
-        // TODO validate
-        // TODO
-        var match = new MatchProcess();
+        // TODO validate params
+        var socket = await wsManager.AcceptWebSocketAsync();
+        var match = new MatchProcess(creationParams);
+        await match.AddWSPlayer(socket);
 
         Matches.Add(match);
+        var _ = match.Configure;
         
-        return Task.FromResult(match);
+        return match;
     }
 }
