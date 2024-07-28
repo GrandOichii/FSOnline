@@ -1,0 +1,7 @@
+{
+    "Key": "butter-bean-v2",
+    "Name": "Butter Bean!",
+    "Type": "Loot",
+    "Text": "Cancel the {tap} or {$} ability of an item or loot being played.",
+    "Script": "butter-bean-v2.lua"
+}

@@ -25,15 +25,20 @@ public abstract class StackEffect {
     /// List of choices
     /// </summary>
     public Queue<int> Choices { get; }
+    /// <summary>
+    /// Shows whether the effect is cancelled
+    /// </summary>
+    public bool Cancelled { get; set; }
 
     public StackEffect(Match match, int ownerIdx) {
         Match = match;
         OwnerIdx = ownerIdx;
         
         SID = match.GenerateStackID();
-        Rolls = new();
-        Targets = new();
-        Choices = new();
+        Rolls = [];
+        Targets = [];
+        Choices = [];
+        Cancelled = false;
     }
 
     /// <summary>

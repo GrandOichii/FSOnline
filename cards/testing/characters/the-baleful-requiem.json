@@ -2,12 +2,10 @@
     "Key": "the-baleful-requiem",
     "Name": "The Baleful",
     "Type": "Character",
-    "Health": 3,
+    "Health": 1,
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.\nWhile you control 1 or 2 Souls, you have +1{attack}. If you control 3+ souls, you have +2{attack} instead.",
     "StartingItems": [
-        "the-habit-v2",
-        "razor-blade-v2",
         "soulbond-requiem"
     ],
     "Script": "the-baleful-requiem.lua"

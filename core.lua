@@ -151,6 +151,14 @@ function FS.C.Effect.KillTargetPlayer(target_idx)
     end
 end
 
+function FS.C.Effect.CancelTargetStackEffect(target_idx)
+    return function (stackEffect)
+        local sid = stackEffect.Targets[target_idx].Value
+        CancelEffect(sid)
+        return true
+    end
+end
+
 function FS.C.Effect.DamageToTargetPlayer(target_idx, amount)
     return function (stackEffect)
         local idx = tonumber(stackEffect.Targets[target_idx].Value)
@@ -574,8 +582,7 @@ function FS.B.Card()
         end)
         result.Target._AddLootCheck(filterFunc)
 
-        result.lootTargets[#result.lootTargets+1] = function (stackEffect)
-            local player = GetPlayer(stackEffect.OwnerIdx)
+        result.lootTargets[#result.lootTargets+1] = function (me, player, stackEffect)
             local options = filterFunc(player)
             local indicies = {}
             for _, e in ipairs(options) do
@@ -599,8 +606,7 @@ function FS.B.Card()
         end)
         result.Target._AddLootCheck(filterFunc)
 
-        result.lootTargets[#result.lootTargets+1] = function (stackEffect)
-            local player = GetPlayer(stackEffect.OwnerIdx)
+        result.lootTargets[#result.lootTargets+1] = function (me, player, stackEffect)
             local options = filterFunc(player)
             local ipids = {}
             for _, item in ipairs(options) do
@@ -1303,8 +1309,14 @@ function FS.F.StackEffects()
     end
 
     function result:Rolls()
-        result.filters[#result.filters+1] = function (stackEffect)
+        return result:Custom(function (stackEffect)
             return IsRollStackEffect(stackEffect)
+        end)
+    end
+
+    function result:Custom(predicate)
+        result.filters[#result.filters+1] = function (stackEffect)
+            return predicate(stackEffect)
         end
         return result
     end

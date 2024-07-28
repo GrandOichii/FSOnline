@@ -573,6 +573,18 @@ public class Match {
     #region Stack
 
     /// <summary>
+    /// Cancel the effect with the specified Stack ID
+    /// </summary>
+    /// <param name="sid">Stack ID</param>
+    public void CancelEffect(string sid) {
+        System.Console.WriteLine(sid);
+        var effect = Stack.Effects.First(e => e.SID == sid);
+        effect.Cancelled = true;
+        Stack.Effects.Remove(effect);
+        // TODO? more?
+    }
+
+    /// <summary>
     /// Get the player with priority/current player
     /// </summary>
     /// <returns>Player with priority/current player</returns>

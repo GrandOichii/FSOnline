@@ -222,6 +222,11 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public bool IsLootStackEffect(StackEffect stackEffect) {
+        return stackEffect is LootCardStackEffect;
+    }
+
+    [LuaCommand]
     public bool IsTrigger(StackEffect stackEffect) {
         return stackEffect is TriggeredAbilityStackEffect;
     }
@@ -428,5 +433,10 @@ public class ScriptMaster {
     [LuaCommand]
     public int GetSoulCount(int playerIdx) {
         return _match.GetPlayer(playerIdx).SoulCount();
+    }
+
+    [LuaCommand]
+    public void CancelEffect(string sid) {
+        _match.CancelEffect(sid);
     }
 }

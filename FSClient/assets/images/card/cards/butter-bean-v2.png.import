@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d5mevn86184w"
-path="res://.godot/imported/butter-bean-v2.png-65a31caa591f0ba715abdc384bfec6f7.ctex"
+uid="uid://b3ab3x5r3gyhf"
+path="res://.godot/imported/butter-bean-v2.png-9833cc3cfe4be6112b98bcd48af8b434.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/card/cards/want/butter-bean-v2.png"
-dest_files=["res://.godot/imported/butter-bean-v2.png-65a31caa591f0ba715abdc384bfec6f7.ctex"]
+source_file="res://assets/images/card/cards/butter-bean-v2.png"
+dest_files=["res://.godot/imported/butter-bean-v2.png-9833cc3cfe4be6112b98bcd48af8b434.ctex"]
 
 [params]
 

@@ -55,7 +55,9 @@
         "DealDamageToPlayer",
         "KillPlayer",
         "RemoveFromEverywhere",
-        "GetSoulCount"
+        "GetSoulCount",
+        "IsLootStackEffect",
+        "CancelEffect"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"
