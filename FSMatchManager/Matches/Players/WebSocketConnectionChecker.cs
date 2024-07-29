@@ -28,7 +28,9 @@ public class WebSocketConnectionChecker(WebSocket socket) : IConnectionChecker
 
     public async Task<string> Read()
     {
-        return await _socket.Read();
+        var result = await _socket.Read();
+        System.Console.WriteLine("Read " + result);
+        return result;
     }
 
     public async Task Write(string msg)

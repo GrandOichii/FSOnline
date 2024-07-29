@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Text.Json.Serialization;
+using FSCore.Matches.Players;
 
 namespace FSMatchManager.Matches;
 
@@ -14,11 +15,6 @@ public enum MatchStatus {
     /// Waiting for players to connect
     /// </summary>
     WAITING_FOR_PLAYERS,
-
-    /// <summary>
-    /// Ready to start
-    /// </summary>
-    READY_TO_START,
 
     /// <summary>
     /// Match process is in progress
@@ -47,11 +43,12 @@ public class MatchProcess(CreateMatchParams creationParams)
     /// <summary>
     /// Match creation parameters
     /// </summary>
+    [JsonIgnore] // TODO remove
     public CreateMatchParams Params { get; } = creationParams;
     /// <summary>
     /// Match status
     /// </summary>
-    public MatchStatus Status { get; private set; }
+    public MatchStatus Status { get; private set; } = MatchStatus.WAITING_FOR_PLAYERS;
     /// <summary>
     /// Match
     /// </summary>
@@ -103,10 +100,13 @@ public class MatchProcess(CreateMatchParams creationParams)
         // TcpListener = new TcpListener(IPAddress.Loopback, 0);
         // TcpListener.Start();
         // TcpPort = ((IPEndPoint)TcpListener.LocalEndpoint).Port;
-
+        System.Console.WriteLine("Configuring match..");
+        System.Console.WriteLine("Creating bots");
         // config bots
         foreach (var bot in Params.Bots) {
+            System.Console.WriteLine("Creating bot " + bot.Name);
             await CreateBotPlayer(bot);
+            System.Console.WriteLine("Bot " + bot.Name + " created!");
         }
     }
 
@@ -125,23 +125,25 @@ public class MatchProcess(CreateMatchParams creationParams)
             Name = name,
             Status = QueuedPlayerStatus.READY
         };
+        System.Console.WriteLine("Adding bot to the queue");
 
         AddQueuedPlayer(result);
 
         return result;
     } 
 
-    private readonly object _addPlayerLock;
+    private readonly object _addPlayerLock = new();
 
     public void AddQueuedPlayer(QueuedPlayer player) {
         player.Changed += OnPlayerChanged;
         player.StatusUpdated += OnPlayerStatusUpdated;
 
-        // lock (_addPlayerLock) {
-            System.Console.WriteLine("ADD PLAYER");
+        System.Console.WriteLine("Lock");
+        lock (_addPlayerLock) {
+            System.Console.WriteLine("Before add");
             Players.Add(player);
-            System.Console.WriteLine("PLAYER ADDED");
-        // }
+            System.Console.WriteLine("After add");
+        }
     }
 
     /// <summary>
@@ -160,18 +162,24 @@ public class MatchProcess(CreateMatchParams creationParams)
         // TODO
     }
 
-    public async Task RefreshConnections() {
+    public async Task<bool> RefreshConnections() {
+        System.Console.WriteLine("Refreshing connections");
         var newPlayers = new List<QueuedPlayer>();
         foreach (var player in Players) {
             var valid = await player.Checker.Check();
             if (!valid) continue;
             newPlayers.Add(player);
         }
+        System.Console.WriteLine($"Before: {Players.Count}\tAfter {newPlayers.Count}");
+        var prevCount = Players.Count;
         Players = newPlayers;
+        // TODO update view
+        return Players.Count == prevCount;
     }
 
     public async Task Run() {
         // TODO seed
+        System.Console.WriteLine("Configuring match");
 
         var cm = new FileCardMaster();
         cm.Load("../cards/testing");
@@ -183,12 +191,15 @@ public class MatchProcess(CreateMatchParams creationParams)
         await SetStatus(MatchStatus.IN_PROGRESS);
 
         try {
+            System.Console.WriteLine("Match started");
             await Match.Run();
             await SetStatus(MatchStatus.FINISHED);
+            System.Console.WriteLine("Match finished!");
             // TODO add back
             // Record.WinnerName = Match.Winner!.Name;
             // await _matchService.ServiceStatusUpdated(this);
         } catch (Exception e) {
+            System.Console.WriteLine("Match crashed");
             await SetStatus(MatchStatus.CRASHED);
             // TODO add back
             // Record.ExceptionMessage = e.Message;
@@ -200,12 +211,11 @@ public class MatchProcess(CreateMatchParams creationParams)
             // TODO add back
             // await Match.View.End();
         }
-
-
     }
 
     public async Task SetStatus(MatchStatus status) {
         Status = status;
+        System.Console.WriteLine("Setting match status to " + status);
         // TODO add back
         // await _matchService.ServiceStatusUpdated(this);
         
@@ -215,6 +225,7 @@ public class MatchProcess(CreateMatchParams creationParams)
     }
 
     public async Task CreatePlayerControllers(Match match) {
+        System.Console.WriteLine("Creating player controllers");
         foreach (var player in Players) {
             var baseController = player!.Controller;
             // var record = new PlayerRecord() {
@@ -227,16 +238,25 @@ public class MatchProcess(CreateMatchParams creationParams)
             var controller = baseController;
 
             await match.AddPlayer(player.GetName(), controller!);
+            System.Console.WriteLine("Added controller for " + player.GetName());
         }
     }
 
     public async Task AddWSPlayer(WebSocket socket) {
+        System.Console.WriteLine("Adding WebSocket player");
         var controller = new IOPlayerController(new WebSocketIOHandler(socket));
-        await AddPlayer(controller, new WebSocketConnectionChecker(socket));
+        var added = await AddPlayer(controller, new WebSocketConnectionChecker(socket));
+        if (!added) {
+            System.Console.WriteLine("Failed to read player info, not adding WebSocket player to the match");
+            return;
+        }
+
+        System.Console.WriteLine("WebSocket player added, adding the socket to the wait loop");
         await Finish(socket);
     }
 
-    public async Task AddPlayer(IOPlayerController controller, IConnectionChecker checker) {
+    public async Task<bool> AddPlayer(IOPlayerController controller, IConnectionChecker checker) {
+        System.Console.WriteLine("Request to add a real player");
         var player = new QueuedPlayer(
             controller,
             checker,
@@ -246,20 +266,28 @@ public class MatchProcess(CreateMatchParams creationParams)
         var errMsg = await player.ReadPlayerInfo(this, checker);
         if (!string.IsNullOrEmpty(errMsg)) {
             await checker.Write(errMsg);
-            return;
+            return false;
         }
-
+        System.Console.WriteLine($"Read info of player " + player.GetName());
+        // TODO? change
+        player.Status = QueuedPlayerStatus.READY;
+        
         AddQueuedPlayer(player);
 
-        if (Players.Count > 1) return;
+        if (Players.Count(p => !p.IsBot) > 1) return true;
 
         // TODO assign as owner player
+        System.Console.WriteLine("Player " + player.GetName() + " assigned as the main player");
         _ = WaitForStart(checker);
+
+        return true;
     }
 
     public async Task WaitForStart(IConnectionChecker checker) {
         while (true) {
+            System.Console.WriteLine("Reading from main player");
             var msg = await checker.Read();
+            System.Console.WriteLine("Read: " + msg);
             if (msg != "start") {
                 // TODO better exception
                 throw new Exception("Expected to read \"start\" from match owner, but got " + msg);
@@ -268,11 +296,14 @@ public class MatchProcess(CreateMatchParams creationParams)
             if (!await CanRun()) continue;
             break;
         }
+        System.Console.WriteLine("Match can start");
         await Run();
     }
 
     public async Task<bool> CanRun() {
-        await RefreshConnections();
+        var nobodyDisconnected = await RefreshConnections();
+        System.Console.WriteLine(nobodyDisconnected);
+        if (!nobodyDisconnected) return false;
         if (Players.Count < 2) return false;
 
         return Players.All(p => p.Status == QueuedPlayerStatus.READY);

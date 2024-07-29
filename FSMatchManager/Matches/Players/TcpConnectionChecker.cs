@@ -16,7 +16,8 @@ public class TcpConnectionChecker(TcpClient socket) : IConnectionChecker {
     {
         try {
             NetUtility.Write(_socket.GetStream(), "ping");
-            _socket.ReceiveTimeout = 5000;
+            // TODO change to 5000
+            _socket.ReceiveTimeout = 50000;
             var resp = await Read();
             _socket.ReceiveTimeout = 0;
             return resp == "pong";

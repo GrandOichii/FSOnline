@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://clo8to0jhyrli"]
+[gd_scene load_steps=7 format=3 uid="uid://clo8to0jhyrli"]
 
 [ext_resource type="Script" path="res://v1/Matches/ConnectedMatch.gd" id="1_gtxyk"]
 [ext_resource type="PackedScene" uid="uid://bq604p6filu2h" path="res://v1/Matches/MatchScene.tscn" id="2_ktxgd"]
 [ext_resource type="PackedScene" uid="uid://cm7qx5i6mbe4m" path="res://v1/Connections/Wrappers/TcpConnectionWrapper.tscn" id="3_ac0ba"]
 [ext_resource type="PackedScene" uid="uid://rmlfsnippese" path="res://v1/Matches/MatchController.tscn" id="4_bj5ne"]
 [ext_resource type="Theme" uid="uid://bj4ct68df3kj4" path="res://v1/Matches/Theme1.tres" id="5_xe5mv"]
+[ext_resource type="PackedScene" uid="uid://dyexec4cr8yf2" path="res://v1/Connections/Wrappers/WebSocketConnectionWrapper.tscn" id="6_si2is"]
 
-[node name="ConnectedMatch" type="Control"]
+[node name="ConnectedMatch" type="Control" node_paths=PackedStringArray("Connection")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,12 +16,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gtxyk")
 character_key = "whore-of-babylon-v2"
+Connection = NodePath("WSConnection")
+ws_password = "password"
+create_params = "{    \"Config\": {        \"MaxPlayerCount\": 4,        \"CoinPool\": 100,        \"InitialTreasureSlots\": 2,        \"InitialMonsterSlots\": 2,        \"InitialRoomSlots\": 1,        \"BonusSoulCount\": 3,        \"InitialDealLoot\": 3,        \"InitialDealCoins\": 3,        \"SoulsToWin\": 4,        \"ForceInclude3PlusCards\": true,        \"RandomFirstPlayer\": true,        \"MaxHandSize\": 10,        \"LootStepLootAmount\": 1,        \"LootCards\": {            \"3-cents-v2\": 10,            \"a-sack-v2\": 10,            \"counterfeit-penny-v2\": 10,            \"orange-green-pills-v2\": 10,            \"chunk-of-amber-warp\": 10,            \"xvii-the-stars-v2\": 10,            \"dice-shard-v2\": 10,            \"lil-battery-v2\": 10,            \"lucky-toe-requiem\": 10,            \"xvii-the-stars-alt1\": 10,            \"lost-soul-v2\": 10,            \"perthro-requiem\": 10,            \"bag-lunch-requiem\": 10,            \"blank-rune-v2\": 10,            \"bloody-penny-v2\": 10,            \"bible-thump-requiem\": 10,            \"xiii-death-v2\": 10,            \"x-wheel-of-fortune-v2\": 10,            \"xiv-temperance-v2\": 10,            \"butter-bean-v2\": 10,            \"pills-red-v2\": 10        },        \"Characters\": [            \"bum-bo-v2\",            \"guppy-v2\",            \"the-keeper-v2\",            \"isaac-v2\",            \"judas-v2\",            \"the-miser-requiem\",            \"the-empty-requiem\",            \"dark-judas-v2\",            \"lazarus-v2\",            \"the-dauntless-requiem\",            \"the-baleful-requiem\",            \"the-hoarder-requiem\",            \"whore-of-babylon-v2\"        ],        \"StartingItems\": [            \"gimpy-v2\",            \"hypercoagulation-requiem\",            \"infestation-v2\",            \"wooden-nickel-v2\",            \"book-of-belial-v2\",            \"the-d6-v2\",            \"keepers-bargain-requiem\",            \"abyss-requiem\",            \"dark-arts-v2\",            \"lazarus-rags-v2\",            \"soulbond-requiem\",            \"bag-o-trash-v2\",            \"bag-of-crafting-requiem\"        ],        \"Treasures\": [            \"keepers-box-requiem\",            \"portable-slot-machine-v2\",            \"the-butter-bean-v2\",            \"pageant-boy-v2\",            \"box-v2\",            \"crooked-penny-v2\",            \"the-battery-v2\",            \"the-d20-v2\",            \"pay-to-play-v2\",            \"libra-v2\",            \"dads-lost-coin-v2\",            \"sacred-heart-v2\",            \"moms-purse-v2\",            \"the-relic-v2\",            \"eye-of-greed-v2\",            \"guppys-eye-v2\",            \"shiny-rock-v2\",            \"guppys-tail-v2\",            \"hourglass-v2\",            \"trinity-shield-v2\",            \"restock-v2\",            \"a-dollar-uoi\",            \"godhead-v2\",            \"a-friend-summer\",            \"the-chest-v2\",            \"keepers-box-requiem\",            \"jawbone-v2\",            \"guppys-head-v2\",            \"chaos-v2\",            \"breakfast-v2\",            \"belly-button-v2\",            \"dark-bum-v2\",            \"fanny-pack-v2\",            \"experimental-treatment-requiem\",            \"moms-razor-v2\",            \"shadow-v2\",            \"razor-blade-v2\",            \"the-habit-v2\"        ],        \"BonusSouls\": [            \"soul-of-greed-v2\",            \"soul-of-gluttony-v2\",            \"soul-of-guppy-v2\",            \"strawberry-warp\"        ],        \"StrictMode\": true,        \"PurchaseCountDefault\": 1,        \"AttackCountDefault\": 1,        \"LootPlay\": 1,        \"CharactersStartTapped\": true,        \"PurchaseCost\": 10,        \"DeathPenaltyLoot\": 1,        \"DeathPenaltyCoins\": 1,        \"DeathPenaltyItems\": 1    },    \"Password\": \"password\",    \"Bots\": [        {            \"Type\": 0,            \"Name\": \"bot1\"        },        {            \"Type\": 0,            \"Name\": \"bot2\"        }    ]  }"
 
 [node name="Match" parent="." instance=ExtResource("2_ktxgd")]
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="Connection" parent="." instance=ExtResource("3_ac0ba")]
+[node name="TcpConnection" parent="." instance=ExtResource("3_ac0ba")]
 unique_name_in_owner = true
 
 [node name="Controller" parent="." instance=ExtResource("4_bj5ne")]
@@ -131,9 +135,11 @@ text = "Yes"
 layout_mode = 2
 text = "No"
 
-[connection signal="Connected" from="Connection" to="." method="_on_connection_connected"]
-[connection signal="MessageReceived" from="Connection" to="." method="_on_connection_message_received"]
+[node name="WSConnection" parent="." instance=ExtResource("6_si2is")]
+
 [connection signal="Response" from="Controller" to="." method="_on_controller_response"]
 [connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/HBoxContainer/SendButton" to="." method="_on_send_button_pressed"]
 [connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/PassButton" to="." method="_on_pass_button_pressed"]
 [connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/PurchaseButton" to="." method="_on_purchase_button_pressed"]
+[connection signal="Connected" from="WSConnection" to="." method="_on_connection_connected"]
+[connection signal="MessageReceived" from="WSConnection" to="." method="_on_connection_message_received"]

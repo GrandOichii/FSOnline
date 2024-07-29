@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyexec4cr8yf2"]
+
+[ext_resource type="Script" path="res://v1/Connections/Wrappers/WebSocketConnectionWrapper.cs" id="1_gqtm5"]
+
+[node name="WebSocketConnectionWrapper" type="Node"]
+script = ExtResource("1_gqtm5")
