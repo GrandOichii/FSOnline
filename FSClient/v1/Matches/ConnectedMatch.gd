@@ -15,9 +15,11 @@ signal MatchInfoReceived(Variant)
 @export var port = 9090
 
 @export_group('WSConnection')
+@export var create_mode = false
 @export var ws_address = 'localhost:5104/api/v1/Match'
 @export var ws_password = ''
 @export var create_params = ''
+@export var ws_match_id = ''
 
 @onready var Controller = %Controller
 @onready var Action = %Action
@@ -41,8 +43,12 @@ func _ready():
 	if start_fullscreen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
-	print('creating...')
-	Connection.Create(ws_address)
+	if create_mode:
+		print('creating...')
+		Connection.Create(ws_address)
+	else:
+		print('connecting...')
+		Connection.Connect(ws_address, ws_match_id)
 	#Connection.Connect(address, int(port))
 	Match.set_controller(Controller)
 
@@ -121,17 +127,18 @@ func setup_pick_string(update: Variant):
 # signal connections
 
 func _on_connection_connected():
-	#Connection.Write(character_key)
-	pass
+	if not create_mode:
+		Connection.Write('{\"Name\": \"' + player_name + '\", \"Password\": \"' + ws_password +'\"}')
 
 func _on_connection_message_received(message):
 	if message == 'ping':
 		Connection.Write('pong')
 		return
 	if message == 'Send match creation parameters':
-		Connection.Write(create_params)
-		Connection.Write('{\"Name\": \"' + player_name + '\", \"Password\": \"' + ws_password +'\"}')
-		Connection.Write('start')
+		if create_mode:
+			Connection.Write(create_params)
+			Connection.Write('{\"Name\": \"' + player_name + '\", \"Password\": \"' + ws_password +'\"}')
+			Connection.Write('start')
 		return
 	var json = JSON.new()
 	var error = json.parse(message)

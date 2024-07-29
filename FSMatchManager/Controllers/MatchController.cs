@@ -47,4 +47,14 @@ public class MatchController(IMatchService matchService) : Controller {
             HttpContext.Response.StatusCode = 400;
         }
     }
+
+    [HttpGet("{matchId}")]
+    public async Task WebSocketConnect(string matchId) {
+        if (HttpContext.WebSockets.IsWebSocketRequest) {
+            // TODO handle exceptions
+            await _matchService.WebSocketConnect(matchId, HttpContext.WebSockets);
+        } else {
+            HttpContext.Response.StatusCode = 400;
+        }
+    }
 }

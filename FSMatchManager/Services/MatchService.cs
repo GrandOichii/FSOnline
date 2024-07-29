@@ -12,6 +12,13 @@ public class MatchService(IOptions<MatchesSettings> settings) : IMatchService {
         return Task.FromResult(Matches);
     }
 
+    public Task<MatchProcess> Get(string matchId) {
+        return Task.FromResult(
+            Matches.FirstOrDefault(m => m.ID.ToString() == matchId)
+                ?? throw new MatchNotFoundException($"Match with ID {matchId} not found")
+        );
+    }
+
     public async Task<MatchProcess> WebSocketCreate(WebSocketManager wsManager)
     {
         // TODO validate params
@@ -27,5 +34,14 @@ public class MatchService(IOptions<MatchesSettings> settings) : IMatchService {
         await match.AddWSPlayer(socket);
         
         return match;
+    }
+
+    public async Task WebSocketConnect(string matchId, WebSocketManager wsManager) {
+        var match = await Get(matchId);
+        if (!match.CanAddPlayer()) return;
+
+        var socket = await wsManager.AcceptWebSocketAsync();
+
+        await match.AddWSPlayer(socket);
     }
 }

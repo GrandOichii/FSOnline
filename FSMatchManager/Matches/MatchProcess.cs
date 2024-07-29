@@ -318,4 +318,12 @@ public class MatchProcess(CreateMatchParams creationParams)
             await Task.Delay(200);
         }
     }
+
+    /// <summary>
+    /// Checks whether a new player can be added to the match
+    /// </summary>
+    /// <returns>True if a new player can be added, otherwise returns false</returns>
+    public bool CanAddPlayer() {
+        return Status == MatchStatus.WAITING_FOR_PLAYERS && Players.Count < Params.Config.MaxPlayerCount;
+    }
 }

@@ -22,11 +22,8 @@ public partial class WebSocketConnectionWrapper : ConnectionWrapper
 	private WebSocketConnection _connection;
 
 	public void Create(string address) {
-		// TODO
 		var client = new ClientWebSocket();
-		GD.Print($"ws://{address}/Create");
 		client.ConnectAsync(new Uri($"ws://{address}/Create"), CancellationToken.None).Wait();
-		GD.Print("Connected!");
 		_connection = new WebSocketConnection(client);        
 
 		_connection.SubscribeToUpdate(OnRead);
@@ -34,18 +31,14 @@ public partial class WebSocketConnectionWrapper : ConnectionWrapper
 		_connection.StartReceiveLoop();
 	}
 
-	public void Connect(string url, string matchId) {
-		// var client = new ClientWebSocket();
+	public void Connect(string address, string matchId) {
+		var client = new ClientWebSocket();
+		client.ConnectAsync(new Uri($"ws://{address}/{matchId}"), CancellationToken.None).Wait();
+		_connection = new WebSocketConnection(client);        
 
-		// await client.ConnectAsync(new Uri(url), CancellationToken.None);
-		
-		// var client = new TcpClient();
-		// var address = url + ":" + port;
-		// client.Connect(IPEndPoint.Parse(address));
-		// _connection = new WebSocketConnection(client);
-		// _connection.SubscribeToUpdate(OnRead);
-		// EmitSignal(SignalName.Connected);
-		// _connection.StartReceiveLoop();
+		_connection.SubscribeToUpdate(OnRead);
+		EmitSignal(SignalName.Connected);
+		_connection.StartReceiveLoop();
 	}
 
 	public async Task WriteAsync(string msg) {
@@ -53,13 +46,11 @@ public partial class WebSocketConnectionWrapper : ConnectionWrapper
 	}
 
 	public void Write(string msg) {
-		GD.Print("writing " + msg);
 		WriteAsync(msg)
 			.Wait();
 	}
 
 	private Task OnRead(string msg) {
-		GD.Print("Read " + msg);
 		CallDeferred("emit_signal", SignalName.MessageReceived, msg);
 		return Task.CompletedTask;
 	}
