@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cym32g2muxv55"]
+[gd_scene load_steps=27 format=3 uid="uid://cym32g2muxv55"]
 
 [ext_resource type="Theme" uid="uid://bj4ct68df3kj4" path="res://v1/Matches/Theme1.tres" id="1_bos6q"]
 [ext_resource type="Script" path="res://ConfigEditor/ConfigEditorScene.gd" id="1_cg1ir"]
@@ -11,6 +11,24 @@ default_value = true
 name = "StrictMode"
 labeled = "Strict mode"
 
+[sub_resource type="Resource" id="Resource_ylkaj"]
+script = ExtResource("3_wxomc")
+default_value = true
+name = "CharactersStartTapped"
+labeled = "Characters start tapped"
+
+[sub_resource type="Resource" id="Resource_q6eqh"]
+script = ExtResource("3_wxomc")
+default_value = true
+name = "RandomFirstPlayer"
+labeled = "Random first player"
+
+[sub_resource type="Resource" id="Resource_ji73w"]
+script = ExtResource("3_wxomc")
+default_value = true
+name = "ForceInclude3PlusCards"
+labeled = "Force include 3+ cards"
+
 [sub_resource type="Resource" id="Resource_rupac"]
 script = ExtResource("3_84vwn")
 default_value = 4
@@ -18,6 +36,142 @@ min = 0
 max = 8
 name = "MaxPlayerCount"
 labeled = "Max player count"
+
+[sub_resource type="Resource" id="Resource_3hosy"]
+script = ExtResource("3_84vwn")
+default_value = 100
+min = 0
+max = 10000
+name = "CoinPool"
+labeled = "Coin pool"
+
+[sub_resource type="Resource" id="Resource_7dit0"]
+script = ExtResource("3_84vwn")
+default_value = 2
+min = 0
+max = 8
+name = "InitialTreasureSlots"
+labeled = "Treasure slots"
+
+[sub_resource type="Resource" id="Resource_350ow"]
+script = ExtResource("3_84vwn")
+default_value = 2
+min = 0
+max = 8
+name = "InitialMonsterSlots"
+labeled = "Monster slots"
+
+[sub_resource type="Resource" id="Resource_v80uu"]
+script = ExtResource("3_84vwn")
+default_value = 1
+min = 0
+max = 8
+name = "InitialRoomSlots"
+labeled = "Room slots"
+
+[sub_resource type="Resource" id="Resource_kkyia"]
+script = ExtResource("3_84vwn")
+default_value = 3
+min = 0
+max = 100
+name = "BonusSoulCount"
+labeled = "Bonus souls"
+
+[sub_resource type="Resource" id="Resource_l415v"]
+script = ExtResource("3_84vwn")
+default_value = 3
+min = 0
+max = 100
+name = "InitialDealLoot"
+labeled = "Starting loot"
+
+[sub_resource type="Resource" id="Resource_ip1hg"]
+script = ExtResource("3_84vwn")
+default_value = 3
+min = 0
+max = 100
+name = "InitialDealCoins"
+labeled = "Starting coins"
+
+[sub_resource type="Resource" id="Resource_tnunq"]
+script = ExtResource("3_84vwn")
+default_value = 4
+min = 0
+max = 100
+name = "SoulsToWin"
+labeled = "Souls to win"
+
+[sub_resource type="Resource" id="Resource_7a8il"]
+script = ExtResource("3_84vwn")
+default_value = 10
+min = 0
+max = 100
+name = "MaxHandSize"
+labeled = "Max hand size"
+
+[sub_resource type="Resource" id="Resource_dts7b"]
+script = ExtResource("3_84vwn")
+default_value = 1
+min = 0
+max = 100
+name = "LootStepLootAmount"
+labeled = "Loot step"
+
+[sub_resource type="Resource" id="Resource_3qqon"]
+script = ExtResource("3_84vwn")
+default_value = 1
+min = 0
+max = 100
+name = "LootPlay"
+labeled = "Loot plays per turn"
+
+[sub_resource type="Resource" id="Resource_5nbmm"]
+script = ExtResource("3_84vwn")
+default_value = 1
+min = 0
+max = 100
+name = "PurchaseCountDefault"
+labeled = "Purchase opportunities"
+
+[sub_resource type="Resource" id="Resource_ub8w4"]
+script = ExtResource("3_84vwn")
+default_value = 10
+min = 0
+max = 100
+name = "PurchaseCost"
+labeled = "Purchase cost"
+
+[sub_resource type="Resource" id="Resource_1v3ks"]
+script = ExtResource("3_84vwn")
+default_value = 1
+min = 0
+max = 100
+name = "DeathPenaltyLoot"
+labeled = "Death penalty loot"
+
+[sub_resource type="Resource" id="Resource_irctj"]
+script = ExtResource("3_84vwn")
+default_value = 1
+min = 0
+max = 100
+name = "DeathPenaltyCoins"
+labeled = "Death penalty coins"
+
+[sub_resource type="Resource" id="Resource_40g3p"]
+script = ExtResource("3_84vwn")
+default_value = 1
+min = 0
+max = 100
+name = "DeathPenaltyItems"
+labeled = "Death penalty items"
+
+[sub_resource type="Resource" id="Resource_g0n6q"]
+script = ExtResource("3_84vwn")
+default_value = 1
+min = 0
+max = 100
+name = "AttackCountDefault"
+labeled = "Attack opportunities"
 
 [node name="ConfigEditorScene" type="Control"]
 layout_mode = 3
@@ -29,7 +183,7 @@ grow_vertical = 2
 theme = ExtResource("1_bos6q")
 script = ExtResource("1_cg1ir")
 cards_path = "../cards/testing"
-simple_values = Array[Resource("res://ConfigEditor/ConfigValue.gd")]([SubResource("Resource_obm02"), SubResource("Resource_rupac")])
+simple_values = Array[Resource("res://ConfigEditor/ConfigValue.gd")]([SubResource("Resource_obm02"), SubResource("Resource_ylkaj"), SubResource("Resource_q6eqh"), SubResource("Resource_ji73w"), SubResource("Resource_rupac"), SubResource("Resource_3hosy"), SubResource("Resource_7dit0"), SubResource("Resource_350ow"), SubResource("Resource_v80uu"), SubResource("Resource_kkyia"), SubResource("Resource_l415v"), SubResource("Resource_ip1hg"), SubResource("Resource_tnunq"), SubResource("Resource_7a8il"), SubResource("Resource_dts7b"), SubResource("Resource_3qqon"), SubResource("Resource_5nbmm"), SubResource("Resource_ub8w4"), SubResource("Resource_1v3ks"), SubResource("Resource_irctj"), SubResource("Resource_40g3p"), SubResource("Resource_g0n6q")])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -62,61 +216,3 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/SimpleValuesContainer"]
-visible = false
-layout_mode = 2
-text = "Max player count: "
-
-[node name="CheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/SimpleValuesContainer/Label"]
-layout_mode = 0
-offset_right = 24.0
-offset_bottom = 24.0
-
-[node name="MaxPlayerCount" type="SpinBox" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/SimpleValuesContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/SimpleValuesContainer"]
-visible = false
-layout_mode = 2
-text = "Coin pool: "
-
-[node name="CoinPool" type="SpinBox" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/SimpleValuesContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/SimpleValuesContainer"]
-visible = false
-layout_mode = 2
-text = "Treasure slots: "
-
-[node name="TreasureSlots" type="SpinBox" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/SimpleValuesContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/SimpleValuesContainer"]
-visible = false
-layout_mode = 2
-text = "Monster slots:"
-
-[node name="MonsterSlots" type="SpinBox" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/SimpleValuesContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/SimpleValuesContainer"]
-visible = false
-layout_mode = 2
-text = "Room slots:"
-
-[node name="RoomSlots" type="SpinBox" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/SimpleValuesContainer"]
-visible = false
-layout_mode = 2
