@@ -6,4 +6,5 @@ global using FSMatchManager.Matches.Players;
 global using FSMatchManager.Extensions;
 
 global using FSCore.Matches;
+global using FSCore.Cards.CardMasters;
 global using FSCore.Matches.Players.Controllers;

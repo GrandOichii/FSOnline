@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnhkuhglojuxf"]
+
+[ext_resource type="Script" path="res://ConfigEditor/CardSources/FileCardSource.gd" id="1_0texl"]
+[ext_resource type="PackedScene" uid="uid://ce6lugfpr3yht" path="res://ConfigEditor/CardSources/FileCardMasterWrapper.tscn" id="2_8n5x6"]
+
+[node name="FileCardSource" type="Node"]
+script = ExtResource("1_0texl")
+
+[node name="CardMaster" parent="." instance=ExtResource("2_8n5x6")]
+unique_name_in_owner = true

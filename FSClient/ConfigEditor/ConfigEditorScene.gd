@@ -3,6 +3,8 @@ extends Node
 @export var file_drop_enabled = true
 @export var cards_path: String
 
+@export var CardSource: CardSource
+
 @export_group('Numerical values')
 @export var simple_values: Array[ConfigValue]
 

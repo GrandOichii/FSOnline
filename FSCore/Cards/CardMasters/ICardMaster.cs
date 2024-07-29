@@ -1,4 +1,4 @@
-namespace FSCore.Matches.Cards;
+namespace FSCore.Cards.CardMasters;
 
 /// <summary>
 /// Is thrown when an ICardMaster object fails to fetch a card template
@@ -33,4 +33,7 @@ public interface ICardMaster {
     /// <param name="rng">Random number generator</param>
     /// <returns>Random character card template</returns>
     public Task<CharacterCardTemplate> GetRandomCharacter(Random rng);
+
+    public Task<List<string>> GetKeys();
+    public Task<List<string>> GetCharacterKeys();
 }

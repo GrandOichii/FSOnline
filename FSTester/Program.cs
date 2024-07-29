@@ -2,6 +2,7 @@
 using System.Net.Sockets;
 using System.Reflection;
 using System.Text.Json;
+using FSCore.Cards.CardMasters;
 using FSCore.Matches;
 using FSCore.Matches.Players.Controllers;
 using Microsoft.Extensions.Logging;

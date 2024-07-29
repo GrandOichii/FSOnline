@@ -2,6 +2,7 @@ global using NLua;
 
 global using FSCore;
 global using FSCore.Cards;
+global using FSCore.Cards.CardMasters;
 global using FSCore.Matches;
 global using FSCore.Utility;
 global using FSCore.Matches.Cards;

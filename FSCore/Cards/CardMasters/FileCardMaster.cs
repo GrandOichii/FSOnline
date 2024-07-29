@@ -2,7 +2,7 @@ using System.Text.Json;
 using FSCore.Cards;
 using FSCore.Matches.Cards;
 
-namespace FSTester;
+namespace FSCore.Cards.CardMasters;
 
 public class FileCardMasterCardsData {
     public required List<string> Characters { get; set; }
@@ -76,6 +76,20 @@ public class FileCardMaster : ICardMaster
             _characterIndex.ElementAt(
                 rng.Next() % _characterIndex.Count
             ).Value
+        );
+    }
+
+    public Task<List<string>> GetKeys()
+    {
+        return Task.FromResult(
+            _index.Keys.ToList()
+        );
+    }
+
+    public Task<List<string>> GetCharacterKeys()
+    {
+        return Task.FromResult(
+            _characterIndex.Keys.ToList()
         );
     }
 }
