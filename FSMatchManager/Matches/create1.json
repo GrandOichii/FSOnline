@@ -4,16 +4,16 @@
         "CoinPool": 100,
         "InitialTreasureSlots": 2,
         "InitialMonsterSlots": 2,
-        "InitialRoomSlots": 1,
-        "BonusSoulCount": 3,
-        "InitialDealLoot": 3,
-        "InitialDealCoins": 3,
-        "SoulsToWin": 4,
-        "ForceInclude3PlusCards": true,
-        "RandomFirstPlayer": true,
-        "MaxHandSize": 10,
-        "LootStepLootAmount": 1,
-        "LootCards": {
+        "_InitialRoomSlots": 1,
+        "_BonusSoulCount": 3,
+        "_InitialDealLoot": 3,
+        "_InitialDealCoins": 3,
+        "_SoulsToWin": 4,
+        "_ForceInclude3PlusCards": true,
+        "_RandomFirstPlayer": true,
+        "_MaxHandSize": 10,
+        "_LootStepLootAmount": 1,
+        "_LootCards": {
             "3-cents-v2": 10,
             "a-sack-v2": 10,
             "counterfeit-penny-v2": 10,
@@ -36,7 +36,7 @@
             "butter-bean-v2": 10,
             "pills-red-v2": 10
         },
-        "Characters": [
+        "_Characters": [
             "bum-bo-v2",
             "guppy-v2",
             "the-keeper-v2",
@@ -51,7 +51,7 @@
             "the-hoarder-requiem",
             "whore-of-babylon-v2"
         ],
-        "StartingItems": [
+        "_StartingItems": [
             "gimpy-v2",
             "hypercoagulation-requiem",
             "infestation-v2",
@@ -66,7 +66,7 @@
             "bag-o-trash-v2",
             "bag-of-crafting-requiem"
         ],
-        "Treasures": [
+        "_Treasures": [
             "keepers-box-requiem",
             "portable-slot-machine-v2",
             "the-butter-bean-v2",
@@ -106,21 +106,21 @@
             "razor-blade-v2",
             "the-habit-v2"
         ],
-        "BonusSouls": [
+        "_BonusSouls": [
             "soul-of-greed-v2",
             "soul-of-gluttony-v2",
             "soul-of-guppy-v2",
             "strawberry-warp"
         ],
-        "StrictMode": true,
-        "PurchaseCountDefault": 1,
-        "AttackCountDefault": 1,
-        "LootPlay": 1,
-        "CharactersStartTapped": true,
-        "PurchaseCost": 10,
-        "DeathPenaltyLoot": 1,
-        "DeathPenaltyCoins": 1,
-        "DeathPenaltyItems": 1
+        "_StrictMode": true,
+        "_PurchaseCountDefault": 1,
+        "_AttackCountDefault": 1,
+        "_LootPlay": 1,
+        "_CharactersStartTapped": true,
+        "_PurchaseCost": 10,
+        "_DeathPenaltyLoot": 1,
+        "_DeathPenaltyCoins": 1,
+        "_DeathPenaltyItems": 1
     },
     "Password": "password",
     "Bots": [

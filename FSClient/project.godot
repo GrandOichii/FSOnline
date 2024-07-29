@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="FSClient"
-run/main_scene="res://v1/Root.tscn"
+run/main_scene="res://ConfigEditor/ConfigEditorScene.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=2000
-window/size/viewport_height=1500
+window/size/viewport_height=1200
 
 [dotnet]
 
