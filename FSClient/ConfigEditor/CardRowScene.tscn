@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckhvp3d82e3il"]
+[gd_scene load_steps=3 format=3 uid="uid://ckhvp3d82e3il"]
 
 [ext_resource type="Script" path="res://ConfigEditor/CardRowScene.gd" id="1_knu5q"]
+[ext_resource type="Texture2D" uid="uid://jfsn4gtk2yso" path="res://assets/icons/ui/icon_close.svg" id="2_7kr1k"]
 
 [node name="CardRowScene" type="HBoxContainer"]
 anchors_preset = 15
@@ -8,9 +9,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 script = ExtResource("1_knu5q")
 
-[node name="Key" type="Label" parent="."]
+[node name="DeleteButton" type="Button" parent="."]
+layout_mode = 2
+icon = ExtResource("2_7kr1k")
+
+[node name="NotFound" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "!"
+
+[node name="Key" type="LineEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 text = "card key here"
+
+[connection signal="pressed" from="DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="text_changed" from="Key" to="." method="_on_key_text_changed"]

@@ -4,6 +4,7 @@ using Godot;
 using System;
 using Godot.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FSClient.ConfigEditor.CardSources;
 
@@ -11,6 +12,8 @@ public partial class CardWrapper(CardTemplate card) : Resource {
 	public CardTemplate Card { get; } = card;
 
 	public string Key { get; } = card.Key;
+
+	public string LowerKey() => Key.ToLower();
 }
 
 
@@ -56,5 +59,9 @@ public partial class FileCardMasterWrapper : Node
 				result.Add(card);
 				
 		return result;
+	}
+
+	public bool HasKey(string key) {
+		return CardTemplates.Any(c => c.Key == key);
 	}
 }
