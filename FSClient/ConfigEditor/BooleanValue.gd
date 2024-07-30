@@ -6,5 +6,6 @@ class_name BooleanValue
 func append_main_control_node(parent: Node):
 	var check = CheckBox.new()
 	check.button_pressed = default_value
+	check.set_meta('value_name', name)
 	
 	parent.add_child(check)

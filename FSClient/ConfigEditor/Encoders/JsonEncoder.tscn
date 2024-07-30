@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://co2g7paohynm3"]
+
+[ext_resource type="Script" path="res://ConfigEditor/Encoders/JsonEncoder.cs" id="1_sgqew"]
+
+[node name="JsonEncoder" type="Node"]
+script = ExtResource("1_sgqew")

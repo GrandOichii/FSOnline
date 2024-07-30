@@ -16,7 +16,7 @@ func _ready():
 	for card in cards:
 		add_key(card.Key)
 	set_key_filter('')
-
+	
 func set_key_filter(filter: String):
 	%PossibleKeys.clear()
 	var cards = card_source.of_type(card_type)
@@ -34,6 +34,12 @@ func add_key(key: String):
 	var row = child as CardRowScene
 	row.set_source(card_source)
 	row.load(key)
+	
+func modify(d: Dictionary):
+	var arr = []
+	for i in %PossibleKeys.item_count:
+		arr.append(%PossibleKeys.get_item_text(i))
+	d[list_name] = arr
 
 func _on_add_key_button_pressed():
 	var key = %NewKeyEdit.text
@@ -48,3 +54,7 @@ func _on_new_key_edit_text_changed(new_text):
 
 func _on_possible_keys_item_activated(index):
 	add_key(%PossibleKeys.get_item_text(index))
+
+func _on_filter_text_changed(new_text):
+	for child: CardRowScene in %Keys.get_children():
+		child.visible = new_text == '' or new_text.to_lower() in child.key.to_lower()

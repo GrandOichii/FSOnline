@@ -1,7 +1,7 @@
 {
     "Key": "soulbond-requiem",
     "Name": "Soulbond",
-    "Type": "Item",
+    "Type": "StartingItem",
     "Text": "Each time you die, choose another player. That player dies.\nYou don't lose {cent} or discard loot cards when paying the death penalty.",
     "Script": "soulbond-requiem.lua"
 }

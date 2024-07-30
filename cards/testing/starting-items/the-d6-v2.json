@@ -1,7 +1,7 @@
 {
     "Key": "the-d6-v2",
     "Name": "The D6",
-    "Type": "Item",
+    "Type": "StartingItem",
     "Text": "{T}: Choose a dice roll. its controller rerolls it.\nAt the end of your turn, recharge this.",
     "Script": "the-d6-v2.lua"
 }
