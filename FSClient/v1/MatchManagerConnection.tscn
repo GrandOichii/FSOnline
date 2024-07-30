@@ -109,8 +109,17 @@ layout_mode = 2
 [node name="StartButton" type="Button" parent="ConnectPanel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Start"
+text = "Create/Connect"
+
+[node name="StartMatchButton" type="Button" parent="ConnectPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start match"
 
 [connection signal="MatchInfoReceived" from="Match" to="." method="_on_match_match_info_received"]
+[connection signal="MessageReceived" from="Match/WSConnection" to="." method="_on_ws_connection_message_received"]
 [connection signal="pressed" from="ConnectPanel/VBoxContainer/ConfigButton" to="." method="_on_config_button_pressed"]
 [connection signal="pressed" from="ConnectPanel/VBoxContainer/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ConnectPanel/VBoxContainer/StartMatchButton" to="." method="_on_start_match_button_pressed"]
+
+[editable path="Match"]

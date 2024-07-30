@@ -13,7 +13,7 @@
         "RandomFirstPlayer": true,
         "MaxHandSize": 10,
         "LootStepLootAmount": 1,
-        "_LootCards": {
+        "LootCards": {
             "3-cents-v2": 10,
             "a-sack-v2": 10,
             "counterfeit-penny-v2": 10,
@@ -36,7 +36,7 @@
             "butter-bean-v2": 10,
             "pills-red-v2": 10
         },
-        "_Characters": [
+        "Characters": [
             "bum-bo-v2",
             "guppy-v2",
             "the-keeper-v2",
@@ -51,7 +51,7 @@
             "the-hoarder-requiem",
             "whore-of-babylon-v2"
         ],
-        "_StartingItems": [
+        "StartingItems": [
             "gimpy-v2",
             "hypercoagulation-requiem",
             "infestation-v2",
@@ -66,7 +66,7 @@
             "bag-o-trash-v2",
             "bag-of-crafting-requiem"
         ],
-        "_Treasures": [
+        "Treasures": [
             "keepers-box-requiem",
             "portable-slot-machine-v2",
             "the-butter-bean-v2",
@@ -106,7 +106,7 @@
             "razor-blade-v2",
             "the-habit-v2"
         ],
-        "_BonusSouls": [
+        "BonusSouls": [
             "soul-of-greed-v2",
             "soul-of-gluttony-v2",
             "soul-of-guppy-v2",

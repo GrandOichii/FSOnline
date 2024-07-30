@@ -38,14 +38,6 @@ func _ready():
 	
 	if start_fullscreen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	
-	#if create_mode:
-		#print('creating...')
-		#Connection.Create(ws_address)
-	#else:
-		#print('connecting...')
-		#Connection.Connect(ws_address, ws_match_id)
-	##Connection.Connect(address, int(port))
 	Match.set_controller(Controller)
 
 func process_match_info(match_info: Variant):
@@ -132,11 +124,13 @@ func _on_connection_message_received(message):
 	if message == 'ping':
 		Connection.Write('pong')
 		return
-	if message == 'Send match creation parameters':
+	if message == 'mcp':
 		Connection.Write(create_params)
 		return
 	if message == 'mpa':
-		Connection.Write('start')
+		#Connection.Write('start')
+		return
+	if message.begins_with('id:'):
 		return
 	var json = JSON.new()
 	var error = json.parse(message)

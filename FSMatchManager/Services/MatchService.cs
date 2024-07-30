@@ -22,21 +22,17 @@ public class MatchService(IOptions<MatchesSettings> settings) : IMatchService {
     public async Task<MatchProcess> WebSocketCreate(WebSocketManager wsManager)
     {
         // TODO validate params
-        System.Console.WriteLine("1");
         var socket = await wsManager.AcceptWebSocketAsync();
-        System.Console.WriteLine("2");
-        await socket.Write("Send match creation parameters");
-        System.Console.WriteLine("3");
+        await socket.Write("mcp");
         var paramsRaw = await socket.Read();
-        System.Console.WriteLine("4");
         System.Console.WriteLine(paramsRaw);
         var creationParams = JsonSerializer.Deserialize<CreateMatchParams>(paramsRaw);
-        System.Console.WriteLine("5");
 
         var match = new MatchProcess(creationParams);
         Matches.Add(match);
         var _ = match.Configure();
 
+        await socket.Write($"id:{match.ID}");
         await match.AddWSPlayer(socket);
         
         return match;
