@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3 uid="uid://gbh6yk2pafp4"]
+
+[ext_resource type="PackedScene" uid="uid://clo8to0jhyrli" path="res://v1/Matches/ConnectedMatch.tscn" id="1_70tnd"]
+[ext_resource type="Script" path="res://v1/MatchManagerConnection.gd" id="1_v5sw3"]
+[ext_resource type="PackedScene" uid="uid://cym32g2muxv55" path="res://ConfigEditor/ConfigEditorScene.tscn" id="3_j46m3"]
+
+[node name="MatchManagerConnection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v5sw3")
+
+[node name="Match" parent="." instance=ExtResource("1_70tnd")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+start_fullscreen = false
+
+[node name="ConnectPanel" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConnectPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConfigButton" type="Button" parent="ConnectPanel/VBoxContainer"]
+layout_mode = 2
+text = "Show/hide configuration"
+
+[node name="Config" parent="ConnectPanel/VBoxContainer" instance=ExtResource("3_j46m3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ConnectPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Address" type="LineEdit" parent="ConnectPanel/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "localhost:5104/api/v1/Match"
+placeholder_text = "Address"
+
+[node name="MatchId" type="LineEdit" parent="ConnectPanel/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter match ID (leave empty for creating a new match)"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ConnectPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ConnectPanel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Player name: "
+
+[node name="PlayerName" type="LineEdit" parent="ConnectPanel/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FSClient"
+placeholder_text = "Enter your name"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="ConnectPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ConnectPanel/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Character: "
+
+[node name="Character" type="LineEdit" parent="ConnectPanel/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "guppy-v2"
+placeholder_text = "Enter character key"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="ConnectPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ConnectPanel/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Match password: "
+
+[node name="Password" type="LineEdit" parent="ConnectPanel/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter match password (optional)"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConnectPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="ConnectPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Start"
+
+[connection signal="MatchInfoReceived" from="Match" to="." method="_on_match_match_info_received"]
+[connection signal="pressed" from="ConnectPanel/VBoxContainer/ConfigButton" to="." method="_on_config_button_pressed"]
+[connection signal="pressed" from="ConnectPanel/VBoxContainer/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

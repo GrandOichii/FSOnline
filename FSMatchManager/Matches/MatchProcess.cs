@@ -167,6 +167,7 @@ public class MatchProcess(CreateMatchParams creationParams)
         var newPlayers = new List<QueuedPlayer>();
         foreach (var player in Players) {
             var valid = await player.Checker.Check();
+            System.Console.WriteLine(player.Checker + " " + valid);
             if (!valid) continue;
             newPlayers.Add(player);
         }
@@ -285,6 +286,7 @@ public class MatchProcess(CreateMatchParams creationParams)
 
     public async Task WaitForStart(IConnectionChecker checker) {
         while (true) {
+            await checker.Write("mpa");
             System.Console.WriteLine("Reading from main player");
             var msg = await checker.Read();
             System.Console.WriteLine("Read: " + msg);

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddddfdt5spw6e"]
 
-[ext_resource type="Theme" uid="uid://bj4ct68df3kj4" path="res://v1/Matches/Theme1.tres" id="1_q7v2e"]
-[ext_resource type="PackedScene" uid="uid://clo8to0jhyrli" path="res://v1/Matches/ConnectedMatch.tscn" id="1_vfpml"]
+[ext_resource type="Theme" uid="uid://bj4ct68df3kj4" path="res://assets/themes/Theme1.tres" id="1_q7v2e"]
+[ext_resource type="PackedScene" uid="uid://gbh6yk2pafp4" path="res://v1/MatchManagerConnection.tscn" id="2_ecero"]
 
 [node name="Root" type="Node"]
 
@@ -17,5 +17,5 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="ConnectedMatch" parent="MarginContainer" instance=ExtResource("1_vfpml")]
+[node name="MatchManagerConnection" parent="MarginContainer" instance=ExtResource("2_ecero")]
 layout_mode = 2

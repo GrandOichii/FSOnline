@@ -35,6 +35,7 @@ public class WebSocketConnectionChecker(WebSocket socket) : IConnectionChecker
 
     public async Task Write(string msg)
     {
+        System.Console.WriteLine("Wrote: " + msg);
         await _socket.Write(msg);
     }
 }

@@ -13,10 +13,6 @@ extends Node
 func _ready():
 	append_simple_values()
 	
-	var d = build()
-	var text = %JSON.Encode(d)
-	print(text)
-	
 func append_simple_values():
 	for value in simple_values:
 		value.append_control_nodes(SimpleValuesContainer)
@@ -53,5 +49,9 @@ func build() -> Dictionary:
 	
 	# loot cards
 	# TODO
+	var loot = {}
+	for card in card_source.of_type('Loot'):
+		loot[card.Key] = 10
+	result['LootCards'] = loot
 	
 	return result

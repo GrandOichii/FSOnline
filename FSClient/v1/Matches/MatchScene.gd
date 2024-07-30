@@ -22,10 +22,10 @@ func load_snapshot(snapshot: Variant):
 	
 func load_stack(snapshot: Variant):
 	var stack = snapshot.Stack
-	var size = len(stack.Effects)
-	while Stack.get_child_count() > size:
+	var ssize = len(stack.Effects)
+	while Stack.get_child_count() > ssize:
 		Stack.remove_child(Stack.get_child(0))
-	while Stack.get_child_count() < size:
+	while Stack.get_child_count() < ssize:
 		var child = stack_effect_scene.instantiate()
 		Stack.add_child(child)
 		

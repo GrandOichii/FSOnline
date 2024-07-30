@@ -137,6 +137,7 @@ public class QueuedPlayer {
     /// <returns>Error message if exception was thrown, else empty string</returns>
     public async Task<string> ReadPlayerInfo(MatchProcess match, IConnectionChecker checker) {
         try {
+            await checker.Write("pdata");
             var data = await checker.Read();
             var info = JsonSerializer.Deserialize<PlayerInfo>(data);
 

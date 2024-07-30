@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://cym32g2muxv55"]
 
-[ext_resource type="Theme" uid="uid://bj4ct68df3kj4" path="res://v1/Matches/Theme1.tres" id="1_bos6q"]
+[ext_resource type="Theme" uid="uid://bj4ct68df3kj4" path="res://assets/themes/Theme1.tres" id="1_bos6q"]
 [ext_resource type="Script" path="res://ConfigEditor/ConfigEditorScene.gd" id="1_cg1ir"]
 [ext_resource type="Script" path="res://ConfigEditor/NumericValue.gd" id="3_84vwn"]
 [ext_resource type="Script" path="res://ConfigEditor/BooleanValue.gd" id="3_wxomc"]
@@ -253,7 +253,7 @@ card_source = NodePath("../../../Sources/FileCardSource")
 [node name="Treasures" parent="HBoxContainer/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
 unique_name_in_owner = true
 layout_mode = 2
-list_name = "Treasure"
+list_name = "Treasures"
 list_label = "Treasures"
 card_type = "Item"
 card_source = NodePath("../../../Sources/FileCardSource")
