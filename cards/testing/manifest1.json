@@ -72,7 +72,27 @@
             "treasures/the-butter-bean-v2"
         ],
         "Loot": [
+            "loot/3-cents-v2",
+            "loot/blank-rune-v2",
+            "loot/bloody-penny-v2",
+            "loot/lil-battery-v2",
+            "loot/x-wheel-of-fortune-v2",
+            "loot/xiv-temperance-v2",
+            "loot/lucky-toe-requiem",
+            "loot/xvii-the-stars-v2",
+            "loot/orange-green-pills-v2",
+            "loot/dice-shard-v2",
+            "loot/xiii-death-v2",
+            "loot/chunk-of-amber-warp",
+            "loot/counterfeit-penny-v2",
+            "loot/xvii-the-stars-alt1",
+            "loot/lost-soul-v2",
             "loot/soul-heart-v2",
+            "loot/perthro-requiem",
+            "loot/bible-thump-requiem",
+            "loot/bag-lunch-requiem",
+            "loot/butter-bean-v2",
+            "loot/pills-red-v2",
             "loot/a-sack-v2"
         ],
         "BonusSouls": [

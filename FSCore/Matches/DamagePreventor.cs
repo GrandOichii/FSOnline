@@ -1,5 +1,8 @@
 namespace FSCore.Matches;
 
 public class DamagePreventor {
-    // TODO
+
+    public virtual void Prevent(Player player) {
+        player.Match.LogInfo($"1 Damage was prevented from {player.LogName}");
+    }
 }

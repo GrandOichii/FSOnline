@@ -450,4 +450,10 @@ public class ScriptMaster {
 
         list.Add(effect);
     }
+
+    [LuaCommand]
+    public void AddGenericDamagePreventors(int playerIdx, int amount) {
+        _match.GetPlayer(playerIdx).AddDamagePreventors(amount)
+            .Wait();
+    }
 }

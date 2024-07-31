@@ -23,8 +23,9 @@ public class EndPhase : IPhase
         foreach (var p in match.Players) {
             p.RemoveLootPlays();
             p.RemovePurchaseOpportunities();
-            p.RollHistory.Clear();
             p.HealToMax();
+            p.RollHistory.Clear();
+            p.DamagePreventors.Clear();
 
             // reset trigger limits
             foreach (var card in p.GetInPlayCards()) {

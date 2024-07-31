@@ -83,6 +83,7 @@ public class Player : IStateModifier {
     public int Damage { get; set; }
     public bool IsDead { get; set; }
     public StackEffect? DeathSource { get; private set; }
+    public List<DamagePreventor> DamagePreventors { get; }
 
     /// <summary>
     /// Name of the player that will be used for system logging
@@ -96,10 +97,11 @@ public class Player : IStateModifier {
         Controller = controller;
 
         Character = new(match, this, characterTemplate);
-        Hand = new();
-        Items = new();
-        Souls = new();
-        RollHistory = new();
+        Hand = [];
+        Items = [];
+        Souls = [];
+        RollHistory = [];
+        DamagePreventors = [];
         IsDead = false;
         DeathSource = null;
 
@@ -771,6 +773,8 @@ public class Player : IStateModifier {
         // TODO calculate whether damage is prevented
         // TODO calculate the final amount of damage
         // TODO use source
+        amount = PreventDamage(amount);
+        if (amount == 0) return;
 
         Match.LogInfo($"Player {LogName} was dealt {amount} damage");
         Damage += amount;
@@ -926,9 +930,29 @@ public class Player : IStateModifier {
     #region Damage prevention
 
     public int PreventableDamage() {
-        // TODO
-        return 0;
+        return DamagePreventors.Count;
+    }
+
+    public async Task AddDamagePreventors(int amount) {
+        for (int i = 0; i < amount; i++) {
+            var p = new DamagePreventor();
+            DamagePreventors.Add(p);
+        }
+        // TODO? update
+    }
+
+    public int PreventDamage(int amount) {
+        while (amount > 0) {
+            if (DamagePreventors.Count == 0) break;
+            var preventor = DamagePreventors[0];
+            preventor.Prevent(this);
+            DamagePreventors.Remove(preventor);
+            --amount;
+        }
+        return amount;
     }
 
     #endregion
+
+    
 }

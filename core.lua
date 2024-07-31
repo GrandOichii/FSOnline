@@ -151,6 +151,14 @@ function FS.C.Effect.KillTargetPlayer(target_idx)
     end
 end
 
+function FS.C.Effect.PreventNextDamageToTargetPlayer(target_idx, amount)
+    return function (stackEffect)
+        local idx = tonumber(stackEffect.Targets[target_idx].Value)
+        AddGenericDamagePreventors(idx, amount)
+        return true
+    end
+end
+
 function FS.C.Effect.CancelTargetStackEffect(target_idx)
     return function (stackEffect)
         local sid = stackEffect.Targets[target_idx].Value

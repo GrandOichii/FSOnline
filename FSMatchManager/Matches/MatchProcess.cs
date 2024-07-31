@@ -238,7 +238,7 @@ public class MatchProcess(CreateMatchParams creationParams)
             // var controller = new RecordingPlayerController(baseController, record);
             var controller = baseController;
 
-            await match.AddPlayer(player.GetName(), controller!);
+            await match.AddPlayer(player.GetName(), controller!, player.GetCharacterKey());
             System.Console.WriteLine("Added controller for " + player.GetName());
         }
     }

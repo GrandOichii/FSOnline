@@ -119,7 +119,7 @@ func _on_connection_connected():
 
 func _on_connection_message_received(message):
 	if message == 'pdata':
-		Connection.Write('{\"Name\": \"' + player_name + '\", \"Password\": \"' + ws_password +'\"}')
+		Connection.Write('{\"Name\": \"' + player_name + '\", \"Password\": \"' + ws_password +'\", \"CharacterKey\": \"' + character_key + '\"}')
 		return
 	if message == 'ping':
 		Connection.Write('pong')

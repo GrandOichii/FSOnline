@@ -1,0 +1,7 @@
+{
+    "Key": "soul-heart-v2",
+    "Name": "Soul Heart",
+    "Type": "Loot",
+    "Text": "Choose a player. Prevent the next 1 damage they would take this turn.",
+    "Script": "soul-heart-v2.lua"
+}

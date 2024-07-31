@@ -50,6 +50,10 @@ func set_attack(attack: int):
 func set_soul_count(soul_count: int):
 	Souls.text = str(soul_count)
 	
+func set_preventable(preventable_damage: int):
+	%Preventable.visible = preventable_damage > 0
+	%Preventable.text = '+' + str(preventable_damage)
+	
 func load_snapshot(snapshot: Variant, player_idx: int):
 	var player = snapshot.Players[player_idx]
 	_player_idx = player.Idx
@@ -62,6 +66,8 @@ func load_snapshot(snapshot: Variant, player_idx: int):
 	# Stats
 	set_health(player.Health)
 	set_attack(player.Attack)
+	
+	set_preventable(player.PreventableDamage)
 	
 func set_bg_color(color: Color):
 	Bg.get('theme_override_styles/panel').bg_color = color

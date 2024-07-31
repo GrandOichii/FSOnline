@@ -32,6 +32,8 @@ class PlayerInfo {
     /// </summary>
     public required string Name { get; set; }
 
+    public required string CharacterKey { get; set; }    
+
     /// <summary>
     /// The user's password
     /// </summary>
@@ -103,6 +105,17 @@ public class QueuedPlayer {
         }
     }
 
+    private string? _characterKey = null;
+
+    public string? CharacterKey
+    {
+        get => _characterKey;
+        set {
+            _characterKey = value;
+            // TODO invoke changed?
+        }
+    }
+
     /// <summary>
     /// Is bot flag
     /// </summary>
@@ -129,6 +142,10 @@ public class QueuedPlayer {
         return Name!;
     }
 
+    public string GetCharacterKey() {
+        return CharacterKey!;
+    }
+
     /// <summary>
     /// Reads and sets the player info
     /// </summary>
@@ -149,6 +166,7 @@ public class QueuedPlayer {
             if (!match.CheckPassword(info.Password)) return "incorrect password";
 
             Name = info.Name;
+            CharacterKey = info.CharacterKey;
         } catch (Exception e) {
             // TODO change to logging
             Console.WriteLine(e.Message);
