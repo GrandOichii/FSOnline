@@ -118,6 +118,13 @@ function FS.C.Effect.GainCoins(amount, filterFunc)
     end, filterFunc)
 end
 
+function FS.C.Effect.PreventNextDamageToPlayer(amount, filterFunc)
+    return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
+        AddGenericDamagePreventors(player.Idx, amount)
+        return true
+    end, filterFunc)
+end
+
 function FS.C.Effect.LoseCoins(amount, filterFunc)
     return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
         LoseCoins(player.Idx, amount)

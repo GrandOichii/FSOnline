@@ -6,6 +6,8 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
+        "the-battery-v2",
+        "the-poop-v2",
         "razor-blade-v2",
         "gimpy-v2"
     ],

@@ -1,0 +1,7 @@
+{
+    "Key": "the-poop-v2",
+    "Name": "The Poop",
+    "Type": "Item",
+    "Text": "Each time you take damage, put a counter on this.\nRemove a counter from this: Prevent the next 1 damage you would take this turn.",
+    "Script": "the-poop-v2.lua"
+}

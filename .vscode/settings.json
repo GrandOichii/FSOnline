@@ -58,7 +58,8 @@
         "GetSoulCount",
         "IsLootStackEffect",
         "CancelEffect",
-        "TillEndOfTurn"
+        "TillEndOfTurn",
+        "AddGenericDamagePreventors"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"
