@@ -37,9 +37,16 @@ func add_key(key: String):
 	
 func modify(d: Dictionary):
 	var arr = []
-	for i in %PossibleKeys.item_count:
-		arr.append(%PossibleKeys.get_item_text(i))
+	for row: CardRowScene in %Keys.get_children():
+		arr.append(row.key)
 	d[list_name] = arr
+	
+func load(config: Dictionary):
+	while %Keys.get_child_count() > 0:
+		%Keys.remove_child(%Keys.get_child(0))
+	
+	for key in config[list_name]:
+		add_key(key)
 
 func _on_add_key_button_pressed():
 	var key = %NewKeyEdit.text

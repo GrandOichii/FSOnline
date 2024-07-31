@@ -12,6 +12,7 @@ extends Node
 
 func _ready():
 	append_simple_values()
+	get_tree().root.files_dropped.connect(_on_files_dropped)
 	
 func append_simple_values():
 	for value in simple_values:
@@ -55,3 +56,42 @@ func build() -> Dictionary:
 	result['LootCards'] = loot
 	
 	return result
+	
+func load_json_file(path):
+	var file = FileAccess.open(path, FileAccess.READ)
+	var text = file.get_as_text()
+	var config = JSON.parse_string(text)
+	
+	# values
+	for child in %SimpleValuesContainer.get_children():
+		if child is Label: continue
+		
+		var name = child.get_meta('value_name')
+		# !FIXME horrible
+		if child is SpinBox:
+			child.value = config[name]
+			continue
+		if child is CheckBox:
+			child.button_pressed = config[name]
+			continue
+	
+	# card lists
+	%Characters.load(config)
+	%BonusSouls.load(config)
+	%Treasures.load(config)
+	
+	# loot cards
+	# TODO
+
+func _on_files_dropped(files):
+	if len(files) != 1:
+		return
+		
+	var file = files[0]
+	var format = file.substr(len(file) - 4)
+	
+	if format == 'json':
+		load_json_file(file)
+		return
+		
+	# TODO warn player
