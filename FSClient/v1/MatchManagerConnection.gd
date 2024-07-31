@@ -13,6 +13,7 @@ func _ready():
 	%StartMatchButton.hide()
 	Match.hide()
 	Match.process_mode = Node.PROCESS_MODE_DISABLED
+	_on_create_check_toggled(%CreateCheck.button_pressed)
 
 func _on_start_button_pressed():
 	# TODO add connect
@@ -36,13 +37,14 @@ func build_create_params() -> String:
 	
 	result['Config'] = Config.build()
 	result['Password'] = Password.text
-	# TODO
-	result['Bots'] = [
-		{
+	
+	var bots = []
+	for i in %BotCount.value:
+		bots.append({
 			'Type': 0,
-			'Name': 'Bot1'
-		}
-	]
+			'Name': 'Bot' + str(i)
+		})
+	result['Bots'] = bots
 	
 	return str(result)
 
@@ -61,3 +63,15 @@ func _on_ws_connection_message_received(message: String):
 		var id = message.substr(3)
 		%StartMatchButton.text = 'Start match ' + id
 		DisplayServer.clipboard_set(id)
+
+func _on_create_check_toggled(toggled_on):
+	%StartButton.text = 'Connect'
+	if toggled_on:
+		%StartButton.text = 'Create'
+	
+	var nodes = get_tree().get_nodes_in_group('connect_control')
+	for node: Control in nodes:
+		node.visible = not toggled_on
+	nodes = get_tree().get_nodes_in_group('create_control')
+	for node: Control in nodes:
+		node.visible = toggled_on

@@ -46,6 +46,22 @@ visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="HBoxContainer6" type="HBoxContainer" parent="ConnectPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="CreateCheck" type="CheckButton" parent="ConnectPanel/VBoxContainer/HBoxContainer6"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Create mode"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConnectPanel/VBoxContainer" groups=["create_control"]]
+layout_mode = 2
+
+[node name="BotCount" type="SpinBox" parent="ConnectPanel/VBoxContainer/VBoxContainer" groups=["create_control"]]
+unique_name_in_owner = true
+layout_mode = 2
+prefix = "Bot count: "
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="ConnectPanel/VBoxContainer"]
 layout_mode = 2
 
@@ -56,7 +72,7 @@ size_flags_horizontal = 3
 text = "localhost:5104/api/v1/Match"
 placeholder_text = "Address"
 
-[node name="MatchId" type="LineEdit" parent="ConnectPanel/VBoxContainer/HBoxContainer2"]
+[node name="MatchId" type="LineEdit" parent="ConnectPanel/VBoxContainer/HBoxContainer2" groups=["connect_control"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -107,6 +123,7 @@ placeholder_text = "Enter match password (optional)"
 layout_mode = 2
 
 [node name="StartButton" type="Button" parent="ConnectPanel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Create/Connect"
@@ -119,6 +136,7 @@ text = "Start match"
 [connection signal="MatchInfoReceived" from="Match" to="." method="_on_match_match_info_received"]
 [connection signal="MessageReceived" from="Match/WSConnection" to="." method="_on_ws_connection_message_received"]
 [connection signal="pressed" from="ConnectPanel/VBoxContainer/ConfigButton" to="." method="_on_config_button_pressed"]
+[connection signal="toggled" from="ConnectPanel/VBoxContainer/HBoxContainer6/CreateCheck" to="." method="_on_create_check_toggled"]
 [connection signal="pressed" from="ConnectPanel/VBoxContainer/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ConnectPanel/VBoxContainer/StartMatchButton" to="." method="_on_start_match_button_pressed"]
 
