@@ -12,7 +12,7 @@ function _Create()
         .Static:Raw(
             FS.ModLayers.PLAYER_MAX_HEALTH,
             function (me)
-                me.Owner.State.Stats.Health = me.Owner.State.Stats.Health + GetCountersCount(me.IPID)
+                me.Owner.Stats.State.Health = me.Owner.Stats.State.Health + GetCountersCount(me.IPID)
             end
         )
         :TriggeredAbility(

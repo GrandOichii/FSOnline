@@ -26,7 +26,7 @@ function _Create()
                 if GetCountersCount(me.IPID) == 0 then
                     return
                 end
-                me.Owner.State.Stats.Health = me.Owner.State.Stats.Health + 1
+                me.Owner.Stats.State.Health = me.Owner.Stats.State.Health + 1
             end
         )
     :Build()

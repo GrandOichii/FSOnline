@@ -32,7 +32,7 @@ function _Create()
             FS.ModLayers.PLAYER_ATTACK,
             function (me)
                 local amount = GetCountersCount(me.IPID)
-                me.Owner.State.Stats.Attack = me.Owner.State.Stats.Attack + amount / 2
+                me.Owner.Stats.State.Attack = me.Owner.Stats.State.Attack + amount / 2
             end
         )
         :Label(FS.Labels.Eternal)

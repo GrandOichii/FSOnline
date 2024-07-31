@@ -34,7 +34,7 @@ function _Create()
                                         FS.ModLayers.PLAYER_ATTACK,
                                         function ()
                                             local player = GetPlayer(stackEffect.OwnerIdx)
-                                            player.State.Stats.Attack = player.State.Stats.Attack + 2
+                                            player.Stats.State.Attack = player.Stats.State.Attack + 2
                                         end
                                     )(stackEffect)
                                 end

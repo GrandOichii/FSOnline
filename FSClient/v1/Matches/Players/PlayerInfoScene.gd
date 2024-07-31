@@ -41,18 +41,9 @@ func set_attack_opportunities(ao: int):
 func set_purchase_opportunities(po: int):
 	PurchaseOpportunities.text = str(po) + ' Ao'
 
-func set_health(health: int):
-	Health.text = str(health)
-
-func set_attack(attack: int):
-	Attack.text = str(attack)
-	
 func set_soul_count(soul_count: int):
 	Souls.text = str(soul_count)
 	
-func set_preventable(preventable_damage: int):
-	%Preventable.visible = preventable_damage > 0
-	%Preventable.text = '+' + str(preventable_damage)
 	
 func load_snapshot(snapshot: Variant, player_idx: int):
 	var player = snapshot.Players[player_idx]
@@ -64,10 +55,7 @@ func load_snapshot(snapshot: Variant, player_idx: int):
 	set_soul_count(player.SoulCount)
 
 	# Stats
-	set_health(player.Health)
-	set_attack(player.Attack)
-	
-	set_preventable(player.PreventableDamage)
+	%Stats.load_data(player.Stats)
 	
 func set_bg_color(color: Color):
 	Bg.get('theme_override_styles/panel').bg_color = color

@@ -6,7 +6,7 @@ function _Create()
         .Static:Raw(
             FS.ModLayers.PLAYER_MAX_HEALTH,
             function (me)
-                me.Owner.State.Stats.Health = me.Owner.State.Stats.Health + 1
+                me.Owner.Stats.State.Health = me.Owner.Stats.State.Health + 1
             end
         )
     :Build()

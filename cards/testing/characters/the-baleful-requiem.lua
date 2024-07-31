@@ -15,7 +15,7 @@ function _Create()
                 if count >= 3 then
                     mod = 2
                 end
-                me.Owner.State.Stats.Attack = me.Owner.State.Stats.Attack + mod
+                me.Owner.Stats.State.Attack = me.Owner.Stats.State.Attack + mod
             end
         )
     :Build()

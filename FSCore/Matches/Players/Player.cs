@@ -80,10 +80,9 @@ public class Player : IStateModifier {
     /// <summary>
     /// Amount of damage marked on the player
     /// </summary>
-    public int Damage { get; set; }
     public bool IsDead { get; set; }
-    public StackEffect? DeathSource { get; private set; }
-    public List<DamagePreventor> DamagePreventors { get; }
+    public StackEffect? DeathSource { get; set; }
+    public Stats Stats { get; }
 
     /// <summary>
     /// Name of the player that will be used for system logging
@@ -101,9 +100,9 @@ public class Player : IStateModifier {
         Items = [];
         Souls = [];
         RollHistory = [];
-        DamagePreventors = [];
         IsDead = false;
         DeathSource = null;
+        Stats = new();
 
         // Initial state
         State = new(this);
@@ -587,6 +586,8 @@ public class Player : IStateModifier {
     public void UpdateState()
     {
         State = new(this);
+        Stats.UpdateState(this);
+
         // hand
         foreach (var card in Hand)
             card.UpdateState();
@@ -764,9 +765,10 @@ public class Player : IStateModifier {
     #region Damage
 
     public async Task LoseLife(int amount) {
-        Damage += amount;
-        if (Damage >= State.Stats.Health) {
-            Damage = State.Stats.Health;
+        // TODO move stats to this from PlayerState, add damage preventors to stats
+        Stats.Damage += amount;
+        if (Stats.Damage >= Stats.State.Health) {
+            Stats.Damage = Stats.State.Health;
             DeathSource = null;
         }
 
@@ -777,30 +779,13 @@ public class Player : IStateModifier {
     }
 
     public void HealToMax() {
-        Damage = 0;
+        Stats.Damage = 0;
         IsDead = false;
         DeathSource = null;
     }
 
     public async Task ProcessDamage(int amount, StackEffect source) {
-        // TODO calculate whether damage is prevented
-        // TODO calculate the final amount of damage
-        // TODO use source
-        amount = PreventDamage(amount);
-        if (amount == 0) return;
-
-        Match.LogInfo($"Player {LogName} was dealt {amount} damage");
-        Damage += amount;
-        if (Damage >= State.Stats.Health) {
-            Damage = State.Stats.Health;
-            DeathSource = source;
-        }
-
-        await Match.Emit("player_damaged", new() {
-            { "Player", this },
-            { "Amount", amount },
-            { "Source", source },
-        });
+        await Stats.ProcessDamage(this, amount, source);
     }
 
     #endregion
@@ -943,26 +928,12 @@ public class Player : IStateModifier {
     #region Damage prevention
 
     public int PreventableDamage() {
-        return DamagePreventors.Count;
+        return Stats.DamagePreventors.Count;
     }
 
     public async Task AddDamagePreventors(int amount) {
-        for (int i = 0; i < amount; i++) {
-            var p = new DamagePreventor();
-            DamagePreventors.Add(p);
-        }
+        Stats.AddDamagePreventors(amount);
         // TODO? update
-    }
-
-    public int PreventDamage(int amount) {
-        while (amount > 0) {
-            if (DamagePreventors.Count == 0) break;
-            var preventor = DamagePreventors[0];
-            preventor.Prevent(this);
-            DamagePreventors.Remove(preventor);
-            --amount;
-        }
-        return amount;
     }
 
     #endregion

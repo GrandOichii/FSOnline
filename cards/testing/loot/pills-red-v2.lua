@@ -15,7 +15,7 @@ function _Create()
                     FS.ModLayers.PLAYER_ATTACK,
                     function ()
                         local player = GetPlayer(stackEffect.OwnerIdx)
-                        player.State.Stats.Attack = player.State.Stats.Attack + 1
+                        player.Stats.State.Attack = player.Stats.State.Attack + 1
                     end
                 )(stackEffect)
                 return
@@ -26,7 +26,7 @@ function _Create()
                     FS.ModLayers.PLAYER_MAX_HEALTH,
                     function ()
                         local player = GetPlayer(stackEffect.OwnerIdx)
-                        player.State.Stats.Health = player.State.Stats.Health + 1
+                        player.Stats.State.Health = player.Stats.State.Health + 1
                     end
                 )(stackEffect)
                 return

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bubt07vujk7c2"]
+[gd_scene load_steps=7 format=3 uid="uid://bubt07vujk7c2"]
 
 [ext_resource type="Script" path="res://v1/Matches/Players/PlayerInfoScene.gd" id="1_e6qev"]
 [ext_resource type="Texture2D" uid="uid://bxkfvvho52r2o" path="res://assets/icons/health.png" id="1_kr7p0"]
 [ext_resource type="Texture2D" uid="uid://uf2xula7on4q" path="res://assets/icons/attack.png" id="2_1g41k"]
+[ext_resource type="PackedScene" uid="uid://bebtmwob0wsi6" path="res://v1/Matches/Stats/StatsDisplayScene.tscn" id="2_x0uoh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xnno"]
 resource_local_to_scene = true
@@ -127,7 +128,12 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "3"
 
+[node name="Stats" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_x0uoh")]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="HBoxContainer3" type="HBoxContainer" parent="Bg/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 alignment = 1
 

@@ -25,7 +25,7 @@ public class EndPhase : IPhase
             p.RemovePurchaseOpportunities();
             p.HealToMax();
             p.RollHistory.Clear();
-            p.DamagePreventors.Clear();
+            p.Stats.DamagePreventors.Clear();
 
             // reset trigger limits
             foreach (var card in p.GetInPlayCards()) {
