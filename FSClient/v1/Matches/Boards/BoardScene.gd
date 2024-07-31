@@ -29,8 +29,10 @@ func load_match_info(match_info: Variant):
 	for i in match_info.PlayerCount:
 		var child = player_scene.instantiate()
 		var parent = Top
-		if player_count() % 2 == 1:
+		if player_count() % 2 == 0:
 			parent = Bottom
+		if bottom_priority and player_count() >= 1:
+			parent = Top
 		parent.add_child(child)
 		
 		var player = child as PlayerScene
@@ -38,17 +40,16 @@ func load_match_info(match_info: Variant):
 		
 	var i = 0
 	if match_info.PlayerIdx != -1:
-		i = 1
-	for player: PlayerScene in Top.get_children():
-		var p_idx = i
-		player.set_player_idx(p_idx)
-		i = (i + 1) % int(match_info.PlayerCount)
+		i = int(match_info.PlayerIdx)
 	for player: PlayerScene in Bottom.get_children():
 		var p_idx = i
 		player.set_player_idx(p_idx)
 		i = (i + 1) % int(match_info.PlayerCount)
-	pass
-		
+	for player: PlayerScene in Top.get_children():
+		var p_idx = i
+		player.set_player_idx(p_idx)
+		i = (i + 1) % int(match_info.PlayerCount)
+
 func load_snapshot(snapshot: Variant):
 	for player: PlayerScene in Top.get_children():
 		player.load_snapshot(snapshot)

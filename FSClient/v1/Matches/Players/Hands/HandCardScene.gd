@@ -11,8 +11,7 @@ func _ready():
 	adjust_minimum_size()
 	
 func adjust_minimum_size():
-	#custom_minimum_size = Card.size * Card.scale
-	pass
+	custom_minimum_size = Card.custom_minimum_size * Card.scale
 	
 func set_controller(controller: MatchController):
 	Card.set_controller(controller)
