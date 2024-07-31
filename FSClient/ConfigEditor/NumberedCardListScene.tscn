@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2sqm20x3k5tu"]
+
+[ext_resource type="Script" path="res://ConfigEditor/NumberedCardListScene.gd" id="1_lm1fl"]
+[ext_resource type="PackedScene" uid="uid://dbsyjy7mli3ve" path="res://ConfigEditor/NumericCardRowScene.tscn" id="2_m6hey"]
+
+[node name="NumberedCardListScene" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+script = ExtResource("1_lm1fl")
+numeric_card_row_scene = ExtResource("2_m6hey")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ListName" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bonus souls"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="NewKeyEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter new key"
+
+[node name="AddKeyButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " Add	 "
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PossibleKeys" type="ItemList" parent="VBoxContainer/VSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Filter" type="LineEdit" parent="VBoxContainer/VSplitContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Filter keys"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VSplitContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Keys" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/NewKeyEdit" to="." method="_on_new_key_edit_text_changed"]
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer/NewKeyEdit" to="." method="_on_new_key_edit_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddKeyButton" to="." method="_on_add_key_button_pressed"]
+[connection signal="item_activated" from="VBoxContainer/VSplitContainer/PossibleKeys" to="." method="_on_possible_keys_item_activated"]
+[connection signal="text_changed" from="VBoxContainer/VSplitContainer/VBoxContainer/Filter" to="." method="_on_filter_text_changed"]

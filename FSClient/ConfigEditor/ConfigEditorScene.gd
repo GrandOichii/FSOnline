@@ -49,11 +49,7 @@ func build() -> Dictionary:
 	# TODO
 	
 	# loot cards
-	# TODO
-	var loot = {}
-	for card in card_source.of_type('Loot'):
-		loot[card.Key] = 10
-	result['LootCards'] = loot
+	%Loot.modify(result)
 	
 	return result
 	
@@ -81,6 +77,7 @@ func load_json_file(path):
 	%Treasures.load(config)
 	
 	# loot cards
+	%Loot.load(config)
 	# TODO
 
 func _on_files_dropped(files):
