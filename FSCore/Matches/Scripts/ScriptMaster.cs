@@ -456,4 +456,10 @@ public class ScriptMaster {
         _match.GetPlayer(playerIdx).AddDamagePreventors(amount)
             .Wait();
     }
+
+    [LuaCommand]
+    public void LoseLife(int playerIdx, int amount) {
+        _match.GetPlayer(playerIdx).LoseLife(amount)
+            .Wait();
+    }
 }

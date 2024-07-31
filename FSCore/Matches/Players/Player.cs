@@ -763,6 +763,19 @@ public class Player : IStateModifier {
 
     #region Damage
 
+    public async Task LoseLife(int amount) {
+        Damage += amount;
+        if (Damage >= State.Stats.Health) {
+            Damage = State.Stats.Health;
+            DeathSource = null;
+        }
+
+        Match.LogInfo($"Player {LogName} lost {amount} life");
+
+        // TODO update
+        // TODO? trigger
+    }
+
     public void HealToMax() {
         Damage = 0;
         IsDead = false;

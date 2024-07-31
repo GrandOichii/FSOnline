@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0ic0dk5vhdng"
-path="res://.godot/imported/cursed-soul-requiem.png-4a982f4230f6c2d1a105bb3870e32851.ctex"
+uid="uid://byg6bsore3qcm"
+path="res://.godot/imported/guppys-paw-v2.png-a4011421292c07da6fbe5aa1a32e2df6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/card/cards/want/cursed-soul-requiem.png"
-dest_files=["res://.godot/imported/cursed-soul-requiem.png-4a982f4230f6c2d1a105bb3870e32851.ctex"]
+source_file="res://assets/images/card/cards/guppys-paw-v2.png"
+dest_files=["res://.godot/imported/guppys-paw-v2.png-a4011421292c07da6fbe5aa1a32e2df6.ctex"]
 
 [params]
 

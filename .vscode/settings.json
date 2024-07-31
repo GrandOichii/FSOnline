@@ -59,7 +59,8 @@
         "IsLootStackEffect",
         "CancelEffect",
         "TillEndOfTurn",
-        "AddGenericDamagePreventors"
+        "AddGenericDamagePreventors",
+        "LoseLife"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"
