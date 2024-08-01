@@ -77,6 +77,10 @@ public struct MatchConfig {
     /// </summary>
     public required List<string> BonusSouls { get; set; }
     /// <summary>
+    /// Keys of Rooms
+    /// </summary>
+    public required List<string> Rooms { get; set; }
+    /// <summary>
     /// Shows whether the match will be more prone to crashing after a player provides unknown actions, tries to pass a turn when can't, e.t.c.
     /// </summary>
     public required bool StrictMode { get; set; }
@@ -103,4 +107,5 @@ public struct MatchConfig {
     public required int DeathPenaltyLoot { get; set; }
     public required int DeathPenaltyCoins { get; set; }
     public required int DeathPenaltyItems { get; set; }
+    public required bool UseRooms { get; set; }
 }

@@ -155,11 +155,11 @@ public class Program {
             File.ReadAllText("../configs/base.yaml")
         );
 
-        await TcpLoop(config);
-        return;
+        // await TcpLoop(config);
+        // return;
 
-        await TcpMatch(config, 2, 0);
-        return;
+        // await TcpMatch(config, 2, 0);
+        // return;
 
         var cm = new FileCardMaster();
         cm.Load("../cards/testing");

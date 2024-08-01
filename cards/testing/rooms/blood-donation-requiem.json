@@ -1,0 +1,7 @@
+{
+    "Key": "blood-donation-requiem",
+    "Name": "Blood Donation",
+    "Type": "Room",
+    "Text": "Pay 1{health}: Gain 3{cent}.",
+    "Script": "blood-donation-requiem.lua"
+}

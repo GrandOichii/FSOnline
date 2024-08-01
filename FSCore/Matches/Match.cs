@@ -9,11 +9,11 @@ public class Match {
     /// <summary>
     /// Turn structure
     /// </summary>
-    private static readonly List<IPhase> _phases = new() {
+    private static readonly List<IPhase> _phases = [
         new StartPhase(),
         new ActionPhase(),
         new EndPhase(),
-    };
+    ];
     private static readonly List<ModificationLayer> MODIFICATION_LAYERS = new() {
         ModificationLayer.COIN_GAIN_AMOUNT,
         ModificationLayer.LOOT_AMOUNT,
@@ -111,6 +111,10 @@ public class Match {
     /// Treasure deck and discard
     /// </summary>
     public Deck TreasureDeck { get; }
+    /// <summary>
+    /// Room deck and discard
+    /// </summary>
+    public Deck RoomDeck { get; }
 
     /// <summary>
     /// Index of all decks
@@ -122,6 +126,7 @@ public class Match {
     #region Slots
 
     public List<TreasureSlot> TreasureSlots { get; }
+    public List<RoomSlot> RoomSlots { get; }
 
     #endregion
 
@@ -150,11 +155,14 @@ public class Match {
         Stack = new(this);
         LootDeck = new(this, true);
         TreasureDeck = new(this, true);
+        RoomDeck = new(this, true);
         TreasureSlots = [];
+        RoomSlots = [];
         BonusSouls = [];
         DeckIndex = new() {
             { DeckType.LOOT, LootDeck },
             { DeckType.TREASURE, TreasureDeck },
+            { DeckType.ROOM, RoomDeck },
         };
         TEOTEffects = [];
 
@@ -249,7 +257,14 @@ public class Match {
         // TODO
 
         // rooms
-        // TODO
+        if (Config.UseRooms) {
+            LogInfo($"Filling room slots (initial count: {Config.InitialRoomSlots})");
+            for (int i = 0; i < Config.InitialRoomSlots; i++) {
+                var slot = new RoomSlot(RoomDeck, i);
+                await slot.Fill();
+                RoomSlots.Add(slot);
+            }
+        }
     }
 
     /// <summary>
@@ -299,6 +314,19 @@ public class Match {
 
         // monster deck
         // TODO
+
+        // rooms
+        if (Config.UseRooms) {
+            var roomCards = new List<MatchCard>();
+            foreach (var key in Config.Rooms)
+                roomCards.Add(new MatchCard(
+                    this,
+                    await _cardMaster.Get(key),
+                    DeckType.ROOM
+                ));
+
+            RoomDeck.Populate(roomCards);
+        }
 
         // shuffle
         foreach (var deck in DeckIndex.Values)
@@ -453,7 +481,7 @@ public class Match {
         foreach (var player in Players)
             await player.CheckDead();
         
-        // TODO rooms
+        // TODO? rooms
         // TODO monsters
         // TODO? treasure
 
@@ -470,7 +498,6 @@ public class Match {
 
     private async Task ProcessTrigger(QueuedTrigger trigger) {
         // TODO monsters
-        // TODO rooms
 
         // owned items
         foreach (var player in Players) {
@@ -483,6 +510,11 @@ public class Match {
 
         // treasure slots
         foreach (var slot in TreasureSlots) {
+            await slot.ProcessTrigger(trigger);
+        }
+
+        // rooms
+        foreach (var slot in RoomSlots) {
             await slot.ProcessTrigger(trigger);
         }
     }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cym32g2muxv55"]
+[gd_scene load_steps=32 format=3 uid="uid://cym32g2muxv55"]
 
 [ext_resource type="Theme" uid="uid://bj4ct68df3kj4" path="res://assets/themes/Theme1.tres" id="1_bos6q"]
 [ext_resource type="Script" path="res://ConfigEditor/ConfigEditorScene.gd" id="1_cg1ir"]
@@ -32,6 +32,12 @@ script = ExtResource("3_wxomc")
 default_value = true
 name = "ForceInclude3PlusCards"
 labeled = "Force include 3+ cards"
+
+[sub_resource type="Resource" id="Resource_wox1w"]
+script = ExtResource("3_wxomc")
+default_value = true
+name = "UseRooms"
+labeled = "Use rooms"
 
 [sub_resource type="Resource" id="Resource_rupac"]
 script = ExtResource("3_84vwn")
@@ -188,7 +194,7 @@ theme = ExtResource("1_bos6q")
 script = ExtResource("1_cg1ir")
 cards_path = "../cards/testing"
 card_source = NodePath("Sources/FileCardSource")
-simple_values = Array[Resource("res://ConfigEditor/ConfigValue.gd")]([SubResource("Resource_obm02"), SubResource("Resource_ylkaj"), SubResource("Resource_q6eqh"), SubResource("Resource_ji73w"), SubResource("Resource_rupac"), SubResource("Resource_3hosy"), SubResource("Resource_7dit0"), SubResource("Resource_350ow"), SubResource("Resource_v80uu"), SubResource("Resource_kkyia"), SubResource("Resource_l415v"), SubResource("Resource_ip1hg"), SubResource("Resource_tnunq"), SubResource("Resource_7a8il"), SubResource("Resource_dts7b"), SubResource("Resource_3qqon"), SubResource("Resource_5nbmm"), SubResource("Resource_ub8w4"), SubResource("Resource_1v3ks"), SubResource("Resource_irctj"), SubResource("Resource_40g3p"), SubResource("Resource_g0n6q")])
+simple_values = Array[Resource("res://ConfigEditor/ConfigValue.gd")]([SubResource("Resource_obm02"), SubResource("Resource_ylkaj"), SubResource("Resource_q6eqh"), SubResource("Resource_ji73w"), SubResource("Resource_wox1w"), SubResource("Resource_rupac"), SubResource("Resource_3hosy"), SubResource("Resource_7dit0"), SubResource("Resource_350ow"), SubResource("Resource_v80uu"), SubResource("Resource_kkyia"), SubResource("Resource_l415v"), SubResource("Resource_ip1hg"), SubResource("Resource_tnunq"), SubResource("Resource_7a8il"), SubResource("Resource_dts7b"), SubResource("Resource_3qqon"), SubResource("Resource_5nbmm"), SubResource("Resource_ub8w4"), SubResource("Resource_1v3ks"), SubResource("Resource_irctj"), SubResource("Resource_40g3p"), SubResource("Resource_g0n6q")])
 
 [node name="Encoders" type="Node" parent="."]
 unique_name_in_owner = true
@@ -233,7 +239,7 @@ columns = 2
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-columns = 2
+columns = 3
 
 [node name="Characters" parent="HBoxContainer/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
 unique_name_in_owner = true
@@ -265,4 +271,12 @@ layout_mode = 2
 list_name = "LootCards"
 list_label = "Loot"
 card_type = "Loot"
+card_source = NodePath("../../../Sources/FileCardSource")
+
+[node name="Rooms" parent="HBoxContainer/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
+unique_name_in_owner = true
+layout_mode = 2
+list_name = "Rooms"
+list_label = "Rooms"
+card_type = "Room"
 card_source = NodePath("../../../Sources/FileCardSource")

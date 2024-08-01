@@ -795,14 +795,16 @@ public class Player : IStateModifier {
         await Match.PlaceOnStack(effect);
     }
 
-    public async Task LoseLife(int amount) {
+    public async Task LoseHealth(int amount, StackEffect source) {
         Stats.Damage += amount;
         if (Stats.Damage >= Stats.State.Health) {
             Stats.Damage = Stats.State.Health;
-            DeathSource = null;
         }
 
-        Match.LogInfo($"Player {LogName} lost {amount} life");
+        Stats.CheckDead(this, source);
+
+
+        Match.LogInfo($"Player {LogName} lost {amount} health");
 
         // TODO update
         // TODO? trigger

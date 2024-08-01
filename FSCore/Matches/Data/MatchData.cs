@@ -34,6 +34,7 @@ public readonly struct MatchData {
     /// Shop item slots
     /// </summary>
     public List<SlotData> ShopSlots { get; }
+    public List<SlotData> RoomSlots { get; }
 
     public MatchData(Match match) {
         CurPlayerIdx = match.CurPlayerIdx;
@@ -44,5 +45,6 @@ public readonly struct MatchData {
         Stack = new(match.Stack);
         LootDeck = new(match, match.LootDeck);
         ShopSlots = match.TreasureSlots.Select(slot => slot.GetData()).ToList();
+        RoomSlots = match.RoomSlots.Select(slot => slot.GetData()).ToList();
     }
 }

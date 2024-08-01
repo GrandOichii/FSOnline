@@ -581,6 +581,22 @@ function FS.C.Cost.PayCoins(amount)
     return result
 end
 
+function FS.C.Cost.PayHealth(amount)
+    local result = {}
+
+    function result.Pay(me, player, stackEffect)
+        -- TODO ask permission to pay
+        LoseHealth(player.Idx, amount, stackEffect)
+        return true
+    end
+
+    function result.Check(me, player)
+        return player.Stats.State.Health - player.Stats.Damage >= amount
+    end
+
+    return result
+end
+
 FS.C.StateMod = {}
 
 function FS.C.StateMod.ModPlayerAttack(modF, playerFilterFunc)
@@ -957,6 +973,12 @@ function FS.B.BonusSoul()
         )
         return result
     end
+
+    return result
+end
+
+function FS.B.Room()
+    local result = FS.B.Card()
 
     return result
 end

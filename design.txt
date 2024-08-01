@@ -7,7 +7,7 @@ v        - removing counters
 v        - paying coins
             - reducing the amount of coins payed to activate abilties
 v        - discarding loot cards
-v        - paying life
+v        - paying health
 v        - destroying controlled items
 v        - donating items
 v        - self-destruction
@@ -216,7 +216,7 @@ v            - purchase from shop
         - item gain trigger
 v        - item purchase trigger
         - attack declaration on monster trigger
-        - monster reaching a certain amount of life left trigger
+        - monster reaching a certain amount of health left trigger
     - discard
         - putting cards from discard on top of deck
     - attack

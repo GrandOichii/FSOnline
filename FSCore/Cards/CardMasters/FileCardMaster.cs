@@ -10,6 +10,7 @@ public class FileCardMasterCardsData {
     public required List<string> Treasures { get; set; }
     public required List<string> Loot { get; set; }
     public required List<string> BonusSouls { get; set; }
+    public required List<string> Rooms { get; set; }
 }
 
 public class FileCardMasterData {
@@ -57,6 +58,7 @@ public class FileCardMaster : ICardMaster
         AddTo(dir, data.Cards.StartingItems, _index);
         AddTo(dir, data.Cards.Treasures, _index);
         AddTo(dir, data.Cards.BonusSouls, _index);
+        AddTo(dir, data.Cards.Rooms, _index);
         AddCharactersTo(dir, data.Cards.Characters, _characterIndex);
     }
 

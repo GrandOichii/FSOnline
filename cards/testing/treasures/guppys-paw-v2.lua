@@ -21,7 +21,7 @@ function _Create()
                             return false
                         end
 
-                        LoseLife(stackEffect.OwnerIdx, healthCost)
+                        LoseHealth(stackEffect.OwnerIdx, healthCost, stackEffect)
                         FS.C.Effect.PreventNextDamageToTargetPlayer(0, 2)(stackEffect)
                     end
                 )

@@ -1,4 +1,5 @@
 -- status: implemented, requires a lot of testing
+-- !FIXME encountered weird scenario: put blood donation's effect on the stack during my turn, in response opponent used holy mantle to prevent my death. after life loss resolution, my death was placed on the stack, however it showed that I was suddenly not the current player
 
 function _Create()
     return FS.B.Item()

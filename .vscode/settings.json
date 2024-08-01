@@ -60,7 +60,7 @@
         "CancelEffect",
         "TillEndOfTurn",
         "AddGenericDamagePreventors",
-        "LoseLife",
+        "LoseHealth",
         "ChooseInPlayCard",
         "AddDeathPreventor",
         "EndTheTurn",

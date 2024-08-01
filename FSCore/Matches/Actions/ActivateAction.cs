@@ -13,7 +13,8 @@ public class ActivateAction : IAction
         }
 
         var player = match.GetPlayer(playerIdx);
-        var card = match.GetInPlayCardOrDefault(args[1]);
+        var cards = GetCards(player);
+        var card = cards.FirstOrDefault(card => card.IPID == args[1]);
 
         if (card is null) {
             match.PotentialError($"Player tried to activate card with IPID {args[1]}, which doesn't exist");
@@ -36,7 +37,9 @@ public class ActivateAction : IAction
     public IEnumerable<string> GetAvailable(Match match, int playerIdx)
     {
         var player = match.GetPlayer(playerIdx);
-        var cards = player.GetInPlayCards();
+
+        var cards = GetCards(player);
+
         foreach (var card in cards) {
             var abilities = card.GetActivatedAbilities();
             for (int i = 0; i < abilities.Count; i++) {
@@ -45,5 +48,19 @@ public class ActivateAction : IAction
                 yield return $"{ActionWord()} {card.IPID} {i}";
             }
         }
+    }
+
+    private List<InPlayMatchCard> GetCards(Player player) {
+        // owned cards
+        var result = new List<InPlayMatchCard>(player.GetInPlayCards());
+
+        // rooms
+        if (player.Idx == player.Match.CurPlayerIdx)
+            result.AddRange(
+                player.Match.RoomSlots
+                    .Where(s => s.Card is not null)
+                    .Select(s => s.Card!)
+            );
+        return result;
     }
 }

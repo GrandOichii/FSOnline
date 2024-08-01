@@ -40,11 +40,17 @@ public abstract class Slot {
         }
 
         var card = top[0];
-        Source.Match.LogInfo($"Card {card.LogName} is put into {Name} slot [{Idx}]");
         Card = new(card);
+        Source.Match.LogInfo($"Card {Card.LogName} is put into {Name} slot [{Idx}]");
 
         await Source.Match.OnCardEnteredPlay(Card);
     }
 
     public abstract SlotData GetData();
+
+    public virtual async Task ProcessTrigger(QueuedTrigger trigger) {
+        if (Card is null) return;
+
+        await Card.ProcessTrigger(trigger);
+    }
 }

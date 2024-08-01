@@ -455,8 +455,8 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
-    public void LoseLife(int playerIdx, int amount) {
-        _match.GetPlayer(playerIdx).LoseLife(amount)
+    public void LoseHealth(int playerIdx, int amount, StackEffect source) {
+        _match.GetPlayer(playerIdx).LoseHealth(amount, source)
             .Wait();
     }
 

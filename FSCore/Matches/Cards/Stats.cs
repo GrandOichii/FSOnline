@@ -38,16 +38,20 @@ public class Stats {
 
         player.Match.LogInfo($"Player {player.LogName} was dealt {amount} damage");
         Damage += amount;
-        if (Damage >= State.Health) {
-            Damage = State.Health;
-            player.DeathSource = source;
-        }
+        CheckDead(player, source);
 
         await player.Match.Emit("player_damaged", new() {
             { "Player", this },
             { "Amount", amount },
             { "Source", source },
         });
+    }
+
+    public void CheckDead(Player player, StackEffect possibleSource) {
+        if (Damage < State.Health) return;
+
+        Damage = State.Health;
+        player.DeathSource = possibleSource;
     }
 
 

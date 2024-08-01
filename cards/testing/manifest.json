@@ -107,6 +107,10 @@
             "bonus-souls/soul-of-guppy-v2",
             "bonus-souls/soul-of-gluttony-v2",
             "bonus-souls/strawberry-warp"
+        ],
+        "Rooms": [
+            "rooms/devil-beggar-requiem",
+            "rooms/blood-donation-requiem"
         ]
     }
 }
