@@ -110,6 +110,8 @@
         ],
         "Rooms": [
             "rooms/devil-beggar-requiem",
+            "rooms/blessing-of-steam-requiem",
+            "rooms/maggys-blessing-requiem",
             "rooms/blood-donation-requiem"
         ]
     }

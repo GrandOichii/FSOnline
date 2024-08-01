@@ -475,6 +475,16 @@ public class Match {
                     throw new MatchException($"Failed to execute \"till end of turn\" effect in layer {layer}", e);
                 }
             }
+
+            // rooms
+            foreach (var slot in RoomSlots) {
+                if (slot.Card is null) continue;
+
+                slot.Card.Modify(layer);
+            }
+
+            // monsters
+            // TODO
         }
 
         // check player deaths

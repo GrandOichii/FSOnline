@@ -641,12 +641,15 @@ function FS.C.StateMod.ShopItemsCostsNLess(amount, playerFilterFunc)
     local result = {}
     result.Layer = FS.ModLayers.PURCHASE_COST
     function result.Mod(me)
-        me.Owner.State.PurchaseCostModifiers:Add(function (slot, cost)
-            if slot >= 0 then
-                return cost - amount
-            end
-            return cost
-        end)
+        local players = playerFilterFunc(me)
+        for _, player in ipairs(players) do
+            player.State.PurchaseCostModifiers:Add(function (slot, cost)
+                if slot >= 0 then
+                    return cost - amount
+                end
+                return cost
+            end)
+        end
     end
     return result
 end
@@ -1521,6 +1524,13 @@ function FS.F.Players()
             end
         end
         return res
+    end
+
+    function result:Current()
+        result.filters[#result.filters+1] = function (player)
+            return player.Idx == GetCurPlayerIdx()
+        end
+        return result
     end
 
     function result:Idx(player_idx)

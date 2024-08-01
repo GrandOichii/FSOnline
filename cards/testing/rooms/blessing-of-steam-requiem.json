@@ -1,0 +1,7 @@
+{
+    "Key": "blessing-of-steam-requiem",
+    "Name": "Blessing of Steam",
+    "Type": "Room",
+    "Text": "Shop items the active player purchases cost 5¢ less.",
+    "Script": "blessing-of-steam-requiem.lua"
+}
