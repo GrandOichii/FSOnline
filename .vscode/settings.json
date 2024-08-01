@@ -60,7 +60,8 @@
         "CancelEffect",
         "TillEndOfTurn",
         "AddGenericDamagePreventors",
-        "LoseLife"
+        "LoseLife",
+        "ChooseInPlayCard"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

@@ -4,7 +4,7 @@ namespace FSCore.Matches.Cards;
 /// Game object stats
 /// </summary>
 public class Stats {
-    public StatsState State { get; set; }
+    public StatsState State { get; set; } = new();
     public int Damage { get; set; }
     public List<DamagePreventor> DamagePreventors { get; } = [];
 

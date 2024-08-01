@@ -1,5 +1,7 @@
 extends Control
 
+@export var default_character: String = 'isaac-v2'
+
 @onready var ConnectPanel = %ConnectPanel
 @onready var Match = %Match
 @onready var Config = %Config
@@ -11,6 +13,7 @@ extends Control
 
 func _ready():
 	%StartMatchButton.hide()
+	%Character.text = default_character
 	Match.hide()
 	Match.process_mode = Node.PROCESS_MODE_DISABLED
 	_on_create_check_toggled(%CreateCheck.button_pressed)

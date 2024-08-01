@@ -4,7 +4,7 @@ FS = {}
 FS.TargetTypes = {
     PLAYER = 0,
     STACK_EFFECT = 1,
-    ITEM = 2,
+    IN_PLAY_CARD = 2,
 }
 
 -- card labels
@@ -210,9 +210,18 @@ function FS.C.Effect.RechargeTarget(target_idx, optional)
     end
 end
 
-function FS.C.Effect.DeactivateTarget(target_idx)
+function FS.C.Effect.DeactivateTarget(target_idx, optional)
+    optional = optional or false
     return function (stackEffect)
         local ipid = stackEffect.Targets[target_idx].Value
+
+        if optional then
+            local item = GetInPlayCard(ipid)
+            local accept = FS.C.Choose.YesNo(stackEffect.OwnerIdx, 'Deactivate '..item.LogName..'?')
+            if not accept then
+                return false
+            end
+        end
 
         TapCard(ipid)
         return true
@@ -710,7 +719,7 @@ function FS.B.Card()
 
             -- TODO add optional
             local ipid = ChooseItem(player.Idx, ipids, hint)
-            AddTarget(stackEffect, FS.TargetTypes.ITEM, ipid)
+            AddTarget(stackEffect, FS.TargetTypes.IN_PLAY_CARD, ipid)
 
             return true
         end
@@ -1033,7 +1042,7 @@ function FS.B._Ability(effectText)
                     ipids[#ipids+1] = item.IPID
                 end
                 local ipid = ChooseItem(player.Idx, ipids, hint)
-                AddTarget(stackEffect, FS.TargetTypes.ITEM, ipid)
+                AddTarget(stackEffect, FS.TargetTypes.IN_PLAY_CARD, ipid)
                 return true
             end
         }
@@ -1059,6 +1068,35 @@ function FS.B._Ability(effectText)
                 -- TODO add optional
                 local target = ChooseStackEffect(player.Idx, indicies, hint)
                 AddTarget(stackEffect, FS.TargetTypes.STACK_EFFECT, target)
+
+                return true
+            end
+        }
+        return result
+    end
+
+    function result.Target:Character(filterFunc, hint)
+        filterFunc = filterFunc or function (me, player)
+            return FS.F.Characters():Do()
+        end
+        hint = hint or 'Choose a Character'
+        result.Target._AddFizzleCheck(filterFunc, function (character)
+            return character.IPID
+        end)
+
+        result.costs[#result.costs+1] = {
+            Check = function (me, player)
+                return #filterFunc(me, player) > 0
+            end,
+            Pay = function (me, player, stackEffect)
+                local options = filterFunc(me, player)
+                local indicies = {}
+                for _, e in ipairs(options) do
+                    indicies[#indicies+1] = e.IPID
+                end
+                -- TODO add optional
+                local ipid = ChooseInPlayCard(player.Idx, indicies, hint)
+                AddTarget(stackEffect, FS.TargetTypes.IN_PLAY_CARD, ipid)
 
                 return true
             end
@@ -1449,7 +1487,7 @@ function FS.F.Items()
 
     function result:Do()
         local res = {}
-        local stackEffects = GetItems()
+        local items = GetItems()
         local filter = function (item)
             for _, f in ipairs(result.filters) do
                 if not f(item) then
@@ -1458,7 +1496,7 @@ function FS.F.Items()
             end
             return true
         end
-        for _, item in ipairs(stackEffects) do
+        for _, item in ipairs(items) do
             if filter(item) then
                 res[#res+1] = item
             end
@@ -1542,6 +1580,36 @@ function FS.F.Items()
             return item.Owner.Idx == idx
         end
         return result
+    end
+
+    return result
+end
+
+function FS.F.Characters()
+    local result = {}
+
+    result.filters = {}
+
+    function result:Do()
+        local res = {}
+        local characters = {}
+        for _, player in ipairs(GetPlayers()) do
+            characters[#characters+1] = player.Character
+        end
+        local filter = function (item)
+            for _, f in ipairs(result.filters) do
+                if not f(item) then
+                    return false
+                end
+            end
+            return true
+        end
+        for _, item in ipairs(characters) do
+            if filter(item) then
+                res[#res+1] = item
+            end
+        end
+        return res
     end
 
     return result

@@ -459,4 +459,10 @@ public class ScriptMaster {
         _match.GetPlayer(playerIdx).LoseLife(amount)
             .Wait();
     }
+
+    [LuaCommand]
+    public string ChooseInPlayCard(int playerIdx, LuaTable optionsTable, string hint) {
+        // TODO? should be different
+        return ChooseItem(playerIdx, optionsTable, hint);
+    }
 }

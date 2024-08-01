@@ -210,9 +210,8 @@ public class MatchProcess(CreateMatchParams creationParams)
             // Record.ExceptionMessage = e.Message;
             // if (e.InnerException is not null)
             //     Record.InnerExceptionMessage = e.InnerException.Message;      
-            System.Console.WriteLine(e.Message);      
-            System.Console.WriteLine(e.StackTrace);
             System.Console.WriteLine("Match crashed");
+            PrintException(e);
             // TODO add back
             // await Match.View.End();
         }
@@ -332,4 +331,14 @@ public class MatchProcess(CreateMatchParams creationParams)
     public bool CanAddPlayer() {
         return Status == MatchStatus.WAITING_FOR_PLAYERS && Players.Count < Params.Config.MaxPlayerCount;
     }
+
+
+    static void PrintException(Exception e) {
+        var ex = e;
+        while (ex is not null) {
+            System.Console.WriteLine(ex.ToString());
+            ex = ex.InnerException;
+        }
+    }
+
 }
