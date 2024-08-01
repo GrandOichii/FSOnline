@@ -11,14 +11,14 @@ v        - paying life
 v        - destroying controlled items
 v        - donating items
 v        - self-destruction
-    - cancelling abilities of a specific type
+v    - cancelling abilities of a specific type
     - activating other players' abilities
     - forbidding item activations
     - forbidding activating items n times per turn
 - effects
 v    - "may" effects
 v    - choosing players
-    - until end of turn effects
+v    - until end of turn effects
     - at the end of turn effects
     - "the next time your turn ends"
 v    - checking current player
@@ -31,7 +31,7 @@ v    - choice (yes/no)
     - conditional forbidding of recharing items
     - "while charged" effects
 v    - trinkets
-    - knowing the amount of deaths per turn
+v    - knowing the amount of deaths per turn
     - taxing other players for attacks
     - setting amount of item recharing during recharge step
 v    - setting max hand size
@@ -43,18 +43,17 @@ v    - setting max hand size
     - cancelling abilities
         - abilities with {tap} in their cost
         - abilities with {$} in their cost
-    - cancelling loot cards
-    - ending the turn
-    - killing players
+v    - cancelling loot cards
+v    - ending the turn
+v    - killing players
     - choosing
-        - choosing card effect (XIV. Temperance)
+v        - choosing card effect (XIV. Temperance)
         - conditional forbidding of choosing
             - choosing players
             - choosing items
             - by loot cards
             - by abilities
     - putting resolved loot cards on the bottom of the loot deck
-    - taking extra turns
     - looking at players' hands
     - voting
         - additional votes
@@ -64,12 +63,12 @@ v    - setting max hand size
         - conditional reward doubling
     - players
         - named counters
-        - killing players
-        - death
-            - death prevention
-            - disabling coin losing/item destruction on death
-            - death replacement effects
-        - choosing players
+v        - killing players
+v        - death
+v            - death prevention
+v            - disabling coin losing/item destruction on death
+v            - death replacement effects
+v        - choosing players
     - monsters
         - changing to an item upon death
         - counters
@@ -84,18 +83,16 @@ v    - setting max hand size
         - death replacement effects
         - putting filtered cards from discard on top of monster deck
         - putting filtered cards from discard to a monster slot
-
-    - stack
-        - effect cancelling
+v    - stack
+v        - effect cancelling
         - loot card copying
-    - shop
+v    - shop
 v        - putting shop items into discard
 v        - stealing shop items
 v        - modifying the cost of shop items
         - modifying the amount of purchases per turn
     - attacking
         - forcing attacks
-
         - cancelling attacks
         - additional attacks
         - having other players also participating in the battle
@@ -136,7 +133,6 @@ v        - rerolling items
         - "haunt" cards
 v         - playing with a revealed hand
         - being able to attack items
-        - putting cards underneath items
 v        - soul entering under a player's control trigger
         - conditional coin gain trigger
     - rooms
@@ -146,7 +142,7 @@ v        - soul entering under a player's control trigger
     - dice
 v        - rerolling
 v        - adding or subtracting points
-        - on specific dice rolled
+v        - on specific dice rolled
             - checking the type of dice rolled (attack roll)
         - 'classic roller'
 v        - remembering dice rolls in turn
@@ -160,7 +156,7 @@ v        - changing the result of a dice
         - forbidding playing n loot cards
 v        - looting
 v        - discarding loot
-        - stealing loot cards from hand
+v        - stealing loot cards from hand
 v        - playing additional loot cards
         - playing copies of cards in hand
         - revealing the top card of the loot deck
@@ -170,17 +166,17 @@ v        - playing additional loot cards
         - forcing to play loot cards if able
         - revealing the top card of loot deck
             - being able to play the top revealed card from loot deck
-    - damage
+v    - damage
         - damage prevention for players
             - conditional
             - additional effects after prevention
         - damage prevention for monsters
         - "next" damage prevention
         - dealing damage to monsters
-        - dealing damage to players
+v        - dealing damage to players
         - replacing the amount of damage dealt to monsters/players
         - nullifying damage on specific attack rolls
-        - damage from loot cards
+v        - damage from loot cards
         - damage redirection
         - forbidding monster attacking
     - deck
@@ -193,22 +189,22 @@ v        - gaining coins
 v        - stealing coins
     - triggers
 v        - item enter play trigger
-        - trigger limitations (the FIRST TIME you take damage, ...)
-        - on taking damage trigger
+v        - trigger limitations (the FIRST TIME you take damage, ...)
+v        - on taking damage trigger
 v        - turn start trigger
 v        - turn end trigger
-        - on death trigger
+v        - on death trigger
         - on dealing combat damage trigger
         - monster kill trigger
             - knowing who killed the monster
         - conditional triggers
         - on item flip
-        - another player death trigger
+v        - another player death trigger
         - reward gain trigger
 v        - soul gain trigger
         - attack declaration trigger
 v        - item activation trigger
-        - on death before paying penalties trigger
+v        - on death before paying penalties trigger
         - rolling the same result n times per turn trigger
         - attack roll miss trigger
         - n-th counter put on item trigger
@@ -218,16 +214,16 @@ v        - item activation trigger
 v            - purchase from shop
             - purchase from top of treasure deck
         - item gain trigger
-        - item purchase trigger
+v        - item purchase trigger
         - attack declaration on monster trigger
         - monster reaching a certain amount of life left trigger
     - discard
         - putting cards from discard on top of deck
     - attack
-        - player attack modification
+v        - player attack modification
         - monter attack modification
         - monster attack setting
-    - health
+v    - health
 v        - player health modification
         - limiting amount of health healed at the end of turn
     - attack
@@ -237,7 +233,7 @@ v        - player attack modification
     - replacement effects
 v        - gaining coins replacement effect
 v        - roll result replacement effects (each time a player WOULD roll)
-        - death penalty replacement effects
+v        - death penalty replacement effects
 v        - item destruction replacement effects
         - damage replacement effects
 v        - amount of looted cards replacement effects
@@ -259,8 +255,6 @@ v        - amount of cards in hand check
 v        - amount of coins check
 v        - amount of items labeled check
         - bonus souls counters
-        (prefer active player)
-
 - characters
     - renaming characters until end of turn
     - losing all character abilities until end of turn
