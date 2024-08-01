@@ -6,8 +6,7 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
-        "contract-from-below-v2",
-        "the-battery-v2",
+        "donation-machine-v2",
         "the-battery-v2",
         "abyss-requiem"
     ],

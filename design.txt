@@ -9,7 +9,7 @@ v        - paying coins
 v        - discarding loot cards
 v        - paying life
 v        - destroying controlled items
-        - donating items
+v        - donating items
 v        - self-destruction
     - cancelling abilities of a specific type
     - activating other players' abilities

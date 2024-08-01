@@ -73,6 +73,14 @@ function FS.C.IPIDs(items)
     return result
 end
 
+function FS.C.PlayerIndicies(items)
+    local result = {}
+    for _, player in ipairs(items) do
+        result[#result+1] = player.Idx
+    end
+    return result
+end
+
 -- common effects
 FS.C.Effect = {}
 
@@ -504,6 +512,7 @@ function FS.C.Cost.DestroyMe()
     return result
 end
 
+-- TODO add itemFilterFunc
 function FS.C.Cost.SacrificeItems(amount)
     local result = {}
 
@@ -523,6 +532,33 @@ function FS.C.Cost.SacrificeItems(amount)
 
     function result.Check(me, player)
         return #getItems(player.Idx) >= amount
+    end
+
+    return result
+end
+
+function FS.C.Cost.DonateItems(amount, itemFilterFunc, playerFilterFunc)
+    local result = {}
+
+    function result.Pay(me, player, stackEffect)
+
+        for i = 1, amount do
+            print(me, player)
+            local items = itemFilterFunc(me, player)
+            local ipids = FS.C.IPIDs(items)
+            local ipid = ChooseItem(player.Idx, ipids, 'Choose an item to donate ('..(amount-i+1)..' left)')
+            local item = GetInPlayCard(ipid)
+
+            local players = playerFilterFunc(me, player)
+            local indicies = FS.C.PlayerIndicies(players)
+            local idx = ChoosePlayer(player.Idx, indicies, 'Choose a player to donate '..item.LogName..' to')
+            StealItem(idx, ipid)
+        end
+        return true
+    end
+
+    function result.Check(me, player)
+        return #itemFilterFunc(me, player) >= amount
     end
 
     return result
