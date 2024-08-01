@@ -166,6 +166,7 @@ public class QueuedPlayer {
             if (!match.CheckPassword(info.Password)) return "incorrect password";
 
             Name = info.Name;
+            // TODO validate
             CharacterKey = info.CharacterKey;
         } catch (Exception e) {
             // TODO change to logging

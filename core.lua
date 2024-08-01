@@ -65,6 +65,14 @@ function FS.C.GiveLootCards(toIdx, fromIdx, amount)
     end
 end
 
+function FS.C.IPIDs(items)
+    local result = {}
+    for _, item in ipairs(items) do
+        result[#result+1] = item.IPID
+    end
+    return result
+end
+
 -- common effects
 FS.C.Effect = {}
 
@@ -490,8 +498,31 @@ function FS.C.Cost.DestroyMe()
     end
 
     function result.Check(me, player)
-        -- TODO check if can be destroyed (is eternal)
+        return not me:HasLabel(FS.Labels.Eternal)
+    end
+
+    return result
+end
+
+function FS.C.Cost.SacrificeItems(amount)
+    local result = {}
+
+    local getItems = function (ownerIdx)
+        return FS.F.Items():ControlledBy(ownerIdx):Destructable():Do()
+    end
+
+    function result.Pay(me, player, stackEffect)
+        for i = 1, amount do
+            local items = getItems(player.Idx)
+            local ipids = FS.C.IPIDs(items)
+            local ipid = ChooseItem(player.Idx, ipids, 'Choose an item to sacrifice ('..(amount-i+1)..' left)')
+            DestroyItem(ipid)
+        end
         return true
+    end
+
+    function result.Check(me, player)
+        return #getItems(player.Idx) >= amount
     end
 
     return result

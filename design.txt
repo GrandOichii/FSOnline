@@ -7,8 +7,8 @@ v        - removing counters
 v        - paying coins
             - reducing the amount of coins payed to activate abilties
 v        - discarding loot cards
-        - paying life
-        - destroying controlled items
+v        - paying life
+v        - destroying controlled items
         - donating items
 v        - self-destruction
     - cancelling abilities of a specific type

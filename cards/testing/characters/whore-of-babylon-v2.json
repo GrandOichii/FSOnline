@@ -6,8 +6,6 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
-        "guppys-paw-v2",
-        "razor-blade-v2",
         "gimpy-v2"
     ],
     "Script": "whore-of-babylon-v2.lua"

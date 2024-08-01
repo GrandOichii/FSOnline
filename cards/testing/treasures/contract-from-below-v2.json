@@ -1,0 +1,7 @@
+{
+    "Key": "contract-from-below-v2",
+    "Name": "Contract from Below",
+    "Type": "Item",
+    "Text": "Destroy 2 items you control: Steal a non-eternal item from a player.",
+    "Script": "contract-from-below-v2.lua"
+}

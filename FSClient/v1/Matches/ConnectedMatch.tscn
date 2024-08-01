@@ -33,7 +33,7 @@ unique_name_in_owner = true
 [node name="ActionWindow" type="Window" parent="Windows"]
 unique_name_in_owner = true
 title = "Action window"
-position = Vector2i(1056, 335)
+position = Vector2i(1094, 361)
 size = Vector2i(500, 400)
 visible = false
 theme = ExtResource("5_xe5mv")
