@@ -13,7 +13,7 @@ function _Create()
                     end
                 )
                 .Effect:Common(
-                    FS.C.Effect.TargetPlayerGivesLootCards(1)
+                    FS.C.Effect.TargetPlayerGivesLootCards(0, 1)
                 )
             :Build()
         )

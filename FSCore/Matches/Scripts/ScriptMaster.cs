@@ -465,4 +465,15 @@ public class ScriptMaster {
         // TODO? should be different
         return ChooseItem(playerIdx, optionsTable, hint);
     }
+
+    [LuaCommand]
+    public void EndTheTurn() {
+        _match.TurnEnded = true;
+    }
+
+    [LuaCommand]
+    public void AddDeathPreventor(int playerIdx, LuaFunction preventorFunc) {
+        var player = _match.GetPlayer(playerIdx);
+        player.AddDeathPreventor(preventorFunc);
+    }
 }

@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic;
+
 namespace FSCore.Matches.Players;
 
 /// <summary>
@@ -83,6 +85,7 @@ public class Player : IStateModifier {
     public bool IsDead { get; set; }
     public StackEffect? DeathSource { get; set; }
     public Stats Stats { get; }
+    public List<LuaFunction> DeathPreventors { get; }
 
     /// <summary>
     /// Name of the player that will be used for system logging
@@ -103,6 +106,7 @@ public class Player : IStateModifier {
         IsDead = false;
         DeathSource = null;
         Stats = new();
+        DeathPreventors = [];
 
         // Initial state
         State = new(this);
@@ -820,6 +824,10 @@ public class Player : IStateModifier {
 
     #region Death
 
+    public void AddDeathPreventor(LuaFunction preventorFunc) {
+        DeathPreventors.Add(preventorFunc);
+    }
+
     public async Task PushDeath(StackEffect deathSource) {
         Match.LogInfo($"Death of player {LogName} is pushed onto the stack");
 
@@ -844,6 +852,16 @@ public class Player : IStateModifier {
 
     public async Task ProcessDeath(StackEffect deathSource) {
         if (IsDead) return;
+
+        // TODO catch exceptions
+        foreach (var preventor in DeathPreventors) {
+            var returned = preventor.Call(deathSource);
+            if (LuaUtility.GetReturnAsBool(returned)) {
+                Match.LogInfo($"Death of player {LogName} was prevented");
+                DeathPreventors.Remove(preventor);
+                return;
+            }
+        }
 
         // TODO death replacement effects
         if (Match.CurPlayerIdx == Idx) {

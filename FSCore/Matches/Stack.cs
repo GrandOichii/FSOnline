@@ -94,6 +94,7 @@ public class Stack {
     public void AddEffect(StackEffect effect) {
         Effects.Add(effect);
         PriorityIdx = effect.OwnerIdx;
+        System.Console.WriteLine(effect.OwnerIdx);
 
         Match.LogInfo($"A new effect was added to the top of stack");
         // TODO add update

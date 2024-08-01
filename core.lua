@@ -403,9 +403,29 @@ function FS.C.Effect.StealShopItem(shopItemFilterFunc)
     end
 end
 
-function FS.C.Effect.TargetPlayerGivesLootCards(amount)
+function FS.C.Effect.TargetPlayerGivesLootCards(target_idx, amount)
     return function (stackEffect)
-        return FS.C.GiveLootCards(stackEffect.OwnerIdx, tonumber(stackEffect.Targets[0].Value), amount)
+        return FS.C.GiveLootCards(stackEffect.OwnerIdx, tonumber(stackEffect.Targets[target_idx].Value), amount)
+    end
+end
+
+function FS.C.Effect.MantleTargetPlayer(target_idx, amount)
+    return function (stackEffect)
+        -- The next time that player would die this turn, prevent it.
+        -- If it\'s their turn, cancel everything that hasn\'t resolved and end it.
+
+        local pidx = tonumber(stackEffect.Targets[target_idx].Value)
+        AddDeathPreventor(pidx, function (deathSource)
+            if GetCurPlayerIdx() == pidx then
+                EndTheTurn()
+                -- TODO cancel everything
+                -- TODO cancle the attack
+            end
+
+            return true
+        end)
+
+        return true
     end
 end
 
@@ -1000,7 +1020,11 @@ function FS.B._Ability(effectText)
     end
 
     function result.Target:Player(filterFunc, hint)
+        filterFunc = filterFunc or function (me, player)
+            return FS.F.Players():Do()
+        end
         hint = hint or 'Choose a player'
+
         result.Target._AddFizzleCheck(filterFunc, function (player)
             return tostring(player.Idx)
         end)

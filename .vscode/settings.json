@@ -61,7 +61,9 @@
         "TillEndOfTurn",
         "AddGenericDamagePreventors",
         "LoseLife",
-        "ChooseInPlayCard"
+        "ChooseInPlayCard",
+        "AddDeathPreventor",
+        "EndTheTurn"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"
