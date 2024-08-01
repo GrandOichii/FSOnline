@@ -13,7 +13,7 @@ function _Create()
                         [2] = FS.C.Effect.Loot(2),
                         [3] = FS.C.Effect.Loot(1),
                         [4] = FS.C.Effect.Loot(1),
-                        [5] = FS.C.Effect.DamageToPlayer(1),
+                        [5] = FS.C.Effect.Loot(1),
                         [6] = FS.C.Effect.DamageToPlayer(1),
                     })
                 )
