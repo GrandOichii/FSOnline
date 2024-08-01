@@ -16,7 +16,9 @@ function _Create()
         )
         :TriggeredAbility(
             FS.B.TriggeredAbility('At the end of your turn, discard a loot card.')
-                .On:TurnEnd()
+                .On:TurnEnd(function (me, player, args)
+                    return player.Idx == args.playerIdx and GetCountersCount(me.IPID) >= 3
+                end)
                 .Effect:Common(
                     FS.C.Effect.Discard(1)
                 )

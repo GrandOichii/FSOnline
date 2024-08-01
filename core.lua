@@ -409,7 +409,7 @@ function FS.C.Effect.TargetPlayerGivesLootCards(target_idx, amount)
     end
 end
 
-function FS.C.Effect.MantleTargetPlayer(target_idx, amount)
+function FS.C.Effect.MantleTargetPlayer(target_idx)
     return function (stackEffect)
         -- The next time that player would die this turn, prevent it.
         -- If it\'s their turn, cancel everything that hasn\'t resolved and end it.
@@ -750,6 +750,9 @@ function FS.B.Card()
 
     function result.Target:Player(filterFunc, hint)
         hint = hint or 'Choose a player'
+        filterFunc = filterFunc or function (player)
+            return FS.F.Players():Do()
+        end
 
         result.Target._AddFizzleCheck(filterFunc, function (player)
             return tostring(player.Idx)
@@ -1312,12 +1315,16 @@ function FS.B.TriggeredAbility(effectText)
     end
 
     -- TODO add player filter
-    function result.On:TurnEnd(additionalCheck)
+    function result.On:TurnEnd(check)
+        check = check or function (me, player, args)
+            return true
+        end
+
         result.trigger = 'turn_end'
 
         result.costs[#result.costs+1] = {
             Check = function (me, player, args)
-                return args.playerIdx == player.Idx and (additionalCheck == nil or additionalCheck(me, player, args))
+                return check(me, player, args)
             end,
             Pay = function (me, player, stackEffect, args)
                 return true

@@ -19,7 +19,9 @@ function _Create()
         )
         :TriggeredAbility(
             FS.B.TriggeredAbility('At the end of your turn, recharge this.')
-                .On:TurnEnd()
+                .On:TurnEnd(function (me, player, args)
+                    return player.Idx == args.playerIdx
+                end)
                 .Effect:Common(
                     FS.C.Effect.RechargeMe()
                 )

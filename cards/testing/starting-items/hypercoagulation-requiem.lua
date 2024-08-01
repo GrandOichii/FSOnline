@@ -18,7 +18,7 @@ function _Create()
         :TriggeredAbility(
             FS.B.TriggeredAbility('At the end of your turn, if this has 3+ counters, remove all of them and loot 3.')
                 .On:TurnEnd(function (me, player, args)
-                    return GetCountersCount(me.IPID) >= 3
+                    return player.Idx == args.playerIdx and GetCountersCount(me.IPID) >= 3
                 end)
                 .Effect:Custom(function (stackEffect)
                     local me = stackEffect.Card

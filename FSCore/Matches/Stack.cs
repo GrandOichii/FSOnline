@@ -96,8 +96,7 @@ public class Stack {
     /// <param name="effect">New effect</param>
     public void AddEffect(StackEffect effect) {
         Effects.Add(effect);
-        PriorityIdx = effect.OwnerIdx;
-        System.Console.WriteLine(effect.OwnerIdx);
+        PriorityIdx = Match.CurPlayerIdx;
 
         Match.LogInfo($"A new effect was added to the top of stack - {effect}");
         // TODO add update
