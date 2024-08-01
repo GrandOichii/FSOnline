@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic;
+
 namespace FSCore.Matches;
 
 /// <summary>
@@ -57,9 +59,10 @@ public class Stack {
         Match.LogInfo($"New priority player index: {PriorityIdx}");
 
         var top = Top;
-        var topOwner = top.OwnerIdx > 0
-            ? top.OwnerIdx
-            : Match.CurPlayerIdx;
+        // var topOwner = top.OwnerIdx > 0
+        //     ? top.OwnerIdx
+        //     : Match.CurPlayerIdx;
+        var topOwner = Match.CurPlayerIdx;
         if (PriorityIdx == topOwner) {
             // if (top.OwnerIdx != player.Idx) {
             //     throw new MatchException($"Unexpected scenario: resolving top of stack effect, owned by idx {top.OwnerIdx}, by player {player.LogName}");
@@ -80,7 +83,7 @@ public class Stack {
         await top.Resolve();
 
         Effects.Remove(top);
-        PriorityIdx = Match.CurPlayerIdx;
+        // PriorityIdx = Match.CurPlayerIdx;
         if (Effects.Count == 0) {
             Match.LogInfo("Stack is now empty");
             PriorityIdx = NO_PRIORITY_IDX;
@@ -96,7 +99,7 @@ public class Stack {
         PriorityIdx = effect.OwnerIdx;
         System.Console.WriteLine(effect.OwnerIdx);
 
-        Match.LogInfo($"A new effect was added to the top of stack");
+        Match.LogInfo($"A new effect was added to the top of stack - {effect}");
         // TODO add update
     }
 

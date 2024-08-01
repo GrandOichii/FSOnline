@@ -476,4 +476,10 @@ public class ScriptMaster {
         var player = _match.GetPlayer(playerIdx);
         player.AddDeathPreventor(preventorFunc);
     }
+
+    [LuaCommand]
+    public void CancelEverything() {
+        // TODO? more
+        _match.Stack.Effects.Clear();
+    }
 }

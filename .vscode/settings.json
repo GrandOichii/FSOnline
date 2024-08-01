@@ -63,7 +63,8 @@
         "LoseLife",
         "ChooseInPlayCard",
         "AddDeathPreventor",
-        "EndTheTurn"
+        "EndTheTurn",
+        "CancelEverything"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

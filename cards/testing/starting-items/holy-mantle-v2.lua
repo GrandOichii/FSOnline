@@ -1,4 +1,4 @@
--- status: implemented, TODO not stable
+-- status: implemented, requires a lot of testing
 
 function _Create()
     return FS.B.Item()

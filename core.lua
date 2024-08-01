@@ -176,8 +176,8 @@ end
 
 function FS.C.Effect.DamageToTargetPlayer(target_idx, amount)
     return function (stackEffect)
-        local idx = tonumber(stackEffect.Targets[target_idx].Value)
-        DealDamageToPlayer(idx, amount, stackEffect)
+        local toIdx = tonumber(stackEffect.Targets[target_idx].Value)
+        DealDamageToPlayer(toIdx, amount, stackEffect)
         return true
     end
 end
@@ -418,6 +418,7 @@ function FS.C.Effect.MantleTargetPlayer(target_idx, amount)
         AddDeathPreventor(pidx, function (deathSource)
             if GetCurPlayerIdx() == pidx then
                 EndTheTurn()
+                CancelEverything()
                 -- TODO cancel everything
                 -- TODO cancle the attack
             end
