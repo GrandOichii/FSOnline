@@ -53,6 +53,14 @@ public class Deck {
         Cards = Common.Shuffled(Cards, Match.Rng);
     }
 
+    public void ShuffleDiscardIntoDeck() {
+        if (Discard is null) return;
+
+        Cards = new LinkedList<MatchCard>(Cards.Concat(Discard));
+        Shuffle();
+        Discard.Clear();
+    }
+
     /// <summary>
     /// Removes the top <c>amount</c> cards from deck, if size is less than <c>amount</c>, remove all instead
     /// </summary>
@@ -60,10 +68,12 @@ public class Deck {
     /// <returns>Removed cards</returns>
     public List<MatchCard> RemoveTop(int amount) {
         var result = new List<MatchCard>();
-        // TODO reshuffle discard into the deck if found to be emoty
 
         while (amount > 0) {
-            if (Size == 0) break;
+            if (Size == 0) {
+                ShuffleDiscardIntoDeck();
+                if (Size == 0) break;
+            }
 
             result.Add(Top);
             Cards.RemoveLast();

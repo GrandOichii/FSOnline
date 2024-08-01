@@ -355,7 +355,6 @@ public class ScriptMaster {
 
     [LuaCommand]
     public bool RemoveFromBonusSouls(string id) {
-        // TODO
         var removed = _match.BonusSouls.Remove(
             _match.BonusSouls.First(card => card.ID == id)
         );
@@ -395,12 +394,10 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
-    public void DealDamageToPlayer(int playerIdx, int amount, StackEffect sourceEffect) {
-        // TODO too low level
+    public void DealDamageToPlayer(int toIdx, int amount, StackEffect sourceEffect) {
         var owner = _match.GetPlayer(sourceEffect.OwnerIdx);
-        var effect = new DamageStackEffect(owner, amount, sourceEffect, _match.GetPlayer(playerIdx));
-        _match.PlaceOnStack(effect)
-            .Wait();        
+        owner.DamageToPlayerRequest(toIdx, amount, sourceEffect)
+            .Wait();
     }
 
     [LuaCommand]

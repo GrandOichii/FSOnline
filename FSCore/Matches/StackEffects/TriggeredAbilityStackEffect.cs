@@ -25,10 +25,13 @@ public class TriggeredAbilityStackEffect : StackEffect {
 
     public override async Task Resolve()
     {
-        // TODO check fizzle
+        if (Ability.ShouldFizzle(this)) {
+            Match.LogInfo($"Triggered ability stack effect {SID} of card {Card.LogName} fizzles");
+            return;
+        }
+
         Ability.ExecuteEffects(this, Trigger.Args);
     }
 
-    // TODO
     public override StackEffectData ToData() => new TriggeredAbilityStackEffectData(this);
 }

@@ -36,23 +36,18 @@ public class HandMatchCard : IStateModifier {
     }
 
     public bool CanPlay(Player player) {
-        var checks = Card.LootChecks;
+        var checks = new List<LuaFunction>(Card.LootChecks);
+        checks.AddRange(State.PlayRestrictions);
 
-        // TODO merge these - on HandMatchCardState initialization fill PlayRestrictions with Card.LootChecks
-
-        // TODO catch exceptions
-        foreach (var restriction in State.PlayRestrictions) {
-            var returned = restriction.Call(this, player);
-            if (!LuaUtility.GetReturnAsBool(returned))
-                return false;
-        }
-
-        // TODO catch exceptions
         foreach (var check in checks) {
-            var returned = check.Call(this, player);
-            var payed = LuaUtility.GetReturnAsBool(returned);
-            if (!payed)
-                return false;
+            try {
+                var returned = check.Call(this, player);
+                var payed = LuaUtility.GetReturnAsBool(returned);
+                if (!payed)
+                    return false;
+            } catch (Exception e) {
+                throw new MatchException($"Failed to execute loot play check/loot play restriction of card {Card.LogName} for player {player.Name}", e);
+            }
         }
 
         return true;
@@ -62,12 +57,16 @@ public class HandMatchCard : IStateModifier {
     public bool PayCosts(StackEffect stackEffect) {
         var costs = Card.LootCosts;
 
-        // TODO catch exceptions
-        foreach (var cost in costs) {
-            var returned = cost.Call(this, stackEffect.Match.GetPlayer(stackEffect.OwnerIdx), stackEffect);
-            var payed = LuaUtility.GetReturnAsBool(returned);
-            if (!payed)
-                return false;
+        var player = stackEffect.Match.GetPlayer(stackEffect.OwnerIdx);
+        try {
+            foreach (var cost in costs) {
+                var returned = cost.Call(this, player, stackEffect);
+                var payed = LuaUtility.GetReturnAsBool(returned);
+                if (!payed)
+                    return false;
+            }
+        } catch (Exception e) {
+            throw new MatchException($"Failed to execute cost functions for card {Card.LogName} by player {player.LogName}", e);
         }
 
         return true;

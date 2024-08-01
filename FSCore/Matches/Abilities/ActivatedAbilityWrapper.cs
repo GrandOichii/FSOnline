@@ -13,13 +13,36 @@ public class ActivatedAbilityWrapper {
     public bool CanBeActivatedBy(InPlayMatchCard card, Player player) {
         if (!card.CanBeActivatedBy(player)) return false;
 
-        // TODO catch exceptions
-        foreach (var check in AdditionalChecks) {
-            var returned = check.Call(card, player);
-            if (!LuaUtility.GetReturnAsBool(returned)) return false;
+        try {
+            foreach (var check in AdditionalChecks) {
+                var returned = check.Call(card, player);
+                if (!LuaUtility.GetReturnAsBool(returned)) return false;
+            }
+        } catch (Exception e) {
+            throw new MatchException($"Failed to execute activated ability check for activation availability of card {card.LogName} for player {player.LogName}", e);
         }
 
         return Ability.ExecuteCheck(card, player);
+    }
+
+    public async Task Activate(InPlayMatchCard card, Player player, int myIdx) {
+        var effect = new ActivatedAbilityStackEffect(Ability, card, player);
+        await player.Match.PlaceOnStack(effect);
+
+        var payed = Ability.PayCosts(card, player, effect);
+        if (!payed) {
+            player.Match.RemoveTopOfStack();
+            player.Match.LogInfo($"Player {player.LogName} decided not to pay activation costs for activated ability {myIdx} of card {card.LogName}");
+            return;
+        }
+
+        await player.Match.Emit("item_activation", new() {
+            { "Item", card },
+            { "Ability", this }
+        });
+
+        player.Match.LogInfo($"Player {player.LogName} activated ability {myIdx} of card {card.LogName}");
+
     }
 
 }

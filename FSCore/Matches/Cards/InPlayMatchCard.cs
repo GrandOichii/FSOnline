@@ -65,7 +65,6 @@ public class InPlayMatchCard : IStateModifier {
     /// </summary>
     /// <returns>Activated abilities</returns>
     public List<ActivatedAbilityWrapper> GetActivatedAbilities() {
-        // TODO use state
         return State.ActivatedAbilities;
     }
 
@@ -91,10 +90,13 @@ public class InPlayMatchCard : IStateModifier {
 
     public void Modify(ModificationLayer layer)
     {
-        // TODO catch exception
-        var stateModifiers = GetStateModifiers(layer);
-        foreach (var mod in stateModifiers) {
-            mod.Call(this);
+        try {
+            var stateModifiers = GetStateModifiers(layer);
+            foreach (var mod in stateModifiers) {
+                mod.Call(this);
+            }
+        } catch (Exception e) {
+            throw new MatchException($"Failed to modify state by card {LogName}", e);
         }
     }
 
@@ -153,8 +155,7 @@ public class InPlayMatchCard : IStateModifier {
     #endregion
 
     public bool HasLabel(string label) {
-        // TODO change with state
-        return Card.Labels.Contains(label);
+        return State.Labels.Contains(label);
     }
 
     public List<TriggeredAbilityWrapper> GetTriggeredAbilities() {

@@ -13,9 +13,6 @@ public class PlayerDeathStackEffect : StackEffect
     public override async Task Resolve()
     {
         await Match.GetPlayer(OwnerIdx).ProcessDeath(Source);
-
-        // TODO death penalty
-        // TODO fizzle all DeclarePurchaseStackEffects
     }
 
     public override StackEffectData ToData() => new PlayerDeathStackEffectData(this);

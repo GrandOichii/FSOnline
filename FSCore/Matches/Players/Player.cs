@@ -158,14 +158,16 @@ public class Player : IStateModifier {
     /// <returns>Resulting amount of cards drawn by the player</returns>
     /// <exception cref="MatchException"></exception>
     public async Task<int> LootCards(int amount, LuaTable reason, LootSource source = LootSource.DETERMINE) {
-        // TODO catch exception
-
         if (source == LootSource.DETERMINE)
             source = LootSource.LOOT_DECK;
 
-        foreach (var modifier in State.LootAmountModifiers) {
-            var returned = modifier.Call(this, amount, reason);
-            amount = LuaUtility.GetReturnAsInt(returned);
+        try {
+            foreach (var modifier in State.LootAmountModifiers) {
+                var returned = modifier.Call(this, amount, reason);
+                amount = LuaUtility.GetReturnAsInt(returned);
+            }
+        } catch (Exception e) {
+            throw new MatchException($"Failed to call loot amount modification function for player {LogName}", e);
         }
 
         return source switch
@@ -472,12 +474,16 @@ public class Player : IStateModifier {
     /// </summary>
     /// <param name="card">Item card</param>
     public async Task GainItem(OwnedInPlayMatchCard card) {
-        // TODO trigger
         // TODO add to update
 
         Items.Add(card);
 
         Match.LogInfo($"Player {LogName} gained item {card.LogName}");
+
+        await Match.Emit("item_gain", new() {
+            { "player", this },
+            { "item", card }
+        });
     }
 
     public async Task LoseItem(OwnedInPlayMatchCard card) {
@@ -519,7 +525,19 @@ public class Player : IStateModifier {
         // TODO add update
     }
 
-    #region Shops
+    #region Purchasing
+
+    public async Task DeclarePurchase() {
+        // TODO is this supposed to be here or during resolution
+        PurchaseOpportunities--;
+
+        var effect = new DeclarePurchaseStackEffect(Match, Idx);
+
+        Match.LogInfo($"Player {LogName} declares a purchase");
+        await Match.PlaceOnStack(effect);
+
+        // TODO trigger
+    }
 
     /// <summary>
     /// Get the cost of buying the item at the designated shop slot
@@ -530,9 +548,13 @@ public class Player : IStateModifier {
         // TODO catch exceptions
         var result = Match.Config.PurchaseCost;
 
-        foreach (var mod in State.PurchaseCostModifiers) {
-            var returned = mod.Call(slot, result);
-            result = LuaUtility.GetReturnAsInt(returned);
+        try {
+            foreach (var mod in State.PurchaseCostModifiers) {
+                var returned = mod.Call(slot, result);
+                result = LuaUtility.GetReturnAsInt(returned);
+            }
+        } catch (Exception e) {
+            throw new MatchException($"Failed to execute coin gain amount modification function for player {LogName}", e);
         }
         
         return result;
@@ -764,8 +786,12 @@ public class Player : IStateModifier {
 
     #region Damage
 
+    public async Task DamageToPlayerRequest(int toIdx, int amount, StackEffect damageSource) {
+        var effect = new DamageStackEffect(this, amount, damageSource, Match.GetPlayer(toIdx));
+        await Match.PlaceOnStack(effect);
+    }
+
     public async Task LoseLife(int amount) {
-        // TODO move stats to this from PlayerState, add damage preventors to stats
         Stats.Damage += amount;
         if (Stats.Damage >= Stats.State.Health) {
             Stats.Damage = Stats.State.Health;
@@ -785,6 +811,8 @@ public class Player : IStateModifier {
     }
 
     public async Task ProcessDamage(int amount, StackEffect source) {
+        // TODO use source
+
         await Stats.ProcessDamage(this, amount, source);
     }
 
@@ -826,10 +854,8 @@ public class Player : IStateModifier {
         await PayDeathPenalty(deathSource);
 
         Match.LogInfo($"Player {LogName} dies");
-        // TODO death penalty
         // TODO fizzle all DeclarePurchaseStackEffects
 
-        // TODO trigger
         await Match.Emit("player_death", new() {
             { "Player", this },
             { "Source", deathSource },
@@ -839,21 +865,29 @@ public class Player : IStateModifier {
 
     public int GetDeathPenaltyCoinLoss() {
         var result = Match.Config.DeathPenaltyCoins;
-        foreach (var mod in State.DeathPenaltyCoinLoseAmountModifiers) {
-            // TODO catch exceptions
-            var returned = mod.Call(result);
-            result = LuaUtility.GetReturnAsInt(returned);
+        try {
+            foreach (var mod in State.DeathPenaltyCoinLoseAmountModifiers) {
+                var returned = mod.Call(result);
+                result = LuaUtility.GetReturnAsInt(returned);
+            }
+        } catch (Exception e) {
+            throw new MatchException($"Failed to execute death penalty coin loss replacement effects for player {LogName}", e);
         }
         return result;
     }
 
     public int GetDeathPenaltyLootDiscardAmount() {
         var result = Match.Config.DeathPenaltyLoot;
-        foreach (var mod in State.DeathPenaltyCoinLoseAmountModifiers) {
-            // TODO catch exceptions
-            var returned = mod.Call(result);
-            result = LuaUtility.GetReturnAsInt(returned);
+        
+        try {
+            foreach (var mod in State.DeathPenaltyCoinLoseAmountModifiers) {
+                var returned = mod.Call(result);
+                result = LuaUtility.GetReturnAsInt(returned);
+            }
+        } catch (Exception e) {
+            throw new MatchException($"Failed to execute death penalty coin loss replacement effects for player {LogName}", e);
         }
+
         return result;
     }
 
@@ -881,7 +915,6 @@ public class Player : IStateModifier {
             await Match.DestroyItem(ipid);
         }
 
-        // TODO modify the amount of loot cards discarded
         var lootDiscardAmount = GetDeathPenaltyLootDiscardAmount();
         for (int i = 0; i < lootDiscardAmount; i++) {
             if (Hand.Count == 0) break;
@@ -892,7 +925,6 @@ public class Player : IStateModifier {
             await DiscardFromHand(idx);
         }
 
-        // TODO modify the amount of coins lost
         LoseCoins(GetDeathPenaltyCoinLoss());
 
         foreach (var item in GetInPlayCards()) {

@@ -10,6 +10,7 @@ public class InPlayMatchCardState {
     public InPlayMatchCard Original { get; }
     public List<ActivatedAbilityWrapper> ActivatedAbilities { get; }
     public List<TriggeredAbilityWrapper> TriggeredAbilities { get; }
+    public List<string> Labels { get; }
 
     #region Replacement effects
 
@@ -20,6 +21,7 @@ public class InPlayMatchCardState {
     public InPlayMatchCardState(InPlayMatchCard original) {
         Original = original;
 
+        Labels = new(original.Card.Labels);
         ActivatedAbilities = original.Card.ActivatedAbilities.Select(
             aa => new ActivatedAbilityWrapper(aa)
         ).ToList();

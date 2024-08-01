@@ -206,7 +206,7 @@ public class Match {
             throw new MatchException($"tried to add another player to the match, while it is already full (max player count: {Config.MaxPlayerCount})");
 
         var character = string.IsNullOrEmpty(characterKey)
-            ? await _cardMaster.GetRandomCharacter(Rng)
+            ? await _cardMaster.GetRandomCharacter(Rng, Config.Characters)
             : await _cardMaster.GetCharacter(characterKey);
 
         var player = new Player(
@@ -288,9 +288,9 @@ public class Match {
         TreasureDeck.Populate(treasureCards);
 
         // bonus souls
-        // TODO sample souls based on Config.BonusSoulCount
         var souls = new List<BonusSoulMatchCard>();
-        foreach (var key in Config.BonusSouls)
+        var keys = Config.BonusSouls.OrderBy(k => Rng.Next()).Take(5);
+        foreach (var key in keys)
             souls.Add(new BonusSoulMatchCard(
                 this,
                 await _cardMaster.Get(key)
@@ -324,9 +324,8 @@ public class Match {
             await player.Setup();
         }
         
-        // TODO add back
-        // LogInfo("Pushing initial state");
-        // await PushUpdates();
+        LogInfo("Pushing initial state");
+        await PushUpdates();
     }
 
     /// <summary>
@@ -395,8 +394,6 @@ public class Match {
 
         await DequeueTriggers();
 
-        // TODO check dead players/cards/monsters
-
         await PushUpdates();
     }
 
@@ -419,7 +416,6 @@ public class Match {
         if (View is not null) {
             await View.Update(this);
         }
-        // TODO
         
         foreach (var player in Players) {
             await player.UpdateController();
@@ -443,9 +439,12 @@ public class Match {
 
             // "till end of turn" effects
             if (TEOTEffects.TryGetValue(layer, out List<LuaFunction>? mods)) {
-                // TODO catch exceptions
-                foreach (var mod in mods) {
-                    mod.Call();
+                try {
+                    foreach (var mod in mods) {
+                        mod.Call();
+                    }
+                } catch (Exception e) {
+                    throw new MatchException($"Failed to execute \"till end of turn\" effect in layer {layer}", e);
                 }
             }
         }
@@ -463,7 +462,6 @@ public class Match {
     #region Triggers
 
     public async Task DequeueTriggers() {
-        // TODO
         while (Stack.QueuedTriggers.Count > 0) {
             var trigger = Stack.QueuedTriggers.Dequeue();
             await ProcessTrigger(trigger);
@@ -471,10 +469,10 @@ public class Match {
     }
 
     private async Task ProcessTrigger(QueuedTrigger trigger) {
-        // TODO shop items
         // TODO monsters
         // TODO rooms
-        // player-owned items
+
+        // owned items
         foreach (var player in Players) {
             var items = player.GetInPlayCards();
             // TODO prompt the player to order the effects
@@ -483,6 +481,7 @@ public class Match {
             }
         }
 
+        // treasure slots
         foreach (var slot in TreasureSlots) {
             await slot.ProcessTrigger(trigger);
         }
@@ -610,7 +609,7 @@ public class Match {
     }
 
     /// <summary>
-    /// TODO add docs
+    /// Resolve the stack
     /// </summary>
     /// <returns></returns>
     public async Task ResolveStack(bool breakIfPass = false) {
@@ -778,8 +777,6 @@ public class Match {
             }
             LogInfo($"Item {item.LogName} of player {owner.LogName} was rerolled into {result[0].LogName}");
         }
-
-        // TODO if was treasure item, refill treasure slots
     }
 
     public List<InPlayMatchCard> GetItems() {
@@ -833,7 +830,6 @@ public class Match {
     }
 
     public async Task PlaceOwnedCard(OwnedInPlayMatchCard card, bool triggerEnter = true) {
-        // TODO enter play effects
         LogInfo($"Item {card.LogName} enters play under control of {card.Owner.LogName}");
 
         if (triggerEnter)
@@ -848,11 +844,15 @@ public class Match {
     }
 
     public async Task<bool> DestroyItem(InPlayMatchCard card) {
-        // TODO catch exceptions
-        foreach (var effect in card.State.DestructionReplacementEffects) {
-            var returned = effect.Call(card);
-            if (LuaUtility.GetReturnAsBool(returned)) return false;
+        try {
+            foreach (var effect in card.State.DestructionReplacementEffects) {
+                var returned = effect.Call(card);
+                if (LuaUtility.GetReturnAsBool(returned)) return false;
+            }
+        } catch (Exception e) {
+            throw new MatchException($"Failed to call destruction replacement effect of card {card.LogName}", e);
         }
+
         await DiscardFromPlay(card);
         return true;
     }

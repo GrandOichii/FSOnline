@@ -32,7 +32,6 @@ public class Stats {
     }
 
     public async Task ProcessDamage(Player player, int amount, StackEffect source) {
-        // TODO use source
 
         amount = PreventDamage(amount);
         if (amount == 0) return;

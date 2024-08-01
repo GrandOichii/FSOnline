@@ -1,24 +1,10 @@
 namespace FSCore.Matches.Data;
 
-// TODO inherit from AbilityStackEffectData
-public class ActivatedAbilityStackEffectData : StackEffectData
+public class ActivatedAbilityStackEffectData : AbilityStackEffectData
 {
-    // TODO more
-    /// <summary>
-    /// Effect text
-    /// </summary>
-    public string EffectText { get; }
-    /// <summary>
-    /// In-play ID of parent card
-    /// </summary>
-    public string IPID { get; }
-
     public ActivatedAbilityStackEffectData(ActivatedAbilityStackEffect effect)
-        : base(effect)
+        : base(effect, effect.Card.IPID, effect.Ability.EffectText)
     {
-        IPID = effect.Card.IPID;
-        EffectText = effect.Ability.EffectText;
-
         Type = "ability_activation";
     }
 }

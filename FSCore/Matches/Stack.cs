@@ -32,7 +32,6 @@ public class Stack {
     /// </summary>
     public bool CanPassPriority {
         get {
-            // TODO add more
             return PriorityIdx != NO_PRIORITY_IDX && Effects.Count > 0;
         }
     }

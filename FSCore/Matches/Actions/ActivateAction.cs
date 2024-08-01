@@ -30,23 +30,7 @@ public class ActivateAction : IAction
             throw new MatchException($"Activated ability activation check of card {card.LogName} failed during execution by player {player.LogName}");
         }
 
-        // TODO this should be done in ActivatedAbility
-        var effect = new ActivatedAbilityStackEffect(ability.Ability, card, player);
-        await match.PlaceOnStack(effect);
-
-        var payed = ability.Ability.PayCosts(card, player, effect);
-        if (!payed) {
-            match.RemoveTopOfStack();
-            match.LogInfo($"Player {player.LogName} decided not to pay activation costs for activated ability {abilityIdx} of card {card.LogName}");
-            return;
-        }
-
-        await match.Emit("item_activation", new() {
-            { "Item", card },
-            { "Ability", ability }
-        });
-
-        match.LogInfo($"Player {player.LogName} activated ability {abilityIdx} of card {card.LogName}");
+        await ability.Activate(card, player, abilityIdx);
     }
 
     public IEnumerable<string> GetAvailable(Match match, int playerIdx)

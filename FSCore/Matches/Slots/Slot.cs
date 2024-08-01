@@ -44,8 +44,6 @@ public abstract class Slot {
         Card = new(card);
 
         await Source.Match.OnCardEnteredPlay(Card);
-
-        // TODO execute card entering effects
     }
 
     public abstract SlotData GetData();

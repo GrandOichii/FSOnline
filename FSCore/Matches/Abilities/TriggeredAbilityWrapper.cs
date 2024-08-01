@@ -17,7 +17,6 @@ public class TriggeredAbilityWrapper {
             if (amount >= Ability.TriggerLimit) return;
         }
 
-        // TODO catch errors
         // lol
         if (Ability.Trigger != trigger.Trigger) return;
 
