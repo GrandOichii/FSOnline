@@ -1,0 +1,7 @@
+{
+    "Key": "static-shock-requiem",
+    "Name": "Static Shock",
+    "Type": "Room",
+    "Text": "Each time a player activates an item, they take 1 damage.",
+    "Script": "static-shock-requiem.lua"
+}

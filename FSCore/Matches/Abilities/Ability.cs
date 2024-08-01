@@ -53,7 +53,11 @@ public abstract class Ability {
             var returned = CheckFunc.Call(card, player, args);
             return LuaUtility.GetReturnAsBool(returned);
         } catch (Exception e) {
-            throw new MatchException($"Exception during check execution of activated ability of card {card.LogName} by player {player.LogName}", e);
+            var errMsg = $"Exception during check execution of ability of card {card.LogName}";
+            if (player is not null)
+                errMsg += $" by player {player.LogName}";
+            
+            throw new MatchException(errMsg, e);
         }
     }
 
@@ -61,7 +65,7 @@ public abstract class Ability {
         try {
             Effects.Execute(stackEffect, args);
         } catch (Exception e) {
-            throw new MatchException($"Failed to execute Effects of activated ability", e);
+            throw new MatchException($"Failed to execute Effects of ability", e);
         }
     }
 

@@ -923,4 +923,9 @@ public class Match {
     }
 
     #endregion
+
+    public async Task DamageToPlayerRequest(int toIdx, int amount, StackEffect source) {
+        var effect = new DamageStackEffect(this, -1, amount, source, GetPlayer(toIdx));
+        await PlaceOnStack(effect);
+    }
 }

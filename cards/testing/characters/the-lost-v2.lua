@@ -6,9 +6,7 @@ function _Create()
         -- TODO add soul value
         :TriggeredAbility(
             FS.B.TriggeredAbility('At the end of your turn, recharge up to 1 Character.')
-                .On:TurnEnd(function (me, player, args)
-                    return player.Idx == args.playerIdx
-                end)
+                .On:ControllerTurnEnd()
                 .Target:Character()
                 .Effect:Common(
                     FS.C.Effect.RechargeTarget(0, true)

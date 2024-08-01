@@ -85,12 +85,12 @@ end
 FS.C.Effect = {}
 
 function FS.C.Effect._ApplyToPlayer(effect, filterFunc)
-    filterFunc = filterFunc or function (stackEffect)
+    filterFunc = filterFunc or function (stackEffect, args)
         return FS.F.Players():Idx(stackEffect.OwnerIdx):Do()
     end
-    return function (stackEffect)
+    return function (stackEffect, args)
         -- TODO just stops mid resolving?
-        local players = filterFunc(stackEffect)
+        local players = filterFunc(stackEffect, args)
         for _, player in ipairs(players) do
             if not effect(player, stackEffect) then
                 return false
@@ -1392,11 +1392,14 @@ function FS.B.TriggeredAbility(effectText)
 
     -- TODO add filter func for which items are activated
     function result.On:ItemActivation(check)
+        check = check or function (me, player, args)
+            return true
+        end
         result.trigger = FS.Triggers.ITEM_ACTIVATION
 
         result.costs[#result.costs+1] = {
             Check = function (me, player, args)
-                return check(me, player, args)
+                return args.Item:IsItem() and check(me, player, args)
             end,
             Pay = function (me, player, stackEffect, args)
                 return true
@@ -1426,13 +1429,21 @@ function FS.B.TriggeredAbility(effectText)
         return result
     end
 
-    -- TODO add player filter
-    function result.On:TurnStart(additionalCheck)
+    function result.On:ControllerTurnEnd()
+        return result.On:TurnEnd(function (me, player, args)
+           return player.Idx == args.playerIdx
+        end)
+    end
+
+    function result.On:TurnStart(check)
+        check = check or function (me, player, args)
+            return true
+        end
         result.trigger = 'turn_start'
 
         result.costs[#result.costs+1] = {
             Check = function (me, player, args)
-                return args.playerIdx == player.Idx and (additionalCheck == nil or additionalCheck(me, player, args))
+                return check(me, player, args)
             end,
             Pay = function (me, player, stackEffect, args)
                 return true
@@ -1440,6 +1451,12 @@ function FS.B.TriggeredAbility(effectText)
         }
 
         return result
+    end
+
+    function result.On:ControllerTurnStart()
+        return result.On:TurnStart(function (me, player, args)
+            return player.Idx == args.Idx
+        end)
     end
 
     return result

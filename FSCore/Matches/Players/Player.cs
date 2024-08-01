@@ -791,7 +791,7 @@ public class Player : IStateModifier {
     #region Damage
 
     public async Task DamageToPlayerRequest(int toIdx, int amount, StackEffect damageSource) {
-        var effect = new DamageStackEffect(this, amount, damageSource, Match.GetPlayer(toIdx));
+        var effect = new DamageStackEffect(Match, Idx, amount, damageSource, Match.GetPlayer(toIdx));
         await Match.PlaceOnStack(effect);
     }
 

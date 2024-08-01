@@ -185,4 +185,6 @@ public class InPlayMatchCard : IStateModifier {
     public void ResetTriggers() {
         TriggerCountMap.Clear();
     }
+
+    public bool IsItem() => Card.Template.Type == "Item" || Card.Template.Type == "StartingItem";
 }

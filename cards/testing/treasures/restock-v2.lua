@@ -4,7 +4,7 @@ function _Create()
     return FS.B.Item()
         :TriggeredAbility(
             FS.B.TriggeredAbility('At the start of your turn, you may put any number of shop items into discard.')
-                .On:TurnStart()
+                .On:ControllerTurnStart()
                 .Effect:Custom(function (stackEffect)
                     for _, slot in ipairs(GetShopSlots()) do
                         local card = slot.Card

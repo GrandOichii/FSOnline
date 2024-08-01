@@ -80,7 +80,6 @@ func load_json_file(path):
 	
 	# loot cards
 	%Loot.load(config)
-	# TODO
 
 func _on_files_dropped(files):
 	if len(files) != 1:

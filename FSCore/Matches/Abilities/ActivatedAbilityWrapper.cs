@@ -37,6 +37,7 @@ public class ActivatedAbilityWrapper {
         }
 
         await player.Match.Emit("item_activation", new() {
+            { "Player", player },
             { "Item", card },
             { "Ability", this }
         });

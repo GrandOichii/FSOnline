@@ -395,6 +395,11 @@ public class ScriptMaster {
 
     [LuaCommand]
     public void DealDamageToPlayer(int toIdx, int amount, StackEffect sourceEffect) {
+        if (sourceEffect.OwnerIdx == -1) {
+            _match.DamageToPlayerRequest(toIdx, amount, sourceEffect)
+                .Wait();
+            return;
+        }
         var owner = _match.GetPlayer(sourceEffect.OwnerIdx);
         owner.DamageToPlayerRequest(toIdx, amount, sourceEffect)
             .Wait();

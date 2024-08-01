@@ -5,15 +5,15 @@ public class DamageStackEffect : StackEffect
     public int Amount { get; set; }
     public StackEffect DamageSource { get; }
 
-    public DamageStackEffect(Player owner, int amount, StackEffect damageSource)
-        : base(owner.Match, owner.Idx)
+    public DamageStackEffect(Match match, int ownerIdx, int amount, StackEffect damageSource)
+        : base(match, ownerIdx)
     {
         Amount = amount;
         DamageSource = damageSource;
     }
 
-    public DamageStackEffect(Player owner, int amount, StackEffect damageSource, Player to)
-        : this(owner, amount, damageSource)
+    public DamageStackEffect(Match match, int ownerIdx, int amount, StackEffect damageSource, Player to)
+        : this(match, ownerIdx, amount, damageSource)
     {
         Targets.Add(new(TargetType.PLAYER, to.Idx.ToString()));
     }
