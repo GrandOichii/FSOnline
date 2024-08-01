@@ -1,6 +1,6 @@
 namespace FSCore.Matches.Cards;
 
-public struct StatsState {
+public class StatsState {
     public int Attack { get; set; }
     public int Health { get; set; }
     public int? Evasion { get; set; }    

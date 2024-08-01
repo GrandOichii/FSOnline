@@ -30,7 +30,7 @@ function _Create()
                             label = 'Gain +2{attack} till end of turn.',
                             effects = {
                                 function (stackEffect)
-                                    FS.C.Effect.TillEndOfTurn(
+                                    FS.C.Effect.TillEndOfTurnRaw(
                                         FS.ModLayers.PLAYER_ATTACK,
                                         function ()
                                             local player = GetPlayer(stackEffect.OwnerIdx)

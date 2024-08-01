@@ -28,6 +28,5 @@ function _Create()
                 )
             :Build()
         )
-        -- TODO add second triggered ability
     :Build()
 end

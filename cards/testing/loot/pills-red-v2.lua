@@ -11,7 +11,7 @@ function _Create()
             local roll = stackEffect.Rolls[0]
 
             if roll == 1 or roll == 2 then
-                FS.C.Effect.TillEndOfTurn(
+                FS.C.Effect.TillEndOfTurnRaw(
                     FS.ModLayers.PLAYER_ATTACK,
                     function ()
                         local player = GetPlayer(stackEffect.OwnerIdx)
@@ -22,7 +22,7 @@ function _Create()
             end
 
             if roll == 3 or roll == 4 then
-                FS.C.Effect.TillEndOfTurn(
+                FS.C.Effect.TillEndOfTurnRaw(
                     FS.ModLayers.PLAYER_MAX_HEALTH,
                     function ()
                         local player = GetPlayer(stackEffect.OwnerIdx)

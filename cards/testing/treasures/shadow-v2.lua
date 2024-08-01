@@ -1,6 +1,5 @@
 -- If another player would pay the death penalty, you choose what item they would destroy and you gain any loot cards and {cent} they would lose.
 -- status: implemented
--- TODO too low level
 
 function _Create()
     return FS.B.Card()
@@ -10,6 +9,8 @@ function _Create()
                 local players = FS.F.Players():Except(me.Owner.Idx):Do()
                 for _, player in ipairs(players) do
                     player.State.DeathPenaltyReplacementEffects:Add(function (player_, deathSource)
+                        -- TODO too low level
+
                         -- item destruction
                         local itemAmount = player_:GetDeathPenaltyDestroyedItemsAmount()
                         for i = 1, itemAmount do

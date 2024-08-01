@@ -186,6 +186,10 @@ public class MatchProcess(CreateMatchParams creationParams)
         cm.Load("../cards/testing");
 
         Match = new(Params.Config, _rng.Next(), cm, File.ReadAllText("../core.lua"));
+        Match.Logger = LoggerFactory
+            .Create(builder => builder.AddConsole())
+            .CreateLogger("Match");
+
         // TODO match view
 
         await CreatePlayerControllers(Match);

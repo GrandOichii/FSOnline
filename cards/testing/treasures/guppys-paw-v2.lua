@@ -1,5 +1,4 @@
 -- status: implemented
--- TODO too low-level
 
 function _Create()
     return FS.B.Item()
@@ -15,6 +14,7 @@ function _Create()
                 )
                 .Effect:Custom(
                     function (stackEffect)
+                        -- TODO too low-level
                         local healthCost = 1
                         local accept = FS.C.Choose.YesNo(stackEffect.OwnerIdx, 'Pay '..healthCost..'{health}?')
                         if not accept then

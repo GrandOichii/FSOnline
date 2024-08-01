@@ -1,5 +1,4 @@
 -- status: implemented
--- TODO too low-level
 
 function _Create()
     return FS.B.Item()
@@ -15,6 +14,7 @@ function _Create()
                     'Choose an Item to sacrifice'
                 )
                 .Effect:Custom(function (stackEffect)
+                    -- TODO too low-level
                     local ipid = stackEffect.Targets[0].Value
                     if not IsPresent(ipid) then
                         return false
@@ -28,12 +28,10 @@ function _Create()
                 end)
             :Build()
         )
-        .Static:Raw(
-            FS.ModLayers.PLAYER_ATTACK,
-            function (me)
-                local amount = GetCountersCount(me.IPID)
-                me.Owner.Stats.State.Attack = me.Owner.Stats.State.Attack + amount / 2
-            end
+        .Static:Common(
+            FS.C.StateMod.ModPlayerAttack(function (me, player)
+                return GetCountersCount(me.IPID) / 2
+            end)
         )
         :Label(FS.Labels.Eternal)
     :Build()

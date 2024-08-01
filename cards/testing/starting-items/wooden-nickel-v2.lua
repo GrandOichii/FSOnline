@@ -16,8 +16,7 @@ function _Create()
                 .Effect:Roll(
                     function (stackEffect)
                         local roll = stackEffect.Rolls[0]
-                        local pIdx = tonumber(stackEffect.Targets[0].Value)
-                        AddCoins(pIdx, roll)
+                        FS.C.Effect.GainCoins(roll)(stackEffect)
                     end
                 )
             :Build()

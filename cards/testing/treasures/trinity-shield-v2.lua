@@ -21,7 +21,6 @@ function _Create()
         .Static:Raw(
             FS.ModLayers.ITEM_ACTIVATION_RESTRICTIONS,
             function (me)
-                local players = GetPlayers()
                 local items = FS.F.Items()
                     :ControlledByPlayer()
                     :NotControlledBy(me.Owner.Idx)

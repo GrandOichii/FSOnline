@@ -374,9 +374,29 @@ function FS.C.Effect.Discard(amount, hint)
     end
 end
 
-function FS.C.Effect.TillEndOfTurn(layer, effect)
+function FS.C.Effect.TillEndOfTurnRaw(layer, effect)
     return function (stackEffect)
         TillEndOfTurn(layer, effect)
+    end
+end
+
+function FS.C.Effect.StealShopItem(shopItemFilterFunc)
+    shopItemFilterFunc = shopItemFilterFunc or function (stackEffect)
+        return FS.F.Items():InShop():Do()
+    end
+
+    return function (stackEffect)
+        local items = shopItemFilterFunc(stackEffect)
+        for _, item in ipairs(items) do
+            StealItem(stackEffect.OwnerIdx, item.IPID)
+        end
+        return true
+    end
+end
+
+function FS.C.Effect.TargetPlayerGivesLootCards(amount)
+    return function (stackEffect)
+        return FS.C.GiveLootCards(stackEffect.OwnerIdx, tonumber(stackEffect.Targets[0].Value), amount)
     end
 end
 
@@ -461,6 +481,60 @@ function FS.C.Cost.PayCoins(amount)
         return player.Coins >= amount
     end
 
+    return result
+end
+
+FS.C.StateMod = {}
+
+function FS.C.StateMod.ModPlayerAttack(modF, playerFilterFunc)
+    playerFilterFunc = playerFilterFunc or function (me)
+        return FS.F.Players():Idx(me.Owner.Idx):Do()
+    end
+
+    local result = {}
+    result.Layer = FS.ModLayers.PLAYER_ATTACK
+    function result.Mod(me)
+        local players = playerFilterFunc(me)
+        for _, player in ipairs(players) do
+            player.Stats.State.Attack = player.Stats.State.Attack + modF(me, player)
+        end
+    end
+
+    return result
+end
+
+function FS.C.StateMod.ModPlayerHealth(modF, playerFilterFunc)
+    playerFilterFunc = playerFilterFunc or function (me)
+        return FS.F.Players():Idx(me.Owner.Idx):Do()
+    end
+
+    local result = {}
+    result.Layer = FS.ModLayers.PLAYER_MAX_HEALTH
+    function result.Mod(me)
+        local players = playerFilterFunc(me)
+        for _, player in ipairs(players) do
+            player.Stats.State.Health = player.Stats.State.Health + modF(me, player)
+        end
+    end
+
+    return result
+end
+
+function FS.C.StateMod.ShopItemsCostsNLess(amount, playerFilterFunc)
+    playerFilterFunc = playerFilterFunc or function (me)
+        return FS.F.Players():Idx(me.Owner.Idx):Do()
+    end
+
+    local result = {}
+    result.Layer = FS.ModLayers.PURCHASE_COST
+    function result.Mod(me)
+        me.Owner.State.PurchaseCostModifiers:Add(function (slot, cost)
+            if slot >= 0 then
+                return cost - amount
+            end
+            return cost
+        end)
+    end
     return result
 end
 
@@ -688,6 +762,7 @@ function FS.B.Card()
     end
 
     result.Static = {}
+
     function result.Static:Raw(layer, func)
         if result.stateModifiers[layer] == nil then
             result.stateModifiers[layer] = {}
@@ -695,6 +770,10 @@ function FS.B.Card()
         local t = result.stateModifiers[layer]
         t[#t+1] = func
         return result
+    end
+
+    function result.Static:Common(commonMod)
+        return result.Static:Raw(commonMod.Layer, commonMod.Mod)
     end
 
     return result
@@ -1060,6 +1139,9 @@ function FS.B.TriggeredAbility(effectText)
     end
 
     function result.On:PlayerDeathBeforePenalties(check)
+        check = check or function (me, player, args)
+            return true
+        end
         result.trigger = FS.Triggers.PLAYER_DEATH_BEFORE_PENALTIES
 
         result.costs[#result.costs+1] = {

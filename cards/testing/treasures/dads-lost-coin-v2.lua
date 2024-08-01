@@ -12,7 +12,6 @@ function _Create()
                     player.State.RollReplacementEffects:Add(function (rollStackEffect)
                         local roll = rollStackEffect.Value
                         if roll ~= 1 then
-
                             return true
                         end
                         local accept = FS.C.Choose.YesNo(me.Owner.Idx, 'Player '..player.Name..' rolled a '..roll..'. Force them to reroll?')

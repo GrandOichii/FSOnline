@@ -12,9 +12,19 @@ function _Create()
                         return FS.F.Items():Deactivatable():Do()
                     end
                 )
-                .Effect:Common(
-                    -- TODO make optional
-                    FS.C.Effect.DeactivateTarget(0)
+                .Effect:Custom(
+                    function (stackEffect)
+                        -- TODO too low-level
+                        local ipid = stackEffect.Targets[0].Value
+                        local item = GetInPlayCard(ipid)
+                        local accept = FS.C.Choose.YesNo(stackEffect.OwnerIdx, 'Deactivate '..item.LogName..'?')
+                        if not accept then
+                            return false
+                        end
+
+                        TapCard(ipid)
+                        return true
+                    end
                 )
             :Build()
         )

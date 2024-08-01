@@ -1,5 +1,4 @@
 -- status: implemented
--- TODO too low level
 
 function _Create()
     return FS.B.Card()
@@ -20,6 +19,7 @@ function _Create()
             .Static:Raw(
                 FS.ModLayers.DEATH_PENALTY_MODIFIERS,
                 function (me)
+                    -- TODO too low level
                     local owner = me.Owner
                     local f = function (amount)
                         return 0

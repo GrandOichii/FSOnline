@@ -1,5 +1,4 @@
 -- status: implemented
--- TODO too low-level
 
 function _Create()
     return FS.B.Item()
@@ -8,8 +7,9 @@ function _Create()
                 .Cost:Common(
                     FS.C.Cost.Tap()
                 )
-                .Effect:Common(
+                .Effect:Custom(
                     function (stackEffect)
+                        -- TODO too low-level
                         local ownerIdx = stackEffect.OwnerIdx
                         local players = FS.F.Players()
                             :Except(ownerIdx)
@@ -28,16 +28,8 @@ function _Create()
             :Build()
         )
         -- Shop items you purchase cost 3{cent} less.
-        .Static:Raw(
-            FS.ModLayers.PURCHASE_COST,
-            function (me)
-                me.Owner.State.PurchaseCostModifiers:Add(function (slot, cost)
-                    if slot >= 0 then
-                        return cost - 3
-                    end
-                    return cost
-                end)
-            end
+        .Static:Common(
+            FS.C.StateMod.ShopItemsCostsNLess(3)
         )
         :Label(FS.Labels.Eternal)
     :Build()
