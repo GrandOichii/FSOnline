@@ -109,6 +109,7 @@
             "bonus-souls/strawberry-warp"
         ],
         "Rooms": [
+            "rooms/dice-room2-requiem",
             "rooms/shell-game-requiem",
             "rooms/devil-beggar-requiem",
             "rooms/blessing-of-steam-requiem",

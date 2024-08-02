@@ -159,6 +159,23 @@ function FS.C.Effect.AddLootPlay(amount, filterFunc)
     end, filterFunc)
 end
 
+function FS.C.Effect.Wheel(lootAfter, filterFunc)
+    return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
+        while player.Hand.Count > 0 do
+            DiscardFromHand(player.Idx, 0)
+        end
+        LootCards(player.Idx, lootAfter, stackEffect)
+        return true
+    end, filterFunc)
+end
+
+function FS.C.Effect.DiscardMeFromPlay()
+    return function (stackEffect)
+        DiscardFromPlay(stackEffect.Card.IPID)
+        return true
+    end
+end
+
 function FS.C.Effect.RerollTargetRoll(target_idx)
     return function (stackEffect)
         local effect = GetStackEffect(stackEffect.Targets[target_idx].Value)
@@ -1392,6 +1409,12 @@ function FS.B.TriggeredAbility(effectText)
         }
 
         return result
+    end
+
+    function result.On:MeEnteringPlay()
+        return result.On:EnterPlay(function (me, player, args)
+            return me.IPID == args.Card.IPID
+        end)
     end
 
     -- TODO add filter func for which items are activated

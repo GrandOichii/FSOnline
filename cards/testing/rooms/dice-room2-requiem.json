@@ -1,0 +1,7 @@
+{
+    "Key": "dice-room2-requiem",
+    "Name": "Dice Room!!",
+    "Type": "Room",
+    "Text": "When this enters play, each player discards their hands and loots 3.\nAt the end of the turn, put this into discard.",
+    "Script": "dice-room2-requiem.lua"
+}
