@@ -1007,6 +1007,12 @@ function FS.B.Room()
     return result
 end
 
+function FS.B.Monster()
+    local result = FS.B.Card()
+
+    return result
+end
+
 function FS.B._Ability(effectText)
     local result = {}
 

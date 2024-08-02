@@ -28,6 +28,13 @@ public interface ICardMaster {
     /// <returns>Character card template associated with the given key</returns>
     public Task<CharacterCardTemplate> GetCharacter(string key);
     /// <summary>
+    /// Fetch a monster card
+    /// </summary>
+    /// <param name="key">Monster card key</param>
+    /// <returns>Monster card template associated with the given key</returns>
+    public Task<MonsterCardTemplate> GetMonster(string key);
+
+    /// <summary>
     /// Fetch a random character card
     /// </summary>
     /// <param name="rng">Random number generator</param>
@@ -37,4 +44,5 @@ public interface ICardMaster {
 
     public Task<List<string>> GetKeys();
     public Task<List<string>> GetCharacterKeys();
+    public Task<List<string>> GetMonsterKeys();
 }

@@ -117,6 +117,12 @@
             "rooms/static-shock-requiem",
             "rooms/blessing-of-greed-requiem",
             "rooms/blood-donation-requiem"
+        ],
+        "Monsters": [
+            "monsters/dip-v2",
+            "monsters/fatty-v2",
+            "monsters/fly-v2",
+            "monsters/clotty-v2"
         ]
     }
 }

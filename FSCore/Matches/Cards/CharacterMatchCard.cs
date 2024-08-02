@@ -10,7 +10,6 @@ public class CharacterMatchCard : OwnedInPlayMatchCard
     }
 
     public CharacterCardTemplate GetTemplate() {
-        // TODO? is casting bad? this is guaranteed to never throw an error
         return (CharacterCardTemplate)Card.Template;
     }
 }

@@ -115,6 +115,10 @@ public class Match {
     /// Room deck and discard
     /// </summary>
     public Deck RoomDeck { get; }
+    /// <summary>
+    /// Monster deck and discard
+    /// </summary>
+    public Deck MonsterDeck { get; }
 
     /// <summary>
     /// Index of all decks
@@ -127,6 +131,7 @@ public class Match {
 
     public List<TreasureSlot> TreasureSlots { get; }
     public List<RoomSlot> RoomSlots { get; }
+    public List<MonsterSlot> MonsterSlots { get; }
 
     #endregion
 
@@ -156,8 +161,11 @@ public class Match {
         LootDeck = new(this, true);
         TreasureDeck = new(this, true);
         RoomDeck = new(this, true);
+        MonsterDeck = new(this, true);
+
         TreasureSlots = [];
         RoomSlots = [];
+        MonsterSlots = [];
         BonusSouls = [];
         DeckIndex = new() {
             { DeckType.LOOT, LootDeck },
@@ -254,7 +262,13 @@ public class Match {
         }
 
         // monsters
-        // TODO
+        LogInfo($"Filling monster slots (initial count: {Config.InitialMonsterSlots})");
+        for (int i = 0; i < Config.InitialMonsterSlots; i++) {
+            var slot = new MonsterSlot(TreasureDeck, i);
+            await slot.Fill();
+            MonsterSlots.Add(slot);
+        }
+        // TODO add events to monster deck
 
         // rooms
         if (Config.UseRooms) {
@@ -313,7 +327,15 @@ public class Match {
         BonusSouls.AddRange(souls);
 
         // monster deck
-        // TODO
+        var monsters = new List<MatchCard>();
+        foreach (var key in Config.Monsters)
+            monsters.Add(new MatchCard(
+                this,
+                await _cardMaster.GetMonster(key),
+                DeckType.MONSTER
+            ));
+        MonsterDeck.Populate(monsters);
+        // TODO shuffle all of the monster cards into the deck, create the monster slots, THEN add all of the event cards and shuffle the monster deck again
 
         // rooms
         if (Config.UseRooms) {

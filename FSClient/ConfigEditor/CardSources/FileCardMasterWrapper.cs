@@ -39,6 +39,11 @@ public partial class FileCardMasterWrapper : Node
 		CardTemplates.Add(new(card));
 	}
 
+	private void AddMonsterCard(string key) {
+		var card = Cards.GetMonster(key).GetAwaiter().GetResult();
+		CardTemplates.Add(new(card));
+	}
+
 	public void Load(string path) {
 		Cards.Load(path);
 
@@ -48,6 +53,10 @@ public partial class FileCardMasterWrapper : Node
 
 		foreach (var key in Cards.GetCharacterKeys().GetAwaiter().GetResult()) {
 			AddCharacterCard(key);
+		}
+
+		foreach (var key in Cards.GetMonsterKeys().GetAwaiter().GetResult()) {
+			AddMonsterCard(key);
 		}
 	}
 

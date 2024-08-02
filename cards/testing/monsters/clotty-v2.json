@@ -1,0 +1,11 @@
+{
+    "Key": "clotty-v2",
+    "Name": "Clotty",
+    "Type": "Monster",
+    "Health": 2,
+    "Evasion": 3,
+    "Attack": 1,
+    "Text": "",
+    "RewardsText": "4{cent}",
+    "Script": "clotty-v2.lua"
+}

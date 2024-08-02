@@ -280,3 +280,11 @@ list_name = "Rooms"
 list_label = "Rooms"
 card_type = "Room"
 card_source = NodePath("../../../Sources/FileCardSource")
+
+[node name="Monsters" parent="HBoxContainer/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
+unique_name_in_owner = true
+layout_mode = 2
+list_name = "Monsters"
+list_label = "Monsters"
+card_type = "Monster"
+card_source = NodePath("../../../Sources/FileCardSource")
