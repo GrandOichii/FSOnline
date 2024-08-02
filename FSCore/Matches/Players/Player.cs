@@ -84,8 +84,6 @@ public class Player : IStateModifier {
     /// <summary>
     /// Amount of damage marked on the player
     /// </summary>
-    public bool IsDead { get; set; }
-    public StackEffect? DeathSource { get; set; }
     public Stats Stats { get; }
     public List<LuaFunction> DeathPreventors { get; }
 
@@ -105,8 +103,6 @@ public class Player : IStateModifier {
         Items = [];
         Souls = [];
         RollHistory = [];
-        IsDead = false;
-        DeathSource = null;
         Stats = new();
         DeathPreventors = [];
 
@@ -816,7 +812,7 @@ public class Player : IStateModifier {
             Stats.Damage = Stats.State.Health;
         }
 
-        Stats.CheckDead(this, source);
+        Stats.CheckDead(source);
 
 
         Match.LogInfo($"Player {LogName} lost {amount} health");
@@ -827,8 +823,8 @@ public class Player : IStateModifier {
 
     public void HealToMax() {
         Stats.Damage = 0;
-        IsDead = false;
-        DeathSource = null;
+        Stats.IsDead = false;
+        Stats.DeathSource = null;
     }
 
     public async Task ProcessDamage(int amount, StackEffect source) {
@@ -853,22 +849,22 @@ public class Player : IStateModifier {
     }
 
     public async Task CheckDead() {
-        if (DeathSource is null) return;
+        if (Stats.DeathSource is null) return;
 
         // dead
-        await PushDeath(DeathSource);
+        await PushDeath(Stats.DeathSource);
 
         // TODO feels like this shouldn't be here
         await Match.Emit("player_death_before_penalties", new() {
             { "Player", this },
-            { "Source", DeathSource },
+            { "Source", Stats.DeathSource },
         });
 
-        DeathSource = null;
+        Stats.DeathSource = null;
     }
 
     public async Task ProcessDeath(StackEffect deathSource) {
-        if (IsDead) return;
+        if (Stats.IsDead) return;
 
         // TODO catch exceptions
         foreach (var preventor in DeathPreventors) {
@@ -884,7 +880,7 @@ public class Player : IStateModifier {
         if (Match.CurPlayerIdx == Idx) {
             Match.TurnEnded = true;
         }
-        IsDead = true;
+        Stats.IsDead = true;
 
         await PayDeathPenalty(deathSource);
 

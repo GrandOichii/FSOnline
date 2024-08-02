@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Logging;
+using Microsoft.VisualBasic;
 
 namespace FSCore.Matches;
 
@@ -531,10 +532,8 @@ public class Match {
         foreach (var player in Players)
             await player.CheckDead();
         
-        // TODO? rooms
-        // TODO monsters
-        // TODO? treasure
-
+        foreach (var item in GetInPlayCards())
+            await item.CheckDead();
     }
 
     #region Triggers
@@ -806,6 +805,8 @@ public class Match {
 
     public async Task RemoveFromPlay(InPlayMatchCard card) {
         // players
+        // TODO trigger and soft reload state, then discard the card
+
         if (card is OwnedInPlayMatchCard ownedCard) {
             LogInfo($"Removing card {ownedCard.LogName} from player {ownedCard.Owner.LogName}");
             await ownedCard.Owner.RemoveItem(ownedCard);
@@ -828,6 +829,7 @@ public class Match {
                 break;
             }
         }
+
     }
 
     public async Task DiscardFromPlay(InPlayMatchCard card) {
@@ -990,4 +992,33 @@ public class Match {
         var effect = new DamageStackEffect(this, -1, amount, source, GetPlayer(toIdx));
         await PlaceOnStack(effect);
     }
+
+    public InPlayMatchCard GetMonster(string ipid) {
+        return MonsterSlots
+            .Where(slot => slot.Card is not null)
+            .Select(slot => slot.Card!)
+            .First(card => card.IPID == ipid)
+        ;
+    }
+
+    public List<InPlayMatchCard> GetInPlayCards() {
+        var result = GetItems();        
+
+        // characters
+        foreach (var player in Players)
+            result.Add(player.Character);
+
+        // monsters
+        foreach (var slot in MonsterSlots)
+            if (slot.Card is not null)
+                result.Add(slot.Card);
+
+        // rooms
+        foreach (var slot in RoomSlots)
+            if (slot.Card is not null)
+                result.Add(slot.Card);
+
+        return result;
+    }
 }
+

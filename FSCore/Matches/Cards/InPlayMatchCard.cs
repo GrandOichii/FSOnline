@@ -193,11 +193,6 @@ public class InPlayMatchCard : IStateModifier {
 
     #region Stats
 
-    public bool IsDead() {
-        // TODO
-        return false;
-    }
-
     public int GetAttack() => Stats!.State.Attack;
 
     #endregion
@@ -210,4 +205,71 @@ public class InPlayMatchCard : IStateModifier {
     }
 
     #endregion
+
+    public async Task ProcessDamage(int amount, StackEffect damageSource) {
+        if (Stats is null)
+            throw new MatchException($"Tried to deal damage to card {LogName}, which has no stats");
+
+        await Stats.ProcessDamage(this, amount, damageSource);
+    }
+
+    public async Task HealToMax() {
+        if (Stats is null) return;
+
+        Stats.Damage = 0;
+        Stats.DeathSource = null;
+        Stats.IsDead = false;
+    }
+
+    public async Task CheckDead() {
+        if (Stats is null || Stats.DeathSource is null) return;
+
+        // dead
+        await PushDeath(Stats.DeathSource);
+    }
+
+    public async Task ProcessDeath(StackEffect deathSource) {
+        if (Stats is null)
+            throw new MatchException($"Tried to push death of card {LogName} onto the stack, which has no stats");
+
+        if (Stats.IsDead) return;
+
+        // TODO catch exceptions
+        // TODO add back
+        // foreach (var preventor in DeathPreventors) {
+        //     var returned = preventor.Call(deathSource);
+        //     if (LuaUtility.GetReturnAsBool(returned)) {
+        //         Match.LogInfo($"Death of player {LogName} was prevented");
+        //         DeathPreventors.Remove(preventor);
+        //         return;
+        //     }
+        // }
+
+        // TODO
+        // Abilities that trigger when a monster dies, but not after gaining rewards, trigger here.
+        // The active player gains any rewards from the monster.
+        // Abilities that trigger when a monster dies, after gaining rewards, trigger here.
+        // If the monster has a soul icon, it becomes a soul and the active player gains it. Otherwise, it is moved to discard.
+        // Refill monster slots, if applicable.
+
+        Stats.IsDead = true;
+
+        // TODO death replacement effects
+        Card.Match.LogInfo($"Card {LogName} dies");
+
+        await Card.Match.Emit("card_death", new() {
+            { "Card", this },
+            { "Source", deathSource },
+        });
+        // TODO add update
+    }
+
+
+    public async Task PushDeath(StackEffect deathSource) {
+        Card.Match.LogInfo($"Death of card {LogName} is pushed onto the stack");
+
+        var effect = new CardDeathStackEffect(this, deathSource);
+        await Card.Match.PlaceOnStack(effect);
+    }
+
 }

@@ -19,8 +19,8 @@ public class AttackStackEffect : StackEffect
     public override async Task<bool> Resolve()
     {
         var player = Match.GetPlayer(OwnerIdx);
-        var monsterDead = Monster.IsDead();
-        var playerDead = player.IsDead;
+        var monsterDead = Monster.Stats!.IsDead;
+        var playerDead = player.Stats.IsDead;
         if (monsterDead || playerDead) {
             var logMsg = "Attack ends: ";
 
@@ -30,7 +30,6 @@ public class AttackStackEffect : StackEffect
                 logMsg += $"|player {player.LogName} died|";
 
             Match.LogInfo(logMsg);
-
 
             // ! When an attack ends due to a player or monster dying (or an attack being canceled), any unresolved attack rolls and combat damage are removed from the stack.
             // var newEffects = new List<StackEffect>();
@@ -56,6 +55,12 @@ public class AttackStackEffect : StackEffect
                 // TODO trigger miss
             } else {
                 // is not miss
+
+                var effect = new DamageStackEffect(Match, OwnerIdx, Monster.GetAttack(), this, Monster);
+                effect.SetParentEffect(this);
+
+                await Match.PlaceOnStack(effect);
+
             }
 
             // TODO

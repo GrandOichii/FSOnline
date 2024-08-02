@@ -34,8 +34,11 @@ public class EndPhase : IPhase
                 card.ResetTriggers();
             }
         }
-        // TODO heal all monsters
-        // TODO heal all rooms
+
+        foreach (var card in match.GetInPlayCards()) {
+            await card.HealToMax();
+        }
+
         match.TEOTEffects.Clear();
 
         match.TurnEnded = false;

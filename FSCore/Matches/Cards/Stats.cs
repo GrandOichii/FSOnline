@@ -7,6 +7,8 @@ public class Stats {
     public StatsState State { get; set; } = new();
     public int Damage { get; set; }
     public List<DamagePreventor> DamagePreventors { get; } = [];
+    public StackEffect? DeathSource { get; set; } = null;
+    public bool IsDead { get; set; } = false;
 
     public void UpdateState(Player player) {
         State = new(player);
@@ -35,6 +37,23 @@ public class Stats {
         return amount;
     }
 
+    public async Task ProcessDamage(InPlayMatchCard card, int amount, StackEffect source) {
+
+        amount = PreventDamage(amount);
+        if (amount == 0) return;
+
+        var match = card.Card.Match;
+
+        match.LogInfo($"Card {card.LogName} was dealt {amount} damage");
+        Damage += amount;
+        CheckDead(source);
+
+        await match.Emit("card_damaged", new() {
+            { "Card", card },
+            { "Amount", amount },
+            { "Source", source },
+        });
+    }
     public async Task ProcessDamage(Player player, int amount, StackEffect source) {
 
         amount = PreventDamage(amount);
@@ -42,7 +61,7 @@ public class Stats {
 
         player.Match.LogInfo($"Player {player.LogName} was dealt {amount} damage");
         Damage += amount;
-        CheckDead(player, source);
+        CheckDead(source);
 
         await player.Match.Emit("player_damaged", new() {
             { "Player", this },
@@ -51,11 +70,11 @@ public class Stats {
         });
     }
 
-    public void CheckDead(Player player, StackEffect possibleSource) {
+    public void CheckDead(StackEffect possibleSource) {
         if (Damage < State.Health) return;
 
         Damage = State.Health;
-        player.DeathSource = possibleSource;
+        DeathSource = possibleSource;
     }
 
 

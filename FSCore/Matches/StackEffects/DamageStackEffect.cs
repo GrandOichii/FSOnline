@@ -18,6 +18,12 @@ public class DamageStackEffect : StackEffect
         Targets.Add(new(TargetType.PLAYER, to.Idx.ToString()));
     }
 
+    public DamageStackEffect(Match match, int ownerIdx, int amount, StackEffect damageSource, InPlayMatchCard to)
+        : this(match, ownerIdx, amount, damageSource)
+    {
+        Targets.Add(new(TargetType.MONSTER, to.IPID));
+    }
+
     public override async Task<bool> Resolve()
     {
         // TODO monsters
@@ -28,6 +34,14 @@ public class DamageStackEffect : StackEffect
             await player.ProcessDamage(Amount, DamageSource);
             return true;
         }
+
+        if (target.Type == TargetType.MONSTER) {
+            var monster = Match.GetMonster(target.Value);
+            await monster.ProcessDamage(Amount, DamageSource);
+            return true;
+        }
+
+        throw new MatchException($"Unexpected target type for DamageStackEffect: {target.Type} (value: {target.Value})");
 
         return true;
     }
