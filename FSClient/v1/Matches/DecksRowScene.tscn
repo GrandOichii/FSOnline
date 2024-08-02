@@ -74,6 +74,17 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
+[node name="MonsterSlots" type="HBoxContainer" parent="Control2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TreasureSlot" parent="Control2/MonsterSlots" instance=ExtResource("2_84ikk")]
+layout_mode = 2
+
+[node name="TreasureSlot2" parent="Control2/MonsterSlots" instance=ExtResource("2_84ikk")]
+layout_mode = 2
+
 [node name="RoomSlots" type="HBoxContainer" parent="Control2"]
 unique_name_in_owner = true
 layout_mode = 2

@@ -70,8 +70,14 @@ layout_mode = 2
 text = "Pass"
 
 [node name="PurchaseButton" type="Button" parent="Windows/ActionWindow/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Declare purchase"
+
+[node name="AttackButton" type="Button" parent="Windows/ActionWindow/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Declare attack"
 
 [node name="Request" type="Label" parent="Windows/ActionWindow/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -142,5 +148,6 @@ text = "No"
 [connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/HBoxContainer/SendButton" to="." method="_on_send_button_pressed"]
 [connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/PassButton" to="." method="_on_pass_button_pressed"]
 [connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/PurchaseButton" to="." method="_on_purchase_button_pressed"]
+[connection signal="pressed" from="Windows/ActionWindow/MarginContainer/VBoxContainer/AttackButton" to="." method="_on_attack_button_pressed"]
 [connection signal="Connected" from="WSConnection" to="." method="_on_connection_connected"]
 [connection signal="MessageReceived" from="WSConnection" to="." method="_on_connection_message_received"]

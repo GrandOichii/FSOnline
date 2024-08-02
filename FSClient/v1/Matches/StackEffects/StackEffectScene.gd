@@ -17,6 +17,7 @@ var _type_map = {
 	'ability_activation': 'Ability activation',
 	'ability_trigger': 'Triggered ability',
 	'purchase_declaration': 'Purchase declaration',
+	'attack_declaration': 'Attack declaration',
 	'damage': 'Damage',
 	'player_death': 'Player death',
 }

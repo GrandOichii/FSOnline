@@ -97,6 +97,9 @@ func send_pass():
 	
 func send_declare_purchase():
 	Connection.Write('dp')
+	
+func send_declare_attack():
+	Connection.Write('da')
 
 func setup_pick_string(update: Variant):
 	ChooseStringText.text = update.Hint
@@ -159,3 +162,6 @@ func _on_pass_button_pressed():
 
 func _on_purchase_button_pressed():
 	send_declare_purchase()
+
+func _on_attack_button_pressed():
+	send_declare_attack()

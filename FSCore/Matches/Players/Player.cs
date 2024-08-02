@@ -14,6 +14,7 @@ public class Player : IStateModifier {
         new PlayLootAction(),
         new ActivateAction(),
         new DeclarePurchaseAction(),
+        new DeclareAttackAction(),
     ];
 
     /// <summary>
@@ -55,6 +56,7 @@ public class Player : IStateModifier {
     /// Amount of treasure cards a player can purchase
     /// </summary>
     public int PurchaseOpportunities { get; set; } // TODO change to private set;
+    public int AttackOpportunities { get; set; } // TODO change to private set;
     /// <summary>
     /// Player's hand
     /// </summary>
@@ -351,10 +353,19 @@ public class Player : IStateModifier {
     public void AddPurchaseOpportunitiesForTurn() {
         AddPurchaseOpportunities(Match.Config.PurchaseCountDefault);
     }
+    
+    public void AddAttackOpportunitiesForTurn() {
+        AddAttackOpportunities(Match.Config.AttackCountDefault);
+    }
 
     public void AddPurchaseOpportunities(int amount) {
         if (PurchaseOpportunities < 0) return;
         PurchaseOpportunities += amount;
+    }
+
+    public void AddAttackOpportunities(int amount) {
+        if (AttackOpportunities < 0) return;
+        AttackOpportunities += amount;
     }
 
     /// <summary>
@@ -366,6 +377,10 @@ public class Player : IStateModifier {
 
     public void RemovePurchaseOpportunities() {
         PurchaseOpportunities = 0;
+    }
+
+    public void RemoveAttackOpportunities() {
+        AttackOpportunities = 0;
     }
 
     /// <summary>
@@ -990,5 +1005,38 @@ public class Player : IStateModifier {
 
     #endregion
 
-    
+    #region Attacking
+
+    public async Task DeclareAttack() {
+        // TODO is this supposed to be here or during resolution
+        AttackOpportunities--;
+
+        var effect = new DeclareAttackStackEffect(Match, Idx);
+
+        Match.LogInfo($"Player {LogName} declares an attack");
+        await Match.PlaceOnStack(effect);
+
+        // TODO trigger
+    }
+
+    /// <summary>
+    /// Gets all monster slot indicies that can be attacked by the player
+    /// </summary>
+    /// <returns>List of monster slot indicies + -1 if can attack the top of the monster deck</returns>
+    public List<int> AvailableToAttack() {
+        // TODO
+
+        var result = new List<int>();
+
+        // top of monster deck
+        result.Add(-1);
+
+        // 
+        foreach (var slot in Match.MonsterSlots)
+            result.Add(slot.Idx);
+        return result;
+    }
+
+
+    #endregion   
 }
