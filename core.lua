@@ -105,8 +105,12 @@ function FS.C.Effect.SwitchRoll(rollIdx, index)
         -- TODO check that roll idx exists
         local roll = stackEffect.Rolls[rollIdx]
         local action = index[roll]
-        assert(action ~= nil, 'Didn\'t provide scenario for roll value '..roll..' for FS.C.Effect.SwitchRoll')
+        -- assert(action ~= nil, 'Didn\'t provide scenario for roll value '..roll..' for FS.C.Effect.SwitchRoll')
+        if action == nil then
+            return false
+        end
         action(stackEffect)
+        return true
     end
 end
 

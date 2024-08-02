@@ -1,0 +1,7 @@
+{
+    "Key": "shell-game-requiem",
+    "Name": "Shell Game",
+    "Type": "Room",
+    "Text": "Pay 3{cent}: roll-\n3: Gain 1{cent}.\n4: Loot 1.\n5: Gain 5{cent}.\n6: Gain +1 treasure. Put this into discard.",
+    "Script": "shell-game-requiem.lua"
+}

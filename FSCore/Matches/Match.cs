@@ -765,11 +765,23 @@ public class Match {
     }
 
     public async Task RemoveFromPlay(InPlayMatchCard card) {
+        // players
         if (card is OwnedInPlayMatchCard ownedCard) {
             LogInfo($"Removing card {ownedCard.LogName} from player {ownedCard.Owner.LogName}");
             await ownedCard.Owner.RemoveItem(ownedCard);
         }
+
+        // shop items
         foreach (var slot in TreasureSlots) {
+            if (slot.Card == card) {
+                LogInfo($"Removing card {card.LogName} from {slot.Name} slot [{slot.Idx}]");
+                await slot.Fill();
+                break;
+            }
+        }
+
+        // room slots
+        foreach (var slot in RoomSlots) {
             if (slot.Card == card) {
                 LogInfo($"Removing card {card.LogName} from {slot.Name} slot [{slot.Idx}]");
                 await slot.Fill();
@@ -839,13 +851,23 @@ public class Match {
     }
 
     public InPlayMatchCard? GetInPlayCardOrDefault(string ipid) {
+        // players
         foreach (var player in Players) {
             var result = player.GetInPlayCardOrDefault(ipid);
             if (result is not null) return result;
         }
+
+        // shop items
         foreach (var slot in TreasureSlots)
             if (slot.Card is not null && slot.Card.IPID == ipid)
                 return slot.Card;
+
+        // rooms
+        foreach (var slot in RoomSlots)
+            if (slot.Card is not null && slot.Card.IPID == ipid)
+                return slot.Card;
+
+        // monsters
 
         return null;
     }
