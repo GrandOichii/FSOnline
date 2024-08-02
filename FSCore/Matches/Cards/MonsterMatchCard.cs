@@ -1,24 +1,18 @@
-namespace FSCore.Matches.Cards;
+// namespace FSCore.Matches.Cards;
 
-/// <summary>
-/// Represents a monster card in a monster slot
-/// </summary>
-public class MonsterMatchCard : InPlayMatchCard
-{
-    // TODO
-    public MonsterMatchCard(MatchCard card)
-        : base(card)
-    {
-        // TODO
-    }
+// /// <summary>
+// /// Represents a monster card in a monster slot
+// /// </summary>
+// public class MonsterMatchCard : InPlayMatchCard
+// {
+//     public MonsterMatchCard(MatchCard card)
+//         : base(card)
+//     {
+//         // TODO
+//         Stats = new();
+//     }
 
-    // public MonsterMatchCard(Match match, MonsterCardTemplate template)
-    //     : base(new MatchCard(match, template))
-    // {
-
-    // }
-
-    public MonsterCardTemplate GetTemplate() {
-        return (MonsterCardTemplate)Card.Template;
-    }
-}
+//     public MonsterCardTemplate GetTemplate() {
+//         return (MonsterCardTemplate)Card.Template;
+//     }
+// }

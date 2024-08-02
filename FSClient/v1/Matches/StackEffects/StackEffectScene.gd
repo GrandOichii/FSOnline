@@ -20,6 +20,7 @@ var _type_map = {
 	'attack_declaration': 'Attack declaration',
 	'damage': 'Damage',
 	'player_death': 'Player death',
+	'attack': 'Attack',
 }
 
 var _type_action_map = {

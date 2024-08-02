@@ -84,4 +84,12 @@ public interface IPlayerController {
     /// <param name="options">List of slot indicies (-1 if top of treasure deck)</param>
     /// <returns>Shop index or -1 if top of treasure deck</returns>
     public Task<int> ChooseItemToPurchase(Match match, int playerIdx, List<int> options); // TODO change options to a tuple - (slot, cost)
+    /// <summary>
+    /// Prompt the user to pick a monster slot or top of monster deck to attack
+    /// </summary>
+    /// <param name="match">Parent match</param>
+    /// <param name="playerIdx">Player index</param>
+    /// <param name="options">List of slot indicies (-1 if top of monster deck)</param>
+    /// <returns>Monster index or -1 if top of treasure deck</returns>
+    public Task<int> ChooseMonsterToAttack(Match match, int playerIdx, List<int> options);
 }

@@ -1038,5 +1038,30 @@ public class Player : IStateModifier {
     }
 
 
+    public async Task<int> ChooseMonsterToAttack() {
+        var options = AvailableToAttack();
+
+        while (true) {
+            var result = await Controller.ChooseMonsterToAttack(Match, Idx, options);
+
+            if (!options.Contains(result)) {
+                if (Match.Config.StrictMode)
+                    throw new MatchException($"Invalid choice for picking slot index to purchase - {result} (player: {LogName})");
+                continue;
+            }
+
+            return result;
+        }
+    }
+
+    public async Task AttackMonsterInSlot(int slot) {
+        var monster = Match.MonsterSlots[slot].Card
+            ?? throw new MatchException($"Player {LogName} tried to attack monster slot {slot}, where there are no monsters")
+        ;       
+
+        var attack = new AttackStackEffect(Match, Idx, monster);
+        await Match.PlaceOnStack(attack);
+    }
+
     #endregion   
 }

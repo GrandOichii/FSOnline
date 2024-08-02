@@ -4,10 +4,7 @@ namespace FSCore.Matches.StackEffects;
 
 public class RollStackEffect : StackEffect
 {
-    /// <summary>
-    /// Parent stack effect
-    /// </summary>
-    public StackEffect Parent { get; }
+
     /// <summary>
     /// Roll value
     /// </summary>
@@ -25,10 +22,10 @@ public class RollStackEffect : StackEffect
     /// Sets the roll value to a random value between 1 and 6
     /// </summary>
     private void Roll() {
-        // Value = Match.Rng.Next(1, 7);
-        Value = 6;
+        Value = Match.Rng.Next(1, 7);
+        // Value = 6;
 
-        Match.LogInfo($"Player {Match.GetPlayer(Parent.OwnerIdx).LogName} rolled a {Value}");
+        Match.LogInfo($"Player {Match.GetPlayer(Parent!.OwnerIdx).LogName} rolled a {Value}");
 
         // TODO request player to order replacement effects
         var owner = Match.GetPlayer(OwnerIdx);
@@ -45,7 +42,7 @@ public class RollStackEffect : StackEffect
         Match.LogInfo($"Roll value of roll {SID} is set to {Value}");
     }
 
-    public override async Task Resolve()
+    public override async Task<bool> Resolve()
     {
         // TODO? completely fizzle the roll?
         if (!Parent.Cancelled) {
@@ -59,6 +56,8 @@ public class RollStackEffect : StackEffect
             { "Value", Value },
             { "Player", player },
         });
+
+        return true;
     }
 
     public override StackEffectData ToData() => new RollStackEffectData(this);

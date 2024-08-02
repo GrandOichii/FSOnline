@@ -18,7 +18,7 @@ public class DamageStackEffect : StackEffect
         Targets.Add(new(TargetType.PLAYER, to.Idx.ToString()));
     }
 
-    public override async Task Resolve()
+    public override async Task<bool> Resolve()
     {
         // TODO monsters
         var target = Targets[0];
@@ -26,9 +26,10 @@ public class DamageStackEffect : StackEffect
         if (target.Type == TargetType.PLAYER) {
             var player = Match.GetPlayer(int.Parse(target.Value));
             await player.ProcessDamage(Amount, DamageSource);
-            return;
+            return true;
         }
 
+        return true;
     }
 
     public override StackEffectData ToData() => new DamageStackEffectData(this);

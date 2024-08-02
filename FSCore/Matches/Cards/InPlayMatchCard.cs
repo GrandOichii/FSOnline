@@ -21,6 +21,7 @@ public class InPlayMatchCard : IStateModifier {
     /// State
     /// </summary>
     public InPlayMatchCardState State { get; private set; }
+    public Stats? Stats { get; set; }
 
     public Dictionary<TriggeredAbility, int> TriggerCountMap { get; }
 
@@ -33,6 +34,7 @@ public class InPlayMatchCard : IStateModifier {
 
         // Initial state
         State = new(this);
+        Stats = Card.Template.Health == -1 ? null : new();
     }
 
     public string LogName => $"{Card.Template.Name} [{IPID} ({Card.ID})]";
@@ -103,6 +105,7 @@ public class InPlayMatchCard : IStateModifier {
     public void UpdateState()
     {
         State = new(this);
+        Stats?.UpdateState(this);
     }
 
     #region Counters
@@ -187,4 +190,24 @@ public class InPlayMatchCard : IStateModifier {
     }
 
     public bool IsItem() => Card.Template.Type == "Item" || Card.Template.Type == "StartingItem";
+
+    #region Stats
+
+    public bool IsDead() {
+        // TODO
+        return false;
+    }
+
+    public int GetAttack() => Stats!.State.Attack;
+
+    #endregion
+
+    #region Attacking
+
+    public bool IsMiss(int roll) {
+        // TODO
+        return roll < Stats!.State.Evasion;
+    }
+
+    #endregion
 }

@@ -130,10 +130,23 @@ public class ConsolePlayerController : IPlayerController
         System.Console.WriteLine("(ChooseItemToPurchase)");
         System.Console.WriteLine("Options:");
         foreach (var option in options)
-            System.Console.WriteLine($"\t{option} - " + (option >= 0 ? match.TreasureSlots[option].Card!.LogName : "Top treasure deck"));
+            System.Console.WriteLine($"\t{option} - " + (option >= 0 ? match.TreasureSlots[option].Card!.LogName : "Top of treasure deck"));
             
         var result = Console.ReadLine()
             ?? throw new Exception("Failed to read treasure slot in ChooseItemToPurchase")
+        ;
+        return Task.FromResult(int.Parse(result));   
+    }
+
+    public Task<int> ChooseMonsterToAttack(Match match, int playerIdx, List<int> options)
+    {
+        System.Console.WriteLine("(ChooseMonsterToAttack)");
+        System.Console.WriteLine("Options:");
+        foreach (var option in options)
+            System.Console.WriteLine($"\t{option} - " + (option >= 0 ? match.MonsterSlots[option].Card!.LogName : "Top of monster deck"));
+            
+        var result = Console.ReadLine()
+            ?? throw new Exception("Failed to read monster slot in ChooseMonsterToAttack")
         ;
         return Task.FromResult(int.Parse(result));   
     }

@@ -1,5 +1,3 @@
-
-
 namespace FSCore.Matches.Slots;
 
 public class MonsterSlot : Slot
@@ -20,4 +18,6 @@ public class MonsterSlot : Slot
         // TODO
         await base.Fill();
     }
+
+    // public MonsterMatchCard GetCard() => (MonsterMatchCard)Card!;
 }

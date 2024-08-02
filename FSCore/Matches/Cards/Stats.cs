@@ -12,6 +12,10 @@ public class Stats {
         State = new(player);
     }
 
+    public void UpdateState(InPlayMatchCard card) {
+        State = new(card);
+    }
+
     public void AddDamagePreventors(int amount) {
         for (int i = 0; i < amount; i++) {
             var p = new DamagePreventor();

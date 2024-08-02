@@ -10,9 +10,10 @@ public class PlayerDeathStackEffect : StackEffect
         Source = source;
     }
 
-    public override async Task Resolve()
+    public override async Task<bool> Resolve()
     {
         await Match.GetPlayer(OwnerIdx).ProcessDeath(Source);
+        return true;
     }
 
     public override StackEffectData ToData() => new PlayerDeathStackEffectData(this);

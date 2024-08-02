@@ -8,18 +8,20 @@ public class DeclareAttackStackEffect : StackEffect {
         
     }
 
-    public override async Task Resolve()
+    public override async Task<bool> Resolve()
     {
         // TODO
-        // var owner = Match.GetPlayer(OwnerIdx);
+        var owner = Match.GetPlayer(OwnerIdx);
 
-        // var available = owner.AvailableToPurchase();
-        // if (available.Count == 0) {
-        //     Match.LogInfo($"Player {owner.LogName} failed to pay the cost to purchase an item");
-        //     return;
-        // }
+        var available = owner.AvailableToAttack();
+        if (available.Count == 0) {
+            Match.LogInfo($"Player {owner.LogName} can't attack anything");
+            return true;
+        }
 
-        // var slot = await owner.ChooseItemToPurchase();
+        var slot = await owner.ChooseMonsterToAttack();
+
+        // TODO pay costs for attacking
 
         // bool payed = owner.TryPayCoinsForSlot(slot);
         // if (!payed) {
@@ -27,14 +29,15 @@ public class DeclareAttackStackEffect : StackEffect {
         //     return;
         // }
 
-        // if (slot == -1) {
-        //     Match.LogInfo($"Player {owner.LogName} purchases the top card of the treasure deck");
-        //     await owner.GainTreasureRaw(1);
-        //     return;
-        // }
+        if (slot == -1) {
+            Match.LogInfo($"Player {owner.LogName} attacks the top card of the monster deck");
+            // TODO
+            return true;
+        }
 
-        // Match.LogInfo($"Player {owner.LogName} purchases item in Shop slot {slot}");
-        // await owner.GainControl(Match.TreasureSlots[slot]);
+        Match.LogInfo($"Player {owner.LogName} attacks the monster in Monster slot {slot}");
+        await owner.AttackMonsterInSlot(slot);
+        return true;
     }
 
     public override StackEffectData ToData() => new DeclareAttackStackEffectData(this);

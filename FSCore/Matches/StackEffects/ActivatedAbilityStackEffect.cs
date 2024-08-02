@@ -21,13 +21,14 @@ public class ActivatedAbilityStackEffect : StackEffect
         Card = card;
     }
 
-    public override async Task Resolve()
+    public override async Task<bool> Resolve()
     {
         if (Ability.ShouldFizzle(this)) {
             Match.LogInfo($"Activated ability stack effect {SID} of card {Card.LogName} fizzles");
-            return;
+            return true;
         }
         Ability.ExecuteEffects(this);
+        return true;
     }
 
     public override StackEffectData ToData() => new ActivatedAbilityStackEffectData(this);

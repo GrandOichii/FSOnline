@@ -2,6 +2,10 @@ namespace FSCore.Matches.StackEffects;
 
 public abstract class StackEffect {
     /// <summary>
+    /// Parent stack effect
+    /// </summary>
+    public StackEffect? Parent { get; protected set; }
+    /// <summary>
     /// Stack ID
     /// </summary>
     public string SID { get; }
@@ -39,12 +43,19 @@ public abstract class StackEffect {
         Targets = [];
         Choices = [];
         Cancelled = false;
+        Parent = null;
+    }
+
+    public StackEffect(Match match, int ownerIdx, StackEffect parentEffect)
+        : this (match, ownerIdx)
+    {
+        Parent = parentEffect;
     }
 
     /// <summary>
     /// Resolve the effect
     /// </summary>
-    abstract public Task Resolve();
+    abstract public Task<bool> Resolve();
     /// <summary>
     /// Get the data representation of the stack effect
     /// </summary>
@@ -57,6 +68,10 @@ public abstract class StackEffect {
 
     public int PopChoice() {
         return Choices.Dequeue();
+    }
+
+    public void SetParentEffect(StackEffect parentEffect) {
+        Parent = parentEffect;
     }
 }
 

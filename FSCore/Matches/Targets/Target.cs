@@ -7,6 +7,7 @@ public enum TargetType {
     PLAYER,
     STACK_EFFECT,
     ITEM,
+    MONSTER,
 }
 
 /// <summary>

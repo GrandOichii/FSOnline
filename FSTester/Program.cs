@@ -173,8 +173,8 @@ public class Program {
             .CreateLogger("Match");
 
         await match.AddPlayer("player1", c1);
-        await match.AddPlayer("player2", c2);
-
+        await AddRandomPlayer(match);
+        
         try {
             await match.Run();
         } catch (Exception e) {

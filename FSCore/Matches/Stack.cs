@@ -80,9 +80,10 @@ public class Stack {
         Match.LogInfo("Resolving top of stack");
         var top = Top;
 
-        await top.Resolve();
+        var remove = await top.Resolve();
 
-        Effects.Remove(top);
+        if (remove)
+            Effects.Remove(top);
         // PriorityIdx = Match.CurPlayerIdx;
         if (Effects.Count == 0) {
             Match.LogInfo("Stack is now empty");

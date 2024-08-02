@@ -156,4 +156,15 @@ public class IOPlayerController : IPlayerController
 
         return int.Parse(await _handler.Read());
     }
+
+    public async Task<int> ChooseMonsterToAttack(Match match, int playerIdx, List<int> options)
+    {
+        await WriteData(new(match, playerIdx) {
+            Request = "ChooseMonsterToAttack",
+            Hint = "",
+            Args = ToArgs(options),
+        });
+
+        return int.Parse(await _handler.Read());
+    }
 }

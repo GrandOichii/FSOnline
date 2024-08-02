@@ -75,4 +75,10 @@ public class RandomPlayerController : IPlayerController
         await Task.Delay(_delay);
         return GetRandom(options);
     }
+
+    public async Task<int> ChooseMonsterToAttack(Match match, int playerIdx, List<int> options)
+    {
+        await Task.Delay(_delay);
+        return GetRandom(options);
+    }
 }

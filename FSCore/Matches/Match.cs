@@ -264,7 +264,7 @@ public class Match {
         // monsters
         LogInfo($"Filling monster slots (initial count: {Config.InitialMonsterSlots})");
         for (int i = 0; i < Config.InitialMonsterSlots; i++) {
-            var slot = new MonsterSlot(TreasureDeck, i);
+            var slot = new MonsterSlot(MonsterDeck, i);
             await slot.Fill();
             MonsterSlots.Add(slot);
         }
@@ -477,6 +477,20 @@ public class Match {
         foreach (var player in Players)
             player.UpdateState();
 
+        // monsters
+        foreach (var slot in MonsterSlots) {
+            if (slot.Card is null) continue;
+
+            slot.Card.UpdateState();
+        }
+
+        // rooms
+        foreach (var slot in RoomSlots) {
+            if (slot.Card is null) continue;
+
+            slot.Card.UpdateState();
+        }
+
         foreach (var layer in MODIFICATION_LAYERS) {
             // players
             foreach (var player in Players) 
@@ -506,7 +520,11 @@ public class Match {
             }
 
             // monsters
-            // TODO
+            foreach (var slot in MonsterSlots) {
+                if (slot.Card is null) continue;
+
+                slot.Card.Modify(layer);
+            }
         }
 
         // check player deaths

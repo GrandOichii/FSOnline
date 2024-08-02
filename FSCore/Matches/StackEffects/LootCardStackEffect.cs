@@ -20,7 +20,7 @@ public class LootCardStackEffect : StackEffect
         GoesToDiscard = true;
     }
 
-    public override async Task Resolve()
+    public override async Task<bool> Resolve()
     {
         if (!Card.ShouldFizzle(this)) {
             Card.ExecuteCardEffects(this);
@@ -31,6 +31,8 @@ public class LootCardStackEffect : StackEffect
         // some cards put themselves into other zones !!! Trinkets
         if (GoesToDiscard)
             await Match.PlaceIntoDiscard(Card);
+
+        return true;
     }
 
     public override StackEffectData ToData() => new LootCardStackEffectData(this);
