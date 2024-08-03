@@ -21,6 +21,8 @@ var _type_map = {
 	'damage': 'Damage',
 	'player_death': 'Player death',
 	'attack': 'Attack',
+	'card_death': 'Monster Death',
+	'reward': 'Reward'
 }
 
 var _type_action_map = {

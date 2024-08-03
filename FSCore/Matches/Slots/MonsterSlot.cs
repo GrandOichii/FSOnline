@@ -11,7 +11,7 @@ public class MonsterSlot : Slot
     }
 
     // TODO
-    public override SlotData GetData() => new(this);
+    public override SlotData GetData() => new SlotData(this);
 
     public override async Task Fill()
     {

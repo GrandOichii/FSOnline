@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwu5mhj6eoxou"]
+[gd_scene load_steps=10 format=3 uid="uid://bwu5mhj6eoxou"]
 
 [ext_resource type="Script" path="res://v1/Matches/DecksRowScene.gd" id="1_p1f0n"]
 [ext_resource type="PackedScene" uid="uid://ds20e1mpqpej7" path="res://v1/Matches/Slots/TreasureSlotScene.tscn" id="2_84ikk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://glvi0yrjx88x" path="res://assets/images/card/backs/monster-card-bck.png" id="5_67ch4"]
 [ext_resource type="Texture2D" uid="uid://b8k0ylcnn12cj" path="res://assets/images/card/backs/room-back.png" id="7_3yhjp"]
 [ext_resource type="PackedScene" uid="uid://b6a8x16fcpvob" path="res://v1/Matches/Slots/RoomSlot.tscn" id="7_r2k5k"]
+[ext_resource type="PackedScene" uid="uid://b421q28mly4or" path="res://v1/Matches/Slots/MonsterSlotScene.tscn" id="8_aovqb"]
 
 [node name="DecksRowScene" type="HBoxContainer"]
 anchors_preset = 15
@@ -20,6 +21,7 @@ size_flags_horizontal = 3
 alignment = 1
 script = ExtResource("1_p1f0n")
 treasure_slot_scene = ExtResource("2_84ikk")
+monster_slot_scene = ExtResource("8_aovqb")
 room_slot_scene = ExtResource("7_r2k5k")
 
 [node name="Control" type="Control" parent="."]
@@ -79,10 +81,13 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TreasureSlot" parent="Control2/MonsterSlots" instance=ExtResource("2_84ikk")]
+[node name="MonsterSlotScene" parent="Control2/MonsterSlots" instance=ExtResource("8_aovqb")]
 layout_mode = 2
 
-[node name="TreasureSlot2" parent="Control2/MonsterSlots" instance=ExtResource("2_84ikk")]
+[node name="MonsterSlotScene2" parent="Control2/MonsterSlots" instance=ExtResource("8_aovqb")]
+layout_mode = 2
+
+[node name="MonsterSlotScene3" parent="Control2/MonsterSlots" instance=ExtResource("8_aovqb")]
 layout_mode = 2
 
 [node name="RoomSlots" type="HBoxContainer" parent="Control2"]

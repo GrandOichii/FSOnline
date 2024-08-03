@@ -97,6 +97,17 @@ func can_purchase(idx: int):
 	
 func purchase(idx: int):
 	send(str(idx))
+	
+func can_attack(idx: int):
+	if last_update.Request != 'ChooseMonsterToAttack':
+		return false
+	for v in last_update.Args.values():
+		if v == idx:
+			return true
+	return false
+	
+func attack(idx: int):
+	send(str(idx))
 
 func send(msg: String):
 	Response.emit(msg)
