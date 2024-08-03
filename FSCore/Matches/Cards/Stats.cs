@@ -84,4 +84,6 @@ public class Stats {
 
     //     return true;
     // }
+
+    public int GetCurrentHealth() => State.Health - Damage;
 }

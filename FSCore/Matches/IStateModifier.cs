@@ -15,6 +15,9 @@ public enum ModificationLayer {
     PLAYER_ATTACK = 12,
     DEATH_PENALTY_MODIFIERS = 13,
     DEATH_PENALTY_REPLACEMENT_EFFECTS = 14,
+    MONSTER_HEALTH = 15,
+    MONSTER_EVASION = 16,
+    MONSTER_ATTACK = 17,
 }
 
 /// <summary>

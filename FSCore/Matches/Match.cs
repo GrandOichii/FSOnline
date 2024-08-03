@@ -30,6 +30,11 @@ public class Match {
         ModificationLayer.PLAYER_MAX_HEALTH,
         ModificationLayer.PLAYER_ATTACK,
 
+        // montser stats
+        ModificationLayer.MONSTER_HEALTH,
+        ModificationLayer.MONSTER_EVASION,
+        ModificationLayer.MONSTER_ATTACK,
+
         // death penalty
         ModificationLayer.DEATH_PENALTY_MODIFIERS,
         ModificationLayer.DEATH_PENALTY_REPLACEMENT_EFFECTS,
@@ -497,9 +502,16 @@ public class Match {
             slot.Card.UpdateState();
         }
 
+        // monsters
+        foreach (var slot in MonsterSlots) {
+            if (slot.Card is null) continue;
+
+            slot.Card.UpdateState();
+        }
+
         foreach (var layer in MODIFICATION_LAYERS) {
             // players
-            foreach (var player in Players) 
+            foreach (var player in Players)
                 player.Modify(layer);
 
             // bonus souls
