@@ -602,9 +602,10 @@ public class Player : IStateModifier {
     #endregion
 
     public void LoseCoins(int amount) {
+        if (Coins < amount)
+            amount = Coins;
+            
         Coins -= amount;
-        if (Coins < 0)
-            Coins = 0;
         Match.AddToCoinPool(amount);
     }
 

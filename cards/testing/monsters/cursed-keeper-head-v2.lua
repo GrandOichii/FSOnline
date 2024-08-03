@@ -1,8 +1,19 @@
--- status: partially implemented
+-- status: implemented
 
 function _Create()
     return FS.B.Monster()
-        -- TODO add trigger
+        :TriggeredAbility(
+            FS.B.TriggeredAbility('Each time a player rolls a {roll:1}, they lose 2{cent}.')
+                .On:Roll(
+                    function (me, player, args)
+                        return args.Value == 1
+                    end
+                )
+                .Effect:Common(
+                    FS.C.Effect.LoseCoins(2, FS.C.RollOwner)
+                )
+            :Build()
+        )
         :Reward(
             FS.B.Reward('Roll- gain x{cent}')
                 .Effect:Roll(

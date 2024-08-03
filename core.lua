@@ -1814,3 +1814,7 @@ end
 FS.C.CurrentPlayers = function (...)
     return FS.F.Players():Current():Do()
 end
+
+FS.C.RollOwner = function (stackEffect, args)    
+    return FS.F.Players():Idx(args.Player.Idx):Do()
+end

@@ -567,6 +567,11 @@ public class Match {
         foreach (var slot in RoomSlots) {
             await slot.ProcessTrigger(trigger);
         }
+
+        // monster slots
+        foreach (var slot in MonsterSlots) {
+            await slot.ProcessTrigger(trigger);
+        }
     }
 
     /// <summary>

@@ -26,7 +26,6 @@ public class DamageStackEffect : StackEffect
 
     public override async Task<bool> Resolve()
     {
-        // TODO monsters
         var target = Targets[0];
 
         switch (target.Type) {
