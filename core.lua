@@ -45,6 +45,7 @@ FS.Triggers = {
     PLAYER_DEATH_BEFORE_PENALTIES = 'player_death_before_penalties',
     PLAYER_DEATH = 'player_death',
     PLAYED_DAMAGED = 'player_damaged',
+    CARD_DAMAGED = 'card_damaged',
 }
 
 -- common
@@ -1323,6 +1324,21 @@ function FS.B.TriggeredAbility(effectText)
 
     function result:Limit(limit)
         result.triggerLimit = limit
+        return result
+    end
+
+    function result.On:MonsterDamaged(check)
+        result.trigger = FS.Triggers.CARD_DAMAGED
+
+        result.costs[#result.costs+1] = {
+            Check = function (me, player, args)
+                return check(me, player, args)
+            end,
+            Pay = function (me, player, stackEffect, args)
+                return true
+            end
+        }
+
         return result
     end
 

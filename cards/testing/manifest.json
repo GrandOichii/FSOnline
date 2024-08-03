@@ -119,6 +119,8 @@
             "rooms/blood-donation-requiem"
         ],
         "Monsters": [
+            "monsters/war-v2",
+            "monsters/gemini-v2",
             "monsters/larry-jr-v2",
             "monsters/hush-v2",
             "monsters/little-horn-v2",
