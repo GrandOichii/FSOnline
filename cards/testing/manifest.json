@@ -119,6 +119,7 @@
             "rooms/blood-donation-requiem"
         ],
         "Monsters": [
+            "monsters/monstro-v2",
             "monsters/cursed-keeper-head-v2",
             "monsters/dip-v2",
             "monsters/fatty-v2",

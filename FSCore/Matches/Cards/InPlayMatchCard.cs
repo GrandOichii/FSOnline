@@ -274,6 +274,11 @@ public class InPlayMatchCard : IStateModifier {
         });
         // TODO add update
 
+        if (Card.Template.SoulValue > 0) {
+            await Card.Match.CurrentPlayer.AddSoulCard(new(Card));
+            return;
+        }
+        
         await Card.Match.DiscardFromPlay(this);
     }
 

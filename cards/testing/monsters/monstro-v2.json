@@ -1,0 +1,13 @@
+{
+    "Key": "monstro-v2",
+    "Name": "Monstro",
+    "Type": "Monster",
+    "todo": "change stats to 4 4 1",
+    "Health": 1,
+    "Evasion": 1,
+    "Attack": 1,
+    "Text": "",
+    "RewardsText": "6{cent}",
+    "SoulValue": 1,
+    "Script": "monstro-v2.lua"
+}
