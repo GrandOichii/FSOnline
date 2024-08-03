@@ -46,6 +46,7 @@ FS.Triggers = {
     PLAYER_DEATH = 'player_death',
     PLAYED_DAMAGED = 'player_damaged',
     CARD_DAMAGED = 'card_damaged',
+    CARD_DEATH = 'card_death',
 }
 
 -- common
@@ -468,6 +469,32 @@ function FS.C.Effect.MantleTargetPlayer(target_idx)
         end)
 
         return true
+    end
+end
+
+-- TODO add filter func
+function FS.C.Effect.ModMonsterAttackTEOT(mod)
+    return function (stackEffect)
+        local me = stackEffect.Card
+        TillEndOfTurn(
+            FS.ModLayers.MONSTER_ATTACK,
+            function ()
+                me.Stats.State.Attack = me.Stats.State.Attack + mod
+            end
+        )
+    end
+end
+
+-- TODO add filter func
+function FS.C.Effect.ModMonsterEvasionTEOT(mod)
+    return function (stackEffect)
+        local me = stackEffect.Card
+        TillEndOfTurn(
+            FS.ModLayers.MONSTER_EVASION,
+            function ()
+                me.Stats.State.Evasion = me.Stats.State.Evasion + mod
+            end
+        )
     end
 end
 
@@ -1325,6 +1352,27 @@ function FS.B.TriggeredAbility(effectText)
     function result:Limit(limit)
         result.triggerLimit = limit
         return result
+    end
+
+    function result.On:MonsterDies(check)
+        result.trigger = FS.Triggers.CARD_DEATH
+
+        result.costs[#result.costs+1] = {
+            Check = function (me, player, args)
+                return check(me, player, args)
+            end,
+            Pay = function (me, player, stackEffect, args)
+                return true
+            end
+        }
+
+        return result
+    end
+
+    function result.On:ThisDies()
+        return result.On:MonsterDies(function (me, player, args)
+            return me.IPID == args.Card.IPID
+        end)
     end
 
     function result.On:MonsterDamaged(check)
