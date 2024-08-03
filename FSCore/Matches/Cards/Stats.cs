@@ -64,7 +64,7 @@ public class Stats {
         CheckDead(source);
 
         await player.Match.Emit("player_damaged", new() {
-            { "Player", this },
+            { "Player", player },
             { "Amount", amount },
             { "Source", source },
         });
