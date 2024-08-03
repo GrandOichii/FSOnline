@@ -56,7 +56,7 @@ public class AttackStackEffect : StackEffect
             } else {
                 // is not miss
 
-                var effect = new DamageStackEffect(Match, OwnerIdx, Monster.GetAttack(), this, Monster);
+                var effect = new DamageStackEffect(Match, OwnerIdx, player.GetAttack(), this, Monster);
                 effect.SetParentEffect(this);
 
                 await Match.PlaceOnStack(effect);

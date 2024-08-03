@@ -40,6 +40,7 @@ public class EndPhase : IPhase
         }
 
         match.TEOTEffects.Clear();
+        match.DeadCards.Clear();
 
         match.TurnEnded = false;
     }

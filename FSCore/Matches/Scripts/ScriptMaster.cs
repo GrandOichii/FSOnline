@@ -123,7 +123,7 @@ public class ScriptMaster {
     public string PromptString(int playerIdx, LuaTable optionsTable, string hint) {
         var player = _match.GetPlayer(playerIdx);
 
-        List<string> options = new();
+        List<string> options = [];
         foreach (var v in optionsTable.Values)
             options.Add((string)v);
 

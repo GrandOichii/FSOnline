@@ -327,7 +327,23 @@ public class Player : IStateModifier {
     /// Prompts the player to discard a room card (if they defeated a monster during their turn)
     /// </summary>
     public async Task PromptToDiscardRoom() {
-        // TODO
+        if (Match.DeadCards.Count == 0) return;
+
+        // TODO could be better
+        // TODO doesnt factor rooms that cant be discarded
+        var options = Match.RoomSlots
+            .Where(slot => slot.Card is not null)
+            .Select(slot => slot.Card!.LogName)
+            .ToList();
+        options.Add("-");
+        var choice = await ChooseString(options, "Choose a room to discard");
+
+        if (choice == "-") return;
+
+        var slot = Match.RoomSlots
+            .First(slot => slot.Card is not null && slot.Card.LogName == choice);
+
+        await Match.DiscardFromPlay(slot.Card!);
     }
 
     /// <summary>
@@ -1060,4 +1076,6 @@ public class Player : IStateModifier {
     }
 
     #endregion   
+
+    public int GetAttack() => Stats.State.Attack;
 }

@@ -101,6 +101,10 @@ public class Match {
     /// "Till end of turn" effects
     /// </summary>
     public Dictionary<ModificationLayer, List<LuaFunction>> TEOTEffects { get; }
+    /// <summary>
+    /// Cards that died this turn
+    /// </summary>
+    public List<MatchCard> DeadCards { get; } = [];
 
     #region Decks
 
@@ -995,7 +999,7 @@ public class Match {
 
     public async Task ExpandShotSlots(int amount) {
         for (int i = 0; i < amount; i++) {
-            var slot = new TreasureSlot(TreasureDeck, i);
+            var slot = new TreasureSlot(TreasureDeck, TreasureSlots.Count);
             await slot.Fill();
             TreasureSlots.Add(slot);           
         }
