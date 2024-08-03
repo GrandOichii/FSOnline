@@ -13,4 +13,5 @@ public readonly struct StatsData(Stats stats) {
     /// Amount of damage that can be prevented
     /// </summary>
     public int PreventableDamage { get; } = stats.DamagePreventors.Count;
+    public int? Evasion { get; } = stats.State.Evasion;
 }

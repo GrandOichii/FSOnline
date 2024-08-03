@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Control
 class_name MonsterSlotScene
 
 @onready var Card = %Card
@@ -14,4 +14,4 @@ func set_controller(controller: MatchController):
 func load_snapshot(slot: Variant):
 	# TODO show overlay if slot.Card is null
 	Card.load_snapshot(slot.Card)
-	Card.Behavior.set_slot_idx(slot.Idx)
+	Card.Card.Behavior.set_slot_idx(slot.Idx)

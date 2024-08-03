@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://mshpwejycofa"]
+[gd_scene load_steps=6 format=3 uid="uid://mshpwejycofa"]
 
 [ext_resource type="Script" path="res://v1/Matches/Cards/InPlayCardScene.gd" id="1_0tswg"]
 [ext_resource type="PackedScene" uid="uid://c2s3cqas6maos" path="res://v1/Cards/CardScene.tscn" id="1_mp11h"]
 [ext_resource type="Script" path="res://v1/Behaviors/OwnedCardBehavior.gd" id="3_m2stk"]
+[ext_resource type="PackedScene" uid="uid://bebtmwob0wsi6" path="res://v1/Matches/Stats/StatsDisplayScene.tscn" id="4_arr8w"]
 
-[sub_resource type="Resource" id="Resource_jdrvt"]
+[sub_resource type="Resource" id="Resource_6644p"]
 resource_local_to_scene = true
 script = ExtResource("3_m2stk")
 can_activate_color = Color(0, 0.584314, 0, 1)
@@ -13,30 +14,26 @@ default_color = Color(0, 0, 0, 1)
 choose_color = Color(0.592157, 0, 0, 1)
 choose_hover_color = Color(0.952941, 0, 0, 1)
 
-[node name="InPlayCardScene" type="Control"]
-custom_minimum_size = Vector2(252, 252)
-layout_mode = 3
+[node name="InPlayCardScene" type="AspectRatioContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1748.0
-offset_bottom = -1248.0
+offset_top = -150.0
+offset_right = -1751.0
+offset_bottom = -1067.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0tswg")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control" type="Control" parent="CenterContainer"]
+[node name="CenterContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Card" parent="CenterContainer/Control" instance=ExtResource("1_mp11h")]
+[node name="Wrapper" type="Control" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Card" parent="CenterContainer/Wrapper" instance=ExtResource("1_mp11h")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -51,9 +48,9 @@ offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
-Behavior = SubResource("Resource_jdrvt")
+Behavior = SubResource("Resource_6644p")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Control/Card"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Wrapper/Card"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,14 +62,18 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="Counters" type="VBoxContainer" parent="CenterContainer/Control/Card/MarginContainer"]
+[node name="Counters" type="VBoxContainer" parent="CenterContainer/Wrapper/Card/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Counter" type="Label" parent="CenterContainer/Control/Card/MarginContainer/Counters"]
+[node name="Counter" type="Label" parent="CenterContainer/Wrapper/Card/MarginContainer/Counters"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 1, 1)
 theme_override_font_sizes/font_size = 80
 text = "1
 "
+
+[node name="Stats" parent="CenterContainer" instance=ExtResource("4_arr8w")]
+unique_name_in_owner = true
+layout_mode = 2

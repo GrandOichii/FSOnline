@@ -13,6 +13,7 @@ public class InPlayCardData : CardData {
     /// Index of counters (name -> amount)
     /// </summary>
     public Dictionary<string, int> Counters { get; }
+    public StatsData? Stats { get; }
 
     public InPlayCardData(InPlayMatchCard card)
         : base(card.Card)
@@ -20,8 +21,12 @@ public class InPlayCardData : CardData {
         IPID = card.IPID;
         Tapped = card.Tapped;
 
-        Counters = new();
+        Counters = [];
         foreach (var c in card.Counters.Values)
             Counters[c.Name] = c.Amount;
+
+        Stats = null;
+        if (card.Stats is not null)
+            Stats = new(card.Stats);
     }
 }

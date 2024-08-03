@@ -1,54 +1,83 @@
-[gd_scene load_steps=4 format=3 uid="uid://bebtmwob0wsi6"]
+[gd_scene load_steps=6 format=3 uid="uid://bebtmwob0wsi6"]
 
 [ext_resource type="Script" path="res://v1/Matches/Stats/StatsDisplayScene.gd" id="1_nitqm"]
 [ext_resource type="Texture2D" uid="uid://bxkfvvho52r2o" path="res://assets/icons/health.png" id="1_rtktt"]
 [ext_resource type="Texture2D" uid="uid://uf2xula7on4q" path="res://assets/icons/attack.png" id="2_2cjxm"]
+[ext_resource type="Texture2D" uid="uid://c0ok84io2y30k" path="res://assets/icons/evasion.png" id="3_fewda"]
 
-[node name="StatsDisplayScene" type="HBoxContainer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aquci"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="StatsDisplayScene" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aquci")
 script = ExtResource("1_nitqm")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="Health" type="Label" parent="HBoxContainer"]
+[node name="Health" type="Label" parent="HBoxContainer3/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "2"
 
-[node name="Preventable" type="Label" parent="HBoxContainer"]
+[node name="Preventable" type="Label" parent="HBoxContainer3/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.623529, 1, 1)
 text = "+2"
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer3/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_rtktt")
 expand_mode = 3
+stretch_mode = 6
 
-[node name="VSeparator" type="VSeparator" parent="."]
+[node name="EvasionContainer" type="HBoxContainer" parent="HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer3/EvasionContainer"]
+layout_mode = 2
+
+[node name="Evasion" type="Label" parent="HBoxContainer3/EvasionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "2"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer3/EvasionContainer"]
+layout_mode = 2
+texture = ExtResource("3_fewda")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer3"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Attack" type="Label" parent="HBoxContainer2"]
+[node name="Attack" type="Label" parent="HBoxContainer3/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "1"
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer3/HBoxContainer2"]
 layout_mode = 2
 texture = ExtResource("2_2cjxm")
 expand_mode = 3
+stretch_mode = 6
