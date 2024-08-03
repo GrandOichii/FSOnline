@@ -59,6 +59,7 @@ public class MatchCard {
     /// State modifiers
     /// </summary>
     public Dictionary<ModificationLayer, List<LuaFunction>> StateModifiers { get; }
+    public List<RewardAbility> Rewards { get; }
 
     #endregion
 
@@ -142,6 +143,21 @@ public class MatchCard {
                 .ToList();
         } catch (Exception e) {
             throw new MatchException($"Failed to get triggered abilities for card {template.Name}", e);
+        }
+
+        // rewards
+        try {
+            var rewards = LuaUtility.TableGet<LuaTable>(data, "Rewards");
+            Rewards = rewards.Values.Cast<object>()
+                .Select(
+                    o => new RewardAbility(
+                        o as LuaTable 
+                            ?? throw new MatchException($"Expected reward ability to be a table, but found {o.GetType()}")
+                    )
+                )
+                .ToList();
+        } catch (Exception e) {
+            throw new MatchException($"Failed to get reward abilities for card {template.Name}", e);
         }
 
         // labels

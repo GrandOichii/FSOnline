@@ -224,8 +224,9 @@ public class InPlayMatchCard : IStateModifier {
     public async Task CheckDead() {
         if (Stats is null || Stats.DeathSource is null) return;
 
-        // dead
         await PushDeath(Stats.DeathSource);
+
+        Stats.DeathSource = null;
     }
 
     public async Task ProcessDeath(StackEffect deathSource) {
@@ -233,6 +234,16 @@ public class InPlayMatchCard : IStateModifier {
             throw new MatchException($"Tried to push death of card {LogName} onto the stack, which has no stats");
 
         if (Stats.IsDead) return;
+
+        // TODO death preventors
+
+        // TODO trigger "when a monster dies"
+        // TODO gain rewards
+        await PushRewards(deathSource);
+        // TODO trigger "when a monster dies, after gaining rewards"
+        // TODO add monster as a soul card if able
+        // TODO otherwise discard the monster
+        // TODO check queued monsters, if none, refill slot
 
         // TODO catch exceptions
         // TODO add back
@@ -262,6 +273,30 @@ public class InPlayMatchCard : IStateModifier {
             { "Source", deathSource },
         });
         // TODO add update
+
+        await Card.Match.DiscardFromPlay(this);
+    }
+
+    public List<RewardAbility> GetRewards() {
+        return Card.Rewards;
+    }
+
+    public async Task PushRewards(StackEffect deathSource) {
+        // TODO use death source
+        // TODO? this uses only the first reward, change
+        
+        var rewards = GetRewards();
+        if (rewards.Count == 0) return;
+
+        var reward = rewards[0];
+        var effect = new RewardStackEffect(this, reward, Card.Match.CurPlayerIdx);
+
+        await Card.Match.PlaceOnStack(effect);
+
+        var payed = reward.PayCosts(this, Card.Match.CurrentPlayer, effect);
+        if (!payed) {
+            throw new MatchException($"Player {Card.LogName} decided not to pay reward costs for reward ability of card {LogName}");
+        }
     }
 
 

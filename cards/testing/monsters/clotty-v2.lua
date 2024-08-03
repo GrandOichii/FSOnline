@@ -2,6 +2,12 @@
 
 function _Create()
     return FS.B.Monster()
-        -- TODO add rewards
+        :Reward(
+            FS.B.Reward('4{cent}')
+                .Effect:Common(
+                    FS.C.Effect.GainCoins(4, FS.F.CurrentPlayers)
+                )
+            :Build()
+        )
     :Build()
 end

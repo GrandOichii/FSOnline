@@ -684,6 +684,7 @@ function FS.B.Card()
     result.effectGroups = {}
     result.activatedAbilities = {}
     result.triggeredAbilities = {}
+    result.rewards = {}
     result.labels = {}
     result.stateModifiers = {}
 
@@ -712,6 +713,9 @@ function FS.B.Card()
 
         -- triggered abilities
         card.TriggeredAbilities = result.triggeredAbilities
+
+        -- rewards
+        card.Rewards = result.rewards
 
         -- labels
         card.Labels = result.labels
@@ -892,6 +896,11 @@ function FS.B.Card()
     -- add triggered ability
     function result:TriggeredAbility(ta)
         result.triggeredAbilities[#result.triggeredAbilities+1] = ta
+        return result
+    end
+
+    function result:Reward(reward)
+        result.rewards[#result.rewards+1] = reward
         return result
     end
 
@@ -1276,6 +1285,12 @@ function FS.B._Ability(effectText)
 
         return result
     end
+
+    return result
+end
+
+function FS.B.Reward(effectText)
+    local result = FS.B._Ability(effectText)
 
     return result
 end
@@ -1794,4 +1809,8 @@ function FS.F.Characters()
     end
 
     return result
+end
+
+FS.C.CurrentPlayers = function (...)
+    return FS.F.Players():Current():Do()
 end

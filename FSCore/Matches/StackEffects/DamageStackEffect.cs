@@ -29,21 +29,19 @@ public class DamageStackEffect : StackEffect
         // TODO monsters
         var target = Targets[0];
 
-        if (target.Type == TargetType.PLAYER) {
+        switch (target.Type) {
+
+        case TargetType.PLAYER:
             var player = Match.GetPlayer(int.Parse(target.Value));
             await player.ProcessDamage(Amount, DamageSource);
             return true;
-        }
-
-        if (target.Type == TargetType.MONSTER) {
+        case TargetType.MONSTER:
             var monster = Match.GetMonster(target.Value);
             await monster.ProcessDamage(Amount, DamageSource);
             return true;
+        default:
+            throw new MatchException($"Unexpected target type for DamageStackEffect: {target.Type} (value: {target.Value})");
         }
-
-        throw new MatchException($"Unexpected target type for DamageStackEffect: {target.Type} (value: {target.Value})");
-
-        return true;
     }
 
     public override StackEffectData ToData() => new DamageStackEffectData(this);

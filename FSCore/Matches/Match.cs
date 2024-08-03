@@ -172,6 +172,7 @@ public class Match {
             { DeckType.LOOT, LootDeck },
             { DeckType.TREASURE, TreasureDeck },
             { DeckType.ROOM, RoomDeck },
+            { DeckType.MONSTER, MonsterDeck },
         };
         TEOTEffects = [];
 
@@ -823,6 +824,15 @@ public class Match {
 
         // room slots
         foreach (var slot in RoomSlots) {
+            if (slot.Card == card) {
+                LogInfo($"Removing card {card.LogName} from {slot.Name} slot [{slot.Idx}]");
+                await slot.Fill();
+                break;
+            }
+        }
+
+        // monster slots
+        foreach (var slot in MonsterSlots) {
             if (slot.Card == card) {
                 LogInfo($"Removing card {card.LogName} from {slot.Name} slot [{slot.Idx}]");
                 await slot.Fill();

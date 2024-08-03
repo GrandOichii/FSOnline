@@ -814,7 +814,6 @@ public class Player : IStateModifier {
 
         Stats.CheckDead(source);
 
-
         Match.LogInfo($"Player {LogName} lost {amount} health");
 
         // TODO update
