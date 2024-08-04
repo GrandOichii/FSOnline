@@ -1,0 +1,162 @@
+#!/bin/python3
+
+from sys import argv
+from os.path import join
+import json
+
+CARDS_DIR = '../cards/testing'
+
+STATS_FOR = ['monster', 'character']
+REWARDS_FOR = ['monster']
+STARTING_ITEMS_FOR = ['character']
+
+TYPE_TO_SCRIPT_INDEX = {
+    'character':
+'''-- status: implemented
+
+function _Create()
+    return FS.B.Character()
+        :Basic()
+
+    :Build()
+end''',
+    'startingitem':
+'''-- status: implemented
+
+function _Create()
+    return FS.B.Item()
+        
+        :Label(FS.Labels.Eternal)
+    :Build()
+end''',
+    'treasure':
+'''-- status: implemented
+
+function _Create()
+    return FS.B.Item()
+
+    :Build()
+end''',
+    'loot':
+'''-- status: implemented
+
+function _Create()
+    -- Effect text here
+    return FS.B.Loot()
+
+    :Build()
+end''',
+    'bonussoul':
+'''function _Create()
+    return FS.B:BonusSoul()
+        :Check(function (player)
+            return true
+        end)
+    :Build()
+end''',
+    'room':
+'''-- status: implemented
+
+function _Create()
+    return FS.B.Room()
+
+    :Build()
+end''',
+    'monster':
+'''-- status: implemented
+
+function _Create()
+    return FS.B.Monster()
+        :Reward(
+            FS.B.Reward('Reward text here')
+                .Effect:Common(
+                    FS.C.Effect.Function(args, FS.F.CurrentPlayers)
+                )
+            :Build()
+        )
+    :Build()
+end'''
+}
+
+TYPE_TO_TYPE_INDEX = {
+    'character': 'Character',
+    'startingitem': 'StartingItem',
+    'treasure': 'Item',
+    'loot': 'Loot',
+    'bonussoul': 'BonusSoul',
+    'room': 'Room',
+    'monster': 'Monster'
+}
+
+TYPE_TO_DECK_INDEX = {
+    'character': 'Characters',
+    'startingitem': 'StartingItems',
+    'treasure': 'Treasures',
+    'loot': 'Loot',
+    'bonussoul': 'BonusSouls',
+    'room': 'Rooms',
+    'monster': 'Monsters'
+}
+
+TYPE_TO_DIR_INDEX = {
+    'character': 'characters',
+    'startingitem': 'starting-items',
+    'treasure': 'treasures',
+    'loot': 'loot',
+    'bonussoul': 'bonus-souls',
+    'room': 'rooms',
+    'monster': 'monsters'
+}
+
+if (len(argv)) != 4:
+    print('Not enough arguments')
+    exit(1)
+
+card_type = argv[1].lower()
+if card_type not in TYPE_TO_DECK_INDEX.keys():
+    print(f'Not found key collection for type {card_type}')
+    exit(1)
+
+card_key = argv[2].lower()
+card_name = argv[3]
+
+# read manifest, append card key
+manifest = json.loads(open(join(CARDS_DIR, 'manifest.json'), 'r').read())
+keys = manifest['Cards'][TYPE_TO_DECK_INDEX[card_type]]
+cpath = f'{TYPE_TO_DIR_INDEX[card_type]}/{card_key}'
+
+if cpath in keys:
+    print(f'Card path {cpath} already exists in manifest.json')
+    exit(1)
+else:
+    keys += [cpath]
+
+# save manifest file
+open(join(CARDS_DIR, 'manifest.json'), 'w').write(json.dumps(manifest, indent=4))
+
+# create json file
+json_data = {
+    'Key': card_key,
+    'Name': card_name,
+    'Type': TYPE_TO_TYPE_INDEX[card_type],
+    'Text': 'TEXT',
+    'SoulValue': 0,
+    'Script': f'{card_key}.lua'
+
+}
+if card_type in STATS_FOR:
+    json_data['Health'] = 0
+    json_data['Evasion'] = 0
+    json_data['Attack'] = 0
+if card_type in REWARDS_FOR:
+    json_data['RewardsText'] = 'REWARDS'
+if card_type in STARTING_ITEMS_FOR:
+    json_data['StartingItems'] = [
+        'STARTINGITEM'
+    ]
+
+open(join(CARDS_DIR, cpath + '.json'), 'w').write(json.dumps(json_data, indent=4))
+
+# create script file
+script_data = TYPE_TO_SCRIPT_INDEX[card_type]
+open(join(CARDS_DIR, cpath + '.lua'), 'w').write(script_data)

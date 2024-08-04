@@ -586,7 +586,6 @@ public class Match {
 
         // monster slots
         foreach (var slot in MonsterSlots) {
-            System.Console.WriteLine("MONSTER SLOT");
             await slot.ProcessTrigger(trigger);
         }
     }

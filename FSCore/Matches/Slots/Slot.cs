@@ -51,7 +51,6 @@ public abstract class Slot {
     public virtual async Task ProcessTrigger(QueuedTrigger trigger) {
         if (Card is null) return;
 
-        System.Console.WriteLine(Card.IPID + " " + trigger);
         await Card.ProcessTrigger(trigger);
     }
 }

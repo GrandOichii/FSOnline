@@ -24,6 +24,5 @@ function _Create()
                 )
             :Build()
         )
-        -- TODO add second ability
     :Build()
 end

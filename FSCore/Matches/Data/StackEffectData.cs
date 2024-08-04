@@ -13,10 +13,12 @@ public class StackEffectData {
     /// Effect owner
     /// </summary>
     public int OwnerIdx { get; }
+    public List<Target> Targets { get; }
 
     public StackEffectData(StackEffect effect) {
         SID = effect.SID;
         OwnerIdx = effect.OwnerIdx;
+        Targets = effect.Targets;
 
         Type = "__base__";
     }

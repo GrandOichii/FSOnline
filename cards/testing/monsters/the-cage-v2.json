@@ -1,0 +1,12 @@
+{
+    "Key": "the-cage-v2",
+    "Name": "The Cage",
+    "Type": "Monster",
+    "Text": "",
+    "SoulValue": 1,
+    "Script": "the-cage-v2.lua",
+    "Health": 6,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "+2 Treasure"
+}

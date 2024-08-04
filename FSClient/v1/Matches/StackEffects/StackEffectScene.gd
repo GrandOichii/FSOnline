@@ -51,6 +51,16 @@ func load_snapshot(snapshot: Variant):
 	Details.text = ''
 	if snapshot.Type in _type_action_map:
 		_type_action_map[snapshot.Type].call(snapshot)
+	Details.text += '\n'
+	for target in snapshot.Targets:
+		if target.Type == 0:
+			Details.text += '[Player] '
+		if target.Type == 1:
+			Details.text += '[Stack effect] '
+		if target.Type == 2:
+			Details.text += '[Card] '
+		Details.text += target.Value
+
 	
 func set_type(type: String):
 	Type.text = _type_map[type]
