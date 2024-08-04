@@ -1,0 +1,11 @@
+{
+    "Key": "holy-squirt-v2",
+    "Name": "Holy Squirt",
+    "Type": "Monster",
+    "Health": 2,
+    "Evasion": 3,
+    "Attack": 1,
+    "Text": "Each time a player rolls a {roll:5}, they loot 1.",
+    "RewardsText": "Loot 2",
+    "Script": "holy-squirt-v2.lua"
+}
