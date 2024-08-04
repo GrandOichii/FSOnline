@@ -498,4 +498,23 @@ public class ScriptMaster {
     public LuaTable GetMonsters() {
         return LuaUtility.CreateTable(_match.LState, _match.GetMonsters());
     }
+
+    [LuaCommand]
+    public LuaTable ChooseMonsterOrPlayer(int playerIdx, LuaTable ipidsTable, LuaTable indiciesTable, string hint) {
+        var player = _match.GetPlayer(playerIdx);
+
+        var ipids = LuaUtility.ParseTable<string>(ipidsTable);
+        var indicies = LuaUtility.ParseTable(indiciesTable);
+
+        var (type, value) = player.ChooseMonsterOrPlayer(ipids, indicies, hint)
+            .GetAwaiter().GetResult();
+
+        return LuaUtility.CreateTable(_match.LState, new() { 
+            { "type", (int)type },
+            { "value", value },
+        });
+    }
+
+    [LuaCommand]
+    public int TargetTypeToInt(TargetType type) => (int)type;
 }

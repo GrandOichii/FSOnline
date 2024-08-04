@@ -167,4 +167,30 @@ public class IOPlayerController : IPlayerController
 
         return int.Parse(await _handler.Read());
     }
+
+    public async Task<(TargetType, string)> ChooseMonsterOrPlayer(Match match, int playerIdx, List<string> ipids, List<int> indicies, string hint)
+    {
+        var args = new Dictionary<string, object>();
+        foreach (var ipid in ipids) {
+            args.Add(args.Count.ToString(), $"m-{ipid}");
+        }
+        foreach (var idx in indicies) {
+            args.Add(args.Count.ToString(), $"p-{idx}");
+        }
+
+        await WriteData(new(match, playerIdx) {
+            Request = "ChooseMonsterOrPlayer",
+            Hint = hint,
+            Args = args,
+        });
+
+        var read = await _handler.Read();
+        if (read.StartsWith("m-")) {
+            return (TargetType.ITEM, read[2..]);
+        }
+        if (read.StartsWith("p-")) {
+            return (TargetType.PLAYER, read[2..]);
+        }
+        throw new MatchException($"Read bad message for picking monster/player - {read}");
+    }
 }

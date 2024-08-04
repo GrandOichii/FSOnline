@@ -723,7 +723,32 @@ public class Player : IStateModifier {
             return result;
         }
     }
-    
+    public async Task<(TargetType, string)> ChooseMonsterOrPlayer(List<string> ipids, List<int> indicies, string hint, bool optional=false) {
+        while (true) {
+            var (type, value) = await Controller.ChooseMonsterOrPlayer(Match, Idx, ipids, indicies, hint);
+
+            switch (type) {
+            case TargetType.PLAYER:
+                if (!indicies.Contains(int.Parse(value))) {
+                    if (Match.Config.StrictMode)
+                        throw new MatchException($"Invalid choice for picking monster/player - {value} (player: {LogName})");
+                    continue;
+                }
+                break;
+            case TargetType.ITEM:
+                if (!ipids.Contains(value)) {
+                    if (Match.Config.StrictMode)
+                        throw new MatchException($"Invalid choice for picking monster/player - {value} (player: {LogName})");
+                    continue;
+                }
+                break;
+            default:
+                throw new MatchException($"Invalid out TargetType for choosing monster/player: {type}");
+            }
+
+            return (type, value);
+        }
+    }
     public async Task<string> ChooseStackEffect(List<string> options, string hint, bool optional=false) {
         while (true) {
             var result = await Controller.ChooseStackEffect(Match, Idx, options, hint);

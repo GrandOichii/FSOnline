@@ -12,7 +12,7 @@ public class AttackStackEffect : StackEffect
         Participants = [ ownerIdx ];
         Monster = monster;
 
-        Targets.Add(new(TargetType.MONSTER, monster.IPID));
+        Targets.Add(new(TargetType.ITEM, monster.IPID));
     }
 
 

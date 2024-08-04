@@ -42,7 +42,6 @@ text = "Show/hide configuration"
 
 [node name="Config" parent="ConnectPanel/VBoxContainer" instance=ExtResource("3_j46m3")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 

@@ -21,7 +21,7 @@ public class DamageStackEffect : StackEffect
     public DamageStackEffect(Match match, int ownerIdx, int amount, StackEffect damageSource, InPlayMatchCard to)
         : this(match, ownerIdx, amount, damageSource)
     {
-        Targets.Add(new(TargetType.MONSTER, to.IPID));
+        Targets.Add(new(TargetType.ITEM, to.IPID));
     }
 
     public override async Task<bool> Resolve()
@@ -34,7 +34,7 @@ public class DamageStackEffect : StackEffect
             var player = Match.GetPlayer(int.Parse(target.Value));
             await player.ProcessDamage(Amount, DamageSource);
             return true;
-        case TargetType.MONSTER:
+        case TargetType.ITEM:
             var monster = Match.GetMonster(target.Value);
             await monster.ProcessDamage(Amount, DamageSource);
             return true;

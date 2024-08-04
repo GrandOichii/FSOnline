@@ -80,6 +80,7 @@
             "treasures/the-butter-bean-v2"
         ],
         "Loot": [
+            "loot/bomb-v2",
             "loot/3-cents-v2",
             "loot/blank-rune-v2",
             "loot/bloody-penny-v2",

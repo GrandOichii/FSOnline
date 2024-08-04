@@ -49,15 +49,24 @@ func activate(in_play_card: Variant):
 	send('a ' + str(in_play_card.IPID) + ' 0')
 	
 func can_choose_player(player_idx: int) -> bool:
-	if last_update.Request != 'ChoosePlayer':
+	if last_update.Request == 'ChoosePlayer':
+		for v in last_update.Args.values():
+			if v == player_idx:
+				return true
 		return false
-	for v in last_update.Args.values():
-		if v == player_idx:
-			return true
+		
+	if last_update.Request == 'ChooseMonsterOrPlayer':
+		return ('p-' + str(player_idx)) in last_update.Args.values()
+		
 	return false
-	
+
 func choose_player(player_idx: int):
-	send(str(player_idx))
+	if last_update.Request == 'ChoosePlayer':
+		send(str(player_idx))
+		return
+	if last_update.Request == 'ChooseMonsterOrPlayer':
+		send('p-' + str(player_idx))
+		return
 	
 func can_choose_stack_effect(sid: String) -> bool:
 	if last_update.Request != 'ChooseStackEffect':
@@ -80,12 +89,20 @@ func choose_card_in_hand(hand_idx: int):
 
 func can_choose_in_play(ipid: String) -> bool:
 	# TODO sketchy
-	if last_update.Request != 'ChooseItem':
-		return false
-	return ipid in last_update.Args.values()
+	if last_update.Request == 'ChooseItem':
+		return ipid in last_update.Args.values()
+	if last_update.Request == 'ChooseMonsterOrPlayer':
+		return ('m-' + ipid) in last_update.Args.values()
+	
+	return false
 
 func choose_in_play(ipid: String):
-	send(ipid)
+	if last_update.Request == 'ChooseItem':
+		send(ipid)
+		return
+	if last_update.Request == 'ChooseMonsterOrPlayer':
+		send('m-' + ipid)
+		return
 	
 func can_purchase(idx: int):
 	if last_update.Request != 'ChooseItemToPurchase':

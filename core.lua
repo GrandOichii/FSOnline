@@ -216,6 +216,22 @@ function FS.C.Effect.CancelTargetStackEffect(target_idx)
     end
 end
 
+function FS.C.Effect.DamageToTarget(target_idx, amount)
+    return function (stackEffect)
+        local target = stackEffect.Targets[target_idx]
+        local type = TargetTypeToInt(target.Type)
+        if type == FS.TargetTypes.PLAYER then
+            return FS.C.Effect.DamageToTargetPlayer(target_idx, amount)(stackEffect)
+        end
+        
+        if type == FS.TargetTypes.IN_PLAY_CARD then
+            return FS.C.Effect.DamageToTargetMonster(target_idx, amount)(stackEffect)
+        end
+
+        error('Invalid damage target: '..tostring(type))
+    end
+end
+
 function FS.C.Effect.DamageToTargetPlayer(target_idx, amount)
     return function (stackEffect)
         local toIdx = tonumber(stackEffect.Targets[target_idx].Value)
@@ -837,11 +853,17 @@ function FS.B.Card()
 
     result.Target = {}
 
-    function result.Target._AddFizzleCheck(filterFunc, extractFunc)
+    function result.Target._AddFizzleCheck(filterFunc, extractFunc, checkType)
         local targetIdx = #result.lootTargets
 
         result.lootFizzleChecks[#result.lootFizzleChecks+1] = function (stackEffect)
             local target = stackEffect.Targets[targetIdx].Value
+
+            -- * this is here for "choose a monster or player"
+            if TargetTypeToInt(stackEffect.Targets[targetIdx].Type) ~= checkType then
+                return true
+            end
+
             -- TODO kinda sketchy
             local options = filterFunc(stackEffect.Card, GetPlayer(stackEffect.OwnerIdx))
             for _, o in ipairs(options) do
@@ -864,7 +886,7 @@ function FS.B.Card()
 
         result.Target._AddFizzleCheck(filterFunc, function (effect)
             return effect.SID
-        end)
+        end, FS.TargetTypes.STACK_EFFECT)
         result.Target._AddLootCheck(filterFunc)
 
         result.lootTargets[#result.lootTargets+1] = function (me, player, stackEffect)
@@ -888,7 +910,7 @@ function FS.B.Card()
 
         result.Target._AddFizzleCheck(filterFunc, function (item)
             return item.IPID
-        end)
+        end, FS.TargetTypes.IN_PLAY_CARD)
         result.Target._AddLootCheck(filterFunc)
 
         result.lootTargets[#result.lootTargets+1] = function (me, player, stackEffect)
@@ -916,7 +938,7 @@ function FS.B.Card()
 
         result.Target._AddFizzleCheck(filterFunc, function (player)
             return tostring(player.Idx)
-        end)
+        end, FS.TargetTypes.PLAYER)
         result.Target._AddLootCheck(filterFunc)
 
         result.lootTargets[#result.lootTargets+1] = function (me, player, stackEffect)
@@ -929,6 +951,50 @@ function FS.B.Card()
             -- TODO add optional
             local idx = ChoosePlayer(player.Idx, indicies, hint)
             AddTarget(stackEffect, FS.TargetTypes.PLAYER, tostring(idx))
+
+            return true
+        end
+
+        return result
+    end
+    
+    function result.Target:MonsterOrPlayer(monsterFilterFunc, playerFilterFunc, hint)
+        hint = hint or 'Choose a Monster or player'
+        -- TODO fizzle check break this entire thing
+
+        playerFilterFunc = playerFilterFunc or function (player)
+            return FS.F.Players():Do()
+        end
+        result.Target._AddFizzleCheck(playerFilterFunc, function (player)
+            return tostring(player.Idx)
+        end, FS.TargetTypes.PLAYER)
+        result.Target._AddLootCheck(playerFilterFunc)
+
+        monsterFilterFunc = monsterFilterFunc or function (monster)
+            return FS.F.Monsters():Do()
+        end
+        result.Target._AddFizzleCheck(monsterFilterFunc, function (monster)
+            return monster.IPID
+        end, FS.TargetTypes.IN_PLAY_CARD)
+        result.Target._AddLootCheck(monsterFilterFunc)
+
+        result.lootTargets[#result.lootTargets+1] = function (me, player, stackEffect)
+            local pOptions = playerFilterFunc(player)
+            local indicies = {}
+            for _, p in ipairs(pOptions) do
+                indicies[#indicies+1] = p.Idx
+            end
+            
+            local mOptions = monsterFilterFunc(player)
+            local ipids = {}
+            for _, p in ipairs(mOptions) do
+                ipids[#ipids+1] = p.IPID
+            end
+
+            -- TODO add optional
+            local choice = ChooseMonsterOrPlayer(player.Idx, ipids, indicies, hint)
+
+            AddTarget(stackEffect, choice.type, tostring(choice.value))
 
             return true
         end
@@ -1183,11 +1249,15 @@ function FS.B._Ability(effectText)
 
     result.Target = {}
 
-    function result.Target._AddFizzleCheck(filterFunc, extractFunc)
+    function result.Target._AddFizzleCheck(filterFunc, extractFunc, checkType)
         local targetIdx = #result.targets
 
         result.fizzleChecks[#result.fizzleChecks+1] = function (stackEffect)
+            if TargetTypeToInt(stackEffect.Targets[targetIdx].Type) ~= checkType then
+                return false
+            end
             local target = stackEffect.Targets[targetIdx].Value
+
             local options = filterFunc(stackEffect.Card, GetPlayer(stackEffect.OwnerIdx))
             for _, o in ipairs(options) do
                 if extractFunc(o) == target then
@@ -1208,7 +1278,7 @@ function FS.B._Ability(effectText)
 
         result.Target._AddFizzleCheck(filterFunc, function (player)
             return tostring(player.Idx)
-        end)
+        end, FS.TargetTypes.PLAYER)
 
         result.targets[#result.targets+1] = {
             Check = function (me, player)
@@ -1234,7 +1304,7 @@ function FS.B._Ability(effectText)
         hint = hint or 'Choose an item'
         result.Target._AddFizzleCheck(filterFunc, function (item)
             return item.IPID
-        end)
+        end, FS.TargetTypes.IN_PLAY_CARD)
 
         result.costs[#result.costs+1] = {
             Check = function (me, player)
@@ -1258,7 +1328,7 @@ function FS.B._Ability(effectText)
         hint = hint or 'Choose a stack effect'
         result.Target._AddFizzleCheck(filterFunc, function (effect)
             return effect.SID
-        end)
+        end, FS.TargetTypes.STACK_EFFECT)
 
         result.costs[#result.costs+1] = {
             Check = function (me, player)
@@ -1287,7 +1357,7 @@ function FS.B._Ability(effectText)
         hint = hint or 'Choose a Character'
         result.Target._AddFizzleCheck(filterFunc, function (character)
             return character.IPID
-        end)
+        end, FS.TargetTypes.IN_PLAY_CARD)
 
         result.costs[#result.costs+1] = {
             Check = function (me, player)
@@ -1316,7 +1386,7 @@ function FS.B._Ability(effectText)
         hint = hint or 'Choose a Monster'
         result.Target._AddFizzleCheck(filterFunc, function (monster)
             return monster.IPID
-        end)
+        end, FS.TargetTypes.IN_PLAY_CARD)
 
         result.costs[#result.costs+1] = {
             Check = function (me, player)

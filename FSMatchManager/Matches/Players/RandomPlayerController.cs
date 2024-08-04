@@ -2,6 +2,8 @@
 
 using FSCore.Matches;
 using FSCore.Matches.Players.Controllers;
+using FSCore.Matches.Targets;
+
 
 namespace FSMatchManager.Matches.Players;
 
@@ -80,5 +82,26 @@ public class RandomPlayerController : IPlayerController
     {
         await Task.Delay(_delay);
         return GetRandom(options);
+    }
+
+    public async Task<(TargetType, string)> ChooseMonsterOrPlayer(Match match, int playerIdx, List<string> ipids, List<int> indicies, string hint)
+    {
+        var args = new List<string>();
+        foreach (var ipid in ipids) {
+            args.Add($"m-{ipid}");
+        }
+        foreach (var idx in indicies) {
+            args.Add($"p-{idx}");
+        }
+
+        var result = GetRandom(args);
+
+        if (result.StartsWith("m-")) {
+            return (TargetType.ITEM, result[2..]);
+        }
+        if (result.StartsWith("p-")) {
+            return (TargetType.PLAYER, result[2..]);
+        }
+        throw new MatchException($"Invalid random choice - {result}");
     }
 }

@@ -92,4 +92,14 @@ public interface IPlayerController {
     /// <param name="options">List of slot indicies (-1 if top of monster deck)</param>
     /// <returns>Monster index or -1 if top of treasure deck</returns>
     public Task<int> ChooseMonsterToAttack(Match match, int playerIdx, List<int> options);
+    /// <summary>
+    /// Propmpt the user to pick a monster or player
+    /// </summary>
+    /// <param name="match">Parent match</param>
+    /// <param name="playerIdx">Player index</param>
+    /// <param name="ipids">List of In-play IDs of pickable monsters</param>
+    /// <param name="indicies">List of player indicies</param>
+    /// <param name="hint">Hint</param>
+    /// <returns>A tuple of target type and identifier</returns>
+    public Task<(TargetType, string)> ChooseMonsterOrPlayer(Match match, int playerIdx, List<string> ipids, List<int> indicies, string hint);
 }
