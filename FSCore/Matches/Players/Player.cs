@@ -887,6 +887,12 @@ public class Player : IStateModifier {
 
         var effect = new PlayerDeathStackEffect(this, deathSource);
         await Match.PlaceOnStack(effect);
+
+        await Match.Emit("player_death_before_penalties", new() {
+            { "Player", this },
+            { "Source", deathSource },
+        });
+
     }
 
     public async Task CheckDead() {
@@ -894,12 +900,6 @@ public class Player : IStateModifier {
 
         // dead
         await PushDeath(Stats.DeathSource);
-
-        // TODO feels like this shouldn't be here
-        await Match.Emit("player_death_before_penalties", new() {
-            { "Player", this },
-            { "Source", Stats.DeathSource },
-        });
 
         Stats.DeathSource = null;
     }

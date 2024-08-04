@@ -240,6 +240,14 @@ function FS.C.Effect.DamageToTargetPlayer(target_idx, amount)
     end
 end
 
+function FS.C.Effect.GiveMeToTargetPlayer(target_idx, amount)
+    return function (stackEffect)
+        local idx = tonumber(stackEffect.Targets[target_idx].Value)
+        StealItem(idx, stackEffect.Card.IPID)
+        return true
+    end
+end
+
 function FS.C.Effect.DamageToTargetMonster(target_idx, amount)
     return function (stackEffect)
         local ipid = stackEffect.Targets[target_idx].Value
@@ -629,7 +637,6 @@ function FS.C.Cost.DonateItems(amount, itemFilterFunc, playerFilterFunc)
     function result.Pay(me, player, stackEffect)
 
         for i = 1, amount do
-            print(me, player)
             local items = itemFilterFunc(me, player)
             local ipids = FS.C.IPIDs(items)
             local ipid = ChooseItem(player.Idx, ipids, 'Choose an item to donate ('..(amount-i+1)..' left)')
