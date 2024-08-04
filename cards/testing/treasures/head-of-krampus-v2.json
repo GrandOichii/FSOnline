@@ -1,0 +1,7 @@
+{
+    "Key": "head-of-krampus-v2",
+    "Name": "Head of Krampus",
+    "Type": "Item",
+    "Text": "{T}: Roll-\n1-3: Deal 1 damage to each player.\n4-6: Deal 1 damage to each monster.",
+    "Script": "head-of-krampus-v2.lua"
+}

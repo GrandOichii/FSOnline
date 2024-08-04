@@ -924,25 +924,7 @@ public class Match {
     }
 
     public InPlayMatchCard? GetInPlayCardOrDefault(string ipid) {
-        // players
-        foreach (var player in Players) {
-            var result = player.GetInPlayCardOrDefault(ipid);
-            if (result is not null) return result;
-        }
-
-        // shop items
-        foreach (var slot in TreasureSlots)
-            if (slot.Card is not null && slot.Card.IPID == ipid)
-                return slot.Card;
-
-        // rooms
-        foreach (var slot in RoomSlots)
-            if (slot.Card is not null && slot.Card.IPID == ipid)
-                return slot.Card;
-
-        // monsters
-
-        return null;
+        return GetInPlayCards().FirstOrDefault(card => card.IPID == ipid);
     }
 
     public InPlayMatchCard GetInPlayCard(string ipid) {
@@ -1024,6 +1006,11 @@ public class Match {
         await PlaceOnStack(effect);
     }
 
+    public async Task DamageToCardRequest(string ipid, int amount, StackEffect source) {
+        var effect = new DamageStackEffect(this, source.OwnerIdx, amount, source, GetInPlayCard(ipid));
+        await PlaceOnStack(effect);
+    }
+
     public InPlayMatchCard GetMonster(string ipid) {
         return MonsterSlots
             .Where(slot => slot.Card is not null)
@@ -1046,6 +1033,17 @@ public class Match {
 
         // rooms
         foreach (var slot in RoomSlots)
+            if (slot.Card is not null)
+                result.Add(slot.Card);
+
+        return result;
+    }
+
+    public List<InPlayMatchCard> GetMonsters() {
+        // TODO? more
+        var result = new List<InPlayMatchCard>();
+
+        foreach (var slot in MonsterSlots)
             if (slot.Card is not null)
                 result.Add(slot.Card);
 

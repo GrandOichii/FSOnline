@@ -406,6 +406,12 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public void DealDamageToCard(string ipid, int amount, StackEffect sourceEffect) {
+        _match.DamageToCardRequest(ipid, amount, sourceEffect)
+            .Wait();
+    }
+
+    [LuaCommand]
     public void KillPlayer(int playerIdx, StackEffect source) {
         var player = _match.GetPlayer(playerIdx);
         player.PushDeath(source)
@@ -486,5 +492,10 @@ public class ScriptMaster {
     public void CancelEverything() {
         // TODO? more
         _match.Stack.Effects.Clear();
+    }
+
+    [LuaCommand]
+    public LuaTable GetMonsters() {
+        return LuaUtility.CreateTable(_match.LState, _match.GetMonsters());
     }
 }

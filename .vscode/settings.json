@@ -64,7 +64,9 @@
         "ChooseInPlayCard",
         "AddDeathPreventor",
         "EndTheTurn",
-        "CancelEverything"
+        "CancelEverything",
+        "GetMonsters",
+        "DealDamageToCard"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

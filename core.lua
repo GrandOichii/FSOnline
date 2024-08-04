@@ -224,6 +224,14 @@ function FS.C.Effect.DamageToTargetPlayer(target_idx, amount)
     end
 end
 
+function FS.C.Effect.DamageToTargetMonster(target_idx, amount)
+    return function (stackEffect)
+        local ipid = stackEffect.Targets[target_idx].Value
+        DealDamageToCard(ipid, amount, stackEffect)
+        return true
+    end
+end
+
 function FS.C.Effect.SetTargetRoll(target_idx, value)
     return function (stackEffect)
         local effect = GetStackEffect(stackEffect.Targets[target_idx].Value)
@@ -356,6 +364,16 @@ function FS.C.Effect.DamageToPlayer(amount, filterFunc)
         DealDamageToPlayer(player.Idx, amount, stackEffect)
         return true
     end, filterFunc)
+end
+
+function FS.C.Effect.DamageToMonster(amount, filterFunc)
+    return function (stackEffect, args)
+        local monsters = filterFunc(stackEffect, args)
+        for _, m in ipairs(monsters) do
+            DealDamageToCard(m.IPID, amount, stackEffect)
+        end
+        return true
+    end
 end
 
 function FS.C.Effect.KillOwner()
@@ -1291,6 +1309,35 @@ function FS.B._Ability(effectText)
         return result
     end
 
+    function result.Target:Monster(filterFunc, hint)
+        filterFunc = filterFunc or function (me, player)
+            return FS.F.Monsters():Do()
+        end
+        hint = hint or 'Choose a Monster'
+        result.Target._AddFizzleCheck(filterFunc, function (monster)
+            return monster.IPID
+        end)
+
+        result.costs[#result.costs+1] = {
+            Check = function (me, player)
+                return #filterFunc(me, player) > 0
+            end,
+            Pay = function (me, player, stackEffect)
+                local options = filterFunc(me, player)
+                local indicies = {}
+                for _, e in ipairs(options) do
+                    indicies[#indicies+1] = e.IPID
+                end
+                -- TODO add optional
+                local ipid = ChooseInPlayCard(player.Idx, indicies, hint)
+                AddTarget(stackEffect, FS.TargetTypes.IN_PLAY_CARD, ipid)
+
+                return true
+            end
+        }
+        return result
+    end
+
     -- TODO repeated code
     -- add common effect(s)
     function result.Effect:Common(...)
@@ -1878,10 +1925,45 @@ function FS.F.Characters()
     return result
 end
 
+function FS.F.Monsters()
+    local result = {}
+
+    result.filters = {}
+
+    function result:Do()
+        local res = {}
+        local monsters = GetMonsters()
+        local filter = function (item)
+            for _, f in ipairs(result.filters) do
+                if not f(item) then
+                    return false
+                end
+            end
+            return true
+        end
+        for _, item in ipairs(monsters) do
+            if filter(item) then
+                res[#res+1] = item
+            end
+        end
+        return res
+    end
+
+    return result
+end
+
 FS.C.CurrentPlayers = function (...)
     return FS.F.Players():Current():Do()
 end
 
 FS.C.RollOwner = function (stackEffect, args)    
     return FS.F.Players():Idx(args.Player.Idx):Do()
+end
+
+FS.C.AllPlayers = function (...)
+    return FS.F.Players():Do()
+end
+
+FS.C.AllMonsters = function (...)
+    return FS.F.Monsters():Do()
 end
