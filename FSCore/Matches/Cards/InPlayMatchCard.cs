@@ -238,8 +238,6 @@ public class InPlayMatchCard : IStateModifier {
         // TODO death preventors
 
         // TODO trigger "when a monster dies"
-        // TODO gain rewards
-        await PushRewards(deathSource);
         // TODO trigger "when a monster dies, after gaining rewards"
         // TODO add monster as a soul card if able
         // TODO otherwise discard the monster
@@ -272,6 +270,10 @@ public class InPlayMatchCard : IStateModifier {
             { "Card", this },
             { "Source", deathSource },
         });
+
+        await Card.Match.ReloadState();
+        await PushRewards(deathSource);
+
         // TODO add update
 
         await Card.Match.RemoveFromPlay(this);

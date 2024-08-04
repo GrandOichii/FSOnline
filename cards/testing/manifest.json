@@ -123,6 +123,7 @@
             "rooms/blood-donation-requiem"
         ],
         "Monsters": [
+            "monsters/swarmer-v2",
             "monsters/boom-fly-v2",
             "monsters/fistula-v2",
             "monsters/war-v2",

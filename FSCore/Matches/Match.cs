@@ -586,6 +586,7 @@ public class Match {
 
         // monster slots
         foreach (var slot in MonsterSlots) {
+            System.Console.WriteLine("MONSTER SLOT");
             await slot.ProcessTrigger(trigger);
         }
     }
@@ -992,6 +993,7 @@ public class Match {
     #region Shop
 
     public async Task ExpandShotSlots(int amount) {
+        LogInfo($"Expanding shop slots by {amount}");
         for (int i = 0; i < amount; i++) {
             var slot = new TreasureSlot(TreasureDeck, TreasureSlots.Count);
             await slot.Fill();
@@ -1049,5 +1051,15 @@ public class Match {
 
         return result;
     }
+
+    public async Task ExpandMonsterSlots(int amount) {
+        LogInfo($"Expanding monster slots by {amount}");
+        for (int i = 0; i < amount; i++) {
+            var slot = new MonsterSlot(MonsterDeck, MonsterSlots.Count);
+            await slot.Fill();
+            MonsterSlots.Add(slot);           
+        }
+    }
+
 }
 

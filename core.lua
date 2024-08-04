@@ -122,6 +122,14 @@ end
 function FS.C.Effect.ExpandShotSlots(amount)
     return function (stackEffect)
         ExpandShotSlots(amount)
+        return true
+    end
+end
+
+function FS.C.Effect.ExpandMonsterSlots(amount)
+    return function (stackEffect)
+        ExpandMonsterSlots(amount)
+        return true
     end
 end
 
@@ -1495,6 +1503,7 @@ function FS.B.TriggeredAbility(effectText)
 
     function result.On:ThisDies()
         return result.On:MonsterDies(function (me, player, args)
+            print(me.IPID, args.Card.IPID)
             return me.IPID == args.Card.IPID
         end)
     end

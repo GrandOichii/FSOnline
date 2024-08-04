@@ -369,6 +369,12 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public void ExpandMonsterSlots(int amount) {
+        _match.ExpandMonsterSlots(amount)
+            .Wait();
+    }
+
+    [LuaCommand]
     public void StealCoins(int playerIdx, int fromIdx, int amount) {
         var p1 = _match.GetPlayer(playerIdx);
         var p2 = _match.GetPlayer(fromIdx);

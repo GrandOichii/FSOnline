@@ -6,8 +6,6 @@
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
     "StartingItems": [
-        "bloody-penny-v2",
-        "baby-haunt-v2",
         "abyss-requiem"
     ],
     "Script": "the-empty-requiem.lua"

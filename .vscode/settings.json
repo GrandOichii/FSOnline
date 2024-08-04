@@ -68,7 +68,8 @@
         "GetMonsters",
         "DealDamageToCard",
         "ChooseMonsterOrPlayer",
-        "TargetTypeToInt"
+        "TargetTypeToInt",
+        "ExpandMonsterSlots"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"
