@@ -79,4 +79,16 @@ public class RandomPlayerController : IPlayerController
         await Task.Delay(_delay);
         return GetRandom(options);
     }
+
+    public async Task<(TargetType, string)> ChooseMonsterOrPlayer(Match match, int playerIdx, List<string> ipids, List<int> indicies, string hint)
+    {
+        await Task.Delay(_delay);
+        var options = ipids;
+        options.AddRange(indicies.Select(i => i.ToString()));
+        var result = GetRandom(options);
+        return (
+            ipids.Contains(result) ? TargetType.ITEM : TargetType.PLAYER,
+            result
+        );
+    }
 }

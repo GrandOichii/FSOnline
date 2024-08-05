@@ -1,5 +1,6 @@
 using FSCore.Matches;
 using FSCore.Matches.Players.Controllers;
+using FSCore.Matches.Targets;
 
 namespace FSTester;
 
@@ -149,5 +150,24 @@ public class ConsolePlayerController : IPlayerController
             ?? throw new Exception("Failed to read monster slot in ChooseMonsterToAttack")
         ;
         return Task.FromResult(int.Parse(result));   
+    }
+
+    public Task<(TargetType, string)> ChooseMonsterOrPlayer(Match match, int playerIdx, List<string> ipids, List<int> indicies, string hint)
+    {
+        System.Console.WriteLine("(ChooseMonsterOrPlayer)");
+        System.Console.WriteLine("Monster options:");
+        foreach (var option in ipids)
+            System.Console.WriteLine(option);
+        System.Console.WriteLine("Player options:");
+        foreach (var option in indicies)
+            System.Console.WriteLine(option);
+            
+        var result = Console.ReadLine()
+            ?? throw new Exception("Failed to read monster/player in ChooseMonsterOrPlayer")
+        ;
+        return Task.FromResult((
+            ipids.Contains(result) ? TargetType.ITEM : TargetType.PLAYER,
+            result
+        ));
     }
 }
