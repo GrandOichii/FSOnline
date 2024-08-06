@@ -2,6 +2,7 @@ extends Node
 
 @export var file_drop_enabled = true
 @export var cards_path: String
+@export var base_loot_amount: int = 1
 
 @export var card_source: CardSource
 
@@ -48,7 +49,6 @@ func build() -> Dictionary:
 	for card in card_source.of_type('StartingItem'):
 		si.append(card.Key)
 	result['StartingItems'] = si
-	# TODO
 	
 	# loot cards
 	%Loot.modify(result)
@@ -94,4 +94,4 @@ func _on_files_dropped(files):
 		load_json_file(file)
 		return
 		
-	# TODO warn player
+	# TODO confirm

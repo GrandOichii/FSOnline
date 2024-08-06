@@ -19,6 +19,10 @@ public class Program {
         return deserializer.Deserialize<MatchConfig>(text);
     }
 
+    private static MatchConfig ReadConfigJSON(string text) {
+        return JsonSerializer.Deserialize<MatchConfig>(text);
+    }
+
     public static async Task TcpMatch(MatchConfig config, int playerCount, int realPlayerCount) {
         var cm = new FileCardMaster();
         cm.Load("../cards/testing");
@@ -112,8 +116,8 @@ public class Program {
     }
 
     public static async Task TestRandom(int start, int end, bool enableLogging = false) {
-        var config = ReadConfigYAML(
-            File.ReadAllText("../configs/testing.yaml")
+        var config = ReadConfigJSON(
+            File.ReadAllText("../configs/test.json")
         );
 
         var cm = new FileCardMaster();

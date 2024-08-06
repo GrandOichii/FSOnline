@@ -8,7 +8,6 @@ function _Create()
                     FS.C.Cost.DonateItems(
                         1,
                         function (me, player)
-                            print(me, player)
                             return FS.F.Items()
                                 :Except(me.IPID)
                                 :NonEternal()

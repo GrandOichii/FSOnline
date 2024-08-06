@@ -17,7 +17,6 @@ function _Create()
         :TriggeredAbility(
             FS.B.TriggeredAbility('When you die, before paying penalties, give this to another player.')
                 .On:PlayerDeathBeforePenalties(function (me, player, args)
-                    print(player.Idx, args.Player.Idx)
                     return player.Idx == args.Player.Idx
                 end)
                 -- .On:PlayerDeathBeforePenalties()

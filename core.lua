@@ -1503,7 +1503,6 @@ function FS.B.TriggeredAbility(effectText)
 
     function result.On:ThisDies()
         return result.On:MonsterDies(function (me, player, args)
-            print(me.IPID, args.Card.IPID)
             return me.IPID == args.Card.IPID
         end)
     end

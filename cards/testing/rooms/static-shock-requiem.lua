@@ -8,7 +8,6 @@ function _Create()
                 .On:ItemActivation()
                 .Effect:Custom(
                     function (stackEffect, args)
-                        print(args.Player.Idx)
                         DealDamageToPlayer(args.Player.Idx, 1, stackEffect)
                     end
                 )

@@ -2,6 +2,7 @@ extends Control
 
 @export var list_name: String
 @export var list_label: String
+@export var base_value: int = 1
 @export var card_type: String
 @export var card_source: CardSource
 
@@ -13,7 +14,7 @@ func _ready():
 	# fill default
 	var cards = card_source.of_type(card_type)
 	for card in cards:
-		add_key(card.Key, 1)
+		add_key(card.Key, base_value)
 	set_key_filter('')
 
 func set_key_filter(filter: String):
@@ -34,7 +35,6 @@ func add_key(key: String, amount: int):
 	row.set_source(card_source)
 	row.load(key, amount)
 	
-
 func modify(d: Dictionary):
 	var dict = {}
 	# TODO duplicates

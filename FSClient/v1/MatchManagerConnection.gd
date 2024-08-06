@@ -78,3 +78,8 @@ func _on_create_check_toggled(toggled_on):
 	nodes = get_tree().get_nodes_in_group('create_control')
 	for node: Control in nodes:
 		node.visible = toggled_on
+
+func _on_copy_config_button_pressed():
+	var c = Config.build()
+	var text = str(c)
+	DisplayServer.clipboard_set(text)

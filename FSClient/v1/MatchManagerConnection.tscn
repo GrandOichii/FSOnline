@@ -44,6 +44,11 @@ text = "Show/hide configuration"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+base_loot_amount = 10
+
+[node name="CopyConfigButton" type="Button" parent="ConnectPanel/VBoxContainer"]
+layout_mode = 2
+text = "Copy config to clipboard"
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="ConnectPanel/VBoxContainer"]
 layout_mode = 2
@@ -137,6 +142,7 @@ text = "Start match"
 [connection signal="MatchInfoReceived" from="Match" to="." method="_on_match_match_info_received"]
 [connection signal="MessageReceived" from="Match/WSConnection" to="." method="_on_ws_connection_message_received"]
 [connection signal="pressed" from="ConnectPanel/VBoxContainer/ConfigButton" to="." method="_on_config_button_pressed"]
+[connection signal="pressed" from="ConnectPanel/VBoxContainer/CopyConfigButton" to="." method="_on_copy_config_button_pressed"]
 [connection signal="toggled" from="ConnectPanel/VBoxContainer/HBoxContainer6/CreateCheck" to="." method="_on_create_check_toggled"]
 [connection signal="pressed" from="ConnectPanel/VBoxContainer/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ConnectPanel/VBoxContainer/StartMatchButton" to="." method="_on_start_match_button_pressed"]
