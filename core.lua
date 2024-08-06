@@ -521,6 +521,40 @@ function FS.C.Effect.MantleTargetPlayer(target_idx)
     end
 end
 
+function FS.C.Effect.ModTargetAttackTEOT(target_idx, mod)
+    return function (stackEffect)
+
+        local target = stackEffect.Targets[target_idx]
+        local type = TargetTypeToInt(target.Type)
+
+        if type == FS.TargetTypes.PLAYER then
+            TillEndOfTurn(
+                FS.ModLayers.PLAYER_ATTACK,
+                function ()
+                    local player = GetPlayer(tonumber(target.Value))
+                    player.Stats.State.Attack = player.Stats.State.Attack + mod
+                end
+            )
+            return true
+        end
+        if type == FS.TargetTypes.IN_PLAY_CARD then
+            TillEndOfTurn(
+                FS.ModLayers.MONSTER_ATTACK,
+                function ()
+                    local monster = GetInPlayCardOrDefault(target.Value)
+                    if monster == nil then
+                        return
+                    end
+                    monster.Stats.State.Attack = monster.Stats.State.Attack + mod
+                end
+            )
+            return true
+        end
+
+        error('Invalid attack mod target: '..tostring(type))
+    end
+end
+
 -- TODO add filter func
 function FS.C.Effect.ModMonsterAttackTEOT(mod)
     return function (stackEffect)
@@ -1280,6 +1314,50 @@ function FS.B._Ability(effectText)
             return false
         end
 
+        return result
+    end
+
+    function result.Target:MonsterOrPlayer(monsterFilterFunc, playerFilterFunc, hint)
+        playerFilterFunc = playerFilterFunc or function (player)
+            return FS.F.Players():Do()
+        end
+        monsterFilterFunc = monsterFilterFunc or function (monster)
+            return FS.F.Monsters():Do()
+        end
+        hint = hint or 'Choose a monster or player'
+
+        result.Target._AddFizzleCheck(playerFilterFunc, function (player)
+            return tostring(player.Idx)
+        end, FS.TargetTypes.PLAYER)
+        result.Target._AddFizzleCheck(monsterFilterFunc, function (player)
+            return player.IPID
+        end, FS.TargetTypes.IN_PLAY_CARD)
+
+        result.targets[#result.targets+1] = {
+            Check = function (me, player)
+                return (#playerFilterFunc(me, player) + #monsterFilterFunc(me, player)) > 0
+            end,
+            Pay = function (me, player, stackEffect)
+                local pOptions = playerFilterFunc(player)
+                local indicies = {}
+                for _, p in ipairs(pOptions) do
+                    indicies[#indicies+1] = p.Idx
+                end
+                
+                local mOptions = monsterFilterFunc(player)
+                local ipids = {}
+                for _, p in ipairs(mOptions) do
+                    ipids[#ipids+1] = p.IPID
+                end
+
+                -- TODO add optional
+                local choice = ChooseMonsterOrPlayer(player.Idx, ipids, indicies, hint)
+
+                AddTarget(stackEffect, choice.type, tostring(choice.value))
+
+                return true
+            end
+        }
         return result
     end
 

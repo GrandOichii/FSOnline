@@ -1,6 +1,7 @@
 {
     "Cards": {
         "Characters": [
+            "characters/samson-v2",
             "characters/guppy-v2",
             "characters/judas-v2",
             "characters/isaac-v2",
@@ -17,6 +18,7 @@
             "characters/bum-bo-v2"
         ],
         "StartingItems": [
+            "starting-items/blood-lust-v2",
             "starting-items/infestation-v2",
             "starting-items/book-of-belial-v2",
             "starting-items/the-d6-v2",

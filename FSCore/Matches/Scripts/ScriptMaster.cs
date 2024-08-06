@@ -409,6 +409,11 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public InPlayMatchCard? GetInPlayCardOrDefault(string ipid){
+        return _match.GetInPlayCardOrDefault(ipid);
+    }
+
+    [LuaCommand]
     public void DealDamageToPlayer(int toIdx, int amount, StackEffect sourceEffect) {
         if (sourceEffect.OwnerIdx == -1) {
             _match.DamageToPlayerRequest(toIdx, amount, sourceEffect)
