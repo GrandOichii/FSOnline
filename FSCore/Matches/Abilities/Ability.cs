@@ -65,7 +65,7 @@ public abstract class Ability {
         try {
             Effects.Execute(stackEffect, args);
         } catch (Exception e) {
-            throw new MatchException($"Failed to execute Effects of ability", e);
+            throw new MatchException($"Failed to execute Effects of ability \"{EffectText}\"", e);
         }
     }
 

@@ -33,8 +33,14 @@ public abstract class Slot {
     /// Fill the slot with the top card of the source deck
     /// </summary>
     public virtual async Task Fill() {
+        if (Card is not null) {
+            var match = Card.Card.Match;
+            await match.PlaceIntoDiscard(Card.Card);
+        }
+
         var top = Source.RemoveTop(1);
         if (top.Count == 0) {
+            Card = null;
             Source.Match.LogInfo($"Tried to refill {Name} slot [{Idx}], but the source deck is empty");
             return;
         }

@@ -732,7 +732,8 @@ public class Match {
             TurnEnded = true;
             return;
         }
-
+        System.Console.WriteLine(Stack.Effects.Count);
+        System.Console.WriteLine(player.LogName + " " + player.Idx + " " + CurPlayerIdx);
         throw new MatchException($"Unknown scenario: player {player.LogName} tried to pass, but didn't have a reason to");
     }
 
@@ -825,6 +826,14 @@ public class Match {
         await DiscardFromPlay(GetInPlayCard(ipid));
     }
 
+    public async Task<bool> TryDiscardFromPlay(string ipid) {
+    var card = GetInPlayCardOrDefault(ipid);
+        if (card is null) return false;
+
+        await DiscardFromPlay(ipid);
+        return true;
+    }
+
     public async Task RemoveFromPlay(InPlayMatchCard card) {
         // players
         // TODO trigger and soft reload state, then discard the card
@@ -868,23 +877,24 @@ public class Match {
         await PlaceIntoDiscard(card.Card);
     }
 
-    public async Task StealItem(int playerIdx, string ipid) {
-        var item = GetInPlayCard(ipid);
+    public async Task<bool> StealItem(int playerIdx, string ipid) {
+        var item = GetInPlayCardOrDefault(ipid);
+        if (item is null) return false;
         var newOwner = GetPlayer(playerIdx);
 
         if (item is OwnedInPlayMatchCard ownedItem) {
             await ownedItem.Owner.LoseItem(ownedItem);
             await newOwner.GainItem(ownedItem);
             ownedItem.SetOwner(newOwner);
-            return;
+            return true;
         }
 
         foreach (var slot in TreasureSlots) {
             var card = slot.Card;
             if (card is null || card.IPID != ipid) continue;
-            await slot.Fill();
             await newOwner.GainItem(new(card, newOwner));
-            return;
+            await slot.Fill();
+            return true;
         }
 
         throw new MatchException($"Failed to find source of item {item.LogName} to steal to player {newOwner.LogName}");

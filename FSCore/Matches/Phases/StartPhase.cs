@@ -11,6 +11,7 @@ public class StartPhase : IPhase
     {
         var player = match.GetPlayer(playerIdx);
         await player.UntapAll();
+        match.Stack.PriorityIdx = playerIdx;
     }
 
     public async Task PostEmit(Match match, int playerIdx)

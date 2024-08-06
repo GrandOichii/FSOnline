@@ -86,12 +86,15 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
-    public void Recharge(string ipid) {
-        var item = _match.GetInPlayCard(ipid);
+    public bool Recharge(string ipid) {
+        var item = _match.GetInPlayCardOrDefault(ipid);
+        if (item is null) return false;
 
         item.Untap()
             .Wait()
         ;
+
+        return true;
     }
 
     [LuaCommand]
@@ -104,6 +107,12 @@ public class ScriptMaster {
     public void DiscardFromPlay(string ipid) {
         _match.DiscardFromPlay(ipid)
             .Wait();
+    }
+    
+    [LuaCommand]
+    public bool TryDiscardFromPlay(string ipid) {
+        return _match.TryDiscardFromPlay(ipid)
+            .GetAwaiter().GetResult();
     }
 
     [LuaCommand]
@@ -311,9 +320,9 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
-    public void StealItem(int playerIdx, string ipid) {
-        _match.StealItem(playerIdx, ipid)
-            .Wait();
+    public bool StealItem(int playerIdx, string ipid) {
+        return _match.StealItem(playerIdx, ipid)
+            .GetAwaiter().GetResult();
     }
 
     [LuaCommand]

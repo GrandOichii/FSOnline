@@ -305,8 +305,7 @@ function FS.C.Effect.DeactivateTarget(target_idx, optional)
             end
         end
 
-        TapCard(ipid)
-        return true
+        return TapCard(ipid)
     end
 end
 
@@ -555,8 +554,7 @@ function FS.C.Cost.Tap()
     local result = {}
 
     function result.Pay(me, player, stackEffect)
-        TapCard(me.IPID)
-        return true
+        return TapCard(me.IPID)
     end
 
     function result.Check(me, player)

@@ -58,7 +58,6 @@ public class Stack {
         PriorityIdx = Match.NextInTurnOrder(PriorityIdx);
         Match.LogInfo($"New priority player index: {PriorityIdx}");
 
-        var top = Top;
         // var topOwner = top.OwnerIdx > 0
         //     ? top.OwnerIdx
         //     : Match.CurPlayerIdx;

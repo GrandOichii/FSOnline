@@ -15,7 +15,7 @@ function _Create()
                         [5] = FS.C.Effect.GainCoins(5),
                         [6] = function (stackEffect)
                             FS.C.Effect.GainTreasure(1)(stackEffect)
-                            DiscardFromPlay(stackEffect.Card.IPID)
+                            TryDiscardFromPlay(stackEffect.Card.IPID)
                         end
                     })
                 )
