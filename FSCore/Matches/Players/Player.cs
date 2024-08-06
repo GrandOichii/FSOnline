@@ -617,12 +617,18 @@ public class Player : IStateModifier {
 
     #endregion
 
-    public void LoseCoins(int amount) {
+    public int LoseCoinsRaw(int amount) {
         if (Coins < amount)
             amount = Coins;
             
         Coins -= amount;
-        Match.AddToCoinPool(amount);
+        return amount;
+    }
+
+    public int LoseCoins(int amount) {
+        var lost = LoseCoinsRaw(amount);
+        Match.AddToCoinPool(lost);
+        return lost;
     }
 
     public void Modify(ModificationLayer layer)

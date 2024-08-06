@@ -378,8 +378,8 @@ public class ScriptMaster {
     public void StealCoins(int playerIdx, int fromIdx, int amount) {
         var p1 = _match.GetPlayer(playerIdx);
         var p2 = _match.GetPlayer(fromIdx);
-        p2.LoseCoins(amount);
-        p1.GainCoinsRaw(amount);
+        var lost = p2.LoseCoinsRaw(amount);
+        p1.GainCoinsRaw(lost);
     }
 
     [LuaCommand]
