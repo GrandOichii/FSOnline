@@ -86,6 +86,7 @@ public class Player : IStateModifier {
     /// </summary>
     public Stats Stats { get; }
     public List<LuaFunction> DeathPreventors { get; }
+    public List<LuaFunction> AtEndOfTurnEffects { get; } = [];
 
     /// <summary>
     /// Name of the player that will be used for system logging

@@ -16,7 +16,8 @@
             "characters/whore-of-babylon-v2",
             "characters/the-lost-v2",
             "characters/bum-bo-v2",
-            "characters/the-curdled-requiem"
+            "characters/the-curdled-requiem",
+            "characters/the-zealot-requiem"
         ],
         "StartingItems": [
             "starting-items/blood-lust-v2",
@@ -34,7 +35,8 @@
             "starting-items/hypercoagulation-requiem",
             "starting-items/holy-mantle-v2",
             "starting-items/bag-o-trash-v2",
-            "starting-items/sumptorium-requiem"
+            "starting-items/sumptorium-requiem",
+            "starting-items/lemegeton-requiem"
         ],
         "Treasures": [
             "treasures/baby-haunt-v2",
@@ -82,7 +84,9 @@
             "treasures/contract-from-below-v2",
             "treasures/donation-machine-v2",
             "treasures/guppys-paw-v2",
-            "treasures/the-butter-bean-v2"
+            "treasures/the-butter-bean-v2",
+            "treasures/abaddon-v2",
+            "treasures/the-midas-touch-v2"
         ],
         "Loot": [
             "loot/bomb-v2",

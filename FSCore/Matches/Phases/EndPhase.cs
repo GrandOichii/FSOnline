@@ -9,10 +9,16 @@ public class EndPhase : IPhase
 
     public async Task PostEmit(Match match, int playerIdx)
     {
+        var player = match.GetPlayer(playerIdx);
+
         if (match.Stack.Effects.Count > 0)
             await match.ResolveStack(true);
 
-        var player = match.GetPlayer(playerIdx);
+        // "at the end of your turn" effects
+        // TODO catch exceptions
+        foreach (var effect in player.AtEndOfTurnEffects)
+            effect.Call();
+
 
         await player.DiscardToHandSize();
         await player.PromptToDiscardRoom();
@@ -41,6 +47,7 @@ public class EndPhase : IPhase
 
         match.TEOTEffects.Clear();
         match.DeadCards.Clear();
+        player.AtEndOfTurnEffects.Clear();
 
         match.TurnEnded = false;
     }

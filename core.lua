@@ -979,10 +979,7 @@ function FS.B.Card()
 
         result.lootTargets[#result.lootTargets+1] = function (me, player, stackEffect)
             local options = filterFunc(player)
-            local ipids = {}
-            for _, item in ipairs(options) do
-                ipids[#ipids+1] = item.IPID
-            end
+            local ipids = FS.C.IPIDs(options)
 
             -- TODO add optional
             local ipid = ChooseItem(player.Idx, ipids, hint)
@@ -1581,6 +1578,9 @@ function FS.B.TriggeredAbility(effectText)
 
     function result.On:MonsterDies(check)
         result.trigger = FS.Triggers.CARD_DEATH
+        check = check or function (me, player, args)
+            return true
+        end
 
         result.costs[#result.costs+1] = {
             Check = function (me, player, args)

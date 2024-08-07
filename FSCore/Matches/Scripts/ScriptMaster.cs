@@ -540,4 +540,10 @@ public class ScriptMaster {
 
     [LuaCommand]
     public int TargetTypeToInt(TargetType type) => (int)type;
+
+    [LuaCommand]
+    public void AtEndOfTurn(int playerIdx, LuaFunction effect) {
+        var player = _match.GetPlayer(playerIdx);
+        player.AtEndOfTurnEffects.Add(effect);
+    }
 }

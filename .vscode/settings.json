@@ -71,7 +71,8 @@
         "TargetTypeToInt",
         "ExpandMonsterSlots",
         "TryDiscardFromPlay",
-        "GetInPlayCardOrDefault"
+        "GetInPlayCardOrDefault",
+        "AtEndOfTurn"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"
