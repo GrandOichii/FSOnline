@@ -159,6 +159,10 @@
             "monsters/conjoined-fatty-v2",
             "monsters/fat-bat-v2",
             "monsters/leech-v2"
+        ],
+        "Events": [
+            "events/troll-bombs-v2",
+            "events/chest1-v2"
         ]
     }
 }

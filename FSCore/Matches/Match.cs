@@ -279,7 +279,13 @@ public class Match {
             await slot.Fill();
             MonsterSlots.Add(slot);
         }
-        // TODO add events to monster deck
+        foreach (var key in Config.Events)
+            MonsterDeck.Cards.AddLast(new MatchCard(
+                this,
+                await _cardMaster.Get(key),
+                DeckType.MONSTER
+            ));
+        MonsterDeck.Shuffle();
 
         // rooms
         if (Config.UseRooms) {

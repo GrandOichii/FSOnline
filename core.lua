@@ -1124,6 +1124,13 @@ function FS.B.Loot()
     return result
 end
 
+-- event card builder
+function FS.B.Event()
+    local result = FS.B.Card()
+
+    return result
+end
+
 -- character builder
 function FS.B.Character()
     local result = FS.B.Item()

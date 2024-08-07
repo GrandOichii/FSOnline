@@ -22,7 +22,8 @@ var _type_map = {
 	'player_death': 'Player death',
 	'attack': 'Attack',
 	'card_death': 'Monster Death',
-	'reward': 'Reward'
+	'reward': 'Reward',
+	'event': 'Event',
 }
 
 var _type_action_map = {
@@ -35,7 +36,10 @@ var _type_action_map = {
 	'ability_trigger': func (snapshot):
 		Details.text = snapshot.EffectText,
 	'damage': func(snapshot):
-		Details.text = str(snapshot.Amount)
+		Details.text = str(snapshot.Amount),
+	'event': func(snapshot):
+		# TODO not card text, effect text
+		Details.text = snapshot.Card.Text
 }
 
 @onready var _bg_color = default_color

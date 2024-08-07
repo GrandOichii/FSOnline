@@ -16,11 +16,16 @@ public class CardData {
     /// Card ID
     /// </summary>
     public string ID { get; }
+    /// <summary>
+    /// Card text
+    /// </summary>
+    public string Text { get; }
 
     public CardData(MatchCard card) {
         ID = card.ID;
         Key = card.Template.Key;
 
         Names = new(card.Names());
+        Text = card.Template.Text;
     }
 }

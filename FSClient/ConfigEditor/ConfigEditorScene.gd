@@ -43,6 +43,7 @@ func build() -> Dictionary:
 	%Treasures.modify(result)
 	%Rooms.modify(result)
 	%Monsters.modify(result)
+	%Events.modify(result)
 	
 	# starting items
 	var si = []
@@ -79,6 +80,7 @@ func load_json_file(path):
 	%Treasures.load(config)
 	%Rooms.load(config)
 	%Monsters.load(config)
+	%Events.load(config)
 	
 	# loot cards
 	%Loot.load(config)

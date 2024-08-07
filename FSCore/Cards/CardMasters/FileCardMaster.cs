@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text.Json;
 using FSCore.Cards;
 using FSCore.Matches.Cards;
@@ -12,6 +13,7 @@ public class FileCardMasterCardsData {
     public required List<string> BonusSouls { get; set; }
     public required List<string> Rooms { get; set; }
     public required List<string> Monsters { get; set; }
+    public required List<string> Events { get; set; }
 }
 
 public class FileCardMasterData {
@@ -74,6 +76,7 @@ public class FileCardMaster : ICardMaster
         AddTo(dir, data.Cards.Treasures, _index);
         AddTo(dir, data.Cards.BonusSouls, _index);
         AddTo(dir, data.Cards.Rooms, _index);
+        AddTo(dir, data.Cards.Events, _index);
         AddCharactersTo(dir, data.Cards.Characters, _characterIndex);
         AddMonstersTo(dir, data.Cards.Monsters, _monsterIndex);
     }

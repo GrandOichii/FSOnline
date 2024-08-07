@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dbsyjy7mli3ve" path="res://ConfigEditor/NumericCardRowScene.tscn" id="2_m6hey"]
 
 [node name="NumberedCardListScene" type="MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

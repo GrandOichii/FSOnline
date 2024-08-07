@@ -16,6 +16,7 @@ public class MatchCardState {
     public MatchCardState(MatchCard parent) {
         Parent = parent;
 
-        Names = new() { parent.Template.Name };
+        Names = [ parent.Template.Name ];
+
     }
 }

@@ -236,56 +236,70 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+[node name="ScrollContainer2" type="ScrollContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-columns = 3
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
 
-[node name="Characters" parent="HBoxContainer/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
+[node name="GridContainer" type="HBoxContainer" parent="HBoxContainer/ScrollContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Characters" parent="HBoxContainer/ScrollContainer2/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
 unique_name_in_owner = true
 layout_mode = 2
 list_name = "Characters"
 list_label = "Characters"
 card_type = "Character"
-card_source = NodePath("../../../Sources/FileCardSource")
+card_source = NodePath("../../../../Sources/FileCardSource")
 
-[node name="BonusSouls" parent="HBoxContainer/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
+[node name="BonusSouls" parent="HBoxContainer/ScrollContainer2/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
 unique_name_in_owner = true
 layout_mode = 2
 list_name = "BonusSouls"
 list_label = "Bonus souls"
 card_type = "BonusSoul"
-card_source = NodePath("../../../Sources/FileCardSource")
+card_source = NodePath("../../../../Sources/FileCardSource")
 
-[node name="Treasures" parent="HBoxContainer/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
+[node name="Treasures" parent="HBoxContainer/ScrollContainer2/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
 unique_name_in_owner = true
 layout_mode = 2
 list_name = "Treasures"
 list_label = "Treasures"
 card_type = "Item"
-card_source = NodePath("../../../Sources/FileCardSource")
+card_source = NodePath("../../../../Sources/FileCardSource")
 
-[node name="Loot" parent="HBoxContainer/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("8_bbhhe")]
+[node name="Loot" parent="HBoxContainer/ScrollContainer2/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("8_bbhhe")]
 unique_name_in_owner = true
 layout_mode = 2
 list_name = "LootCards"
 list_label = "Loot"
 base_value = 10
 card_type = "Loot"
-card_source = NodePath("../../../Sources/FileCardSource")
+card_source = NodePath("../../../../Sources/FileCardSource")
 
-[node name="Rooms" parent="HBoxContainer/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
+[node name="Rooms" parent="HBoxContainer/ScrollContainer2/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
 unique_name_in_owner = true
 layout_mode = 2
 list_name = "Rooms"
 list_label = "Rooms"
 card_type = "Room"
-card_source = NodePath("../../../Sources/FileCardSource")
+card_source = NodePath("../../../../Sources/FileCardSource")
 
-[node name="Monsters" parent="HBoxContainer/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
+[node name="Monsters" parent="HBoxContainer/ScrollContainer2/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
 unique_name_in_owner = true
 layout_mode = 2
 list_name = "Monsters"
 list_label = "Monsters"
 card_type = "Monster"
-card_source = NodePath("../../../Sources/FileCardSource")
+card_source = NodePath("../../../../Sources/FileCardSource")
+
+[node name="Events" parent="HBoxContainer/ScrollContainer2/GridContainer" node_paths=PackedStringArray("card_source") instance=ExtResource("5_fxy30")]
+unique_name_in_owner = true
+layout_mode = 2
+list_name = "Events"
+list_label = "Events"
+card_type = "Event"
+card_source = NodePath("../../../../Sources/FileCardSource")

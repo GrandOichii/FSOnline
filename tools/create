@@ -75,6 +75,16 @@ function _Create()
             :Build()
         )
     :Build()
+end''',
+    'event':
+'''
+-- status: implemented
+
+function _Create()
+    return FS.B.Event()
+        -- Text here
+
+    :Build()
 end'''
 }
 
@@ -85,7 +95,8 @@ TYPE_TO_TYPE_INDEX = {
     'loot': 'Loot',
     'bonussoul': 'BonusSoul',
     'room': 'Room',
-    'monster': 'Monster'
+    'monster': 'Monster',
+    'event': 'Event',
 }
 
 TYPE_TO_DECK_INDEX = {
@@ -95,7 +106,8 @@ TYPE_TO_DECK_INDEX = {
     'loot': 'Loot',
     'bonussoul': 'BonusSouls',
     'room': 'Rooms',
-    'monster': 'Monsters'
+    'monster': 'Monsters',
+    'event': 'Events'
 }
 
 TYPE_TO_DIR_INDEX = {
@@ -105,7 +117,8 @@ TYPE_TO_DIR_INDEX = {
     'loot': 'loot',
     'bonussoul': 'bonus-souls',
     'room': 'rooms',
-    'monster': 'monsters'
+    'monster': 'monsters',
+    'event': 'events',
 }
 
 if (len(argv)) != 4:

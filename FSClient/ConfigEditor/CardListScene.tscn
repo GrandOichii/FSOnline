@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ckhvp3d82e3il" path="res://ConfigEditor/CardRowScene.tscn" id="2_jua40"]
 
 [node name="CardListScene" type="MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

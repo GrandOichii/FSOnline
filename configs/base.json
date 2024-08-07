@@ -8,6 +8,7 @@
         "strawberry-warp"
     ],
     "Characters": [
+        "samson-v2",
         "guppy-v2",
         "judas-v2",
         "isaac-v2",
@@ -20,13 +21,27 @@
         "the-baleful-requiem",
         "the-dauntless-requiem",
         "whore-of-babylon-v2",
-        "bum-bo-v2"
+        "the-lost-v2",
+        "bum-bo-v2",
+        "the-curdled-requiem",
+        "the-zealot-requiem"
     ],
     "CharactersStartTapped": true,
     "CoinPool": 100,
     "DeathPenaltyCoins": 1,
     "DeathPenaltyItems": 1,
     "DeathPenaltyLoot": 1,
+    "Events": [
+        "chest1-v2",
+        "chest1-v2",
+        "chest1-v2",
+        "chest1-v2",
+        "chest1-v2",
+        "chest1-v2",
+        "chest1-v2",
+        "chest1-v2",
+        "chest1-v2"
+    ],
     "ForceInclude3PlusCards": true,
     "InitialDealCoins": 3,
     "InitialDealLoot": 3,
@@ -36,21 +51,23 @@
     "LootCards": {
         "3-cents-v2": 10,
         "a-sack-v2": 10,
-        "soul-heart-v2": 10,
         "bag-lunch-requiem": 10,
         "bible-thump-requiem": 10,
         "blank-rune-v2": 10,
         "bloody-penny-v2": 10,
+        "bomb-v2": 10,
         "butter-bean-v2": 10,
         "chunk-of-amber-warp": 10,
         "counterfeit-penny-v2": 10,
         "dice-shard-v2": 10,
+        "holy-card-v2": 10,
         "lil-battery-v2": 10,
         "lost-soul-v2": 10,
         "lucky-toe-requiem": 10,
         "orange-green-pills-v2": 10,
         "perthro-requiem": 10,
         "pills-red-v2": 10,
+        "soul-heart-v2": 10,
         "x-wheel-of-fortune-v2": 10,
         "xiii-death-v2": 10,
         "xiv-temperance-v2": 10,
@@ -61,11 +78,28 @@
     "LootStepLootAmount": 1,
     "MaxHandSize": 10,
     "MaxPlayerCount": 4,
+    "Monsters": [
+        "fly-v2",
+        "fly-v2",
+        "fly-v2",
+        "fly-v2"
+    ],
     "PurchaseCost": 10,
     "PurchaseCountDefault": 1,
     "RandomFirstPlayer": true,
+    "Rooms": [
+        "dice-room2-requiem",
+        "shell-game-requiem",
+        "devil-beggar-requiem",
+        "blessing-of-steam-requiem",
+        "maggys-blessing-requiem",
+        "static-shock-requiem",
+        "blessing-of-greed-requiem",
+        "blood-donation-requiem"
+    ],
     "SoulsToWin": 4,
     "StartingItems": [
+        "blood-lust-v2",
         "infestation-v2",
         "book-of-belial-v2",
         "the-d6-v2",
@@ -78,10 +112,16 @@
         "soulbond-requiem",
         "lazarus-rags-v2",
         "hypercoagulation-requiem",
-        "bag-o-trash-v2"
+        "holy-mantle-v2",
+        "bag-o-trash-v2",
+        "sumptorium-requiem",
+        "lemegeton-requiem"
     ],
     "StrictMode": true,
     "Treasures": [
+        "baby-haunt-v2",
+        "head-of-krampus-v2",
+        "mr-boom-v2",
         "mystery-sack-v2",
         "experimental-treatment-requiem",
         "moms-razor-v2",
@@ -118,9 +158,15 @@
         "dark-bum-v2",
         "fanny-pack-v2",
         "shadow-v2",
-        "the-poop-v2",
         "razor-blade-v2",
         "the-habit-v2",
-        "the-butter-bean-v2"
-    ]
+        "the-poop-v2",
+        "contract-from-below-v2",
+        "donation-machine-v2",
+        "guppys-paw-v2",
+        "the-butter-bean-v2",
+        "abaddon-v2",
+        "the-midas-touch-v2"
+    ],
+    "UseRooms": true
 }
