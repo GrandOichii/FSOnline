@@ -46,11 +46,14 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
-    public void TapCard(string ipid) {
-        var item = _match.GetInPlayCard(ipid);
+    public bool TapCard(string ipid) {
+        var item = _match.GetInPlayCardOrDefault(ipid);
+        if (item is null) return false;
 
         item.Tap()
             .Wait();
+
+        return true;
     }
 
     [LuaCommand]

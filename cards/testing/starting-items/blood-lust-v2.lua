@@ -10,7 +10,7 @@ function _Create()
                 )
                 .Target:MonsterOrPlayer()
                 .Effect:Common(
-                    
+                    FS.C.Effect.ModTargetAttackTEOT(0, 1)
                 )
             :Build()
         )

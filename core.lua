@@ -1301,7 +1301,7 @@ function FS.B._Ability(effectText)
 
         result.fizzleChecks[#result.fizzleChecks+1] = function (stackEffect)
             if TargetTypeToInt(stackEffect.Targets[targetIdx].Type) ~= checkType then
-                return false
+                return true
             end
             local target = stackEffect.Targets[targetIdx].Value
 
