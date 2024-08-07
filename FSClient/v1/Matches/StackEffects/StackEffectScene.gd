@@ -30,7 +30,7 @@ var _type_action_map = {
 	'roll': func (snapshot):
 		Details.text = 'Rolled: [color=red]' + str(snapshot.Value) + '[/color]',
 	'loot_play': func (snapshot):
-		Details.text = snapshot.Card.Names[0],
+		Details.text = snapshot.Card.Names[0] + '\n\n' + snapshot.Card.Text,
 	'ability_activation': func (snapshot):
 		Details.text = snapshot.EffectText,
 	'ability_trigger': func (snapshot):

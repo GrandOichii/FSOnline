@@ -162,7 +162,15 @@
         ],
         "Events": [
             "events/troll-bombs-v2",
-            "events/chest1-v2"
+            "events/chest1-v2",
+            "events/chest2-v2",
+            "events/dark-chest1-v2",
+            "events/dark-chest2-v2",
+            "events/gold-chest1-v2",
+            "events/gold-chest2-v2",
+            "events/angel-room-v2",
+            "events/mega-troll-bomb-v2",
+            "events/secret-room-v2"
         ]
     }
 }

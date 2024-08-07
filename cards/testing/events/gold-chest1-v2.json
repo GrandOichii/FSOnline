@@ -1,0 +1,8 @@
+{
+    "Key": "gold-chest1-v2",
+    "Name": "Gold Chest",
+    "Type": "Event",
+    "Text": "Roll-\n1-2: Gain +1 Treasure.\n3-4: Loot 1.\n5-6: Loot 2.",
+    "SoulValue": 0,
+    "Script": "gold-chest1-v2.lua"
+}
