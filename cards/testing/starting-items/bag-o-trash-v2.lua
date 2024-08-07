@@ -1,3 +1,5 @@
+-- status: not tested
+
 function _Create()
     return FS.B.Item()
         :ActivatedAbility(
@@ -20,7 +22,17 @@ function _Create()
                 )
             :Build()
         )
-        -- TODO Pay 6{cent}: Deal 1 damage to a monster or player."
+        :ActivatedAbility(
+            FS.B.ActivatedAbility('Pay 6{cent}', 'Deal 1 damage to a monster or player.')
+                .Cost:Common(
+                    FS.C.Cost.PayCoins(6)
+                )
+                .Target:MonsterOrPlayer()
+                .Effect:Common(
+                    FS.C.Effect.DamageToTarget(0, 1)
+                )
+            :Build()
+        )
         :Label(FS.Labels.Eternal)
     :Build()
 end

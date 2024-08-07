@@ -86,4 +86,16 @@ public class Stats {
     // }
 
     public int GetCurrentHealth() => State.Health - Damage;
+
+    public int GetEvasion() {
+        var e = State.Evasion
+            ?? throw new MatchException($"Tried to get evasion from game object with no evasion")
+        ;
+
+        if (e < 1) return 1;
+        if (e > 6) return 6;
+
+        return e;
+    }
+
 }

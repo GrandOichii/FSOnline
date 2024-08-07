@@ -201,7 +201,7 @@ public class InPlayMatchCard : IStateModifier {
 
     public bool IsMiss(int roll) {
         // TODO
-        return roll < Stats!.State.Evasion;
+        return roll < Stats!.GetEvasion();
     }
 
     #endregion

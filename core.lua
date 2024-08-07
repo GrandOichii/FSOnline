@@ -555,6 +555,23 @@ function FS.C.Effect.ModTargetAttackTEOT(target_idx, mod)
     end
 end
 
+function FS.C.Effect.ModTargetMonsterEvasionTEOT(target_idx, mod)
+    return function (stackEffect)
+        local target = stackEffect.Targets[target_idx]
+        TillEndOfTurn(
+            FS.ModLayers.MONSTER_EVASION,
+            function ()
+                local monster = GetInPlayCardOrDefault(target.Value)
+                if monster == nil then
+                    return
+                end
+                monster.Stats.State.Evasion = monster.Stats.State.Evasion + mod
+            end
+        )
+        return true
+    end
+end
+
 -- TODO add filter func
 function FS.C.Effect.ModMonsterAttackTEOT(mod)
     return function (stackEffect)
@@ -1611,6 +1628,12 @@ function FS.B.TriggeredAbility(effectText)
         }
 
         return result
+    end
+
+    function result.On:ControllerDamaged()
+        return result.On:PlayerDamaged(function (me, player, args)
+            return player.Idx == args.Player.Idx
+        end)
     end
 
     function result.On:PlayerDeathBeforePenalties(check)
