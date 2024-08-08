@@ -87,11 +87,12 @@ public class Player : IStateModifier {
     public Stats Stats { get; }
     public List<LuaFunction> DeathPreventors { get; }
     public List<LuaFunction> AtEndOfTurnEffects { get; } = [];
+    public List<OwnedInPlayMatchCard> Curses { get; } = [];
 
     /// <summary>
     /// Name of the player that will be used for system logging
     /// </summary>
-    public string LogName => Name + $" [{Idx}]";
+    public string LogName => $"{Name} [{Idx}]";
 
     public Player(Match match, string name, int idx, CharacterCardTemplate characterTemplate, IPlayerController controller) {
         Match = match;
@@ -501,6 +502,17 @@ public class Player : IStateModifier {
         // TODO add to update
     }
 
+    public async Task RemoveFromPlay(OwnedInPlayMatchCard card) {
+        var removed = Items.Remove(card);
+        if (removed) return;
+
+        removed = Curses.Remove(card);
+        if (removed) return;
+
+        // TODO add to update
+        throw new MatchException($"Failed to remove in-play card {card.LogName} from player {LogName}");
+    }
+
     /// <summary>
     /// Gain control of item
     /// </summary>
@@ -532,6 +544,8 @@ public class Player : IStateModifier {
         var result = new List<OwnedInPlayMatchCard>(Items) {
             Character
         };
+        result.AddRange(Curses);
+
         return result;
     }
 
@@ -1033,6 +1047,12 @@ public class Player : IStateModifier {
             return true;
         }
 
+        var cCard = Curses.FirstOrDefault(c => c.Card.ID == id);
+        if (cCard is not null) {
+            Curses.Remove(cCard);
+            return true;
+        }
+        
         return false;
     }
 
@@ -1068,16 +1088,15 @@ public class Player : IStateModifier {
     /// </summary>
     /// <returns>List of monster slot indicies + -1 if can attack the top of the monster deck</returns>
     public List<int> AvailableToAttack() {
-        // TODO
-
         var result = new List<int>();
 
         // top of monster deck
         result.Add(-1);
 
-        // 
+        // monster card slots
         foreach (var slot in Match.MonsterSlots)
-            result.Add(slot.Idx);
+            if (slot.Card is not null && slot.Card.Card.Template.Type == "Monster")
+                result.Add(slot.Idx);
         return result;
     }
 

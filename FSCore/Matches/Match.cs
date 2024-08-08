@@ -279,7 +279,15 @@ public class Match {
             await slot.Fill();
             MonsterSlots.Add(slot);
         }
+        // add events
         foreach (var key in Config.Events)
+            MonsterDeck.Cards.AddLast(new MatchCard(
+                this,
+                await _cardMaster.Get(key),
+                DeckType.MONSTER
+            ));
+        // add curses
+        foreach (var key in Config.Curses)
             MonsterDeck.Cards.AddLast(new MatchCard(
                 this,
                 await _cardMaster.Get(key),
@@ -833,7 +841,7 @@ public class Match {
     }
 
     public async Task<bool> TryDiscardFromPlay(string ipid) {
-    var card = GetInPlayCardOrDefault(ipid);
+        var card = GetInPlayCardOrDefault(ipid);
         if (card is null) return false;
 
         await DiscardFromPlay(ipid);
@@ -846,7 +854,7 @@ public class Match {
 
         if (card is OwnedInPlayMatchCard ownedCard) {
             LogInfo($"Removing card {ownedCard.LogName} from player {ownedCard.Owner.LogName}");
-            await ownedCard.Owner.RemoveItem(ownedCard);
+            await ownedCard.Owner.RemoveFromPlay(ownedCard);
         }
 
         // shop items
@@ -1039,9 +1047,14 @@ public class Match {
     public List<InPlayMatchCard> GetInPlayCards() {
         var result = GetItems();        
 
-        // characters
-        foreach (var player in Players)
+        foreach (var player in Players) {
+            // characters
             result.Add(player.Character);
+
+            // curses
+            result.AddRange(player.Curses);
+        }
+
 
         // monsters
         foreach (var slot in MonsterSlots)
@@ -1061,7 +1074,7 @@ public class Match {
         var result = new List<InPlayMatchCard>();
 
         foreach (var slot in MonsterSlots)
-            if (slot.Card is not null)
+            if (slot.Card is not null && slot.Card.Card.Template.Type == "Monster")
                 result.Add(slot.Card);
 
         return result;

@@ -58,7 +58,8 @@ func load_snapshot(snapshot: Variant):
 	load_items(snapshot)
 
 func load_items(snapshot: Variant):
-	var items = snapshot.Players[player_idx].Items
+	# TODO differentiate between items and curses
+	var items = snapshot.Players[player_idx].Items + snapshot.Players[player_idx].Curses
 	var ipids = []
 	var index = {}
 	for item in items: 

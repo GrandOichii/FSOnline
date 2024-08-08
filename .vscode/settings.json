@@ -72,7 +72,8 @@
         "ExpandMonsterSlots",
         "TryDiscardFromPlay",
         "GetInPlayCardOrDefault",
-        "AtEndOfTurn"
+        "AtEndOfTurn",
+        "CreateCurseCard"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

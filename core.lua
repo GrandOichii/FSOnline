@@ -184,8 +184,7 @@ end
 
 function FS.C.Effect.DiscardMeFromPlay()
     return function (stackEffect)
-        DiscardFromPlay(stackEffect.Card.IPID)
-        return true
+        return TryDiscardFromPlay(stackEffect.Card.IPID)
     end
 end
 
@@ -766,6 +765,21 @@ function FS.C.StateMod.ModPlayerAttack(modF, playerFilterFunc)
     return result
 end
 
+function FS.C.StateMod.ModMonsterEvasion(modF, monsterFilterFunc)
+    monsterFilterFunc = monsterFilterFunc or FS.C.AllMonsters
+
+    local result = {}
+    result.Layer = FS.ModLayers.MONSTER_EVASION
+    function result.Mod(me)
+        local monsters = monsterFilterFunc(me)
+        for _, monster in ipairs(monsters) do
+            monster.Stats.State.Evasion = monster.Stats.State.Evasion + modF(me, monster)
+        end
+    end
+
+    return result
+end
+
 function FS.C.StateMod.ModPlayerHealth(modF, playerFilterFunc)
     playerFilterFunc = playerFilterFunc or function (me)
         return FS.F.Players():Idx(me.Owner.Idx):Do()
@@ -1127,6 +1141,50 @@ end
 -- event card builder
 function FS.B.Event()
     local result = FS.B.Card()
+
+    return result
+end
+
+-- curse card builder
+function FS.B.Curse()
+    local result = FS.B.Event()
+
+    result.Target:Player()
+    result.Effect:Custom(
+        function (stackEffect)
+            local removed = TryDiscardFromPlay(stackEffect.Card.IPID)
+            if not removed then
+                return false
+            end
+            CreateCurseCard(stackEffect.Card.Card, tonumber(stackEffect.Targets[0].Value))
+            return true
+        end
+    )
+    -- result:TriggeredAbility(
+    --     FS.B.TriggeredAbility('When this enters play, give this to a player.')
+    --         .On:MeEnteringPlay()
+    --         .Target:Player()
+    --         .Effect:Custom(
+    --             function (stackEffect)
+    --                 local removed = TryDiscardFromPlay(stackEffect.Card.IPID)
+    --                 if not removed then
+    --                     return false
+    --                 end
+    --                 CreateOwnedItem(stackEffect.Card.Card, tonumber(stackEffect.Targets[0].Value))
+    --                 return true
+    --             end
+    --         )
+    --     :Build()
+    -- )
+
+    result:TriggeredAbility(
+        FS.B.TriggeredAbility('When you die, put this into discard.')
+            .On:ControllerDeath()
+            .Effect:Common(
+                FS.C.Effect.DiscardMeFromPlay()
+            )
+        :Build()
+    )
 
     return result
 end
@@ -1675,6 +1733,12 @@ function FS.B.TriggeredAbility(effectText)
 
         return result
     end
+    
+    function result.On:ControllerDeath()
+        return result.On:PlayerDeath(function (me, player, args)
+            return player.Idx == args.Player.Idx
+        end)
+    end
 
     function result.On:Purchase(check)
         result.trigger = FS.Triggers.PURCHASE
@@ -1808,7 +1872,7 @@ function FS.B.TriggeredAbility(effectText)
 
     function result.On:ControllerTurnStart()
         return result.On:TurnStart(function (me, player, args)
-            return player.Idx == args.Idx
+            return player.Idx == args.playerIdx
         end)
     end
 

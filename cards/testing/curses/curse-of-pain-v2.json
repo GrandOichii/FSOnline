@@ -1,0 +1,7 @@
+{
+    "Key": "curse-of-pain-v2",
+    "Name": "Curse of Pain",
+    "Type": "Curse",
+    "Text": "At the start of your turn, take 1 damage.",
+    "Script": "curse-of-pain-v2.lua"
+}

@@ -18,8 +18,7 @@ public class MonsterSlot : Slot
         await base.Fill();
 
         if (Card is null) return;
-
-        if (Card.Card.Template.Type == "Event") {
+        if (Card.Card.Template.Type == "Event" || Card.Card.Template.Type == "Curse") {
             var match = Card.Card.Match;
             var effect = new EventCardStackEffect(match, Card);
             await Card.Card.Match.PlaceOnStack(effect);

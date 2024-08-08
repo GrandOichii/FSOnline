@@ -14,6 +14,7 @@ public class FileCardMasterCardsData {
     public required List<string> Rooms { get; set; }
     public required List<string> Monsters { get; set; }
     public required List<string> Events { get; set; }
+    public required List<string> Curses { get; set; }
 }
 
 public class FileCardMasterData {
@@ -77,6 +78,7 @@ public class FileCardMaster : ICardMaster
         AddTo(dir, data.Cards.BonusSouls, _index);
         AddTo(dir, data.Cards.Rooms, _index);
         AddTo(dir, data.Cards.Events, _index);
+        AddTo(dir, data.Cards.Curses, _index);
         AddCharactersTo(dir, data.Cards.Characters, _characterIndex);
         AddMonstersTo(dir, data.Cards.Monsters, _monsterIndex);
     }

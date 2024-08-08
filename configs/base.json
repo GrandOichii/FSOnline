@@ -28,20 +28,17 @@
     ],
     "CharactersStartTapped": true,
     "CoinPool": 100,
+    "Curses": [
+        "curse-of-pain-v2",
+        "curse-of-pain-v2",
+        "curse-of-pain-v2",
+        "curse-of-pain-v2",
+        "curse-of-pain-v2"
+    ],
     "DeathPenaltyCoins": 1,
     "DeathPenaltyItems": 1,
     "DeathPenaltyLoot": 1,
-    "Events": [
-        "chest1-v2",
-        "chest1-v2",
-        "chest1-v2",
-        "chest1-v2",
-        "chest1-v2",
-        "chest1-v2",
-        "chest1-v2",
-        "chest1-v2",
-        "chest1-v2"
-    ],
+    "Events": [],
     "ForceInclude3PlusCards": true,
     "InitialDealCoins": 3,
     "InitialDealLoot": 3,
@@ -93,7 +90,6 @@
         "devil-beggar-requiem",
         "blessing-of-steam-requiem",
         "maggys-blessing-requiem",
-        "static-shock-requiem",
         "blessing-of-greed-requiem",
         "blood-donation-requiem"
     ],

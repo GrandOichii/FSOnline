@@ -7,6 +7,10 @@
     "Health": 2,
     "Attack": 1,
     "StartingItems": [
+        "razor-blade-v2",
+        "razor-blade-v2",
+        "dark-bum-v2",
+        "mr-boom-v2",
         "mr-boom-v2",
         "lemegeton-requiem"
     ]

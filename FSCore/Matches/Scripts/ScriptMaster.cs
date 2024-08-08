@@ -78,6 +78,14 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public void CreateCurseCard(MatchCard card, int ownerIdx) {
+        var owner = _match.GetPlayer(ownerIdx);
+        var result = new OwnedInPlayMatchCard(card, owner);
+        
+        owner.Curses.Add(result);
+    }
+
+    [LuaCommand]
     public void Roll(StackEffect parentEffect) {
         _match.AddRoll(parentEffect)
             .Wait();

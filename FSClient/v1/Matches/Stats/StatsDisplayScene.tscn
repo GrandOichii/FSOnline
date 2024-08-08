@@ -14,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aquci")
 script = ExtResource("1_nitqm")
 
@@ -49,6 +50,7 @@ layout_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer3/EvasionContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Evasion" type="Label" parent="HBoxContainer3/EvasionContainer"]
 unique_name_in_owner = true

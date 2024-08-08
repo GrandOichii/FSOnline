@@ -171,6 +171,10 @@
             "events/angel-room-v2",
             "events/mega-troll-bomb-v2",
             "events/secret-room-v2"
+        ],
+        "Curses": [
+            "curses/curse-of-the-blind-v2",
+            "curses/curse-of-pain-v2"
         ]
     }
 }
