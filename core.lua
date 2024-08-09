@@ -2057,6 +2057,18 @@ function FS.F.StackEffects()
         end)
     end
 
+    function result:AttackRolls()
+        return result:Custom(function (stackEffect)
+            return IsRollStackEffect(stackEffect) and stackEffect.IsAttackRoll
+        end)
+    end
+
+    function result:NonAttackRolls()
+        return result:Custom(function (stackEffect)
+            return IsRollStackEffect(stackEffect) and not stackEffect.IsAttackRoll
+        end)
+    end
+
     function result:Custom(predicate)
         result.filters[#result.filters+1] = function (stackEffect)
             return predicate(stackEffect)
