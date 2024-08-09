@@ -14,20 +14,7 @@ function _Create()
                 end
             end
         )
-        :TriggeredAbility(
-            FS.B.TriggeredAbility('When you die, before paying penalties, give this to another player.')
-                .On:PlayerDeathBeforePenalties(function (me, player, args)
-                    return player.Idx == args.Player.Idx
-                end)
-                -- .On:PlayerDeathBeforePenalties()
-                .Target:Player(function (me, player)
-                    return FS.F.Players():Except(player.Idx):Do()
-                end)
-                .Effect:Common(
-                    FS.C.Effect.GiveMeToTargetPlayer(0)
-                )
-            :Build()
-        )
+        :Haunt()
         -- TODO add triggered ability
     :Build()
 end

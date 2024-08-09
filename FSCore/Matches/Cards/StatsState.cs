@@ -3,7 +3,9 @@ namespace FSCore.Matches.Cards;
 public class StatsState {
     public int Attack { get; set; }
     public int Health { get; set; }
-    public int? Evasion { get; set; }    
+    public int? Evasion { get; set; } = null;
+
+    public List<LuaFunction> ReceivedDamageModifiers { get; } = [];
 
     public StatsState() {
         Attack = -1;

@@ -1,0 +1,7 @@
+{
+    "Key": "dry-baby-v2",
+    "Name": "Dry Baby",
+    "Type": "Item",
+    "Text": "Damage you would take is reduced to 1.",
+    "Script": "dry-baby-v2.lua"
+}

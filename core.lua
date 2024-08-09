@@ -33,6 +33,7 @@ FS.ModLayers = {
     MONSTER_HEALTH = 15,
     MONSTER_EVASION = 16,
     MONSTER_ATTACK = 17,
+    DAMAGE_RECEIVED_MODIFICATORS = 18,
 }
 
 -- triggers
@@ -1115,6 +1116,20 @@ function FS.B.Card()
         return result.Static:Raw(commonMod.Layer, commonMod.Mod)
     end
 
+    function result:Haunt()
+        return result:TriggeredAbility(
+            FS.B.TriggeredAbility('When you die, before paying penalties, give this to another player.')
+                .On:ControllerDeathBeforePenalties()
+                .Target:Player(function (me, player)
+                    return FS.F.Players():Except(player.Idx):Do()
+                end)
+                .Effect:Common(
+                    FS.C.Effect.GiveMeToTargetPlayer(0)
+                )
+            :Build()
+        )
+    end
+
     return result
 end
 
@@ -1717,6 +1732,12 @@ function FS.B.TriggeredAbility(effectText)
         }
 
         return result
+    end
+
+    function result.On:ControllerDeathBeforePenalties()
+        return result.On:PlayerDeathBeforePenalties(function (me, player, args)
+            return player.Idx == args.Player.Idx
+        end)
     end
 
     function result.On:PlayerDeath(check)

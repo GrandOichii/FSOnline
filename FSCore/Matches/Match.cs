@@ -39,6 +39,8 @@ public class Match {
         ModificationLayer.DEATH_PENALTY_MODIFIERS,
         ModificationLayer.DEATH_PENALTY_REPLACEMENT_EFFECTS,
 
+        ModificationLayer.DAMAGE_RECEIVED_MODIFICATORS,
+
         ModificationLayer.LAST,
     };
 

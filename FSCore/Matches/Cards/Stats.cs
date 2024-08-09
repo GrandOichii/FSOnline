@@ -38,7 +38,6 @@ public class Stats {
     }
 
     public async Task ProcessDamage(InPlayMatchCard card, int amount, StackEffect source) {
-
         amount = PreventDamage(amount);
         if (amount == 0) return;
 
@@ -54,8 +53,20 @@ public class Stats {
             { "Source", source },
         });
     }
-    public async Task ProcessDamage(Player player, int amount, StackEffect source) {
 
+
+    private int ModifyDealtDamage(int amount, StackEffect source) {
+        // TODO catch exceptions
+        foreach (var mod in State.ReceivedDamageModifiers) {
+            var returned = mod.Call(amount, source);
+            amount = LuaUtility.GetReturnAsInt(returned);
+        }
+        
+        return amount;
+    }
+    
+    public async Task ProcessDamage(Player player, int amount, StackEffect source) {
+        amount = ModifyDealtDamage(amount, source);
         amount = PreventDamage(amount);
         if (amount == 0) return;
 
