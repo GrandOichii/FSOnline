@@ -1092,5 +1092,11 @@ public class Match {
         }
     }
 
+    public async Task<bool> KillMonster(string ipid, StackEffect source) {
+        var monster = GetMonster(ipid);
+        await monster.PushDeath(source);
+        return true;
+    }
+
 }
 

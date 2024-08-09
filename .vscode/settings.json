@@ -73,7 +73,8 @@
         "TryDiscardFromPlay",
         "GetInPlayCardOrDefault",
         "AtEndOfTurn",
-        "CreateCurseCard"
+        "CreateCurseCard",
+        "KillMonster"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

@@ -554,4 +554,10 @@ public class ScriptMaster {
         var player = _match.GetPlayer(playerIdx);
         player.AtEndOfTurnEffects.Add(effect);
     }
+
+    [LuaCommand]
+    public bool KillMonster(string ipid, StackEffect source) {
+        return _match.KillMonster(ipid, source)
+            .GetAwaiter().GetResult();
+    }
 }

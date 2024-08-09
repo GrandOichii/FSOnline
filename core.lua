@@ -209,6 +209,14 @@ function FS.C.Effect.KillTargetPlayer(target_idx)
     end
 end
 
+function FS.C.Effect.KillTargetMonster(target_idx)
+    return function (stackEffect)
+        local ipid = stackEffect.Targets[target_idx].Value
+        KillMonster(ipid, stackEffect)
+        return true
+    end
+end
+
 function FS.C.Effect.PreventNextDamageToTargetPlayer(target_idx, amount)
     return function (stackEffect)
         local idx = tonumber(stackEffect.Targets[target_idx].Value)
@@ -235,6 +243,22 @@ function FS.C.Effect.DamageToTarget(target_idx, amount)
         
         if type == FS.TargetTypes.IN_PLAY_CARD then
             return FS.C.Effect.DamageToTargetMonster(target_idx, amount)(stackEffect)
+        end
+
+        error('Invalid damage target: '..tostring(type))
+    end
+end
+
+function FS.C.Effect.KillTarget(target_idx)
+    return function (stackEffect)
+        local target = stackEffect.Targets[target_idx]
+        local type = TargetTypeToInt(target.Type)
+        if type == FS.TargetTypes.PLAYER then
+            return FS.C.Effect.KillTargetPlayer(target_idx)
+        end
+        
+        if type == FS.TargetTypes.IN_PLAY_CARD then
+            return FS.C.Effect.KillTargetMonster(target_idx)
         end
 
         error('Invalid damage target: '..tostring(type))
