@@ -7,8 +7,7 @@
     "Health": 2,
     "Attack": 1,
     "StartingItems": [
-        "lucky-foot-v2",
-        "mystery-sack-v2",
+        "infamy-v2",
         "lemegeton-requiem"
     ]
 }

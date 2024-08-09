@@ -37,7 +37,7 @@ public class Stats {
         return amount;
     }
 
-    public async Task ProcessDamage(InPlayMatchCard card, int amount, StackEffect source) {
+    public async Task ProcessDamage(InPlayMatchCard card, int amount, DamageStackEffect effect) {
         amount = PreventDamage(amount);
         if (amount == 0) return;
 
@@ -45,39 +45,41 @@ public class Stats {
 
         match.LogInfo($"Card {card.LogName} was dealt {amount} damage");
         Damage += amount;
-        CheckDead(source);
+        CheckDead(effect);
 
         await match.Emit("card_damaged", new() {
             { "Card", card },
             { "Amount", amount },
-            { "Source", source },
+            { "Effect", effect },
         });
     }
 
 
-    private int ModifyDealtDamage(int amount, StackEffect source) {
+    private int ModifyDealtDamage(int amount, DamageStackEffect stackEffect) {
         // TODO catch exceptions
         foreach (var mod in State.ReceivedDamageModifiers) {
-            var returned = mod.Call(amount, source);
+            var returned = mod.Call(amount, stackEffect);
             amount = LuaUtility.GetReturnAsInt(returned);
         }
         
         return amount;
     }
     
-    public async Task ProcessDamage(Player player, int amount, StackEffect source) {
-        amount = ModifyDealtDamage(amount, source);
+    public async Task ProcessDamage(Player player, int amount, DamageStackEffect stackEffect) {
+        amount = ModifyDealtDamage(amount, stackEffect);
+        if (amount == 0) return;
+        
         amount = PreventDamage(amount);
         if (amount == 0) return;
 
         player.Match.LogInfo($"Player {player.LogName} was dealt {amount} damage");
         Damage += amount;
-        CheckDead(source);
+        CheckDead(stackEffect);
 
         await player.Match.Emit("player_damaged", new() {
             { "Player", player },
             { "Amount", amount },
-            { "Source", source },
+            { "Effect", stackEffect },
         });
     }
 

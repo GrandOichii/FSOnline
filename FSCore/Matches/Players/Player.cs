@@ -889,10 +889,8 @@ public class Player : IStateModifier {
         Stats.DeathSource = null;
     }
 
-    public async Task ProcessDamage(int amount, StackEffect source) {
-        // TODO use source
-
-        await Stats.ProcessDamage(this, amount, source);
+    public async Task ProcessDamage(int amount, DamageStackEffect effect) {
+        await Stats.ProcessDamage(this, amount, effect);
     }
 
     #endregion

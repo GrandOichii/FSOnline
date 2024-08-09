@@ -206,11 +206,11 @@ public class InPlayMatchCard : IStateModifier {
 
     #endregion
 
-    public async Task ProcessDamage(int amount, StackEffect damageSource) {
+    public async Task ProcessDamage(int amount, DamageStackEffect effect) {
         if (Stats is null)
             throw new MatchException($"Tried to deal damage to card {LogName}, which has no stats");
 
-        await Stats.ProcessDamage(this, amount, damageSource);
+        await Stats.ProcessDamage(this, amount, effect);
     }
 
     public async Task HealToMax() {

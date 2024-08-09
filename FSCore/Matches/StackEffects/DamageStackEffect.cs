@@ -4,6 +4,7 @@ public class DamageStackEffect : StackEffect
 {
     public int Amount { get; set; }
     public StackEffect DamageSource { get; }
+    public int Roll { get; set; } = -1;
 
     public DamageStackEffect(Match match, int ownerIdx, int amount, StackEffect damageSource)
         : base(match, ownerIdx)
@@ -24,6 +25,8 @@ public class DamageStackEffect : StackEffect
         Targets.Add(new(TargetType.ITEM, to.IPID));
     }
 
+    public bool IsCombatDamage => Roll > 0;
+
     public override async Task<bool> Resolve()
     {
         var target = Targets[0];
@@ -32,11 +35,11 @@ public class DamageStackEffect : StackEffect
 
         case TargetType.PLAYER:
             var player = Match.GetPlayer(int.Parse(target.Value));
-            await player.ProcessDamage(Amount, DamageSource);
+            await player.ProcessDamage(Amount, this);
             return true;
         case TargetType.ITEM:
             var monster = Match.GetMonster(target.Value);
-            await monster.ProcessDamage(Amount, DamageSource);
+            await monster.ProcessDamage(Amount, this);
             return true;
         default:
             throw new MatchException($"Unexpected target type for DamageStackEffect: {target.Type} (value: {target.Value})");

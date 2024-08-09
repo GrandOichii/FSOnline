@@ -46,8 +46,10 @@ public class AttackStackEffect : StackEffect
             Match.LogInfo($"Resolving attack roll of {last} by player {player.LogName} to monster {Monster.LogName}");
 
             if (Monster.IsMiss(last)) {
-                // TODO specify that is combat damage
-                var effect = new DamageStackEffect(Match, OwnerIdx, Monster.GetAttack(), this, Match.GetPlayer(OwnerIdx));
+                var effect = new DamageStackEffect(Match, OwnerIdx, Monster.GetAttack(), this, Match.GetPlayer(OwnerIdx))
+                {
+                    Roll = last
+                };
                 effect.SetParentEffect(this);
 
                 await Match.PlaceOnStack(effect);
@@ -55,8 +57,10 @@ public class AttackStackEffect : StackEffect
                 // TODO trigger miss
             } else {
                 // is not miss
-
-                var effect = new DamageStackEffect(Match, OwnerIdx, player.GetAttack(), this, Monster);
+                var effect = new DamageStackEffect(Match, OwnerIdx, player.GetAttack(), this, Monster)
+                {
+                    Roll = last
+                };
                 effect.SetParentEffect(this);
 
                 await Match.PlaceOnStack(effect);
