@@ -40,6 +40,7 @@ public class Match {
         ModificationLayer.DEATH_PENALTY_REPLACEMENT_EFFECTS,
 
         ModificationLayer.DAMAGE_RECEIVED_MODIFICATORS,
+        ModificationLayer.ROLL_RESULT_MODIFIERS,
 
         ModificationLayer.LAST,
     };
@@ -773,8 +774,8 @@ public class Match {
     /// </summary>
     /// <param name="parent">Parent effect</param>
     /// <returns></returns>
-    public async Task AddRoll(StackEffect parent) {
-        var effect = new RollStackEffect(this, parent);
+    public async Task AddRoll(StackEffect parent, bool IsAttackRoll) {
+        var effect = new RollStackEffect(this, parent, IsAttackRoll);
         Stack.AddEffect(effect);
     }
 

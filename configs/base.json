@@ -29,16 +29,25 @@
     "CharactersStartTapped": true,
     "CoinPool": 100,
     "Curses": [
+        "curse-of-the-blind-v2",
         "curse-of-pain-v2",
-        "curse-of-pain-v2",
-        "curse-of-pain-v2",
-        "curse-of-pain-v2",
-        "curse-of-pain-v2"
+        "curse-of-greed-v2"
     ],
     "DeathPenaltyCoins": 1,
     "DeathPenaltyItems": 1,
     "DeathPenaltyLoot": 1,
-    "Events": [],
+    "Events": [
+        "troll-bombs-v2",
+        "chest1-v2",
+        "chest2-v2",
+        "dark-chest1-v2",
+        "dark-chest2-v2",
+        "gold-chest1-v2",
+        "gold-chest2-v2",
+        "angel-room-v2",
+        "mega-troll-bomb-v2",
+        "secret-room-v2"
+    ],
     "ForceInclude3PlusCards": true,
     "InitialDealCoins": 3,
     "InitialDealLoot": 3,
@@ -76,10 +85,15 @@
     "MaxHandSize": 10,
     "MaxPlayerCount": 4,
     "Monsters": [
-        "fly-v2",
-        "fly-v2",
-        "fly-v2",
-        "fly-v2"
+        "fistula-v2",
+        "fistula-v2",
+        "fistula-v2",
+        "fistula-v2",
+        "fistula-v2",
+        "fistula-v2",
+        "fistula-v2",
+        "fistula-v2",
+        "fistula-v2"
     ],
     "PurchaseCost": 10,
     "PurchaseCountDefault": 1,
@@ -90,6 +104,7 @@
         "devil-beggar-requiem",
         "blessing-of-steam-requiem",
         "maggys-blessing-requiem",
+        "static-shock-requiem",
         "blessing-of-greed-requiem",
         "blood-donation-requiem"
     ],
@@ -162,7 +177,10 @@
         "guppys-paw-v2",
         "the-butter-bean-v2",
         "abaddon-v2",
-        "the-midas-touch-v2"
+        "the-midas-touch-v2",
+        "dry-baby-v2",
+        "daddy-haunt-v2",
+        "synthoil-v2"
     ],
     "UseRooms": true
 }

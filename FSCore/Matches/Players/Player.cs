@@ -1129,4 +1129,16 @@ public class Player : IStateModifier {
     #endregion   
 
     public int GetAttack() => Stats.State.Attack;
+
+    public int CalculateRollResult(RollStackEffect stackEffect) {
+        var result = stackEffect.Value;       
+
+        // TODO catch exceptions
+        foreach (var mod in State.RollResultModifiers) {
+            var returned = mod.Call(result, stackEffect);
+            result = LuaUtility.GetReturnAsInt(returned);
+        }
+        System.Console.WriteLine("RESOLVED TO " + result);
+        return Math.Clamp(result, 1, 6);
+    }
 }

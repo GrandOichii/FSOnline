@@ -69,8 +69,7 @@ public class AttackStackEffect : StackEffect
             return false;
         }
 
-        // TODO specify that is combat roll
-        await Match.AddRoll(this);
+        await Match.AddRoll(this, true);
 
         return false;
     }

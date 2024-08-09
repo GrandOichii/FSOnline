@@ -7,6 +7,8 @@
     "Health": 2,
     "Attack": 1,
     "StartingItems": [
+        "synthoil-v2",
+        "mystery-sack-v2",
         "lemegeton-requiem"
     ]
 }

@@ -9,6 +9,7 @@ public class PlayerState {
     public List<LuaFunction> CoinGainModifiers { get; }
     public List<LuaFunction> LootAmountModifiers { get; }
     public List<LuaFunction> PurchaseCostModifiers { get; }
+    public List<LuaFunction> RollResultModifiers { get; }
 
     #endregion
 
@@ -38,5 +39,6 @@ public class PlayerState {
         DeathPenaltyCoinLoseAmountModifiers = [];
         DeathPenaltyLootDiscardAmountModifiers = [];
         DeathPenaltyReplacementEffects = [];
+        RollResultModifiers = [];
     }
 }

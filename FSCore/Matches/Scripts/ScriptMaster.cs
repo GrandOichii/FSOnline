@@ -87,7 +87,7 @@ public class ScriptMaster {
 
     [LuaCommand]
     public void Roll(StackEffect parentEffect) {
-        _match.AddRoll(parentEffect)
+        _match.AddRoll(parentEffect, false)
             .Wait();
     }
 

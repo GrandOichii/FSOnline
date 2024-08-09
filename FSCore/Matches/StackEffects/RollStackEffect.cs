@@ -4,16 +4,20 @@ namespace FSCore.Matches.StackEffects;
 
 public class RollStackEffect : StackEffect
 {
-
     /// <summary>
     /// Roll value
     /// </summary>
     public int Value { get; private set; }
+    /// <summary>
+    /// Shows whether the roll is an attack roll
+    /// </summary>
+    public bool IsAttackRoll { get; }
 
-    public RollStackEffect(Match match, StackEffect parent)
+    public RollStackEffect(Match match, StackEffect parent, bool isAttackRoll)
         : base(match, parent.OwnerIdx)
     {
         Parent = parent;
+        IsAttackRoll = isAttackRoll;
 
         Roll();
     }
@@ -22,8 +26,8 @@ public class RollStackEffect : StackEffect
     /// Sets the roll value to a random value between 1 and 6
     /// </summary>
     private void Roll() {
-        Value = Match.Rng.Next(1, 7);
-        // Value = 1;
+        // Value = Match.Rng.Next(1, 7);
+        Value = 2;
 
         Match.LogInfo($"Player {Match.GetPlayer(Parent!.OwnerIdx).LogName} rolled a {Value}");
 
@@ -44,16 +48,17 @@ public class RollStackEffect : StackEffect
 
     public override async Task<bool> Resolve()
     {
+        var value = Match.GetPlayer(OwnerIdx).CalculateRollResult(this);
         // TODO? completely fizzle the roll?
         if (!Parent!.Cancelled) {
-            Parent.Rolls.Add(Value);
+            Parent.Rolls.Add(value);
         }
 
         var player = Match.GetPlayer(OwnerIdx);
-        player.RollHistory.Add(Value);
+        player.RollHistory.Add(value);
 
         await Match.Emit("roll", new() {
-            { "Value", Value },
+            { "Value", value },
             { "Player", player },
         });
 

@@ -19,6 +19,7 @@ public enum ModificationLayer {
     MONSTER_EVASION = 16,
     MONSTER_ATTACK = 17,
     DAMAGE_RECEIVED_MODIFICATORS = 18,
+    ROLL_RESULT_MODIFIERS = 19,
 }
 
 /// <summary>
