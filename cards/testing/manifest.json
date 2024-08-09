@@ -174,7 +174,8 @@
         ],
         "Curses": [
             "curses/curse-of-the-blind-v2",
-            "curses/curse-of-pain-v2"
+            "curses/curse-of-pain-v2",
+            "curses/curse-of-greed-v2"
         ]
     }
 }
