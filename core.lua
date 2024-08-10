@@ -844,6 +844,26 @@ function FS.C.StateMod.ShopItemsCostsNLess(amount, playerFilterFunc)
     return result
 end
 
+function FS.C.StateMod.TakeNoCombatDamageOnRolls(rolls)
+    local result = {}
+    result.Layer = FS.ModLayers.DAMAGE_RECEIVED_MODIFICATORS
+
+    function result.Mod(me)
+        me.Owner.Stats.State.ReceivedDamageModifiers:Add(
+            function (amount, sourceEffect)
+                for _, roll in ipairs(rolls) do
+                    if roll == sourceEffect.Roll then
+                        return 0
+                    end
+                end
+                return amount
+            end
+        )
+    end
+    
+    return result
+end
+
 -- builders
 FS.B = {}
 
