@@ -38,6 +38,9 @@ public class Stats {
     }
 
     public async Task ProcessDamage(InPlayMatchCard card, int amount, DamageStackEffect effect) {
+        amount = ModifyDealtDamage(amount, effect);
+        if (amount == 0) return;
+
         amount = PreventDamage(amount);
         if (amount == 0) return;
 

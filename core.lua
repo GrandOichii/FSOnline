@@ -844,7 +844,7 @@ function FS.C.StateMod.ShopItemsCostsNLess(amount, playerFilterFunc)
     return result
 end
 
-function FS.C.StateMod.TakeNoCombatDamageOnRolls(rolls)
+function FS.C.StateMod.TakeNoCombatDamageOnRollsForPlayer(rolls)
     local result = {}
     result.Layer = FS.ModLayers.DAMAGE_RECEIVED_MODIFICATORS
 
@@ -860,7 +860,28 @@ function FS.C.StateMod.TakeNoCombatDamageOnRolls(rolls)
             end
         )
     end
-    
+
+    return result
+end
+
+function FS.C.StateMod.TakeNoCombatDamageOnRollsForMonster(rolls)
+    local result = {}
+    result.Layer = FS.ModLayers.DAMAGE_RECEIVED_MODIFICATORS
+
+    function result.Mod(me)
+        me.Stats.State.ReceivedDamageModifiers:Add(
+            function (amount, sourceEffect)
+                print('AMOPGUS')
+                for _, roll in ipairs(rolls) do
+                    if roll == sourceEffect.Roll then
+                        return 0
+                    end
+                end
+                return amount
+            end
+        )
+    end
+
     return result
 end
 
