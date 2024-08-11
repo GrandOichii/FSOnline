@@ -136,7 +136,10 @@
             "rooms/maggys-blessing-requiem",
             "rooms/static-shock-requiem",
             "rooms/blessing-of-greed-requiem",
-            "rooms/blood-donation-requiem"
+            "rooms/blood-donation-requiem",
+            "rooms/black-champions-requiem",
+            "rooms/white-champions-requiem",
+            "rooms/red-champions-requiem"
         ],
         "Monsters": [
             "monsters/sloth-v2",

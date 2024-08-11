@@ -1,0 +1,7 @@
+{
+    "Key": "white-champions-requiem",
+    "Name": "White Champions",
+    "Type": "Room",
+    "Text": "Monsters have +1{evasion}",
+    "Script": "white-champions-requiem.lua"
+}

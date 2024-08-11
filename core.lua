@@ -806,6 +806,36 @@ function FS.C.StateMod.ModMonsterEvasion(modF, monsterFilterFunc)
     return result
 end
 
+function FS.C.StateMod.ModMonsterAttack(modF, monsterFilterFunc)
+    monsterFilterFunc = monsterFilterFunc or FS.C.AllMonsters
+
+    local result = {}
+    result.Layer = FS.ModLayers.MONSTER_ATTACK
+    function result.Mod(me)
+        local monsters = monsterFilterFunc(me)
+        for _, monster in ipairs(monsters) do
+            monster.Stats.State.Attack = monster.Stats.State.Attack + modF(me, monster)
+        end
+    end
+
+    return result
+end
+
+function FS.C.StateMod.ModMonsterHealth(modF, monsterFilterFunc)
+    monsterFilterFunc = monsterFilterFunc or FS.C.AllMonsters
+
+    local result = {}
+    result.Layer = FS.ModLayers.MONSTER_HEALTH
+    function result.Mod(me)
+        local monsters = monsterFilterFunc(me)
+        for _, monster in ipairs(monsters) do
+            monster.Stats.State.Health = monster.Stats.State.Health + modF(me, monster)
+        end
+    end
+
+    return result
+end
+
 function FS.C.StateMod.ModPlayerHealth(modF, playerFilterFunc)
     playerFilterFunc = playerFilterFunc or function (me)
         return FS.F.Players():Idx(me.Owner.Idx):Do()

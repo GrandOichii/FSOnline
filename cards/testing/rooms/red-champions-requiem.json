@@ -1,0 +1,7 @@
+{
+    "Key": "red-champions-requiem",
+    "Name": "Red Champions",
+    "Type": "Room",
+    "Text": "Monsters have +1{health}",
+    "Script": "red-champions-requiem.lua"
+}
