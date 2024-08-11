@@ -167,7 +167,8 @@
             "monsters/conjoined-fatty-v2",
             "monsters/fat-bat-v2",
             "monsters/leech-v2",
-            "monsters/pin-v2"
+            "monsters/pin-v2",
+            "monsters/carrion-queen-v2"
         ],
         "Events": [
             "events/troll-bombs-v2",

@@ -2,6 +2,9 @@
 
 function _Create()
     return FS.B.Monster()
+        .Static:Common(
+            FS.C.StateMod.TakeNoCombatDamageOnRollsForMonster({ 4, 5 })
+        )
         :Reward(
             FS.B.Reward('+1 Treasure')
                 .Effect:Common(

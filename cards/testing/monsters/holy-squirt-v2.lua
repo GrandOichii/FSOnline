@@ -17,7 +17,7 @@ function _Create()
         :Reward(
             FS.B.Reward('Loot 2')
                 .Effect:Common(
-                    FS.C.Effect.Loot(2, FS.C.CurrentPlayers)
+                    FS.C.Effect.Loot(2)
                 )
             :Build()
         )

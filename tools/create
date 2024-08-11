@@ -70,7 +70,7 @@ function _Create()
         :Reward(
             FS.B.Reward('Reward text here')
                 .Effect:Common(
-                    FS.C.Effect.Function(args, FS.F.CurrentPlayers)
+                    FS.C.Effect.Function(args)
                 )
             :Build()
         )

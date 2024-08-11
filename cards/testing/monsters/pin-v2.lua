@@ -8,7 +8,7 @@ function _Create()
         :Reward(
             FS.B.Reward('5{cent}')
                 .Effect:Common(
-                    FS.C.Effect.GainCoins(5, FS.F.CurrentPlayers)
+                    FS.C.Effect.GainCoins(5)
                 )
             :Build()
         )

@@ -19,7 +19,7 @@ function _Create()
                 .Effect:Roll(
                     function (stackEffect)
                         local roll = stackEffect.Rolls[0]
-                        FS.C.Effect.GainCoins(roll, FS.C.CurrentPlayers)(stackEffect)
+                        return FS.C.Effect.GainCoins(roll)(stackEffect)
                     end
                 )
             :Build()
