@@ -1,0 +1,8 @@
+{
+    "Key": "slot-machine-requiem",
+    "Name": "Slot Machine",
+    "Type": "Room",
+    "Text": "Pay 3{cent}: roll-\n2: Gain 1{cent}\n3: Gain 2{cent}\n4: Gain 5{cent}\n5: Gain 7{cent}\n6: Gain 15{cent}. Put this into discard.",
+    "SoulValue": 0,
+    "Script": "slot-machine-requiem.lua"
+}
