@@ -1,0 +1,7 @@
+{
+    "Key": "samsons-blessing-requiem",
+    "Name": "Samson's Blessing",
+    "Type": "Room",
+    "Text": "Players have +1{attack}.",
+    "Script": "samsons-blessing-requiem.lua"
+}

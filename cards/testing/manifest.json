@@ -140,7 +140,8 @@
             "rooms/black-champions-requiem",
             "rooms/white-champions-requiem",
             "rooms/red-champions-requiem",
-            "rooms/slot-machine-requiem"
+            "rooms/slot-machine-requiem",
+            "rooms/samsons-blessing-requiem"
         ],
         "Monsters": [
             "monsters/sloth-v2",
