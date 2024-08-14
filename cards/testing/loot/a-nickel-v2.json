@@ -1,0 +1,7 @@
+{
+    "Key": "a-nickel-v2",
+    "Name": "A Nickel!",
+    "Type": "Loot",
+    "Text": "Gain 5{cent}.",
+    "Script": "a-nickel-v2.lua"
+}

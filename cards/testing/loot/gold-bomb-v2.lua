@@ -1,10 +1,10 @@
 -- status: implemented
 
 function _Create()
-    -- Gain 3{cent}.
     return FS.B.Loot()
+        .Target:MonsterOrPlayer()
         .Effect:Common(
-            FS.C.Effect.GainCoins(3)
+            FS.C.Effect.DamageToTarget(0, 3)
         )
     :Build()
 end

@@ -3,7 +3,6 @@
 function _Create()
     return FS.B.Character()
         :Basic()
-        -- TODO add soul value
         .Static:Common(
             FS.C.StateMod.AddSouls(1)
         )

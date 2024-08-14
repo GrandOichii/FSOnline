@@ -1,0 +1,7 @@
+{
+    "Key": "gold-bomb-v2",
+    "Name": "Gold Bomb!!",
+    "Type": "Loot",
+    "Text": "Deal 3 damage to a monster or player.",
+    "Script": "gold-bomb-v2.lua"
+}

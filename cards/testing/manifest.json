@@ -120,7 +120,13 @@
             "loot/butter-bean-v2",
             "loot/pills-red-v2",
             "loot/holy-card-v2",
-            "loot/a-sack-v2"
+            "loot/a-sack-v2",
+            "loot/a-penny-v2",
+            "loot/2-cents-v2",
+            "loot/4-cents-v2",
+            "loot/a-nickel-v2",
+            "loot/a-dime-v2",
+            "loot/gold-bomb-v2"
         ],
         "BonusSouls": [
             "bonus-souls/soul-of-greed-v2",
