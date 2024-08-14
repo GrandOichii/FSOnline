@@ -80,9 +80,9 @@ function FS.C.IPIDs(items)
     return result
 end
 
-function FS.C.PlayerIndicies(items)
+function FS.C.PlayerIndicies(players)
     local result = {}
-    for _, player in ipairs(items) do
+    for _, player in ipairs(players) do
         result[#result+1] = player.Idx
     end
     return result
@@ -96,7 +96,7 @@ function FS.C.Effect._ApplyToPlayer(effect, filterFunc)
         return FS.F.Players():Idx(stackEffect.OwnerIdx):Do()
     end
     return function (stackEffect, args)
-        -- TODO just stops mid resolving?
+        -- TODO? just stops mid resolving?
         local players = filterFunc(stackEffect, args)
         for _, player in ipairs(players) do
             if not effect(player, stackEffect) then
@@ -109,7 +109,7 @@ end
 
 function FS.C.Effect.SwitchRoll(rollIdx, index)
     return function (stackEffect)
-        -- TODO check that roll idx exists
+        assert(stackEffect.Rolls.Count > rollIdx, 'Tried to get roll idx ' .. rollIdx .. ' from stack effect ' .. tostring(stackEffect) .. ', which only has ' .. tostring(stackEffect.Rolls.Count) .. ' rolls')
         local roll = stackEffect.Rolls[rollIdx]
         local action = index[roll]
         -- assert(action ~= nil, 'Didn\'t provide scenario for roll value '..roll..' for FS.C.Effect.SwitchRoll')
@@ -137,8 +137,7 @@ end
 
 function FS.C.Effect.PutGenericCountersOnMe(amount)
     return function (stackEffect)
-        -- TODO change to IsAbilityStackEffect
-        assert(IsAbilityActivation(stackEffect) or IsTrigger(stackEffect), 'Provided a non-ability-activation stack effect for FS.C.Effect.PutGenericCountersOnMe')
+        assert(IsAbilityStackEffect(stackEffect), 'Provided a non-ability-activation stack effect for FS.C.Effect.PutGenericCountersOnMe')
 
         local card = stackEffect.Card
         PutGenericCounters(card.IPID, amount)
@@ -535,8 +534,7 @@ function FS.C.Effect.MantleTargetPlayer(target_idx)
             if GetCurPlayerIdx() == pidx then
                 EndTheTurn()
                 CancelEverything()
-                -- TODO cancel everything
-                -- TODO cancle the attack
+                -- TODO cancel the attack
             end
 
             return true
@@ -597,27 +595,35 @@ function FS.C.Effect.ModTargetMonsterEvasionTEOT(target_idx, mod)
     end
 end
 
--- TODO add filter func
-function FS.C.Effect.ModMonsterAttackTEOT(mod)
+function FS.C.Effect.ModMonsterAttackTEOT(mod, monsterFilter)
+    monsterFilter = monsterFilter or function (stackEffect)
+        return FS.F.Monsters():IPID(stackEffect.Card.IPID):Do()
+    end
     return function (stackEffect)
-        local me = stackEffect.Card
         TillEndOfTurn(
             FS.ModLayers.MONSTER_ATTACK,
             function ()
-                me.Stats.State.Attack = me.Stats.State.Attack + mod
+                local monsters = monsterFilter(stackEffect)
+                for _, monster in ipairs(monsters) do
+                    monster.Stats.State.Attack = monster.Stats.State.Attack + mod
+                end
             end
         )
     end
 end
 
--- TODO add filter func
-function FS.C.Effect.ModMonsterEvasionTEOT(mod)
+function FS.C.Effect.ModMonsterEvasionTEOT(mod, monsterFilter)
+    monsterFilter = monsterFilter or function (stackEffect)
+        return FS.F.Monsters():IPID(stackEffect.Card.IPID):Do()
+    end
     return function (stackEffect)
-        local me = stackEffect.Card
         TillEndOfTurn(
             FS.ModLayers.MONSTER_EVASION,
             function ()
-                me.Stats.State.Evasion = me.Stats.State.Evasion + mod
+                local monsters = monsterFilter(stackEffect)
+                for _, monster in ipairs(monsters) do
+                    monster.Stats.State.Evasion = monster.Stats.State.Evasion + mod
+                end
             end
         )
     end
@@ -688,17 +694,16 @@ function FS.C.Cost.DestroyMe()
     return result
 end
 
--- TODO add itemFilterFunc
-function FS.C.Cost.SacrificeItems(amount)
-    local result = {}
-
-    local getItems = function (ownerIdx)
-        return FS.F.Items():ControlledBy(ownerIdx):Destructable():Do()
+function FS.C.Cost.SacrificeItems(amount, itemFilterFunc)
+    itemFilterFunc = itemFilterFunc or function (me, player)
+        return FS.F.Items():ControlledBy(player.Idx):Destructable():Do()
     end
+
+    local result = {}
 
     function result.Pay(me, player, stackEffect)
         for i = 1, amount do
-            local items = getItems(player.Idx)
+            local items = itemFilterFunc(me, player)
             local ipids = FS.C.IPIDs(items)
             local ipid = ChooseItem(player.Idx, ipids, 'Choose an item to sacrifice ('..(amount-i+1)..' left)')
             DestroyItem(ipid)
@@ -707,7 +712,7 @@ function FS.C.Cost.SacrificeItems(amount)
     end
 
     function result.Check(me, player)
-        return #getItems(player.Idx) >= amount
+        return #itemFilterFunc(me, player) >= amount
     end
 
     return result
@@ -744,7 +749,12 @@ function FS.C.Cost.PayCoins(amount)
     local result = {}
 
     function result.Pay(me, player, stackEffect)
-        -- TODO ask permission to pay
+        if GetConfig().PromptWhenPayingCoins then
+            local accept = FS.C.Choose.YesNo(player.Idx, 'Pay '..amount..'{cent}?')
+            if not accept then
+                return false
+            end
+        end
         PayCoins(player.Idx, amount)
         return true
     end
@@ -760,7 +770,12 @@ function FS.C.Cost.PayHealth(amount)
     local result = {}
 
     function result.Pay(me, player, stackEffect)
-        -- TODO ask permission to pay
+        if GetConfig().PromptWhenPayingLife then
+            local accept = FS.C.Choose.YesNo(player.Idx, 'Pay '..amount..'{health}?')
+            if not accept then
+                return false
+            end
+        end
         LoseHealth(player.Idx, amount, stackEffect)
         return true
     end
@@ -1039,7 +1054,6 @@ function FS.B.Card()
                 return true
             end
 
-            -- TODO kinda sketchy
             local options = filterFunc(stackEffect.Card, GetPlayer(stackEffect.OwnerIdx))
             for _, o in ipairs(options) do
                 if extractFunc(o) == target then
@@ -1132,7 +1146,6 @@ function FS.B.Card()
     
     function result.Target:MonsterOrPlayer(monsterFilterFunc, playerFilterFunc, hint)
         hint = hint or 'Choose a Monster or player'
-        -- TODO fizzle check break this entire thing
 
         playerFilterFunc = playerFilterFunc or function (player)
             return FS.F.Players():Do()
@@ -1332,24 +1345,19 @@ end
 function FS.B.BonusSoul()
     local result = FS.B.Card()
 
-    -- TODO? change to player filter
     function result:Check(predicate)
         result.Static:Raw(
             FS.ModLayers.LAST,
             function (me)
-                local indicies = {}
-                local players = GetPlayers()
-                for _, player in ipairs(players) do
-                    if predicate(player) then
-                        indicies[#indicies+1] = player.Idx
-                    end
-                end
+                local players = FS.F.Players():Custom(predicate):Do()
+                local indicies = FS.C.PlayerIndicies(players)
                 if #indicies == 0 then
                     return
                 end
                 local idx = indicies[1]
                 if #indicies > 1 then
-                    -- TODO prompt current player to choose
+                    local choice = ChoosePlayer(GetCurPlayerIdx(), indicies, 'Choose a player to gain '..me.LogName)
+                    local idx = choice
                 end
 
                 RemoveFromBonusSouls(me.ID)
@@ -1701,7 +1709,6 @@ function FS.B._Ability(effectText)
     end
 
     function result:Choose(choices)
-        -- TODO change to table
         result.costs[#result.costs+1] = {
             Pay = function (me, player, stackEffect)
                 return choices.Pay(me, player, stackEffect)
@@ -1943,7 +1950,6 @@ function FS.B.TriggeredAbility(effectText)
         return result
     end
 
-    -- TODO add player filter
     function result.On:TurnEnd(check)
         check = check or function (me, player, args)
             return true
@@ -2078,43 +2084,44 @@ function FS.F.Players()
     end
 
     function result:Current()
-        result.filters[#result.filters+1] = function (player)
+        return result:Custom(function (player)
             return player.Idx == GetCurPlayerIdx()
-        end
-        return result
+        end)
     end
 
     function result:Idx(player_idx)
-        result.filters[#result.filters+1] = function (player)
+        return result:Custom(function (player)
             return player.Idx == player_idx
-        end
-        return result
+        end)
     end
 
     function result:DiedThisTurn()
-        result.filters[#result.filters+1] = function (player)
+        return result:Custom(function (player)
             return player.IsDead
-        end
-        return result
+        end)
     end
 
     function result:Except(player_idx)
-        result.filters[#result.filters+1] = function (player)
+        return result:Custom(function (player)
             return player.Idx ~= player_idx
-        end
-        return result
+        end)
     end
 
     function result:CoinsGte(amount)
-        result.filters[#result.filters+1] = function (player)
+        return result:Custom(function (player)
             return player.Coins >= amount
-        end
-        return result
+        end)
     end
 
     function result:Alive()
-        result.filters[#result.filters+1] = function (player)
+        return result:Custom(function (player)
             return not player.IsDead
+        end)
+    end
+
+    function result:Custom(predicate)
+        result.filters[#result.filters+1] = function (player)
+            return predicate(player)
         end
         return result
     end
@@ -2259,7 +2266,9 @@ function FS.F.Items()
 
     function result:NotControlledBy(idx)
         result.filters[#result.filters+1] = function (item)
-            -- TODO assert that is owned item
+            if item.Owner == nil then
+                return false
+            end
             return item.Owner.Idx ~= idx
         end
         return result
@@ -2331,6 +2340,19 @@ function FS.F.Monsters()
             end
         end
         return res
+    end
+
+    function result:Custom(predicate)
+        result.filters[#result.filters+1] = function (monster)
+            return predicate(monster)
+        end
+        return result
+    end
+
+    function result:IPID(ipid)
+        return result:Custom(function (monster)
+            return monster.IPID == ipid
+        end)
     end
 
     return result

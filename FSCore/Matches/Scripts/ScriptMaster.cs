@@ -22,7 +22,7 @@ public class ScriptMaster {
             {
                 _match.LState[method.Name] = method.CreateDelegate(Expression.GetDelegateType(
                     (from parameter in method.GetParameters() select parameter.ParameterType)
-                    .Concat(new[] { method.ReturnType })
+                        .Concat([method.ReturnType ])
                 .ToArray()), this);
             }
         }
@@ -559,5 +559,15 @@ public class ScriptMaster {
     public bool KillMonster(string ipid, StackEffect source) {
         return _match.KillMonster(ipid, source)
             .GetAwaiter().GetResult();
+    }
+
+    [LuaCommand]
+    public bool IsAbilityStackEffect(StackEffect effect) {
+        return effect is ActivatedAbilityStackEffect || effect is TriggeredAbilityStackEffect;
+    }
+
+    [LuaCommand]
+    public MatchConfig GetConfig() {
+        return _match.Config;
     }
 }

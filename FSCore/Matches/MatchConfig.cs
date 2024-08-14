@@ -120,4 +120,12 @@ public struct MatchConfig {
     public required int DeathPenaltyCoins { get; set; }
     public required int DeathPenaltyItems { get; set; }
     public required bool UseRooms { get; set; }
+    /// <summary>
+    /// Shows whether the player should be prompted when paying coins
+    /// </summary>
+    public required bool PromptWhenPayingCoins { get; set; }
+    /// <summary>
+    /// Shows whether the player should be prompted when paying life
+    /// </summary>
+    public required bool PromptWhenPayingLife { get; set; }
 }
