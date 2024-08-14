@@ -156,7 +156,7 @@ public class Program {
         }
 
         var config = ReadConfigYAML(
-            File.ReadAllText("../configs/base.yaml")
+            File.ReadAllText("../configs/base.json")
         );
 
         // await TcpLoop(config);

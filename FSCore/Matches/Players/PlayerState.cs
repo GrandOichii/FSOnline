@@ -3,6 +3,7 @@ namespace FSCore.Matches.Players;
 public class PlayerState {
     public Player Original { get; }
     public int LootPlaysForTurn { get; set; }
+    public int AdditionalSoulCount { get; set; }
 
     #region Modifiers
 
@@ -32,6 +33,7 @@ public class PlayerState {
         Original = original;
         LootPlaysForTurn = original.Match.Config.LootPlay;
 
+        AdditionalSoulCount = 0;
         CoinGainModifiers = [];
         LootAmountModifiers = [];
         RollReplacementEffects = [];

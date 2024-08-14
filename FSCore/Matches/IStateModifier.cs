@@ -20,6 +20,7 @@ public enum ModificationLayer {
     MONSTER_ATTACK = 17,
     DAMAGE_RECEIVED_MODIFICATORS = 18,
     ROLL_RESULT_MODIFIERS = 19,
+    PLAYER_SOUL_COUNT = 20,
 }
 
 /// <summary>

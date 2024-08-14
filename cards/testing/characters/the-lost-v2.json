@@ -8,5 +8,6 @@
     "StartingItems": [
         "holy-mantle-v2"
     ],
+    "SoulValue": 1,
     "Script": "the-lost-v2.lua"
 }

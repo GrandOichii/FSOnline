@@ -114,7 +114,7 @@ public class Player : IStateModifier {
 
     public int SoulCount() {
         // TODO other effects
-        var result = 0;
+        var result = State.AdditionalSoulCount;
         foreach (var card in Souls)
             result += card.GetSoulValue();
         return result;

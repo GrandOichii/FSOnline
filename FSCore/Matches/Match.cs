@@ -42,6 +42,8 @@ public class Match {
         ModificationLayer.DAMAGE_RECEIVED_MODIFICATORS,
         ModificationLayer.ROLL_RESULT_MODIFIERS,
 
+        ModificationLayer.PLAYER_SOUL_COUNT,
+
         ModificationLayer.LAST,
     };
 
@@ -411,6 +413,9 @@ public class Match {
     /// </summary>
     private async Task CleanUp() {
         LogInfo("Performing cleanup");
+
+        // push last update
+        await PushUpdates();
 
         foreach (var player in Players) {
             await player.CleanUp();

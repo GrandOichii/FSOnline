@@ -35,6 +35,7 @@ FS.ModLayers = {
     MONSTER_ATTACK = 17,
     DAMAGE_RECEIVED_MODIFICATORS = 18,
     ROLL_RESULT_MODIFIERS = 19,
+    PLAYER_SOUL_COUNT = 20,
 }
 
 -- triggers
@@ -788,6 +789,23 @@ function FS.C.Cost.PayHealth(amount)
 end
 
 FS.C.StateMod = {}
+
+function FS.C.StateMod.AddSouls(amount, playerFilterFunc)
+    playerFilterFunc = playerFilterFunc or function (me)
+        return FS.F.Players():Idx(me.Owner.Idx):Do()
+    end
+
+    local result = {}
+    result.Layer = FS.ModLayers.PLAYER_SOUL_COUNT
+    function result.Mod(me)
+        local players = playerFilterFunc(me)
+        for _, player in ipairs(players) do
+            player.State.AdditionalSoulCount = player.State.AdditionalSoulCount + 1
+        end
+    end
+
+    return result
+end
 
 function FS.C.StateMod.ModPlayerAttack(modF, playerFilterFunc)
     playerFilterFunc = playerFilterFunc or function (me)

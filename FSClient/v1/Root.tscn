@@ -19,4 +19,4 @@ theme_override_constants/margin_bottom = 4
 
 [node name="MatchManagerConnection" parent="MarginContainer" instance=ExtResource("2_ecero")]
 layout_mode = 2
-default_character = "the-zealot-requiem"
+default_character = "the-lost-v2"

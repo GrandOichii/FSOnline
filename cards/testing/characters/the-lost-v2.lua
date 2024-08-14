@@ -4,6 +4,9 @@ function _Create()
     return FS.B.Character()
         :Basic()
         -- TODO add soul value
+        .Static:Common(
+            FS.C.StateMod.AddSouls(1)
+        )
         :TriggeredAbility(
             FS.B.TriggeredAbility('At the end of your turn, recharge up to 1 Character.')
                 .On:ControllerTurnEnd()
