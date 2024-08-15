@@ -4,8 +4,6 @@ from sys import argv
 from os.path import join
 import json
 
-CARDS_DIR = '../cards/testing'
-
 STATS_FOR = ['monster', 'character']
 REWARDS_FOR = ['monster']
 STARTING_ITEMS_FOR = ['character']
@@ -131,17 +129,19 @@ TYPE_TO_DIR_INDEX = {
     'curse': 'curses',
 }
 
-if (len(argv)) != 4:
+if (len(argv)) != 5:
     print('Not enough arguments')
     exit(1)
 
-card_type = argv[1].lower()
+CARDS_DIR = f'../cards/{argv[1]}'
+
+card_type = argv[2].lower()
 if card_type not in TYPE_TO_DECK_INDEX.keys():
     print(f'Not found key collection for type {card_type}')
     exit(1)
 
-card_key = argv[2].lower()
-card_name = argv[3]
+card_key = argv[3].lower()
+card_name = argv[4]
 
 # read manifest, append card key
 manifest = json.loads(open(join(CARDS_DIR, 'manifest.json'), 'r').read())

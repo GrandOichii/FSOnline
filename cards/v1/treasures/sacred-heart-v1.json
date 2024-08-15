@@ -1,0 +1,7 @@
+{
+    "Key": "sacred-heart-v1",
+    "Name": "Sacred Heart",
+    "Type": "Item",
+    "Text": "Each time you roll a 1, you may change it into a 6.",
+    "Script": "sacred-heart-v1.lua"
+}

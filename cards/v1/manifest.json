@@ -18,7 +18,6 @@
             "treasures/mystery-sack-v1",
             "treasures/moms-razor-v1",
             "treasures/box-v1",
-            "treasures/sacred-heart-v1",
             "treasures/moms-purse-v1",
             "treasures/godhead-v1",
             "treasures/the-relic-v1",
@@ -55,7 +54,8 @@
             "treasures/synthoil-v1",
             "treasures/lucky-foot-v1",
             "treasures/tech-x-v1",
-            "treasures/infamy-v1"
+            "treasures/infamy-v1",
+            "treasures/sacred-heart-v1"
         ],
         "Loot": [
             "loot/bomb-v1",
@@ -86,8 +86,7 @@
             "bonus-souls/soul-of-guppy-v1",
             "bonus-souls/soul-of-gluttony-v1"
         ],
-        "Rooms": [
-        ],
+        "Rooms": [],
         "Monsters": [
             "monsters/sloth-v1",
             "monsters/holy-squirt-v1",
