@@ -184,6 +184,7 @@ public class MatchProcess(CreateMatchParams creationParams)
         
         var cm = new FileCardMaster();
         cm.Load("../cards/testing");
+        cm.Load("../cards/v1");
 
         Match = new(Params.Config, _rng.Next(), cm, File.ReadAllText("../core.lua"));
         Match.Logger = LoggerFactory

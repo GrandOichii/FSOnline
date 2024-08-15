@@ -1,127 +1,34 @@
 {
     "Cards": {
         "Characters": [
-            "characters/samson-v1",
-            "characters/judas-v1",
-            "characters/isaac-v1",
-            "characters/lazarus-v1"
+            "characters/isaac-v1"
         ],
         "StartingItems": [
-            "starting-items/blood-lust-v1",
-            "starting-items/book-of-belial-v1",
-            "starting-items/the-d6-v1",
-            "starting-items/lazarus-rags-v1"
+            "starting-items/the-d6-v1"
         ],
         "Treasures": [
-            "treasures/baby-haunt-v1",
-            "treasures/mr-boom-v1",
-            "treasures/mystery-sack-v1",
-            "treasures/moms-razor-v1",
-            "treasures/box-v1",
-            "treasures/moms-purse-v1",
-            "treasures/godhead-v1",
-            "treasures/the-relic-v1",
-            "treasures/eye-of-greed-v1",
-            "treasures/the-battery-v1",
-            "treasures/the-d20-v1",
-            "treasures/pay-to-play-v1",
-            "treasures/shiny-rock-v1",
-            "treasures/trinity-shield-v1",
-            "treasures/restock-v1",
-            "treasures/steamy-sale-v1",
-            "treasures/the-chest-v1",
-            "treasures/pageant-boy-v1",
-            "treasures/portable-slot-machine-v1",
-            "treasures/dads-lost-coin-v1",
-            "treasures/jawbone-v1",
-            "treasures/guppys-head-v1",
-            "treasures/chaos-v1",
-            "treasures/belly-button-v1",
-            "treasures/breakfast-v1",
-            "treasures/dark-bum-v1",
-            "treasures/fanny-pack-v1",
-            "treasures/shadow-v1",
-            "treasures/razor-blade-v1",
-            "treasures/the-habit-v1",
-            "treasures/the-poop-v1",
-            "treasures/contract-from-below-v1",
-            "treasures/donation-machine-v1",
-            "treasures/guppys-paw-v1",
-            "treasures/the-butter-bean-v1",
-            "treasures/the-midas-touch-v1",
+            "treasures/sacred-heart-v1",
             "treasures/dry-baby-v1",
-            "treasures/daddy-haunt-v1",
-            "treasures/synthoil-v1",
-            "treasures/lucky-foot-v1",
-            "treasures/tech-x-v1",
-            "treasures/infamy-v1",
-            "treasures/sacred-heart-v1"
+            "treasures/godhead-v1",
+            "treasures/eye-of-greed-v1",
+            "treasures/breakfast-v1"
         ],
         "Loot": [
-            "loot/bomb-v1",
-            "loot/3-cents-v1",
-            "loot/blank-rune-v1",
-            "loot/bloody-penny-v1",
-            "loot/lil-battery-v1",
-            "loot/x-wheel-of-fortune-v1",
-            "loot/xiv-temperance-v1",
-            "loot/xvii-the-stars-v1",
-            "loot/orange-green-pills-v1",
-            "loot/dice-shard-v1",
-            "loot/xiii-death-v1",
-            "loot/counterfeit-penny-v1",
-            "loot/lost-soul-v1",
-            "loot/soul-heart-v1",
-            "loot/butter-bean-v1",
-            "loot/pills-red-v1",
-            "loot/a-penny-v1",
             "loot/2-cents-v1",
+            "loot/3-cents-v1",
             "loot/4-cents-v1",
-            "loot/a-nickel-v1",
             "loot/a-dime-v1",
-            "loot/gold-bomb-v1"
+            "loot/a-nickel-v1",
+            "loot/a-penny-v1"
         ],
-        "BonusSouls": [
-            "bonus-souls/soul-of-greed-v1",
-            "bonus-souls/soul-of-guppy-v1",
-            "bonus-souls/soul-of-gluttony-v1"
-        ],
+        "BonusSouls": [],
         "Rooms": [],
         "Monsters": [
-            "monsters/sloth-v1",
-            "monsters/holy-squirt-v1",
-            "monsters/boom-fly-v1",
-            "monsters/war-v1",
-            "monsters/gemini-v1",
-            "monsters/larry-jr-v1",
-            "monsters/little-horn-v1",
-            "monsters/gurdy-v1",
-            "monsters/monstro-v1",
-            "monsters/cursed-keeper-head-v1",
-            "monsters/dip-v1",
-            "monsters/fatty-v1",
-            "monsters/fly-v1",
-            "monsters/clotty-v1",
-            "monsters/pale-fatty-v1",
-            "monsters/pooter-v1",
-            "monsters/red-host-v1",
             "monsters/trite-v1",
-            "monsters/conjoined-fatty-v1",
-            "monsters/fat-bat-v1",
-            "monsters/leech-v1",
-            "monsters/pin-v1",
-            "monsters/carrion-queen-v1",
-            "monsters/hopper-v1"
+            "monsters/war-v1",
+            "monsters/boom-fly-v1"
         ],
-        "Events": [
-            "events/troll-bombs-v1",
-            "events/mega-troll-bomb-v1",
-            "events/secret-room-v1"
-        ],
-        "Curses": [
-            "curses/curse-of-the-blind-v1",
-            "curses/curse-of-pain-v1",
-            "curses/curse-of-greed-v1"
-        ]
+        "Events": [],
+        "Curses": []
     }
 }

@@ -1,7 +1,6 @@
 extends Node
 
 @export var file_drop_enabled = true
-@export var cards_path: String
 @export var base_loot_amount: int = 1
 
 @export var card_source: CardSource

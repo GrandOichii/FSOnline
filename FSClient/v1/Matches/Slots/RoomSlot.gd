@@ -14,5 +14,9 @@ func set_controller(controller: MatchController):
 	
 func load_snapshot(slot: Variant):
 	# TODO show overlay if slot.Card is null
+	if slot.Card == null:
+		%Card.visible = false
+		return
+	%Card.visible = true
 	Card.load_snapshot(slot.Card)
 	#Card.Behavior.set_shop_idx(slot.Idx)

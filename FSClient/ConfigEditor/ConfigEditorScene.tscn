@@ -204,7 +204,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_bos6q")
 script = ExtResource("1_cg1ir")
-cards_path = "../cards/testing"
 card_source = NodePath("Sources/FileCardSource")
 simple_values = Array[Resource("res://ConfigEditor/ConfigValue.gd")]([SubResource("Resource_obm02"), SubResource("Resource_ylkaj"), SubResource("Resource_q6eqh"), SubResource("Resource_ji73w"), SubResource("Resource_wox1w"), SubResource("Resource_r715k"), SubResource("Resource_rmiq1"), SubResource("Resource_rupac"), SubResource("Resource_3hosy"), SubResource("Resource_7dit0"), SubResource("Resource_350ow"), SubResource("Resource_v80uu"), SubResource("Resource_kkyia"), SubResource("Resource_l415v"), SubResource("Resource_ip1hg"), SubResource("Resource_tnunq"), SubResource("Resource_7a8il"), SubResource("Resource_dts7b"), SubResource("Resource_3qqon"), SubResource("Resource_5nbmm"), SubResource("Resource_ub8w4"), SubResource("Resource_1v3ks"), SubResource("Resource_irctj"), SubResource("Resource_40g3p"), SubResource("Resource_g0n6q")])
 
@@ -217,7 +216,7 @@ unique_name_in_owner = true
 [node name="Sources" type="Node" parent="."]
 
 [node name="FileCardSource" parent="Sources" instance=ExtResource("5_1guxq")]
-cards_path = "../cards/testing"
+card_paths = Array[String](["../cards/v1"])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

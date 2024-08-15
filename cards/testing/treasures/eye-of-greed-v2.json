@@ -2,6 +2,6 @@
     "Key": "eye-of-greed-v2",
     "Name": "Eye of Greed",
     "Type": "Item",
-    "Text": "Each time a player rolls a {cent:5}, gain 3{cent}.",
+    "Text": "Each time a player rolls a {roll:5}, gain 3{cent}.",
     "Script": "eye-of-greed-v2.lua"
 }

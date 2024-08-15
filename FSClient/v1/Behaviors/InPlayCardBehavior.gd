@@ -13,6 +13,7 @@ func load_snapshot(card: Variant):
 	_last = card
 
 func can_choose():
+	if _last == null: return false
 	return Controller.can_choose_in_play(_last.IPID)
 
 func determine_bg_color():
