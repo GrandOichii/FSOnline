@@ -48,6 +48,8 @@ func build_create_params() -> String:
 			'Name': 'Bot' + str(i)
 		})
 	result['Bots'] = bots
+
+	print(str(result))
 	
 	return str(result)
 

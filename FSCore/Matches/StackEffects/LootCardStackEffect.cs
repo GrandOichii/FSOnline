@@ -36,4 +36,6 @@ public class LootCardStackEffect : StackEffect
     }
 
     public override StackEffectData ToData() => new LootCardStackEffectData(this);
+
+    public string GetEffectText() => Card.EffectText;
 }

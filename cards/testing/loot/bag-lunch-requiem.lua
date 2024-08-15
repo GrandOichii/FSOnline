@@ -2,7 +2,7 @@
 -- TODO too low-level
 
 function _Create()
-    return FS.B.Loot()
+    return FS.B.Loot('')
         :Trinket()
         .Static:Raw(
             FS.ModLayers.ITEM_DESTRUCTION_REPLACEMENT_EFFECTS,

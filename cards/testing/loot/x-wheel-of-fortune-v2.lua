@@ -1,14 +1,7 @@
 -- status: not tested
 
 function _Create()
-    -- Roll-
-    -- 1: Gain 1{cent}.
-    -- 2: Take 2 damage.
-    -- 3: Loot 3.
-    -- 4: Lose 4{cent}. 5: Gain 5{cent}.
-    -- 6: Gain +1 Treasure.
-
-    return FS.B.Loot()
+    return FS.B.Loot('Roll-\n1: Gain 1{cent}.\n2: Take 2 damage.\n3: Loot 3.\n4: Lose 4{cent}. 5: Gain 5{cent}.\n6: Gain +1 Treasure.')
         .Effect:Roll(FS.C.Effect.SwitchRoll(0,
         {
             [1] = FS.C.Effect.GainCoins(1),

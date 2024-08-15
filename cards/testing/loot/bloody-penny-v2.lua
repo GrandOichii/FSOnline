@@ -1,7 +1,7 @@
 -- status: implemented
 
 function _Create()
-    return FS.B.Loot()
+    return FS.B.Loot('')
         :Trinket()
         :TriggeredAbility(
             FS.B.TriggeredAbility('Each time a player dies, before paying penalties. Loot 1.')

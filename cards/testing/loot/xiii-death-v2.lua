@@ -1,7 +1,7 @@
 -- status: implemented
 
 function _Create()
-    return FS.B.Loot()
+    return FS.B.Loot('Kill a player.')
         .Target:Player(
             function (me, player)
                 return FS.F.Players():Alive():Do()

@@ -181,7 +181,7 @@ public class MatchProcess(CreateMatchParams creationParams)
     public async Task Run() {
         // TODO seed
         System.Console.WriteLine("Configuring match");
-
+        
         var cm = new FileCardMaster();
         cm.Load("../cards/testing");
 
@@ -307,7 +307,6 @@ public class MatchProcess(CreateMatchParams creationParams)
 
     public async Task<bool> CanRun() {
         var nobodyDisconnected = await RefreshConnections();
-        System.Console.WriteLine(nobodyDisconnected);
         if (!nobodyDisconnected) return false;
         if (Players.Count < 2) return false;
 

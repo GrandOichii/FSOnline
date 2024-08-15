@@ -1,8 +1,7 @@
 -- status: implemented
 
 function _Create()
-    -- Gain +1 treasure.
-    return FS.B.Loot()
+    return FS.B.Loot('Gain +1 treasure.')
         .Effect:Common(
             FS.C.Effect.GainTreasure(1)
         )

@@ -2,11 +2,7 @@
 -- TODO too low-level
 
 function _Create()
-    return FS.B.Loot()
-        -- Roll-
-        -- 1-2: You gain +1{attack} till end of turn.
-        -- 3-4: You gain +1{health} till end of turn.
-        -- 5-6: Take 1 damage.",
+    return FS.B.Loot('Roll-\n1-2: You gain +1{attack} till end of turn.\n3-4: You gain +1{health} till end of turn.\n5-6: Take 1 damage.')
         .Effect:Roll(function (stackEffect)
             local roll = stackEffect.Rolls[0]
 

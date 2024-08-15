@@ -1,12 +1,8 @@
 -- status: implemented
+-- TODO change to SwitchRoll
 
 function _Create()
-    -- Roll-
-    -- 1-2: Gain 4{cent}.
-    -- 3-4: Gain 7{cent}.
-    -- 5-6: Lose 4{cent}.
-
-    return FS.B.Loot()
+    return FS.B.Loot('Roll-\n1-2: Gain 4{cent}.\n3-4: Gain 7{cent}.\n5-6: Lose 4{cent}.')
         .Effect:Roll(function (stackEffect)
             local roll = stackEffect.Rolls[0]
 

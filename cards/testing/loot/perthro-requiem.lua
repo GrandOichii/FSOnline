@@ -1,8 +1,7 @@
 -- status: implemented
 
 function _Create()
-    return FS.B.Loot()
-        -- Reroll an item
+    return FS.B.Loot('Reroll an item.')
         .Target:Item(
             function (me, player)
                 return FS.F.Items():Rerollable():Do()

@@ -25,16 +25,17 @@ public static class WebSocketExtensions {
     /// <returns>Read data as a UTF8 string</returns>
     /// <exception cref="WebSocketClosedException"></exception>
     public static async Task<string> Read(this WebSocket socket, CancellationToken cancellationToken) {
-        if (socket.State == WebSocketState.Closed)
-            throw new WebSocketClosedException("socket is closed");
-        
-        var buffer = new byte[1024 * 4];
-        var response = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
-        if (response.MessageType == WebSocketMessageType.Close) {
-            await socket.CloseAsync(WebSocketCloseStatus.NormalClosure, "SocketClose", CancellationToken.None);
-            return "";
-        }
-        return Encoding.UTF8.GetString(buffer).Replace("\0", string.Empty);
+        WebSocketReceiveResult result;
+		var buffer = new ArraySegment<byte>(new byte[1024]);
+		var message = new StringBuilder();
+		do
+		{
+			result = await socket.ReceiveAsync(buffer, CancellationToken.None);
+			string messagePart = Encoding.UTF8.GetString(buffer.Array, 0, result.Count);
+			message.Append(messagePart);
+		}
+		while (!result.EndOfMessage);
+		return message.ToString().Replace("\0", string.Empty);
     }
 
     /// <summary>

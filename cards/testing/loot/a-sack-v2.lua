@@ -1,8 +1,7 @@
 -- status: implemented
 
 function _Create()
-    -- Loot 3.
-    return FS.B.Loot()
+    return FS.B.Loot('Loot 3.')
         .Effect:Common(
             FS.C.Effect.Loot(3)
         )

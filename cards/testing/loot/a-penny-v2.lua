@@ -1,8 +1,7 @@
 -- status: implemented
 
 function _Create()
-    -- Gain 1{cent}.
-    return FS.B.Loot()
+    return FS.B.Loot('Gain 1{cent}.')
         .Effect:Common(
             FS.C.Effect.GainCoins(1)
         )

@@ -1,8 +1,7 @@
 -- status: implemented
 
 function _Create()
-    -- Choose a dice roll. Its controller rerolls it.
-    return FS.B.Loot()
+    return FS.B.Loot('Choose a dice roll. Its controller rerolls it.')
         .Target:StackEffect(
             function (player)
                 return FS.F.StackEffects():Rolls():Do()

@@ -21,7 +21,7 @@ public class WebSocketConnectionChecker(WebSocket socket) : IConnectionChecker
             var resp = await _socket.Read(timeOut);
             return resp == "pong";
         } catch (Exception e) {
-            System.Console.WriteLine(e.Message);
+            // System.Console.WriteLine(e.Message);
             return false;
         }
     }
@@ -29,13 +29,13 @@ public class WebSocketConnectionChecker(WebSocket socket) : IConnectionChecker
     public async Task<string> Read()
     {
         var result = await _socket.Read();
-        System.Console.WriteLine("Read " + result);
+        // System.Console.WriteLine("Read " + result);
         return result;
     }
 
     public async Task Write(string msg)
     {
-        System.Console.WriteLine("Wrote: " + msg);
+        // System.Console.WriteLine("Wrote: " + msg);
         await _socket.Write(msg);
     }
 }

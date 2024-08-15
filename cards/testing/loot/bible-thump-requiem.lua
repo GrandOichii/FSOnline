@@ -1,7 +1,7 @@
 -- status: not tested
 
 function _Create()
-    return FS.B.Loot()
+    return FS.B.Loot('Loot 2, then loot 2 for each player that died this turn.')
         .Effect:Common(
             FS.C.Effect.Loot(2)
         )

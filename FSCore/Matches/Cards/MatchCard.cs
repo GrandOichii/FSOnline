@@ -32,6 +32,10 @@ public class MatchCard {
     #region Effects and Abilities
 
     /// <summary>
+    /// Loot effect text
+    /// </summary>
+    public string EffectText { get; }
+    /// <summary>
     /// Loot effects
     /// </summary>
     public EffectList Effects { get; }
@@ -59,6 +63,9 @@ public class MatchCard {
     /// State modifiers
     /// </summary>
     public Dictionary<ModificationLayer, List<LuaFunction>> StateModifiers { get; }
+    /// <summary>
+    /// Rewards for killing the monster
+    /// </summary>
     public List<RewardAbility> Rewards { get; }
 
     #endregion
@@ -87,6 +94,13 @@ public class MatchCard {
             data = LuaUtility.GetReturnAs<LuaTable>(returned);
         } catch (Exception e) {
             throw new MatchException($"Failed to run card creation function in card {template.Name}", e);
+        }
+
+        // effect text
+        try {
+            EffectText = LuaUtility.TableGet<string>(data, "LootText");
+        } catch (Exception e) {
+            throw new MatchException($"Failed to get loot text for card {template.Name}", e);
         }
 
         // effects

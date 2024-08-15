@@ -1,7 +1,7 @@
--- Choose one-\nTake 1 Damage and gain 4{cent}.\nTake 2 Damage and gain 8{cent}.
+-- status: implemented
 
 function _Create()
-    return FS.B.Loot()
+    return FS.B.Loot('Choose one-\nTake 1 Damage and gain 4{cent}.\nTake 2 Damage and gain 8{cent}.')
         :Choose(
             FS.C.Choose.Effect(
                 {

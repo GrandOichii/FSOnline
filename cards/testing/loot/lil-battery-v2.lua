@@ -1,8 +1,7 @@
 -- status: implemented
 
 function _Create()
-    -- Recharge an Item
-    return FS.B.Loot()
+    return FS.B.Loot('Recharge an Item.')
         .Target:Item(
             function (player)
                 return FS.F.Items():Rechargeable():Do()

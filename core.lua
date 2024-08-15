@@ -961,6 +961,7 @@ function FS.B.Card()
     result.labels = {}
     result.stateModifiers = {}
 
+    result.lootText = ''
     result.lootCosts = {}
     result.lootChecks = {}
     result.lootTargets = {}
@@ -995,6 +996,9 @@ function FS.B.Card()
 
         -- state modifiers
         card.StateModifiers = result.stateModifiers
+
+        -- loot text
+        card.LootText = result.lootText or '' -- TODO remove "or ''"
 
         -- additional loot costs
         card.LootCosts = {}
@@ -1261,8 +1265,9 @@ function FS.B.Card()
 end
 
 -- loot card builder
-function FS.B.Loot()
+function FS.B.Loot(effectText)
     local result = FS.B.Card()
+    result.lootText = effectText
 
     function result:Trinket()
         self:Label(FS.Labels.Trinket)
@@ -1281,15 +1286,16 @@ function FS.B.Loot()
 end
 
 -- event card builder
-function FS.B.Event()
+function FS.B.Event(effectText)
     local result = FS.B.Card()
+    result.lootText = effectText
 
     return result
 end
 
 -- curse card builder
 function FS.B.Curse()
-    local result = FS.B.Event()
+    local result = FS.B.Card()
 
     result.Target:Player()
     result.Effect:Custom(

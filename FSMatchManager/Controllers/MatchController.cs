@@ -32,6 +32,8 @@ public class MatchController(IMatchService matchService) : Controller {
                 await _matchService.WebSocketCreate(HttpContext.WebSockets);
             } catch (Exception e) {
                 // TODO handle
+                System.Console.WriteLine(e);
+                throw e;
             }
 
             // try {
