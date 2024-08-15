@@ -1,0 +1,2810 @@
+[gd_resource type="Resource" script_class="CardImages" load_steps=937 format=3 uid="uid://btf10w685i2ea"]
+
+[ext_resource type="Script" path="res://v1/CardImages.gd" id="1_boc33"]
+[ext_resource type="Script" path="res://v1/CardImage.gd" id="1_v0pgv"]
+[ext_resource type="Texture2D" uid="uid://b54cpyyxctkgu" path="res://assets/images/card/cards/the-empty-requiem.png" id="ImageImport_1"]
+[ext_resource type="Texture2D" uid="uid://bkiycfgm3m3ql" path="res://assets/images/card/cards/moms-razor-v2.png" id="ImageImport_2"]
+[ext_resource type="Texture2D" uid="uid://djbm1w3rd5mq2" path="res://assets/images/card/cards/gemini-v2.png" id="ImageImport_3"]
+[ext_resource type="Texture2D" uid="uid://2n4tdya3dic5" path="res://assets/images/card/cards/gold-bomb-v2.png" id="ImageImport_4"]
+[ext_resource type="Texture2D" uid="uid://d33xk0numi72q" path="res://assets/images/card/cards/book-of-belial-v2.png" id="ImageImport_5"]
+[ext_resource type="Texture2D" uid="uid://bcy34q414clbb" path="res://assets/images/card/cards/cursed-keeper-head-v2.png" id="ImageImport_6"]
+[ext_resource type="Texture2D" uid="uid://bk8erxjmx6usw" path="res://assets/images/card/cards/perthro-requiem.png" id="ImageImport_7"]
+[ext_resource type="Texture2D" uid="uid://coc1p7rl5x6ip" path="res://assets/images/card/cards/3-cents-v2.png" id="ImageImport_8"]
+[ext_resource type="Texture2D" uid="uid://bvjp7rakv16b7" path="res://assets/images/card/cards/experimental-treatment-requiem.png" id="ImageImport_9"]
+[ext_resource type="Texture2D" uid="uid://b2h43y1qevi3w" path="res://assets/images/card/cards/bag-of-crafting-requiem.png" id="ImageImport_10"]
+[ext_resource type="Texture2D" uid="uid://ctve3wpqfsy7g" path="res://assets/images/card/cards/the-keeper-v2.png" id="ImageImport_11"]
+[ext_resource type="Texture2D" uid="uid://b5d3bls8f1a02" path="res://assets/images/card/cards/conjoined-fatty-v2.png" id="ImageImport_12"]
+[ext_resource type="Texture2D" uid="uid://cy5nnkjfv1owp" path="res://assets/images/card/cards/a-dime-v2.png" id="ImageImport_13"]
+[ext_resource type="Texture2D" uid="uid://dc534x6uwkdxp" path="res://assets/images/card/cards/lazarus-v2.png" id="ImageImport_14"]
+[ext_resource type="Texture2D" uid="uid://beoi6yxcaotcc" path="res://assets/images/card/cards/shiny-rock-v2.png" id="ImageImport_15"]
+[ext_resource type="Texture2D" uid="uid://byg8fiwi8wvia" path="res://assets/images/card/cards/larry-jr-v2.png" id="ImageImport_16"]
+[ext_resource type="Texture2D" uid="uid://bt22f8ymr8r2h" path="res://assets/images/card/cards/lucky-toe-requiem.png" id="ImageImport_17"]
+[ext_resource type="Texture2D" uid="uid://p55xxipw805" path="res://assets/images/card/cards/the-dauntless-requiem.png" id="ImageImport_18"]
+[ext_resource type="Texture2D" uid="uid://vsu6721ql8ka" path="res://assets/images/card/cards/shell-game-requiem.png" id="ImageImport_19"]
+[ext_resource type="Texture2D" uid="uid://dxghmyiiqfgq0" path="res://assets/images/card/cards/abyss-requiem.png" id="ImageImport_20"]
+[ext_resource type="Texture2D" uid="uid://rxvydxbyxhdw" path="res://assets/images/card/cards/blessing-of-steam-requiem.png" id="ImageImport_21"]
+[ext_resource type="Texture2D" uid="uid://cp4ni5bked0fo" path="res://assets/images/card/cards/pay-to-play-v2.png" id="ImageImport_22"]
+[ext_resource type="Texture2D" uid="uid://dim0b6fsuvw6v" path="res://assets/images/card/cards/halo-of-flies-requiem.png" id="ImageImport_23"]
+[ext_resource type="Texture2D" uid="uid://cr5jmnqtry24y" path="res://assets/images/card/cards/holy-mantle-v2.png" id="ImageImport_24"]
+[ext_resource type="Texture2D" uid="uid://tjjwj5v28i0y" path="res://assets/images/card/cards/fanny-pack-v2.png" id="ImageImport_25"]
+[ext_resource type="Texture2D" uid="uid://cd2jle8ioy2x8" path="res://assets/images/card/cards/xiv-temperance-v2.png" id="ImageImport_26"]
+[ext_resource type="Texture2D" uid="uid://cp6qnbxjjx0v3" path="res://assets/images/card/cards/the-miser-requiem.png" id="ImageImport_27"]
+[ext_resource type="Texture2D" uid="uid://b0gviosva2wxf" path="res://assets/images/card/cards/sloth-v2.png" id="ImageImport_28"]
+[ext_resource type="Texture2D" uid="uid://d3yia86gl13co" path="res://assets/images/card/cards/whore-of-babylon-v2.png" id="ImageImport_29"]
+[ext_resource type="Texture2D" uid="uid://bnqcx5x4qfivb" path="res://assets/images/card/cards/mr-boom-v2.png" id="ImageImport_30"]
+[ext_resource type="Texture2D" uid="uid://0mh2et25tlkp" path="res://assets/images/card/cards/lil-battery-v2.png" id="ImageImport_31"]
+[ext_resource type="Texture2D" uid="uid://c72i756q0m2sw" path="res://assets/images/card/cards/bag-lunch-requiem.png" id="ImageImport_32"]
+[ext_resource type="Texture2D" uid="uid://btqcmlns0eoy3" path="res://assets/images/card/cards/devil-beggar-requiem.png" id="ImageImport_33"]
+[ext_resource type="Texture2D" uid="uid://ciijcp8sdvgba" path="res://assets/images/card/cards/leech-v2.png" id="ImageImport_34"]
+[ext_resource type="Texture2D" uid="uid://ew7kymeth045" path="res://assets/images/card/cards/war-v2.png" id="ImageImport_35"]
+[ext_resource type="Texture2D" uid="uid://5hm3j5yenfkl" path="res://assets/images/card/cards/the-battery-v2.png" id="ImageImport_36"]
+[ext_resource type="Texture2D" uid="uid://cn7f5ggkus4cr" path="res://assets/images/card/cards/guppys-head-v2.png" id="ImageImport_37"]
+[ext_resource type="Texture2D" uid="uid://dgliy1kny8qao" path="res://assets/images/card/cards/gurdy-v2.png" id="ImageImport_38"]
+[ext_resource type="Texture2D" uid="uid://dqxpiqw0u0vhk" path="res://assets/images/card/cards/synthoil-v2.png" id="ImageImport_39"]
+[ext_resource type="Texture2D" uid="uid://dl3txsroomki3" path="res://assets/images/card/cards/pageant-boy-v2.png" id="ImageImport_40"]
+[ext_resource type="Texture2D" uid="uid://c35q7xvlaclpt" path="res://assets/images/card/cards/dark-chest2-v2.png" id="ImageImport_41"]
+[ext_resource type="Texture2D" uid="uid://co27jj6jeflco" path="res://assets/images/card/cards/hypercoagulation-requiem.png" id="ImageImport_42"]
+[ext_resource type="Texture2D" uid="uid://ct53km5jn6h33" path="res://assets/images/card/cards/bloody-penny-v2.png" id="ImageImport_43"]
+[ext_resource type="Texture2D" uid="uid://8lbq6ljenmgy" path="res://assets/images/card/cards/2-cents-v2.png" id="ImageImport_44"]
+[ext_resource type="Texture2D" uid="uid://cg3nrgsdah1ec" path="res://assets/images/card/cards/tech-x-v2.png" id="ImageImport_45"]
+[ext_resource type="Texture2D" uid="uid://b6oerpnexf68j" path="res://assets/images/card/cards/the-baleful-requiem.png" id="ImageImport_46"]
+[ext_resource type="Texture2D" uid="uid://yuqag4ogplwb" path="res://assets/images/card/cards/trinity-shield-v2.png" id="ImageImport_47"]
+[ext_resource type="Texture2D" uid="uid://di1rfwllnpqll" path="res://assets/images/card/cards/slot-machine-requiem.png" id="ImageImport_48"]
+[ext_resource type="Texture2D" uid="uid://b1vircs1tgov2" path="res://assets/images/card/cards/shadow-v2.png" id="ImageImport_49"]
+[ext_resource type="Texture2D" uid="uid://bd8jur7sqtlnb" path="res://assets/images/card/cards/fat-bat-v2.png" id="ImageImport_50"]
+[ext_resource type="Texture2D" uid="uid://bu65ojmmygdh5" path="res://assets/images/card/cards/blessing-of-greed-requiem.png" id="ImageImport_51"]
+[ext_resource type="Texture2D" uid="uid://br8biea2yqyq2" path="res://assets/images/card/cards/infamy-v2.png" id="ImageImport_52"]
+[ext_resource type="Texture2D" uid="uid://dss08ykduxs0b" path="res://assets/images/card/cards/guppys-eye-v2.png" id="ImageImport_53"]
+[ext_resource type="Texture2D" uid="uid://dvxv7wd07fy7l" path="res://assets/images/card/cards/mystery-sack-v2.png" id="ImageImport_54"]
+[ext_resource type="Texture2D" uid="uid://nd4t52tva8fd" path="res://assets/images/card/cards/a-dollar-uoi.png" id="ImageImport_55"]
+[ext_resource type="Texture2D" uid="uid://0s7dxjlqu7yx" path="res://assets/images/card/cards/jawbone-v2.png" id="ImageImport_56"]
+[ext_resource type="Texture2D" uid="uid://dion4s5ulr5ff" path="res://assets/images/card/cards/the-poop-v2.png" id="ImageImport_57"]
+[ext_resource type="Texture2D" uid="uid://0xo0bf6exyii" path="res://assets/images/card/cards/dry-baby-v2.png" id="ImageImport_58"]
+[ext_resource type="Texture2D" uid="uid://b6s1pqv7cd81r" path="res://assets/images/card/cards/isaac-v2.png" id="ImageImport_59"]
+[ext_resource type="Texture2D" uid="uid://c01474h5ea3kr" path="res://assets/images/card/cards/the-butter-bean-v2.png" id="ImageImport_60"]
+[ext_resource type="Texture2D" uid="uid://cor8jully1ebu" path="res://assets/images/card/cards/holy-card-v2.png" id="ImageImport_61"]
+[ext_resource type="Texture2D" uid="uid://chkxrjpu3vhuc" path="res://assets/images/card/cards/a-sack-v2.png" id="ImageImport_62"]
+[ext_resource type="Texture2D" uid="uid://cbxlpqt5tjy4u" path="res://assets/images/card/cards/wooden-nickel-v2.png" id="ImageImport_63"]
+[ext_resource type="Texture2D" uid="uid://c1bqrb2ryr2e4" path="res://assets/images/card/cards/chaos-v2.png" id="ImageImport_64"]
+[ext_resource type="Texture2D" uid="uid://boqggbjrtjt1h" path="res://assets/images/card/cards/counterfeit-penny-v2.png" id="ImageImport_65"]
+[ext_resource type="Texture2D" uid="uid://djqwjtjp1ayg1" path="res://assets/images/card/cards/pooter-v2.png" id="ImageImport_66"]
+[ext_resource type="Texture2D" uid="uid://btv8exuhn2ta1" path="res://assets/images/card/cards/chunk-of-amber-warp.png" id="ImageImport_67"]
+[ext_resource type="Texture2D" uid="uid://d0nduyqnjtmco" path="res://assets/images/card/cards/fatty-v2.png" id="ImageImport_68"]
+[ext_resource type="Texture2D" uid="uid://dhy0lwi8fn3cf" path="res://assets/images/card/cards/dark-arts-v2.png" id="ImageImport_69"]
+[ext_resource type="Texture2D" uid="uid://bwfwaf7k6m81w" path="res://assets/images/card/cards/daddy-haunt-v2.png" id="ImageImport_70"]
+[ext_resource type="Texture2D" uid="uid://cenqhto3q5lf0" path="res://assets/images/card/cards/carrion-queen-v2.png" id="ImageImport_71"]
+[ext_resource type="Texture2D" uid="uid://c836qkm16gmvn" path="res://assets/images/card/cards/lucky-foot-v2.png" id="ImageImport_72"]
+[ext_resource type="Texture2D" uid="uid://dr38rc8ucflj0" path="res://assets/images/card/cards/guppys-tail-v2.png" id="ImageImport_73"]
+[ext_resource type="Texture2D" uid="uid://blstg4ulc6jyo" path="res://assets/images/card/cards/sacred-heart-v2.png" id="ImageImport_74"]
+[ext_resource type="Texture2D" uid="uid://drycnuojqqq5o" path="res://assets/images/card/cards/moms-purse-v2.png" id="ImageImport_75"]
+[ext_resource type="Texture2D" uid="uid://lwhvlqeocp2r" path="res://assets/images/card/cards/clotty-v2.png" id="ImageImport_76"]
+[ext_resource type="Texture2D" uid="uid://cf1i0n28kfvwq" path="res://assets/images/card/cards/infestation-v2.png" id="ImageImport_77"]
+[ext_resource type="Texture2D" uid="uid://cf85iphv3gx5j" path="res://assets/images/card/cards/restock-v2.png" id="ImageImport_78"]
+[ext_resource type="Texture2D" uid="uid://cc0davf345ubm" path="res://assets/images/card/cards/keepers-bargain-requiem.png" id="ImageImport_79"]
+[ext_resource type="Texture2D" uid="uid://3d26iva1x60g" path="res://assets/images/card/cards/fistula-v2.png" id="ImageImport_80"]
+[ext_resource type="Texture2D" uid="uid://bjf0me4csqbhk" path="res://assets/images/card/cards/little-horn-v2.png" id="ImageImport_81"]
+[ext_resource type="Texture2D" uid="uid://b6dabmgijvmi4" path="res://assets/images/card/cards/x-wheel-of-fortune-v2.png" id="ImageImport_82"]
+[ext_resource type="Texture2D" uid="uid://c0fwfd4uoxqgq" path="res://assets/images/card/cards/the-relic-v2.png" id="ImageImport_83"]
+[ext_resource type="Texture2D" uid="uid://d1d1am684o07b" path="res://assets/images/card/cards/libra-v2.png" id="ImageImport_84"]
+[ext_resource type="Texture2D" uid="uid://dsab03ds7ee3v" path="res://assets/images/card/cards/dark-bum-v2.png" id="ImageImport_85"]
+[ext_resource type="Texture2D" uid="uid://by02l4ln38gm1" path="res://assets/images/card/cards/holy-squirt-v2.png" id="ImageImport_86"]
+[ext_resource type="Texture2D" uid="uid://41bkn2l4qjt" path="res://assets/images/card/cards/pale-fatty-v2.png" id="ImageImport_87"]
+[ext_resource type="Texture2D" uid="uid://dine5aoiypu0n" path="res://assets/images/card/cards/swarmer-v2.png" id="ImageImport_88"]
+[ext_resource type="Texture2D" uid="uid://byamjajc0sbfn" path="res://assets/images/card/cards/the-curdled-requiem.png" id="ImageImport_89"]
+[ext_resource type="Texture2D" uid="uid://bh1kxufgr5673" path="res://assets/images/card/cards/samson-v2.png" id="ImageImport_90"]
+[ext_resource type="Texture2D" uid="uid://cuhqovp5mjxb7" path="res://assets/images/card/cards/widow-v2.png" id="ImageImport_91"]
+[ext_resource type="Texture2D" uid="uid://1v2y4o6fb80v" path="res://assets/images/card/cards/a-friend-summer.png" id="ImageImport_92"]
+[ext_resource type="Texture2D" uid="uid://bgbp1rk5gsswc" path="res://assets/images/card/cards/samsons-blessing-requiem.png" id="ImageImport_93"]
+[ext_resource type="Texture2D" uid="uid://2pevnwgu266q" path="res://assets/images/card/cards/the-midas-touch-v2.png" id="ImageImport_94"]
+[ext_resource type="Texture2D" uid="uid://brvu4asvoc6y6" path="res://assets/images/card/cards/hush-v2.png" id="ImageImport_95"]
+[ext_resource type="Texture2D" uid="uid://bgrlr6nkmq2lo" path="res://assets/images/card/cards/soul-of-gluttony-v2.png" id="ImageImport_96"]
+[ext_resource type="Texture2D" uid="uid://b2oro0smfgf72" path="res://assets/images/card/cards/the-habit-v2.png" id="ImageImport_97"]
+[ext_resource type="Texture2D" uid="uid://dvy2aheapg3en" path="res://assets/images/card/cards/contract-from-below-v2.png" id="ImageImport_98"]
+[ext_resource type="Texture2D" uid="uid://c1cftbh4w6ssu" path="res://assets/images/card/cards/hourglass-v2.png" id="ImageImport_99"]
+[ext_resource type="Texture2D" uid="uid://bgsnnggklbri0" path="res://assets/images/card/cards/the-cage-v2.png" id="ImageImport_100"]
+[ext_resource type="Texture2D" uid="uid://bm8dwlcx3efgb" path="res://assets/images/card/cards/crooked-penny-v2.png" id="ImageImport_101"]
+[ext_resource type="Texture2D" uid="uid://bhtwb2dddcn14" path="res://assets/images/card/cards/dads-lost-coin-v2.png" id="ImageImport_102"]
+[ext_resource type="Texture2D" uid="uid://dlhi4f4iwr276" path="res://assets/images/card/cards/the-lost-v2.png" id="ImageImport_103"]
+[ext_resource type="Texture2D" uid="uid://b2kuwmgtqbm6h" path="res://assets/images/card/cards/a-penny-v2.png" id="ImageImport_104"]
+[ext_resource type="Texture2D" uid="uid://brp1gtifsosmt" path="res://assets/images/card/cards/soul-heart-v2.png" id="ImageImport_105"]
+[ext_resource type="Texture2D" uid="uid://d2720m1d6cvuj" path="res://assets/images/card/cards/gimpy-v2.png" id="ImageImport_106"]
+[ext_resource type="Texture2D" uid="uid://tu41y86u2qeq" path="res://assets/images/card/cards/curse-of-the-blind-v2.png" id="ImageImport_107"]
+[ext_resource type="Texture2D" uid="uid://c7nb26tt5j2ur" path="res://assets/images/card/cards/blank-rune-v2.png" id="ImageImport_108"]
+[ext_resource type="Texture2D" uid="uid://njwr6m1hwwlu" path="res://assets/images/card/cards/godhead-v2.png" id="ImageImport_109"]
+[ext_resource type="Texture2D" uid="uid://dyqsklp044anf" path="res://assets/images/card/cards/steamy-sale-v2.png" id="ImageImport_110"]
+[ext_resource type="Texture2D" uid="uid://buvtytmi7aiq7" path="res://assets/images/card/cards/curse-of-greed-v2.png" id="ImageImport_111"]
+[ext_resource type="Texture2D" uid="uid://byg6bsore3qcm" path="res://assets/images/card/cards/guppys-paw-v2.png" id="ImageImport_112"]
+[ext_resource type="Texture2D" uid="uid://dutfxjddwy5tu" path="res://assets/images/card/cards/monstro-v2.png" id="ImageImport_113"]
+[ext_resource type="Texture2D" uid="uid://brb8462yvvaxn" path="res://assets/images/card/cards/chest1-v2.png" id="ImageImport_114"]
+[ext_resource type="Texture2D" uid="uid://8pi2takscldg" path="res://assets/images/card/cards/secret-room-v2.png" id="ImageImport_115"]
+[ext_resource type="Texture2D" uid="uid://410riygk10co" path="res://assets/images/card/cards/soul-of-guppy-v2.png" id="ImageImport_116"]
+[ext_resource type="Texture2D" uid="uid://c51o21rmdh571" path="res://assets/images/card/cards/razor-blade-v2.png" id="ImageImport_117"]
+[ext_resource type="Texture2D" uid="uid://c2ocg4bffwk67" path="res://assets/images/card/cards/xvii-the-stars-v2.png" id="ImageImport_118"]
+[ext_resource type="Texture2D" uid="uid://bn7gsj3b6dw0d" path="res://assets/images/card/cards/a-nickel-v2.png" id="ImageImport_119"]
+[ext_resource type="Texture2D" uid="uid://b342tuudwtov5" path="res://assets/images/card/cards/orange-green-pills-v2.png" id="ImageImport_120"]
+[ext_resource type="Texture2D" uid="uid://dvdxchpxndn8f" path="res://assets/images/card/cards/chest2-v2.png" id="ImageImport_121"]
+[ext_resource type="Texture2D" uid="uid://ctuwp1dvq36p6" path="res://assets/images/card/cards/soul-of-greed-v2.png" id="ImageImport_122"]
+[ext_resource type="Texture2D" uid="uid://b0jss7iaik4m1" path="res://assets/images/card/cards/belly-button-v2.png" id="ImageImport_123"]
+[ext_resource type="Texture2D" uid="uid://cpvji8gbnw1wj" path="res://assets/images/card/cards/nerve-ending-v2.png" id="ImageImport_124"]
+[ext_resource type="Texture2D" uid="uid://jkdik27karxh" path="res://assets/images/card/cards/breakfast-v2.png" id="ImageImport_125"]
+[ext_resource type="Texture2D" uid="uid://l1v7auflft31" path="res://assets/images/card/cards/bum-bo-v2.png" id="ImageImport_126"]
+[ext_resource type="Texture2D" uid="uid://c1u616pwvdq4l" path="res://assets/images/card/cards/lazarus-rags-v2.png" id="ImageImport_127"]
+[ext_resource type="Texture2D" uid="uid://bw3e6i35mj57v" path="res://assets/images/card/cards/blood-lust-v2.png" id="ImageImport_128"]
+[ext_resource type="Texture2D" uid="uid://skkxyw8f4dxj" path="res://assets/images/card/cards/abaddon-v2.png" id="ImageImport_129"]
+[ext_resource type="Texture2D" uid="uid://cwpnohhml7omg" path="res://assets/images/card/cards/boom-fly-v2.png" id="ImageImport_130"]
+[ext_resource type="Texture2D" uid="uid://dajgyj8o66nem" path="res://assets/images/card/cards/hopper-v2.png" id="ImageImport_131"]
+[ext_resource type="Texture2D" uid="uid://dq1xtwypuavl0" path="res://assets/images/card/cards/20-20-v2.png" id="ImageImport_132"]
+[ext_resource type="Texture2D" uid="uid://0moxw8ba3hdy" path="res://assets/images/card/cards/red-host-v2.png" id="ImageImport_133"]
+[ext_resource type="Texture2D" uid="uid://bvse1hesm11i0" path="res://assets/images/card/cards/box-v2.png" id="ImageImport_134"]
+[ext_resource type="Texture2D" uid="uid://dt8isq2yc3ivi" path="res://assets/images/card/cards/gold-chest1-v2.png" id="ImageImport_135"]
+[ext_resource type="Texture2D" uid="uid://c8fynyl8po78g" path="res://assets/images/card/cards/dark-judas-v2.png" id="ImageImport_136"]
+[ext_resource type="Texture2D" uid="uid://cgr8j5mjt5wet" path="res://assets/images/card/cards/angel-room-v2.png" id="ImageImport_137"]
+[ext_resource type="Texture2D" uid="uid://cbn86a7dkrjlr" path="res://assets/images/card/cards/xiii-death-v2.png" id="ImageImport_138"]
+[ext_resource type="Texture2D" uid="uid://cyjh6w7p6hok5" path="res://assets/images/card/cards/mega-troll-bomb-v2.png" id="ImageImport_139"]
+[ext_resource type="Texture2D" uid="uid://bi5jpshmyguuh" path="res://assets/images/card/cards/bomb-v2.png" id="ImageImport_140"]
+[ext_resource type="Texture2D" uid="uid://begxai1af0m1i" path="res://assets/images/card/cards/blood-donation-requiem.png" id="ImageImport_141"]
+[ext_resource type="Texture2D" uid="uid://cnccc7sp5xcy5" path="res://assets/images/card/cards/dip-v2.png" id="ImageImport_142"]
+[ext_resource type="Texture2D" uid="uid://cema7v203ch3n" path="res://assets/images/card/cards/xvii-the-stars-alt1.png" id="ImageImport_143"]
+[ext_resource type="Texture2D" uid="uid://c83hgpubnm1b6" path="res://assets/images/card/cards/pills-red-v2.png" id="ImageImport_144"]
+[ext_resource type="Texture2D" uid="uid://nm4wi0uf7iwt" path="res://assets/images/card/cards/baby-haunt-v2.png" id="ImageImport_145"]
+[ext_resource type="Texture2D" uid="uid://drj8qenwvm13n" path="res://assets/images/card/cards/black-champions-requiem.png" id="ImageImport_146"]
+[ext_resource type="Texture2D" uid="uid://dthvgvfi3eac1" path="res://assets/images/card/cards/judas-v2.png" id="ImageImport_147"]
+[ext_resource type="Texture2D" uid="uid://cdkofvfe5atr0" path="res://assets/images/card/cards/donation-machine-v2.png" id="ImageImport_148"]
+[ext_resource type="Texture2D" uid="uid://bfkd5kb0q6qv0" path="res://assets/images/card/cards/the-d6-v2.png" id="ImageImport_149"]
+[ext_resource type="Texture2D" uid="uid://dwywhdto3bbib" path="res://assets/images/card/cards/keepers-box-requiem.png" id="ImageImport_150"]
+[ext_resource type="Texture2D" uid="uid://ci2xulk3hujmr" path="res://assets/images/card/cards/troll-bombs-v2.png" id="ImageImport_151"]
+[ext_resource type="Texture2D" uid="uid://b3ab3x5r3gyhf" path="res://assets/images/card/cards/butter-bean-v2.png" id="ImageImport_152"]
+[ext_resource type="Texture2D" uid="uid://coqhcuwblp6ay" path="res://assets/images/card/cards/curse-of-pain-v2.png" id="ImageImport_153"]
+[ext_resource type="Texture2D" uid="uid://cn3kklxee1h3u" path="res://assets/images/card/cards/dice-shard-v2.png" id="ImageImport_154"]
+[ext_resource type="Texture2D" uid="uid://dxer2fjdhpw2u" path="res://assets/images/card/cards/sumptorium-requiem.png" id="ImageImport_155"]
+[ext_resource type="Texture2D" uid="uid://detsywcak3fcd" path="res://assets/images/card/cards/head-of-krampus-v2.png" id="ImageImport_156"]
+[ext_resource type="Texture2D" uid="uid://bla6cp8stubh2" path="res://assets/images/card/cards/the-d20-v2.png" id="ImageImport_157"]
+[ext_resource type="Texture2D" uid="uid://dyto2adeb6exj" path="res://assets/images/card/cards/white-champions-requiem.png" id="ImageImport_158"]
+[ext_resource type="Texture2D" uid="uid://dbsttoe2t228y" path="res://assets/images/card/cards/guppy-v2.png" id="ImageImport_159"]
+[ext_resource type="Texture2D" uid="uid://wt8kbpak35bg" path="res://assets/images/card/cards/maggys-blessing-requiem.png" id="ImageImport_160"]
+[ext_resource type="Texture2D" uid="uid://dq6cvvu06u7ri" path="res://assets/images/card/cards/lemegeton-requiem.png" id="ImageImport_161"]
+[ext_resource type="Texture2D" uid="uid://ymlwftl6k1tm" path="res://assets/images/card/cards/the-hoarder-requiem.png" id="ImageImport_162"]
+[ext_resource type="Texture2D" uid="uid://dxf6gm6easkvn" path="res://assets/images/card/cards/soulbond-requiem.png" id="ImageImport_163"]
+[ext_resource type="Texture2D" uid="uid://dxhruwus2mte" path="res://assets/images/card/cards/charger-v2.png" id="ImageImport_164"]
+[ext_resource type="Texture2D" uid="uid://bom1w7eyqjk7g" path="res://assets/images/card/cards/gold-chest2-v2.png" id="ImageImport_165"]
+[ext_resource type="Texture2D" uid="uid://dul6m52850k6q" path="res://assets/images/card/cards/dice-room2-requiem.png" id="ImageImport_166"]
+[ext_resource type="Texture2D" uid="uid://3l7466uura81" path="res://assets/images/card/cards/dark-chest1-v2.png" id="ImageImport_167"]
+[ext_resource type="Texture2D" uid="uid://bw1gxf6g7nkdf" path="res://assets/images/card/cards/lost-soul-v2.png" id="ImageImport_168"]
+[ext_resource type="Texture2D" uid="uid://nfnl5ywtawf3" path="res://assets/images/card/cards/trite-v2.png" id="ImageImport_169"]
+[ext_resource type="Texture2D" uid="uid://c76rxi0sxiyl1" path="res://assets/images/card/cards/the-chest-v2.png" id="ImageImport_170"]
+[ext_resource type="Texture2D" uid="uid://sc8881bpsdvb" path="res://assets/images/card/cards/portable-slot-machine-v2.png" id="ImageImport_171"]
+[ext_resource type="Texture2D" uid="uid://c1p4h74lqbenn" path="res://assets/images/card/cards/fly-v2.png" id="ImageImport_172"]
+[ext_resource type="Texture2D" uid="uid://cpwoqiybvd44k" path="res://assets/images/card/cards/static-shock-requiem.png" id="ImageImport_173"]
+[ext_resource type="Texture2D" uid="uid://c3ks4or7pbp73" path="res://assets/images/card/cards/bag-o-trash-v2.png" id="ImageImport_174"]
+[ext_resource type="Texture2D" uid="uid://dyoxkjms2s3l8" path="res://assets/images/card/cards/bible-thump-requiem.png" id="ImageImport_175"]
+[ext_resource type="Texture2D" uid="uid://22fgy1ew0pbu" path="res://assets/images/card/cards/red-champions-requiem.png" id="ImageImport_176"]
+[ext_resource type="Texture2D" uid="uid://cel3cbxj1c2c" path="res://assets/images/card/cards/4-cents-v2.png" id="ImageImport_177"]
+[ext_resource type="Texture2D" uid="uid://bue7cowiaotas" path="res://assets/images/card/cards/pin-v2.png" id="ImageImport_178"]
+[ext_resource type="Texture2D" uid="uid://4uq013r7gd4o" path="res://assets/images/card/cards/the-zealot-requiem.png" id="ImageImport_179"]
+[ext_resource type="Texture2D" uid="uid://yakcjva3gke5" path="res://assets/images/card/cards/eye-of-greed-v2.png" id="ImageImport_180"]
+[ext_resource type="Texture2D" uid="uid://dlbtpxgrorkql" path="res://assets/images/card/cards/v1/xx-judgement-v1.png" id="ImageImport_181"]
+[ext_resource type="Texture2D" uid="uid://bw7xw2u8x1f7m" path="res://assets/images/card/cards/v1/the-curse-v1.png" id="ImageImport_182"]
+[ext_resource type="Texture2D" uid="uid://cu1bjvgiwbw08" path="res://assets/images/card/cards/v1/theres-options-v1.png" id="ImageImport_183"]
+[ext_resource type="Texture2D" uid="uid://bfi22pnq63uoy" path="res://assets/images/card/cards/v1/we-need-to-go-deeper-v1.png" id="ImageImport_184"]
+[ext_resource type="Texture2D" uid="uid://dq436u3af50yj" path="res://assets/images/card/cards/v1/incubus-v1.png" id="ImageImport_185"]
+[ext_resource type="Texture2D" uid="uid://c7oonwjxn7j0s" path="res://assets/images/card/cards/v1/viii-justice-v1.png" id="ImageImport_186"]
+[ext_resource type="Texture2D" uid="uid://b8pqc2lt6ern1" path="res://assets/images/card/cards/v1/lil-battery-v1.png" id="ImageImport_187"]
+[ext_resource type="Texture2D" uid="uid://c3dymmwg4lg6w" path="res://assets/images/card/cards/v1/greed-event-v1.png" id="ImageImport_188"]
+[ext_resource type="Texture2D" uid="uid://b3ahbipnx4tus" path="res://assets/images/card/cards/v1/i-can-see-forever-v1.png" id="ImageImport_189"]
+[ext_resource type="Texture2D" uid="uid://dkkkoclasslfl" path="res://assets/images/card/cards/v1/the-habit-v1.png" id="ImageImport_190"]
+[ext_resource type="Texture2D" uid="uid://cvbeklc34jqk1" path="res://assets/images/card/cards/v1/death-v1.png" id="ImageImport_191"]
+[ext_resource type="Texture2D" uid="uid://dy80h1rvot61w" path="res://assets/images/card/cards/v1/no-v1.png" id="ImageImport_192"]
+[ext_resource type="Texture2D" uid="uid://dd3n6p6iky17e" path="res://assets/images/card/cards/v1/dagaz-v1.png" id="ImageImport_193"]
+[ext_resource type="Texture2D" uid="uid://mluw38l8u1cj" path="res://assets/images/card/cards/v1/curse-of-amnesia-v1.png" id="ImageImport_194"]
+[ext_resource type="Texture2D" uid="uid://debi3b1hd4vwn" path="res://assets/images/card/cards/v1/pills-3-v1.png" id="ImageImport_195"]
+[ext_resource type="Texture2D" uid="uid://wwj7jcyta776" path="res://assets/images/card/cards/v1/spider-v1.png" id="ImageImport_196"]
+[ext_resource type="Texture2D" uid="uid://3w2ahdcwt443" path="res://assets/images/card/cards/v1/evil-twin-v1.png" id="ImageImport_197"]
+[ext_resource type="Texture2D" uid="uid://b16xgab8c3gip" path="res://assets/images/card/cards/v1/conjoined-fatty-v1.png" id="ImageImport_198"]
+[ext_resource type="Texture2D" uid="uid://bb43oidukonk1" path="res://assets/images/card/cards/v1/dinga-v1.png" id="ImageImport_199"]
+[ext_resource type="Texture2D" uid="uid://cxgf02jxsc4nd" path="res://assets/images/card/cards/v1/pin-v1.png" id="ImageImport_200"]
+[ext_resource type="Texture2D" uid="uid://v3fwpcjsjhmr" path="res://assets/images/card/cards/v1/chub-v1.png" id="ImageImport_201"]
+[ext_resource type="Texture2D" uid="uid://ccxg5nq2uigve" path="res://assets/images/card/cards/v1/monstros-tooth-v1.png" id="ImageImport_202"]
+[ext_resource type="Texture2D" uid="uid://dak6yrpm3povw" path="res://assets/images/card/cards/v1/dark-chest-2-v1.png" id="ImageImport_203"]
+[ext_resource type="Texture2D" uid="uid://b1rvwe1xpq1q7" path="res://assets/images/card/cards/v1/pills-2-v1.png" id="ImageImport_204"]
+[ext_resource type="Texture2D" uid="uid://c6nplh1ljdynv" path="res://assets/images/card/cards/v1/three-cents-v1.png" id="ImageImport_205"]
+[ext_resource type="Texture2D" uid="uid://wkvphhhikk2j" path="res://assets/images/card/cards/v1/rag-man-v1.png" id="ImageImport_206"]
+[ext_resource type="Texture2D" uid="uid://s62lp6pdfjjv" path="res://assets/images/card/cards/v1/sack-head-v1.png" id="ImageImport_207"]
+[ext_resource type="Texture2D" uid="uid://djv3gioelbjio" path="res://assets/images/card/cards/v1/lucky-foot-v1.png" id="ImageImport_208"]
+[ext_resource type="Texture2D" uid="uid://dw6dt82ol1gft" path="res://assets/images/card/cards/v1/contract-from-below-v1.png" id="ImageImport_209"]
+[ext_resource type="Texture2D" uid="uid://b1proxfqch7p6" path="res://assets/images/card/cards/v1/a-penny-v1.png" id="ImageImport_210"]
+[ext_resource type="Texture2D" uid="uid://btcxrpk38olyg" path="res://assets/images/card/cards/v1/fatty-v1.png" id="ImageImport_211"]
+[ext_resource type="Texture2D" uid="uid://iogd1efpypdp" path="res://assets/images/card/cards/v1/xvii-the-stars-v1.png" id="ImageImport_212"]
+[ext_resource type="Texture2D" uid="uid://dl1plew1ccutn" path="res://assets/images/card/cards/v1/blue-baby-v1.png" id="ImageImport_213"]
+[ext_resource type="Texture2D" uid="uid://ccah6mlfmf5e6" path="res://assets/images/card/cards/v1/curse-of-greed-v1.png" id="ImageImport_214"]
+[ext_resource type="Texture2D" uid="uid://1w3g6386ikrr" path="res://assets/images/card/cards/v1/bobs-brain-v1.png" id="ImageImport_215"]
+[ext_resource type="Texture2D" uid="uid://b7f0qt4j7n7gv" path="res://assets/images/card/cards/v1/the-chest-v1.png" id="ImageImport_216"]
+[ext_resource type="Texture2D" uid="uid://bt7bvboaghs7s" path="res://assets/images/card/cards/v1/the-blue-map-v1.png" id="ImageImport_217"]
+[ext_resource type="Texture2D" uid="uid://b44crb5j7c7un" path="res://assets/images/card/cards/v1/godhead-v1.png" id="ImageImport_218"]
+[ext_resource type="Texture2D" uid="uid://dmumskrvmtrf8" path="res://assets/images/card/cards/v1/hopper-v1.png" id="ImageImport_219"]
+[ext_resource type="Texture2D" uid="uid://vsebqasyfn1b" path="res://assets/images/card/cards/v1/holy-moms-eye-v1.png" id="ImageImport_220"]
+[ext_resource type="Texture2D" uid="uid://davfs48qhncct" path="res://assets/images/card/cards/v1/pay-to-play-v1.png" id="ImageImport_221"]
+[ext_resource type="Texture2D" uid="uid://dyuxlr5fb6k38" path="res://assets/images/card/cards/v1/pandoras-box-v1.png" id="ImageImport_222"]
+[ext_resource type="Texture2D" uid="uid://svvia6rth6aw" path="res://assets/images/card/cards/v1/soul-of-greed-v1.png" id="ImageImport_223"]
+[ext_resource type="Texture2D" uid="uid://dlaq6qhyb66bv" path="res://assets/images/card/cards/v1/curse-of-pain-v1.png" id="ImageImport_224"]
+[ext_resource type="Texture2D" uid="uid://cje3mys4faftw" path="res://assets/images/card/cards/v1/big-spider-v1.png" id="ImageImport_225"]
+[ext_resource type="Texture2D" uid="uid://qhurdcpyhedw" path="res://assets/images/card/cards/v1/the-battery-v1.png" id="ImageImport_226"]
+[ext_resource type="Texture2D" uid="uid://crvxg8coloqq8" path="res://assets/images/card/cards/v1/maggy-v1.png" id="ImageImport_227"]
+[ext_resource type="Texture2D" uid="uid://djktgke7rlfvf" path="res://assets/images/card/cards/v1/trinity-shield-v1.png" id="ImageImport_228"]
+[ext_resource type="Texture2D" uid="uid://cc3xsuindhtpy" path="res://assets/images/card/cards/v1/lilith-v1.png" id="ImageImport_229"]
+[ext_resource type="Texture2D" uid="uid://csjxq0vnhvyho" path="res://assets/images/card/cards/v1/dip-v1.png" id="ImageImport_230"]
+[ext_resource type="Texture2D" uid="uid://bti8gddui0sm" path="res://assets/images/card/cards/v1/troll-bombs-v1.png" id="ImageImport_231"]
+[ext_resource type="Texture2D" uid="uid://dn0cwom110ve8" path="res://assets/images/card/cards/v1/bomb-v1.png" id="ImageImport_232"]
+[ext_resource type="Texture2D" uid="uid://c0duefwqy13uo" path="res://assets/images/card/cards/v1/greed-v1.png" id="ImageImport_233"]
+[ext_resource type="Texture2D" uid="uid://cxu6472u1h6q8" path="res://assets/images/card/cards/v1/xii-the-hanged-man-v1.png" id="ImageImport_234"]
+[ext_resource type="Texture2D" uid="uid://dlb3en2dbeshr" path="res://assets/images/card/cards/v1/the-compass-v1.png" id="ImageImport_235"]
+[ext_resource type="Texture2D" uid="uid://b146se8papwhk" path="res://assets/images/card/cards/v1/two-of-clubs-v1.png" id="ImageImport_236"]
+[ext_resource type="Texture2D" uid="uid://dcxf2idk1b7a4" path="res://assets/images/card/cards/v1/moms-dead-hand-v1.png" id="ImageImport_237"]
+[ext_resource type="Texture2D" uid="uid://0ap8pcpb5v3r" path="res://assets/images/card/cards/v1/pills-v1.png" id="ImageImport_238"]
+[ext_resource type="Texture2D" uid="uid://s66jyqfdjru7" path="res://assets/images/card/cards/v1/boom-fly-v1.png" id="ImageImport_239"]
+[ext_resource type="Texture2D" uid="uid://bff1gch4wnqqe" path="res://assets/images/card/cards/v1/delirium-v1.png" id="ImageImport_240"]
+[ext_resource type="Texture2D" uid="uid://cutub7r46j1kb" path="res://assets/images/card/cards/v1/the-d6-v1.png" id="ImageImport_241"]
+[ext_resource type="Texture2D" uid="uid://b8mgikfvb5nqs" path="res://assets/images/card/cards/v1/v-the-hierophant-v1.png" id="ImageImport_242"]
+[ext_resource type="Texture2D" uid="uid://bw3vb1ukt0ng6" path="res://assets/images/card/cards/v1/eden-v1.png" id="ImageImport_243"]
+[ext_resource type="Texture2D" uid="uid://bt2iug2khf8x" path="res://assets/images/card/cards/v1/ehwaz-v1.png" id="ImageImport_244"]
+[ext_resource type="Texture2D" uid="uid://s03f34sgc8do" path="res://assets/images/card/cards/v1/greeds-gullet-v1.png" id="ImageImport_245"]
+[ext_resource type="Texture2D" uid="uid://bclsjgc0jkq0n" path="res://assets/images/card/cards/v1/mega-troll-bomb-v1.png" id="ImageImport_246"]
+[ext_resource type="Texture2D" uid="uid://d53xpr0p6bha" path="res://assets/images/card/cards/v1/broken-ankh-v1.png" id="ImageImport_247"]
+[ext_resource type="Texture2D" uid="uid://c7dxvys5mvv13" path="res://assets/images/card/cards/v1/restock-v1.png" id="ImageImport_248"]
+[ext_resource type="Texture2D" uid="uid://8jrv8tkybrjb" path="res://assets/images/card/cards/v1/ix-the-hermit-v1.png" id="ImageImport_249"]
+[ext_resource type="Texture2D" uid="uid://e6eyv5ldpfev" path="res://assets/images/card/cards/v1/leech-v1.png" id="ImageImport_250"]
+[ext_resource type="Texture2D" uid="uid://dh3wjfda5gag0" path="res://assets/images/card/cards/v1/placebo-v1.png" id="ImageImport_251"]
+[ext_resource type="Texture2D" uid="uid://cup5boowtcku0" path="res://assets/images/card/cards/v1/cursed-psy-horf-v1.png" id="ImageImport_252"]
+[ext_resource type="Texture2D" uid="uid://bnvi1ft3dvyog" path="res://assets/images/card/cards/v1/moms-eye-v1.png" id="ImageImport_253"]
+[ext_resource type="Texture2D" uid="uid://0o7blvux8pxs" path="res://assets/images/card/cards/v1/chaos-card-v1.png" id="ImageImport_254"]
+[ext_resource type="Texture2D" uid="uid://pdca1reuy2yn" path="res://assets/images/card/cards/v1/xix-the-sun-v1.png" id="ImageImport_255"]
+[ext_resource type="Texture2D" uid="uid://b8sngkgg50mqn" path="res://assets/images/card/cards/v1/eye-of-greed-v1.png" id="ImageImport_256"]
+[ext_resource type="Texture2D" uid="uid://biqqh1wnd83cq" path="res://assets/images/card/cards/v1/gold-chest-v1.png" id="ImageImport_257"]
+[ext_resource type="Texture2D" uid="uid://bxkg34k86k1vq" path="res://assets/images/card/cards/v1/soul-of-guppy-v1.png" id="ImageImport_258"]
+[ext_resource type="Texture2D" uid="uid://cyexiuqlsbq1h" path="res://assets/images/card/cards/v1/cursed-moms-hand-v1.png" id="ImageImport_259"]
+[ext_resource type="Texture2D" uid="uid://c8avraocp5toc" path="res://assets/images/card/cards/v1/ii-the-high-priestess-v1.png" id="ImageImport_260"]
+[ext_resource type="Texture2D" uid="uid://by34cslrrmpdh" path="res://assets/images/card/cards/v1/sleight-of-hand-v1.png" id="ImageImport_261"]
+[ext_resource type="Texture2D" uid="uid://sht5bsul03jp" path="res://assets/images/card/cards/v1/goat-head-v1.png" id="ImageImport_262"]
+[ext_resource type="Texture2D" uid="uid://ciwbb313whjqp" path="res://assets/images/card/cards/v1/portable-slot-machine-v1.png" id="ImageImport_263"]
+[ext_resource type="Texture2D" uid="uid://brsisfvksp5p5" path="res://assets/images/card/cards/v1/razor-blade-v1.png" id="ImageImport_264"]
+[ext_resource type="Texture2D" uid="uid://8mis3sg2ptd8" path="res://assets/images/card/cards/v1/lost-soul-v1.png" id="ImageImport_265"]
+[ext_resource type="Texture2D" uid="uid://dnnxqlgiwud1w" path="res://assets/images/card/cards/v1/holy-keeper-head-v1.png" id="ImageImport_266"]
+[ext_resource type="Texture2D" uid="uid://dg64qg6gvorcb" path="res://assets/images/card/cards/v1/red-host-v1.png" id="ImageImport_267"]
+[ext_resource type="Texture2D" uid="uid://cq322yrny82q5" path="res://assets/images/card/cards/v1/moms-purse-v1.png" id="ImageImport_268"]
+[ext_resource type="Texture2D" uid="uid://dtw1seenwa8xj" path="res://assets/images/card/cards/v1/pride-v1.png" id="ImageImport_269"]
+[ext_resource type="Texture2D" uid="uid://lbtd78nmotpm" path="res://assets/images/card/cards/v1/clotty-v1.png" id="ImageImport_270"]
+[ext_resource type="Texture2D" uid="uid://ijcx7p6v7i22" path="res://assets/images/card/cards/v1/the-lamb-v1.png" id="ImageImport_271"]
+[ext_resource type="Texture2D" uid="uid://d3dthvt4b51s6" path="res://assets/images/card/cards/v1/devil-deal-v1.png" id="ImageImport_272"]
+[ext_resource type="Texture2D" uid="uid://c1h75agoqqflt" path="res://assets/images/card/cards/v1/mega-fatty-v1.png" id="ImageImport_273"]
+[ext_resource type="Texture2D" uid="uid://b76munvggt6hi" path="res://assets/images/card/cards/v1/tech-x-v1.png" id="ImageImport_274"]
+[ext_resource type="Texture2D" uid="uid://c5byn13xla3t1" path="res://assets/images/card/cards/v1/conquest-v1.png" id="ImageImport_275"]
+[ext_resource type="Texture2D" uid="uid://dx45ke8iiyjvn" path="res://assets/images/card/cards/v1/cursed-fatty-v1.png" id="ImageImport_276"]
+[ext_resource type="Texture2D" uid="uid://v07oe207cxr8" path="res://assets/images/card/cards/v1/shadow-v1.png" id="ImageImport_277"]
+[ext_resource type="Texture2D" uid="uid://737vbwtf116a" path="res://assets/images/card/cards/v1/xviii-the-moon-v1.png" id="ImageImport_278"]
+[ext_resource type="Texture2D" uid="uid://btstx5cpl25co" path="res://assets/images/card/cards/v1/the-haunt-v1.png" id="ImageImport_279"]
+[ext_resource type="Texture2D" uid="uid://1ro71mb4676s" path="res://assets/images/card/cards/v1/sloth-v1.png" id="ImageImport_280"]
+[ext_resource type="Texture2D" uid="uid://dmulbuvtqfnpb" path="res://assets/images/card/cards/v1/compost-v1.png" id="ImageImport_281"]
+[ext_resource type="Texture2D" uid="uid://lrcjsyxyqk7l" path="res://assets/images/card/cards/v1/vii-the-chariot-v1.png" id="ImageImport_282"]
+[ext_resource type="Texture2D" uid="uid://bnt5j0gwhsh77" path="res://assets/images/card/cards/v1/stoney-v1.png" id="ImageImport_283"]
+[ext_resource type="Texture2D" uid="uid://deoiu2n341yru" path="res://assets/images/card/cards/v1/wrath-v1.png" id="ImageImport_284"]
+[ext_resource type="Texture2D" uid="uid://b8a8wch7pu5wo" path="res://assets/images/card/cards/v1/cursed-horf-v1.png" id="ImageImport_285"]
+[ext_resource type="Texture2D" uid="uid://bacmv70bvv03j" path="res://assets/images/card/cards/v1/purple-heart-v1.png" id="ImageImport_286"]
+[ext_resource type="Texture2D" uid="uid://iq46eigbbc0e" path="res://assets/images/card/cards/v1/scolex-v1.png" id="ImageImport_287"]
+[ext_resource type="Texture2D" uid="uid://coeeo1b6q66lo" path="res://assets/images/card/cards/v1/holy-squirt-v1.png" id="ImageImport_288"]
+[ext_resource type="Texture2D" uid="uid://lvkaqoquwrcr" path="res://assets/images/card/cards/v1/soul-heart-v1.png" id="ImageImport_289"]
+[ext_resource type="Texture2D" uid="uid://dmoommgi85q5c" path="res://assets/images/card/cards/v1/little-horn-v1.png" id="ImageImport_290"]
+[ext_resource type="Texture2D" uid="uid://xd1canbwd428" path="res://assets/images/card/cards/v1/peep-v1.png" id="ImageImport_291"]
+[ext_resource type="Texture2D" uid="uid://dfjrtv6dfi5yd" path="res://assets/images/card/cards/v1/mr-boom-v1.png" id="ImageImport_292"]
+[ext_resource type="Texture2D" uid="uid://b1b4xacdcgwm1" path="res://assets/images/card/cards/v1/cambion-conception-v1.png" id="ImageImport_293"]
+[ext_resource type="Texture2D" uid="uid://5tr10flu2p82" path="res://assets/images/card/cards/v1/counterfeit-penny-v1.png" id="ImageImport_294"]
+[ext_resource type="Texture2D" uid="uid://og0l0ko3l2sk" path="res://assets/images/card/cards/v1/gurdy-v1.png" id="ImageImport_295"]
+[ext_resource type="Texture2D" uid="uid://dhkjey5kqb7sp" path="res://assets/images/card/cards/v1/box-v1.png" id="ImageImport_296"]
+[ext_resource type="Texture2D" uid="uid://bdpcpqgagnasl" path="res://assets/images/card/cards/v1/trite-v1.png" id="ImageImport_297"]
+[ext_resource type="Texture2D" uid="uid://drj3ogvrq1gv6" path="res://assets/images/card/cards/v1/lust-v1.png" id="ImageImport_298"]
+[ext_resource type="Texture2D" uid="uid://c14xogwglvkgh" path="res://assets/images/card/cards/v1/the-map-v1.png" id="ImageImport_299"]
+[ext_resource type="Texture2D" uid="uid://bw2ys01xlgwgp" path="res://assets/images/card/cards/v1/a-dime-v1.png" id="ImageImport_300"]
+[ext_resource type="Texture2D" uid="uid://b4vtogyribojb" path="res://assets/images/card/cards/v1/decoy-v1.png" id="ImageImport_301"]
+[ext_resource type="Texture2D" uid="uid://cgvf0isn2qf88" path="res://assets/images/card/cards/v1/battery-bum-v1.png" id="ImageImport_302"]
+[ext_resource type="Texture2D" uid="uid://cmhkan07u4lwy" path="res://assets/images/card/cards/v1/lazarus-v1.png" id="ImageImport_303"]
+[ext_resource type="Texture2D" uid="uid://vhiutvi4osca" path="res://assets/images/card/cards/v1/crystal-ball-v1.png" id="ImageImport_304"]
+[ext_resource type="Texture2D" uid="uid://cyl86jc5qmq4q" path="res://assets/images/card/cards/v1/curse-of-the-blind-v1.png" id="ImageImport_305"]
+[ext_resource type="Texture2D" uid="uid://bo6qlu2mcpdjs" path="res://assets/images/card/cards/v1/mega-battery-v1.png" id="ImageImport_306"]
+[ext_resource type="Texture2D" uid="uid://p6f4kv7g5rye" path="res://assets/images/card/cards/v1/flush-v1.png" id="ImageImport_307"]
+[ext_resource type="Texture2D" uid="uid://ux1xlh0us7fd" path="res://assets/images/card/cards/v1/diplopia-v1.png" id="ImageImport_308"]
+[ext_resource type="Texture2D" uid="uid://dylndeofxnopq" path="res://assets/images/card/cards/v1/cursed-chest-v1.png" id="ImageImport_309"]
+[ext_resource type="Texture2D" uid="uid://cugs18hhivft5" path="res://assets/images/card/cards/v1/moms-coin-purse-v1.png" id="ImageImport_310"]
+[ext_resource type="Texture2D" uid="uid://dtj2ihq1dt21f" path="res://assets/images/card/cards/v1/greedling-v1.png" id="ImageImport_311"]
+[ext_resource type="Texture2D" uid="uid://bj0f5kysbff71" path="res://assets/images/card/cards/v1/modeling-clay-v1.png" id="ImageImport_312"]
+[ext_resource type="Texture2D" uid="uid://crryoxvklus2y" path="res://assets/images/card/cards/v1/spider-mod-v1.png" id="ImageImport_313"]
+[ext_resource type="Texture2D" uid="uid://4o8mnwe4m3u" path="res://assets/images/card/cards/v1/starter-deck-v1.png" id="ImageImport_314"]
+[ext_resource type="Texture2D" uid="uid://ow10ipfr8o3u" path="res://assets/images/card/cards/v1/cursed-keeper-head-v1.png" id="ImageImport_315"]
+[ext_resource type="Texture2D" uid="uid://s12603eux7l8" path="res://assets/images/card/cards/v1/monstro-v1.png" id="ImageImport_316"]
+[ext_resource type="Texture2D" uid="uid://b6wlaj1fjwen4" path="res://assets/images/card/cards/v1/o-the-fool-v1.png" id="ImageImport_317"]
+[ext_resource type="Texture2D" uid="uid://kmrhilqt2je0" path="res://assets/images/card/cards/v1/gold-bomb-v1.png" id="ImageImport_318"]
+[ext_resource type="Texture2D" uid="uid://g3p0etvvu7xi" path="res://assets/images/card/cards/v1/chaos-v1.png" id="ImageImport_319"]
+[ext_resource type="Texture2D" uid="uid://do656vje4podw" path="res://assets/images/card/cards/v1/charged-baby-v1.png" id="ImageImport_320"]
+[ext_resource type="Texture2D" uid="uid://05hb6rnygtdo" path="res://assets/images/card/cards/v1/lazarus-rags-v1.png" id="ImageImport_321"]
+[ext_resource type="Texture2D" uid="uid://ci65q0huyp4vn" path="res://assets/images/card/cards/v1/mulligan-v1.png" id="ImageImport_322"]
+[ext_resource type="Texture2D" uid="uid://lbytsysacmts" path="res://assets/images/card/cards/v1/brimstone-v1.png" id="ImageImport_323"]
+[ext_resource type="Texture2D" uid="uid://dpnm5332gr2aw" path="res://assets/images/card/cards/v1/the-d10-v1.png" id="ImageImport_324"]
+[ext_resource type="Texture2D" uid="uid://docmuxbmsotxx" path="res://assets/images/card/cards/v1/carrion-queen-v1.png" id="ImageImport_325"]
+[ext_resource type="Texture2D" uid="uid://c8rxdyrsqs7op" path="res://assets/images/card/cards/v1/gluttony-v1.png" id="ImageImport_326"]
+[ext_resource type="Texture2D" uid="uid://bt7iqctyhccx6" path="res://assets/images/card/cards/v1/xiv-temperance-v1.png" id="ImageImport_327"]
+[ext_resource type="Texture2D" uid="uid://c3obility0t8w" path="res://assets/images/card/cards/v1/daddy-haunt-v1.png" id="ImageImport_328"]
+[ext_resource type="Texture2D" uid="uid://cex4xt1dkg7hd" path="res://assets/images/card/cards/v1/ipecac-v1.png" id="ImageImport_329"]
+[ext_resource type="Texture2D" uid="uid://dfk2rmapthxa5" path="res://assets/images/card/cards/v1/gurdy-jr-v1.png" id="ImageImport_330"]
+[ext_resource type="Texture2D" uid="uid://cqym7m7ungw5v" path="res://assets/images/card/cards/v1/polydactyly-v1.png" id="ImageImport_331"]
+[ext_resource type="Texture2D" uid="uid://dt33we8bd7dsk" path="res://assets/images/card/cards/v1/guppys-paw-v1.png" id="ImageImport_332"]
+[ext_resource type="Texture2D" uid="uid://blp7bh5bby1u0" path="res://assets/images/card/cards/v1/edens-blessing-v1.png" id="ImageImport_333"]
+[ext_resource type="Texture2D" uid="uid://cbbx8uvkgm2me" path="res://assets/images/card/cards/v1/war-v1.png" id="ImageImport_334"]
+[ext_resource type="Texture2D" uid="uid://djfredsgv2l7t" path="res://assets/images/card/cards/v1/dople-v1.png" id="ImageImport_335"]
+[ext_resource type="Texture2D" uid="uid://dmlafwxdelit4" path="res://assets/images/card/cards/v1/cain-v1.png" id="ImageImport_336"]
+[ext_resource type="Texture2D" uid="uid://cs3vodtv2ei4o" path="res://assets/images/card/cards/v1/the-poop-v1.png" id="ImageImport_337"]
+[ext_resource type="Texture2D" uid="uid://be2n4kkinlvg1" path="res://assets/images/card/cards/v1/moms-razor-v1.png" id="ImageImport_338"]
+[ext_resource type="Texture2D" uid="uid://co44q3lskl818" path="res://assets/images/card/cards/v1/the-forgotten-v1.png" id="ImageImport_339"]
+[ext_resource type="Texture2D" uid="uid://dhfnocxrf8ybx" path="res://assets/images/card/cards/v1/moms-shovel-v1.png" id="ImageImport_340"]
+[ext_resource type="Texture2D" uid="uid://i5k806w5xb04" path="res://assets/images/card/cards/v1/swallowed-penny-v1.png" id="ImageImport_341"]
+[ext_resource type="Texture2D" uid="uid://681hj0xqpyw6" path="res://assets/images/card/cards/v1/cursed-gaper-v1.png" id="ImageImport_342"]
+[ext_resource type="Texture2D" uid="uid://drvvcfkmnk2mn" path="res://assets/images/card/cards/v1/shiny-rock-v1.png" id="ImageImport_343"]
+[ext_resource type="Texture2D" uid="uid://b1vj02bltyb5d" path="res://assets/images/card/cards/v1/judas-v1.png" id="ImageImport_344"]
+[ext_resource type="Texture2D" uid="uid://btqek5tlq0k1c" path="res://assets/images/card/cards/v1/synthoil-v1.png" id="ImageImport_345"]
+[ext_resource type="Texture2D" uid="uid://cwnfsnjfpos31" path="res://assets/images/card/cards/v1/blank-card-v1.png" id="ImageImport_346"]
+[ext_resource type="Texture2D" uid="uid://uq0af1opuh7p" path="res://assets/images/card/cards/v1/the-d20-v1.png" id="ImageImport_347"]
+[ext_resource type="Texture2D" uid="uid://f0u3roqwwjkm" path="res://assets/images/card/cards/v1/remote-detonator-v1.png" id="ImageImport_348"]
+[ext_resource type="Texture2D" uid="uid://bfslxo1jl314h" path="res://assets/images/card/cards/v1/holy-dip-v1.png" id="ImageImport_349"]
+[ext_resource type="Texture2D" uid="uid://bx3fb327wvsp0" path="res://assets/images/card/cards/v1/the-midas-touch-v1.png" id="ImageImport_350"]
+[ext_resource type="Texture2D" uid="uid://c4xthp3yipvr0" path="res://assets/images/card/cards/v1/meat-v1.png" id="ImageImport_351"]
+[ext_resource type="Texture2D" uid="uid://dwcq4v0ph26qv" path="res://assets/images/card/cards/v1/psy-horf-v1.png" id="ImageImport_352"]
+[ext_resource type="Texture2D" uid="uid://cxi8s0qd1nxlu" path="res://assets/images/card/cards/v1/xvi-the-tower-v1.png" id="ImageImport_353"]
+[ext_resource type="Texture2D" uid="uid://m0r2yr4byfly" path="res://assets/images/card/cards/v1/rage-creep-v1.png" id="ImageImport_354"]
+[ext_resource type="Texture2D" uid="uid://t8rxrrthxbsl" path="res://assets/images/card/cards/v1/i-the-magician-v1.png" id="ImageImport_355"]
+[ext_resource type="Texture2D" uid="uid://d4jwnkg3e2t2s" path="res://assets/images/card/cards/v1/moms-hand-v1.png" id="ImageImport_356"]
+[ext_resource type="Texture2D" uid="uid://c3ipkwgni31w6" path="res://assets/images/card/cards/v1/belly-button-v1.png" id="ImageImport_357"]
+[ext_resource type="Texture2D" uid="uid://wdbgmqsn730y" path="res://assets/images/card/cards/v1/xv-the-devil-v1.png" id="ImageImport_358"]
+[ext_resource type="Texture2D" uid="uid://c500xooiyxyg5" path="res://assets/images/card/cards/v1/mystery-sack-v1.png" id="ImageImport_359"]
+[ext_resource type="Texture2D" uid="uid://x6emiqpewjb1" path="res://assets/images/card/cards/v1/gemini-v1.png" id="ImageImport_360"]
+[ext_resource type="Texture2D" uid="uid://ct5r1typ1ceyb" path="res://assets/images/card/cards/v1/swarm-of-flies-v1.png" id="ImageImport_361"]
+[ext_resource type="Texture2D" uid="uid://di6e5ldslxul6" path="res://assets/images/card/cards/v1/the-bloat-v1.png" id="ImageImport_362"]
+[ext_resource type="Texture2D" uid="uid://bg31v7hkljoi1" path="res://assets/images/card/cards/v1/fanny-pack-v1.png" id="ImageImport_363"]
+[ext_resource type="Texture2D" uid="uid://qxse6p67cihw" path="res://assets/images/card/cards/v1/two-cents-v1.png" id="ImageImport_364"]
+[ext_resource type="Texture2D" uid="uid://cul6s07s8406t" path="res://assets/images/card/cards/v1/chest-v1.png" id="ImageImport_365"]
+[ext_resource type="Texture2D" uid="uid://ddge5t1uovvw6" path="res://assets/images/card/cards/v1/forever-alone-v1.png" id="ImageImport_366"]
+[ext_resource type="Texture2D" uid="uid://cvlbr7oqq5wsi" path="res://assets/images/card/cards/v1/the-duke-of-flies-v1.png" id="ImageImport_367"]
+[ext_resource type="Texture2D" uid="uid://cth564doj7yt3" path="res://assets/images/card/cards/v1/jawbone-v1.png" id="ImageImport_368"]
+[ext_resource type="Texture2D" uid="uid://cilklbndofa56" path="res://assets/images/card/cards/v1/finger-v1.png" id="ImageImport_369"]
+[ext_resource type="Texture2D" uid="uid://cy3ac262m3mit" path="res://assets/images/card/cards/v1/yum-heart-v1.png" id="ImageImport_370"]
+[ext_resource type="Texture2D" uid="uid://cjbl015647f7j" path="res://assets/images/card/cards/v1/xiii-death-v1.png" id="ImageImport_371"]
+[ext_resource type="Texture2D" uid="uid://bojsgpsokat66" path="res://assets/images/card/cards/v1/ambush-v1.png" id="ImageImport_372"]
+[ext_resource type="Texture2D" uid="uid://bojrwpbxdrw2m" path="res://assets/images/card/cards/v1/curse-of-the-tower-v1.png" id="ImageImport_373"]
+[ext_resource type="Texture2D" uid="uid://cees0r0hmy6jt" path="res://assets/images/card/cards/v1/dry-baby-v1.png" id="ImageImport_374"]
+[ext_resource type="Texture2D" uid="uid://cq4311t5obpi" path="res://assets/images/card/cards/v1/xxi-the-world-v1.png" id="ImageImport_375"]
+[ext_resource type="Texture2D" uid="uid://chqpxyul624b" path="res://assets/images/card/cards/v1/fly-v1.png" id="ImageImport_376"]
+[ext_resource type="Texture2D" uid="uid://5w8arxhajoxl" path="res://assets/images/card/cards/v1/envy-v1.png" id="ImageImport_377"]
+[ext_resource type="Texture2D" uid="uid://dued61nx1y0es" path="res://assets/images/card/cards/v1/iv-the-emperor-v1.png" id="ImageImport_378"]
+[ext_resource type="Texture2D" uid="uid://dfjp5pbrg6yl3" path="res://assets/images/card/cards/v1/mini-mush-v1.png" id="ImageImport_379"]
+[ext_resource type="Texture2D" uid="uid://dv44gni87kydi" path="res://assets/images/card/cards/v1/squirt-v1.png" id="ImageImport_380"]
+[ext_resource type="Texture2D" uid="uid://cyh3vc7vi2bh3" path="res://assets/images/card/cards/v1/xi-strength-v1.png" id="ImageImport_381"]
+[ext_resource type="Texture2D" uid="uid://bxvvs2uu4eo4m" path="res://assets/images/card/cards/v1/ring-of-flies-v1.png" id="ImageImport_382"]
+[ext_resource type="Texture2D" uid="uid://knq7djv1uoq4" path="res://assets/images/card/cards/v1/horf-v1.png" id="ImageImport_383"]
+[ext_resource type="Texture2D" uid="uid://g3okafscebh3" path="res://assets/images/card/cards/v1/mom-v1.png" id="ImageImport_384"]
+[ext_resource type="Texture2D" uid="uid://chhihkjffjpb4" path="res://assets/images/card/cards/v1/golden-horseshoe-v1.png" id="ImageImport_385"]
+[ext_resource type="Texture2D" uid="uid://qftc1eurftn2" path="res://assets/images/card/cards/v1/wizoob-v1.png" id="ImageImport_386"]
+[ext_resource type="Texture2D" uid="uid://di72gimkmdhmn" path="res://assets/images/card/cards/v1/smelter-v1.png" id="ImageImport_387"]
+[ext_resource type="Texture2D" uid="uid://bxbmb6bjvx77l" path="res://assets/images/card/cards/v1/fat-bat-v1.png" id="ImageImport_388"]
+[ext_resource type="Texture2D" uid="uid://dutvro0edmijc" path="res://assets/images/card/cards/v1/iii-the-empress-v1.png" id="ImageImport_389"]
+[ext_resource type="Texture2D" uid="uid://bg5b6k5fqsryl" path="res://assets/images/card/cards/v1/the-polaroid-v1.png" id="ImageImport_390"]
+[ext_resource type="Texture2D" uid="uid://lhdwtvxas6x4" path="res://assets/images/card/cards/v1/dank-globin-v1.png" id="ImageImport_391"]
+[ext_resource type="Texture2D" uid="uid://yawjcwk0qv3l" path="res://assets/images/card/cards/v1/champion-belt-v1.png" id="ImageImport_392"]
+[ext_resource type="Texture2D" uid="uid://cv6kjo7g01ire" path="res://assets/images/card/cards/v1/daddy-long-legs-v1.png" id="ImageImport_393"]
+[ext_resource type="Texture2D" uid="uid://1euk64d7wmoc" path="res://assets/images/card/cards/v1/black-bony-v1.png" id="ImageImport_394"]
+[ext_resource type="Texture2D" uid="uid://fofpjqrpmgor" path="res://assets/images/card/cards/v1/a-nickel-v1.png" id="ImageImport_395"]
+[ext_resource type="Texture2D" uid="uid://cdwv5rclrfd6a" path="res://assets/images/card/cards/v1/guppys-collar-v1.png" id="ImageImport_396"]
+[ext_resource type="Texture2D" uid="uid://cx8fpoaf2xpr1" path="res://assets/images/card/cards/v1/dark-bum-v1.png" id="ImageImport_397"]
+[ext_resource type="Texture2D" uid="uid://ec5mg1d8srp4" path="res://assets/images/card/cards/v1/boomerang-v1.png" id="ImageImport_398"]
+[ext_resource type="Texture2D" uid="uid://dd26wy0qcjo63" path="res://assets/images/card/cards/v1/sacred-heart-v1.png" id="ImageImport_399"]
+[ext_resource type="Texture2D" uid="uid://bbiq24407ub23" path="res://assets/images/card/cards/v1/bloody-penny-v1.png" id="ImageImport_400"]
+[ext_resource type="Texture2D" uid="uid://buywpkbwmlkr3" path="res://assets/images/card/cards/v1/bum-friend-v1.png" id="ImageImport_401"]
+[ext_resource type="Texture2D" uid="uid://bqo22ugwmucmj" path="res://assets/images/card/cards/v1/secret-room-v1.png" id="ImageImport_402"]
+[ext_resource type="Texture2D" uid="uid://dx2ac4gvo76gh" path="res://assets/images/card/cards/v1/book-of-belial-v1.png" id="ImageImport_403"]
+[ext_resource type="Texture2D" uid="uid://dt8j8f652hbh" path="res://assets/images/card/cards/v1/curse-of-loss-v1.png" id="ImageImport_404"]
+[ext_resource type="Texture2D" uid="uid://dx4uskl5vxkc5" path="res://assets/images/card/cards/v1/guppys-hairball-v1.png" id="ImageImport_405"]
+[ext_resource type="Texture2D" uid="uid://gaf0hkchb5fy" path="res://assets/images/card/cards/v1/vi-the-lovers-v1.png" id="ImageImport_406"]
+[ext_resource type="Texture2D" uid="uid://i85jxa02lmo3" path="res://assets/images/card/cards/v1/soul-of-gluttony-v1.png" id="ImageImport_407"]
+[ext_resource type="Texture2D" uid="uid://cioedl52w4rgf" path="res://assets/images/card/cards/v1/cains-eye-v1.png" id="ImageImport_408"]
+[ext_resource type="Texture2D" uid="uid://cnjs7s0xtra4x" path="res://assets/images/card/cards/v1/blood-lust-v1.png" id="ImageImport_409"]
+[ext_resource type="Texture2D" uid="uid://bkvake7dwohf8" path="res://assets/images/card/cards/v1/mask-of-infamy-v1.png" id="ImageImport_410"]
+[ext_resource type="Texture2D" uid="uid://ddratc3t16xts" path="res://assets/images/card/cards/v1/keeper-head-v1.png" id="ImageImport_411"]
+[ext_resource type="Texture2D" uid="uid://b4ykiu5hvy4wu" path="res://assets/images/card/cards/v1/sack-of-pennies-v1.png" id="ImageImport_412"]
+[ext_resource type="Texture2D" uid="uid://oh605sjaw8xf" path="res://assets/images/card/cards/v1/the-shovel-v1.png" id="ImageImport_413"]
+[ext_resource type="Texture2D" uid="uid://6vg6quy12ar6" path="res://assets/images/card/cards/v1/dark-chest-v1.png" id="ImageImport_414"]
+[ext_resource type="Texture2D" uid="uid://dueehgm2rlsra" path="res://assets/images/card/cards/v1/mulliboom-v1.png" id="ImageImport_415"]
+[ext_resource type="Texture2D" uid="uid://cvbr7qq1sns5i" path="res://assets/images/card/cards/v1/the-bone-v1.png" id="ImageImport_416"]
+[ext_resource type="Texture2D" uid="uid://ep17eemrygmr" path="res://assets/images/card/cards/v1/x-wheel-of-fortune-v1.png" id="ImageImport_417"]
+[ext_resource type="Texture2D" uid="uid://bxdulx2j3k6cv" path="res://assets/images/card/cards/v1/holy-dinga-v1.png" id="ImageImport_418"]
+[ext_resource type="Texture2D" uid="uid://d0wcxvs6vdcqc" path="res://assets/images/card/cards/v1/monster-manual-v1.png" id="ImageImport_419"]
+[ext_resource type="Texture2D" uid="uid://jcy575q1akxt" path="res://assets/images/card/cards/v1/xl-floor-v1.png" id="ImageImport_420"]
+[ext_resource type="Texture2D" uid="uid://cll4prwouvo00" path="res://assets/images/card/cards/v1/dice-shard-v1.png" id="ImageImport_421"]
+[ext_resource type="Texture2D" uid="uid://d228mfdfyuiic" path="res://assets/images/card/cards/v1/dark-one-v1.png" id="ImageImport_422"]
+[ext_resource type="Texture2D" uid="uid://j00a7cw7y1dk" path="res://assets/images/card/cards/v1/spoon-bender-v1.png" id="ImageImport_423"]
+[ext_resource type="Texture2D" uid="uid://d4cvswo6nt0tj" path="res://assets/images/card/cards/v1/book-of-sin-v1.png" id="ImageImport_424"]
+[ext_resource type="Texture2D" uid="uid://cij20smtwprto" path="res://assets/images/card/cards/v1/glass-cannon-v1.png" id="ImageImport_425"]
+[ext_resource type="Texture2D" uid="uid://dlyln2y1gg16b" path="res://assets/images/card/cards/v1/satan-v1.png" id="ImageImport_426"]
+[ext_resource type="Texture2D" uid="uid://dt1urm45x3frg" path="res://assets/images/card/cards/v1/leaper-v1.png" id="ImageImport_427"]
+[ext_resource type="Texture2D" uid="uid://c0w0tl7wh7xnl" path="res://assets/images/card/cards/v1/breakfast-v1.png" id="ImageImport_428"]
+[ext_resource type="Texture2D" uid="uid://chxm2twr8djtv" path="res://assets/images/card/cards/v1/dads-lost-coin-v1.png" id="ImageImport_429"]
+[ext_resource type="Texture2D" uid="uid://ctc014w61d8ke" path="res://assets/images/card/cards/v1/suicide-king-v1.png" id="ImageImport_430"]
+[ext_resource type="Texture2D" uid="uid://0qc2aeecnb5k" path="res://assets/images/card/cards/v1/pooter-v1.png" id="ImageImport_431"]
+[ext_resource type="Texture2D" uid="uid://cv14kdsm51bca" path="res://assets/images/card/cards/v1/gold-chest-2-v1.png" id="ImageImport_432"]
+[ext_resource type="Texture2D" uid="uid://c2akp6daddlfk" path="res://assets/images/card/cards/v1/chest-2-v1.png" id="ImageImport_433"]
+[ext_resource type="Texture2D" uid="uid://5b8ra0o4wenh" path="res://assets/images/card/cards/v1/host-hat-v1.png" id="ImageImport_434"]
+[ext_resource type="Texture2D" uid="uid://cynxrnpg64sn5" path="res://assets/images/card/cards/v1/the-relic-v1.png" id="ImageImport_435"]
+[ext_resource type="Texture2D" uid="uid://byp5fb43sw2kq" path="res://assets/images/card/cards/v1/four-cents-v1.png" id="ImageImport_436"]
+[ext_resource type="Texture2D" uid="uid://3fmy7df5ds8q" path="res://assets/images/card/cards/v1/bum-bo-v1.png" id="ImageImport_437"]
+[ext_resource type="Texture2D" uid="uid://dn87vkbnig6ry" path="res://assets/images/card/cards/v1/butter-bean-v1.png" id="ImageImport_438"]
+[ext_resource type="Texture2D" uid="uid://bnfhvauyntu4h" path="res://assets/images/card/cards/v1/isaac-v1.png" id="ImageImport_439"]
+[ext_resource type="Texture2D" uid="uid://iuy3yiabk8da" path="res://assets/images/card/cards/v1/dinner-v1.png" id="ImageImport_440"]
+[ext_resource type="Texture2D" uid="uid://dni811usgskrg" path="res://assets/images/card/cards/v1/pale-fatty-v1.png" id="ImageImport_441"]
+[ext_resource type="Texture2D" uid="uid://bmkg12dequl0u" path="res://assets/images/card/cards/v1/potato-peeler-v1.png" id="ImageImport_442"]
+[ext_resource type="Texture2D" uid="uid://c74rfk8cdciqd" path="res://assets/images/card/cards/v1/guppys-head-v1.png" id="ImageImport_443"]
+[ext_resource type="Texture2D" uid="uid://cr1f2mtmiuucu" path="res://assets/images/card/cards/v1/cheese-grater-v1.png" id="ImageImport_444"]
+[ext_resource type="Texture2D" uid="uid://ckesc1ww155mq" path="res://assets/images/card/cards/v1/the-d100-v1.png" id="ImageImport_445"]
+[ext_resource type="Texture2D" uid="uid://dom22bfbsy36s" path="res://assets/images/card/cards/v1/eve-v1.png" id="ImageImport_446"]
+[ext_resource type="Texture2D" uid="uid://bxede6sfqxc5b" path="res://assets/images/card/cards/v1/tarot-cloth-v1.png" id="ImageImport_447"]
+[ext_resource type="Texture2D" uid="uid://c2aonhqddo7yd" path="res://assets/images/card/cards/v1/moms-box-v1.png" id="ImageImport_448"]
+[ext_resource type="Texture2D" uid="uid://bfidwr238t65c" path="res://assets/images/card/cards/v1/famine-v1.png" id="ImageImport_449"]
+[ext_resource type="Texture2D" uid="uid://dxj0xtveuxdvs" path="res://assets/images/card/cards/v1/portal-v1.png" id="ImageImport_450"]
+[ext_resource type="Texture2D" uid="uid://bsa421p0h4jsi" path="res://assets/images/card/cards/v1/shop-upgrade-v1.png" id="ImageImport_451"]
+[ext_resource type="Texture2D" uid="uid://c13julnn2vrfh" path="res://assets/images/card/cards/v1/golden-razor-blade-v1.png" id="ImageImport_452"]
+[ext_resource type="Texture2D" uid="uid://xp1wu3022iae" path="res://assets/images/card/cards/v1/donation-machine-v1.png" id="ImageImport_453"]
+[ext_resource type="Texture2D" uid="uid://cuem7rjqjip4w" path="res://assets/images/card/cards/v1/pestilence-v1.png" id="ImageImport_454"]
+[ext_resource type="Texture2D" uid="uid://bmve25dgal5ex" path="res://assets/images/card/cards/v1/curved-horn-v1.png" id="ImageImport_455"]
+[ext_resource type="Texture2D" uid="uid://x5hfi8godca5" path="res://assets/images/card/cards/v1/empty-vessel-v1.png" id="ImageImport_456"]
+[ext_resource type="Texture2D" uid="uid://dvxjah23qfl21" path="res://assets/images/card/cards/v1/steamy-sale-v1.png" id="ImageImport_457"]
+[ext_resource type="Texture2D" uid="uid://bw7d05j1wj5n5" path="res://assets/images/card/cards/v1/baby-haunt-v1.png" id="ImageImport_458"]
+[ext_resource type="Texture2D" uid="uid://ba2lyb0ymaual" path="res://assets/images/card/cards/v1/samson-v1.png" id="ImageImport_459"]
+[ext_resource type="Texture2D" uid="uid://by6gccddamuqs" path="res://assets/images/card/cards/v1/cod-worm-v1.png" id="ImageImport_460"]
+[ext_resource type="Texture2D" uid="uid://cae1qg53rtiro" path="res://assets/images/card/cards/v1/dead-bird-v1.png" id="ImageImport_461"]
+[ext_resource type="Texture2D" uid="uid://mevyf34u1yub" path="res://assets/images/card/cards/v1/the-d4-v1.png" id="ImageImport_462"]
+[ext_resource type="Texture2D" uid="uid://c6doqnk4ncohm" path="res://assets/images/card/cards/v1/blank-rune-v1.png" id="ImageImport_463"]
+[ext_resource type="Texture2D" uid="uid://c8sbd3aykx4gl" path="res://assets/images/card/cards/v1/hanger-v1.png" id="ImageImport_464"]
+[ext_resource type="Texture2D" uid="uid://csou58sodky8o" path="res://assets/images/card/cards/v1/the-dead-cat-v1.png" id="ImageImport_465"]
+[ext_resource type="Texture2D" uid="uid://bwve7q2ra82t5" path="res://assets/images/card/cards/v1/larry-jr-v1.png" id="ImageImport_466"]
+[ext_resource type="Texture2D" uid="uid://b1v6g5kslyhb8" path="res://assets/images/card/cards/v1/moms-bra-v1.png" id="ImageImport_467"]
+
+[sub_resource type="Resource" id="Resource_Card1"]
+script = ExtResource("1_v0pgv")
+card_key = "the-empty-requiem"
+image = ExtResource("ImageImport_1")
+
+[sub_resource type="Resource" id="Resource_Card2"]
+script = ExtResource("1_v0pgv")
+card_key = "moms-razor-v2"
+image = ExtResource("ImageImport_2")
+
+[sub_resource type="Resource" id="Resource_Card3"]
+script = ExtResource("1_v0pgv")
+card_key = "gemini-v2"
+image = ExtResource("ImageImport_3")
+
+[sub_resource type="Resource" id="Resource_Card4"]
+script = ExtResource("1_v0pgv")
+card_key = "gold-bomb-v2"
+image = ExtResource("ImageImport_4")
+
+[sub_resource type="Resource" id="Resource_Card5"]
+script = ExtResource("1_v0pgv")
+card_key = "book-of-belial-v2"
+image = ExtResource("ImageImport_5")
+
+[sub_resource type="Resource" id="Resource_Card6"]
+script = ExtResource("1_v0pgv")
+card_key = "cursed-keeper-head-v2"
+image = ExtResource("ImageImport_6")
+
+[sub_resource type="Resource" id="Resource_Card7"]
+script = ExtResource("1_v0pgv")
+card_key = "perthro-requiem"
+image = ExtResource("ImageImport_7")
+
+[sub_resource type="Resource" id="Resource_Card8"]
+script = ExtResource("1_v0pgv")
+card_key = "3-cents-v2"
+image = ExtResource("ImageImport_8")
+
+[sub_resource type="Resource" id="Resource_Card9"]
+script = ExtResource("1_v0pgv")
+card_key = "experimental-treatment-requiem"
+image = ExtResource("ImageImport_9")
+
+[sub_resource type="Resource" id="Resource_Card10"]
+script = ExtResource("1_v0pgv")
+card_key = "bag-of-crafting-requiem"
+image = ExtResource("ImageImport_10")
+
+[sub_resource type="Resource" id="Resource_Card11"]
+script = ExtResource("1_v0pgv")
+card_key = "the-keeper-v2"
+image = ExtResource("ImageImport_11")
+
+[sub_resource type="Resource" id="Resource_Card12"]
+script = ExtResource("1_v0pgv")
+card_key = "conjoined-fatty-v2"
+image = ExtResource("ImageImport_12")
+
+[sub_resource type="Resource" id="Resource_Card13"]
+script = ExtResource("1_v0pgv")
+card_key = "a-dime-v2"
+image = ExtResource("ImageImport_13")
+
+[sub_resource type="Resource" id="Resource_Card14"]
+script = ExtResource("1_v0pgv")
+card_key = "lazarus-v2"
+image = ExtResource("ImageImport_14")
+
+[sub_resource type="Resource" id="Resource_Card15"]
+script = ExtResource("1_v0pgv")
+card_key = "shiny-rock-v2"
+image = ExtResource("ImageImport_15")
+
+[sub_resource type="Resource" id="Resource_Card16"]
+script = ExtResource("1_v0pgv")
+card_key = "larry-jr-v2"
+image = ExtResource("ImageImport_16")
+
+[sub_resource type="Resource" id="Resource_Card17"]
+script = ExtResource("1_v0pgv")
+card_key = "lucky-toe-requiem"
+image = ExtResource("ImageImport_17")
+
+[sub_resource type="Resource" id="Resource_Card18"]
+script = ExtResource("1_v0pgv")
+card_key = "the-dauntless-requiem"
+image = ExtResource("ImageImport_18")
+
+[sub_resource type="Resource" id="Resource_Card19"]
+script = ExtResource("1_v0pgv")
+card_key = "shell-game-requiem"
+image = ExtResource("ImageImport_19")
+
+[sub_resource type="Resource" id="Resource_Card20"]
+script = ExtResource("1_v0pgv")
+card_key = "abyss-requiem"
+image = ExtResource("ImageImport_20")
+
+[sub_resource type="Resource" id="Resource_Card21"]
+script = ExtResource("1_v0pgv")
+card_key = "blessing-of-steam-requiem"
+image = ExtResource("ImageImport_21")
+
+[sub_resource type="Resource" id="Resource_Card22"]
+script = ExtResource("1_v0pgv")
+card_key = "pay-to-play-v2"
+image = ExtResource("ImageImport_22")
+
+[sub_resource type="Resource" id="Resource_Card23"]
+script = ExtResource("1_v0pgv")
+card_key = "halo-of-flies-requiem"
+image = ExtResource("ImageImport_23")
+
+[sub_resource type="Resource" id="Resource_Card24"]
+script = ExtResource("1_v0pgv")
+card_key = "holy-mantle-v2"
+image = ExtResource("ImageImport_24")
+
+[sub_resource type="Resource" id="Resource_Card25"]
+script = ExtResource("1_v0pgv")
+card_key = "fanny-pack-v2"
+image = ExtResource("ImageImport_25")
+
+[sub_resource type="Resource" id="Resource_Card26"]
+script = ExtResource("1_v0pgv")
+card_key = "xiv-temperance-v2"
+image = ExtResource("ImageImport_26")
+
+[sub_resource type="Resource" id="Resource_Card27"]
+script = ExtResource("1_v0pgv")
+card_key = "the-miser-requiem"
+image = ExtResource("ImageImport_27")
+
+[sub_resource type="Resource" id="Resource_Card28"]
+script = ExtResource("1_v0pgv")
+card_key = "sloth-v2"
+image = ExtResource("ImageImport_28")
+
+[sub_resource type="Resource" id="Resource_Card29"]
+script = ExtResource("1_v0pgv")
+card_key = "whore-of-babylon-v2"
+image = ExtResource("ImageImport_29")
+
+[sub_resource type="Resource" id="Resource_Card30"]
+script = ExtResource("1_v0pgv")
+card_key = "mr-boom-v2"
+image = ExtResource("ImageImport_30")
+
+[sub_resource type="Resource" id="Resource_Card31"]
+script = ExtResource("1_v0pgv")
+card_key = "lil-battery-v2"
+image = ExtResource("ImageImport_31")
+
+[sub_resource type="Resource" id="Resource_Card32"]
+script = ExtResource("1_v0pgv")
+card_key = "bag-lunch-requiem"
+image = ExtResource("ImageImport_32")
+
+[sub_resource type="Resource" id="Resource_Card33"]
+script = ExtResource("1_v0pgv")
+card_key = "devil-beggar-requiem"
+image = ExtResource("ImageImport_33")
+
+[sub_resource type="Resource" id="Resource_Card34"]
+script = ExtResource("1_v0pgv")
+card_key = "leech-v2"
+image = ExtResource("ImageImport_34")
+
+[sub_resource type="Resource" id="Resource_Card35"]
+script = ExtResource("1_v0pgv")
+card_key = "war-v2"
+image = ExtResource("ImageImport_35")
+
+[sub_resource type="Resource" id="Resource_Card36"]
+script = ExtResource("1_v0pgv")
+card_key = "the-battery-v2"
+image = ExtResource("ImageImport_36")
+
+[sub_resource type="Resource" id="Resource_Card37"]
+script = ExtResource("1_v0pgv")
+card_key = "guppys-head-v2"
+image = ExtResource("ImageImport_37")
+
+[sub_resource type="Resource" id="Resource_Card38"]
+script = ExtResource("1_v0pgv")
+card_key = "gurdy-v2"
+image = ExtResource("ImageImport_38")
+
+[sub_resource type="Resource" id="Resource_Card39"]
+script = ExtResource("1_v0pgv")
+card_key = "synthoil-v2"
+image = ExtResource("ImageImport_39")
+
+[sub_resource type="Resource" id="Resource_Card40"]
+script = ExtResource("1_v0pgv")
+card_key = "pageant-boy-v2"
+image = ExtResource("ImageImport_40")
+
+[sub_resource type="Resource" id="Resource_Card41"]
+script = ExtResource("1_v0pgv")
+card_key = "dark-chest2-v2"
+image = ExtResource("ImageImport_41")
+
+[sub_resource type="Resource" id="Resource_Card42"]
+script = ExtResource("1_v0pgv")
+card_key = "hypercoagulation-requiem"
+image = ExtResource("ImageImport_42")
+
+[sub_resource type="Resource" id="Resource_Card43"]
+script = ExtResource("1_v0pgv")
+card_key = "bloody-penny-v2"
+image = ExtResource("ImageImport_43")
+
+[sub_resource type="Resource" id="Resource_Card44"]
+script = ExtResource("1_v0pgv")
+card_key = "2-cents-v2"
+image = ExtResource("ImageImport_44")
+
+[sub_resource type="Resource" id="Resource_Card45"]
+script = ExtResource("1_v0pgv")
+card_key = "tech-x-v2"
+image = ExtResource("ImageImport_45")
+
+[sub_resource type="Resource" id="Resource_Card46"]
+script = ExtResource("1_v0pgv")
+card_key = "the-baleful-requiem"
+image = ExtResource("ImageImport_46")
+
+[sub_resource type="Resource" id="Resource_Card47"]
+script = ExtResource("1_v0pgv")
+card_key = "trinity-shield-v2"
+image = ExtResource("ImageImport_47")
+
+[sub_resource type="Resource" id="Resource_Card48"]
+script = ExtResource("1_v0pgv")
+card_key = "slot-machine-requiem"
+image = ExtResource("ImageImport_48")
+
+[sub_resource type="Resource" id="Resource_Card49"]
+script = ExtResource("1_v0pgv")
+card_key = "shadow-v2"
+image = ExtResource("ImageImport_49")
+
+[sub_resource type="Resource" id="Resource_Card50"]
+script = ExtResource("1_v0pgv")
+card_key = "fat-bat-v2"
+image = ExtResource("ImageImport_50")
+
+[sub_resource type="Resource" id="Resource_Card51"]
+script = ExtResource("1_v0pgv")
+card_key = "blessing-of-greed-requiem"
+image = ExtResource("ImageImport_51")
+
+[sub_resource type="Resource" id="Resource_Card52"]
+script = ExtResource("1_v0pgv")
+card_key = "infamy-v2"
+image = ExtResource("ImageImport_52")
+
+[sub_resource type="Resource" id="Resource_Card53"]
+script = ExtResource("1_v0pgv")
+card_key = "guppys-eye-v2"
+image = ExtResource("ImageImport_53")
+
+[sub_resource type="Resource" id="Resource_Card54"]
+script = ExtResource("1_v0pgv")
+card_key = "mystery-sack-v2"
+image = ExtResource("ImageImport_54")
+
+[sub_resource type="Resource" id="Resource_Card55"]
+script = ExtResource("1_v0pgv")
+card_key = "a-dollar-uoi"
+image = ExtResource("ImageImport_55")
+
+[sub_resource type="Resource" id="Resource_Card56"]
+script = ExtResource("1_v0pgv")
+card_key = "jawbone-v2"
+image = ExtResource("ImageImport_56")
+
+[sub_resource type="Resource" id="Resource_Card57"]
+script = ExtResource("1_v0pgv")
+card_key = "the-poop-v2"
+image = ExtResource("ImageImport_57")
+
+[sub_resource type="Resource" id="Resource_Card58"]
+script = ExtResource("1_v0pgv")
+card_key = "dry-baby-v2"
+image = ExtResource("ImageImport_58")
+
+[sub_resource type="Resource" id="Resource_Card59"]
+script = ExtResource("1_v0pgv")
+card_key = "isaac-v2"
+image = ExtResource("ImageImport_59")
+
+[sub_resource type="Resource" id="Resource_Card60"]
+script = ExtResource("1_v0pgv")
+card_key = "the-butter-bean-v2"
+image = ExtResource("ImageImport_60")
+
+[sub_resource type="Resource" id="Resource_Card61"]
+script = ExtResource("1_v0pgv")
+card_key = "holy-card-v2"
+image = ExtResource("ImageImport_61")
+
+[sub_resource type="Resource" id="Resource_Card62"]
+script = ExtResource("1_v0pgv")
+card_key = "a-sack-v2"
+image = ExtResource("ImageImport_62")
+
+[sub_resource type="Resource" id="Resource_Card63"]
+script = ExtResource("1_v0pgv")
+card_key = "wooden-nickel-v2"
+image = ExtResource("ImageImport_63")
+
+[sub_resource type="Resource" id="Resource_Card64"]
+script = ExtResource("1_v0pgv")
+card_key = "chaos-v2"
+image = ExtResource("ImageImport_64")
+
+[sub_resource type="Resource" id="Resource_Card65"]
+script = ExtResource("1_v0pgv")
+card_key = "counterfeit-penny-v2"
+image = ExtResource("ImageImport_65")
+
+[sub_resource type="Resource" id="Resource_Card66"]
+script = ExtResource("1_v0pgv")
+card_key = "pooter-v2"
+image = ExtResource("ImageImport_66")
+
+[sub_resource type="Resource" id="Resource_Card67"]
+script = ExtResource("1_v0pgv")
+card_key = "chunk-of-amber-warp"
+image = ExtResource("ImageImport_67")
+
+[sub_resource type="Resource" id="Resource_Card68"]
+script = ExtResource("1_v0pgv")
+card_key = "fatty-v2"
+image = ExtResource("ImageImport_68")
+
+[sub_resource type="Resource" id="Resource_Card69"]
+script = ExtResource("1_v0pgv")
+card_key = "dark-arts-v2"
+image = ExtResource("ImageImport_69")
+
+[sub_resource type="Resource" id="Resource_Card70"]
+script = ExtResource("1_v0pgv")
+card_key = "daddy-haunt-v2"
+image = ExtResource("ImageImport_70")
+
+[sub_resource type="Resource" id="Resource_Card71"]
+script = ExtResource("1_v0pgv")
+card_key = "carrion-queen-v2"
+image = ExtResource("ImageImport_71")
+
+[sub_resource type="Resource" id="Resource_Card72"]
+script = ExtResource("1_v0pgv")
+card_key = "lucky-foot-v2"
+image = ExtResource("ImageImport_72")
+
+[sub_resource type="Resource" id="Resource_Card73"]
+script = ExtResource("1_v0pgv")
+card_key = "guppys-tail-v2"
+image = ExtResource("ImageImport_73")
+
+[sub_resource type="Resource" id="Resource_Card74"]
+script = ExtResource("1_v0pgv")
+card_key = "sacred-heart-v2"
+image = ExtResource("ImageImport_74")
+
+[sub_resource type="Resource" id="Resource_Card75"]
+script = ExtResource("1_v0pgv")
+card_key = "moms-purse-v2"
+image = ExtResource("ImageImport_75")
+
+[sub_resource type="Resource" id="Resource_Card76"]
+script = ExtResource("1_v0pgv")
+card_key = "clotty-v2"
+image = ExtResource("ImageImport_76")
+
+[sub_resource type="Resource" id="Resource_Card77"]
+script = ExtResource("1_v0pgv")
+card_key = "infestation-v2"
+image = ExtResource("ImageImport_77")
+
+[sub_resource type="Resource" id="Resource_Card78"]
+script = ExtResource("1_v0pgv")
+card_key = "restock-v2"
+image = ExtResource("ImageImport_78")
+
+[sub_resource type="Resource" id="Resource_Card79"]
+script = ExtResource("1_v0pgv")
+card_key = "keepers-bargain-requiem"
+image = ExtResource("ImageImport_79")
+
+[sub_resource type="Resource" id="Resource_Card80"]
+script = ExtResource("1_v0pgv")
+card_key = "fistula-v2"
+image = ExtResource("ImageImport_80")
+
+[sub_resource type="Resource" id="Resource_Card81"]
+script = ExtResource("1_v0pgv")
+card_key = "little-horn-v2"
+image = ExtResource("ImageImport_81")
+
+[sub_resource type="Resource" id="Resource_Card82"]
+script = ExtResource("1_v0pgv")
+card_key = "x-wheel-of-fortune-v2"
+image = ExtResource("ImageImport_82")
+
+[sub_resource type="Resource" id="Resource_Card83"]
+script = ExtResource("1_v0pgv")
+card_key = "the-relic-v2"
+image = ExtResource("ImageImport_83")
+
+[sub_resource type="Resource" id="Resource_Card84"]
+script = ExtResource("1_v0pgv")
+card_key = "libra-v2"
+image = ExtResource("ImageImport_84")
+
+[sub_resource type="Resource" id="Resource_Card85"]
+script = ExtResource("1_v0pgv")
+card_key = "dark-bum-v2"
+image = ExtResource("ImageImport_85")
+
+[sub_resource type="Resource" id="Resource_Card86"]
+script = ExtResource("1_v0pgv")
+card_key = "holy-squirt-v2"
+image = ExtResource("ImageImport_86")
+
+[sub_resource type="Resource" id="Resource_Card87"]
+script = ExtResource("1_v0pgv")
+card_key = "pale-fatty-v2"
+image = ExtResource("ImageImport_87")
+
+[sub_resource type="Resource" id="Resource_Card88"]
+script = ExtResource("1_v0pgv")
+card_key = "swarmer-v2"
+image = ExtResource("ImageImport_88")
+
+[sub_resource type="Resource" id="Resource_Card89"]
+script = ExtResource("1_v0pgv")
+card_key = "the-curdled-requiem"
+image = ExtResource("ImageImport_89")
+
+[sub_resource type="Resource" id="Resource_Card90"]
+script = ExtResource("1_v0pgv")
+card_key = "samson-v2"
+image = ExtResource("ImageImport_90")
+
+[sub_resource type="Resource" id="Resource_Card91"]
+script = ExtResource("1_v0pgv")
+card_key = "widow-v2"
+image = ExtResource("ImageImport_91")
+
+[sub_resource type="Resource" id="Resource_Card92"]
+script = ExtResource("1_v0pgv")
+card_key = "a-friend-summer"
+image = ExtResource("ImageImport_92")
+
+[sub_resource type="Resource" id="Resource_Card93"]
+script = ExtResource("1_v0pgv")
+card_key = "samsons-blessing-requiem"
+image = ExtResource("ImageImport_93")
+
+[sub_resource type="Resource" id="Resource_Card94"]
+script = ExtResource("1_v0pgv")
+card_key = "the-midas-touch-v2"
+image = ExtResource("ImageImport_94")
+
+[sub_resource type="Resource" id="Resource_Card95"]
+script = ExtResource("1_v0pgv")
+card_key = "hush-v2"
+image = ExtResource("ImageImport_95")
+
+[sub_resource type="Resource" id="Resource_Card96"]
+script = ExtResource("1_v0pgv")
+card_key = "soul-of-gluttony-v2"
+image = ExtResource("ImageImport_96")
+
+[sub_resource type="Resource" id="Resource_Card97"]
+script = ExtResource("1_v0pgv")
+card_key = "the-habit-v2"
+image = ExtResource("ImageImport_97")
+
+[sub_resource type="Resource" id="Resource_Card98"]
+script = ExtResource("1_v0pgv")
+card_key = "contract-from-below-v2"
+image = ExtResource("ImageImport_98")
+
+[sub_resource type="Resource" id="Resource_Card99"]
+script = ExtResource("1_v0pgv")
+card_key = "hourglass-v2"
+image = ExtResource("ImageImport_99")
+
+[sub_resource type="Resource" id="Resource_Card100"]
+script = ExtResource("1_v0pgv")
+card_key = "the-cage-v2"
+image = ExtResource("ImageImport_100")
+
+[sub_resource type="Resource" id="Resource_Card101"]
+script = ExtResource("1_v0pgv")
+card_key = "crooked-penny-v2"
+image = ExtResource("ImageImport_101")
+
+[sub_resource type="Resource" id="Resource_Card102"]
+script = ExtResource("1_v0pgv")
+card_key = "dads-lost-coin-v2"
+image = ExtResource("ImageImport_102")
+
+[sub_resource type="Resource" id="Resource_Card103"]
+script = ExtResource("1_v0pgv")
+card_key = "the-lost-v2"
+image = ExtResource("ImageImport_103")
+
+[sub_resource type="Resource" id="Resource_Card104"]
+script = ExtResource("1_v0pgv")
+card_key = "a-penny-v2"
+image = ExtResource("ImageImport_104")
+
+[sub_resource type="Resource" id="Resource_Card105"]
+script = ExtResource("1_v0pgv")
+card_key = "soul-heart-v2"
+image = ExtResource("ImageImport_105")
+
+[sub_resource type="Resource" id="Resource_Card106"]
+script = ExtResource("1_v0pgv")
+card_key = "gimpy-v2"
+image = ExtResource("ImageImport_106")
+
+[sub_resource type="Resource" id="Resource_Card107"]
+script = ExtResource("1_v0pgv")
+card_key = "curse-of-the-blind-v2"
+image = ExtResource("ImageImport_107")
+
+[sub_resource type="Resource" id="Resource_Card108"]
+script = ExtResource("1_v0pgv")
+card_key = "blank-rune-v2"
+image = ExtResource("ImageImport_108")
+
+[sub_resource type="Resource" id="Resource_Card109"]
+script = ExtResource("1_v0pgv")
+card_key = "godhead-v2"
+image = ExtResource("ImageImport_109")
+
+[sub_resource type="Resource" id="Resource_Card110"]
+script = ExtResource("1_v0pgv")
+card_key = "steamy-sale-v2"
+image = ExtResource("ImageImport_110")
+
+[sub_resource type="Resource" id="Resource_Card111"]
+script = ExtResource("1_v0pgv")
+card_key = "curse-of-greed-v2"
+image = ExtResource("ImageImport_111")
+
+[sub_resource type="Resource" id="Resource_Card112"]
+script = ExtResource("1_v0pgv")
+card_key = "guppys-paw-v2"
+image = ExtResource("ImageImport_112")
+
+[sub_resource type="Resource" id="Resource_Card113"]
+script = ExtResource("1_v0pgv")
+card_key = "monstro-v2"
+image = ExtResource("ImageImport_113")
+
+[sub_resource type="Resource" id="Resource_Card114"]
+script = ExtResource("1_v0pgv")
+card_key = "chest1-v2"
+image = ExtResource("ImageImport_114")
+
+[sub_resource type="Resource" id="Resource_Card115"]
+script = ExtResource("1_v0pgv")
+card_key = "secret-room-v2"
+image = ExtResource("ImageImport_115")
+
+[sub_resource type="Resource" id="Resource_Card116"]
+script = ExtResource("1_v0pgv")
+card_key = "soul-of-guppy-v2"
+image = ExtResource("ImageImport_116")
+
+[sub_resource type="Resource" id="Resource_Card117"]
+script = ExtResource("1_v0pgv")
+card_key = "razor-blade-v2"
+image = ExtResource("ImageImport_117")
+
+[sub_resource type="Resource" id="Resource_Card118"]
+script = ExtResource("1_v0pgv")
+card_key = "xvii-the-stars-v2"
+image = ExtResource("ImageImport_118")
+
+[sub_resource type="Resource" id="Resource_Card119"]
+script = ExtResource("1_v0pgv")
+card_key = "a-nickel-v2"
+image = ExtResource("ImageImport_119")
+
+[sub_resource type="Resource" id="Resource_Card120"]
+script = ExtResource("1_v0pgv")
+card_key = "orange-green-pills-v2"
+image = ExtResource("ImageImport_120")
+
+[sub_resource type="Resource" id="Resource_Card121"]
+script = ExtResource("1_v0pgv")
+card_key = "chest2-v2"
+image = ExtResource("ImageImport_121")
+
+[sub_resource type="Resource" id="Resource_Card122"]
+script = ExtResource("1_v0pgv")
+card_key = "soul-of-greed-v2"
+image = ExtResource("ImageImport_122")
+
+[sub_resource type="Resource" id="Resource_Card123"]
+script = ExtResource("1_v0pgv")
+card_key = "belly-button-v2"
+image = ExtResource("ImageImport_123")
+
+[sub_resource type="Resource" id="Resource_Card124"]
+script = ExtResource("1_v0pgv")
+card_key = "nerve-ending-v2"
+image = ExtResource("ImageImport_124")
+
+[sub_resource type="Resource" id="Resource_Card125"]
+script = ExtResource("1_v0pgv")
+card_key = "breakfast-v2"
+image = ExtResource("ImageImport_125")
+
+[sub_resource type="Resource" id="Resource_Card126"]
+script = ExtResource("1_v0pgv")
+card_key = "bum-bo-v2"
+image = ExtResource("ImageImport_126")
+
+[sub_resource type="Resource" id="Resource_Card127"]
+script = ExtResource("1_v0pgv")
+card_key = "lazarus-rags-v2"
+image = ExtResource("ImageImport_127")
+
+[sub_resource type="Resource" id="Resource_Card128"]
+script = ExtResource("1_v0pgv")
+card_key = "blood-lust-v2"
+image = ExtResource("ImageImport_128")
+
+[sub_resource type="Resource" id="Resource_Card129"]
+script = ExtResource("1_v0pgv")
+card_key = "abaddon-v2"
+image = ExtResource("ImageImport_129")
+
+[sub_resource type="Resource" id="Resource_Card130"]
+script = ExtResource("1_v0pgv")
+card_key = "boom-fly-v2"
+image = ExtResource("ImageImport_130")
+
+[sub_resource type="Resource" id="Resource_Card131"]
+script = ExtResource("1_v0pgv")
+card_key = "hopper-v2"
+image = ExtResource("ImageImport_131")
+
+[sub_resource type="Resource" id="Resource_Card132"]
+script = ExtResource("1_v0pgv")
+card_key = "20-20-v2"
+image = ExtResource("ImageImport_132")
+
+[sub_resource type="Resource" id="Resource_Card133"]
+script = ExtResource("1_v0pgv")
+card_key = "red-host-v2"
+image = ExtResource("ImageImport_133")
+
+[sub_resource type="Resource" id="Resource_Card134"]
+script = ExtResource("1_v0pgv")
+card_key = "box-v2"
+image = ExtResource("ImageImport_134")
+
+[sub_resource type="Resource" id="Resource_Card135"]
+script = ExtResource("1_v0pgv")
+card_key = "gold-chest1-v2"
+image = ExtResource("ImageImport_135")
+
+[sub_resource type="Resource" id="Resource_Card136"]
+script = ExtResource("1_v0pgv")
+card_key = "dark-judas-v2"
+image = ExtResource("ImageImport_136")
+
+[sub_resource type="Resource" id="Resource_Card137"]
+script = ExtResource("1_v0pgv")
+card_key = "angel-room-v2"
+image = ExtResource("ImageImport_137")
+
+[sub_resource type="Resource" id="Resource_Card138"]
+script = ExtResource("1_v0pgv")
+card_key = "xiii-death-v2"
+image = ExtResource("ImageImport_138")
+
+[sub_resource type="Resource" id="Resource_Card139"]
+script = ExtResource("1_v0pgv")
+card_key = "mega-troll-bomb-v2"
+image = ExtResource("ImageImport_139")
+
+[sub_resource type="Resource" id="Resource_Card140"]
+script = ExtResource("1_v0pgv")
+card_key = "bomb-v2"
+image = ExtResource("ImageImport_140")
+
+[sub_resource type="Resource" id="Resource_Card141"]
+script = ExtResource("1_v0pgv")
+card_key = "blood-donation-requiem"
+image = ExtResource("ImageImport_141")
+
+[sub_resource type="Resource" id="Resource_Card142"]
+script = ExtResource("1_v0pgv")
+card_key = "dip-v2"
+image = ExtResource("ImageImport_142")
+
+[sub_resource type="Resource" id="Resource_Card143"]
+script = ExtResource("1_v0pgv")
+card_key = "xvii-the-stars-alt1"
+image = ExtResource("ImageImport_143")
+
+[sub_resource type="Resource" id="Resource_Card144"]
+script = ExtResource("1_v0pgv")
+card_key = "pills-red-v2"
+image = ExtResource("ImageImport_144")
+
+[sub_resource type="Resource" id="Resource_Card145"]
+script = ExtResource("1_v0pgv")
+card_key = "baby-haunt-v2"
+image = ExtResource("ImageImport_145")
+
+[sub_resource type="Resource" id="Resource_Card146"]
+script = ExtResource("1_v0pgv")
+card_key = "black-champions-requiem"
+image = ExtResource("ImageImport_146")
+
+[sub_resource type="Resource" id="Resource_Card147"]
+script = ExtResource("1_v0pgv")
+card_key = "judas-v2"
+image = ExtResource("ImageImport_147")
+
+[sub_resource type="Resource" id="Resource_Card148"]
+script = ExtResource("1_v0pgv")
+card_key = "donation-machine-v2"
+image = ExtResource("ImageImport_148")
+
+[sub_resource type="Resource" id="Resource_Card149"]
+script = ExtResource("1_v0pgv")
+card_key = "the-d6-v2"
+image = ExtResource("ImageImport_149")
+
+[sub_resource type="Resource" id="Resource_Card150"]
+script = ExtResource("1_v0pgv")
+card_key = "keepers-box-requiem"
+image = ExtResource("ImageImport_150")
+
+[sub_resource type="Resource" id="Resource_Card151"]
+script = ExtResource("1_v0pgv")
+card_key = "troll-bombs-v2"
+image = ExtResource("ImageImport_151")
+
+[sub_resource type="Resource" id="Resource_Card152"]
+script = ExtResource("1_v0pgv")
+card_key = "butter-bean-v2"
+image = ExtResource("ImageImport_152")
+
+[sub_resource type="Resource" id="Resource_Card153"]
+script = ExtResource("1_v0pgv")
+card_key = "curse-of-pain-v2"
+image = ExtResource("ImageImport_153")
+
+[sub_resource type="Resource" id="Resource_Card154"]
+script = ExtResource("1_v0pgv")
+card_key = "dice-shard-v2"
+image = ExtResource("ImageImport_154")
+
+[sub_resource type="Resource" id="Resource_Card155"]
+script = ExtResource("1_v0pgv")
+card_key = "sumptorium-requiem"
+image = ExtResource("ImageImport_155")
+
+[sub_resource type="Resource" id="Resource_Card156"]
+script = ExtResource("1_v0pgv")
+card_key = "head-of-krampus-v2"
+image = ExtResource("ImageImport_156")
+
+[sub_resource type="Resource" id="Resource_Card157"]
+script = ExtResource("1_v0pgv")
+card_key = "the-d20-v2"
+image = ExtResource("ImageImport_157")
+
+[sub_resource type="Resource" id="Resource_Card158"]
+script = ExtResource("1_v0pgv")
+card_key = "white-champions-requiem"
+image = ExtResource("ImageImport_158")
+
+[sub_resource type="Resource" id="Resource_Card159"]
+script = ExtResource("1_v0pgv")
+card_key = "guppy-v2"
+image = ExtResource("ImageImport_159")
+
+[sub_resource type="Resource" id="Resource_Card160"]
+script = ExtResource("1_v0pgv")
+card_key = "maggys-blessing-requiem"
+image = ExtResource("ImageImport_160")
+
+[sub_resource type="Resource" id="Resource_Card161"]
+script = ExtResource("1_v0pgv")
+card_key = "lemegeton-requiem"
+image = ExtResource("ImageImport_161")
+
+[sub_resource type="Resource" id="Resource_Card162"]
+script = ExtResource("1_v0pgv")
+card_key = "the-hoarder-requiem"
+image = ExtResource("ImageImport_162")
+
+[sub_resource type="Resource" id="Resource_Card163"]
+script = ExtResource("1_v0pgv")
+card_key = "soulbond-requiem"
+image = ExtResource("ImageImport_163")
+
+[sub_resource type="Resource" id="Resource_Card164"]
+script = ExtResource("1_v0pgv")
+card_key = "charger-v2"
+image = ExtResource("ImageImport_164")
+
+[sub_resource type="Resource" id="Resource_Card165"]
+script = ExtResource("1_v0pgv")
+card_key = "gold-chest2-v2"
+image = ExtResource("ImageImport_165")
+
+[sub_resource type="Resource" id="Resource_Card166"]
+script = ExtResource("1_v0pgv")
+card_key = "dice-room2-requiem"
+image = ExtResource("ImageImport_166")
+
+[sub_resource type="Resource" id="Resource_Card167"]
+script = ExtResource("1_v0pgv")
+card_key = "dark-chest1-v2"
+image = ExtResource("ImageImport_167")
+
+[sub_resource type="Resource" id="Resource_Card168"]
+script = ExtResource("1_v0pgv")
+card_key = "lost-soul-v2"
+image = ExtResource("ImageImport_168")
+
+[sub_resource type="Resource" id="Resource_Card169"]
+script = ExtResource("1_v0pgv")
+card_key = "trite-v2"
+image = ExtResource("ImageImport_169")
+
+[sub_resource type="Resource" id="Resource_Card170"]
+script = ExtResource("1_v0pgv")
+card_key = "the-chest-v2"
+image = ExtResource("ImageImport_170")
+
+[sub_resource type="Resource" id="Resource_Card171"]
+script = ExtResource("1_v0pgv")
+card_key = "portable-slot-machine-v2"
+image = ExtResource("ImageImport_171")
+
+[sub_resource type="Resource" id="Resource_Card172"]
+script = ExtResource("1_v0pgv")
+card_key = "fly-v2"
+image = ExtResource("ImageImport_172")
+
+[sub_resource type="Resource" id="Resource_Card173"]
+script = ExtResource("1_v0pgv")
+card_key = "static-shock-requiem"
+image = ExtResource("ImageImport_173")
+
+[sub_resource type="Resource" id="Resource_Card174"]
+script = ExtResource("1_v0pgv")
+card_key = "bag-o-trash-v2"
+image = ExtResource("ImageImport_174")
+
+[sub_resource type="Resource" id="Resource_Card175"]
+script = ExtResource("1_v0pgv")
+card_key = "bible-thump-requiem"
+image = ExtResource("ImageImport_175")
+
+[sub_resource type="Resource" id="Resource_Card176"]
+script = ExtResource("1_v0pgv")
+card_key = "red-champions-requiem"
+image = ExtResource("ImageImport_176")
+
+[sub_resource type="Resource" id="Resource_Card177"]
+script = ExtResource("1_v0pgv")
+card_key = "4-cents-v2"
+image = ExtResource("ImageImport_177")
+
+[sub_resource type="Resource" id="Resource_Card178"]
+script = ExtResource("1_v0pgv")
+card_key = "pin-v2"
+image = ExtResource("ImageImport_178")
+
+[sub_resource type="Resource" id="Resource_Card179"]
+script = ExtResource("1_v0pgv")
+card_key = "the-zealot-requiem"
+image = ExtResource("ImageImport_179")
+
+[sub_resource type="Resource" id="Resource_Card180"]
+script = ExtResource("1_v0pgv")
+card_key = "eye-of-greed-v2"
+image = ExtResource("ImageImport_180")
+
+[sub_resource type="Resource" id="Resource_Card181"]
+script = ExtResource("1_v0pgv")
+card_key = "xx-judgement-v1"
+image = ExtResource("ImageImport_181")
+
+[sub_resource type="Resource" id="Resource_Card182"]
+script = ExtResource("1_v0pgv")
+card_key = "the-curse-v1"
+image = ExtResource("ImageImport_182")
+
+[sub_resource type="Resource" id="Resource_Card183"]
+script = ExtResource("1_v0pgv")
+card_key = "theres-options-v1"
+image = ExtResource("ImageImport_183")
+
+[sub_resource type="Resource" id="Resource_Card184"]
+script = ExtResource("1_v0pgv")
+card_key = "we-need-to-go-deeper-v1"
+image = ExtResource("ImageImport_184")
+
+[sub_resource type="Resource" id="Resource_Card185"]
+script = ExtResource("1_v0pgv")
+card_key = "incubus-v1"
+image = ExtResource("ImageImport_185")
+
+[sub_resource type="Resource" id="Resource_Card186"]
+script = ExtResource("1_v0pgv")
+card_key = "viii-justice-v1"
+image = ExtResource("ImageImport_186")
+
+[sub_resource type="Resource" id="Resource_Card187"]
+script = ExtResource("1_v0pgv")
+card_key = "lil-battery-v1"
+image = ExtResource("ImageImport_187")
+
+[sub_resource type="Resource" id="Resource_Card188"]
+script = ExtResource("1_v0pgv")
+card_key = "greed-event-v1"
+image = ExtResource("ImageImport_188")
+
+[sub_resource type="Resource" id="Resource_Card189"]
+script = ExtResource("1_v0pgv")
+card_key = "i-can-see-forever-v1"
+image = ExtResource("ImageImport_189")
+
+[sub_resource type="Resource" id="Resource_Card190"]
+script = ExtResource("1_v0pgv")
+card_key = "the-habit-v1"
+image = ExtResource("ImageImport_190")
+
+[sub_resource type="Resource" id="Resource_Card191"]
+script = ExtResource("1_v0pgv")
+card_key = "death-v1"
+image = ExtResource("ImageImport_191")
+
+[sub_resource type="Resource" id="Resource_Card192"]
+script = ExtResource("1_v0pgv")
+card_key = "no-v1"
+image = ExtResource("ImageImport_192")
+
+[sub_resource type="Resource" id="Resource_Card193"]
+script = ExtResource("1_v0pgv")
+card_key = "dagaz-v1"
+image = ExtResource("ImageImport_193")
+
+[sub_resource type="Resource" id="Resource_Card194"]
+script = ExtResource("1_v0pgv")
+card_key = "curse-of-amnesia-v1"
+image = ExtResource("ImageImport_194")
+
+[sub_resource type="Resource" id="Resource_Card195"]
+script = ExtResource("1_v0pgv")
+card_key = "pills-3-v1"
+image = ExtResource("ImageImport_195")
+
+[sub_resource type="Resource" id="Resource_Card196"]
+script = ExtResource("1_v0pgv")
+card_key = "spider-v1"
+image = ExtResource("ImageImport_196")
+
+[sub_resource type="Resource" id="Resource_Card197"]
+script = ExtResource("1_v0pgv")
+card_key = "evil-twin-v1"
+image = ExtResource("ImageImport_197")
+
+[sub_resource type="Resource" id="Resource_Card198"]
+script = ExtResource("1_v0pgv")
+card_key = "conjoined-fatty-v1"
+image = ExtResource("ImageImport_198")
+
+[sub_resource type="Resource" id="Resource_Card199"]
+script = ExtResource("1_v0pgv")
+card_key = "dinga-v1"
+image = ExtResource("ImageImport_199")
+
+[sub_resource type="Resource" id="Resource_Card200"]
+script = ExtResource("1_v0pgv")
+card_key = "pin-v1"
+image = ExtResource("ImageImport_200")
+
+[sub_resource type="Resource" id="Resource_Card201"]
+script = ExtResource("1_v0pgv")
+card_key = "chub-v1"
+image = ExtResource("ImageImport_201")
+
+[sub_resource type="Resource" id="Resource_Card202"]
+script = ExtResource("1_v0pgv")
+card_key = "monstros-tooth-v1"
+image = ExtResource("ImageImport_202")
+
+[sub_resource type="Resource" id="Resource_Card203"]
+script = ExtResource("1_v0pgv")
+card_key = "dark-chest-2-v1"
+image = ExtResource("ImageImport_203")
+
+[sub_resource type="Resource" id="Resource_Card204"]
+script = ExtResource("1_v0pgv")
+card_key = "pills-2-v1"
+image = ExtResource("ImageImport_204")
+
+[sub_resource type="Resource" id="Resource_Card205"]
+script = ExtResource("1_v0pgv")
+card_key = "three-cents-v1"
+image = ExtResource("ImageImport_205")
+
+[sub_resource type="Resource" id="Resource_Card206"]
+script = ExtResource("1_v0pgv")
+card_key = "rag-man-v1"
+image = ExtResource("ImageImport_206")
+
+[sub_resource type="Resource" id="Resource_Card207"]
+script = ExtResource("1_v0pgv")
+card_key = "sack-head-v1"
+image = ExtResource("ImageImport_207")
+
+[sub_resource type="Resource" id="Resource_Card208"]
+script = ExtResource("1_v0pgv")
+card_key = "lucky-foot-v1"
+image = ExtResource("ImageImport_208")
+
+[sub_resource type="Resource" id="Resource_Card209"]
+script = ExtResource("1_v0pgv")
+card_key = "contract-from-below-v1"
+image = ExtResource("ImageImport_209")
+
+[sub_resource type="Resource" id="Resource_Card210"]
+script = ExtResource("1_v0pgv")
+card_key = "a-penny-v1"
+image = ExtResource("ImageImport_210")
+
+[sub_resource type="Resource" id="Resource_Card211"]
+script = ExtResource("1_v0pgv")
+card_key = "fatty-v1"
+image = ExtResource("ImageImport_211")
+
+[sub_resource type="Resource" id="Resource_Card212"]
+script = ExtResource("1_v0pgv")
+card_key = "xvii-the-stars-v1"
+image = ExtResource("ImageImport_212")
+
+[sub_resource type="Resource" id="Resource_Card213"]
+script = ExtResource("1_v0pgv")
+card_key = "blue-baby-v1"
+image = ExtResource("ImageImport_213")
+
+[sub_resource type="Resource" id="Resource_Card214"]
+script = ExtResource("1_v0pgv")
+card_key = "curse-of-greed-v1"
+image = ExtResource("ImageImport_214")
+
+[sub_resource type="Resource" id="Resource_Card215"]
+script = ExtResource("1_v0pgv")
+card_key = "bobs-brain-v1"
+image = ExtResource("ImageImport_215")
+
+[sub_resource type="Resource" id="Resource_Card216"]
+script = ExtResource("1_v0pgv")
+card_key = "the-chest-v1"
+image = ExtResource("ImageImport_216")
+
+[sub_resource type="Resource" id="Resource_Card217"]
+script = ExtResource("1_v0pgv")
+card_key = "the-blue-map-v1"
+image = ExtResource("ImageImport_217")
+
+[sub_resource type="Resource" id="Resource_Card218"]
+script = ExtResource("1_v0pgv")
+card_key = "godhead-v1"
+image = ExtResource("ImageImport_218")
+
+[sub_resource type="Resource" id="Resource_Card219"]
+script = ExtResource("1_v0pgv")
+card_key = "hopper-v1"
+image = ExtResource("ImageImport_219")
+
+[sub_resource type="Resource" id="Resource_Card220"]
+script = ExtResource("1_v0pgv")
+card_key = "holy-moms-eye-v1"
+image = ExtResource("ImageImport_220")
+
+[sub_resource type="Resource" id="Resource_Card221"]
+script = ExtResource("1_v0pgv")
+card_key = "pay-to-play-v1"
+image = ExtResource("ImageImport_221")
+
+[sub_resource type="Resource" id="Resource_Card222"]
+script = ExtResource("1_v0pgv")
+card_key = "pandoras-box-v1"
+image = ExtResource("ImageImport_222")
+
+[sub_resource type="Resource" id="Resource_Card223"]
+script = ExtResource("1_v0pgv")
+card_key = "soul-of-greed-v1"
+image = ExtResource("ImageImport_223")
+
+[sub_resource type="Resource" id="Resource_Card224"]
+script = ExtResource("1_v0pgv")
+card_key = "curse-of-pain-v1"
+image = ExtResource("ImageImport_224")
+
+[sub_resource type="Resource" id="Resource_Card225"]
+script = ExtResource("1_v0pgv")
+card_key = "big-spider-v1"
+image = ExtResource("ImageImport_225")
+
+[sub_resource type="Resource" id="Resource_Card226"]
+script = ExtResource("1_v0pgv")
+card_key = "the-battery-v1"
+image = ExtResource("ImageImport_226")
+
+[sub_resource type="Resource" id="Resource_Card227"]
+script = ExtResource("1_v0pgv")
+card_key = "maggy-v1"
+image = ExtResource("ImageImport_227")
+
+[sub_resource type="Resource" id="Resource_Card228"]
+script = ExtResource("1_v0pgv")
+card_key = "trinity-shield-v1"
+image = ExtResource("ImageImport_228")
+
+[sub_resource type="Resource" id="Resource_Card229"]
+script = ExtResource("1_v0pgv")
+card_key = "lilith-v1"
+image = ExtResource("ImageImport_229")
+
+[sub_resource type="Resource" id="Resource_Card230"]
+script = ExtResource("1_v0pgv")
+card_key = "dip-v1"
+image = ExtResource("ImageImport_230")
+
+[sub_resource type="Resource" id="Resource_Card231"]
+script = ExtResource("1_v0pgv")
+card_key = "troll-bombs-v1"
+image = ExtResource("ImageImport_231")
+
+[sub_resource type="Resource" id="Resource_Card232"]
+script = ExtResource("1_v0pgv")
+card_key = "bomb-v1"
+image = ExtResource("ImageImport_232")
+
+[sub_resource type="Resource" id="Resource_Card233"]
+script = ExtResource("1_v0pgv")
+card_key = "greed-v1"
+image = ExtResource("ImageImport_233")
+
+[sub_resource type="Resource" id="Resource_Card234"]
+script = ExtResource("1_v0pgv")
+card_key = "xii-the-hanged-man-v1"
+image = ExtResource("ImageImport_234")
+
+[sub_resource type="Resource" id="Resource_Card235"]
+script = ExtResource("1_v0pgv")
+card_key = "the-compass-v1"
+image = ExtResource("ImageImport_235")
+
+[sub_resource type="Resource" id="Resource_Card236"]
+script = ExtResource("1_v0pgv")
+card_key = "two-of-clubs-v1"
+image = ExtResource("ImageImport_236")
+
+[sub_resource type="Resource" id="Resource_Card237"]
+script = ExtResource("1_v0pgv")
+card_key = "moms-dead-hand-v1"
+image = ExtResource("ImageImport_237")
+
+[sub_resource type="Resource" id="Resource_Card238"]
+script = ExtResource("1_v0pgv")
+card_key = "pills-v1"
+image = ExtResource("ImageImport_238")
+
+[sub_resource type="Resource" id="Resource_Card239"]
+script = ExtResource("1_v0pgv")
+card_key = "boom-fly-v1"
+image = ExtResource("ImageImport_239")
+
+[sub_resource type="Resource" id="Resource_Card240"]
+script = ExtResource("1_v0pgv")
+card_key = "delirium-v1"
+image = ExtResource("ImageImport_240")
+
+[sub_resource type="Resource" id="Resource_Card241"]
+script = ExtResource("1_v0pgv")
+card_key = "the-d6-v1"
+image = ExtResource("ImageImport_241")
+
+[sub_resource type="Resource" id="Resource_Card242"]
+script = ExtResource("1_v0pgv")
+card_key = "v-the-hierophant-v1"
+image = ExtResource("ImageImport_242")
+
+[sub_resource type="Resource" id="Resource_Card243"]
+script = ExtResource("1_v0pgv")
+card_key = "eden-v1"
+image = ExtResource("ImageImport_243")
+
+[sub_resource type="Resource" id="Resource_Card244"]
+script = ExtResource("1_v0pgv")
+card_key = "ehwaz-v1"
+image = ExtResource("ImageImport_244")
+
+[sub_resource type="Resource" id="Resource_Card245"]
+script = ExtResource("1_v0pgv")
+card_key = "greeds-gullet-v1"
+image = ExtResource("ImageImport_245")
+
+[sub_resource type="Resource" id="Resource_Card246"]
+script = ExtResource("1_v0pgv")
+card_key = "mega-troll-bomb-v1"
+image = ExtResource("ImageImport_246")
+
+[sub_resource type="Resource" id="Resource_Card247"]
+script = ExtResource("1_v0pgv")
+card_key = "broken-ankh-v1"
+image = ExtResource("ImageImport_247")
+
+[sub_resource type="Resource" id="Resource_Card248"]
+script = ExtResource("1_v0pgv")
+card_key = "restock-v1"
+image = ExtResource("ImageImport_248")
+
+[sub_resource type="Resource" id="Resource_Card249"]
+script = ExtResource("1_v0pgv")
+card_key = "ix-the-hermit-v1"
+image = ExtResource("ImageImport_249")
+
+[sub_resource type="Resource" id="Resource_Card250"]
+script = ExtResource("1_v0pgv")
+card_key = "leech-v1"
+image = ExtResource("ImageImport_250")
+
+[sub_resource type="Resource" id="Resource_Card251"]
+script = ExtResource("1_v0pgv")
+card_key = "placebo-v1"
+image = ExtResource("ImageImport_251")
+
+[sub_resource type="Resource" id="Resource_Card252"]
+script = ExtResource("1_v0pgv")
+card_key = "cursed-psy-horf-v1"
+image = ExtResource("ImageImport_252")
+
+[sub_resource type="Resource" id="Resource_Card253"]
+script = ExtResource("1_v0pgv")
+card_key = "moms-eye-v1"
+image = ExtResource("ImageImport_253")
+
+[sub_resource type="Resource" id="Resource_Card254"]
+script = ExtResource("1_v0pgv")
+card_key = "chaos-card-v1"
+image = ExtResource("ImageImport_254")
+
+[sub_resource type="Resource" id="Resource_Card255"]
+script = ExtResource("1_v0pgv")
+card_key = "xix-the-sun-v1"
+image = ExtResource("ImageImport_255")
+
+[sub_resource type="Resource" id="Resource_Card256"]
+script = ExtResource("1_v0pgv")
+card_key = "eye-of-greed-v1"
+image = ExtResource("ImageImport_256")
+
+[sub_resource type="Resource" id="Resource_Card257"]
+script = ExtResource("1_v0pgv")
+card_key = "gold-chest-v1"
+image = ExtResource("ImageImport_257")
+
+[sub_resource type="Resource" id="Resource_Card258"]
+script = ExtResource("1_v0pgv")
+card_key = "soul-of-guppy-v1"
+image = ExtResource("ImageImport_258")
+
+[sub_resource type="Resource" id="Resource_Card259"]
+script = ExtResource("1_v0pgv")
+card_key = "cursed-moms-hand-v1"
+image = ExtResource("ImageImport_259")
+
+[sub_resource type="Resource" id="Resource_Card260"]
+script = ExtResource("1_v0pgv")
+card_key = "ii-the-high-priestess-v1"
+image = ExtResource("ImageImport_260")
+
+[sub_resource type="Resource" id="Resource_Card261"]
+script = ExtResource("1_v0pgv")
+card_key = "sleight-of-hand-v1"
+image = ExtResource("ImageImport_261")
+
+[sub_resource type="Resource" id="Resource_Card262"]
+script = ExtResource("1_v0pgv")
+card_key = "goat-head-v1"
+image = ExtResource("ImageImport_262")
+
+[sub_resource type="Resource" id="Resource_Card263"]
+script = ExtResource("1_v0pgv")
+card_key = "portable-slot-machine-v1"
+image = ExtResource("ImageImport_263")
+
+[sub_resource type="Resource" id="Resource_Card264"]
+script = ExtResource("1_v0pgv")
+card_key = "razor-blade-v1"
+image = ExtResource("ImageImport_264")
+
+[sub_resource type="Resource" id="Resource_Card265"]
+script = ExtResource("1_v0pgv")
+card_key = "lost-soul-v1"
+image = ExtResource("ImageImport_265")
+
+[sub_resource type="Resource" id="Resource_Card266"]
+script = ExtResource("1_v0pgv")
+card_key = "holy-keeper-head-v1"
+image = ExtResource("ImageImport_266")
+
+[sub_resource type="Resource" id="Resource_Card267"]
+script = ExtResource("1_v0pgv")
+card_key = "red-host-v1"
+image = ExtResource("ImageImport_267")
+
+[sub_resource type="Resource" id="Resource_Card268"]
+script = ExtResource("1_v0pgv")
+card_key = "moms-purse-v1"
+image = ExtResource("ImageImport_268")
+
+[sub_resource type="Resource" id="Resource_Card269"]
+script = ExtResource("1_v0pgv")
+card_key = "pride-v1"
+image = ExtResource("ImageImport_269")
+
+[sub_resource type="Resource" id="Resource_Card270"]
+script = ExtResource("1_v0pgv")
+card_key = "clotty-v1"
+image = ExtResource("ImageImport_270")
+
+[sub_resource type="Resource" id="Resource_Card271"]
+script = ExtResource("1_v0pgv")
+card_key = "the-lamb-v1"
+image = ExtResource("ImageImport_271")
+
+[sub_resource type="Resource" id="Resource_Card272"]
+script = ExtResource("1_v0pgv")
+card_key = "devil-deal-v1"
+image = ExtResource("ImageImport_272")
+
+[sub_resource type="Resource" id="Resource_Card273"]
+script = ExtResource("1_v0pgv")
+card_key = "mega-fatty-v1"
+image = ExtResource("ImageImport_273")
+
+[sub_resource type="Resource" id="Resource_Card274"]
+script = ExtResource("1_v0pgv")
+card_key = "tech-x-v1"
+image = ExtResource("ImageImport_274")
+
+[sub_resource type="Resource" id="Resource_Card275"]
+script = ExtResource("1_v0pgv")
+card_key = "conquest-v1"
+image = ExtResource("ImageImport_275")
+
+[sub_resource type="Resource" id="Resource_Card276"]
+script = ExtResource("1_v0pgv")
+card_key = "cursed-fatty-v1"
+image = ExtResource("ImageImport_276")
+
+[sub_resource type="Resource" id="Resource_Card277"]
+script = ExtResource("1_v0pgv")
+card_key = "shadow-v1"
+image = ExtResource("ImageImport_277")
+
+[sub_resource type="Resource" id="Resource_Card278"]
+script = ExtResource("1_v0pgv")
+card_key = "xviii-the-moon-v1"
+image = ExtResource("ImageImport_278")
+
+[sub_resource type="Resource" id="Resource_Card279"]
+script = ExtResource("1_v0pgv")
+card_key = "the-haunt-v1"
+image = ExtResource("ImageImport_279")
+
+[sub_resource type="Resource" id="Resource_Card280"]
+script = ExtResource("1_v0pgv")
+card_key = "sloth-v1"
+image = ExtResource("ImageImport_280")
+
+[sub_resource type="Resource" id="Resource_Card281"]
+script = ExtResource("1_v0pgv")
+card_key = "compost-v1"
+image = ExtResource("ImageImport_281")
+
+[sub_resource type="Resource" id="Resource_Card282"]
+script = ExtResource("1_v0pgv")
+card_key = "vii-the-chariot-v1"
+image = ExtResource("ImageImport_282")
+
+[sub_resource type="Resource" id="Resource_Card283"]
+script = ExtResource("1_v0pgv")
+card_key = "stoney-v1"
+image = ExtResource("ImageImport_283")
+
+[sub_resource type="Resource" id="Resource_Card284"]
+script = ExtResource("1_v0pgv")
+card_key = "wrath-v1"
+image = ExtResource("ImageImport_284")
+
+[sub_resource type="Resource" id="Resource_Card285"]
+script = ExtResource("1_v0pgv")
+card_key = "cursed-horf-v1"
+image = ExtResource("ImageImport_285")
+
+[sub_resource type="Resource" id="Resource_Card286"]
+script = ExtResource("1_v0pgv")
+card_key = "purple-heart-v1"
+image = ExtResource("ImageImport_286")
+
+[sub_resource type="Resource" id="Resource_Card287"]
+script = ExtResource("1_v0pgv")
+card_key = "scolex-v1"
+image = ExtResource("ImageImport_287")
+
+[sub_resource type="Resource" id="Resource_Card288"]
+script = ExtResource("1_v0pgv")
+card_key = "holy-squirt-v1"
+image = ExtResource("ImageImport_288")
+
+[sub_resource type="Resource" id="Resource_Card289"]
+script = ExtResource("1_v0pgv")
+card_key = "soul-heart-v1"
+image = ExtResource("ImageImport_289")
+
+[sub_resource type="Resource" id="Resource_Card290"]
+script = ExtResource("1_v0pgv")
+card_key = "little-horn-v1"
+image = ExtResource("ImageImport_290")
+
+[sub_resource type="Resource" id="Resource_Card291"]
+script = ExtResource("1_v0pgv")
+card_key = "peep-v1"
+image = ExtResource("ImageImport_291")
+
+[sub_resource type="Resource" id="Resource_Card292"]
+script = ExtResource("1_v0pgv")
+card_key = "mr-boom-v1"
+image = ExtResource("ImageImport_292")
+
+[sub_resource type="Resource" id="Resource_Card293"]
+script = ExtResource("1_v0pgv")
+card_key = "cambion-conception-v1"
+image = ExtResource("ImageImport_293")
+
+[sub_resource type="Resource" id="Resource_Card294"]
+script = ExtResource("1_v0pgv")
+card_key = "counterfeit-penny-v1"
+image = ExtResource("ImageImport_294")
+
+[sub_resource type="Resource" id="Resource_Card295"]
+script = ExtResource("1_v0pgv")
+card_key = "gurdy-v1"
+image = ExtResource("ImageImport_295")
+
+[sub_resource type="Resource" id="Resource_Card296"]
+script = ExtResource("1_v0pgv")
+card_key = "box-v1"
+image = ExtResource("ImageImport_296")
+
+[sub_resource type="Resource" id="Resource_Card297"]
+script = ExtResource("1_v0pgv")
+card_key = "trite-v1"
+image = ExtResource("ImageImport_297")
+
+[sub_resource type="Resource" id="Resource_Card298"]
+script = ExtResource("1_v0pgv")
+card_key = "lust-v1"
+image = ExtResource("ImageImport_298")
+
+[sub_resource type="Resource" id="Resource_Card299"]
+script = ExtResource("1_v0pgv")
+card_key = "the-map-v1"
+image = ExtResource("ImageImport_299")
+
+[sub_resource type="Resource" id="Resource_Card300"]
+script = ExtResource("1_v0pgv")
+card_key = "a-dime-v1"
+image = ExtResource("ImageImport_300")
+
+[sub_resource type="Resource" id="Resource_Card301"]
+script = ExtResource("1_v0pgv")
+card_key = "decoy-v1"
+image = ExtResource("ImageImport_301")
+
+[sub_resource type="Resource" id="Resource_Card302"]
+script = ExtResource("1_v0pgv")
+card_key = "battery-bum-v1"
+image = ExtResource("ImageImport_302")
+
+[sub_resource type="Resource" id="Resource_Card303"]
+script = ExtResource("1_v0pgv")
+card_key = "lazarus-v1"
+image = ExtResource("ImageImport_303")
+
+[sub_resource type="Resource" id="Resource_Card304"]
+script = ExtResource("1_v0pgv")
+card_key = "crystal-ball-v1"
+image = ExtResource("ImageImport_304")
+
+[sub_resource type="Resource" id="Resource_Card305"]
+script = ExtResource("1_v0pgv")
+card_key = "curse-of-the-blind-v1"
+image = ExtResource("ImageImport_305")
+
+[sub_resource type="Resource" id="Resource_Card306"]
+script = ExtResource("1_v0pgv")
+card_key = "mega-battery-v1"
+image = ExtResource("ImageImport_306")
+
+[sub_resource type="Resource" id="Resource_Card307"]
+script = ExtResource("1_v0pgv")
+card_key = "flush-v1"
+image = ExtResource("ImageImport_307")
+
+[sub_resource type="Resource" id="Resource_Card308"]
+script = ExtResource("1_v0pgv")
+card_key = "diplopia-v1"
+image = ExtResource("ImageImport_308")
+
+[sub_resource type="Resource" id="Resource_Card309"]
+script = ExtResource("1_v0pgv")
+card_key = "cursed-chest-v1"
+image = ExtResource("ImageImport_309")
+
+[sub_resource type="Resource" id="Resource_Card310"]
+script = ExtResource("1_v0pgv")
+card_key = "moms-coin-purse-v1"
+image = ExtResource("ImageImport_310")
+
+[sub_resource type="Resource" id="Resource_Card311"]
+script = ExtResource("1_v0pgv")
+card_key = "greedling-v1"
+image = ExtResource("ImageImport_311")
+
+[sub_resource type="Resource" id="Resource_Card312"]
+script = ExtResource("1_v0pgv")
+card_key = "modeling-clay-v1"
+image = ExtResource("ImageImport_312")
+
+[sub_resource type="Resource" id="Resource_Card313"]
+script = ExtResource("1_v0pgv")
+card_key = "spider-mod-v1"
+image = ExtResource("ImageImport_313")
+
+[sub_resource type="Resource" id="Resource_Card314"]
+script = ExtResource("1_v0pgv")
+card_key = "starter-deck-v1"
+image = ExtResource("ImageImport_314")
+
+[sub_resource type="Resource" id="Resource_Card315"]
+script = ExtResource("1_v0pgv")
+card_key = "cursed-keeper-head-v1"
+image = ExtResource("ImageImport_315")
+
+[sub_resource type="Resource" id="Resource_Card316"]
+script = ExtResource("1_v0pgv")
+card_key = "monstro-v1"
+image = ExtResource("ImageImport_316")
+
+[sub_resource type="Resource" id="Resource_Card317"]
+script = ExtResource("1_v0pgv")
+card_key = "o-the-fool-v1"
+image = ExtResource("ImageImport_317")
+
+[sub_resource type="Resource" id="Resource_Card318"]
+script = ExtResource("1_v0pgv")
+card_key = "gold-bomb-v1"
+image = ExtResource("ImageImport_318")
+
+[sub_resource type="Resource" id="Resource_Card319"]
+script = ExtResource("1_v0pgv")
+card_key = "chaos-v1"
+image = ExtResource("ImageImport_319")
+
+[sub_resource type="Resource" id="Resource_Card320"]
+script = ExtResource("1_v0pgv")
+card_key = "charged-baby-v1"
+image = ExtResource("ImageImport_320")
+
+[sub_resource type="Resource" id="Resource_Card321"]
+script = ExtResource("1_v0pgv")
+card_key = "lazarus-rags-v1"
+image = ExtResource("ImageImport_321")
+
+[sub_resource type="Resource" id="Resource_Card322"]
+script = ExtResource("1_v0pgv")
+card_key = "mulligan-v1"
+image = ExtResource("ImageImport_322")
+
+[sub_resource type="Resource" id="Resource_Card323"]
+script = ExtResource("1_v0pgv")
+card_key = "brimstone-v1"
+image = ExtResource("ImageImport_323")
+
+[sub_resource type="Resource" id="Resource_Card324"]
+script = ExtResource("1_v0pgv")
+card_key = "the-d10-v1"
+image = ExtResource("ImageImport_324")
+
+[sub_resource type="Resource" id="Resource_Card325"]
+script = ExtResource("1_v0pgv")
+card_key = "carrion-queen-v1"
+image = ExtResource("ImageImport_325")
+
+[sub_resource type="Resource" id="Resource_Card326"]
+script = ExtResource("1_v0pgv")
+card_key = "gluttony-v1"
+image = ExtResource("ImageImport_326")
+
+[sub_resource type="Resource" id="Resource_Card327"]
+script = ExtResource("1_v0pgv")
+card_key = "xiv-temperance-v1"
+image = ExtResource("ImageImport_327")
+
+[sub_resource type="Resource" id="Resource_Card328"]
+script = ExtResource("1_v0pgv")
+card_key = "daddy-haunt-v1"
+image = ExtResource("ImageImport_328")
+
+[sub_resource type="Resource" id="Resource_Card329"]
+script = ExtResource("1_v0pgv")
+card_key = "ipecac-v1"
+image = ExtResource("ImageImport_329")
+
+[sub_resource type="Resource" id="Resource_Card330"]
+script = ExtResource("1_v0pgv")
+card_key = "gurdy-jr-v1"
+image = ExtResource("ImageImport_330")
+
+[sub_resource type="Resource" id="Resource_Card331"]
+script = ExtResource("1_v0pgv")
+card_key = "polydactyly-v1"
+image = ExtResource("ImageImport_331")
+
+[sub_resource type="Resource" id="Resource_Card332"]
+script = ExtResource("1_v0pgv")
+card_key = "guppys-paw-v1"
+image = ExtResource("ImageImport_332")
+
+[sub_resource type="Resource" id="Resource_Card333"]
+script = ExtResource("1_v0pgv")
+card_key = "edens-blessing-v1"
+image = ExtResource("ImageImport_333")
+
+[sub_resource type="Resource" id="Resource_Card334"]
+script = ExtResource("1_v0pgv")
+card_key = "war-v1"
+image = ExtResource("ImageImport_334")
+
+[sub_resource type="Resource" id="Resource_Card335"]
+script = ExtResource("1_v0pgv")
+card_key = "dople-v1"
+image = ExtResource("ImageImport_335")
+
+[sub_resource type="Resource" id="Resource_Card336"]
+script = ExtResource("1_v0pgv")
+card_key = "cain-v1"
+image = ExtResource("ImageImport_336")
+
+[sub_resource type="Resource" id="Resource_Card337"]
+script = ExtResource("1_v0pgv")
+card_key = "the-poop-v1"
+image = ExtResource("ImageImport_337")
+
+[sub_resource type="Resource" id="Resource_Card338"]
+script = ExtResource("1_v0pgv")
+card_key = "moms-razor-v1"
+image = ExtResource("ImageImport_338")
+
+[sub_resource type="Resource" id="Resource_Card339"]
+script = ExtResource("1_v0pgv")
+card_key = "the-forgotten-v1"
+image = ExtResource("ImageImport_339")
+
+[sub_resource type="Resource" id="Resource_Card340"]
+script = ExtResource("1_v0pgv")
+card_key = "moms-shovel-v1"
+image = ExtResource("ImageImport_340")
+
+[sub_resource type="Resource" id="Resource_Card341"]
+script = ExtResource("1_v0pgv")
+card_key = "swallowed-penny-v1"
+image = ExtResource("ImageImport_341")
+
+[sub_resource type="Resource" id="Resource_Card342"]
+script = ExtResource("1_v0pgv")
+card_key = "cursed-gaper-v1"
+image = ExtResource("ImageImport_342")
+
+[sub_resource type="Resource" id="Resource_Card343"]
+script = ExtResource("1_v0pgv")
+card_key = "shiny-rock-v1"
+image = ExtResource("ImageImport_343")
+
+[sub_resource type="Resource" id="Resource_Card344"]
+script = ExtResource("1_v0pgv")
+card_key = "judas-v1"
+image = ExtResource("ImageImport_344")
+
+[sub_resource type="Resource" id="Resource_Card345"]
+script = ExtResource("1_v0pgv")
+card_key = "synthoil-v1"
+image = ExtResource("ImageImport_345")
+
+[sub_resource type="Resource" id="Resource_Card346"]
+script = ExtResource("1_v0pgv")
+card_key = "blank-card-v1"
+image = ExtResource("ImageImport_346")
+
+[sub_resource type="Resource" id="Resource_Card347"]
+script = ExtResource("1_v0pgv")
+card_key = "the-d20-v1"
+image = ExtResource("ImageImport_347")
+
+[sub_resource type="Resource" id="Resource_Card348"]
+script = ExtResource("1_v0pgv")
+card_key = "remote-detonator-v1"
+image = ExtResource("ImageImport_348")
+
+[sub_resource type="Resource" id="Resource_Card349"]
+script = ExtResource("1_v0pgv")
+card_key = "holy-dip-v1"
+image = ExtResource("ImageImport_349")
+
+[sub_resource type="Resource" id="Resource_Card350"]
+script = ExtResource("1_v0pgv")
+card_key = "the-midas-touch-v1"
+image = ExtResource("ImageImport_350")
+
+[sub_resource type="Resource" id="Resource_Card351"]
+script = ExtResource("1_v0pgv")
+card_key = "meat-v1"
+image = ExtResource("ImageImport_351")
+
+[sub_resource type="Resource" id="Resource_Card352"]
+script = ExtResource("1_v0pgv")
+card_key = "psy-horf-v1"
+image = ExtResource("ImageImport_352")
+
+[sub_resource type="Resource" id="Resource_Card353"]
+script = ExtResource("1_v0pgv")
+card_key = "xvi-the-tower-v1"
+image = ExtResource("ImageImport_353")
+
+[sub_resource type="Resource" id="Resource_Card354"]
+script = ExtResource("1_v0pgv")
+card_key = "rage-creep-v1"
+image = ExtResource("ImageImport_354")
+
+[sub_resource type="Resource" id="Resource_Card355"]
+script = ExtResource("1_v0pgv")
+card_key = "i-the-magician-v1"
+image = ExtResource("ImageImport_355")
+
+[sub_resource type="Resource" id="Resource_Card356"]
+script = ExtResource("1_v0pgv")
+card_key = "moms-hand-v1"
+image = ExtResource("ImageImport_356")
+
+[sub_resource type="Resource" id="Resource_Card357"]
+script = ExtResource("1_v0pgv")
+card_key = "belly-button-v1"
+image = ExtResource("ImageImport_357")
+
+[sub_resource type="Resource" id="Resource_Card358"]
+script = ExtResource("1_v0pgv")
+card_key = "xv-the-devil-v1"
+image = ExtResource("ImageImport_358")
+
+[sub_resource type="Resource" id="Resource_Card359"]
+script = ExtResource("1_v0pgv")
+card_key = "mystery-sack-v1"
+image = ExtResource("ImageImport_359")
+
+[sub_resource type="Resource" id="Resource_Card360"]
+script = ExtResource("1_v0pgv")
+card_key = "gemini-v1"
+image = ExtResource("ImageImport_360")
+
+[sub_resource type="Resource" id="Resource_Card361"]
+script = ExtResource("1_v0pgv")
+card_key = "swarm-of-flies-v1"
+image = ExtResource("ImageImport_361")
+
+[sub_resource type="Resource" id="Resource_Card362"]
+script = ExtResource("1_v0pgv")
+card_key = "the-bloat-v1"
+image = ExtResource("ImageImport_362")
+
+[sub_resource type="Resource" id="Resource_Card363"]
+script = ExtResource("1_v0pgv")
+card_key = "fanny-pack-v1"
+image = ExtResource("ImageImport_363")
+
+[sub_resource type="Resource" id="Resource_Card364"]
+script = ExtResource("1_v0pgv")
+card_key = "two-cents-v1"
+image = ExtResource("ImageImport_364")
+
+[sub_resource type="Resource" id="Resource_Card365"]
+script = ExtResource("1_v0pgv")
+card_key = "chest-v1"
+image = ExtResource("ImageImport_365")
+
+[sub_resource type="Resource" id="Resource_Card366"]
+script = ExtResource("1_v0pgv")
+card_key = "forever-alone-v1"
+image = ExtResource("ImageImport_366")
+
+[sub_resource type="Resource" id="Resource_Card367"]
+script = ExtResource("1_v0pgv")
+card_key = "the-duke-of-flies-v1"
+image = ExtResource("ImageImport_367")
+
+[sub_resource type="Resource" id="Resource_Card368"]
+script = ExtResource("1_v0pgv")
+card_key = "jawbone-v1"
+image = ExtResource("ImageImport_368")
+
+[sub_resource type="Resource" id="Resource_Card369"]
+script = ExtResource("1_v0pgv")
+card_key = "finger-v1"
+image = ExtResource("ImageImport_369")
+
+[sub_resource type="Resource" id="Resource_Card370"]
+script = ExtResource("1_v0pgv")
+card_key = "yum-heart-v1"
+image = ExtResource("ImageImport_370")
+
+[sub_resource type="Resource" id="Resource_Card371"]
+script = ExtResource("1_v0pgv")
+card_key = "xiii-death-v1"
+image = ExtResource("ImageImport_371")
+
+[sub_resource type="Resource" id="Resource_Card372"]
+script = ExtResource("1_v0pgv")
+card_key = "ambush-v1"
+image = ExtResource("ImageImport_372")
+
+[sub_resource type="Resource" id="Resource_Card373"]
+script = ExtResource("1_v0pgv")
+card_key = "curse-of-the-tower-v1"
+image = ExtResource("ImageImport_373")
+
+[sub_resource type="Resource" id="Resource_Card374"]
+script = ExtResource("1_v0pgv")
+card_key = "dry-baby-v1"
+image = ExtResource("ImageImport_374")
+
+[sub_resource type="Resource" id="Resource_Card375"]
+script = ExtResource("1_v0pgv")
+card_key = "xxi-the-world-v1"
+image = ExtResource("ImageImport_375")
+
+[sub_resource type="Resource" id="Resource_Card376"]
+script = ExtResource("1_v0pgv")
+card_key = "fly-v1"
+image = ExtResource("ImageImport_376")
+
+[sub_resource type="Resource" id="Resource_Card377"]
+script = ExtResource("1_v0pgv")
+card_key = "envy-v1"
+image = ExtResource("ImageImport_377")
+
+[sub_resource type="Resource" id="Resource_Card378"]
+script = ExtResource("1_v0pgv")
+card_key = "iv-the-emperor-v1"
+image = ExtResource("ImageImport_378")
+
+[sub_resource type="Resource" id="Resource_Card379"]
+script = ExtResource("1_v0pgv")
+card_key = "mini-mush-v1"
+image = ExtResource("ImageImport_379")
+
+[sub_resource type="Resource" id="Resource_Card380"]
+script = ExtResource("1_v0pgv")
+card_key = "squirt-v1"
+image = ExtResource("ImageImport_380")
+
+[sub_resource type="Resource" id="Resource_Card381"]
+script = ExtResource("1_v0pgv")
+card_key = "xi-strength-v1"
+image = ExtResource("ImageImport_381")
+
+[sub_resource type="Resource" id="Resource_Card382"]
+script = ExtResource("1_v0pgv")
+card_key = "ring-of-flies-v1"
+image = ExtResource("ImageImport_382")
+
+[sub_resource type="Resource" id="Resource_Card383"]
+script = ExtResource("1_v0pgv")
+card_key = "horf-v1"
+image = ExtResource("ImageImport_383")
+
+[sub_resource type="Resource" id="Resource_Card384"]
+script = ExtResource("1_v0pgv")
+card_key = "mom-v1"
+image = ExtResource("ImageImport_384")
+
+[sub_resource type="Resource" id="Resource_Card385"]
+script = ExtResource("1_v0pgv")
+card_key = "golden-horseshoe-v1"
+image = ExtResource("ImageImport_385")
+
+[sub_resource type="Resource" id="Resource_Card386"]
+script = ExtResource("1_v0pgv")
+card_key = "wizoob-v1"
+image = ExtResource("ImageImport_386")
+
+[sub_resource type="Resource" id="Resource_Card387"]
+script = ExtResource("1_v0pgv")
+card_key = "smelter-v1"
+image = ExtResource("ImageImport_387")
+
+[sub_resource type="Resource" id="Resource_Card388"]
+script = ExtResource("1_v0pgv")
+card_key = "fat-bat-v1"
+image = ExtResource("ImageImport_388")
+
+[sub_resource type="Resource" id="Resource_Card389"]
+script = ExtResource("1_v0pgv")
+card_key = "iii-the-empress-v1"
+image = ExtResource("ImageImport_389")
+
+[sub_resource type="Resource" id="Resource_Card390"]
+script = ExtResource("1_v0pgv")
+card_key = "the-polaroid-v1"
+image = ExtResource("ImageImport_390")
+
+[sub_resource type="Resource" id="Resource_Card391"]
+script = ExtResource("1_v0pgv")
+card_key = "dank-globin-v1"
+image = ExtResource("ImageImport_391")
+
+[sub_resource type="Resource" id="Resource_Card392"]
+script = ExtResource("1_v0pgv")
+card_key = "champion-belt-v1"
+image = ExtResource("ImageImport_392")
+
+[sub_resource type="Resource" id="Resource_Card393"]
+script = ExtResource("1_v0pgv")
+card_key = "daddy-long-legs-v1"
+image = ExtResource("ImageImport_393")
+
+[sub_resource type="Resource" id="Resource_Card394"]
+script = ExtResource("1_v0pgv")
+card_key = "black-bony-v1"
+image = ExtResource("ImageImport_394")
+
+[sub_resource type="Resource" id="Resource_Card395"]
+script = ExtResource("1_v0pgv")
+card_key = "a-nickel-v1"
+image = ExtResource("ImageImport_395")
+
+[sub_resource type="Resource" id="Resource_Card396"]
+script = ExtResource("1_v0pgv")
+card_key = "guppys-collar-v1"
+image = ExtResource("ImageImport_396")
+
+[sub_resource type="Resource" id="Resource_Card397"]
+script = ExtResource("1_v0pgv")
+card_key = "dark-bum-v1"
+image = ExtResource("ImageImport_397")
+
+[sub_resource type="Resource" id="Resource_Card398"]
+script = ExtResource("1_v0pgv")
+card_key = "boomerang-v1"
+image = ExtResource("ImageImport_398")
+
+[sub_resource type="Resource" id="Resource_Card399"]
+script = ExtResource("1_v0pgv")
+card_key = "sacred-heart-v1"
+image = ExtResource("ImageImport_399")
+
+[sub_resource type="Resource" id="Resource_Card400"]
+script = ExtResource("1_v0pgv")
+card_key = "bloody-penny-v1"
+image = ExtResource("ImageImport_400")
+
+[sub_resource type="Resource" id="Resource_Card401"]
+script = ExtResource("1_v0pgv")
+card_key = "bum-friend-v1"
+image = ExtResource("ImageImport_401")
+
+[sub_resource type="Resource" id="Resource_Card402"]
+script = ExtResource("1_v0pgv")
+card_key = "secret-room-v1"
+image = ExtResource("ImageImport_402")
+
+[sub_resource type="Resource" id="Resource_Card403"]
+script = ExtResource("1_v0pgv")
+card_key = "book-of-belial-v1"
+image = ExtResource("ImageImport_403")
+
+[sub_resource type="Resource" id="Resource_Card404"]
+script = ExtResource("1_v0pgv")
+card_key = "curse-of-loss-v1"
+image = ExtResource("ImageImport_404")
+
+[sub_resource type="Resource" id="Resource_Card405"]
+script = ExtResource("1_v0pgv")
+card_key = "guppys-hairball-v1"
+image = ExtResource("ImageImport_405")
+
+[sub_resource type="Resource" id="Resource_Card406"]
+script = ExtResource("1_v0pgv")
+card_key = "vi-the-lovers-v1"
+image = ExtResource("ImageImport_406")
+
+[sub_resource type="Resource" id="Resource_Card407"]
+script = ExtResource("1_v0pgv")
+card_key = "soul-of-gluttony-v1"
+image = ExtResource("ImageImport_407")
+
+[sub_resource type="Resource" id="Resource_Card408"]
+script = ExtResource("1_v0pgv")
+card_key = "cains-eye-v1"
+image = ExtResource("ImageImport_408")
+
+[sub_resource type="Resource" id="Resource_Card409"]
+script = ExtResource("1_v0pgv")
+card_key = "blood-lust-v1"
+image = ExtResource("ImageImport_409")
+
+[sub_resource type="Resource" id="Resource_Card410"]
+script = ExtResource("1_v0pgv")
+card_key = "mask-of-infamy-v1"
+image = ExtResource("ImageImport_410")
+
+[sub_resource type="Resource" id="Resource_Card411"]
+script = ExtResource("1_v0pgv")
+card_key = "keeper-head-v1"
+image = ExtResource("ImageImport_411")
+
+[sub_resource type="Resource" id="Resource_Card412"]
+script = ExtResource("1_v0pgv")
+card_key = "sack-of-pennies-v1"
+image = ExtResource("ImageImport_412")
+
+[sub_resource type="Resource" id="Resource_Card413"]
+script = ExtResource("1_v0pgv")
+card_key = "the-shovel-v1"
+image = ExtResource("ImageImport_413")
+
+[sub_resource type="Resource" id="Resource_Card414"]
+script = ExtResource("1_v0pgv")
+card_key = "dark-chest-v1"
+image = ExtResource("ImageImport_414")
+
+[sub_resource type="Resource" id="Resource_Card415"]
+script = ExtResource("1_v0pgv")
+card_key = "mulliboom-v1"
+image = ExtResource("ImageImport_415")
+
+[sub_resource type="Resource" id="Resource_Card416"]
+script = ExtResource("1_v0pgv")
+card_key = "the-bone-v1"
+image = ExtResource("ImageImport_416")
+
+[sub_resource type="Resource" id="Resource_Card417"]
+script = ExtResource("1_v0pgv")
+card_key = "x-wheel-of-fortune-v1"
+image = ExtResource("ImageImport_417")
+
+[sub_resource type="Resource" id="Resource_Card418"]
+script = ExtResource("1_v0pgv")
+card_key = "holy-dinga-v1"
+image = ExtResource("ImageImport_418")
+
+[sub_resource type="Resource" id="Resource_Card419"]
+script = ExtResource("1_v0pgv")
+card_key = "monster-manual-v1"
+image = ExtResource("ImageImport_419")
+
+[sub_resource type="Resource" id="Resource_Card420"]
+script = ExtResource("1_v0pgv")
+card_key = "xl-floor-v1"
+image = ExtResource("ImageImport_420")
+
+[sub_resource type="Resource" id="Resource_Card421"]
+script = ExtResource("1_v0pgv")
+card_key = "dice-shard-v1"
+image = ExtResource("ImageImport_421")
+
+[sub_resource type="Resource" id="Resource_Card422"]
+script = ExtResource("1_v0pgv")
+card_key = "dark-one-v1"
+image = ExtResource("ImageImport_422")
+
+[sub_resource type="Resource" id="Resource_Card423"]
+script = ExtResource("1_v0pgv")
+card_key = "spoon-bender-v1"
+image = ExtResource("ImageImport_423")
+
+[sub_resource type="Resource" id="Resource_Card424"]
+script = ExtResource("1_v0pgv")
+card_key = "book-of-sin-v1"
+image = ExtResource("ImageImport_424")
+
+[sub_resource type="Resource" id="Resource_Card425"]
+script = ExtResource("1_v0pgv")
+card_key = "glass-cannon-v1"
+image = ExtResource("ImageImport_425")
+
+[sub_resource type="Resource" id="Resource_Card426"]
+script = ExtResource("1_v0pgv")
+card_key = "satan-v1"
+image = ExtResource("ImageImport_426")
+
+[sub_resource type="Resource" id="Resource_Card427"]
+script = ExtResource("1_v0pgv")
+card_key = "leaper-v1"
+image = ExtResource("ImageImport_427")
+
+[sub_resource type="Resource" id="Resource_Card428"]
+script = ExtResource("1_v0pgv")
+card_key = "breakfast-v1"
+image = ExtResource("ImageImport_428")
+
+[sub_resource type="Resource" id="Resource_Card429"]
+script = ExtResource("1_v0pgv")
+card_key = "dads-lost-coin-v1"
+image = ExtResource("ImageImport_429")
+
+[sub_resource type="Resource" id="Resource_Card430"]
+script = ExtResource("1_v0pgv")
+card_key = "suicide-king-v1"
+image = ExtResource("ImageImport_430")
+
+[sub_resource type="Resource" id="Resource_Card431"]
+script = ExtResource("1_v0pgv")
+card_key = "pooter-v1"
+image = ExtResource("ImageImport_431")
+
+[sub_resource type="Resource" id="Resource_Card432"]
+script = ExtResource("1_v0pgv")
+card_key = "gold-chest-2-v1"
+image = ExtResource("ImageImport_432")
+
+[sub_resource type="Resource" id="Resource_Card433"]
+script = ExtResource("1_v0pgv")
+card_key = "chest-2-v1"
+image = ExtResource("ImageImport_433")
+
+[sub_resource type="Resource" id="Resource_Card434"]
+script = ExtResource("1_v0pgv")
+card_key = "host-hat-v1"
+image = ExtResource("ImageImport_434")
+
+[sub_resource type="Resource" id="Resource_Card435"]
+script = ExtResource("1_v0pgv")
+card_key = "the-relic-v1"
+image = ExtResource("ImageImport_435")
+
+[sub_resource type="Resource" id="Resource_Card436"]
+script = ExtResource("1_v0pgv")
+card_key = "four-cents-v1"
+image = ExtResource("ImageImport_436")
+
+[sub_resource type="Resource" id="Resource_Card437"]
+script = ExtResource("1_v0pgv")
+card_key = "bum-bo-v1"
+image = ExtResource("ImageImport_437")
+
+[sub_resource type="Resource" id="Resource_Card438"]
+script = ExtResource("1_v0pgv")
+card_key = "butter-bean-v1"
+image = ExtResource("ImageImport_438")
+
+[sub_resource type="Resource" id="Resource_Card439"]
+script = ExtResource("1_v0pgv")
+card_key = "isaac-v1"
+image = ExtResource("ImageImport_439")
+
+[sub_resource type="Resource" id="Resource_Card440"]
+script = ExtResource("1_v0pgv")
+card_key = "dinner-v1"
+image = ExtResource("ImageImport_440")
+
+[sub_resource type="Resource" id="Resource_Card441"]
+script = ExtResource("1_v0pgv")
+card_key = "pale-fatty-v1"
+image = ExtResource("ImageImport_441")
+
+[sub_resource type="Resource" id="Resource_Card442"]
+script = ExtResource("1_v0pgv")
+card_key = "potato-peeler-v1"
+image = ExtResource("ImageImport_442")
+
+[sub_resource type="Resource" id="Resource_Card443"]
+script = ExtResource("1_v0pgv")
+card_key = "guppys-head-v1"
+image = ExtResource("ImageImport_443")
+
+[sub_resource type="Resource" id="Resource_Card444"]
+script = ExtResource("1_v0pgv")
+card_key = "cheese-grater-v1"
+image = ExtResource("ImageImport_444")
+
+[sub_resource type="Resource" id="Resource_Card445"]
+script = ExtResource("1_v0pgv")
+card_key = "the-d100-v1"
+image = ExtResource("ImageImport_445")
+
+[sub_resource type="Resource" id="Resource_Card446"]
+script = ExtResource("1_v0pgv")
+card_key = "eve-v1"
+image = ExtResource("ImageImport_446")
+
+[sub_resource type="Resource" id="Resource_Card447"]
+script = ExtResource("1_v0pgv")
+card_key = "tarot-cloth-v1"
+image = ExtResource("ImageImport_447")
+
+[sub_resource type="Resource" id="Resource_Card448"]
+script = ExtResource("1_v0pgv")
+card_key = "moms-box-v1"
+image = ExtResource("ImageImport_448")
+
+[sub_resource type="Resource" id="Resource_Card449"]
+script = ExtResource("1_v0pgv")
+card_key = "famine-v1"
+image = ExtResource("ImageImport_449")
+
+[sub_resource type="Resource" id="Resource_Card450"]
+script = ExtResource("1_v0pgv")
+card_key = "portal-v1"
+image = ExtResource("ImageImport_450")
+
+[sub_resource type="Resource" id="Resource_Card451"]
+script = ExtResource("1_v0pgv")
+card_key = "shop-upgrade-v1"
+image = ExtResource("ImageImport_451")
+
+[sub_resource type="Resource" id="Resource_Card452"]
+script = ExtResource("1_v0pgv")
+card_key = "golden-razor-blade-v1"
+image = ExtResource("ImageImport_452")
+
+[sub_resource type="Resource" id="Resource_Card453"]
+script = ExtResource("1_v0pgv")
+card_key = "donation-machine-v1"
+image = ExtResource("ImageImport_453")
+
+[sub_resource type="Resource" id="Resource_Card454"]
+script = ExtResource("1_v0pgv")
+card_key = "pestilence-v1"
+image = ExtResource("ImageImport_454")
+
+[sub_resource type="Resource" id="Resource_Card455"]
+script = ExtResource("1_v0pgv")
+card_key = "curved-horn-v1"
+image = ExtResource("ImageImport_455")
+
+[sub_resource type="Resource" id="Resource_Card456"]
+script = ExtResource("1_v0pgv")
+card_key = "empty-vessel-v1"
+image = ExtResource("ImageImport_456")
+
+[sub_resource type="Resource" id="Resource_Card457"]
+script = ExtResource("1_v0pgv")
+card_key = "steamy-sale-v1"
+image = ExtResource("ImageImport_457")
+
+[sub_resource type="Resource" id="Resource_Card458"]
+script = ExtResource("1_v0pgv")
+card_key = "baby-haunt-v1"
+image = ExtResource("ImageImport_458")
+
+[sub_resource type="Resource" id="Resource_Card459"]
+script = ExtResource("1_v0pgv")
+card_key = "samson-v1"
+image = ExtResource("ImageImport_459")
+
+[sub_resource type="Resource" id="Resource_Card460"]
+script = ExtResource("1_v0pgv")
+card_key = "cod-worm-v1"
+image = ExtResource("ImageImport_460")
+
+[sub_resource type="Resource" id="Resource_Card461"]
+script = ExtResource("1_v0pgv")
+card_key = "dead-bird-v1"
+image = ExtResource("ImageImport_461")
+
+[sub_resource type="Resource" id="Resource_Card462"]
+script = ExtResource("1_v0pgv")
+card_key = "the-d4-v1"
+image = ExtResource("ImageImport_462")
+
+[sub_resource type="Resource" id="Resource_Card463"]
+script = ExtResource("1_v0pgv")
+card_key = "blank-rune-v1"
+image = ExtResource("ImageImport_463")
+
+[sub_resource type="Resource" id="Resource_Card464"]
+script = ExtResource("1_v0pgv")
+card_key = "hanger-v1"
+image = ExtResource("ImageImport_464")
+
+[sub_resource type="Resource" id="Resource_Card465"]
+script = ExtResource("1_v0pgv")
+card_key = "the-dead-cat-v1"
+image = ExtResource("ImageImport_465")
+
+[sub_resource type="Resource" id="Resource_Card466"]
+script = ExtResource("1_v0pgv")
+card_key = "larry-jr-v1"
+image = ExtResource("ImageImport_466")
+
+[sub_resource type="Resource" id="Resource_Card467"]
+script = ExtResource("1_v0pgv")
+card_key = "moms-bra-v1"
+image = ExtResource("ImageImport_467")
+
+[resource]
+script = ExtResource("1_boc33")
+Images = Array[ExtResource("1_v0pgv")]([SubResource("Resource_Card1"), SubResource("Resource_Card2"), SubResource("Resource_Card3"), SubResource("Resource_Card4"), SubResource("Resource_Card5"), SubResource("Resource_Card6"), SubResource("Resource_Card7"), SubResource("Resource_Card8"), SubResource("Resource_Card9"), SubResource("Resource_Card10"), SubResource("Resource_Card11"), SubResource("Resource_Card12"), SubResource("Resource_Card13"), SubResource("Resource_Card14"), SubResource("Resource_Card15"), SubResource("Resource_Card16"), SubResource("Resource_Card17"), SubResource("Resource_Card18"), SubResource("Resource_Card19"), SubResource("Resource_Card20"), SubResource("Resource_Card21"), SubResource("Resource_Card22"), SubResource("Resource_Card23"), SubResource("Resource_Card24"), SubResource("Resource_Card25"), SubResource("Resource_Card26"), SubResource("Resource_Card27"), SubResource("Resource_Card28"), SubResource("Resource_Card29"), SubResource("Resource_Card30"), SubResource("Resource_Card31"), SubResource("Resource_Card32"), SubResource("Resource_Card33"), SubResource("Resource_Card34"), SubResource("Resource_Card35"), SubResource("Resource_Card36"), SubResource("Resource_Card37"), SubResource("Resource_Card38"), SubResource("Resource_Card39"), SubResource("Resource_Card40"), SubResource("Resource_Card41"), SubResource("Resource_Card42"), SubResource("Resource_Card43"), SubResource("Resource_Card44"), SubResource("Resource_Card45"), SubResource("Resource_Card46"), SubResource("Resource_Card47"), SubResource("Resource_Card48"), SubResource("Resource_Card49"), SubResource("Resource_Card50"), SubResource("Resource_Card51"), SubResource("Resource_Card52"), SubResource("Resource_Card53"), SubResource("Resource_Card54"), SubResource("Resource_Card55"), SubResource("Resource_Card56"), SubResource("Resource_Card57"), SubResource("Resource_Card58"), SubResource("Resource_Card59"), SubResource("Resource_Card60"), SubResource("Resource_Card61"), SubResource("Resource_Card62"), SubResource("Resource_Card63"), SubResource("Resource_Card64"), SubResource("Resource_Card65"), SubResource("Resource_Card66"), SubResource("Resource_Card67"), SubResource("Resource_Card68"), SubResource("Resource_Card69"), SubResource("Resource_Card70"), SubResource("Resource_Card71"), SubResource("Resource_Card72"), SubResource("Resource_Card73"), SubResource("Resource_Card74"), SubResource("Resource_Card75"), SubResource("Resource_Card76"), SubResource("Resource_Card77"), SubResource("Resource_Card78"), SubResource("Resource_Card79"), SubResource("Resource_Card80"), SubResource("Resource_Card81"), SubResource("Resource_Card82"), SubResource("Resource_Card83"), SubResource("Resource_Card84"), SubResource("Resource_Card85"), SubResource("Resource_Card86"), SubResource("Resource_Card87"), SubResource("Resource_Card88"), SubResource("Resource_Card89"), SubResource("Resource_Card90"), SubResource("Resource_Card91"), SubResource("Resource_Card92"), SubResource("Resource_Card93"), SubResource("Resource_Card94"), SubResource("Resource_Card95"), SubResource("Resource_Card96"), SubResource("Resource_Card97"), SubResource("Resource_Card98"), SubResource("Resource_Card99"), SubResource("Resource_Card100"), SubResource("Resource_Card101"), SubResource("Resource_Card102"), SubResource("Resource_Card103"), SubResource("Resource_Card104"), SubResource("Resource_Card105"), SubResource("Resource_Card106"), SubResource("Resource_Card107"), SubResource("Resource_Card108"), SubResource("Resource_Card109"), SubResource("Resource_Card110"), SubResource("Resource_Card111"), SubResource("Resource_Card112"), SubResource("Resource_Card113"), SubResource("Resource_Card114"), SubResource("Resource_Card115"), SubResource("Resource_Card116"), SubResource("Resource_Card117"), SubResource("Resource_Card118"), SubResource("Resource_Card119"), SubResource("Resource_Card120"), SubResource("Resource_Card121"), SubResource("Resource_Card122"), SubResource("Resource_Card123"), SubResource("Resource_Card124"), SubResource("Resource_Card125"), SubResource("Resource_Card126"), SubResource("Resource_Card127"), SubResource("Resource_Card128"), SubResource("Resource_Card129"), SubResource("Resource_Card130"), SubResource("Resource_Card131"), SubResource("Resource_Card132"), SubResource("Resource_Card133"), SubResource("Resource_Card134"), SubResource("Resource_Card135"), SubResource("Resource_Card136"), SubResource("Resource_Card137"), SubResource("Resource_Card138"), SubResource("Resource_Card139"), SubResource("Resource_Card140"), SubResource("Resource_Card141"), SubResource("Resource_Card142"), SubResource("Resource_Card143"), SubResource("Resource_Card144"), SubResource("Resource_Card145"), SubResource("Resource_Card146"), SubResource("Resource_Card147"), SubResource("Resource_Card148"), SubResource("Resource_Card149"), SubResource("Resource_Card150"), SubResource("Resource_Card151"), SubResource("Resource_Card152"), SubResource("Resource_Card153"), SubResource("Resource_Card154"), SubResource("Resource_Card155"), SubResource("Resource_Card156"), SubResource("Resource_Card157"), SubResource("Resource_Card158"), SubResource("Resource_Card159"), SubResource("Resource_Card160"), SubResource("Resource_Card161"), SubResource("Resource_Card162"), SubResource("Resource_Card163"), SubResource("Resource_Card164"), SubResource("Resource_Card165"), SubResource("Resource_Card166"), SubResource("Resource_Card167"), SubResource("Resource_Card168"), SubResource("Resource_Card169"), SubResource("Resource_Card170"), SubResource("Resource_Card171"), SubResource("Resource_Card172"), SubResource("Resource_Card173"), SubResource("Resource_Card174"), SubResource("Resource_Card175"), SubResource("Resource_Card176"), SubResource("Resource_Card177"), SubResource("Resource_Card178"), SubResource("Resource_Card179"), SubResource("Resource_Card180"), SubResource("Resource_Card181"), SubResource("Resource_Card182"), SubResource("Resource_Card183"), SubResource("Resource_Card184"), SubResource("Resource_Card185"), SubResource("Resource_Card186"), SubResource("Resource_Card187"), SubResource("Resource_Card188"), SubResource("Resource_Card189"), SubResource("Resource_Card190"), SubResource("Resource_Card191"), SubResource("Resource_Card192"), SubResource("Resource_Card193"), SubResource("Resource_Card194"), SubResource("Resource_Card195"), SubResource("Resource_Card196"), SubResource("Resource_Card197"), SubResource("Resource_Card198"), SubResource("Resource_Card199"), SubResource("Resource_Card200"), SubResource("Resource_Card201"), SubResource("Resource_Card202"), SubResource("Resource_Card203"), SubResource("Resource_Card204"), SubResource("Resource_Card205"), SubResource("Resource_Card206"), SubResource("Resource_Card207"), SubResource("Resource_Card208"), SubResource("Resource_Card209"), SubResource("Resource_Card210"), SubResource("Resource_Card211"), SubResource("Resource_Card212"), SubResource("Resource_Card213"), SubResource("Resource_Card214"), SubResource("Resource_Card215"), SubResource("Resource_Card216"), SubResource("Resource_Card217"), SubResource("Resource_Card218"), SubResource("Resource_Card219"), SubResource("Resource_Card220"), SubResource("Resource_Card221"), SubResource("Resource_Card222"), SubResource("Resource_Card223"), SubResource("Resource_Card224"), SubResource("Resource_Card225"), SubResource("Resource_Card226"), SubResource("Resource_Card227"), SubResource("Resource_Card228"), SubResource("Resource_Card229"), SubResource("Resource_Card230"), SubResource("Resource_Card231"), SubResource("Resource_Card232"), SubResource("Resource_Card233"), SubResource("Resource_Card234"), SubResource("Resource_Card235"), SubResource("Resource_Card236"), SubResource("Resource_Card237"), SubResource("Resource_Card238"), SubResource("Resource_Card239"), SubResource("Resource_Card240"), SubResource("Resource_Card241"), SubResource("Resource_Card242"), SubResource("Resource_Card243"), SubResource("Resource_Card244"), SubResource("Resource_Card245"), SubResource("Resource_Card246"), SubResource("Resource_Card247"), SubResource("Resource_Card248"), SubResource("Resource_Card249"), SubResource("Resource_Card250"), SubResource("Resource_Card251"), SubResource("Resource_Card252"), SubResource("Resource_Card253"), SubResource("Resource_Card254"), SubResource("Resource_Card255"), SubResource("Resource_Card256"), SubResource("Resource_Card257"), SubResource("Resource_Card258"), SubResource("Resource_Card259"), SubResource("Resource_Card260"), SubResource("Resource_Card261"), SubResource("Resource_Card262"), SubResource("Resource_Card263"), SubResource("Resource_Card264"), SubResource("Resource_Card265"), SubResource("Resource_Card266"), SubResource("Resource_Card267"), SubResource("Resource_Card268"), SubResource("Resource_Card269"), SubResource("Resource_Card270"), SubResource("Resource_Card271"), SubResource("Resource_Card272"), SubResource("Resource_Card273"), SubResource("Resource_Card274"), SubResource("Resource_Card275"), SubResource("Resource_Card276"), SubResource("Resource_Card277"), SubResource("Resource_Card278"), SubResource("Resource_Card279"), SubResource("Resource_Card280"), SubResource("Resource_Card281"), SubResource("Resource_Card282"), SubResource("Resource_Card283"), SubResource("Resource_Card284"), SubResource("Resource_Card285"), SubResource("Resource_Card286"), SubResource("Resource_Card287"), SubResource("Resource_Card288"), SubResource("Resource_Card289"), SubResource("Resource_Card290"), SubResource("Resource_Card291"), SubResource("Resource_Card292"), SubResource("Resource_Card293"), SubResource("Resource_Card294"), SubResource("Resource_Card295"), SubResource("Resource_Card296"), SubResource("Resource_Card297"), SubResource("Resource_Card298"), SubResource("Resource_Card299"), SubResource("Resource_Card300"), SubResource("Resource_Card301"), SubResource("Resource_Card302"), SubResource("Resource_Card303"), SubResource("Resource_Card304"), SubResource("Resource_Card305"), SubResource("Resource_Card306"), SubResource("Resource_Card307"), SubResource("Resource_Card308"), SubResource("Resource_Card309"), SubResource("Resource_Card310"), SubResource("Resource_Card311"), SubResource("Resource_Card312"), SubResource("Resource_Card313"), SubResource("Resource_Card314"), SubResource("Resource_Card315"), SubResource("Resource_Card316"), SubResource("Resource_Card317"), SubResource("Resource_Card318"), SubResource("Resource_Card319"), SubResource("Resource_Card320"), SubResource("Resource_Card321"), SubResource("Resource_Card322"), SubResource("Resource_Card323"), SubResource("Resource_Card324"), SubResource("Resource_Card325"), SubResource("Resource_Card326"), SubResource("Resource_Card327"), SubResource("Resource_Card328"), SubResource("Resource_Card329"), SubResource("Resource_Card330"), SubResource("Resource_Card331"), SubResource("Resource_Card332"), SubResource("Resource_Card333"), SubResource("Resource_Card334"), SubResource("Resource_Card335"), SubResource("Resource_Card336"), SubResource("Resource_Card337"), SubResource("Resource_Card338"), SubResource("Resource_Card339"), SubResource("Resource_Card340"), SubResource("Resource_Card341"), SubResource("Resource_Card342"), SubResource("Resource_Card343"), SubResource("Resource_Card344"), SubResource("Resource_Card345"), SubResource("Resource_Card346"), SubResource("Resource_Card347"), SubResource("Resource_Card348"), SubResource("Resource_Card349"), SubResource("Resource_Card350"), SubResource("Resource_Card351"), SubResource("Resource_Card352"), SubResource("Resource_Card353"), SubResource("Resource_Card354"), SubResource("Resource_Card355"), SubResource("Resource_Card356"), SubResource("Resource_Card357"), SubResource("Resource_Card358"), SubResource("Resource_Card359"), SubResource("Resource_Card360"), SubResource("Resource_Card361"), SubResource("Resource_Card362"), SubResource("Resource_Card363"), SubResource("Resource_Card364"), SubResource("Resource_Card365"), SubResource("Resource_Card366"), SubResource("Resource_Card367"), SubResource("Resource_Card368"), SubResource("Resource_Card369"), SubResource("Resource_Card370"), SubResource("Resource_Card371"), SubResource("Resource_Card372"), SubResource("Resource_Card373"), SubResource("Resource_Card374"), SubResource("Resource_Card375"), SubResource("Resource_Card376"), SubResource("Resource_Card377"), SubResource("Resource_Card378"), SubResource("Resource_Card379"), SubResource("Resource_Card380"), SubResource("Resource_Card381"), SubResource("Resource_Card382"), SubResource("Resource_Card383"), SubResource("Resource_Card384"), SubResource("Resource_Card385"), SubResource("Resource_Card386"), SubResource("Resource_Card387"), SubResource("Resource_Card388"), SubResource("Resource_Card389"), SubResource("Resource_Card390"), SubResource("Resource_Card391"), SubResource("Resource_Card392"), SubResource("Resource_Card393"), SubResource("Resource_Card394"), SubResource("Resource_Card395"), SubResource("Resource_Card396"), SubResource("Resource_Card397"), SubResource("Resource_Card398"), SubResource("Resource_Card399"), SubResource("Resource_Card400"), SubResource("Resource_Card401"), SubResource("Resource_Card402"), SubResource("Resource_Card403"), SubResource("Resource_Card404"), SubResource("Resource_Card405"), SubResource("Resource_Card406"), SubResource("Resource_Card407"), SubResource("Resource_Card408"), SubResource("Resource_Card409"), SubResource("Resource_Card410"), SubResource("Resource_Card411"), SubResource("Resource_Card412"), SubResource("Resource_Card413"), SubResource("Resource_Card414"), SubResource("Resource_Card415"), SubResource("Resource_Card416"), SubResource("Resource_Card417"), SubResource("Resource_Card418"), SubResource("Resource_Card419"), SubResource("Resource_Card420"), SubResource("Resource_Card421"), SubResource("Resource_Card422"), SubResource("Resource_Card423"), SubResource("Resource_Card424"), SubResource("Resource_Card425"), SubResource("Resource_Card426"), SubResource("Resource_Card427"), SubResource("Resource_Card428"), SubResource("Resource_Card429"), SubResource("Resource_Card430"), SubResource("Resource_Card431"), SubResource("Resource_Card432"), SubResource("Resource_Card433"), SubResource("Resource_Card434"), SubResource("Resource_Card435"), SubResource("Resource_Card436"), SubResource("Resource_Card437"), SubResource("Resource_Card438"), SubResource("Resource_Card439"), SubResource("Resource_Card440"), SubResource("Resource_Card441"), SubResource("Resource_Card442"), SubResource("Resource_Card443"), SubResource("Resource_Card444"), SubResource("Resource_Card445"), SubResource("Resource_Card446"), SubResource("Resource_Card447"), SubResource("Resource_Card448"), SubResource("Resource_Card449"), SubResource("Resource_Card450"), SubResource("Resource_Card451"), SubResource("Resource_Card452"), SubResource("Resource_Card453"), SubResource("Resource_Card454"), SubResource("Resource_Card455"), SubResource("Resource_Card456"), SubResource("Resource_Card457"), SubResource("Resource_Card458"), SubResource("Resource_Card459"), SubResource("Resource_Card460"), SubResource("Resource_Card461"), SubResource("Resource_Card462"), SubResource("Resource_Card463"), SubResource("Resource_Card464"), SubResource("Resource_Card465"), SubResource("Resource_Card466"), SubResource("Resource_Card467")])

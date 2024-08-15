@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://coc1p7rl5x6ip" path="res://assets/images/card/cards/3-cents-v2.png" id="1_oq06u"]
 [ext_resource type="Texture2D" uid="uid://dbsttoe2t228y" path="res://assets/images/card/cards/guppy-v2.png" id="1_tfuyw"]
 [ext_resource type="Script" path="res://v1/Cards/CardScene.gd" id="1_xf4km"]
-[ext_resource type="Resource" uid="uid://dk2vd8k0k3uch" path="res://v1/CardImages1.tres" id="2_vn1br"]
+[ext_resource type="Resource" uid="uid://btf10w685i2ea" path="res://v1/CardImagesAll.tres" id="2_ogt37"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npfr2"]
 resource_local_to_scene = true
@@ -29,7 +29,7 @@ offset_right = 311.0
 offset_bottom = 420.0
 pivot_offset = Vector2(155, 210)
 script = ExtResource("1_xf4km")
-images = ExtResource("2_vn1br")
+images = ExtResource("2_ogt37")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 visible = false
