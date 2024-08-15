@@ -1,11 +1,7 @@
 -- status: implemented
 
 function _Create()
-    return FS.B.Event()
-        -- Roll-
-        -- 1-2: Gain 1{cent}.
-        -- 3-4: Gain 3{cent}.
-        -- 5-6: Gain 6{cent}.
+    return FS.B.Event('Roll-\n1-2: Gain 1{cent}.\n3-4: Gain 3{cent}.\n5-6: Gain 6{cent}.')
         .Effect:Roll(
             FS.C.Effect.SwitchRoll(0, {
                 [1] = FS.C.Effect.GainCoins(1),

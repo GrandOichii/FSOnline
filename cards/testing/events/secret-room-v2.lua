@@ -1,7 +1,7 @@
 -- status: not tested
 
 function _Create()
-    return FS.B.Event()
+    return FS.B.Event('Roll-\n1: Take 3 damage.\n2-3: Discard 2 loot cards.\n4-5: Gain 7{cent}.\n6: Gain +1 Treasure.')
         .Effect:Roll(
             FS.C.Effect.SwitchRoll(0, {
                 [1] = FS.C.Effect.DamageToPlayer(3),

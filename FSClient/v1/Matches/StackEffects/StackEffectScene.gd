@@ -38,8 +38,7 @@ var _type_action_map = {
 	'damage': func(snapshot):
 		Details.text = str(snapshot.Amount),
 	'event': func(snapshot):
-		# TODO not card text, effect text
-		Details.text = snapshot.Card.Text
+		Details.text = snapshot.EffectText
 }
 
 @onready var _bg_color = default_color

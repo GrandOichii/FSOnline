@@ -33,4 +33,6 @@ public class EventCardStackEffect : StackEffect
     }
 
     public override StackEffectData ToData() => new EventCardStackEffectData(this);
+
+    public string GetEffectText() => Card.Card.EffectText;
 }
