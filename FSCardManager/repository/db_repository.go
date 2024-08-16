@@ -21,6 +21,7 @@ func (r *DbRepository[T]) Create(item *T) (*T, error) {
 		Model(r.model).
 		Create(item).
 		Error
+
 	return item, err
 }
 

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+docker cp $1 fso-db:/docker-entrypoint-initdb.d/dump.sql
+docker exec fso-db psql -U user -d fso -f docker-entrypoint-initdb.d/dump.sql

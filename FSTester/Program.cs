@@ -142,7 +142,42 @@ public class Program {
         }
     }
 
+    public static async Task GenerateSql(string[] args) {
+        var dirs = new List<string>();
+        for (int i = 2; i < args.Length; i++)
+            dirs.Add(args[i]);
+
+        var cm = new FileCardMaster();
+        foreach (var dir in dirs) 
+            cm.Load(dir);
+
+        var result = "";
+        var keys = await cm.GetKeys();
+        foreach (var key in keys) {
+            var card = await cm.Get(key);
+            var set = key.Split("-").Last();
+            var name = card.Name
+                .Replace("\'", "\'\'")
+            ;
+            var text = card.Text
+                .Replace("\'", "\'\'")
+            ;
+            var script = card.Script
+                // .Replace("\n", "\\n")
+                .Replace("\'", "\'\'")
+            ;
+            var row = $"INSERT INTO card_models (key, name, type, text, script, set) VALUES (\'{card.Key}\',\'{name}\',\'{card.Type}\',\'{text}\',\'{script}\',\'{set}\');\n";
+            result += row;
+        }
+
+        File.WriteAllText(args[1], result);
+    }
+
     public static async Task Main(string[] args) {
+        if (args.Length > 2 && args[0] == "sql") {
+            await GenerateSql(args);
+            return;
+        }
 
         var seed = -1;
         if (args.Length >= 1) {

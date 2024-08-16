@@ -11,7 +11,6 @@ func CreateSimpleRepository[T any]() *SimpleRepository[T] {
 }
 
 func (r *SimpleRepository[T]) Create(item *T) (*T, error) {
-	// TODO update if primary key already exists
 	r.items = append(r.items, item)
 	return item, nil
 }
