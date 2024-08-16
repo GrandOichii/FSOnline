@@ -7,11 +7,14 @@ import (
 )
 
 type RepositoryLayer struct {
-	CardRepo repository.Repository[*model.CardModel]
+	CardRepo repository.Repository[model.CardModel]
 }
 
 func CreateRepositoryLayer(client *gorm.DB) *RepositoryLayer {
 	return &RepositoryLayer{
-		CardRepo: repository.CreateSimpleRepository[*model.CardModel](),
+		CardRepo: repository.CreateDbRepository[model.CardModel](
+			&model.CardModel{},
+			client,
+		),
 	}
 }

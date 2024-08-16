@@ -9,11 +9,11 @@ import (
 )
 
 type CardServiceImpl struct {
-	repo     repository.Repository[*model.CardModel]
+	repo     repository.Repository[model.CardModel]
 	validate *validator.Validate
 }
 
-func CreateCardServiceImpl(repo repository.Repository[*model.CardModel], validate *validator.Validate) *CardServiceImpl {
+func CreateCardServiceImpl(repo repository.Repository[model.CardModel], validate *validator.Validate) *CardServiceImpl {
 	return &CardServiceImpl{
 		repo:     repo,
 		validate: validate,
@@ -39,7 +39,7 @@ func (s *CardServiceImpl) Create(card *dto.PostCardDto) (*dto.GetCardDto, error)
 	// TODO checks
 
 	model := card.AsCardModel()
-	result, err := s.repo.Add(model)
+	result, err := s.repo.Create(model)
 
 	if err != nil {
 		return nil, err

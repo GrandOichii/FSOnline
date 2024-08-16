@@ -7,6 +7,7 @@ import (
 
 	"fsonline.api/config"
 	"fsonline.api/layers"
+	"fsonline.api/model"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/postgres"
@@ -53,6 +54,13 @@ func CreateRouter(c *config.Configuration) (*Router, error) {
 		},
 	)
 
+	if err != nil {
+		return nil, err
+	}
+
+	err = dbClient.AutoMigrate(
+		&model.CardModel{},
+	)
 	if err != nil {
 		return nil, err
 	}

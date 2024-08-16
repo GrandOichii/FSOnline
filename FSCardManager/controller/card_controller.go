@@ -22,6 +22,7 @@ func (con *CardController) ConfigureApi(g *gin.RouterGroup) {
 	cg := g.Group("cards")
 	cg.GET("", con.GetAll)
 	cg.POST("", con.Create)
+
 }
 
 func (con *CardController) GetAll(c *gin.Context) {

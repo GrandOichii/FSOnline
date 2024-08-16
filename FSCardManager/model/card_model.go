@@ -1,8 +1,8 @@
 package model
 
 type CardModel struct {
+	Key    string `gorm:"primaryKey"`
 	Name   string
-	Key    string
 	Type   string
 	Text   string
 	Script string
