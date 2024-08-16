@@ -2,24 +2,25 @@ package main
 
 import (
 	"context"
-	"fmt"
 
 	"fsonline.api/config"
+	"fsonline.api/router"
 )
 
 func main() {
-	fmt.Println("Hello, world")
 	var c *config.Configuration
 
 	c, err := config.ReadConfiguration("config.json")
 	if err != nil {
-		c, err := config.ParseEnvConfig(context.Background())
+		c, err = config.ParseEnvConfig(context.Background())
 		if err != nil {
 			panic(err)
 		}
 	}
-
-	router := CreateRouter(c)
+	router, err := router.CreateRouter(c)
+	if err != nil {
+		panic(err)
+	}
 
 	// TODO add swagger
 

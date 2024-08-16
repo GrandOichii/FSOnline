@@ -8,10 +8,17 @@ import (
 	"github.com/sethvargo/go-envconfig"
 )
 
+// Database configuration
+type DbConfiguration struct {
+	ConnectionUri string `json:"connectionUri" env:"CONNECTION_URI"`
+	DbName        string `json:"dbName" env:"NAME"`
+}
+
 // Application configuration
 type Configuration struct {
-	Host string `json:"host" env:"host"`
-	Port string `json:"port" env:"port"`
+	Host string          `json:"host" env:"host"`
+	Port string          `json:"port" env:"port"`
+	Db   DbConfiguration `json:"db" env:",prefix=DB_"`
 }
 
 // Read configuration from a json file

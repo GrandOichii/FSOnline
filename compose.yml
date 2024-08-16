@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+  db:
+    container_name: fso-db
+    image: postgres:latest
+    restart: always
+    environment:
+      - 'POSTGRES_DB=fso'
+      - 'POSTGRES_USER=user' # TODO
+      - 'POSTGRES_PASSWORD=password' # TODO
+      - 'PGDATA=/data/postgres'
+    ports:
+      - '5444:5432'
+    volumes:
+      - fso-db-data:/data/postgres
+  # cache:
+  #   container_name: fso-cache
+  #   hostname: valkey
+  #   image: valkey/valkey:7.2.5
+  #   volumes:
+  #     - ./config/valkey.conf:/etc/valkey/valkey.conf
+  #     # - fso-cache-data:/data
+  #   command: valkey-server /etc/valkey/valkey.conf
+  #   ports:
+  #     - 6380:6379
+  # query-cache:
+  #   container_name: fso-query-cache
+  #   hostname: valkey
+  #   image: valkey/valkey:7.2.5
+  #   volumes:
+  #     - ./config/valkey.conf:/etc/valkey/valkey.conf
+  #     # - fso-cache-data:/data
+  #   command: valkey-server /etc/valkey/valkey.conf
+  #   ports:
+  #     - 6381:6379
+
+volumes:
+  fso-db-data:
