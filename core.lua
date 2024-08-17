@@ -1485,6 +1485,21 @@ function FS.B._Ability(effectText)
         return ability
     end
 
+    result.Check = {}
+
+    function result.Check:Custom(check)
+        result.costs[#result.costs+1] = {
+            Check = function (me, player)
+                return check(me, player)
+            end,
+            Pay = function (me, player, stackEffect)
+                return true
+            end
+        }
+
+        return result
+    end
+
     -- add common cost(s)
     function result.Cost:Common(...)
         local costs = {...}
