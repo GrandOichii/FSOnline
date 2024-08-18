@@ -2157,6 +2157,10 @@ function FS.F.Players()
             return not player.IsDead
         end)
     end
+    
+    function result:Killable()
+        return result:Alive()
+    end
 
     function result:Custom(predicate)
         result.filters[#result.filters+1] = function (player)
