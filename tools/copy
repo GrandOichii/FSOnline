@@ -61,7 +61,17 @@ new_data['Cards'][deck] += [new_cpath]
 open(mani_path, 'w').write(json.dumps(new_data, indent=4))
 
 # copy files
-for ext in ['.json', '.lua']:
-    open(join(TO, f'{new_cpath}{ext}'), 'w').write(
-        open(join(FROM, f'{cpath}{ext}'), 'r').read()
-    )
+
+# lua file
+open(join(TO, f'{new_cpath}.lua'), 'w').write(
+    open(join(FROM, f'{cpath}.lua'), 'r').read()
+)
+
+# json file
+card_data = json.loads(open(join(FROM, f'{cpath}.json'), 'r').read())
+card_data['Key'] = NEW_KEY
+card_data['Script'] = f'{NEW_KEY}.lua'
+open(join(TO, f'{new_cpath}.json'), 'w').write(
+    json.dumps(card_data, indent=4)
+)
+

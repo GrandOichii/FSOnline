@@ -1,0 +1,12 @@
+{
+    "Key": "lazarus-v1",
+    "Name": "Lazarus",
+    "Type": "Character",
+    "Health": 2,
+    "Attack": 1,
+    "Text": "{T}: Play an additional Loot card this turn.",
+    "StartingItems": [
+        "lazarus-rags-v1"
+    ],
+    "Script": "lazarus-v1.lua"
+}
