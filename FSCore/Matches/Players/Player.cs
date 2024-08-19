@@ -337,6 +337,10 @@ public class Player : IStateModifier {
             .Where(slot => slot.Card is not null)
             .Select(slot => slot.Card!.LogName)
             .ToList();
+
+        // no rooms
+        if (options.Count == 0) return;
+        
         options.Add("-");
         var choice = await ChooseString(options, "Choose a room to discard");
 

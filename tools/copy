@@ -1,0 +1,67 @@
+#!/bin/python3
+
+# !FIXME doesnt change characters' starting items
+
+import json
+from sys import argv
+from os.path import join
+
+TYPE_TO_DECK_INDEX = {
+    'character': 'Characters',
+    'startingitem': 'StartingItems',
+    'treasure': 'Treasures',
+    'loot': 'Loot',
+    'bonussoul': 'BonusSouls',
+    'room': 'Rooms',
+    'monster': 'Monsters',
+    'event': 'Events',
+    'curse': 'Curses',
+}
+
+TYPE_TO_DIR_INDEX = {
+    'character': 'characters',
+    'startingitem': 'starting-items',
+    'treasure': 'treasures',
+    'loot': 'loot',
+    'bonussoul': 'bonus-souls',
+    'room': 'rooms',
+    'monster': 'monsters',
+    'event': 'events',
+    'curse': 'curses',
+}
+
+if len(argv) < 6:
+    print('Not enough arguments')
+    exit(1)
+
+TYPE = argv[1]
+
+FROM = argv[2]
+KEY = argv[3]
+
+TO = argv[4]
+NEW_KEY = argv[5]
+
+TEXT = ''
+if len(argv) == 7:
+    TEXT = argv[6]
+
+# read intial manifest
+
+data = json.loads(open(join(FROM, 'manifest.json'), 'r').read())
+deck = TYPE_TO_DECK_INDEX[TYPE]
+cards = data['Cards'][deck]
+cpath = TYPE_TO_DIR_INDEX[TYPE] + '/' + KEY
+new_cpath = TYPE_TO_DIR_INDEX[TYPE] + '/' + NEW_KEY
+
+# add to new manifest
+mani_path = join(TO, 'manifest.json')
+new_data = json.loads(open(mani_path, 'r').read())
+new_data['Cards'][deck] += [new_cpath]
+open(mani_path, 'w').write(json.dumps(new_data, indent=4))
+
+# copy files
+for ext in ['.json', '.lua']:
+    open(join(TO, f'{new_cpath}{ext}'), 'w').write(
+        open(join(FROM, f'{cpath}{ext}'), 'r').read()
+    )
