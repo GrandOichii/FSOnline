@@ -1,5 +1,6 @@
--- If another player would pay the death penalty, you choose what item they would destroy and you gain any loot cards and {cent} they would lose.
 -- status: implemented
+-- Each time another player dies, you choose what item they destroy.\nEach time another player dies, you gain any loot or {cent} they lose.
+-- TODO? does this work differently
 
 function _Create()
     return FS.B.Card()
