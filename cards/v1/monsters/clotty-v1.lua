@@ -3,9 +3,9 @@
 function _Create()
     return FS.B.Monster()
         :Reward(
-            FS.B.Reward('Loot 2')
+            FS.B.Reward('4{cent}')
                 .Effect:Common(
-                    FS.C.Effect.Loot(2)
+                    FS.C.Effect.GainCoins(4)
                 )
             :Build()
         )

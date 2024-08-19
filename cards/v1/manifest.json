@@ -34,7 +34,9 @@
         "Monsters": [
             "monsters/trite-v1",
             "monsters/war-v1",
-            "monsters/boom-fly-v1"
+            "monsters/boom-fly-v1",
+            "monsters/clotty-v1",
+            "monsters/conjoined-fatty-v1"
         ],
         "Events": [],
         "Curses": []
