@@ -57,6 +57,9 @@ new_cpath = TYPE_TO_DIR_INDEX[TYPE] + '/' + NEW_KEY
 # add to new manifest
 mani_path = join(TO, 'manifest.json')
 new_data = json.loads(open(mani_path, 'r').read())
+if new_cpath in new_data['Cards'][deck]:
+    print(f'{new_cpath} already exists')
+    exit(1)
 new_data['Cards'][deck] += [new_cpath]
 open(mani_path, 'w').write(json.dumps(new_data, indent=4))
 
