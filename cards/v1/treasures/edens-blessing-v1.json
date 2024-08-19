@@ -1,0 +1,7 @@
+{
+    "Key": "edens-blessing-v1",
+    "Name": "Eden's Blessing",
+    "Type": "Item",
+    "Text": "If you have 0{cent} at the end of your turn, gain 6{cent}.",
+    "Script": "edens-blessing-v1.lua"
+}

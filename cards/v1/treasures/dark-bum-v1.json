@@ -1,0 +1,7 @@
+{
+    "Key": "dark-bum-v1",
+    "Name": "Dark Bum",
+    "Type": "Item",
+    "Text": "At the start of your turn, roll-\n1-2: Gain 3{cent}.\n3-4: Loot 1.\n5-6: Take 1 damage.",
+    "Script": "dark-bum-v1.lua"
+}

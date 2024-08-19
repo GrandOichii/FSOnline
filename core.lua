@@ -1933,6 +1933,12 @@ function FS.B.TriggeredAbility(effectText)
         return result
     end
 
+    function result.On:RollOfValue(value)
+        return result.On:Roll(function (me, player, args)
+            return args.Value == value
+        end)
+    end
+
     function result.On:SoulEnter(check)
         result.trigger = FS.Triggers.SOUL_ENTER
 

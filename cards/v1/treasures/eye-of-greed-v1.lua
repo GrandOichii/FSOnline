@@ -2,9 +2,7 @@ function _Create()
     return FS.B.Item()
         :TriggeredAbility(
             FS.B.TriggeredAbility('When anyone rolls a {roll:5}, gain 3{cent}.')
-                .On:Roll(function (me, player, args)
-                    return args.Value == 5
-                end)
+                .On:RollOfValue(5)
                 .Effect:Common(
                     FS.C.Effect.GainCoins(3)
                 )
