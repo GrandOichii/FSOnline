@@ -3,8 +3,9 @@
 # !FIXME doesnt change characters' starting items
 
 import json
+from pathlib import Path
 from sys import argv
-from os.path import join
+from os.path import join, isfile
 
 TYPE_TO_DECK_INDEX = {
     'character': 'Characters',
@@ -57,6 +58,11 @@ new_cpath = TYPE_TO_DIR_INDEX[TYPE] + '/' + NEW_KEY
 # add to new manifest
 mani_path = join(TO, 'manifest.json')
 new_data = json.loads(open(mani_path, 'r').read())
+
+if not isfile(join(FROM, f'{cpath}.lua')):
+    print(f'Card {KEY} not found')
+    exit(1)
+
 if new_cpath in new_data['Cards'][deck]:
     print(f'{new_cpath} already exists')
     exit(1)
