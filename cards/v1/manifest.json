@@ -2,11 +2,13 @@
     "Cards": {
         "Characters": [
             "characters/isaac-v1",
-            "characters/judas-v1"
+            "characters/judas-v1",
+            "characters/samson-v1"
         ],
         "StartingItems": [
             "starting-items/the-d6-v1",
-            "starting-items/book-of-belial-v1"
+            "starting-items/book-of-belial-v1",
+            "starting-items/blood-lust-v1"
         ],
         "Treasures": [
             "treasures/sacred-heart-v1",

@@ -1,0 +1,12 @@
+{
+    "Key": "samson-v1",
+    "Name": "Samson",
+    "Type": "Character",
+    "Health": 2,
+    "Attack": 1,
+    "Text": "{T}: Play an additional Loot card this turn.",
+    "StartingItems": [
+        "blood-lust-v1"
+    ],
+    "Script": "samson-v1.lua"
+}
