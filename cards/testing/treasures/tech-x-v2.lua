@@ -14,6 +14,9 @@ function _Create()
         )
         :ActivatedAbility(
             FS.B.ActivatedAbility('Remove 3 counters from this', 'Kill a player or monster.')
+                .Cost:Common(
+                    FS.C.Cost.RemoveCounters(3)
+                )
                 .Target:MonsterOrPlayer()
                 .Effect:Common(
                     FS.C.Effect.KillTarget(0)
