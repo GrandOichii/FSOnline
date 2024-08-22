@@ -3,17 +3,15 @@ version: '3.1'
 services:
   db:
     container_name: fso-db
-    image: postgres:latest
-    restart: always
+    image: mcr.microsoft.com/azure-sql-edge
     environment:
-      - 'POSTGRES_DB=fso'
-      - 'POSTGRES_USER=user' # TODO
-      - 'POSTGRES_PASSWORD=password' # TODO
-      - 'PGDATA=/data/postgres'
+      ACCEPT_EULA: Y
+      SA_PASSWORD: 'Password!'
     ports:
-      - '5444:5432'
+      - 1444:1433
     volumes:
-      - fso-db-data:/data/postgres
+      - fso-db-data:/var/opt/mssql
+
   # cache:
   #   container_name: fso-cache
   #   hostname: valkey
