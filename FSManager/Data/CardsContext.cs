@@ -14,18 +14,6 @@ public class CardsContext : DbContext
     {
     }
 
-    public string GetDefaultCardImageCollectionKey() {
-        var result = Database
-            .SqlQuery<string>($"SELECT dbo.getDefaultCardImageCollectionKey()")
-            .ToList();
-        return result[0];
-    }
-
-    public async Task CreateCard(string key, string name, string text, string defaultImageSrc) {
-        Database.ExecuteSql($"EXEC createCard {key}, {name}, {text}, {defaultImageSrc}");
-        await SaveChangesAsync();
-    }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // cards
@@ -54,4 +42,42 @@ public class CardsContext : DbContext
             .HasMany(col => col.Images)
             .WithOne(img => img.Collection);
     }
+
+    public string GetDefaultCardImageCollectionKey() {
+        var result = Database
+            .SqlQuery<string>($"SELECT dbo.getDefaultCardImageCollectionKey()")
+            .ToList();
+        return result[0];
+    }
+
+    public async Task CreateCard(
+        string key,
+        string name,
+        string text,string defaultImageSrc
+    ) {
+        Database.ExecuteSql($"EXEC createCard {key}, {name}, {text}, {defaultImageSrc}");
+        await SaveChangesAsync();
+    }
+
+    private IQueryable<CardModel> FetchCards() {
+        return Cards
+            .Include(c => c.Images)
+            .ThenInclude(img => img.Collection)
+        ;
+    } 
+
+    public Task<IEnumerable<CardModel>> AllCards() {
+        return Task.FromResult(
+            FetchCards()
+                .AsEnumerable()
+        );
+    }
+
+    public Task<CardModel?> ByKey(string key) {
+        return Task.FromResult(
+            FetchCards()
+                .FirstOrDefault(card => card.Key == key)
+        );
+    }
+
 }

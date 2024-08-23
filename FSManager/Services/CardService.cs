@@ -14,11 +14,8 @@ public class CardService : ICardService
     public async Task<IEnumerable<GetCard>> All(string? cardImageCollection = null)
     {
         cardImageCollection ??= _cards.GetDefaultCardImageCollectionKey();
+        var cards = await _cards.AllCards();
 
-        var cards = _cards.Cards
-            .Include(c => c.Images)
-            .ThenInclude(img => img.Collection);
-        
         return cards.Select(c => new GetCard {
             Key = c.Key,
             Name = c.Name,
@@ -31,7 +28,7 @@ public class CardService : ICardService
     {
         await _cards.CreateCard(card.Key, card.Name, card.Text, card.DefaultImageSrc);
 
-        var result = _cards.Cards.Include(c => c.Images).ThenInclude(img => img.Collection).FirstOrDefault(c => c.Key == card.Key)
+        var result = await _cards.ByKey(card.Key)
             ?? throw new Exception($"Created card with key {card.Key}, but failed to fetch it");
         var colKey = _cards.GetDefaultCardImageCollectionKey();
 
