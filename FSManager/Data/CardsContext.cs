@@ -21,8 +21,8 @@ public class CardsContext : DbContext
         return result[0];
     }
 
-    public async Task SaveCard(CardModel card) {
-        Cards.Add(card);
+    public async Task CreateCard(string key, string name, string text, string defaultImageSrc) {
+        Database.ExecuteSql($"EXEC createCard {key}, {name}, {text}, {defaultImageSrc}");
         await SaveChangesAsync();
     }
 

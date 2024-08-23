@@ -2,7 +2,7 @@
     ViewData["Title"] = "Cards";
 }
 
-@model FSManager.Models.CardModel
+@model FSManager.Dto.Cards.PostCard
 
 <div class="text-center">
     <h1 class="display-4">Create new card</h1>
@@ -17,6 +17,9 @@
 
     <label>Text</label>
     <input type="text" class="form-control" placeholder="Enter card text" asp-for="Text">
+
+    <label>Image</label>
+    <input type="text" class="form-control" placeholder="Paste card image" asp-for="DefaultImageSrc">
 
     <button class="btn btn-primary" type="submit">Create</button>
 </form>

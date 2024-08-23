@@ -26,4 +26,20 @@ public class CardService : ICardService
             ImageUrl = c.Images.First(img => img.Collection.Key == cardImageCollection).Source
         });
     }
+
+    public async Task<GetCard> Create(PostCard card)
+    {
+        await _cards.CreateCard(card.Key, card.Name, card.Text, card.DefaultImageSrc);
+
+        var result = _cards.Cards.Include(c => c.Images).ThenInclude(img => img.Collection).FirstOrDefault(c => c.Key == card.Key)
+            ?? throw new Exception($"Created card with key {card.Key}, but failed to fetch it");
+        var colKey = _cards.GetDefaultCardImageCollectionKey();
+
+        return new GetCard {
+            Key = result.Key,
+            Name = result.Name,
+            Text = result.Text,
+            ImageUrl = result.Images.First(img => img.Collection.Key == colKey).Source
+        };
+    }
 }

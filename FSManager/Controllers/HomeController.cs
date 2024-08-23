@@ -48,9 +48,9 @@ public class HomeController : Controller
         return View();
     }
 
-    public async Task<IActionResult> CreateCardForm(CardModel card) { // TODO change name
+    public async Task<IActionResult> CreateCardForm(PostCard card) { // TODO change name
         // TODO catch exceptions
-        // await _cards.SaveCard(card);
+        await _cards.Create(card);
 
         return RedirectToAction("Cards");
     }
