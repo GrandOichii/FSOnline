@@ -34,8 +34,11 @@ public class HomeController : Controller
         var card = _cards.Cards.FirstOrDefault(c => c.Key == cardKey);
         if (card is null) {
             // TODO
+            throw new Exception($"No card with key {cardKey}");
         }
 
+        _cards.Cards.Remove(card);
+        _cards.SaveChanges();
         
         return RedirectToAction("Cards");
     }
