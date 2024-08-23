@@ -25,8 +25,7 @@ public class CardsContext : DbContext
         // card image collections
         var imageCollectionTable = modelBuilder.Entity<CardImageCollection>()
             .ToTable("CardImageCollections");
-        imageCollectionTable.HasKey(col => col.ID);
-        imageCollectionTable.Property(col => col.ID).ValueGeneratedOnAdd();
+        imageCollectionTable.HasKey(col => col.Key);
 
         // card images
         var imageTable = modelBuilder.Entity<CardImage>()
@@ -43,7 +42,5 @@ public class CardsContext : DbContext
         imageCollectionTable
             .HasMany(col => col.Images)
             .WithOne(img => img.Collection);
-        
-        // procedures
     }
 }

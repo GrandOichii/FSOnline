@@ -5,7 +5,7 @@
 namespace FSManager.Migrations
 {
     /// <inheritdoc />
-    public partial class AddCardImages : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,13 +14,24 @@ namespace FSManager.Migrations
                 name: "CardImageCollections",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Key = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CardImageCollections", x => x.ID);
+                    table.PrimaryKey("PK_CardImageCollections", x => x.Key);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cards",
+                columns: table => new
+                {
+                    Key = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Text = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cards", x => x.Key);
                 });
 
             migrationBuilder.CreateTable(
@@ -31,16 +42,16 @@ namespace FSManager.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Source = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CardKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CollectionID = table.Column<int>(type: "int", nullable: false)
+                    CollectionKey = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CardImages", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_CardImages_CardImageCollections_CollectionID",
-                        column: x => x.CollectionID,
+                        name: "FK_CardImages_CardImageCollections_CollectionKey",
+                        column: x => x.CollectionKey,
                         principalTable: "CardImageCollections",
-                        principalColumn: "ID",
+                        principalColumn: "Key",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CardImages_Cards_CardKey",
@@ -56,9 +67,9 @@ namespace FSManager.Migrations
                 column: "CardKey");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CardImages_CollectionID",
+                name: "IX_CardImages_CollectionKey",
                 table: "CardImages",
-                column: "CollectionID");
+                column: "CollectionKey");
         }
 
         /// <inheritdoc />
@@ -69,6 +80,9 @@ namespace FSManager.Migrations
 
             migrationBuilder.DropTable(
                 name: "CardImageCollections");
+
+            migrationBuilder.DropTable(
+                name: "Cards");
         }
     }
 }

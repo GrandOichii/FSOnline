@@ -33,8 +33,9 @@ namespace FSManager.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("CollectionID")
-                        .HasColumnType("int");
+                    b.Property<string>("CollectionKey")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Source")
                         .IsRequired()
@@ -44,24 +45,17 @@ namespace FSManager.Migrations
 
                     b.HasIndex("CardKey");
 
-                    b.HasIndex("CollectionID");
+                    b.HasIndex("CollectionKey");
 
                     b.ToTable("CardImages", (string)null);
                 });
 
             modelBuilder.Entity("FSManager.Models.CardImageCollection", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Key")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
+                    b.HasKey("Key");
 
                     b.ToTable("CardImageCollections", (string)null);
                 });
@@ -94,7 +88,7 @@ namespace FSManager.Migrations
 
                     b.HasOne("FSManager.Models.CardImageCollection", "Collection")
                         .WithMany("Images")
-                        .HasForeignKey("CollectionID")
+                        .HasForeignKey("CollectionKey")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
