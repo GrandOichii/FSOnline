@@ -13,6 +13,9 @@ public class Program {
         builder.Services.AddDbContext<CardsContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("CardsContext")));
 
+        // services
+        builder.Services.AddTransient<ICardService, CardService>();
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.

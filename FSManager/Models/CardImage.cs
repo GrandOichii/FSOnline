@@ -1,5 +1,3 @@
-using FSManager.Models;
-
 namespace FSManager.Models;
 
 public class CardImage {

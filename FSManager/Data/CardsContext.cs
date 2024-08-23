@@ -1,5 +1,6 @@
 using FSManager.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace FSManager.Data;
 
@@ -11,9 +12,19 @@ public class CardsContext : DbContext
     public CardsContext(DbContextOptions<CardsContext> options)
         : base(options)
     {
-        
     }
 
+    public string GetDefaultCardImageCollectionKey() {
+        var result = Database
+            .SqlQuery<string>($"SELECT dbo.getDefaultCardImageCollectionKey()")
+            .ToList();
+        return result[0];
+    }
+
+    public async Task SaveCard(CardModel card) {
+        Cards.Add(card);
+        await SaveChangesAsync();
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

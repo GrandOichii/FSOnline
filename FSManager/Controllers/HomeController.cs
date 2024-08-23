@@ -7,9 +7,9 @@ namespace FSManager.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly CardsContext _cards;
+    private readonly ICardService _cards;
 
-    public HomeController(ILogger<HomeController> logger, CardsContext cards)
+    public HomeController(ILogger<HomeController> logger, ICardService cards)
     {
         _logger = logger;
         _cards = cards;
@@ -25,20 +25,21 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Cards() {
-        var cards = _cards.Cards.ToList();
+    public async Task<IActionResult> Cards() {
+        var cards = (await _cards.All()).ToList();
         return View(cards);
     }
 
     public IActionResult DeleteCard(string cardKey) {
-        var card = _cards.Cards.FirstOrDefault(c => c.Key == cardKey);
-        if (card is null) {
-            // TODO
-            throw new Exception($"No card with key {cardKey}");
-        }
+        // TODO
+        // var card = _cards.Cards.FirstOrDefault(c => c.Key == cardKey);
+        // if (card is null) {
+        //     // TODO
+        //     throw new Exception($"No card with key {cardKey}");
+        // }
 
-        _cards.Cards.Remove(card);
-        _cards.SaveChanges();
+        // _cards.Cards.Remove(card);
+        // _cards.SaveChanges();
         
         return RedirectToAction("Cards");
     }
@@ -47,11 +48,9 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult CreateCardForm(CardModel card) { // TODO change name
-        System.Console.WriteLine($"Creating card {card.Key}");
-
-        _cards.Cards.Add(card);
-        _cards.SaveChanges();
+    public async Task<IActionResult> CreateCardForm(CardModel card) { // TODO change name
+        // TODO catch exceptions
+        // await _cards.SaveCard(card);
 
         return RedirectToAction("Cards");
     }

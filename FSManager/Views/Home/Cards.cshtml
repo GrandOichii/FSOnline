@@ -2,7 +2,7 @@
     ViewData["Title"] = "Cards";
 }
 
-@model List<CardModel>
+@model List<GetCard>
 
 <div class="text-center">
     <h1 class="display-4">Cards</h1>
@@ -13,6 +13,7 @@
                 <th>Key</th>
                 <th>Name</th>
                 <th>Text</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
                         <td>@card.Key</td>
                         <td>@card.Name</td>
                         <td>@card.Text</td>
+                        <td><a href="@card.ImageUrl">Image</a></td>
                         <td>
                             <a class="btn btn-primary" asp-action="DeleteCard" asp-route-cardKey="@card.Key">Delete</a>
                         </td>
