@@ -1,3 +1,4 @@
+using FSManager.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace FSManager;
@@ -10,8 +11,10 @@ public class Program {
         builder.Services.AddControllersWithViews();
 
         // DB
-        builder.Services.AddDbContext<CardsContext>(options =>
+        builder.Services.AddDbContext<CardRepository>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("CardsContext")));
+
+        builder.Services.AddTransient<ICardRepository, CardRepository>();
 
         // services
         builder.Services.AddTransient<ICardService, CardService>();

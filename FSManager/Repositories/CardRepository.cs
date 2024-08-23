@@ -2,14 +2,14 @@ using FSManager.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace FSManager.Data;
+namespace FSManager.Repositories;
 
-public class CardsContext : DbContext
+public class CardRepository : DbContext, ICardRepository
 {
     public DbSet<CardModel> Cards { get; set; }
     public DbSet<CardImageCollection> ImageCollections { get; set; }
 
-    public CardsContext(DbContextOptions<CardsContext> options)
+    public CardRepository(DbContextOptions<CardRepository> options)
         : base(options)
     {
     }
@@ -43,17 +43,20 @@ public class CardsContext : DbContext
             .WithOne(img => img.Collection);
     }
 
-    public string GetDefaultCardImageCollectionKey() {
+    public Task<string> GetDefaultCardImageCollectionKey() {
         var result = Database
             .SqlQuery<string>($"SELECT dbo.getDefaultCardImageCollectionKey()")
             .ToList();
-        return result[0];
+        return Task.FromResult(
+            result[0]
+        );
     }
 
     public async Task CreateCard(
         string key,
         string name,
-        string text,string defaultImageSrc
+        string text,
+        string defaultImageSrc
     ) {
         Database.ExecuteSql($"EXEC createCard {key}, {name}, {text}, {defaultImageSrc}");
         await SaveChangesAsync();
@@ -80,4 +83,15 @@ public class CardsContext : DbContext
         );
     }
 
+    public async Task<bool> RemoveCard(string key) {
+        var card = await ByKey(key);
+
+        if (card is null)
+            return false;
+
+        Cards.Remove(card);
+        await SaveChangesAsync();
+
+        return true;
+    }
 }

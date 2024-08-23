@@ -5,15 +5,15 @@ namespace FSManager.Services;
 
 public class CardService : ICardService
 {
-    private readonly CardsContext _cards;
+    private readonly ICardRepository _cards;
 
-    public CardService(CardsContext cards) {
+    public CardService(ICardRepository cards) {
         _cards = cards;
     }
 
     public async Task<IEnumerable<GetCard>> All(string? cardImageCollection = null)
     {
-        cardImageCollection ??= _cards.GetDefaultCardImageCollectionKey();
+        cardImageCollection ??= await _cards.GetDefaultCardImageCollectionKey();
         var cards = await _cards.AllCards();
 
         return cards.Select(c => new GetCard {
@@ -30,7 +30,7 @@ public class CardService : ICardService
 
         var result = await _cards.ByKey(card.Key)
             ?? throw new Exception($"Created card with key {card.Key}, but failed to fetch it");
-        var colKey = _cards.GetDefaultCardImageCollectionKey();
+        var colKey = await _cards.GetDefaultCardImageCollectionKey();
 
         return new GetCard {
             Key = result.Key,

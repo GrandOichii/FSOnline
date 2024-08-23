@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace FSManager.Controllers;
 
 public class CardController : Controller {
-    private readonly CardsContext _cards;
+    private readonly ICardRepository _cards;
 
-    public CardController(CardsContext cards) {
+    public CardController(ICardRepository cards) {
         _cards = cards;
     }
 

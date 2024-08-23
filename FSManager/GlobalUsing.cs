@@ -1,4 +1,4 @@
-global using FSManager.Data;
+global using FSManager.Repositories;
 global using FSManager.Models;
 global using FSManager.Services;
 global using FSManager.Dto;
