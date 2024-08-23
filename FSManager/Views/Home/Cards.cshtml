@@ -1,0 +1,34 @@
+@{
+    ViewData["Title"] = "Cards";
+}
+
+@model List<CardModel>
+
+<div class="text-center">
+    <h1 class="display-4">Cards</h1>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Name</th>
+                <th>Text</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var card in Model) {
+                    <tr>
+                        <td>@card.Key</td>
+                        <td>@card.Name</td>
+                        <td>@card.Text</td>
+                        <td>
+                            <a class="btn btn-primary" asp-action="DeleteCard" asp-route-cardKey="@card.Key">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

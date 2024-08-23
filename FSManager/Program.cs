@@ -1,11 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace FSManager;
 
 public class Program {
-    public static void Main(string[]){
+    public static void Main(string[] args) {
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+
+        // DB
+        builder.Services.AddDbContext<CardsContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("CardsContext")));
 
         var app = builder.Build();
 
