@@ -25,36 +25,6 @@ public class HomeController : Controller
         return View();
     }
 
-    public async Task<IActionResult> Cards() {
-        var cards = (await _cards.All()).ToList();
-        return View(cards);
-    }
-
-    public IActionResult DeleteCard(string cardKey) {
-        // TODO
-        // var card = _cards.Cards.FirstOrDefault(c => c.Key == cardKey);
-        // if (card is null) {
-        //     // TODO
-        //     throw new Exception($"No card with key {cardKey}");
-        // }
-
-        // _cards.Cards.Remove(card);
-        // _cards.SaveChanges();
-        
-        return RedirectToAction("Cards");
-    }
-
-    public IActionResult CreateCard() {
-        return View();
-    }
-
-    public async Task<IActionResult> CreateCardForm(PostCard card) { // TODO change name
-        // TODO catch exceptions
-        await _cards.Create(card);
-
-        return RedirectToAction("Cards");
-    }
-
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
