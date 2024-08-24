@@ -14,16 +14,9 @@ public class CardsController : Controller {
         return View(cards);
     }
 
-    public IActionResult Delete(string cardKey) {
-        // TODO
-        // var card = _cards.Cards.FirstOrDefault(c => c.Key == cardKey);
-        // if (card is null) {
-        //     // TODO
-        //     throw new Exception($"No card with key {cardKey}");
-        // }
-
-        // _cards.Cards.Remove(card);
-        // _cards.SaveChanges();
+    public async Task<IActionResult> Delete(string cardKey) {
+        // TODO catch exceptions
+        await _cards.Delete(cardKey);
         
         return RedirectToAction("All");
     }
@@ -32,7 +25,7 @@ public class CardsController : Controller {
         return View();
     }
 
-    public async Task<IActionResult> CreateCardForm(PostCard card) { // TODO change name
+    public async Task<IActionResult> CreateForm(PostCard card) { // TODO change name
         // TODO catch exceptions
         await _cards.Create(card);
 

@@ -26,11 +26,12 @@
                         <td>@card.Text</td>
                         <td><a href="@card.ImageUrl">Image</a></td>
                         <td>
-                            <a class="btn btn-primary" asp-action="DeleteCard" asp-route-cardKey="@card.Key">Delete</a>
+                            <a class="btn btn-primary" asp-action="Delete" asp-route-cardKey="@card.Key">Delete</a>
                         </td>
                     </tr>
                 }
             }
         </tbody>
     </table>
+    <a class="btn btn-primary" asp-action="Create">Create</a>
 </div>

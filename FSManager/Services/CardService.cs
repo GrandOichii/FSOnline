@@ -1,7 +1,22 @@
-
 using Microsoft.EntityFrameworkCore;
 
 namespace FSManager.Services;
+
+[System.Serializable]
+public class CardServiceException : System.Exception
+{
+    public CardServiceException() { }
+    public CardServiceException(string message) : base(message) { }
+    public CardServiceException(string message, System.Exception inner) : base(message, inner) { }
+}
+
+[System.Serializable]
+public class FailedToDeleteCardException : CardServiceException
+{
+    public FailedToDeleteCardException() { }
+    public FailedToDeleteCardException(string message) : base(message) { }
+    public FailedToDeleteCardException(string message, System.Exception inner) : base(message, inner) { }
+}
 
 public class CardService : ICardService
 {
@@ -38,5 +53,12 @@ public class CardService : ICardService
             Text = result.Text,
             ImageUrl = result.Images.First(img => img.Collection.Key == colKey).Source
         };
+    }
+
+    public async Task Delete(string key) {
+        var deleted = await _cards.RemoveCard(key);
+        if (deleted) return;
+
+        throw new FailedToDeleteCardException($"Failed to delete card with key {key}");
     }
 }
