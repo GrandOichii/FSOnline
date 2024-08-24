@@ -8,7 +8,7 @@
     <h1 class="display-4">Create new card</h1>
 </div>
 
-<form asp-controller="Cards" asp-action="CreateForm">
+<form asp-controller="Cards" asp-action="Create">
     <label>Key</label>
     <input type="text" class="form-control" placeholder="Enter card key" asp-for="Key">
 
@@ -17,6 +17,9 @@
 
     <label>Text</label>
     <input type="text" class="form-control" placeholder="Enter card text" asp-for="Text">
+
+    <label>Collection</label>
+    <input type="text" class="form-control" placeholder="Enter card collection" asp-for="CollectionKey">
 
     <label>Image</label>
     <input type="text" class="form-control" placeholder="Paste card image" asp-for="DefaultImageSrc">

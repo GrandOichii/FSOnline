@@ -64,16 +64,18 @@ public class CardRepository : DbContext, ICardRepository
         string key,
         string name,
         string text,
+        string collectionKey,
         string defaultImageSrc
     ) {
-        Database.ExecuteSql($"EXEC createCard {key}, {name}, {text}, {defaultImageSrc}");
+        Database.ExecuteSql($"EXEC createCard {key}, {name}, {text}, {collectionKey}, {defaultImageSrc}");
         await SaveChangesAsync();
     }
 
     private IQueryable<CardModel> FetchCards() {
         return Cards
+            .Include(c => c.Collection)
             .Include(c => c.Images)
-            .ThenInclude(img => img.Collection)
+                .ThenInclude(img => img.Collection)
         ;
     } 
 

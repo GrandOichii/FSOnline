@@ -13,6 +13,7 @@
                 <th>Key</th>
                 <th>Name</th>
                 <th>Text</th>
+                <th>Collection</th>
                 <th>Image</th>
                 <th>Actions</th>
             </tr>
@@ -24,6 +25,7 @@
                         <td>@card.Key</td>
                         <td>@card.Name</td>
                         <td>@card.Text</td>
+                        <td>@card.Collection</td>
                         <td><a href="@card.ImageUrl">Image</a></td>
                         <td>
                             <a class="btn btn-primary" asp-action="Delete" asp-route-cardKey="@card.Key">Delete</a>
@@ -33,5 +35,5 @@
             }
         </tbody>
     </table>
-    <a class="btn btn-primary" asp-action="Create">Create</a>
+    <a class="btn btn-primary" asp-action="CreateForm">Create</a>
 </div>

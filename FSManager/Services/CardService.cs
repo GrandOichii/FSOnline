@@ -35,13 +35,14 @@ public class CardService : ICardService
             Key = c.Key,
             Name = c.Name,
             Text = c.Text,
+            Collection = c.Collection.Key,
             ImageUrl = c.Images.First(img => img.Collection.Key == cardImageCollection).Source
         });
     }
 
     public async Task<GetCard> Create(PostCard card)
     {
-        await _cards.CreateCard(card.Key, card.Name, card.Text, card.DefaultImageSrc);
+        await _cards.CreateCard(card.Key, card.Name, card.Text, card.CollectionKey, card.DefaultImageSrc);
 
         var result = await _cards.ByKey(card.Key)
             ?? throw new Exception($"Created card with key {card.Key}, but failed to fetch it");
@@ -51,6 +52,7 @@ public class CardService : ICardService
             Key = result.Key,
             Name = result.Name,
             Text = result.Text,
+            Collection = result.Collection.Key,
             ImageUrl = result.Images.First(img => img.Collection.Key == colKey).Source
         };
     }

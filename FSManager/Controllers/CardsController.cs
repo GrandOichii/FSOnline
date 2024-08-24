@@ -21,11 +21,11 @@ public class CardsController : Controller {
         return RedirectToAction("All");
     }
 
-    public IActionResult Create() {
+    public IActionResult CreateForm() {
         return View();
     }
 
-    public async Task<IActionResult> CreateForm(PostCard card) { // TODO change name
+    public async Task<IActionResult> Create(PostCard card) { // TODO change name
         // TODO catch exceptions
         await _cards.Create(card);
 
