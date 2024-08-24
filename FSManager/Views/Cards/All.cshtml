@@ -26,7 +26,16 @@
                         <td>@card.Name</td>
                         <td>@card.Text</td>
                         <td>@card.Collection</td>
-                        <td><a href="@card.ImageUrl">Image</a></td>
+                        <td>
+                            <a href="@card.ImageUrl">
+                                <img 
+                                    src="@card.ImageUrl" 
+                                    alt="-" 
+                                    class="img img-fluid"
+                                    style="width: 320px"
+                                >
+                            </a>
+                        </td>
                         <td>
                             <a class="btn btn-primary" asp-action="Delete" asp-route-cardKey="@card.Key">Delete</a>
                         </td>
