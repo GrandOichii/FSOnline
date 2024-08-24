@@ -32,6 +32,10 @@ public class CardRepository : DbContext, ICardRepository
         imageTable.HasKey(col => col.ID);
         imageTable.Property(col => col.ID).ValueGeneratedOnAdd();
 
+        // card collections
+        var collectionsTable = modelBuilder.Entity<CardCollection>()
+            .ToTable("CardCollections");
+        collectionsTable.HasKey(col => col.Key);
 
         // relations
         cardsTable
@@ -41,6 +45,10 @@ public class CardRepository : DbContext, ICardRepository
         imageCollectionTable
             .HasMany(col => col.Images)
             .WithOne(img => img.Collection);
+
+        collectionsTable
+            .HasMany(col => col.Cards)
+            .WithOne(card => card.Collection);
     }
 
     public Task<string> GetDefaultCardImageCollectionKey() {
