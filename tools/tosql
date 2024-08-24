@@ -1,0 +1,51 @@
+#!/bin/python3
+
+from sys import argv
+from os.path import join
+import json
+
+if len(argv) < 4:
+    print('Invalid amount of arguments')
+    exit(1)
+
+CARD_INDEX_PATH = argv[1]
+OUT_PATH = argv[2]
+CARD_PATHS = argv[3:]
+
+DECKS = [
+    'Characters',
+    'StartingItems',
+    'Treasures',
+    'Loot',
+    'BonusSouls',
+    'Rooms',
+    'Monsters',
+    'Events',
+    'Curses',
+]
+
+INSERT_FORMAT = 'EXEC createCard \'{}\', \'{}\', \'{}\', \'{}\', \'{}\'\n'
+
+result = ''
+card_index = json.loads(open(CARD_INDEX_PATH, 'r').read())
+for p in CARD_PATHS:
+    manifest = json.loads(open(join(p, 'manifest.json'), 'r').read())
+    card_paths = []
+    for key in DECKS:
+        card_paths += manifest['Cards'][key]
+    for card_p in card_paths:
+        card_data = json.loads(open(join(p, card_p + '.json'), 'r').read())
+        key = card_data['Key']
+        if not key in card_index:
+            print(f'No image for card {key}')
+            continue
+        image_url = card_index[key]
+        collection_key = key.split('-')[-1]
+        result += INSERT_FORMAT.format(
+            key,
+            card_data['Name'].replace('\'', '\'\''),
+            card_data['Text'].replace('\n', '\\n').replace('\'', '\'\''),
+            collection_key,
+            image_url
+        )
+open(OUT_PATH, 'w').write(result)
