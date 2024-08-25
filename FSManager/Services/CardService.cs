@@ -12,6 +12,14 @@ public class CardServiceException : System.Exception
 }
 
 [System.Serializable]
+public class CardNotFoundException : CardServiceException
+{
+    public CardNotFoundException() { }
+    public CardNotFoundException(string message) : base(message) { }
+    public CardNotFoundException(string message, System.Exception inner) : base(message, inner) { }
+}
+
+[System.Serializable]
 public class FailedToDeleteCardException : CardServiceException
 {
     public FailedToDeleteCardException() { }
@@ -55,7 +63,7 @@ public class CardService : ICardService
 
     public async Task<GetCard> ByKey(string key) {
         var result = await _cards.ByKey(key)
-            ?? throw new Exception($"Created card with key {key}, but failed to fetch it");
+            ?? throw new CardNotFoundException($"Created card with key {key}, but failed to fetch it");
         var colKey = await _cards.GetDefaultCardImageCollectionKey();
 
         return MapToGetCard(result, colKey);
