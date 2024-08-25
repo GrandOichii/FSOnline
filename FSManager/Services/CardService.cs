@@ -58,8 +58,9 @@ public class CardService : ICardService
     }
 
     public GetCard MapToGetCard(CardModel card, string imageCollectionKey) {
-        var result = _mapper.Map<GetCard>(card);
-        result.ImageUrl = card.Images.First(img => img.Collection.Key == imageCollectionKey).Source;
-        return result;
+        return _mapper.Map<GetCard>(
+            card,
+            o => o.Items["ICK"] = imageCollectionKey
+        );
     } 
 }
