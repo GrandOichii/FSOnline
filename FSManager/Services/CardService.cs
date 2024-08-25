@@ -49,7 +49,19 @@ public class CardService : ICardService
 
     public async Task<GetCard> Create(PostCard card)
     {
-        await _cards.CreateCard(card.Key, card.Name, card.Text, card.CollectionKey, card.DefaultImageSrc);
+        await _cards.CreateCard(
+            card.Key,
+            card.Name,
+            card.Type,
+            card.Attack,
+            card.Health,
+            card.Evasion,
+            card.Text,
+            card.Script,
+            card.SoulValue,
+            card.CollectionKey,
+            card.DefaultImageSrc
+        );
 
         return await ByKey(card.Key);
     }

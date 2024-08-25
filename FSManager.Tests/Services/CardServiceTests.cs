@@ -3,6 +3,7 @@
 using AutoMapper;
 using FakeItEasy;
 using FluentAssertions;
+using FSManager.Dto.Cards;
 using FSManager.Mapping;
 using FSManager.Models;
 using FSManager.Repositories;
@@ -106,17 +107,31 @@ public class CardServiceTests {
         await act.Should().ThrowAsync<FailedToDeleteCardException>();
     }
 
-    // [Fact]
-    // public async Task ShouldCreate() {
-    //     // Arrange
-    //     A.CallTo(() => _cardRepo.CreateCard(
-    //         A<string>._,
-    //         A<string>._,
-    //         A<string>._,
-    //         A<string>._,
-    //         A<string>._,
-    //         A<string>._,
-    //         A<string>._
-    //     ))
-    // }
+    [Fact]
+    public async Task ShouldCreate() {
+        // Arrange
+        var key = "card-key";
+        var call = A.CallTo(() => _cardRepo.CreateCard(
+            key,
+            "Name",
+            "Type1",
+            2,
+            1,
+            3,
+            "(no text)",
+            "print('missing script')",
+            1,
+            "test",
+            "image-source"
+        )).WithAnyArguments();
+        A.CallTo(() => _cardRepo.ByKey(A<string>._)).Returns( await GetDummyCardModel() );
+
+        // Act
+        var result = await _cardService.Create(A.Fake<PostCard>());
+
+        // Assert
+        result.Should().NotBeNull();
+        result.Key.Should().Be(key);
+        call.MustHaveHappenedOnceExactly();
+    }
 }

@@ -63,11 +63,17 @@ public class CardRepository : DbContext, ICardRepository
     public async Task CreateCard(
         string key,
         string name,
+        string type,
+        int health,
+        int attack,
+        int evasion,
         string text,
+        string script,
+        int soulValue,
         string collectionKey,
         string defaultImageSrc
     ) {
-        Database.ExecuteSql($"EXEC createCard {key}, {name}, {text}, {collectionKey}, {defaultImageSrc}");
+        Database.ExecuteSql($"EXEC createCard {key}, {name}, {type}, {health}, {attack}, {evasion}, {text}, {script}, {soulValue}, {collectionKey}, {defaultImageSrc}");
         await SaveChangesAsync();
     }
 
