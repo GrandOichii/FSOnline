@@ -1,3 +1,4 @@
+using FSCore.Matches.Actions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FSManager.Controllers;
@@ -14,9 +15,14 @@ public class CardsController : Controller {
         return View(cards);
     }
 
-    public async Task<IActionResult> Delete(string cardKey) {
+    public async Task<IActionResult> ByKey(string key) {
+        var card = await _cards.ByKey(key);
+        return View(card);
+    }
+
+    public async Task<IActionResult> Delete(string key) {
         // TODO catch exceptions
-        await _cards.Delete(cardKey);
+        await _cards.Delete(key);
         
         return RedirectToAction("All");
     }

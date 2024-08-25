@@ -43,11 +43,7 @@ public class CardService : ICardService
     {
         await _cards.CreateCard(card.Key, card.Name, card.Text, card.CollectionKey, card.DefaultImageSrc);
 
-        var result = await _cards.ByKey(card.Key)
-            ?? throw new Exception($"Created card with key {card.Key}, but failed to fetch it");
-        var colKey = await _cards.GetDefaultCardImageCollectionKey();
-
-        return MapToGetCard(result, colKey);
+        return await ByKey(card.Key);
     }
 
     public async Task Delete(string key) {
@@ -57,10 +53,18 @@ public class CardService : ICardService
         throw new FailedToDeleteCardException($"Failed to delete card with key {key}");
     }
 
-    public GetCard MapToGetCard(CardModel card, string imageCollectionKey) {
+    public async Task<GetCard> ByKey(string key) {
+        var result = await _cards.ByKey(key)
+            ?? throw new Exception($"Created card with key {key}, but failed to fetch it");
+        var colKey = await _cards.GetDefaultCardImageCollectionKey();
+
+        return MapToGetCard(result, colKey);
+    }
+
+    private GetCard MapToGetCard(CardModel card, string imageCollectionKey) {
         return _mapper.Map<GetCard>(
             card,
             o => o.Items["ICK"] = imageCollectionKey
         );
-    } 
+    }
 }

@@ -22,7 +22,9 @@
             @{
                 foreach (var card in Model) {
                     <tr>
-                        <td>@card.Key</td>
+                        <td>
+                            <a asp-action="ByKey" asp-route-key="@card.Key">@card.Key</a>
+                        </td>
                         <td>@card.Name</td>
                         <td>@card.Text</td>
                         <td>@card.Collection</td>
@@ -37,7 +39,7 @@
                             </a>
                         </td>
                         <td>
-                            <a class="btn btn-primary" asp-action="Delete" asp-route-cardKey="@card.Key">Delete</a>
+                            <a class="btn btn-primary" asp-action="Delete" asp-route-key="@card.Key">Delete</a>
                         </td>
                     </tr>
                 }
