@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace FSManager.Services;
@@ -21,9 +22,11 @@ public class FailedToDeleteCardException : CardServiceException
 public class CardService : ICardService
 {
     private readonly ICardRepository _cards;
+    private readonly IMapper _mapper;
 
-    public CardService(ICardRepository cards) {
+    public CardService(ICardRepository cards, IMapper mapper) {
         _cards = cards;
+        _mapper = mapper;
     }
 
     public async Task<IEnumerable<GetCard>> All(string? cardImageCollection = null)
@@ -31,13 +34,9 @@ public class CardService : ICardService
         cardImageCollection ??= await _cards.GetDefaultCardImageCollectionKey();
         var cards = await _cards.AllCards();
 
-        return cards.Select(c => new GetCard {
-            Key = c.Key,
-            Name = c.Name,
-            Text = c.Text,
-            Collection = c.Collection.Key,
-            ImageUrl = c.Images.First(img => img.Collection.Key == cardImageCollection).Source
-        });
+        return cards.Select(
+            c => MapToGetCard(c, cardImageCollection)
+        );
     }
 
     public async Task<GetCard> Create(PostCard card)
@@ -48,13 +47,7 @@ public class CardService : ICardService
             ?? throw new Exception($"Created card with key {card.Key}, but failed to fetch it");
         var colKey = await _cards.GetDefaultCardImageCollectionKey();
 
-        return new GetCard {
-            Key = result.Key,
-            Name = result.Name,
-            Text = result.Text,
-            Collection = result.Collection.Key,
-            ImageUrl = result.Images.First(img => img.Collection.Key == colKey).Source
-        };
+        return MapToGetCard(result, colKey);
     }
 
     public async Task Delete(string key) {
@@ -63,4 +56,10 @@ public class CardService : ICardService
 
         throw new FailedToDeleteCardException($"Failed to delete card with key {key}");
     }
+
+    public GetCard MapToGetCard(CardModel card, string imageCollectionKey) {
+        var result = _mapper.Map<GetCard>(card);
+        result.ImageUrl = card.Images.First(img => img.Collection.Key == imageCollectionKey).Source;
+        return result;
+    } 
 }

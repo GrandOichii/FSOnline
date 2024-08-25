@@ -1,3 +1,4 @@
+using FSManager.Mapping;
 using FSManager.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,11 @@ public class Program {
 
         // services
         builder.Services.AddTransient<ICardService, CardService>();
+
+        // mapping
+        builder.Services.AddAutoMapper(
+            typeof(AutoMapperProfile)
+        );
 
         var app = builder.Build();
 

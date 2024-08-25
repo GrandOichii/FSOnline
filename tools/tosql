@@ -24,7 +24,7 @@ DECKS = [
     'Curses',
 ]
 
-INSERT_FORMAT = 'EXEC createCard \'{}\', \'{}\', \'{}\', \'{}\', \'{}\'\n'
+INSERT_FORMAT = 'EXEC createCard \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\'\n'
 
 result = ''
 card_index = json.loads(open(CARD_INDEX_PATH, 'r').read())
@@ -44,7 +44,13 @@ for p in CARD_PATHS:
         result += INSERT_FORMAT.format(
             key,
             card_data['Name'].replace('\'', '\'\''),
+            card_data['Type'],
+            card_data['Health'] if 'Health' in card_data else -1,
+            card_data['Attack'] if 'Attack' in card_data else -1,
+            card_data['Evasion'] if 'Evasion' in card_data else -1,
             card_data['Text'].replace('\n', '\\n').replace('\'', '\'\''),
+            open(join(p, card_p + '.lua'), 'r').read().replace('\n', '\\n').replace('\'', '\'\''),
+            card_data['SoulValue'] if 'SoulValue' in card_data else -1,
             collection_key,
             image_url
         )
