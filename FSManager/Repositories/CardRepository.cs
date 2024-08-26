@@ -110,4 +110,8 @@ public class CardRepository : DbContext, ICardRepository
 
         return true;
     }
+
+    public async Task<IEnumerable<CardModel>> GetCards() {
+        return FetchCards();
+    }
 }

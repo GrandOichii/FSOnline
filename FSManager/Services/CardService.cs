@@ -95,4 +95,9 @@ public class CardService : ICardService
             o => o.Items["ICK"] = imageCollectionKey
         );
     }
+
+    public async Task<IEnumerable<string>> GetKeys() {
+        return (await _cards.GetCards())
+            .Select(card => card.Key);
+    }
 }

@@ -5,4 +5,5 @@ public interface ICardService {
     public Task<GetCard> Create(PostCard card);
     public Task Delete(string key);
     public Task<GetCard> ByKey(string key);
+    public Task<IEnumerable<string>> GetKeys();
 }

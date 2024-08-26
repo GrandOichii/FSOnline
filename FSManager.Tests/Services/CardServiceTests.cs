@@ -134,4 +134,20 @@ public class CardServiceTests {
         result.Key.Should().Be(key);
         call.MustHaveHappenedOnceExactly();
     }
+
+    [Fact]
+    public async Task ShouldFetchKeys() {
+        // Arrange
+        var card = await GetDummyCardModel();
+        var call = A.CallTo(() => _cardRepo.GetCards());
+        call.Returns([ card ]);
+
+        // Act
+        var result = await _cardService.GetKeys();
+
+        // Assert
+        result.Should().HaveCount(1);
+        result.ElementAt(0).Should().Be(card.Key);
+        call.MustHaveHappenedOnceExactly();
+    }
 }
