@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FSManager.Controllers;
 
-[Route("/api/v1/card")]
+[Route("/api/v1/Card")]
 public class CardsApiController : ControllerBase {
     private readonly ICardService _cardService;
 
@@ -46,5 +46,10 @@ public class CardsApiController : ControllerBase {
         // } catch () {
 
         // }
+    }
+
+    [HttpGet("From/{key}")]
+    public async Task<IActionResult> FromCollection(string key) {
+        return Ok(await _cardService.FromCollection(key));
     }
 }

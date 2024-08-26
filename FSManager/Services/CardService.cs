@@ -100,4 +100,12 @@ public class CardService : ICardService
         return (await _cards.GetCards())
             .Select(card => card.Key);
     }
+
+    public async Task<IEnumerable<GetCard>> FromCollection(string collectionKey) {
+        var colKey = await _cards.GetDefaultCardImageCollectionKey();
+
+        return (await _cards.GetCards())
+            .Where(c => c.Collection.Key == collectionKey)
+            .Select(c => MapToGetCard(c, colKey));
+    }
 }

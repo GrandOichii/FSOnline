@@ -97,4 +97,18 @@ public class CardsApiControllerTests {
         result.Should().BeOfType<BadRequestObjectResult>();
         call.MustHaveHappenedOnceExactly();
     }
+
+    [Fact]
+    public async Task ShouldFetchFromCollection() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.FromCollection(A<string>._)).WithAnyArguments();
+        call.Returns([ A.Fake<GetCard>() ]);
+
+        // Act
+        var result = await _controller.FromCollection("collection-key");
+
+        // Assert
+        result.Should().BeOfType<OkObjectResult>();
+        call.MustHaveHappenedOnceExactly();
+    }
 }
