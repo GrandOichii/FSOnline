@@ -67,10 +67,18 @@ public class CardService : ICardService
     }
 
     public async Task Delete(string key) {
-        var deleted = await _cards.RemoveCard(key);
-        if (deleted) return;
+        if (await _cards.ByKey(key) is null)
+            throw new CardNotFoundException($"Card with key {key} not found");
+
+        try {
+            var deleted = await _cards.RemoveCard(key);
+            if (deleted) return;
+        } catch (Exception ex) {
+            throw new FailedToDeleteCardException($"Failed to delete card with key {key}", ex);
+        }
 
         throw new FailedToDeleteCardException($"Failed to delete card with key {key}");
+
     }
 
     public async Task<GetCard> ByKey(string key) {
