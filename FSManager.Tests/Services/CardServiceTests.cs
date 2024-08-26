@@ -1,5 +1,3 @@
-
-
 using AutoMapper;
 using FakeItEasy;
 using FluentAssertions;
@@ -9,6 +7,8 @@ using FSManager.Models;
 using FSManager.Repositories;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Query;
+
+namespace FSManager.Tests.Services;
 
 public class CardServiceTests {
     private readonly ICardRepository _cardRepo;
