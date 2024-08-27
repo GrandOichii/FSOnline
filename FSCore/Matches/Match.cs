@@ -227,6 +227,11 @@ public class Match {
 
     #endregion
 
+    private async Task<CharacterCardTemplate> GetRandomCharacter() {
+        var key = Config.Characters[Rng.Next() % Config.Characters.Count];
+        return await _cardMaster.GetCharacter(key);
+    }
+
     /// <summary>
     /// Add a player to the match
     /// </summary>
@@ -238,7 +243,7 @@ public class Match {
             throw new MatchException($"tried to add another player to the match, while it is already full (max player count: {Config.MaxPlayerCount})");
 
         var character = string.IsNullOrEmpty(characterKey)
-            ? await _cardMaster.GetRandomCharacter(Rng, Config.Characters)
+            ? await GetRandomCharacter()
             : await _cardMaster.GetCharacter(characterKey);
 
         var player = new Player(

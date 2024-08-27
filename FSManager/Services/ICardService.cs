@@ -7,4 +7,5 @@ public interface ICardService {
     public Task<GetCard> ByKey(string key);
     public Task<IEnumerable<string>> GetKeys();
     public Task<IEnumerable<GetCard>> FromCollection(string collectionKey);
+    public Task<IEnumerable<GetCard>> OfType(string type);
 }

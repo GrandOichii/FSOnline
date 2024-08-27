@@ -55,7 +55,7 @@ public partial class FileCardMasterWrapper : Node
 			AddCharacterCard(key);
 		}
 
-		foreach (var key in Cards.GetMonsterKeys().GetAwaiter().GetResult()) {
+		foreach (var key in (Cards as ICardMaster).GetMonsterKeys().GetAwaiter().GetResult()) {
 			AddMonsterCard(key);
 		}
 	}

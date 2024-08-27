@@ -23,24 +23,19 @@ public class DBCardMaster : ICardMaster
 
     public Task<List<string>> GetCharacterKeys()
     {
-        // TODO
-        throw new NotImplementedException();
+        return GetKeysOfType("Character");
     }
 
     public async Task<List<string>> GetKeys()
     {
-        return (await _cardService.GetKeys()).ToList();
+        return (await _cardService.GetKeys())
+            .ToList();
     }
 
-    public Task<List<string>> GetMonsterKeys()
+    public async Task<List<string>> GetKeysOfType(string type)
     {
-        // TODO
-        throw new NotImplementedException();
-    }
-
-    public Task<CharacterCardTemplate> GetRandomCharacter(Random rng, List<string> keys)
-    {
-        // TODO
-        throw new NotImplementedException();
+        return (await _cardService.OfType(type))
+            .Select(c => c.Key)
+            .ToList();
     }
 }

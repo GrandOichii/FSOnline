@@ -128,4 +128,6 @@ public struct MatchConfig {
     /// Shows whether the player should be prompted when paying life
     /// </summary>
     public required bool PromptWhenPayingLife { get; set; }
+
+    // TODO add AllowCharacterDuplicates - indicates whether two or more players can play the same character
 }

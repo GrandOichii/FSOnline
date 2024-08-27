@@ -28,15 +28,8 @@ public interface ICardMaster {
     /// <returns>Character card template associated with the given key</returns>
     public Task<CharacterCardTemplate> GetCharacter(string key);
 
-    /// <summary>
-    /// Fetch a random character card
-    /// </summary>
-    /// <param name="rng">Random number generator</param>
-    /// <param name="keys">List of available character keys</param>
-    /// <returns>Random character card template</returns>
-    public Task<CharacterCardTemplate> GetRandomCharacter(Random rng, List<string> keys);
-
     public Task<List<string>> GetKeys();
     public Task<List<string>> GetCharacterKeys();
-    public Task<List<string>> GetMonsterKeys();
+    public Task<List<string>> GetKeysOfType(string type);
+    public async Task<List<string>> GetMonsterKeys() => await GetKeysOfType("Monster");
 }

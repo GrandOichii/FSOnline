@@ -80,13 +80,6 @@ public class FileCardMaster : ICardMaster
         return Task.FromResult(_characterIndex[key]);
     }
 
-    public Task<CharacterCardTemplate> GetRandomCharacter(Random rng, List<string> characters)
-    {
-        return Task.FromResult(
-            _characterIndex[characters[rng.Next() % characters.Count]]
-        );
-    }
-
     public Task<List<string>> GetKeys()
     {
         return Task.FromResult(
@@ -101,11 +94,10 @@ public class FileCardMaster : ICardMaster
         );
     }
 
-    public Task<List<string>> GetMonsterKeys()
-    {
+    public Task<List<string>> GetKeysOfType(string type) {
         return Task.FromResult(
             _index.Values
-                .Where(c => c.Type == "Monster")
+                .Where(c => c.Type == type)
                 .Select(c => c.Key)
                 .ToList()
         );
