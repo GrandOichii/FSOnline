@@ -20,7 +20,7 @@ v    - "may" effects
 v    - choosing players
 v    - until end of turn effects
     - at the end of turn effects
-    - "the next time your turn ends"
+v    - "the next time your turn ends"
 v    - checking current player
 v    - choice (yes/no)
     - taking extra turns
@@ -40,13 +40,13 @@ v    - setting max hand size
         - required
         - specific monster
         - monster deck
-    - cancelling abilities
-        - abilities with {tap} in their cost
-        - abilities with {$} in their cost
+v    - cancelling abilities
+v        - abilities with {tap} in their cost
+v        - abilities with {$} in their cost
 v    - cancelling loot cards
 v    - ending the turn
 v    - killing players
-    - choosing
+v    - choosing
 v        - choosing card effect (XIV. Temperance)
         - conditional forbidding of choosing
             - choosing players
@@ -54,11 +54,11 @@ v        - choosing card effect (XIV. Temperance)
             - by loot cards
             - by abilities
     - putting resolved loot cards on the bottom of the loot deck
-    - looking at players' hands
+~    - looking at players' hands
     - voting
         - additional votes
         - voting for monsters and players
-    - rewards
+v    - rewards
         - modifying fight rewards
         - conditional reward doubling
     - players
@@ -71,11 +71,11 @@ v            - death replacement effects
 v        - choosing players
     - monsters
         - changing to an item upon death
-        - counters
+v        - counters
             - counters with effects
         - indomitable label
-        - curses
-        - events
+v        - curses
+v        - events
         - discarding monsters
         - dice value
             - modifying monsters' dice values
@@ -84,7 +84,6 @@ v        - choosing players
         - putting filtered cards from discard on top of monster deck
         - putting filtered cards from discard to a monster slot
 v    - stack
-v        - effect cancelling
         - loot card copying
 v    - shop
 v        - putting shop items into discard
@@ -96,7 +95,7 @@ v        - modifying the cost of shop items
         - cancelling attacks
         - additional attacks
         - having other players also participating in the battle
-        - damage prevention on specific attack rolls
+v        - damage prevention on specific attack rolls
         - attacking players
     - hand
         - revealing hand
@@ -113,7 +112,7 @@ v            - shop item destruction
         - swapping cards with opponents
         - putting cards underneath items
         - item levels
-v        - flipping items
+        - flipping items
 v        - item filtering
 v        - item recharging
 v        - gaining treasure
@@ -130,20 +129,20 @@ v        - labels (guppy, eternal)
         - becoming a copy of an item (indefinately, until end of turn)
         - copying activated abilties of in-play items
 v        - rerolling items
-        - "haunt" cards
+v        - "haunt" cards
 v         - playing with a revealed hand
         - being able to attack items
 v        - soul entering under a player's control trigger
         - conditional coin gain trigger
     - rooms
-        - discarding rooms
-        - enter play trigger
+v        - discarding rooms
+v        - enter play trigger
         - forbidding discarding rooms
     - dice
 v        - rerolling
 v        - adding or subtracting points
 v        - on specific dice rolled
-            - checking the type of dice rolled (attack roll)
+v            - checking the type of dice rolled (attack roll)
         - 'classic roller'
 v        - remembering dice rolls in turn
 v        - roll modification
@@ -172,10 +171,9 @@ v    - damage
             - additional effects after prevention
         - damage prevention for monsters
         - "next" damage prevention
-        - dealing damage to monsters
+v        - dealing damage to monsters
 v        - dealing damage to players
         - replacing the amount of damage dealt to monsters/players
-        - nullifying damage on specific attack rolls
 v        - damage from loot cards
         - damage redirection
         - forbidding monster attacking
@@ -207,7 +205,7 @@ v        - item activation trigger
 v        - on death before paying penalties trigger
         - rolling the same result n times per turn trigger
         - attack roll miss trigger
-        - n-th counter put on item trigger
+v        - n-th counter put on item trigger
         - on player killing trigger
             - knowing who killed the player
         - purchase trigger
