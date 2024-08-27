@@ -40,4 +40,8 @@ public class CardTemplate {
     /// Soul value of a card
     /// </summary>
     public int SoulValue { get; set; } = 0;
+    /// <summary>
+    /// Rewards text
+    /// </summary>
+    public string RewardsText { get; set; } = "";
 }

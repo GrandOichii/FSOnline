@@ -1,5 +1,6 @@
 -- status: not tested
 
+-- !FIXME second ability doesn't work
 function _Create()
     return FS.B.Item()
         :ActivatedAbility(

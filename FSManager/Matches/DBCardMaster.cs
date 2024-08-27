@@ -32,12 +32,6 @@ public class DBCardMaster : ICardMaster
         return (await _cardService.GetKeys()).ToList();
     }
 
-    public Task<MonsterCardTemplate> GetMonster(string key)
-    {
-        // TODO
-        throw new NotImplementedException();
-    }
-
     public Task<List<string>> GetMonsterKeys()
     {
         // TODO

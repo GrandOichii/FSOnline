@@ -25,7 +25,6 @@ public class FileCardMaster : ICardMaster
 {
     private readonly Dictionary<string, CardTemplate> _index = [];
     private readonly Dictionary<string, CharacterCardTemplate> _characterIndex = [];
-    private readonly Dictionary<string, MonsterCardTemplate> _monsterIndex = [];
 
     private static void AddTo(string dir, List<string> paths, Dictionary<string, CardTemplate> index) {
         foreach (var c in paths) {
@@ -53,19 +52,6 @@ public class FileCardMaster : ICardMaster
         }
     }
 
-    private static void AddMonstersTo(string dir, List<string> paths, Dictionary<string, MonsterCardTemplate> index) {
-        foreach (var c in paths) {
-            var dataPath = Path.Join(dir, c);
-            var card = JsonSerializer.Deserialize<MonsterCardTemplate>(File.ReadAllText(dataPath + ".json"))
-                ?? throw new Exception($"failed to deserialize monster card template json in {dataPath}")
-            ;
-            var script = File.ReadAllText(dataPath + ".lua");
-            card.Script = script;
-            index.Add(card.Key, card);
-            System.Console.WriteLine("Loaded monster card " + card.Key);
-        }
-    }
-
     public void Load(string dir) {
         var manifestPath = Path.Join(dir, "manifest.json");
         var data = JsonSerializer.Deserialize<FileCardMasterData>(File.ReadAllText(manifestPath))
@@ -79,8 +65,9 @@ public class FileCardMaster : ICardMaster
         AddTo(dir, data.Cards.Rooms, _index);
         AddTo(dir, data.Cards.Events, _index);
         AddTo(dir, data.Cards.Curses, _index);
+        AddTo(dir, data.Cards.Monsters, _index);
+
         AddCharactersTo(dir, data.Cards.Characters, _characterIndex);
-        AddMonstersTo(dir, data.Cards.Monsters, _monsterIndex);
     }
 
     public Task<CardTemplate> Get(string key)
@@ -91,11 +78,6 @@ public class FileCardMaster : ICardMaster
     public Task<CharacterCardTemplate> GetCharacter(string key)
     {
         return Task.FromResult(_characterIndex[key]);
-    }
-
-    public Task<MonsterCardTemplate> GetMonster(string key)
-    {
-        return Task.FromResult(_monsterIndex[key]);
     }
 
     public Task<CharacterCardTemplate> GetRandomCharacter(Random rng, List<string> characters)
@@ -122,7 +104,10 @@ public class FileCardMaster : ICardMaster
     public Task<List<string>> GetMonsterKeys()
     {
         return Task.FromResult(
-            _monsterIndex.Keys.ToList()
+            _index.Values
+                .Where(c => c.Type == "Monster")
+                .Select(c => c.Key)
+                .ToList()
         );
     }
 }

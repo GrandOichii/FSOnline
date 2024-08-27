@@ -27,12 +27,6 @@ public interface ICardMaster {
     /// <param name="key">Character card key</param>
     /// <returns>Character card template associated with the given key</returns>
     public Task<CharacterCardTemplate> GetCharacter(string key);
-    /// <summary>
-    /// Fetch a monster card
-    /// </summary>
-    /// <param name="key">Monster card key</param>
-    /// <returns>Monster card template associated with the given key</returns>
-    public Task<MonsterCardTemplate> GetMonster(string key);
 
     /// <summary>
     /// Fetch a random character card

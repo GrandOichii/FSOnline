@@ -40,7 +40,7 @@ public partial class FileCardMasterWrapper : Node
 	}
 
 	private void AddMonsterCard(string key) {
-		var card = Cards.GetMonster(key).GetAwaiter().GetResult();
+		var card = Cards.Get(key).GetAwaiter().GetResult();
 		CardTemplates.Add(new(card));
 	}
 

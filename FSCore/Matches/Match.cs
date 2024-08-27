@@ -361,7 +361,7 @@ public class Match {
         foreach (var key in Config.Monsters)
             monsters.Add(new MatchCard(
                 this,
-                await _cardMaster.GetMonster(key),
+                await _cardMaster.Get(key),
                 DeckType.MONSTER
             ));
         MonsterDeck.Populate(monsters);
