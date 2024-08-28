@@ -19,11 +19,22 @@ public class Program {
 
         // services
         builder.Services.AddTransient<ICardService, CardService>();
+        builder.Services.AddSingleton<IMatchService, MatchService>();
 
         // mapping
         builder.Services.AddAutoMapper(
             typeof(AutoMapperProfile)
         );
+
+        builder.Services.AddSignalR();
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+
+        // settings
+        builder.Services.Configure<MatchesSettings>(
+            builder.Configuration.GetSection("Matches")
+        );
+
 
         var app = builder.Build();
 
@@ -31,6 +42,9 @@ public class Program {
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
             
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
@@ -42,6 +56,11 @@ public class Program {
         app.UseRouting();
 
         app.UseAuthorization();
+
+        // Add WebSockets
+        app.UseWebSockets(new() {
+            KeepAliveInterval = TimeSpan.FromMinutes(10)
+        });
 
         app.MapControllerRoute(
             name: "default",

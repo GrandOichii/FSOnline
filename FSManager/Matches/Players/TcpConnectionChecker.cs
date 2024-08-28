@@ -1,7 +1,7 @@
 using System.Net.Sockets;
 using FSCore.Utility;
 
-namespace FSMatchManager.Matches.Players;
+namespace FSManager.Matches.Players;
 
 /// <summary>
 /// Checker for a TCP connection

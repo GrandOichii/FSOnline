@@ -1,7 +1,7 @@
 using System.Text.Json;
 using Microsoft.Extensions.Options;
 
-namespace FSMatchManager.Services;
+namespace FSManager.Services;
 
 public class MatchService(IOptions<MatchesSettings> settings) : IMatchService {
     private readonly IOptions<MatchesSettings> _settings = settings;

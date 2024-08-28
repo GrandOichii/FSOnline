@@ -1,4 +1,4 @@
-namespace FSMatchManager.Services;
+namespace FSManager.Services;
 
 [Serializable]
 public class MatchNotFoundException : Exception

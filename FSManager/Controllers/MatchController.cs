@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace FSMatchManager.Controllers;
+namespace FSManager.Controllers;
 
 [ApiController]
 [Route("api/v1/Match")]
-public class MatchController(IMatchService matchService) : Controller {
+public class MatchController(IMatchService matchService) : ControllerBase {
     private readonly IMatchService _matchService = matchService;
 
     [HttpGet]

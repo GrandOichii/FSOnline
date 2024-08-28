@@ -1,7 +1,7 @@
 using System.Net.WebSockets;
 using System.Text;
 
-namespace FSMatchManager.Matches.Players;
+namespace FSManager.Matches.Players;
 
 public class WebSocketIOHandler(WebSocket socket) : IIOHandler
 {

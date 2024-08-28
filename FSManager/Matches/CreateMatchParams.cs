@@ -1,4 +1,4 @@
-namespace FSMatchManager.Matches;
+namespace FSManager.Matches;
 
 public enum BotType {
     RANDOM = 0

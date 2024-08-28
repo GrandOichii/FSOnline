@@ -1,4 +1,4 @@
-namespace FSMatchManager.Settings;
+namespace FSManager.Settings;
 
 public class MatchesSettings {
     /// <summary>

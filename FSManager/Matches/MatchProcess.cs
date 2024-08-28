@@ -2,9 +2,10 @@ using System.Net;
 using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Text.Json.Serialization;
+using FSCore.Cards.CardMasters;
 using FSCore.Matches.Players;
 
-namespace FSMatchManager.Matches;
+namespace FSManager.Matches;
 
 
 /// <summary>

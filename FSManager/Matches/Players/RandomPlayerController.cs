@@ -5,7 +5,7 @@ using FSCore.Matches.Players.Controllers;
 using FSCore.Matches.Targets;
 
 
-namespace FSMatchManager.Matches.Players;
+namespace FSManager.Matches.Players;
 
 public class RandomPlayerController : IPlayerController
 {

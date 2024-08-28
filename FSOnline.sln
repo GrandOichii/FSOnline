@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSManager", "FSManager\FSMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSManager.Tests", "FSManager.Tests\FSManager.Tests.csproj", "{190753EA-FF10-4420-9FC9-CD7A1DCAA8C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSMatchManager", "FSMatchManager\FSMatchManager.csproj", "{977ADAC5-6029-4A11-A4E0-04D5B424F905}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSClient", "FSClient\FSClient.csproj", "{FD123BE7-1F51-4BE6-B35C-F9D8CFC55DB3}"
 EndProject
 Global

@@ -1,6 +1,6 @@
 using System.Net.WebSockets;
 
-namespace FSMatchManager.Matches.Players;
+namespace FSManager.Matches.Players;
 
 /// <summary>
 /// Checker for a WebSocket connection

@@ -1,4 +1,4 @@
-namespace FSMatchManager.Matches.Players;
+namespace FSManager.Matches.Players;
 
 /// <summary>
 /// Bot connection checker

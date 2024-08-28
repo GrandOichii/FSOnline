@@ -1,7 +1,7 @@
 using System.Net.WebSockets;
 using System.Text;
 
-namespace FSMatchManager.Extensions;
+namespace FSManager.Extensions;
 
 /// <summary>
 /// General WebSocket exception class
