@@ -1,0 +1,7 @@
+{
+    "Key": "placenta-v2",
+    "Name": "Placenta",
+    "Type": "Item",
+    "Text": "+1{health}\nYou take no combat damage on attack rolls of 4.",
+    "Script": "placenta-v2.lua"
+}
