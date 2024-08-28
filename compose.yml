@@ -3,7 +3,7 @@ version: '3.1'
 services:
   db:
     container_name: fso-db
-    image: mcr.microsoft.com/azure-sql-edge
+    image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
       ACCEPT_EULA: Y
       SA_PASSWORD: 'Password!'
