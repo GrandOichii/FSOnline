@@ -186,7 +186,8 @@
             "monsters/carrion-queen-v2",
             "monsters/hopper-v2",
             "monsters/death-v2",
-            "monsters/holy-dip-v2"
+            "monsters/holy-dip-v2",
+            "monsters/squirt-v2"
         ],
         "Events": [
             "events/troll-bombs-v2",

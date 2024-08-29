@@ -1,0 +1,11 @@
+{
+    "Key": "squirt-v2",
+    "Name": "Squirt",
+    "Type": "Monster",
+    "Text": "",
+    "Script": "squirt-v2.lua",
+    "Health": 2,
+    "Evasion": 3,
+    "Attack": 1,
+    "RewardsText": "Loot 1"
+}
