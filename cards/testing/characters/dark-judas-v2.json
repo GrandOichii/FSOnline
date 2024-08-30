@@ -5,8 +5,5 @@
     "Health": 2,
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
-    "StartingItems": [
-        "dark-arts-v2"
-    ],
     "Script": "dark-judas-v2.lua"
 }

@@ -18,5 +18,6 @@ function _Create()
                 me.Owner.Stats.State.Attack = me.Owner.Stats.State.Attack + mod
             end
         )
+        :StartingItem('soulbond-requiem')
     :Build()
 end

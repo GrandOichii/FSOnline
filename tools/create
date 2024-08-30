@@ -6,7 +6,6 @@ import json
 
 STATS_FOR = ['monster', 'character']
 REWARDS_FOR = ['monster']
-STARTING_ITEMS_FOR = ['character']
 
 TYPE_TO_SCRIPT_INDEX = {
     'character':
@@ -15,7 +14,7 @@ TYPE_TO_SCRIPT_INDEX = {
 function _Create()
     return FS.B.Character()
         :Basic()
-
+        :StartingItem('STARTINGITEM')
     :Build()
 end''',
     'startingitem':
@@ -173,10 +172,6 @@ if card_type in STATS_FOR:
     json_data['Attack'] = 0
 if card_type in REWARDS_FOR:
     json_data['RewardsText'] = 'REWARDS'
-if card_type in STARTING_ITEMS_FOR:
-    json_data['StartingItems'] = [
-        'STARTINGITEM'
-    ]
 
 open(join(CARDS_DIR, cpath + '.json'), 'w').write(json.dumps(json_data, indent=4))
 

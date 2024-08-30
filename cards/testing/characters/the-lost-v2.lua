@@ -15,5 +15,6 @@ function _Create()
                 )
             :Build()
         )
+        :StartingItem('holy-mantle-v2')
     :Build()
 end

@@ -5,8 +5,5 @@
     "Health": 2,
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
-    "StartingItems": [
-        "gimpy-v2"
-    ],
     "Script": "whore-of-babylon-v2.lua"
 }

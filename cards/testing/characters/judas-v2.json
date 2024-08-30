@@ -5,8 +5,5 @@
     "Health": 2,
     "Attack": 1,
     "Text": "{T}: Play an additional Loot card this turn.",
-    "StartingItems": [
-        "book-of-belial-v2"
-    ],
     "Script": "judas-v2.lua"
 }
