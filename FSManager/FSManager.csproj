@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FSCore\FSCore.csproj" />
+    <ProjectReference Include="..\FSManager.Shared\FSManager.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

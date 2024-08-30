@@ -1,4 +1,4 @@
-namespace FSManager.Models;
+namespace FSManager.Shared.Models;
 
 public class ErrorViewModel
 {

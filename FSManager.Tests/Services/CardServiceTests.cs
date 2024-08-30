@@ -3,7 +3,7 @@ using FakeItEasy;
 using FluentAssertions;
 using FSManager.Dto.Cards;
 using FSManager.Mapping;
-using FSManager.Models;
+using FSManager.Shared.Models;
 using FSManager.Repositories;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Query;

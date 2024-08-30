@@ -1,4 +1,4 @@
-namespace FSManager.Models;
+namespace FSManager.Shared.Models;
 
 public class CardModel : CardTemplate {
     public required List<CardImage> Images { get; set; }
