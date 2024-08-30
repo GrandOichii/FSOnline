@@ -21,15 +21,8 @@ public interface ICardMaster {
     /// <param name="key">Card key</param>
     /// <returns>Card template associated with the given key</returns>
     public Task<CardTemplate> Get(string key);
-    /// <summary>
-    /// Fetch a character card
-    /// </summary>
-    /// <param name="key">Character card key</param>
-    /// <returns>Character card template associated with the given key</returns>
-    public Task<CharacterCardTemplate> GetCharacter(string key);
 
     public Task<List<string>> GetKeys();
-    public Task<List<string>> GetCharacterKeys();
     public Task<List<string>> GetKeysOfType(string type);
     public async Task<List<string>> GetMonsterKeys() => await GetKeysOfType("Monster");
 }

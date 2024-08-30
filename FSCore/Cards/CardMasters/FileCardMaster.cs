@@ -24,7 +24,6 @@ public class FileCardMasterData {
 public class FileCardMaster : ICardMaster
 {
     private readonly Dictionary<string, CardTemplate> _index = [];
-    private readonly Dictionary<string, CharacterCardTemplate> _characterIndex = [];
 
     private static void AddTo(string dir, List<string> paths, Dictionary<string, CardTemplate> index) {
         foreach (var c in paths) {
@@ -36,19 +35,6 @@ public class FileCardMaster : ICardMaster
             card.Script = script;
             index.Add(card.Key, card);
             System.Console.WriteLine("Loaded card " + card.Key);
-        }
-    }
-
-    private static void AddCharactersTo(string dir, List<string> paths, Dictionary<string, CharacterCardTemplate> index) {
-        foreach (var c in paths) {
-            var dataPath = Path.Join(dir, c);
-            var card = JsonSerializer.Deserialize<CharacterCardTemplate>(File.ReadAllText(dataPath + ".json"))
-                ?? throw new Exception($"failed to deserialize character card template json in {dataPath}")
-            ;
-            var script = File.ReadAllText(dataPath + ".lua");
-            card.Script = script;
-            index.Add(card.Key, card);
-            System.Console.WriteLine("Loaded character card " + card.Key);
         }
     }
 
@@ -66,8 +52,7 @@ public class FileCardMaster : ICardMaster
         AddTo(dir, data.Cards.Events, _index);
         AddTo(dir, data.Cards.Curses, _index);
         AddTo(dir, data.Cards.Monsters, _index);
-
-        AddCharactersTo(dir, data.Cards.Characters, _characterIndex);
+        AddTo(dir, data.Cards.Characters, _index);
     }
 
     public Task<CardTemplate> Get(string key)
@@ -75,22 +60,10 @@ public class FileCardMaster : ICardMaster
         return Task.FromResult(_index[key]);
     }
 
-    public Task<CharacterCardTemplate> GetCharacter(string key)
-    {
-        return Task.FromResult(_characterIndex[key]);
-    }
-
     public Task<List<string>> GetKeys()
     {
         return Task.FromResult(
             _index.Keys.ToList()
-        );
-    }
-
-    public Task<List<string>> GetCharacterKeys()
-    {
-        return Task.FromResult(
-            _characterIndex.Keys.ToList()
         );
     }
 

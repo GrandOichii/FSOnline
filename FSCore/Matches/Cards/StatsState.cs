@@ -13,8 +13,8 @@ public class StatsState {
     }
 
     public StatsState(Player player) {
-        Attack = player.Character.GetTemplate().Attack;
-        Health = player.Character.GetTemplate().Health;
+        Attack = player.Character.Card.Template.Attack;
+        Health = player.Character.Card.Template.Health;
     }
 
     public StatsState(InPlayMatchCard card) {

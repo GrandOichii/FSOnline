@@ -94,7 +94,7 @@ public class Player : IStateModifier {
     /// </summary>
     public string LogName => $"{Name} [{Idx}]";
 
-    public Player(Match match, string name, int idx, CharacterCardTemplate characterTemplate, IPlayerController controller) {
+    public Player(Match match, string name, int idx, CardTemplate characterTemplate, IPlayerController controller) {
         Match = match;
         Name = name;
         Idx = idx;
@@ -557,10 +557,7 @@ public class Player : IStateModifier {
     /// Add starting items of the character
     /// </summary>
     public async Task AddStartingItems() {
-        var items = await Match.CreateStartingItems(this, Character.GetTemplate());
-        foreach (var item in items) {
-            await GainItem(item);
-        }
+        await Match.CreateStartingItems(this, Character);
     }
 
     #endregion

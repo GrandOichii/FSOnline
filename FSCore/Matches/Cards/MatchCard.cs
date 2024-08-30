@@ -67,6 +67,10 @@ public class MatchCard {
     /// Rewards for killing the monster
     /// </summary>
     public List<RewardAbility> Rewards { get; }
+    /// <summary>
+    /// Keys of starting items
+    /// </summary>
+    public List<string> StartingItemKeys { get; }
 
     #endregion
 
@@ -128,6 +132,14 @@ public class MatchCard {
 
         // loot fizzle check
         FizzleCheck = LuaUtility.TableGet<LuaFunction>(data, "FizzleCheck");
+
+        // starting items
+        try {
+            var keys = LuaUtility.TableGet<LuaTable>(data, "StartingItemKeys");
+            StartingItemKeys = keys.Values.Cast<string>().ToList();
+        } catch (Exception e) {
+            throw new MatchException($"Failed to get starting items for card {template.Name}", e);
+        }
 
         // activated abilities
         try {

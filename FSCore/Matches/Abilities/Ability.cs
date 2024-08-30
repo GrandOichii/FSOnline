@@ -44,7 +44,10 @@ public abstract class Ability {
             var returned = CostFunc.Call(card, player, stackEffect, args);
             return LuaUtility.GetReturnAsBool(returned);
         } catch (Exception e) {
-            throw new MatchException($"Exception during cost execution of ability of card {card.LogName} by player {player.LogName}", e);
+            var msg = $"Exception during cost execution of ability of card {card.LogName}";
+            if (player is not null)
+                msg += $" by player {player.LogName}";
+            throw new MatchException(msg, e);
         }
     }
 

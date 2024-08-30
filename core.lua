@@ -954,6 +954,8 @@ FS.B = {}
 function FS.B.Card()
     local result = {}
 
+    result.startingItemKeys = {}
+
     result.effectGroups = {}
     result.activatedAbilities = {}
     result.triggeredAbilities = {}
@@ -969,6 +971,9 @@ function FS.B.Card()
 
     function result:Build()
         local card = {}
+
+        -- starting items
+        card.StartingItemKeys = result.startingItemKeys
 
         -- effects
         card.Effects = {}
@@ -1352,6 +1357,11 @@ function FS.B.Character()
                 )
             :Build()
         )
+        return result
+    end
+
+    function result:StartingItem(key)
+        result.startingItemKeys[#result.startingItemKeys+1] = key
         return result
     end
 

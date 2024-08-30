@@ -48,10 +48,6 @@ public class CardRepository : DbContext, ICardRepository
         collectionsTable
             .HasMany(col => col.Cards)
             .WithOne(card => card.Collection);
-
-        cardsTable
-            .HasMany(c => c.StartingItems)
-            .WithMany(c => c.IsStartingItemFor);
     }
 
     public Task<string> GetDefaultCardImageCollectionKey() {

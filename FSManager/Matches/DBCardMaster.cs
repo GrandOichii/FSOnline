@@ -15,17 +15,6 @@ public class DBCardMaster : ICardMaster
         return await _cardService.ByKey(key);
     }
 
-    public Task<CharacterCardTemplate> GetCharacter(string key)
-    {
-        // TODO
-        throw new NotImplementedException();
-    }
-
-    public Task<List<string>> GetCharacterKeys()
-    {
-        return GetKeysOfType("Character");
-    }
-
     public async Task<List<string>> GetKeys()
     {
         return (await _cardService.GetKeys())

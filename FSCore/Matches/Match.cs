@@ -227,9 +227,9 @@ public class Match {
 
     #endregion
 
-    private async Task<CharacterCardTemplate> GetRandomCharacter() {
+    private async Task<CardTemplate> GetRandomCharacter() {
         var key = Config.Characters[Rng.Next() % Config.Characters.Count];
-        return await _cardMaster.GetCharacter(key);
+        return await _cardMaster.Get(key);
     }
 
     /// <summary>
@@ -244,7 +244,7 @@ public class Match {
 
         var character = string.IsNullOrEmpty(characterKey)
             ? await GetRandomCharacter()
-            : await _cardMaster.GetCharacter(characterKey);
+            : await _cardMaster.Get(characterKey);
 
         var player = new Player(
             this,
@@ -970,19 +970,15 @@ public class Match {
         ;
     }
 
-    public async Task<List<OwnedInPlayMatchCard>> CreateStartingItems(Player owner, CharacterCardTemplate characterTemplate) {
-        var result = new List<OwnedInPlayMatchCard>();
-
-        foreach (var key in characterTemplate.StartingItems) {
+    public async Task CreateStartingItems(Player owner, CharacterMatchCard character) {
+        foreach (var key in character.Card.StartingItemKeys) {
             var template = await _cardMaster.Get(key);
             var card = new OwnedInPlayMatchCard(
                 new MatchCard(this, template),
                 owner
             );
-            result.Add(card);
+            await PlaceOwnedCard(card, true);
         }
-
-        return result;
     }
 
     public async Task PlaceOwnedCard(OwnedInPlayMatchCard card, bool triggerEnter = true) {
