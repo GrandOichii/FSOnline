@@ -2,8 +2,6 @@ using AutoMapper;
 using FakeItEasy;
 using FluentAssertions;
 using FSManager.Dto.Cards;
-using FSManager.Mapping;
-using FSManager.Shared.Models;
 using FSManager.Repositories;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Query;
@@ -23,7 +21,6 @@ public class CardServiceTests {
         );
 
         _cardRepo = A.Fake<ICardRepository>();
-        A.CallTo(() => _cardRepo.GetDefaultCardImageCollectionKey()).Returns("Default");
 
         _cardService = new CardService(_cardRepo, mapper);
     }
@@ -40,10 +37,9 @@ public class CardServiceTests {
             Script = "print('Missing script')",
             SoulValue = 1,
             Collection = new() { Key = "test", Cards = [] },
-            Images = [ ]
+            RewardsText = "",
+            ImageUrl = "image-url"
         };
-
-        result.Images.Add(new() {ID = 1, Source = "image-source", Card = result, Collection = new() {Key = await _cardRepo.GetDefaultCardImageCollectionKey(), Images = []} });
         return result;
     } 
 

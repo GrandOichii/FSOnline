@@ -10,7 +10,7 @@ CREATE OR REPLACE PROCEDURE createCard(
     soul_value int,
     rewards_text VARCHAR,
     collectionKey VARCHAR,
-    image_url VARCHAR,
+    image_url VARCHAR
 )
 LANGUAGE plpgsql
 AS $$
@@ -48,5 +48,4 @@ BEGIN
 		collectionKey,
         image_url
 	);
-	commit;
 END; $$;
