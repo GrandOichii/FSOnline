@@ -1,20 +1,31 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace FSManager.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class RemoveCardImageCollections : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "CardImages");
+
+            migrationBuilder.DropTable(
+                name: "CardImageCollections");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
                 name: "CardImageCollections",
                 columns: table => new
                 {
-                    Key = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    Key = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -22,27 +33,14 @@ namespace FSManager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cards",
-                columns: table => new
-                {
-                    Key = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Text = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cards", x => x.Key);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "CardImages",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Source = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CardKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CollectionKey = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    ID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CardKey = table.Column<string>(type: "text", nullable: false),
+                    CollectionKey = table.Column<string>(type: "text", nullable: false),
+                    Source = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,19 +68,6 @@ namespace FSManager.Migrations
                 name: "IX_CardImages_CollectionKey",
                 table: "CardImages",
                 column: "CollectionKey");
-        }
-
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "CardImages");
-
-            migrationBuilder.DropTable(
-                name: "CardImageCollections");
-
-            migrationBuilder.DropTable(
-                name: "Cards");
         }
     }
 }

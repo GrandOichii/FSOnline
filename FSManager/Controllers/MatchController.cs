@@ -33,7 +33,7 @@ public class MatchController(IMatchService matchService) : ControllerBase {
             } catch (Exception e) {
                 // TODO handle
                 System.Console.WriteLine(e);
-                throw e;
+                throw;
             }
 
             // try {

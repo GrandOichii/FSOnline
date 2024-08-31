@@ -11,7 +11,7 @@ GO
 DROP PROCEDURE IF EXISTS ensureDefaultCollectionCreated;
 
 GO
-CREATE PROCEDURE ensureDefaultCollectionCreated
+CREATE PROCEDURE ensureDefaultCollectionCreatedw
 AS BEGIN
     DECLARE @default VARCHAR(MAX)
     SELECT @default = dbo.getDefaultCardImageCollectionKey()

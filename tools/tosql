@@ -23,8 +23,8 @@ DECKS = [
     'Events',
     'Curses',
 ]
-
-INSERT_FORMAT = 'EXEC createCard \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\', \'{}\'\n'
+INSERT_FORMAT = 'INSERT INTO Cards VALUES '
+INSERT_FORMAT = 'CALL createCard (\'{key}\', \'{name}\', \'{type}\', {health}, {attack}, {evasion}, \'{text}\', \'{script}\', {soulvalue}, \'{rewardstext}\', \'{collection}\', \'{imageurl}\');\n'
 
 result = ''
 card_index = json.loads(open(CARD_INDEX_PATH, 'r').read())
@@ -41,17 +41,18 @@ for p in CARD_PATHS:
             continue
         image_url = card_index[key]
         collection_key = key.split('-')[-1]
-        result += INSERT_FORMAT.format(
-            key,
-            card_data['Name'].replace('\'', '\'\''),
-            card_data['Type'],
-            card_data['Health'] if 'Health' in card_data else -1,
-            card_data['Attack'] if 'Attack' in card_data else -1,
-            card_data['Evasion'] if 'Evasion' in card_data else -1,
-            card_data['Text'].replace('\'', '\'\''),
-            open(join(p, card_p + '.lua'), 'r').read().replace('\'', '\'\'').replace('\\\'\'', '\'\''),
-            card_data['SoulValue'] if 'SoulValue' in card_data else -1,
-            collection_key,
-            image_url
-        )
+        result += INSERT_FORMAT.format_map({
+            'key': key,
+            'name': card_data['Name'].replace('\'', '\'\''),
+            'type': card_data['Type'],
+            'health': card_data['Health'] if 'Health' in card_data else -1,
+            'attack': card_data['Attack'] if 'Attack' in card_data else -1,
+            'evasion': card_data['Evasion'] if 'Evasion' in card_data else -1,
+            'text': card_data['Text'].replace('\'', '\'\''),
+            'script': open(join(p, card_p + '.lua'), 'r').read().replace('\'', '\'\'').replace('\\\'\'', '\'\''),
+            'soulvalue': card_data['SoulValue'] if 'SoulValue' in card_data else -1,
+            'rewardstext': card_data['RewardsText'] if 'RewardsText' in card_data else '',
+            'collection': collection_key,
+            'imageurl': image_url
+        })
 open(OUT_PATH, 'w').write(result)

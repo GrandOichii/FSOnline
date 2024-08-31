@@ -5,15 +5,15 @@
 namespace FSManager.Migrations
 {
     /// <inheritdoc />
-    public partial class AddRewardsText : Migration
+    public partial class AddImageUrlToCard : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "RewardsText",
+                name: "ImageUrl",
                 table: "Cards",
-                type: "nvarchar(max)",
+                type: "text",
                 nullable: false,
                 defaultValue: "");
         }
@@ -22,7 +22,7 @@ namespace FSManager.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "RewardsText",
+                name: "ImageUrl",
                 table: "Cards");
         }
     }

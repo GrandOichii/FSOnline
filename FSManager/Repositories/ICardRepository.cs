@@ -1,7 +1,6 @@
 namespace FSManager.Repositories;
 
 public interface ICardRepository {
-    public Task<string> GetDefaultCardImageCollectionKey();
     public Task CreateCard(
         string key,
         string name,

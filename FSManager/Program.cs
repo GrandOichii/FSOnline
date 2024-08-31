@@ -13,13 +13,13 @@ public class Program {
 
         // DB
         builder.Services.AddDbContext<CardRepository>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("CardsContext")));
+            options.UseNpgsql(builder.Configuration.GetConnectionString("CardsContext")));
 
         builder.Services.AddTransient<ICardRepository, CardRepository>();
 
         // services
         builder.Services.AddTransient<ICardService, CardService>();
-        builder.Services.AddSingleton<IMatchService, MatchService>();
+        // builder.Services.AddSingleton<IMatchService, MatchService>();
 
         // mapping
         builder.Services.AddAutoMapper(

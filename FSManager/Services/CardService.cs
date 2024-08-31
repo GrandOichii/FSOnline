@@ -39,11 +39,10 @@ public class CardService : ICardService
 
     public async Task<IEnumerable<GetCard>> All(string? cardImageCollection = null)
     {
-        cardImageCollection ??= await _cards.GetDefaultCardImageCollectionKey();
         var cards = await _cards.AllCards();
 
         return cards.Select(
-            c => MapToGetCard(c, cardImageCollection)
+            c => MapToGetCard(c)
         );
     }
 
@@ -84,15 +83,13 @@ public class CardService : ICardService
     public async Task<GetCard> ByKey(string key) {
         var result = await _cards.ByKey(key)
             ?? throw new CardNotFoundException($"No card with key {key}");
-        var colKey = await _cards.GetDefaultCardImageCollectionKey();
 
-        return MapToGetCard(result, colKey);
+        return MapToGetCard(result);
     }
 
-    private GetCard MapToGetCard(CardModel card, string imageCollectionKey) {
+    private GetCard MapToGetCard(CardModel card) {
         return _mapper.Map<GetCard>(
-            card,
-            o => o.Items["ICK"] = imageCollectionKey
+            card
         );
     }
 
@@ -102,18 +99,14 @@ public class CardService : ICardService
     }
 
     public async Task<IEnumerable<GetCard>> FromCollection(string collectionKey) {
-        var colKey = await _cards.GetDefaultCardImageCollectionKey();
-
         return (await _cards.GetCards())
             .Where(c => c.Collection.Key == collectionKey)
-            .Select(c => MapToGetCard(c, colKey));
+            .Select(c => MapToGetCard(c));
     }
 
-    public async Task<IEnumerable<GetCard>> OfType(string type) {
-        var colKey = await _cards.GetDefaultCardImageCollectionKey();
-        
+    public async Task<IEnumerable<GetCard>> OfType(string type) {        
         return (await _cards.GetCards())
             .Where(c => c.Type == type)
-            .Select(c => MapToGetCard(c, colKey));
+            .Select(c => MapToGetCard(c));
     }
 }

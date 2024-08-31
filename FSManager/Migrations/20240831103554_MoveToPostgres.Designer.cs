@@ -2,17 +2,17 @@
 using FSManager.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace FSManager.Migrations
 {
     [DbContext(typeof(CardRepository))]
-    [Migration("20240828105808_AddRewardsText")]
-    partial class AddRewardsText
+    [Migration("20240831103554_MoveToPostgres")]
+    partial class MoveToPostgres
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,39 +20,39 @@ namespace FSManager.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.8")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("FSManager.Models.CardCollection", b =>
+            modelBuilder.Entity("FSManager.Shared.Models.CardCollection", b =>
                 {
                     b.Property<string>("Key")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.HasKey("Key");
 
                     b.ToTable("CardCollections", (string)null);
                 });
 
-            modelBuilder.Entity("FSManager.Models.CardImage", b =>
+            modelBuilder.Entity("FSManager.Shared.Models.CardImage", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
 
                     b.Property<string>("CardKey")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.Property<string>("CollectionKey")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Source")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("ID");
 
@@ -63,56 +63,56 @@ namespace FSManager.Migrations
                     b.ToTable("CardImages", (string)null);
                 });
 
-            modelBuilder.Entity("FSManager.Models.CardImageCollection", b =>
+            modelBuilder.Entity("FSManager.Shared.Models.CardImageCollection", b =>
                 {
                     b.Property<string>("Key")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.HasKey("Key");
 
                     b.ToTable("CardImageCollections", (string)null);
                 });
 
-            modelBuilder.Entity("FSManager.Models.CardModel", b =>
+            modelBuilder.Entity("FSManager.Shared.Models.CardModel", b =>
                 {
                     b.Property<string>("Key")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.Property<int>("Attack")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("CollectionKey")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.Property<int>("Evasion")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("Health")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("RewardsText")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Script")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("SoulValue")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Key");
 
@@ -121,15 +121,15 @@ namespace FSManager.Migrations
                     b.ToTable("Cards", (string)null);
                 });
 
-            modelBuilder.Entity("FSManager.Models.CardImage", b =>
+            modelBuilder.Entity("FSManager.Shared.Models.CardImage", b =>
                 {
-                    b.HasOne("FSManager.Models.CardModel", "Card")
+                    b.HasOne("FSManager.Shared.Models.CardModel", "Card")
                         .WithMany("Images")
                         .HasForeignKey("CardKey")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FSManager.Models.CardImageCollection", "Collection")
+                    b.HasOne("FSManager.Shared.Models.CardImageCollection", "Collection")
                         .WithMany("Images")
                         .HasForeignKey("CollectionKey")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -140,9 +140,9 @@ namespace FSManager.Migrations
                     b.Navigation("Collection");
                 });
 
-            modelBuilder.Entity("FSManager.Models.CardModel", b =>
+            modelBuilder.Entity("FSManager.Shared.Models.CardModel", b =>
                 {
-                    b.HasOne("FSManager.Models.CardCollection", "Collection")
+                    b.HasOne("FSManager.Shared.Models.CardCollection", "Collection")
                         .WithMany("Cards")
                         .HasForeignKey("CollectionKey")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -151,17 +151,17 @@ namespace FSManager.Migrations
                     b.Navigation("Collection");
                 });
 
-            modelBuilder.Entity("FSManager.Models.CardCollection", b =>
+            modelBuilder.Entity("FSManager.Shared.Models.CardCollection", b =>
                 {
                     b.Navigation("Cards");
                 });
 
-            modelBuilder.Entity("FSManager.Models.CardImageCollection", b =>
+            modelBuilder.Entity("FSManager.Shared.Models.CardImageCollection", b =>
                 {
                     b.Navigation("Images");
                 });
 
-            modelBuilder.Entity("FSManager.Models.CardModel", b =>
+            modelBuilder.Entity("FSManager.Shared.Models.CardModel", b =>
                 {
                     b.Navigation("Images");
                 });

@@ -31,7 +31,7 @@ public static class WebSocketExtensions {
 		do
 		{
 			result = await socket.ReceiveAsync(buffer, CancellationToken.None);
-			string messagePart = Encoding.UTF8.GetString(buffer.Array, 0, result.Count);
+			string messagePart = Encoding.UTF8.GetString(buffer.Array!, 0, result.Count);
 			message.Append(messagePart);
 		}
 		while (!result.EndOfMessage);

@@ -3,15 +3,16 @@ version: '3.1'
 services:
   db:
     container_name: fso-db
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    image: postgres
     environment:
-      ACCEPT_EULA: Y
-      SA_PASSWORD: 'Password!'
-    ports:
-      - 1444:1433
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
-      - fso-db-data:/var/opt/mssql
-
+      # - .:/docker-entrypoint-initdb.d
+      - fso-db-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
   # cache:
   #   container_name: fso-cache
   #   hostname: valkey

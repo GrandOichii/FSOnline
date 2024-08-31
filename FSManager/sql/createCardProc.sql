@@ -8,8 +8,9 @@ CREATE OR REPLACE PROCEDURE createCard(
     text VARCHAR,
     script VARCHAR,
     soul_value int,
+    rewards_text VARCHAR,
     collectionKey VARCHAR,
-    default_image_src VARCHAR
+    image_url VARCHAR,
 )
 LANGUAGE plpgsql
 AS $$
@@ -29,9 +30,11 @@ BEGIN
 		"Evasion",
 		"Text", 
 		"Script", 
-		"SoulValue", 
-		"CollectionKey") 
-	VALUES (
+		"SoulValue",
+        "RewardsText",
+		"CollectionKey",
+        "ImageUrl"
+    ) VALUES (
 		key, 
 		name, 
 		type, 
@@ -41,7 +44,9 @@ BEGIN
 		text, 
 		script, 
 		soul_value, 
-		collectionKey
+        rewards_text,
+		collectionKey,
+        image_url
 	);
 	commit;
 END; $$;

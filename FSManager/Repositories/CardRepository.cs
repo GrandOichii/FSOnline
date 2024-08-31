@@ -6,7 +6,6 @@ namespace FSManager.Repositories;
 public class CardRepository : DbContext, ICardRepository
 {
     public DbSet<CardModel> Cards { get; set; }
-    public DbSet<CardImageCollection> ImageCollections { get; set; }
 
     public CardRepository(DbContextOptions<CardRepository> options)
         : base(options)
@@ -20,43 +19,15 @@ public class CardRepository : DbContext, ICardRepository
             .ToTable("Cards");
         cardsTable.HasKey(card => card.Key);
 
-        // card image collections
-        var imageCollectionTable = modelBuilder.Entity<CardImageCollection>()
-            .ToTable("CardImageCollections");
-        imageCollectionTable.HasKey(col => col.Key);
-
-        // card images
-        var imageTable = modelBuilder.Entity<CardImage>()
-            .ToTable("CardImages");
-        imageTable.HasKey(col => col.ID);
-        imageTable.Property(col => col.ID).ValueGeneratedOnAdd();
-
         // card collections
         var collectionsTable = modelBuilder.Entity<CardCollection>()
             .ToTable("CardCollections");
         collectionsTable.HasKey(col => col.Key);
 
         // relations
-        cardsTable
-            .HasMany(card => card.Images)
-            .WithOne(img => img.Card);
-        
-        imageCollectionTable
-            .HasMany(col => col.Images)
-            .WithOne(img => img.Collection);
-
         collectionsTable
             .HasMany(col => col.Cards)
             .WithOne(card => card.Collection);
-    }
-
-    public Task<string> GetDefaultCardImageCollectionKey() {
-        var result = Database
-            .SqlQuery<string>($"SELECT dbo.getDefaultCardImageCollectionKey()")
-            .ToList();
-        return Task.FromResult(
-            result[0]
-        );
     }
 
     public async Task CreateCard(
@@ -79,8 +50,6 @@ public class CardRepository : DbContext, ICardRepository
     private IQueryable<CardModel> FetchCards() {
         return Cards
             .Include(c => c.Collection)
-            .Include(c => c.Images)
-                .ThenInclude(img => img.Collection)
         ;
     } 
 
