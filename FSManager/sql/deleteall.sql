@@ -1,4 +1,5 @@
-DELETE FROM CardImages;
-DELETE FROM Cards;
-DELETE FROM CardImageCollections;
-DELETE FROM CardCollections;
+DELETE FROM "CardImages";
+DELETE FROM "CardRelations";
+DELETE FROM "Cards";
+DELETE FROM "CardImageCollections";
+DELETE FROM "CardCollections";

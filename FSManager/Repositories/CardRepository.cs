@@ -24,10 +24,27 @@ public class CardRepository : DbContext, ICardRepository
             .ToTable("CardCollections");
         collectionsTable.HasKey(col => col.Key);
 
+        // card relations
+        var cardRelationsTable = modelBuilder.Entity<CardRelation>()
+            .ToTable("CardRelations");
+        cardRelationsTable.HasKey(rel => rel.ID);
+        cardRelationsTable
+            .Property(rel => rel.ID)
+            .ValueGeneratedOnAdd();
+
         // relations
         collectionsTable
             .HasMany(col => col.Cards)
-            .WithOne(card => card.Collection);
+            .WithOne(card => card.Collection)
+        ;
+
+        cardsTable
+            .HasMany(card => card.Relations)
+            .WithOne(rel => rel.RelatedTo);
+
+        cardsTable
+            .HasMany(card => card.RelatedTo)
+            .WithOne(rel => rel.RelatedCard);
     }
 
     public async Task CreateCard(
@@ -50,6 +67,8 @@ public class CardRepository : DbContext, ICardRepository
     private IQueryable<CardModel> FetchCards() {
         return Cards
             .Include(c => c.Collection)
+            .Include(c => c.Relations)
+                .ThenInclude(c => c.RelatedCard)
         ;
     } 
 

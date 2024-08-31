@@ -9,6 +9,10 @@ public class AutoMapperProfile : Profile {
                 c => c.Collection, 
                 o => o.MapFrom(c => c.Collection.Key)
             )
+            .ForMember(
+                c => c.RelatedCards,
+                o => o.MapFrom(c => c.Relations.Select(rel => rel.RelatedCard))
+            )
         ;
     }
 }

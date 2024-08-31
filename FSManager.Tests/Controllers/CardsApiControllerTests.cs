@@ -1,5 +1,3 @@
-using FakeItEasy;
-using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FSManager.Tests.Controllers;

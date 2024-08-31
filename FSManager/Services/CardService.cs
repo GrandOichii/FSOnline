@@ -83,7 +83,6 @@ public class CardService : ICardService
     public async Task<GetCard> ByKey(string key) {
         var result = await _cards.ByKey(key)
             ?? throw new CardNotFoundException($"No card with key {key}");
-
         return MapToGetCard(result);
     }
 

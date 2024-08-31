@@ -1,7 +1,3 @@
-using FakeItEasy;
-using FluentAssertions;
-using FSManager.Controllers;
-using FSManager.Dto.Cards;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FSManager.Tests.Controllers;

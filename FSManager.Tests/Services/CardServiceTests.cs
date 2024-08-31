@@ -1,11 +1,3 @@
-using AutoMapper;
-using FakeItEasy;
-using FluentAssertions;
-using FSManager.Dto.Cards;
-using FSManager.Repositories;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore.Query;
-
 namespace FSManager.Tests.Services;
 
 public class CardServiceTests {
