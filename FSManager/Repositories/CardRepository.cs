@@ -103,4 +103,15 @@ public class CardRepository : DbContext, ICardRepository
     public async Task<IEnumerable<CardModel>> GetCards() {
         return FetchCards();
     }
+
+    public async Task CreateRelation(CardRelation relation)
+    {
+        relation.RelatedTo.Relations.Add(relation);
+        await SaveChangesAsync();
+    }
+
+    public async Task DeleteRelation(CardRelation relation) {
+        Entry(relation).State = EntityState.Deleted;
+        await SaveChangesAsync();
+    }
 }

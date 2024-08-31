@@ -3,31 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FSManager.Services;
 
-[System.Serializable]
-public class CardServiceException : System.Exception
-{
-    public CardServiceException() { }
-    public CardServiceException(string message) : base(message) { }
-    public CardServiceException(string message, System.Exception inner) : base(message, inner) { }
-}
-
-[System.Serializable]
-public class CardNotFoundException : CardServiceException
-{
-    public CardNotFoundException() { }
-    public CardNotFoundException(string message) : base(message) { }
-    public CardNotFoundException(string message, System.Exception inner) : base(message, inner) { }
-}
-
-[System.Serializable]
-public class FailedToDeleteCardException : CardServiceException
-{
-    public FailedToDeleteCardException() { }
-    public FailedToDeleteCardException(string message) : base(message) { }
-    public FailedToDeleteCardException(string message, System.Exception inner) : base(message, inner) { }
-}
 
 public class CardService : ICardService
+// public class CardService
 {
     private readonly ICardRepository _cards;
     private readonly IMapper _mapper;
@@ -67,7 +45,7 @@ public class CardService : ICardService
 
     public async Task Delete(string key) {
         if (await _cards.ByKey(key) is null)
-            throw new CardNotFoundException($"Card with key {key} not found");
+            throw new CardNotFoundException(key);
 
         try {
             var deleted = await _cards.RemoveCard(key);
@@ -82,7 +60,7 @@ public class CardService : ICardService
 
     public async Task<GetCardWithRelations> ByKey(string key) {
         var result = await _cards.ByKey(key)
-            ?? throw new CardNotFoundException($"No card with key {key}");
+            ?? throw new CardNotFoundException(key);
         
         return MapToGetCard(result);
     }
@@ -108,5 +86,50 @@ public class CardService : ICardService
         return (await _cards.GetCards())
             .Where(c => c.Type == type)
             .Select(c => MapToGetCard(c));
+    }
+
+    public async Task CreateRelation(string cardKey, string relatedCardKey, CardRelationType relationType)
+    {
+        if (cardKey == relatedCardKey)
+            throw new RelationWithSelfException($"Tried to create a relation for card {cardKey} with itself");
+
+        var card = await _cards.ByKey(cardKey)
+            ?? throw new CardNotFoundException(cardKey);
+        var relatedCard = await _cards.ByKey(relatedCardKey)
+            ?? throw new CardNotFoundException(relatedCardKey);
+        
+        if (GetRelation(card, relatedCard) is not null)
+            throw new RelationAlreadyExistsException(cardKey, relatedCardKey);
+
+        var relation = new CardRelation() {
+            RelatedTo = card,
+            RelatedCard = relatedCard,
+            RelationType = relationType
+        };
+
+        await _cards.CreateRelation(relation);
+    }
+
+    private static CardRelation? GetRelation(CardModel card1, CardModel card2) {
+        return 
+            card1.Relations.FirstOrDefault(rel => rel.RelatedCard.Key == card2.Key) ?? 
+            card1.RelatedTo.FirstOrDefault(rel => rel.RelatedTo.Key == card2.Key);
+    }
+
+    public async Task DeleteRelation(string cardKey, string relatedCardKey)
+    {
+        if (cardKey == relatedCardKey)
+            throw new RelationWithSelfException($"Tried to delete a relation for card {cardKey} with itself");
+
+        var card = await _cards.ByKey(cardKey)
+            ?? throw new CardNotFoundException(cardKey);
+        var relatedCard = await _cards.ByKey(relatedCardKey)
+            ?? throw new CardNotFoundException(relatedCardKey);
+
+        var relation = GetRelation(card, relatedCard)
+            ?? throw new RelationNotFoundException(cardKey, relatedCardKey)
+        ;
+
+        await _cards.DeleteRelation(relation);
     }
 }

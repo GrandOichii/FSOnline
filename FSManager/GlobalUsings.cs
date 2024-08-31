@@ -7,6 +7,7 @@ global using FSManager.Matches;
 global using FSCore.Matches.Players.Controllers;
 global using FSManager.Matches.Players;
 global using FSManager.Extensions;
+global using FSManager.Services.Exceptions;
 
 global using FSManager.Shared.Models;
 

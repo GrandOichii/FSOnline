@@ -52,4 +52,33 @@ public class CardsApiController : ControllerBase {
     public async Task<IActionResult> FromCollection(string key) {
         return Ok(await _cardService.FromCollection(key));
     }
+
+    [HttpPost("Relation")]
+    public async Task<IActionResult> CreateRelation([FromBody] PostCardRelationWithType relation) {
+        try {
+            await _cardService.CreateRelation(relation.CardKey, relation.RelatedCardKey, relation.RelationType);
+            return Created();
+        } catch (CardNotFoundException e) {
+            return NotFound(e.Message);
+        } catch (RelationAlreadyExistsException e) {
+            return BadRequest(e.Message);
+        } catch (RelationWithSelfException e) {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpDelete("Relation")]
+    public async Task<IActionResult> DeleteRelation([FromBody] PostCardRelation relation) {
+        try {
+            await _cardService.DeleteRelation(relation.CardKey, relation.RelatedCardKey);
+            return Ok();
+        } catch (CardNotFoundException e) {
+            return NotFound(e.Message);
+        } catch (RelationNotFoundException e) {
+            return NotFound(e.Message);
+        } catch (RelationWithSelfException e) {
+            return BadRequest(e.Message);
+        }
+    }
+
 }
