@@ -30,7 +30,9 @@ public class CardServiceTests {
             SoulValue = 1,
             Collection = new() { Key = "test", Cards = [] },
             RewardsText = "",
-            ImageUrl = "image-url"
+            ImageUrl = "image-url",
+            RelatedTo = [],
+            Relations = []
         };
         return result;
     } 

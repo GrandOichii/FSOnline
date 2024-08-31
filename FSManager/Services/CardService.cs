@@ -80,14 +80,15 @@ public class CardService : ICardService
 
     }
 
-    public async Task<GetCard> ByKey(string key) {
+    public async Task<GetCardWithRelations> ByKey(string key) {
         var result = await _cards.ByKey(key)
             ?? throw new CardNotFoundException($"No card with key {key}");
+        
         return MapToGetCard(result);
     }
 
-    private GetCard MapToGetCard(CardModel card) {
-        return _mapper.Map<GetCard>(
+    private GetCardWithRelations MapToGetCard(CardModel card) {
+        return _mapper.Map<GetCardWithRelations>(
             card
         );
     }

@@ -1137,7 +1137,6 @@ public class Player : IStateModifier {
             var returned = mod.Call(result, stackEffect);
             result = LuaUtility.GetReturnAsInt(returned);
         }
-        System.Console.WriteLine("RESOLVED TO " + result);
         return Math.Clamp(result, 1, 6);
     }
 }

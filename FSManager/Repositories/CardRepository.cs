@@ -68,7 +68,9 @@ public class CardRepository : DbContext, ICardRepository
         return Cards
             .Include(c => c.Collection)
             .Include(c => c.Relations)
-                .ThenInclude(c => c.RelatedCard)
+                .ThenInclude(rel => rel.RelatedCard)
+            .Include(c => c.RelatedTo)
+                .ThenInclude(rel => rel.RelatedTo)
         ;
     } 
 

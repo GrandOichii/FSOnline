@@ -30,7 +30,7 @@ public class CardsApiControllerTests {
     public async Task ShouldFetchByKey() {
         // Arrange
         var call = A.CallTo(() => _cardService.ByKey(A<string>._)).WithAnyArguments();
-        call.Returns(A.Fake<GetCard>());
+        call.Returns(A.Fake<GetCardWithRelations>());
 
         // Act
         var result = await _controller.ByKey("card-key");

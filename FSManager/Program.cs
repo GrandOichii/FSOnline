@@ -19,7 +19,7 @@ public class Program {
 
         // services
         builder.Services.AddTransient<ICardService, CardService>();
-        // builder.Services.AddSingleton<IMatchService, MatchService>();
+        builder.Services.AddSingleton<IMatchService, MatchService>();
 
         // mapping
         builder.Services.AddAutoMapper(

@@ -1,4 +1,4 @@
-@model FSManager.Dto.Cards.GetCard
+@model FSManager.Dto.Cards.GetCardWithRelations
 
 @{
     ViewData["Title"] = $"Card {Model.Name}";
@@ -16,5 +16,14 @@
             <img src="@Model.ImageUrl" alt="-" class="img-fluid" style="width: 320px">
         </div>
     </div>
-
+</div>
+<h3>Related cards</h3>
+<div class="container-fluid">
+    @{
+        foreach (var card in Model.RelatedCards) {
+            <a asp-action="ByKey" asp-route-key="@card.Key">
+                <img src="@card.ImageUrl" alt="">
+            </a>
+        }
+    }
 </div>
