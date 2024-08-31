@@ -76,7 +76,7 @@ static class LuaUtility {
     /// <param name="fName">Function name</param>
     /// <returns>The function</returns>
     static public LuaFunction GetGlobalF(Lua lState, string fName) {
-        var f = lState[fName] as LuaFunction ?? throw new GetLuaException("Failed to get function " + fName + " from glabal Lua state");
+        var f = lState[fName] as LuaFunction ?? throw new GetLuaException("Failed to get function " + fName + " from global Lua state");
         return f;
     } 
 

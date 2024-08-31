@@ -83,7 +83,7 @@ public class CardService : ICardService
 
     public async Task<GetCard> ByKey(string key) {
         var result = await _cards.ByKey(key)
-            ?? throw new CardNotFoundException($"Created card with key {key}, but failed to fetch it");
+            ?? throw new CardNotFoundException($"No card with key {key}");
         var colKey = await _cards.GetDefaultCardImageCollectionKey();
 
         return MapToGetCard(result, colKey);

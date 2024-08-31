@@ -217,7 +217,7 @@ unique_name_in_owner = true
 [node name="Sources" type="Node" parent="."]
 
 [node name="FileCardSource" parent="Sources" instance=ExtResource("5_1guxq")]
-card_paths = Array[String](["../cards/testing"])
+card_paths = Array[String](["../cards/v1"])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

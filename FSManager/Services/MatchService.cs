@@ -3,9 +3,10 @@ using Microsoft.Extensions.Options;
 
 namespace FSManager.Services;
 
-public class MatchService(IOptions<MatchesSettings> settings) : IMatchService {
+public class MatchService(IOptions<MatchesSettings> settings, ICardService cardService) : IMatchService {
     private readonly IOptions<MatchesSettings> _settings = settings;
     public List<MatchProcess> Matches { get; } = [];
+    private readonly ICardService _cardService = cardService;
 
     public Task<List<MatchProcess>> All()
     {
@@ -28,7 +29,7 @@ public class MatchService(IOptions<MatchesSettings> settings) : IMatchService {
         System.Console.WriteLine(paramsRaw);
         var creationParams = JsonSerializer.Deserialize<CreateMatchParams>(paramsRaw);
 
-        var match = new MatchProcess(creationParams);
+        var match = new MatchProcess(creationParams, _cardService);
         Matches.Add(match);
         var _ = match.Configure();
 

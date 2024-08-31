@@ -246,15 +246,21 @@ public class Match {
             ? await GetRandomCharacter()
             : await _cardMaster.Get(characterKey);
 
-        var player = new Player(
-            this,
-            name,
-            Players.Count,
-            character,
-            controller
-        );
+        try {
+            var player = new Player(
+                this,
+                name,
+                Players.Count,
+                character,
+                controller
+            );
 
-        Players.Add(player);
+            Players.Add(player);
+        } catch (Exception e) {
+            System.Console.WriteLine("FAILED ADDING CHARACTER");
+            System.Console.WriteLine(e);
+            throw;
+        }
     }
 
     /// <summary>

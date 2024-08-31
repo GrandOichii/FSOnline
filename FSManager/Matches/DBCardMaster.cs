@@ -12,7 +12,10 @@ public class DBCardMaster : ICardMaster
 
     public async Task<CardTemplate> Get(string key)
     {
-        return await _cardService.ByKey(key);
+        System.Console.WriteLine($"GETTING {key}");
+        var result = await _cardService.ByKey(key);
+        System.Console.WriteLine($"GOT {result.Key}");
+        return result;
     }
 
     public async Task<List<string>> GetKeys()

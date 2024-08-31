@@ -1,0 +1,1 @@
+select [Script] from Cards where [Key] = 'dark-bum-v1'

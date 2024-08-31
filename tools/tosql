@@ -48,8 +48,8 @@ for p in CARD_PATHS:
             card_data['Health'] if 'Health' in card_data else -1,
             card_data['Attack'] if 'Attack' in card_data else -1,
             card_data['Evasion'] if 'Evasion' in card_data else -1,
-            card_data['Text'].replace('\n', '\\n').replace('\'', '\'\''),
-            open(join(p, card_p + '.lua'), 'r').read().replace('\n', '\\n').replace('\'', '\'\''),
+            card_data['Text'].replace('\'', '\'\''),
+            open(join(p, card_p + '.lua'), 'r').read().replace('\'', '\'\'').replace('\\\'\'', '\'\''),
             card_data['SoulValue'] if 'SoulValue' in card_data else -1,
             collection_key,
             image_url

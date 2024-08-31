@@ -33,7 +33,7 @@ public enum MatchStatus {
     CRASHED
 }
 
-public class MatchProcess(CreateMatchParams creationParams)
+public class MatchProcess(CreateMatchParams creationParams, ICardService cardService)
 {
     private readonly Random _rng = new();
 
@@ -75,6 +75,9 @@ public class MatchProcess(CreateMatchParams creationParams)
     public event MatchProcessChanged? Changed;
 
     public List<QueuedPlayer> Players { get; private set; } = [];
+
+    public readonly ICardService _cardService = cardService;
+
     // [JsonIgnore] // TODO remove
     // public TcpListener TcpListener { get; private set; }
     // public int TcpPort { get; private set; }
@@ -183,9 +186,9 @@ public class MatchProcess(CreateMatchParams creationParams)
         // TODO seed
         System.Console.WriteLine("Configuring match");
         
-        var cm = new FileCardMaster();
-        cm.Load("../cards/testing");
-        cm.Load("../cards/v1");
+        var cm = new DBCardMaster(_cardService);
+        // cm.Load("../cards/testing");
+        // cm.Load("../cards/v1");
 
         Match = new(Params.Config, _rng.Next(), cm, File.ReadAllText("../core.lua"));
         Match.Logger = LoggerFactory
