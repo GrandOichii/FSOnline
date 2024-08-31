@@ -223,4 +223,61 @@ public class CardsApiControllerTests {
         call.MustHaveHappenedOnceExactly();
         result.Should().BeOfType<BadRequestObjectResult>();
     }
+
+    [Fact]
+    public async Task ShouldEditRelationType() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.EditRelationType(A<string>._, A<string>._, A<CardRelationType>._)).WithAnyArguments();
+        call.DoesNothing();
+
+        // Act
+        var result = await _controller.EditRelationType(new PostCardRelationWithType() { CardKey = "card-key", RelatedCardKey = "related-card-key", RelationType = CardRelationType.GENERAL});
+
+        // Assert
+        call.MustHaveHappenedOnceExactly();
+        result.Should().BeOfType<OkResult>();
+    }
+
+    [Fact]
+    public async Task ShouldNotEditNonExistantRelation() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.EditRelationType(A<string>._, A<string>._, A<CardRelationType>._)).WithAnyArguments();
+        call.Throws<RelationNotFoundException>();
+
+        // Act
+        var result = await _controller.EditRelationType(new PostCardRelationWithType() { CardKey = "card-key", RelatedCardKey = "related-card-key", RelationType = CardRelationType.GENERAL});
+
+        // Assert
+        call.MustHaveHappenedOnceExactly();
+        result.Should().BeOfType<NotFoundObjectResult>();
+    }
+
+    [Fact]
+    public async Task ShouldNotEditRelationBetweenNonExistantCards() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.EditRelationType(A<string>._, A<string>._, A<CardRelationType>._)).WithAnyArguments();
+        call.Throws<CardNotFoundException>();
+
+        // Act
+        var result = await _controller.EditRelationType(new PostCardRelationWithType() { CardKey = "card-key", RelatedCardKey = "related-card-key", RelationType = CardRelationType.GENERAL});
+
+        // Assert
+        call.MustHaveHappenedOnceExactly();
+        result.Should().BeOfType<NotFoundObjectResult>();
+    }
+
+    [Fact]
+    public async Task ShouldNotEditRelationBetweenSelf() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.EditRelationType(A<string>._, A<string>._, A<CardRelationType>._)).WithAnyArguments();
+        call.Throws<RelationWithSelfException>();
+
+        // Act
+        var result = await _controller.EditRelationType(new PostCardRelationWithType() { CardKey = "card-key", RelatedCardKey = "related-card-key", RelationType = CardRelationType.GENERAL});
+
+        // Assert
+        call.MustHaveHappenedOnceExactly();
+        result.Should().BeOfType<BadRequestObjectResult>();
+    }
+
 }

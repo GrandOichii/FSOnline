@@ -132,4 +132,21 @@ public class CardService : ICardService
 
         await _cards.DeleteRelation(relation);
     }
+
+    public async Task EditRelationType(string cardKey, string relatedCardKey, CardRelationType relationType)
+    {
+        if (cardKey == relatedCardKey)
+            throw new RelationWithSelfException($"Tried to edit a relation for card {cardKey} with itself");
+
+        var card = await _cards.ByKey(cardKey)
+            ?? throw new CardNotFoundException(cardKey);
+        var relatedCard = await _cards.ByKey(relatedCardKey)
+            ?? throw new CardNotFoundException(relatedCardKey);
+
+        var relation = GetRelation(card, relatedCard)
+            ?? throw new RelationNotFoundException(cardKey, relatedCardKey)
+        ;
+
+        await _cards.UpdateRelationType(relation, relationType);
+    }
 }

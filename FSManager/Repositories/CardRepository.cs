@@ -114,4 +114,10 @@ public class CardRepository : DbContext, ICardRepository
         Entry(relation).State = EntityState.Deleted;
         await SaveChangesAsync();
     }
+
+    public async Task UpdateRelationType(CardRelation relation, CardRelationType relationType)
+    {
+        relation.RelationType = relationType;
+        await SaveChangesAsync();
+    }
 }

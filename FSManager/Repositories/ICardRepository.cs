@@ -18,6 +18,8 @@ public interface ICardRepository {
     public Task<CardModel?> ByKey(string key);
     public Task<bool> RemoveCard(string key);
     public Task<IEnumerable<CardModel>> GetCards();
+    
     public Task CreateRelation(CardRelation relation);
     public Task DeleteRelation(CardRelation relation);
+    public Task UpdateRelationType(CardRelation relation, CardRelationType relationType);
 }

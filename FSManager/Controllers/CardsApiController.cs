@@ -81,4 +81,18 @@ public class CardsApiController : ControllerBase {
         }
     }
 
+    [HttpPatch("Relation")]
+    public async Task<IActionResult> EditRelationType([FromBody] PostCardRelationWithType relation) {
+        try {
+            await _cardService.EditRelationType(relation.CardKey, relation.RelatedCardKey, relation.RelationType);
+            return Ok();
+        } catch (CardNotFoundException e) {
+            return NotFound(e.Message);
+        } catch (RelationNotFoundException e) {
+            return NotFound(e.Message);
+        } catch (RelationWithSelfException e) {
+            return BadRequest(e.Message);
+        }
+    }
+
 }
