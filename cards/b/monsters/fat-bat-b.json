@@ -1,0 +1,12 @@
+{
+    "Key": "fat-bat-b",
+    "Name": "Fat Bat",
+    "Type": "Monster",
+    "Text": "",
+    "Script": "fat-bat-b.lua",
+    "Health": 3,
+    "Attack": 1,
+    "Evasion": 5,
+    "RewardsText": "+1 Treasure",
+    "SoulValue": 0
+}

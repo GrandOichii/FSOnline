@@ -1,0 +1,12 @@
+{
+    "Key": "pale-fatty-b",
+    "Name": "Pale Fatty",
+    "Type": "Monster",
+    "Text": "",
+    "Script": "pale-fatty-b.lua",
+    "Health": 4,
+    "Attack": 1,
+    "Evasion": 3,
+    "RewardsText": "6{cent}",
+    "SoulValue": 0
+}

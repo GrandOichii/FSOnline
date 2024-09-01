@@ -1,0 +1,12 @@
+{
+    "Key": "red-host-b",
+    "Name": "Red Host",
+    "Type": "Monster",
+    "Text": "",
+    "Script": "red-host-b.lua",
+    "Health": 2,
+    "Attack": 2,
+    "Evasion": 3,
+    "RewardsText": "5{cent}",
+    "SoulValue": 0
+}

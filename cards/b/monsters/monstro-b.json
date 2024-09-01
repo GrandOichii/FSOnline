@@ -1,0 +1,12 @@
+{
+    "Key": "monstro-b",
+    "Name": "Monstro",
+    "Type": "Monster",
+    "Text": "",
+    "Script": "monstro-b.lua",
+    "Health": 4,
+    "Attack": 1,
+    "Evasion": 4,
+    "RewardsText": "6{cent}",
+    "SoulValue": 1
+}

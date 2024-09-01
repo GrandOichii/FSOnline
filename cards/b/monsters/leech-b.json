@@ -1,0 +1,12 @@
+{
+    "Key": "leech-b",
+    "Name": "Leech",
+    "Type": "Monster",
+    "Text": "",
+    "Script": "leech-b.lua",
+    "Health": 1,
+    "Attack": 2,
+    "Evasion": 4,
+    "RewardsText": "Loot 1",
+    "SoulValue": 0
+}

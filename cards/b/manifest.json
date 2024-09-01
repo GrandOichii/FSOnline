@@ -1,46 +1,48 @@
 {
+    "TODO": "validate card text",
     "Cards": {
         "Characters": [
-            "characters/isaac-b",
-            "characters/judas-b",
-            "characters/samson-b",
-            "characters/lazarus-b"
+            "Characters/isaac-b",
+            "Characters/judas-b",
+            "Characters/samson-b",
+            "Characters/lazarus-b"
         ],
         "StartingItems": [
-            "starting-items/the-d6-b",
-            "starting-items/book-of-belial-b",
-            "starting-items/blood-lust-b",
-            "starting-items/lazarus-rags-b"
+            "StartingItems/the-d6-b",
+            "StartingItems/book-of-belial-b",
+            "StartingItems/blood-lust-b",
+            "StartingItems/lazarus-rags-b"
         ],
         "Treasures": [
-            "treasures/sacred-heart-b",
-            "treasures/dry-baby-b",
-            "treasures/godhead-b",
-            "treasures/eye-of-greed-b",
-            "treasures/breakfast-b",
-            "treasures/dads-lost-coin-b",
-            "treasures/synthoil-b",
-            "treasures/charged-baby-b",
-            "treasures/dark-bum-b",
-            "treasures/dinner-b",
-            "treasures/edens-blessing-b",
-            "treasures/fanny-pack-b",
-            "treasures/greeds-gullet-b",
-            "treasures/meat-b",
-            "treasures/moms-box-b",
-            "treasures/moms-coin-purse-b",
-            "treasures/moms-purse-b",
-            "treasures/moms-razor-b",
-            "treasures/shadow-b",
-            "treasures/shiny-rock-b"
+            "Treasures/sacred-heart-b",
+            "Treasures/dry-baby-b",
+            "Treasures/godhead-b",
+            "Treasures/eye-of-greed-b",
+            "Treasures/breakfast-b",
+            "Treasures/dads-lost-coin-b",
+            "Treasures/synthoil-b",
+            "Treasures/charged-baby-b",
+            "Treasures/dark-bum-b",
+            "Treasures/dinner-b",
+            "Treasures/edens-blessing-b",
+            "Treasures/fanny-pack-b",
+            "Treasures/greeds-gullet-b",
+            "Treasures/meat-b",
+            "Treasures/moms-box-b",
+            "Treasures/moms-coin-purse-b",
+            "Treasures/moms-purse-b",
+            "Treasures/moms-razor-b",
+            "Treasures/shadow-b",
+            "Treasures/shiny-rock-b"
         ],
         "Loot": [
-            "loot/2-cents-b",
-            "loot/3-cents-b",
-            "loot/4-cents-b",
-            "loot/a-dime-b",
-            "loot/a-nickel-b",
-            "loot/a-penny-b"
+            "Loot/2-cents-b",
+            "Loot/3-cents-b",
+            "Loot/4-cents-b",
+            "Loot/a-dime-b",
+            "Loot/a-nickel-b",
+            "Loot/lost-soul-b",
+            "Loot/a-penny-b"
         ],
         "BonusSouls": [
             "BonusSouls/soul-of-greed-b",
@@ -49,13 +51,42 @@
         ],
         "Rooms": [],
         "Monsters": [
-            "monsters/trite-b",
-            "monsters/war-b",
-            "monsters/boom-fly-b",
-            "monsters/clotty-b",
-            "monsters/conjoined-fatty-b"
+            "Monsters/trite-b",
+            "Monsters/squirt-b",
+            "Monsters/red-host-b",
+            "Monsters/pooter-b",
+            "Monsters/pale-fatty-b",
+            "Monsters/leech-b",
+            "Monsters/hopper-b",
+            "Monsters/fat-bat-b",
+            "Monsters/dip-b",
+            "Monsters/fatty-b",
+            "Monsters/fly-b",
+            "Monsters/gemini-b",
+            "Monsters/death-b",
+            "Monsters/gurdy-b",
+            "Monsters/monstro-b",
+            "Monsters/little-horn-b",
+            "Monsters/pin-b",
+            "Monsters/larry-jr-b",
+            "Monsters/war-b",
+            "Monsters/boom-fly-b",
+            "Monsters/clotty-b",
+            "Monsters/holy-squirt-b",
+            "Monsters/holy-dip-b",
+            "Monsters/cursed-keeper-head-b",
+            "Monsters/carrion-queen-b",
+            "Monsters/conjoined-fatty-b"
         ],
-        "Events": [],
-        "Curses": []
+        "Events": [
+            "Events/secret-room-b",
+            "Events/mega-troll-bomb-b",
+            "Events/troll-bombs-b"
+        ],
+        "Curses": [
+            "Curses/curse-of-greed-b",
+            "Curses/curse-of-pain-b",
+            "Curses/curse-of-the-blind-b"
+        ]
     }
 }

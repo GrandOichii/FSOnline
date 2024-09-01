@@ -1,0 +1,12 @@
+{
+    "Key": "pin-b",
+    "Name": "Pin",
+    "Type": "Monster",
+    "Text": "This takes no combat damage on attack rolls of 6.",
+    "Script": "pin-b.lua",
+    "Health": 2,
+    "Attack": 1,
+    "Evasion": 4,
+    "RewardsText": "5{cent}",
+    "SoulValue": 1
+}

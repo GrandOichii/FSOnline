@@ -1,0 +1,12 @@
+{
+    "Key": "holy-dip-b",
+    "Name": "Holy Dip",
+    "Type": "Monster",
+    "Text": "When any player rolls a {roll:1}, they gain 1{cent}.",
+    "Script": "holy-dip-b.lua",
+    "Health": 1,
+    "Attack": 1,
+    "Evasion": 4,
+    "RewardsText": "1{cent}",
+    "SoulValue": 0
+}

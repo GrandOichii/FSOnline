@@ -1,0 +1,12 @@
+{
+    "Key": "little-horn-b",
+    "Name": "Little Horn",
+    "Type": "Monster",
+    "Text": "",
+    "Script": "little-horn-b.lua",
+    "Health": 2,
+    "Attack": 1,
+    "Evasion": 6,
+    "RewardsText": "Loot 2",
+    "SoulValue": 1
+}

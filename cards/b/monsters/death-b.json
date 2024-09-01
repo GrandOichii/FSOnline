@@ -1,0 +1,12 @@
+{
+    "Key": "death-b",
+    "Name": "Death",
+    "Type": "Monster",
+    "Text": "When this dies, the active player kills a player.",
+    "Script": "death-b.lua",
+    "Health": 3,
+    "Attack": 2,
+    "Evasion": 4,
+    "RewardsText": "+1 Treasure",
+    "SoulValue": 1
+}

@@ -1,9 +1,9 @@
 {
-    "Key": "troll-bombs-b2",
+    "Key": "troll-bombs-b",
     "Name": "Troll Bombs",
     "Type": "Event",
     "Text": "Take 2 damage!",
-    "Script": "troll-bombs-b2.lua",
+    "Script": "troll-bombs-b.lua",
     "Health": -1,
     "Attack": -1,
     "Evasion": -1,

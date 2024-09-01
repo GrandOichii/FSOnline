@@ -1,0 +1,12 @@
+{
+    "Key": "squirt-b",
+    "Name": "Squirt",
+    "Type": "Monster",
+    "Text": "",
+    "Script": "squirt-b.lua",
+    "Health": 2,
+    "Attack": 1,
+    "Evasion": 3,
+    "RewardsText": "Loot 1",
+    "SoulValue": 0
+}

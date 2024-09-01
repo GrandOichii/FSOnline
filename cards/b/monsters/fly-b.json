@@ -1,0 +1,12 @@
+{
+    "Key": "fly-b",
+    "Name": "Fly",
+    "Type": "Monster",
+    "Text": "",
+    "Script": "fly-b.lua",
+    "Health": 1,
+    "Attack": 1,
+    "Evasion": 2,
+    "RewardsText": "1{cent}",
+    "SoulValue": 0
+}

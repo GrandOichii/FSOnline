@@ -1,0 +1,12 @@
+{
+    "Key": "larry-jr-b",
+    "Name": "Larry Jr.",
+    "Type": "Monster",
+    "Text": "While this is at 2{health} or less, it has +1{evasion}.",
+    "Script": "larry-jr-b.lua",
+    "Health": 4,
+    "Attack": 1,
+    "Evasion": 3,
+    "RewardsText": "6{cent}",
+    "SoulValue": 1
+}

@@ -1,0 +1,12 @@
+{
+    "Key": "curse-of-greed-b",
+    "Name": "Curse of Greed",
+    "Type": "Curse",
+    "Text": "At the end of your turn, lose 4{cent}.",
+    "Script": "curse-of-greed-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

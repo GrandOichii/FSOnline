@@ -1,0 +1,12 @@
+{
+    "Key": "gurdy-b",
+    "Name": "Gurdy",
+    "Type": "Monster",
+    "Text": "",
+    "Script": "gurdy-b.lua",
+    "Health": 5,
+    "Attack": 1,
+    "Evasion": 4,
+    "RewardsText": "7{cent}",
+    "SoulValue": 1
+}

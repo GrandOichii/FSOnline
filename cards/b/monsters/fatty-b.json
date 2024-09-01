@@ -1,0 +1,12 @@
+{
+    "Key": "fatty-b2",
+    "Name": "Fatty",
+    "Type": "Monster",
+    "Text": "",
+    "Script": "fatty-b2.lua",
+    "Health": 4,
+    "Attack": 1,
+    "Evasion": 2,
+    "RewardsText": "Loot 1",
+    "SoulValue": 0
+}
