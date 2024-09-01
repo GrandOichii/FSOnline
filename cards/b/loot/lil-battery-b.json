@@ -1,0 +1,12 @@
+{
+    "Key": "lil-battery-b",
+    "Name": "Lil Battery",
+    "Type": "Loot",
+    "Text": "Recharge an Item.",
+    "Script": "lil-battery-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

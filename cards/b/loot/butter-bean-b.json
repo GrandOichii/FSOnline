@@ -1,0 +1,12 @@
+{
+    "Key": "butter-bean-b",
+    "Name": "Butter Bean!",
+    "Type": "Loot",
+    "Text": "Cancel the {T} or {$} ability of an item or loot being played.",
+    "Script": "butter-bean-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

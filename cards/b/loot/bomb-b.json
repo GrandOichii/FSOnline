@@ -1,0 +1,12 @@
+{
+    "Key": "bomb-b",
+    "Name": "Bomb",
+    "Type": "Loot",
+    "Text": "Deal 1 damage to a Monster or player.",
+    "Script": "bomb-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

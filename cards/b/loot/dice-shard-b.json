@@ -1,0 +1,12 @@
+{
+    "Key": "dice-shard-b",
+    "Name": "Dice Shard",
+    "Type": "Loot",
+    "Text": "Choose a dice roll. Its controller rerolls it.",
+    "Script": "dice-shard-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}
