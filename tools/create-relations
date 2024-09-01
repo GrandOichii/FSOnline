@@ -4,7 +4,7 @@ from sys import argv
 
 import fscommon as fs
 
-INSERT_RELATION_FORMAT = "INSERT INTO 'CardRelations'('RelatedToKey', 'RelatedCardKey', 'RelationType') VALUES ('{card_key}', '{related_card_key}', {relation_type});\n"
+INSERT_RELATION_FORMAT = 'INSERT INTO "CardRelations"("RelatedToKey", "RelatedCardKey", "RelationType") VALUES (\'{card_key}\', \'{related_card_key}\', {relation_type});\n'
 
 class RelationTypes:
     StartingItem = 1
@@ -16,7 +16,7 @@ if len(argv) != 3:
 cards_collection_path = argv[1]
 out_path = argv[2]
 
-cards = fs.CardCollection.load(cards_collection_path)
+cards: fs.CardCollection = fs.CardCollection.load_from_dir(cards_collection_path)
 
 result = ''
 

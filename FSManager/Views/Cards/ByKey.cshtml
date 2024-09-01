@@ -18,14 +18,18 @@
     </div>
 </div>
 
-<h3>Related cards</h3>
-<div class="container-fluid">
-    @{
-        Console.WriteLine(Model.Relations[0].Card);
-        foreach (var relation in Model.Relations) {
-            <a asp-action="ByKey" asp-route-key="@relation.Card.Key">
-                <img src="@relation.Card.ImageUrl" alt="">
-            </a>
-        }
+@{
+    if (Model.Relations.Count > 0) {
+        <h3>Related cards</h3>
+        <div class="container-fluid">
+            @{
+                foreach (var relation in Model.Relations) {
+                    var card = relation.GetRelatedCard(Model);
+                    <a asp-action="ByKey" asp-route-key="@card.Key">
+                        <img src="@card.ImageUrl" alt="">
+                    </a>
+                }
+            }
+        </div>
     }
-</div>
+}
