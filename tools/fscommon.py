@@ -6,6 +6,12 @@ from lupa.lua54 import LuaRuntime
 MANIFEST_FILE = 'manifest.json'
 CORE_FILE = '../core.lua'
 
+class RelationTypes:
+    General = 0
+    StartingItem = 1
+    GuppyItem = 2
+    OlderVersion = 3
+
 TYPE_TO_DECK_INDEX = {
     'character': 'Characters',
     'startingitem': 'StartingItems',
@@ -117,3 +123,6 @@ class CardCollection:
 
     def guppy_items(self) -> list[Card]:
         return [card for card in self.cards if card.is_guppy_item()]
+
+    def get_keys(self) -> list[str]:
+        return [card.key for card in self.cards]

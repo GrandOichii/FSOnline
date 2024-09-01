@@ -15,42 +15,58 @@ INSERT_RELATION_FORMAT = 'INSERT INTO "CardRelations"("RelatedToKey", "RelatedCa
 # haunt cards
 # synergies?
 
-class RelationTypes:
-    General = 0
-    StartingItem = 1
-    GuppyItem = 2
+def get_card(collections, key):
+    for col in collections:
+        card = col.get(key)
+        if card is not None: return card
+    return None
 
-if len(argv) != 3:
+if len(argv) < 3:
     print('Invalid amount of arguments')
     exit(1)
 
-cards_collection_path = argv[1]
-out_path = argv[2]
+out_path = argv[1]
+cards_collection_paths = argv[2:]
 
-cards: fs.CardCollection = fs.CardCollection.load_from_dir(cards_collection_path)
+collections: list[fs.CardCollection] = [fs.CardCollection.load_from_dir(p) for p in cards_collection_paths]
 
 result = ''
 
-# starting items
-characters = cards.get_characters()
-for character in characters:
-    starting_items = character.extract_starting_items()
-    for item in starting_items:
+for cards in collections:
+    # starting items
+    characters = cards.get_characters()
+    for character in characters:
+        starting_items = character.extract_starting_items()
+        for item in starting_items:
+            result += INSERT_RELATION_FORMAT.format_map({
+                'card_key': character.key,
+                'related_card_key': item.key,
+                'relation_type': fs.RelationTypes.StartingItem
+            })
+
+    # guppy items
+    guppy_items = cards.guppy_items()
+    combinations = itertools.combinations(guppy_items, 2)
+    for comb in combinations:
         result += INSERT_RELATION_FORMAT.format_map({
-            'card_key': character.key,
-            'related_card_key': item.key,
-            'relation_type': RelationTypes.StartingItem
+            'card_key': comb[0].key,
+            'related_card_key': comb[1].key,
+            'relation_type': fs.RelationTypes.GuppyItem
         })
 
-# guppy items
-cards = cards.guppy_items()
-combinations = itertools.combinations(cards, 2)
-for comb in combinations:
-    result += INSERT_RELATION_FORMAT.format_map({
-        'card_key': comb[0].key,
-        'related_card_key': comb[1].key,
-        'relation_type': RelationTypes.GuppyItem
-    })
+    # older versions
+    keys = cards.get_keys()
+    for key in keys:
+        if not key.endswith('-v2'): continue
+        new_key = key.replace('-v2', '-v1')
+        old_card = get_card(collections, new_key)
+
+        if old_card is None: continue
+        result += INSERT_RELATION_FORMAT.format_map({
+            'card_key': key,
+            'related_card_key': old_card.key,
+            'relation_type': fs.RelationTypes.OlderVersion
+        })
 
 
 open(out_path, 'w').write(result)

@@ -3,8 +3,8 @@ namespace FSManager.Shared.Models;
 public enum CardRelationType {
     GENERAL = 0,
     STARTING_ITEM = 1,
-    GUPPY_ITEM = 2
-
+    GUPPY_ITEM = 2,
+    OLDER_VERSION = 3,
 }
 
 public class CardRelation {
