@@ -1,7 +1,0 @@
-{
-    "Key": "razor-blade-v2",
-    "Name": "Razor Blade",
-    "Type": "Item",
-    "Text": "{T}: Deal 1 damage to a player.",
-    "Script": "razor-blade-v2.lua"
-}

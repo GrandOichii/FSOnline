@@ -1,7 +1,0 @@
-{
-    "Key": "bag-o-trash-v2",
-    "Name": "Bag-O-Trash",
-    "Type": "StartingItem",
-    "Text": "Pay 3{cent}: Play an additional loot card this turn.\nPay 4{cent}: Loot 1.\nPay 6{cent}: Deal 1 damage to a monster or player.",
-    "Script": "bag-o-trash-v2.lua"
-}

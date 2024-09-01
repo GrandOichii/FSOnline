@@ -1,7 +1,0 @@
-{
-    "Key": "curse-of-greed-v2",
-    "Name": "Curse of Greed",
-    "Type": "Curse",
-    "Text": "At the end of your turn, lose 4{cent}.",
-    "Script": "curse-of-greed-v2.lua"
-}

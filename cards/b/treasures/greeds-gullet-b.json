@@ -1,0 +1,7 @@
+{
+    "Key": "greeds-gullet-b",
+    "Name": "Greed's Gullet",
+    "Type": "Item",
+    "Text": "Each time you die, before paying penalties, gain 8{cent}.",
+    "Script": "greeds-gullet-b.lua"
+}

@@ -1,7 +1,0 @@
-{
-    "Key": "meat-v1",
-    "Name": "Synthoil",
-    "Type": "Item",
-    "Text": "+1 to all your attack rolls.",
-    "Script": "meat-v1.lua"
-}

@@ -1,0 +1,7 @@
+{
+    "Key": "mr-boom-b2",
+    "Name": "Mr. Boom",
+    "Type": "Item",
+    "Text": "{T}: Deal 1 damage to a monster.",
+    "Script": "mr-boom-b2.lua"
+}

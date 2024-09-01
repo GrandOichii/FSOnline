@@ -1,0 +1,7 @@
+{
+    "Key": "trinity-shield-b2",
+    "Name": "Trinity Shield",
+    "Type": "Item",
+    "Text": "Other players can't play loot cards or activate items on your turn.",
+    "Script": "trinity-shield-b2.lua"
+}

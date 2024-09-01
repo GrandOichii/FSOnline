@@ -1,9 +1,0 @@
-{
-    "Key": "isaac-v1",
-    "Name": "Isaac",
-    "Type": "Character",
-    "Text": "{T}: Play an additional loot card this turn.",
-    "Script": "isaac-v1.lua",
-    "Health": 2,
-    "Attack": 1
-}

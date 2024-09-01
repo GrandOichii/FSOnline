@@ -1,7 +1,0 @@
-{
-    "Key": "jawbone-v2",
-    "Name": "Jawbone",
-    "Type": "Item",
-    "Text": "{T}: Steal 3{cent} from a player.",
-    "Script": "jawbone-v2.lua"
-}

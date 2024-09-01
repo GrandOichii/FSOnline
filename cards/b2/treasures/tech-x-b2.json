@@ -1,0 +1,7 @@
+{
+    "Key": "tech-x-b2",
+    "Name": "Tech X",
+    "Type": "Item",
+    "Text": "{T}: Put a counter on this.\nRemove 3 counters from this: Kill a player or monster.",
+    "Script": "tech-x-b2.lua"
+}

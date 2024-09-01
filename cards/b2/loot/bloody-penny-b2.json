@@ -1,0 +1,7 @@
+{
+    "Key": "bloody-penny-b2",
+    "Name": "Bloody Penny",
+    "Type": "Loot",
+    "Text": "Each time a player dies, before paying penalties. Loot 1.",
+    "Script": "bloody-penny-b2.lua"
+}

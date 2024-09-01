@@ -1,0 +1,7 @@
+{
+    "Key": "crooked-penny-b2",
+    "Name": "Crooked Penny",
+    "Type": "Item",
+    "Text": "Choose a player, then roll-\n1-3: double the amount of {cent} they have.\n4-6: that player loses all {cent}.",
+    "Script": "crooked-penny-b2.lua"
+}

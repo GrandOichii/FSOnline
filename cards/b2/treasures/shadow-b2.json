@@ -1,0 +1,7 @@
+{
+    "Key": "shadow-b2",
+    "Name": "Shadow",
+    "Type": "Item",
+    "Text": "If another player would pay the death penalty, you choose what item they would destroy and you gain any loot cards and {cent} they would lose.",
+    "Script": "shadow-b2.lua"
+}

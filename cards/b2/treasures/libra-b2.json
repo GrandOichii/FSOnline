@@ -1,0 +1,7 @@
+{
+    "Key": "libra-b2",
+    "Name": "Libra",
+    "Type": "Item",
+    "Text": "{T}: Change the result of a dice roll to a 3.",
+    "Script": "libra-b2.lua"
+}

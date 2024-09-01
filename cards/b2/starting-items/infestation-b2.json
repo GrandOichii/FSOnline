@@ -1,0 +1,7 @@
+{
+    "Key": "infestation-b2",
+    "Name": "Infestation",
+    "Type": "StartingItem",
+    "Text": "{T}: Loot 2, then discard 1 Loot card.",
+    "Script": "infestation-b2.lua"
+}

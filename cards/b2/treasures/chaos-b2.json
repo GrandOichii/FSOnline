@@ -1,0 +1,7 @@
+{
+    "Key": "chaos-b2",
+    "Name": "Chaos",
+    "Type": "Item",
+    "Text": "{T}: Each player gives their hand to the player to their left.",
+    "Script": "chaos-b2.lua"
+}

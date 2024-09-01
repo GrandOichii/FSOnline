@@ -1,7 +1,0 @@
-{
-    "Key": "orange-green-pills-v2",
-    "Name": "Pills!",
-    "Type": "Loot",
-    "Text": "Roll-\n1-2: Gain 4{cent}.\n3-4: Gain 7{cent}.\n5-6: Lose 4{cent}.",
-    "Script": "orange-green-pills-v2.lua"
-}

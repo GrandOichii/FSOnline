@@ -1,0 +1,7 @@
+{
+    "Key": "xvii-the-stars-b2",
+    "Name": "XVII. The Stars",
+    "Type": "Loot",
+    "Text": "Gain +1 Treasure.",
+    "Script": "xvii-the-stars-b2.lua"
+}

@@ -126,3 +126,6 @@ class CardCollection:
 
     def get_keys(self) -> list[str]:
         return [card.key for card in self.cards]
+
+    def filter_cards(self, filter) -> list[Card]:
+        return [card for card in self.cards if filter(card)]

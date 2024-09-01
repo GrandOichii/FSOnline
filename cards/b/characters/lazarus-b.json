@@ -1,0 +1,9 @@
+{
+    "Key": "lazarus-b",
+    "Name": "Lazarus",
+    "Type": "Character",
+    "Health": 2,
+    "Attack": 1,
+    "Text": "{T}: Play an additional Loot card this turn.",
+    "Script": "lazarus-b.lua"
+}

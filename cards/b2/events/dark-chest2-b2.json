@@ -1,0 +1,7 @@
+{
+    "Key": "dark-chest2-b2",
+    "Name": "Dark Chest",
+    "Type": "Event",
+    "Text": "Roll-\n1-2: Gain 1{cent}.\n3-4: Loot 2.\n5-6: Take 2 damage.",
+    "Script": "dark-chest2-b2.lua"
+}

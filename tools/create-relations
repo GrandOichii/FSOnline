@@ -57,8 +57,8 @@ for cards in collections:
     # older versions
     keys = cards.get_keys()
     for key in keys:
-        if not key.endswith('-v2'): continue
-        new_key = key.replace('-v2', '-v1')
+        if not key.endswith('-b2'): continue
+        new_key = key.replace('-b2', '-b')
         old_card = get_card(collections, new_key)
 
         if old_card is None: continue

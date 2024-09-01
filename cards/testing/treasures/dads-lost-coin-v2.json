@@ -1,7 +1,0 @@
-{
-    "Key": "dads-lost-coin-v2",
-    "Name": "Dad's Lost Coin",
-    "Type": "Item",
-    "Text": "Each time a player would roll a {roll:1}, you may force that player to reroll it.",
-    "Script": "dads-lost-coin-v2.lua"
-}

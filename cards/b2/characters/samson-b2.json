@@ -1,0 +1,9 @@
+{
+    "Key": "samson-b2",
+    "Name": "Samson",
+    "Type": "Character",
+    "Health": 2,
+    "Attack": 1,
+    "Text": "{T}: Play an additional Loot card this turn.",
+    "Script": "samson-b2.lua"
+}

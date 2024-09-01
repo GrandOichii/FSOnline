@@ -1,7 +1,0 @@
-{
-    "Key": "a-penny-v1",
-    "Name": "A Penny!",
-    "Type": "Loot",
-    "Text": "Gain 1{cent}",
-    "Script": "a-penny-v1.lua"
-}

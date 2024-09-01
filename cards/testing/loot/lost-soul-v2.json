@@ -1,8 +1,0 @@
-{
-    "Key": "lost-soul-v2",
-    "Name": "Lost Soul",
-    "Type": "Loot",
-    "Text": "When this enters play, it becomes a soul.",
-    "SoulValue": 1,
-    "Script": "lost-soul-v2.lua"
-}

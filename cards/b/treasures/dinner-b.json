@@ -1,0 +1,7 @@
+{
+    "Key": "dinner-b",
+    "Name": "Dinner",
+    "Type": "Item",
+    "Text": "+1{health}.",
+    "Script": "dinner-b.lua"
+}

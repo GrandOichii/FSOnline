@@ -484,27 +484,27 @@ image = ExtResource("ImageImport_1")
 
 [sub_resource type="Resource" id="Resource_Card2"]
 script = ExtResource("1_v0pgv")
-card_key = "moms-razor-v2"
+card_key = "moms-razor-b2"
 image = ExtResource("ImageImport_2")
 
 [sub_resource type="Resource" id="Resource_Card3"]
 script = ExtResource("1_v0pgv")
-card_key = "gemini-v2"
+card_key = "gemini-b2"
 image = ExtResource("ImageImport_3")
 
 [sub_resource type="Resource" id="Resource_Card4"]
 script = ExtResource("1_v0pgv")
-card_key = "gold-bomb-v2"
+card_key = "gold-bomb-b2"
 image = ExtResource("ImageImport_4")
 
 [sub_resource type="Resource" id="Resource_Card5"]
 script = ExtResource("1_v0pgv")
-card_key = "book-of-belial-v2"
+card_key = "book-of-belial-b2"
 image = ExtResource("ImageImport_5")
 
 [sub_resource type="Resource" id="Resource_Card6"]
 script = ExtResource("1_v0pgv")
-card_key = "cursed-keeper-head-v2"
+card_key = "cursed-keeper-head-b2"
 image = ExtResource("ImageImport_6")
 
 [sub_resource type="Resource" id="Resource_Card7"]
@@ -514,7 +514,7 @@ image = ExtResource("ImageImport_7")
 
 [sub_resource type="Resource" id="Resource_Card8"]
 script = ExtResource("1_v0pgv")
-card_key = "3-cents-v2"
+card_key = "3-cents-b2"
 image = ExtResource("ImageImport_8")
 
 [sub_resource type="Resource" id="Resource_Card9"]
@@ -529,32 +529,32 @@ image = ExtResource("ImageImport_10")
 
 [sub_resource type="Resource" id="Resource_Card11"]
 script = ExtResource("1_v0pgv")
-card_key = "the-keeper-v2"
+card_key = "the-keeper-b2"
 image = ExtResource("ImageImport_11")
 
 [sub_resource type="Resource" id="Resource_Card12"]
 script = ExtResource("1_v0pgv")
-card_key = "conjoined-fatty-v2"
+card_key = "conjoined-fatty-b2"
 image = ExtResource("ImageImport_12")
 
 [sub_resource type="Resource" id="Resource_Card13"]
 script = ExtResource("1_v0pgv")
-card_key = "a-dime-v2"
+card_key = "a-dime-b2"
 image = ExtResource("ImageImport_13")
 
 [sub_resource type="Resource" id="Resource_Card14"]
 script = ExtResource("1_v0pgv")
-card_key = "lazarus-v2"
+card_key = "lazarus-b2"
 image = ExtResource("ImageImport_14")
 
 [sub_resource type="Resource" id="Resource_Card15"]
 script = ExtResource("1_v0pgv")
-card_key = "shiny-rock-v2"
+card_key = "shiny-rock-b2"
 image = ExtResource("ImageImport_15")
 
 [sub_resource type="Resource" id="Resource_Card16"]
 script = ExtResource("1_v0pgv")
-card_key = "larry-jr-v2"
+card_key = "larry-jr-b2"
 image = ExtResource("ImageImport_16")
 
 [sub_resource type="Resource" id="Resource_Card17"]
@@ -584,7 +584,7 @@ image = ExtResource("ImageImport_21")
 
 [sub_resource type="Resource" id="Resource_Card22"]
 script = ExtResource("1_v0pgv")
-card_key = "pay-to-play-v2"
+card_key = "pay-to-play-b2"
 image = ExtResource("ImageImport_22")
 
 [sub_resource type="Resource" id="Resource_Card23"]
@@ -594,17 +594,17 @@ image = ExtResource("ImageImport_23")
 
 [sub_resource type="Resource" id="Resource_Card24"]
 script = ExtResource("1_v0pgv")
-card_key = "holy-mantle-v2"
+card_key = "holy-mantle-b2"
 image = ExtResource("ImageImport_24")
 
 [sub_resource type="Resource" id="Resource_Card25"]
 script = ExtResource("1_v0pgv")
-card_key = "fanny-pack-v2"
+card_key = "fanny-pack-b2"
 image = ExtResource("ImageImport_25")
 
 [sub_resource type="Resource" id="Resource_Card26"]
 script = ExtResource("1_v0pgv")
-card_key = "xiv-temperance-v2"
+card_key = "xiv-temperance-b2"
 image = ExtResource("ImageImport_26")
 
 [sub_resource type="Resource" id="Resource_Card27"]
@@ -614,22 +614,22 @@ image = ExtResource("ImageImport_27")
 
 [sub_resource type="Resource" id="Resource_Card28"]
 script = ExtResource("1_v0pgv")
-card_key = "sloth-v2"
+card_key = "sloth-b2"
 image = ExtResource("ImageImport_28")
 
 [sub_resource type="Resource" id="Resource_Card29"]
 script = ExtResource("1_v0pgv")
-card_key = "whore-of-babylon-v2"
+card_key = "whore-of-babylon-b2"
 image = ExtResource("ImageImport_29")
 
 [sub_resource type="Resource" id="Resource_Card30"]
 script = ExtResource("1_v0pgv")
-card_key = "mr-boom-v2"
+card_key = "mr-boom-b2"
 image = ExtResource("ImageImport_30")
 
 [sub_resource type="Resource" id="Resource_Card31"]
 script = ExtResource("1_v0pgv")
-card_key = "lil-battery-v2"
+card_key = "lil-battery-b2"
 image = ExtResource("ImageImport_31")
 
 [sub_resource type="Resource" id="Resource_Card32"]
@@ -644,42 +644,42 @@ image = ExtResource("ImageImport_33")
 
 [sub_resource type="Resource" id="Resource_Card34"]
 script = ExtResource("1_v0pgv")
-card_key = "leech-v2"
+card_key = "leech-b2"
 image = ExtResource("ImageImport_34")
 
 [sub_resource type="Resource" id="Resource_Card35"]
 script = ExtResource("1_v0pgv")
-card_key = "war-v2"
+card_key = "war-b2"
 image = ExtResource("ImageImport_35")
 
 [sub_resource type="Resource" id="Resource_Card36"]
 script = ExtResource("1_v0pgv")
-card_key = "the-battery-v2"
+card_key = "the-battery-b2"
 image = ExtResource("ImageImport_36")
 
 [sub_resource type="Resource" id="Resource_Card37"]
 script = ExtResource("1_v0pgv")
-card_key = "guppys-head-v2"
+card_key = "guppys-head-b2"
 image = ExtResource("ImageImport_37")
 
 [sub_resource type="Resource" id="Resource_Card38"]
 script = ExtResource("1_v0pgv")
-card_key = "gurdy-v2"
+card_key = "gurdy-b2"
 image = ExtResource("ImageImport_38")
 
 [sub_resource type="Resource" id="Resource_Card39"]
 script = ExtResource("1_v0pgv")
-card_key = "synthoil-v2"
+card_key = "synthoil-b2"
 image = ExtResource("ImageImport_39")
 
 [sub_resource type="Resource" id="Resource_Card40"]
 script = ExtResource("1_v0pgv")
-card_key = "pageant-boy-v2"
+card_key = "pageant-boy-b2"
 image = ExtResource("ImageImport_40")
 
 [sub_resource type="Resource" id="Resource_Card41"]
 script = ExtResource("1_v0pgv")
-card_key = "dark-chest2-v2"
+card_key = "dark-chest2-b2"
 image = ExtResource("ImageImport_41")
 
 [sub_resource type="Resource" id="Resource_Card42"]
@@ -689,17 +689,17 @@ image = ExtResource("ImageImport_42")
 
 [sub_resource type="Resource" id="Resource_Card43"]
 script = ExtResource("1_v0pgv")
-card_key = "bloody-penny-v2"
+card_key = "bloody-penny-b2"
 image = ExtResource("ImageImport_43")
 
 [sub_resource type="Resource" id="Resource_Card44"]
 script = ExtResource("1_v0pgv")
-card_key = "2-cents-v2"
+card_key = "2-cents-b2"
 image = ExtResource("ImageImport_44")
 
 [sub_resource type="Resource" id="Resource_Card45"]
 script = ExtResource("1_v0pgv")
-card_key = "tech-x-v2"
+card_key = "tech-x-b2"
 image = ExtResource("ImageImport_45")
 
 [sub_resource type="Resource" id="Resource_Card46"]
@@ -709,7 +709,7 @@ image = ExtResource("ImageImport_46")
 
 [sub_resource type="Resource" id="Resource_Card47"]
 script = ExtResource("1_v0pgv")
-card_key = "trinity-shield-v2"
+card_key = "trinity-shield-b2"
 image = ExtResource("ImageImport_47")
 
 [sub_resource type="Resource" id="Resource_Card48"]
@@ -719,12 +719,12 @@ image = ExtResource("ImageImport_48")
 
 [sub_resource type="Resource" id="Resource_Card49"]
 script = ExtResource("1_v0pgv")
-card_key = "shadow-v2"
+card_key = "shadow-b2"
 image = ExtResource("ImageImport_49")
 
 [sub_resource type="Resource" id="Resource_Card50"]
 script = ExtResource("1_v0pgv")
-card_key = "fat-bat-v2"
+card_key = "fat-bat-b2"
 image = ExtResource("ImageImport_50")
 
 [sub_resource type="Resource" id="Resource_Card51"]
@@ -734,17 +734,17 @@ image = ExtResource("ImageImport_51")
 
 [sub_resource type="Resource" id="Resource_Card52"]
 script = ExtResource("1_v0pgv")
-card_key = "infamy-v2"
+card_key = "infamy-b2"
 image = ExtResource("ImageImport_52")
 
 [sub_resource type="Resource" id="Resource_Card53"]
 script = ExtResource("1_v0pgv")
-card_key = "guppys-eye-v2"
+card_key = "guppys-eye-b2"
 image = ExtResource("ImageImport_53")
 
 [sub_resource type="Resource" id="Resource_Card54"]
 script = ExtResource("1_v0pgv")
-card_key = "mystery-sack-v2"
+card_key = "mystery-sack-b2"
 image = ExtResource("ImageImport_54")
 
 [sub_resource type="Resource" id="Resource_Card55"]
@@ -754,57 +754,57 @@ image = ExtResource("ImageImport_55")
 
 [sub_resource type="Resource" id="Resource_Card56"]
 script = ExtResource("1_v0pgv")
-card_key = "jawbone-v2"
+card_key = "jawbone-b2"
 image = ExtResource("ImageImport_56")
 
 [sub_resource type="Resource" id="Resource_Card57"]
 script = ExtResource("1_v0pgv")
-card_key = "the-poop-v2"
+card_key = "the-poop-b2"
 image = ExtResource("ImageImport_57")
 
 [sub_resource type="Resource" id="Resource_Card58"]
 script = ExtResource("1_v0pgv")
-card_key = "dry-baby-v2"
+card_key = "dry-baby-b2"
 image = ExtResource("ImageImport_58")
 
 [sub_resource type="Resource" id="Resource_Card59"]
 script = ExtResource("1_v0pgv")
-card_key = "isaac-v2"
+card_key = "isaac-b2"
 image = ExtResource("ImageImport_59")
 
 [sub_resource type="Resource" id="Resource_Card60"]
 script = ExtResource("1_v0pgv")
-card_key = "the-butter-bean-v2"
+card_key = "the-butter-bean-b2"
 image = ExtResource("ImageImport_60")
 
 [sub_resource type="Resource" id="Resource_Card61"]
 script = ExtResource("1_v0pgv")
-card_key = "holy-card-v2"
+card_key = "holy-card-b2"
 image = ExtResource("ImageImport_61")
 
 [sub_resource type="Resource" id="Resource_Card62"]
 script = ExtResource("1_v0pgv")
-card_key = "a-sack-v2"
+card_key = "a-sack-b2"
 image = ExtResource("ImageImport_62")
 
 [sub_resource type="Resource" id="Resource_Card63"]
 script = ExtResource("1_v0pgv")
-card_key = "wooden-nickel-v2"
+card_key = "wooden-nickel-b2"
 image = ExtResource("ImageImport_63")
 
 [sub_resource type="Resource" id="Resource_Card64"]
 script = ExtResource("1_v0pgv")
-card_key = "chaos-v2"
+card_key = "chaos-b2"
 image = ExtResource("ImageImport_64")
 
 [sub_resource type="Resource" id="Resource_Card65"]
 script = ExtResource("1_v0pgv")
-card_key = "counterfeit-penny-v2"
+card_key = "counterfeit-penny-b2"
 image = ExtResource("ImageImport_65")
 
 [sub_resource type="Resource" id="Resource_Card66"]
 script = ExtResource("1_v0pgv")
-card_key = "pooter-v2"
+card_key = "pooter-b2"
 image = ExtResource("ImageImport_66")
 
 [sub_resource type="Resource" id="Resource_Card67"]
@@ -814,57 +814,57 @@ image = ExtResource("ImageImport_67")
 
 [sub_resource type="Resource" id="Resource_Card68"]
 script = ExtResource("1_v0pgv")
-card_key = "fatty-v2"
+card_key = "fatty-b2"
 image = ExtResource("ImageImport_68")
 
 [sub_resource type="Resource" id="Resource_Card69"]
 script = ExtResource("1_v0pgv")
-card_key = "dark-arts-v2"
+card_key = "dark-arts-b2"
 image = ExtResource("ImageImport_69")
 
 [sub_resource type="Resource" id="Resource_Card70"]
 script = ExtResource("1_v0pgv")
-card_key = "daddy-haunt-v2"
+card_key = "daddy-haunt-b2"
 image = ExtResource("ImageImport_70")
 
 [sub_resource type="Resource" id="Resource_Card71"]
 script = ExtResource("1_v0pgv")
-card_key = "carrion-queen-v2"
+card_key = "carrion-queen-b2"
 image = ExtResource("ImageImport_71")
 
 [sub_resource type="Resource" id="Resource_Card72"]
 script = ExtResource("1_v0pgv")
-card_key = "lucky-foot-v2"
+card_key = "lucky-foot-b2"
 image = ExtResource("ImageImport_72")
 
 [sub_resource type="Resource" id="Resource_Card73"]
 script = ExtResource("1_v0pgv")
-card_key = "guppys-tail-v2"
+card_key = "guppys-tail-b2"
 image = ExtResource("ImageImport_73")
 
 [sub_resource type="Resource" id="Resource_Card74"]
 script = ExtResource("1_v0pgv")
-card_key = "sacred-heart-v2"
+card_key = "sacred-heart-b2"
 image = ExtResource("ImageImport_74")
 
 [sub_resource type="Resource" id="Resource_Card75"]
 script = ExtResource("1_v0pgv")
-card_key = "moms-purse-v2"
+card_key = "moms-purse-b2"
 image = ExtResource("ImageImport_75")
 
 [sub_resource type="Resource" id="Resource_Card76"]
 script = ExtResource("1_v0pgv")
-card_key = "clotty-v2"
+card_key = "clotty-b2"
 image = ExtResource("ImageImport_76")
 
 [sub_resource type="Resource" id="Resource_Card77"]
 script = ExtResource("1_v0pgv")
-card_key = "infestation-v2"
+card_key = "infestation-b2"
 image = ExtResource("ImageImport_77")
 
 [sub_resource type="Resource" id="Resource_Card78"]
 script = ExtResource("1_v0pgv")
-card_key = "restock-v2"
+card_key = "restock-b2"
 image = ExtResource("ImageImport_78")
 
 [sub_resource type="Resource" id="Resource_Card79"]
@@ -874,47 +874,47 @@ image = ExtResource("ImageImport_79")
 
 [sub_resource type="Resource" id="Resource_Card80"]
 script = ExtResource("1_v0pgv")
-card_key = "fistula-v2"
+card_key = "fistula-b2"
 image = ExtResource("ImageImport_80")
 
 [sub_resource type="Resource" id="Resource_Card81"]
 script = ExtResource("1_v0pgv")
-card_key = "little-horn-v2"
+card_key = "little-horn-b2"
 image = ExtResource("ImageImport_81")
 
 [sub_resource type="Resource" id="Resource_Card82"]
 script = ExtResource("1_v0pgv")
-card_key = "x-wheel-of-fortune-v2"
+card_key = "x-wheel-of-fortune-b2"
 image = ExtResource("ImageImport_82")
 
 [sub_resource type="Resource" id="Resource_Card83"]
 script = ExtResource("1_v0pgv")
-card_key = "the-relic-v2"
+card_key = "the-relic-b2"
 image = ExtResource("ImageImport_83")
 
 [sub_resource type="Resource" id="Resource_Card84"]
 script = ExtResource("1_v0pgv")
-card_key = "libra-v2"
+card_key = "libra-b2"
 image = ExtResource("ImageImport_84")
 
 [sub_resource type="Resource" id="Resource_Card85"]
 script = ExtResource("1_v0pgv")
-card_key = "dark-bum-v2"
+card_key = "dark-bum-b2"
 image = ExtResource("ImageImport_85")
 
 [sub_resource type="Resource" id="Resource_Card86"]
 script = ExtResource("1_v0pgv")
-card_key = "holy-squirt-v2"
+card_key = "holy-squirt-b2"
 image = ExtResource("ImageImport_86")
 
 [sub_resource type="Resource" id="Resource_Card87"]
 script = ExtResource("1_v0pgv")
-card_key = "pale-fatty-v2"
+card_key = "pale-fatty-b2"
 image = ExtResource("ImageImport_87")
 
 [sub_resource type="Resource" id="Resource_Card88"]
 script = ExtResource("1_v0pgv")
-card_key = "swarmer-v2"
+card_key = "swarmer-b2"
 image = ExtResource("ImageImport_88")
 
 [sub_resource type="Resource" id="Resource_Card89"]
@@ -924,12 +924,12 @@ image = ExtResource("ImageImport_89")
 
 [sub_resource type="Resource" id="Resource_Card90"]
 script = ExtResource("1_v0pgv")
-card_key = "samson-v2"
+card_key = "samson-b2"
 image = ExtResource("ImageImport_90")
 
 [sub_resource type="Resource" id="Resource_Card91"]
 script = ExtResource("1_v0pgv")
-card_key = "widow-v2"
+card_key = "widow-b2"
 image = ExtResource("ImageImport_91")
 
 [sub_resource type="Resource" id="Resource_Card92"]
@@ -944,237 +944,237 @@ image = ExtResource("ImageImport_93")
 
 [sub_resource type="Resource" id="Resource_Card94"]
 script = ExtResource("1_v0pgv")
-card_key = "the-midas-touch-v2"
+card_key = "the-midas-touch-b2"
 image = ExtResource("ImageImport_94")
 
 [sub_resource type="Resource" id="Resource_Card95"]
 script = ExtResource("1_v0pgv")
-card_key = "hush-v2"
+card_key = "hush-b2"
 image = ExtResource("ImageImport_95")
 
 [sub_resource type="Resource" id="Resource_Card96"]
 script = ExtResource("1_v0pgv")
-card_key = "soul-of-gluttony-v2"
+card_key = "soul-of-gluttony-b2"
 image = ExtResource("ImageImport_96")
 
 [sub_resource type="Resource" id="Resource_Card97"]
 script = ExtResource("1_v0pgv")
-card_key = "the-habit-v2"
+card_key = "the-habit-b2"
 image = ExtResource("ImageImport_97")
 
 [sub_resource type="Resource" id="Resource_Card98"]
 script = ExtResource("1_v0pgv")
-card_key = "contract-from-below-v2"
+card_key = "contract-from-below-b2"
 image = ExtResource("ImageImport_98")
 
 [sub_resource type="Resource" id="Resource_Card99"]
 script = ExtResource("1_v0pgv")
-card_key = "hourglass-v2"
+card_key = "hourglass-b2"
 image = ExtResource("ImageImport_99")
 
 [sub_resource type="Resource" id="Resource_Card100"]
 script = ExtResource("1_v0pgv")
-card_key = "the-cage-v2"
+card_key = "the-cage-b2"
 image = ExtResource("ImageImport_100")
 
 [sub_resource type="Resource" id="Resource_Card101"]
 script = ExtResource("1_v0pgv")
-card_key = "crooked-penny-v2"
+card_key = "crooked-penny-b2"
 image = ExtResource("ImageImport_101")
 
 [sub_resource type="Resource" id="Resource_Card102"]
 script = ExtResource("1_v0pgv")
-card_key = "dads-lost-coin-v2"
+card_key = "dads-lost-coin-b2"
 image = ExtResource("ImageImport_102")
 
 [sub_resource type="Resource" id="Resource_Card103"]
 script = ExtResource("1_v0pgv")
-card_key = "the-lost-v2"
+card_key = "the-lost-b2"
 image = ExtResource("ImageImport_103")
 
 [sub_resource type="Resource" id="Resource_Card104"]
 script = ExtResource("1_v0pgv")
-card_key = "a-penny-v2"
+card_key = "a-penny-b2"
 image = ExtResource("ImageImport_104")
 
 [sub_resource type="Resource" id="Resource_Card105"]
 script = ExtResource("1_v0pgv")
-card_key = "soul-heart-v2"
+card_key = "soul-heart-b2"
 image = ExtResource("ImageImport_105")
 
 [sub_resource type="Resource" id="Resource_Card106"]
 script = ExtResource("1_v0pgv")
-card_key = "gimpy-v2"
+card_key = "gimpy-b2"
 image = ExtResource("ImageImport_106")
 
 [sub_resource type="Resource" id="Resource_Card107"]
 script = ExtResource("1_v0pgv")
-card_key = "curse-of-the-blind-v2"
+card_key = "curse-of-the-blind-b2"
 image = ExtResource("ImageImport_107")
 
 [sub_resource type="Resource" id="Resource_Card108"]
 script = ExtResource("1_v0pgv")
-card_key = "blank-rune-v2"
+card_key = "blank-rune-b2"
 image = ExtResource("ImageImport_108")
 
 [sub_resource type="Resource" id="Resource_Card109"]
 script = ExtResource("1_v0pgv")
-card_key = "godhead-v2"
+card_key = "godhead-b2"
 image = ExtResource("ImageImport_109")
 
 [sub_resource type="Resource" id="Resource_Card110"]
 script = ExtResource("1_v0pgv")
-card_key = "steamy-sale-v2"
+card_key = "steamy-sale-b2"
 image = ExtResource("ImageImport_110")
 
 [sub_resource type="Resource" id="Resource_Card111"]
 script = ExtResource("1_v0pgv")
-card_key = "curse-of-greed-v2"
+card_key = "curse-of-greed-b2"
 image = ExtResource("ImageImport_111")
 
 [sub_resource type="Resource" id="Resource_Card112"]
 script = ExtResource("1_v0pgv")
-card_key = "guppys-paw-v2"
+card_key = "guppys-paw-b2"
 image = ExtResource("ImageImport_112")
 
 [sub_resource type="Resource" id="Resource_Card113"]
 script = ExtResource("1_v0pgv")
-card_key = "monstro-v2"
+card_key = "monstro-b2"
 image = ExtResource("ImageImport_113")
 
 [sub_resource type="Resource" id="Resource_Card114"]
 script = ExtResource("1_v0pgv")
-card_key = "chest1-v2"
+card_key = "chest1-b2"
 image = ExtResource("ImageImport_114")
 
 [sub_resource type="Resource" id="Resource_Card115"]
 script = ExtResource("1_v0pgv")
-card_key = "secret-room-v2"
+card_key = "secret-room-b2"
 image = ExtResource("ImageImport_115")
 
 [sub_resource type="Resource" id="Resource_Card116"]
 script = ExtResource("1_v0pgv")
-card_key = "soul-of-guppy-v2"
+card_key = "soul-of-guppy-b2"
 image = ExtResource("ImageImport_116")
 
 [sub_resource type="Resource" id="Resource_Card117"]
 script = ExtResource("1_v0pgv")
-card_key = "razor-blade-v2"
+card_key = "razor-blade-b2"
 image = ExtResource("ImageImport_117")
 
 [sub_resource type="Resource" id="Resource_Card118"]
 script = ExtResource("1_v0pgv")
-card_key = "xvii-the-stars-v2"
+card_key = "xvii-the-stars-b2"
 image = ExtResource("ImageImport_118")
 
 [sub_resource type="Resource" id="Resource_Card119"]
 script = ExtResource("1_v0pgv")
-card_key = "a-nickel-v2"
+card_key = "a-nickel-b2"
 image = ExtResource("ImageImport_119")
 
 [sub_resource type="Resource" id="Resource_Card120"]
 script = ExtResource("1_v0pgv")
-card_key = "orange-green-pills-v2"
+card_key = "orange-green-pills-b2"
 image = ExtResource("ImageImport_120")
 
 [sub_resource type="Resource" id="Resource_Card121"]
 script = ExtResource("1_v0pgv")
-card_key = "chest2-v2"
+card_key = "chest2-b2"
 image = ExtResource("ImageImport_121")
 
 [sub_resource type="Resource" id="Resource_Card122"]
 script = ExtResource("1_v0pgv")
-card_key = "soul-of-greed-v2"
+card_key = "soul-of-greed-b2"
 image = ExtResource("ImageImport_122")
 
 [sub_resource type="Resource" id="Resource_Card123"]
 script = ExtResource("1_v0pgv")
-card_key = "belly-button-v2"
+card_key = "belly-button-b2"
 image = ExtResource("ImageImport_123")
 
 [sub_resource type="Resource" id="Resource_Card124"]
 script = ExtResource("1_v0pgv")
-card_key = "nerve-ending-v2"
+card_key = "nerve-ending-b2"
 image = ExtResource("ImageImport_124")
 
 [sub_resource type="Resource" id="Resource_Card125"]
 script = ExtResource("1_v0pgv")
-card_key = "breakfast-v2"
+card_key = "breakfast-b2"
 image = ExtResource("ImageImport_125")
 
 [sub_resource type="Resource" id="Resource_Card126"]
 script = ExtResource("1_v0pgv")
-card_key = "bum-bo-v2"
+card_key = "bum-bo-b2"
 image = ExtResource("ImageImport_126")
 
 [sub_resource type="Resource" id="Resource_Card127"]
 script = ExtResource("1_v0pgv")
-card_key = "lazarus-rags-v2"
+card_key = "lazarus-rags-b2"
 image = ExtResource("ImageImport_127")
 
 [sub_resource type="Resource" id="Resource_Card128"]
 script = ExtResource("1_v0pgv")
-card_key = "blood-lust-v2"
+card_key = "blood-lust-b2"
 image = ExtResource("ImageImport_128")
 
 [sub_resource type="Resource" id="Resource_Card129"]
 script = ExtResource("1_v0pgv")
-card_key = "abaddon-v2"
+card_key = "abaddon-b2"
 image = ExtResource("ImageImport_129")
 
 [sub_resource type="Resource" id="Resource_Card130"]
 script = ExtResource("1_v0pgv")
-card_key = "boom-fly-v2"
+card_key = "boom-fly-b2"
 image = ExtResource("ImageImport_130")
 
 [sub_resource type="Resource" id="Resource_Card131"]
 script = ExtResource("1_v0pgv")
-card_key = "hopper-v2"
+card_key = "hopper-b2"
 image = ExtResource("ImageImport_131")
 
 [sub_resource type="Resource" id="Resource_Card132"]
 script = ExtResource("1_v0pgv")
-card_key = "20-20-v2"
+card_key = "20-20-b2"
 image = ExtResource("ImageImport_132")
 
 [sub_resource type="Resource" id="Resource_Card133"]
 script = ExtResource("1_v0pgv")
-card_key = "red-host-v2"
+card_key = "red-host-b2"
 image = ExtResource("ImageImport_133")
 
 [sub_resource type="Resource" id="Resource_Card134"]
 script = ExtResource("1_v0pgv")
-card_key = "box-v2"
+card_key = "box-b2"
 image = ExtResource("ImageImport_134")
 
 [sub_resource type="Resource" id="Resource_Card135"]
 script = ExtResource("1_v0pgv")
-card_key = "gold-chest1-v2"
+card_key = "gold-chest1-b2"
 image = ExtResource("ImageImport_135")
 
 [sub_resource type="Resource" id="Resource_Card136"]
 script = ExtResource("1_v0pgv")
-card_key = "dark-judas-v2"
+card_key = "dark-judas-b2"
 image = ExtResource("ImageImport_136")
 
 [sub_resource type="Resource" id="Resource_Card137"]
 script = ExtResource("1_v0pgv")
-card_key = "angel-room-v2"
+card_key = "angel-room-b2"
 image = ExtResource("ImageImport_137")
 
 [sub_resource type="Resource" id="Resource_Card138"]
 script = ExtResource("1_v0pgv")
-card_key = "xiii-death-v2"
+card_key = "xiii-death-b2"
 image = ExtResource("ImageImport_138")
 
 [sub_resource type="Resource" id="Resource_Card139"]
 script = ExtResource("1_v0pgv")
-card_key = "mega-troll-bomb-v2"
+card_key = "mega-troll-bomb-b2"
 image = ExtResource("ImageImport_139")
 
 [sub_resource type="Resource" id="Resource_Card140"]
 script = ExtResource("1_v0pgv")
-card_key = "bomb-v2"
+card_key = "bomb-b2"
 image = ExtResource("ImageImport_140")
 
 [sub_resource type="Resource" id="Resource_Card141"]
@@ -1184,7 +1184,7 @@ image = ExtResource("ImageImport_141")
 
 [sub_resource type="Resource" id="Resource_Card142"]
 script = ExtResource("1_v0pgv")
-card_key = "dip-v2"
+card_key = "dip-b2"
 image = ExtResource("ImageImport_142")
 
 [sub_resource type="Resource" id="Resource_Card143"]
@@ -1194,12 +1194,12 @@ image = ExtResource("ImageImport_143")
 
 [sub_resource type="Resource" id="Resource_Card144"]
 script = ExtResource("1_v0pgv")
-card_key = "pills-red-v2"
+card_key = "pills-red-b2"
 image = ExtResource("ImageImport_144")
 
 [sub_resource type="Resource" id="Resource_Card145"]
 script = ExtResource("1_v0pgv")
-card_key = "baby-haunt-v2"
+card_key = "baby-haunt-b2"
 image = ExtResource("ImageImport_145")
 
 [sub_resource type="Resource" id="Resource_Card146"]
@@ -1209,17 +1209,17 @@ image = ExtResource("ImageImport_146")
 
 [sub_resource type="Resource" id="Resource_Card147"]
 script = ExtResource("1_v0pgv")
-card_key = "judas-v2"
+card_key = "judas-b2"
 image = ExtResource("ImageImport_147")
 
 [sub_resource type="Resource" id="Resource_Card148"]
 script = ExtResource("1_v0pgv")
-card_key = "donation-machine-v2"
+card_key = "donation-machine-b2"
 image = ExtResource("ImageImport_148")
 
 [sub_resource type="Resource" id="Resource_Card149"]
 script = ExtResource("1_v0pgv")
-card_key = "the-d6-v2"
+card_key = "the-d6-b2"
 image = ExtResource("ImageImport_149")
 
 [sub_resource type="Resource" id="Resource_Card150"]
@@ -1229,22 +1229,22 @@ image = ExtResource("ImageImport_150")
 
 [sub_resource type="Resource" id="Resource_Card151"]
 script = ExtResource("1_v0pgv")
-card_key = "troll-bombs-v2"
+card_key = "troll-bombs-b2"
 image = ExtResource("ImageImport_151")
 
 [sub_resource type="Resource" id="Resource_Card152"]
 script = ExtResource("1_v0pgv")
-card_key = "butter-bean-v2"
+card_key = "butter-bean-b2"
 image = ExtResource("ImageImport_152")
 
 [sub_resource type="Resource" id="Resource_Card153"]
 script = ExtResource("1_v0pgv")
-card_key = "curse-of-pain-v2"
+card_key = "curse-of-pain-b2"
 image = ExtResource("ImageImport_153")
 
 [sub_resource type="Resource" id="Resource_Card154"]
 script = ExtResource("1_v0pgv")
-card_key = "dice-shard-v2"
+card_key = "dice-shard-b2"
 image = ExtResource("ImageImport_154")
 
 [sub_resource type="Resource" id="Resource_Card155"]
@@ -1254,12 +1254,12 @@ image = ExtResource("ImageImport_155")
 
 [sub_resource type="Resource" id="Resource_Card156"]
 script = ExtResource("1_v0pgv")
-card_key = "head-of-krampus-v2"
+card_key = "head-of-krampus-b2"
 image = ExtResource("ImageImport_156")
 
 [sub_resource type="Resource" id="Resource_Card157"]
 script = ExtResource("1_v0pgv")
-card_key = "the-d20-v2"
+card_key = "the-d20-b2"
 image = ExtResource("ImageImport_157")
 
 [sub_resource type="Resource" id="Resource_Card158"]
@@ -1269,7 +1269,7 @@ image = ExtResource("ImageImport_158")
 
 [sub_resource type="Resource" id="Resource_Card159"]
 script = ExtResource("1_v0pgv")
-card_key = "guppy-v2"
+card_key = "guppy-b2"
 image = ExtResource("ImageImport_159")
 
 [sub_resource type="Resource" id="Resource_Card160"]
@@ -1294,12 +1294,12 @@ image = ExtResource("ImageImport_163")
 
 [sub_resource type="Resource" id="Resource_Card164"]
 script = ExtResource("1_v0pgv")
-card_key = "charger-v2"
+card_key = "charger-b2"
 image = ExtResource("ImageImport_164")
 
 [sub_resource type="Resource" id="Resource_Card165"]
 script = ExtResource("1_v0pgv")
-card_key = "gold-chest2-v2"
+card_key = "gold-chest2-b2"
 image = ExtResource("ImageImport_165")
 
 [sub_resource type="Resource" id="Resource_Card166"]
@@ -1309,32 +1309,32 @@ image = ExtResource("ImageImport_166")
 
 [sub_resource type="Resource" id="Resource_Card167"]
 script = ExtResource("1_v0pgv")
-card_key = "dark-chest1-v2"
+card_key = "dark-chest1-b2"
 image = ExtResource("ImageImport_167")
 
 [sub_resource type="Resource" id="Resource_Card168"]
 script = ExtResource("1_v0pgv")
-card_key = "lost-soul-v2"
+card_key = "lost-soul-b2"
 image = ExtResource("ImageImport_168")
 
 [sub_resource type="Resource" id="Resource_Card169"]
 script = ExtResource("1_v0pgv")
-card_key = "trite-v2"
+card_key = "trite-b2"
 image = ExtResource("ImageImport_169")
 
 [sub_resource type="Resource" id="Resource_Card170"]
 script = ExtResource("1_v0pgv")
-card_key = "the-chest-v2"
+card_key = "the-chest-b2"
 image = ExtResource("ImageImport_170")
 
 [sub_resource type="Resource" id="Resource_Card171"]
 script = ExtResource("1_v0pgv")
-card_key = "portable-slot-machine-v2"
+card_key = "portable-slot-machine-b2"
 image = ExtResource("ImageImport_171")
 
 [sub_resource type="Resource" id="Resource_Card172"]
 script = ExtResource("1_v0pgv")
-card_key = "fly-v2"
+card_key = "fly-b2"
 image = ExtResource("ImageImport_172")
 
 [sub_resource type="Resource" id="Resource_Card173"]
@@ -1344,7 +1344,7 @@ image = ExtResource("ImageImport_173")
 
 [sub_resource type="Resource" id="Resource_Card174"]
 script = ExtResource("1_v0pgv")
-card_key = "bag-o-trash-v2"
+card_key = "bag-o-trash-b2"
 image = ExtResource("ImageImport_174")
 
 [sub_resource type="Resource" id="Resource_Card175"]
@@ -1359,12 +1359,12 @@ image = ExtResource("ImageImport_176")
 
 [sub_resource type="Resource" id="Resource_Card177"]
 script = ExtResource("1_v0pgv")
-card_key = "4-cents-v2"
+card_key = "4-cents-b2"
 image = ExtResource("ImageImport_177")
 
 [sub_resource type="Resource" id="Resource_Card178"]
 script = ExtResource("1_v0pgv")
-card_key = "pin-v2"
+card_key = "pin-b2"
 image = ExtResource("ImageImport_178")
 
 [sub_resource type="Resource" id="Resource_Card179"]
@@ -1374,1477 +1374,1477 @@ image = ExtResource("ImageImport_179")
 
 [sub_resource type="Resource" id="Resource_Card180"]
 script = ExtResource("1_v0pgv")
-card_key = "eye-of-greed-v2"
+card_key = "eye-of-greed-b2"
 image = ExtResource("ImageImport_180")
 
 [sub_resource type="Resource" id="Resource_Card181"]
 script = ExtResource("1_v0pgv")
-card_key = "xx-judgement-v1"
+card_key = "xx-judgement-b"
 image = ExtResource("ImageImport_181")
 
 [sub_resource type="Resource" id="Resource_Card182"]
 script = ExtResource("1_v0pgv")
-card_key = "the-curse-v1"
+card_key = "the-curse-b"
 image = ExtResource("ImageImport_182")
 
 [sub_resource type="Resource" id="Resource_Card183"]
 script = ExtResource("1_v0pgv")
-card_key = "theres-options-v1"
+card_key = "theres-options-b"
 image = ExtResource("ImageImport_183")
 
 [sub_resource type="Resource" id="Resource_Card184"]
 script = ExtResource("1_v0pgv")
-card_key = "we-need-to-go-deeper-v1"
+card_key = "we-need-to-go-deeper-b"
 image = ExtResource("ImageImport_184")
 
 [sub_resource type="Resource" id="Resource_Card185"]
 script = ExtResource("1_v0pgv")
-card_key = "incubus-v1"
+card_key = "incubus-b"
 image = ExtResource("ImageImport_185")
 
 [sub_resource type="Resource" id="Resource_Card186"]
 script = ExtResource("1_v0pgv")
-card_key = "viii-justice-v1"
+card_key = "viii-justice-b"
 image = ExtResource("ImageImport_186")
 
 [sub_resource type="Resource" id="Resource_Card187"]
 script = ExtResource("1_v0pgv")
-card_key = "lil-battery-v1"
+card_key = "lil-battery-b"
 image = ExtResource("ImageImport_187")
 
 [sub_resource type="Resource" id="Resource_Card188"]
 script = ExtResource("1_v0pgv")
-card_key = "greed-event-v1"
+card_key = "greed-event-b"
 image = ExtResource("ImageImport_188")
 
 [sub_resource type="Resource" id="Resource_Card189"]
 script = ExtResource("1_v0pgv")
-card_key = "i-can-see-forever-v1"
+card_key = "i-can-see-forever-b"
 image = ExtResource("ImageImport_189")
 
 [sub_resource type="Resource" id="Resource_Card190"]
 script = ExtResource("1_v0pgv")
-card_key = "the-habit-v1"
+card_key = "the-habit-b"
 image = ExtResource("ImageImport_190")
 
 [sub_resource type="Resource" id="Resource_Card191"]
 script = ExtResource("1_v0pgv")
-card_key = "death-v1"
+card_key = "death-b"
 image = ExtResource("ImageImport_191")
 
 [sub_resource type="Resource" id="Resource_Card192"]
 script = ExtResource("1_v0pgv")
-card_key = "no-v1"
+card_key = "no-b"
 image = ExtResource("ImageImport_192")
 
 [sub_resource type="Resource" id="Resource_Card193"]
 script = ExtResource("1_v0pgv")
-card_key = "dagaz-v1"
+card_key = "dagaz-b"
 image = ExtResource("ImageImport_193")
 
 [sub_resource type="Resource" id="Resource_Card194"]
 script = ExtResource("1_v0pgv")
-card_key = "curse-of-amnesia-v1"
+card_key = "curse-of-amnesia-b"
 image = ExtResource("ImageImport_194")
 
 [sub_resource type="Resource" id="Resource_Card195"]
 script = ExtResource("1_v0pgv")
-card_key = "pills-3-v1"
+card_key = "pills-3-b"
 image = ExtResource("ImageImport_195")
 
 [sub_resource type="Resource" id="Resource_Card196"]
 script = ExtResource("1_v0pgv")
-card_key = "spider-v1"
+card_key = "spider-b"
 image = ExtResource("ImageImport_196")
 
 [sub_resource type="Resource" id="Resource_Card197"]
 script = ExtResource("1_v0pgv")
-card_key = "evil-twin-v1"
+card_key = "evil-twin-b"
 image = ExtResource("ImageImport_197")
 
 [sub_resource type="Resource" id="Resource_Card198"]
 script = ExtResource("1_v0pgv")
-card_key = "conjoined-fatty-v1"
+card_key = "conjoined-fatty-b"
 image = ExtResource("ImageImport_198")
 
 [sub_resource type="Resource" id="Resource_Card199"]
 script = ExtResource("1_v0pgv")
-card_key = "dinga-v1"
+card_key = "dinga-b"
 image = ExtResource("ImageImport_199")
 
 [sub_resource type="Resource" id="Resource_Card200"]
 script = ExtResource("1_v0pgv")
-card_key = "pin-v1"
+card_key = "pin-b"
 image = ExtResource("ImageImport_200")
 
 [sub_resource type="Resource" id="Resource_Card201"]
 script = ExtResource("1_v0pgv")
-card_key = "chub-v1"
+card_key = "chub-b"
 image = ExtResource("ImageImport_201")
 
 [sub_resource type="Resource" id="Resource_Card202"]
 script = ExtResource("1_v0pgv")
-card_key = "monstros-tooth-v1"
+card_key = "monstros-tooth-b"
 image = ExtResource("ImageImport_202")
 
 [sub_resource type="Resource" id="Resource_Card203"]
 script = ExtResource("1_v0pgv")
-card_key = "dark-chest-2-v1"
+card_key = "dark-chest-2-b"
 image = ExtResource("ImageImport_203")
 
 [sub_resource type="Resource" id="Resource_Card204"]
 script = ExtResource("1_v0pgv")
-card_key = "pills-2-v1"
+card_key = "pills-2-b"
 image = ExtResource("ImageImport_204")
 
 [sub_resource type="Resource" id="Resource_Card205"]
 script = ExtResource("1_v0pgv")
-card_key = "3-cents-v1"
+card_key = "3-cents-b"
 image = ExtResource("ImageImport_205")
 
 [sub_resource type="Resource" id="Resource_Card206"]
 script = ExtResource("1_v0pgv")
-card_key = "rag-man-v1"
+card_key = "rag-man-b"
 image = ExtResource("ImageImport_206")
 
 [sub_resource type="Resource" id="Resource_Card207"]
 script = ExtResource("1_v0pgv")
-card_key = "sack-head-v1"
+card_key = "sack-head-b"
 image = ExtResource("ImageImport_207")
 
 [sub_resource type="Resource" id="Resource_Card208"]
 script = ExtResource("1_v0pgv")
-card_key = "lucky-foot-v1"
+card_key = "lucky-foot-b"
 image = ExtResource("ImageImport_208")
 
 [sub_resource type="Resource" id="Resource_Card209"]
 script = ExtResource("1_v0pgv")
-card_key = "contract-from-below-v1"
+card_key = "contract-from-below-b"
 image = ExtResource("ImageImport_209")
 
 [sub_resource type="Resource" id="Resource_Card210"]
 script = ExtResource("1_v0pgv")
-card_key = "a-penny-v1"
+card_key = "a-penny-b"
 image = ExtResource("ImageImport_210")
 
 [sub_resource type="Resource" id="Resource_Card211"]
 script = ExtResource("1_v0pgv")
-card_key = "fatty-v1"
+card_key = "fatty-b"
 image = ExtResource("ImageImport_211")
 
 [sub_resource type="Resource" id="Resource_Card212"]
 script = ExtResource("1_v0pgv")
-card_key = "xvii-the-stars-v1"
+card_key = "xvii-the-stars-b"
 image = ExtResource("ImageImport_212")
 
 [sub_resource type="Resource" id="Resource_Card213"]
 script = ExtResource("1_v0pgv")
-card_key = "blue-baby-v1"
+card_key = "blue-baby-b"
 image = ExtResource("ImageImport_213")
 
 [sub_resource type="Resource" id="Resource_Card214"]
 script = ExtResource("1_v0pgv")
-card_key = "curse-of-greed-v1"
+card_key = "curse-of-greed-b"
 image = ExtResource("ImageImport_214")
 
 [sub_resource type="Resource" id="Resource_Card215"]
 script = ExtResource("1_v0pgv")
-card_key = "bobs-brain-v1"
+card_key = "bobs-brain-b"
 image = ExtResource("ImageImport_215")
 
 [sub_resource type="Resource" id="Resource_Card216"]
 script = ExtResource("1_v0pgv")
-card_key = "the-chest-v1"
+card_key = "the-chest-b"
 image = ExtResource("ImageImport_216")
 
 [sub_resource type="Resource" id="Resource_Card217"]
 script = ExtResource("1_v0pgv")
-card_key = "the-blue-map-v1"
+card_key = "the-blue-map-b"
 image = ExtResource("ImageImport_217")
 
 [sub_resource type="Resource" id="Resource_Card218"]
 script = ExtResource("1_v0pgv")
-card_key = "godhead-v1"
+card_key = "godhead-b"
 image = ExtResource("ImageImport_218")
 
 [sub_resource type="Resource" id="Resource_Card219"]
 script = ExtResource("1_v0pgv")
-card_key = "hopper-v1"
+card_key = "hopper-b"
 image = ExtResource("ImageImport_219")
 
 [sub_resource type="Resource" id="Resource_Card220"]
 script = ExtResource("1_v0pgv")
-card_key = "holy-moms-eye-v1"
+card_key = "holy-moms-eye-b"
 image = ExtResource("ImageImport_220")
 
 [sub_resource type="Resource" id="Resource_Card221"]
 script = ExtResource("1_v0pgv")
-card_key = "pay-to-play-v1"
+card_key = "pay-to-play-b"
 image = ExtResource("ImageImport_221")
 
 [sub_resource type="Resource" id="Resource_Card222"]
 script = ExtResource("1_v0pgv")
-card_key = "pandoras-box-v1"
+card_key = "pandoras-box-b"
 image = ExtResource("ImageImport_222")
 
 [sub_resource type="Resource" id="Resource_Card223"]
 script = ExtResource("1_v0pgv")
-card_key = "soul-of-greed-v1"
+card_key = "soul-of-greed-b"
 image = ExtResource("ImageImport_223")
 
 [sub_resource type="Resource" id="Resource_Card224"]
 script = ExtResource("1_v0pgv")
-card_key = "curse-of-pain-v1"
+card_key = "curse-of-pain-b"
 image = ExtResource("ImageImport_224")
 
 [sub_resource type="Resource" id="Resource_Card225"]
 script = ExtResource("1_v0pgv")
-card_key = "big-spider-v1"
+card_key = "big-spider-b"
 image = ExtResource("ImageImport_225")
 
 [sub_resource type="Resource" id="Resource_Card226"]
 script = ExtResource("1_v0pgv")
-card_key = "the-battery-v1"
+card_key = "the-battery-b"
 image = ExtResource("ImageImport_226")
 
 [sub_resource type="Resource" id="Resource_Card227"]
 script = ExtResource("1_v0pgv")
-card_key = "maggy-v1"
+card_key = "maggy-b"
 image = ExtResource("ImageImport_227")
 
 [sub_resource type="Resource" id="Resource_Card228"]
 script = ExtResource("1_v0pgv")
-card_key = "trinity-shield-v1"
+card_key = "trinity-shield-b"
 image = ExtResource("ImageImport_228")
 
 [sub_resource type="Resource" id="Resource_Card229"]
 script = ExtResource("1_v0pgv")
-card_key = "lilith-v1"
+card_key = "lilith-b"
 image = ExtResource("ImageImport_229")
 
 [sub_resource type="Resource" id="Resource_Card230"]
 script = ExtResource("1_v0pgv")
-card_key = "dip-v1"
+card_key = "dip-b"
 image = ExtResource("ImageImport_230")
 
 [sub_resource type="Resource" id="Resource_Card231"]
 script = ExtResource("1_v0pgv")
-card_key = "troll-bombs-v1"
+card_key = "troll-bombs-b"
 image = ExtResource("ImageImport_231")
 
 [sub_resource type="Resource" id="Resource_Card232"]
 script = ExtResource("1_v0pgv")
-card_key = "bomb-v1"
+card_key = "bomb-b"
 image = ExtResource("ImageImport_232")
 
 [sub_resource type="Resource" id="Resource_Card233"]
 script = ExtResource("1_v0pgv")
-card_key = "greed-v1"
+card_key = "greed-b"
 image = ExtResource("ImageImport_233")
 
 [sub_resource type="Resource" id="Resource_Card234"]
 script = ExtResource("1_v0pgv")
-card_key = "xii-the-hanged-man-v1"
+card_key = "xii-the-hanged-man-b"
 image = ExtResource("ImageImport_234")
 
 [sub_resource type="Resource" id="Resource_Card235"]
 script = ExtResource("1_v0pgv")
-card_key = "the-compass-v1"
+card_key = "the-compass-b"
 image = ExtResource("ImageImport_235")
 
 [sub_resource type="Resource" id="Resource_Card236"]
 script = ExtResource("1_v0pgv")
-card_key = "two-of-clubs-v1"
+card_key = "two-of-clubs-b"
 image = ExtResource("ImageImport_236")
 
 [sub_resource type="Resource" id="Resource_Card237"]
 script = ExtResource("1_v0pgv")
-card_key = "moms-dead-hand-v1"
+card_key = "moms-dead-hand-b"
 image = ExtResource("ImageImport_237")
 
 [sub_resource type="Resource" id="Resource_Card238"]
 script = ExtResource("1_v0pgv")
-card_key = "pills-v1"
+card_key = "pills-b"
 image = ExtResource("ImageImport_238")
 
 [sub_resource type="Resource" id="Resource_Card239"]
 script = ExtResource("1_v0pgv")
-card_key = "boom-fly-v1"
+card_key = "boom-fly-b"
 image = ExtResource("ImageImport_239")
 
 [sub_resource type="Resource" id="Resource_Card240"]
 script = ExtResource("1_v0pgv")
-card_key = "delirium-v1"
+card_key = "delirium-b"
 image = ExtResource("ImageImport_240")
 
 [sub_resource type="Resource" id="Resource_Card241"]
 script = ExtResource("1_v0pgv")
-card_key = "the-d6-v1"
+card_key = "the-d6-b"
 image = ExtResource("ImageImport_241")
 
 [sub_resource type="Resource" id="Resource_Card242"]
 script = ExtResource("1_v0pgv")
-card_key = "v-the-hierophant-v1"
+card_key = "v-the-hierophant-b"
 image = ExtResource("ImageImport_242")
 
 [sub_resource type="Resource" id="Resource_Card243"]
 script = ExtResource("1_v0pgv")
-card_key = "eden-v1"
+card_key = "eden-b"
 image = ExtResource("ImageImport_243")
 
 [sub_resource type="Resource" id="Resource_Card244"]
 script = ExtResource("1_v0pgv")
-card_key = "ehwaz-v1"
+card_key = "ehwaz-b"
 image = ExtResource("ImageImport_244")
 
 [sub_resource type="Resource" id="Resource_Card245"]
 script = ExtResource("1_v0pgv")
-card_key = "greeds-gullet-v1"
+card_key = "greeds-gullet-b"
 image = ExtResource("ImageImport_245")
 
 [sub_resource type="Resource" id="Resource_Card246"]
 script = ExtResource("1_v0pgv")
-card_key = "mega-troll-bomb-v1"
+card_key = "mega-troll-bomb-b"
 image = ExtResource("ImageImport_246")
 
 [sub_resource type="Resource" id="Resource_Card247"]
 script = ExtResource("1_v0pgv")
-card_key = "broken-ankh-v1"
+card_key = "broken-ankh-b"
 image = ExtResource("ImageImport_247")
 
 [sub_resource type="Resource" id="Resource_Card248"]
 script = ExtResource("1_v0pgv")
-card_key = "restock-v1"
+card_key = "restock-b"
 image = ExtResource("ImageImport_248")
 
 [sub_resource type="Resource" id="Resource_Card249"]
 script = ExtResource("1_v0pgv")
-card_key = "ix-the-hermit-v1"
+card_key = "ix-the-hermit-b"
 image = ExtResource("ImageImport_249")
 
 [sub_resource type="Resource" id="Resource_Card250"]
 script = ExtResource("1_v0pgv")
-card_key = "leech-v1"
+card_key = "leech-b"
 image = ExtResource("ImageImport_250")
 
 [sub_resource type="Resource" id="Resource_Card251"]
 script = ExtResource("1_v0pgv")
-card_key = "placebo-v1"
+card_key = "placebo-b"
 image = ExtResource("ImageImport_251")
 
 [sub_resource type="Resource" id="Resource_Card252"]
 script = ExtResource("1_v0pgv")
-card_key = "cursed-psy-horf-v1"
+card_key = "cursed-psy-horf-b"
 image = ExtResource("ImageImport_252")
 
 [sub_resource type="Resource" id="Resource_Card253"]
 script = ExtResource("1_v0pgv")
-card_key = "moms-eye-v1"
+card_key = "moms-eye-b"
 image = ExtResource("ImageImport_253")
 
 [sub_resource type="Resource" id="Resource_Card254"]
 script = ExtResource("1_v0pgv")
-card_key = "chaos-card-v1"
+card_key = "chaos-card-b"
 image = ExtResource("ImageImport_254")
 
 [sub_resource type="Resource" id="Resource_Card255"]
 script = ExtResource("1_v0pgv")
-card_key = "xix-the-sun-v1"
+card_key = "xix-the-sun-b"
 image = ExtResource("ImageImport_255")
 
 [sub_resource type="Resource" id="Resource_Card256"]
 script = ExtResource("1_v0pgv")
-card_key = "eye-of-greed-v1"
+card_key = "eye-of-greed-b"
 image = ExtResource("ImageImport_256")
 
 [sub_resource type="Resource" id="Resource_Card257"]
 script = ExtResource("1_v0pgv")
-card_key = "gold-chest-v1"
+card_key = "gold-chest-b"
 image = ExtResource("ImageImport_257")
 
 [sub_resource type="Resource" id="Resource_Card258"]
 script = ExtResource("1_v0pgv")
-card_key = "soul-of-guppy-v1"
+card_key = "soul-of-guppy-b"
 image = ExtResource("ImageImport_258")
 
 [sub_resource type="Resource" id="Resource_Card259"]
 script = ExtResource("1_v0pgv")
-card_key = "cursed-moms-hand-v1"
+card_key = "cursed-moms-hand-b"
 image = ExtResource("ImageImport_259")
 
 [sub_resource type="Resource" id="Resource_Card260"]
 script = ExtResource("1_v0pgv")
-card_key = "ii-the-high-priestess-v1"
+card_key = "ii-the-high-priestess-b"
 image = ExtResource("ImageImport_260")
 
 [sub_resource type="Resource" id="Resource_Card261"]
 script = ExtResource("1_v0pgv")
-card_key = "sleight-of-hand-v1"
+card_key = "sleight-of-hand-b"
 image = ExtResource("ImageImport_261")
 
 [sub_resource type="Resource" id="Resource_Card262"]
 script = ExtResource("1_v0pgv")
-card_key = "goat-head-v1"
+card_key = "goat-head-b"
 image = ExtResource("ImageImport_262")
 
 [sub_resource type="Resource" id="Resource_Card263"]
 script = ExtResource("1_v0pgv")
-card_key = "portable-slot-machine-v1"
+card_key = "portable-slot-machine-b"
 image = ExtResource("ImageImport_263")
 
 [sub_resource type="Resource" id="Resource_Card264"]
 script = ExtResource("1_v0pgv")
-card_key = "razor-blade-v1"
+card_key = "razor-blade-b"
 image = ExtResource("ImageImport_264")
 
 [sub_resource type="Resource" id="Resource_Card265"]
 script = ExtResource("1_v0pgv")
-card_key = "lost-soul-v1"
+card_key = "lost-soul-b"
 image = ExtResource("ImageImport_265")
 
 [sub_resource type="Resource" id="Resource_Card266"]
 script = ExtResource("1_v0pgv")
-card_key = "holy-keeper-head-v1"
+card_key = "holy-keeper-head-b"
 image = ExtResource("ImageImport_266")
 
 [sub_resource type="Resource" id="Resource_Card267"]
 script = ExtResource("1_v0pgv")
-card_key = "red-host-v1"
+card_key = "red-host-b"
 image = ExtResource("ImageImport_267")
 
 [sub_resource type="Resource" id="Resource_Card268"]
 script = ExtResource("1_v0pgv")
-card_key = "moms-purse-v1"
+card_key = "moms-purse-b"
 image = ExtResource("ImageImport_268")
 
 [sub_resource type="Resource" id="Resource_Card269"]
 script = ExtResource("1_v0pgv")
-card_key = "pride-v1"
+card_key = "pride-b"
 image = ExtResource("ImageImport_269")
 
 [sub_resource type="Resource" id="Resource_Card270"]
 script = ExtResource("1_v0pgv")
-card_key = "clotty-v1"
+card_key = "clotty-b"
 image = ExtResource("ImageImport_270")
 
 [sub_resource type="Resource" id="Resource_Card271"]
 script = ExtResource("1_v0pgv")
-card_key = "the-lamb-v1"
+card_key = "the-lamb-b"
 image = ExtResource("ImageImport_271")
 
 [sub_resource type="Resource" id="Resource_Card272"]
 script = ExtResource("1_v0pgv")
-card_key = "devil-deal-v1"
+card_key = "devil-deal-b"
 image = ExtResource("ImageImport_272")
 
 [sub_resource type="Resource" id="Resource_Card273"]
 script = ExtResource("1_v0pgv")
-card_key = "mega-fatty-v1"
+card_key = "mega-fatty-b"
 image = ExtResource("ImageImport_273")
 
 [sub_resource type="Resource" id="Resource_Card274"]
 script = ExtResource("1_v0pgv")
-card_key = "tech-x-v1"
+card_key = "tech-x-b"
 image = ExtResource("ImageImport_274")
 
 [sub_resource type="Resource" id="Resource_Card275"]
 script = ExtResource("1_v0pgv")
-card_key = "conquest-v1"
+card_key = "conquest-b"
 image = ExtResource("ImageImport_275")
 
 [sub_resource type="Resource" id="Resource_Card276"]
 script = ExtResource("1_v0pgv")
-card_key = "cursed-fatty-v1"
+card_key = "cursed-fatty-b"
 image = ExtResource("ImageImport_276")
 
 [sub_resource type="Resource" id="Resource_Card277"]
 script = ExtResource("1_v0pgv")
-card_key = "shadow-v1"
+card_key = "shadow-b"
 image = ExtResource("ImageImport_277")
 
 [sub_resource type="Resource" id="Resource_Card278"]
 script = ExtResource("1_v0pgv")
-card_key = "xviii-the-moon-v1"
+card_key = "xviii-the-moon-b"
 image = ExtResource("ImageImport_278")
 
 [sub_resource type="Resource" id="Resource_Card279"]
 script = ExtResource("1_v0pgv")
-card_key = "the-haunt-v1"
+card_key = "the-haunt-b"
 image = ExtResource("ImageImport_279")
 
 [sub_resource type="Resource" id="Resource_Card280"]
 script = ExtResource("1_v0pgv")
-card_key = "sloth-v1"
+card_key = "sloth-b"
 image = ExtResource("ImageImport_280")
 
 [sub_resource type="Resource" id="Resource_Card281"]
 script = ExtResource("1_v0pgv")
-card_key = "compost-v1"
+card_key = "compost-b"
 image = ExtResource("ImageImport_281")
 
 [sub_resource type="Resource" id="Resource_Card282"]
 script = ExtResource("1_v0pgv")
-card_key = "vii-the-chariot-v1"
+card_key = "vii-the-chariot-b"
 image = ExtResource("ImageImport_282")
 
 [sub_resource type="Resource" id="Resource_Card283"]
 script = ExtResource("1_v0pgv")
-card_key = "stoney-v1"
+card_key = "stoney-b"
 image = ExtResource("ImageImport_283")
 
 [sub_resource type="Resource" id="Resource_Card284"]
 script = ExtResource("1_v0pgv")
-card_key = "wrath-v1"
+card_key = "wrath-b"
 image = ExtResource("ImageImport_284")
 
 [sub_resource type="Resource" id="Resource_Card285"]
 script = ExtResource("1_v0pgv")
-card_key = "cursed-horf-v1"
+card_key = "cursed-horf-b"
 image = ExtResource("ImageImport_285")
 
 [sub_resource type="Resource" id="Resource_Card286"]
 script = ExtResource("1_v0pgv")
-card_key = "purple-heart-v1"
+card_key = "purple-heart-b"
 image = ExtResource("ImageImport_286")
 
 [sub_resource type="Resource" id="Resource_Card287"]
 script = ExtResource("1_v0pgv")
-card_key = "scolex-v1"
+card_key = "scolex-b"
 image = ExtResource("ImageImport_287")
 
 [sub_resource type="Resource" id="Resource_Card288"]
 script = ExtResource("1_v0pgv")
-card_key = "holy-squirt-v1"
+card_key = "holy-squirt-b"
 image = ExtResource("ImageImport_288")
 
 [sub_resource type="Resource" id="Resource_Card289"]
 script = ExtResource("1_v0pgv")
-card_key = "soul-heart-v1"
+card_key = "soul-heart-b"
 image = ExtResource("ImageImport_289")
 
 [sub_resource type="Resource" id="Resource_Card290"]
 script = ExtResource("1_v0pgv")
-card_key = "little-horn-v1"
+card_key = "little-horn-b"
 image = ExtResource("ImageImport_290")
 
 [sub_resource type="Resource" id="Resource_Card291"]
 script = ExtResource("1_v0pgv")
-card_key = "peep-v1"
+card_key = "peep-b"
 image = ExtResource("ImageImport_291")
 
 [sub_resource type="Resource" id="Resource_Card292"]
 script = ExtResource("1_v0pgv")
-card_key = "mr-boom-v1"
+card_key = "mr-boom-b"
 image = ExtResource("ImageImport_292")
 
 [sub_resource type="Resource" id="Resource_Card293"]
 script = ExtResource("1_v0pgv")
-card_key = "cambion-conception-v1"
+card_key = "cambion-conception-b"
 image = ExtResource("ImageImport_293")
 
 [sub_resource type="Resource" id="Resource_Card294"]
 script = ExtResource("1_v0pgv")
-card_key = "counterfeit-penny-v1"
+card_key = "counterfeit-penny-b"
 image = ExtResource("ImageImport_294")
 
 [sub_resource type="Resource" id="Resource_Card295"]
 script = ExtResource("1_v0pgv")
-card_key = "gurdy-v1"
+card_key = "gurdy-b"
 image = ExtResource("ImageImport_295")
 
 [sub_resource type="Resource" id="Resource_Card296"]
 script = ExtResource("1_v0pgv")
-card_key = "box-v1"
+card_key = "box-b"
 image = ExtResource("ImageImport_296")
 
 [sub_resource type="Resource" id="Resource_Card297"]
 script = ExtResource("1_v0pgv")
-card_key = "trite-v1"
+card_key = "trite-b"
 image = ExtResource("ImageImport_297")
 
 [sub_resource type="Resource" id="Resource_Card298"]
 script = ExtResource("1_v0pgv")
-card_key = "lust-v1"
+card_key = "lust-b"
 image = ExtResource("ImageImport_298")
 
 [sub_resource type="Resource" id="Resource_Card299"]
 script = ExtResource("1_v0pgv")
-card_key = "the-map-v1"
+card_key = "the-map-b"
 image = ExtResource("ImageImport_299")
 
 [sub_resource type="Resource" id="Resource_Card300"]
 script = ExtResource("1_v0pgv")
-card_key = "a-dime-v1"
+card_key = "a-dime-b"
 image = ExtResource("ImageImport_300")
 
 [sub_resource type="Resource" id="Resource_Card301"]
 script = ExtResource("1_v0pgv")
-card_key = "decoy-v1"
+card_key = "decoy-b"
 image = ExtResource("ImageImport_301")
 
 [sub_resource type="Resource" id="Resource_Card302"]
 script = ExtResource("1_v0pgv")
-card_key = "battery-bum-v1"
+card_key = "battery-bum-b"
 image = ExtResource("ImageImport_302")
 
 [sub_resource type="Resource" id="Resource_Card303"]
 script = ExtResource("1_v0pgv")
-card_key = "lazarus-v1"
+card_key = "lazarus-b"
 image = ExtResource("ImageImport_303")
 
 [sub_resource type="Resource" id="Resource_Card304"]
 script = ExtResource("1_v0pgv")
-card_key = "crystal-ball-v1"
+card_key = "crystal-ball-b"
 image = ExtResource("ImageImport_304")
 
 [sub_resource type="Resource" id="Resource_Card305"]
 script = ExtResource("1_v0pgv")
-card_key = "curse-of-the-blind-v1"
+card_key = "curse-of-the-blind-b"
 image = ExtResource("ImageImport_305")
 
 [sub_resource type="Resource" id="Resource_Card306"]
 script = ExtResource("1_v0pgv")
-card_key = "mega-battery-v1"
+card_key = "mega-battery-b"
 image = ExtResource("ImageImport_306")
 
 [sub_resource type="Resource" id="Resource_Card307"]
 script = ExtResource("1_v0pgv")
-card_key = "flush-v1"
+card_key = "flush-b"
 image = ExtResource("ImageImport_307")
 
 [sub_resource type="Resource" id="Resource_Card308"]
 script = ExtResource("1_v0pgv")
-card_key = "diplopia-v1"
+card_key = "diplopia-b"
 image = ExtResource("ImageImport_308")
 
 [sub_resource type="Resource" id="Resource_Card309"]
 script = ExtResource("1_v0pgv")
-card_key = "cursed-chest-v1"
+card_key = "cursed-chest-b"
 image = ExtResource("ImageImport_309")
 
 [sub_resource type="Resource" id="Resource_Card310"]
 script = ExtResource("1_v0pgv")
-card_key = "moms-coin-purse-v1"
+card_key = "moms-coin-purse-b"
 image = ExtResource("ImageImport_310")
 
 [sub_resource type="Resource" id="Resource_Card311"]
 script = ExtResource("1_v0pgv")
-card_key = "greedling-v1"
+card_key = "greedling-b"
 image = ExtResource("ImageImport_311")
 
 [sub_resource type="Resource" id="Resource_Card312"]
 script = ExtResource("1_v0pgv")
-card_key = "modeling-clay-v1"
+card_key = "modeling-clay-b"
 image = ExtResource("ImageImport_312")
 
 [sub_resource type="Resource" id="Resource_Card313"]
 script = ExtResource("1_v0pgv")
-card_key = "spider-mod-v1"
+card_key = "spider-mod-b"
 image = ExtResource("ImageImport_313")
 
 [sub_resource type="Resource" id="Resource_Card314"]
 script = ExtResource("1_v0pgv")
-card_key = "starter-deck-v1"
+card_key = "starter-deck-b"
 image = ExtResource("ImageImport_314")
 
 [sub_resource type="Resource" id="Resource_Card315"]
 script = ExtResource("1_v0pgv")
-card_key = "cursed-keeper-head-v1"
+card_key = "cursed-keeper-head-b"
 image = ExtResource("ImageImport_315")
 
 [sub_resource type="Resource" id="Resource_Card316"]
 script = ExtResource("1_v0pgv")
-card_key = "monstro-v1"
+card_key = "monstro-b"
 image = ExtResource("ImageImport_316")
 
 [sub_resource type="Resource" id="Resource_Card317"]
 script = ExtResource("1_v0pgv")
-card_key = "o-the-fool-v1"
+card_key = "o-the-fool-b"
 image = ExtResource("ImageImport_317")
 
 [sub_resource type="Resource" id="Resource_Card318"]
 script = ExtResource("1_v0pgv")
-card_key = "gold-bomb-v1"
+card_key = "gold-bomb-b"
 image = ExtResource("ImageImport_318")
 
 [sub_resource type="Resource" id="Resource_Card319"]
 script = ExtResource("1_v0pgv")
-card_key = "chaos-v1"
+card_key = "chaos-b"
 image = ExtResource("ImageImport_319")
 
 [sub_resource type="Resource" id="Resource_Card320"]
 script = ExtResource("1_v0pgv")
-card_key = "charged-baby-v1"
+card_key = "charged-baby-b"
 image = ExtResource("ImageImport_320")
 
 [sub_resource type="Resource" id="Resource_Card321"]
 script = ExtResource("1_v0pgv")
-card_key = "lazarus-rags-v1"
+card_key = "lazarus-rags-b"
 image = ExtResource("ImageImport_321")
 
 [sub_resource type="Resource" id="Resource_Card322"]
 script = ExtResource("1_v0pgv")
-card_key = "mulligan-v1"
+card_key = "mulligan-b"
 image = ExtResource("ImageImport_322")
 
 [sub_resource type="Resource" id="Resource_Card323"]
 script = ExtResource("1_v0pgv")
-card_key = "brimstone-v1"
+card_key = "brimstone-b"
 image = ExtResource("ImageImport_323")
 
 [sub_resource type="Resource" id="Resource_Card324"]
 script = ExtResource("1_v0pgv")
-card_key = "the-d10-v1"
+card_key = "the-d10-b"
 image = ExtResource("ImageImport_324")
 
 [sub_resource type="Resource" id="Resource_Card325"]
 script = ExtResource("1_v0pgv")
-card_key = "carrion-queen-v1"
+card_key = "carrion-queen-b"
 image = ExtResource("ImageImport_325")
 
 [sub_resource type="Resource" id="Resource_Card326"]
 script = ExtResource("1_v0pgv")
-card_key = "gluttony-v1"
+card_key = "gluttony-b"
 image = ExtResource("ImageImport_326")
 
 [sub_resource type="Resource" id="Resource_Card327"]
 script = ExtResource("1_v0pgv")
-card_key = "xiv-temperance-v1"
+card_key = "xiv-temperance-b"
 image = ExtResource("ImageImport_327")
 
 [sub_resource type="Resource" id="Resource_Card328"]
 script = ExtResource("1_v0pgv")
-card_key = "daddy-haunt-v1"
+card_key = "daddy-haunt-b"
 image = ExtResource("ImageImport_328")
 
 [sub_resource type="Resource" id="Resource_Card329"]
 script = ExtResource("1_v0pgv")
-card_key = "ipecac-v1"
+card_key = "ipecac-b"
 image = ExtResource("ImageImport_329")
 
 [sub_resource type="Resource" id="Resource_Card330"]
 script = ExtResource("1_v0pgv")
-card_key = "gurdy-jr-v1"
+card_key = "gurdy-jr-b"
 image = ExtResource("ImageImport_330")
 
 [sub_resource type="Resource" id="Resource_Card331"]
 script = ExtResource("1_v0pgv")
-card_key = "polydactyly-v1"
+card_key = "polydactyly-b"
 image = ExtResource("ImageImport_331")
 
 [sub_resource type="Resource" id="Resource_Card332"]
 script = ExtResource("1_v0pgv")
-card_key = "guppys-paw-v1"
+card_key = "guppys-paw-b"
 image = ExtResource("ImageImport_332")
 
 [sub_resource type="Resource" id="Resource_Card333"]
 script = ExtResource("1_v0pgv")
-card_key = "edens-blessing-v1"
+card_key = "edens-blessing-b"
 image = ExtResource("ImageImport_333")
 
 [sub_resource type="Resource" id="Resource_Card334"]
 script = ExtResource("1_v0pgv")
-card_key = "war-v1"
+card_key = "war-b"
 image = ExtResource("ImageImport_334")
 
 [sub_resource type="Resource" id="Resource_Card335"]
 script = ExtResource("1_v0pgv")
-card_key = "dople-v1"
+card_key = "dople-b"
 image = ExtResource("ImageImport_335")
 
 [sub_resource type="Resource" id="Resource_Card336"]
 script = ExtResource("1_v0pgv")
-card_key = "cain-v1"
+card_key = "cain-b"
 image = ExtResource("ImageImport_336")
 
 [sub_resource type="Resource" id="Resource_Card337"]
 script = ExtResource("1_v0pgv")
-card_key = "the-poop-v1"
+card_key = "the-poop-b"
 image = ExtResource("ImageImport_337")
 
 [sub_resource type="Resource" id="Resource_Card338"]
 script = ExtResource("1_v0pgv")
-card_key = "moms-razor-v1"
+card_key = "moms-razor-b"
 image = ExtResource("ImageImport_338")
 
 [sub_resource type="Resource" id="Resource_Card339"]
 script = ExtResource("1_v0pgv")
-card_key = "the-forgotten-v1"
+card_key = "the-forgotten-b"
 image = ExtResource("ImageImport_339")
 
 [sub_resource type="Resource" id="Resource_Card340"]
 script = ExtResource("1_v0pgv")
-card_key = "moms-shovel-v1"
+card_key = "moms-shovel-b"
 image = ExtResource("ImageImport_340")
 
 [sub_resource type="Resource" id="Resource_Card341"]
 script = ExtResource("1_v0pgv")
-card_key = "swallowed-penny-v1"
+card_key = "swallowed-penny-b"
 image = ExtResource("ImageImport_341")
 
 [sub_resource type="Resource" id="Resource_Card342"]
 script = ExtResource("1_v0pgv")
-card_key = "cursed-gaper-v1"
+card_key = "cursed-gaper-b"
 image = ExtResource("ImageImport_342")
 
 [sub_resource type="Resource" id="Resource_Card343"]
 script = ExtResource("1_v0pgv")
-card_key = "shiny-rock-v1"
+card_key = "shiny-rock-b"
 image = ExtResource("ImageImport_343")
 
 [sub_resource type="Resource" id="Resource_Card344"]
 script = ExtResource("1_v0pgv")
-card_key = "judas-v1"
+card_key = "judas-b"
 image = ExtResource("ImageImport_344")
 
 [sub_resource type="Resource" id="Resource_Card345"]
 script = ExtResource("1_v0pgv")
-card_key = "synthoil-v1"
+card_key = "synthoil-b"
 image = ExtResource("ImageImport_345")
 
 [sub_resource type="Resource" id="Resource_Card346"]
 script = ExtResource("1_v0pgv")
-card_key = "blank-card-v1"
+card_key = "blank-card-b"
 image = ExtResource("ImageImport_346")
 
 [sub_resource type="Resource" id="Resource_Card347"]
 script = ExtResource("1_v0pgv")
-card_key = "the-d20-v1"
+card_key = "the-d20-b"
 image = ExtResource("ImageImport_347")
 
 [sub_resource type="Resource" id="Resource_Card348"]
 script = ExtResource("1_v0pgv")
-card_key = "remote-detonator-v1"
+card_key = "remote-detonator-b"
 image = ExtResource("ImageImport_348")
 
 [sub_resource type="Resource" id="Resource_Card349"]
 script = ExtResource("1_v0pgv")
-card_key = "holy-dip-v1"
+card_key = "holy-dip-b"
 image = ExtResource("ImageImport_349")
 
 [sub_resource type="Resource" id="Resource_Card350"]
 script = ExtResource("1_v0pgv")
-card_key = "the-midas-touch-v1"
+card_key = "the-midas-touch-b"
 image = ExtResource("ImageImport_350")
 
 [sub_resource type="Resource" id="Resource_Card351"]
 script = ExtResource("1_v0pgv")
-card_key = "meat-v1"
+card_key = "meat-b"
 image = ExtResource("ImageImport_351")
 
 [sub_resource type="Resource" id="Resource_Card352"]
 script = ExtResource("1_v0pgv")
-card_key = "psy-horf-v1"
+card_key = "psy-horf-b"
 image = ExtResource("ImageImport_352")
 
 [sub_resource type="Resource" id="Resource_Card353"]
 script = ExtResource("1_v0pgv")
-card_key = "xvi-the-tower-v1"
+card_key = "xvi-the-tower-b"
 image = ExtResource("ImageImport_353")
 
 [sub_resource type="Resource" id="Resource_Card354"]
 script = ExtResource("1_v0pgv")
-card_key = "rage-creep-v1"
+card_key = "rage-creep-b"
 image = ExtResource("ImageImport_354")
 
 [sub_resource type="Resource" id="Resource_Card355"]
 script = ExtResource("1_v0pgv")
-card_key = "i-the-magician-v1"
+card_key = "i-the-magician-b"
 image = ExtResource("ImageImport_355")
 
 [sub_resource type="Resource" id="Resource_Card356"]
 script = ExtResource("1_v0pgv")
-card_key = "moms-hand-v1"
+card_key = "moms-hand-b"
 image = ExtResource("ImageImport_356")
 
 [sub_resource type="Resource" id="Resource_Card357"]
 script = ExtResource("1_v0pgv")
-card_key = "belly-button-v1"
+card_key = "belly-button-b"
 image = ExtResource("ImageImport_357")
 
 [sub_resource type="Resource" id="Resource_Card358"]
 script = ExtResource("1_v0pgv")
-card_key = "xv-the-devil-v1"
+card_key = "xv-the-devil-b"
 image = ExtResource("ImageImport_358")
 
 [sub_resource type="Resource" id="Resource_Card359"]
 script = ExtResource("1_v0pgv")
-card_key = "mystery-sack-v1"
+card_key = "mystery-sack-b"
 image = ExtResource("ImageImport_359")
 
 [sub_resource type="Resource" id="Resource_Card360"]
 script = ExtResource("1_v0pgv")
-card_key = "gemini-v1"
+card_key = "gemini-b"
 image = ExtResource("ImageImport_360")
 
 [sub_resource type="Resource" id="Resource_Card361"]
 script = ExtResource("1_v0pgv")
-card_key = "swarm-of-flies-v1"
+card_key = "swarm-of-flies-b"
 image = ExtResource("ImageImport_361")
 
 [sub_resource type="Resource" id="Resource_Card362"]
 script = ExtResource("1_v0pgv")
-card_key = "the-bloat-v1"
+card_key = "the-bloat-b"
 image = ExtResource("ImageImport_362")
 
 [sub_resource type="Resource" id="Resource_Card363"]
 script = ExtResource("1_v0pgv")
-card_key = "fanny-pack-v1"
+card_key = "fanny-pack-b"
 image = ExtResource("ImageImport_363")
 
 [sub_resource type="Resource" id="Resource_Card364"]
 script = ExtResource("1_v0pgv")
-card_key = "2-cents-v1"
+card_key = "2-cents-b"
 image = ExtResource("ImageImport_364")
 
 [sub_resource type="Resource" id="Resource_Card365"]
 script = ExtResource("1_v0pgv")
-card_key = "chest-v1"
+card_key = "chest-b"
 image = ExtResource("ImageImport_365")
 
 [sub_resource type="Resource" id="Resource_Card366"]
 script = ExtResource("1_v0pgv")
-card_key = "forever-alone-v1"
+card_key = "forever-alone-b"
 image = ExtResource("ImageImport_366")
 
 [sub_resource type="Resource" id="Resource_Card367"]
 script = ExtResource("1_v0pgv")
-card_key = "the-duke-of-flies-v1"
+card_key = "the-duke-of-flies-b"
 image = ExtResource("ImageImport_367")
 
 [sub_resource type="Resource" id="Resource_Card368"]
 script = ExtResource("1_v0pgv")
-card_key = "jawbone-v1"
+card_key = "jawbone-b"
 image = ExtResource("ImageImport_368")
 
 [sub_resource type="Resource" id="Resource_Card369"]
 script = ExtResource("1_v0pgv")
-card_key = "finger-v1"
+card_key = "finger-b"
 image = ExtResource("ImageImport_369")
 
 [sub_resource type="Resource" id="Resource_Card370"]
 script = ExtResource("1_v0pgv")
-card_key = "yum-heart-v1"
+card_key = "yum-heart-b"
 image = ExtResource("ImageImport_370")
 
 [sub_resource type="Resource" id="Resource_Card371"]
 script = ExtResource("1_v0pgv")
-card_key = "xiii-death-v1"
+card_key = "xiii-death-b"
 image = ExtResource("ImageImport_371")
 
 [sub_resource type="Resource" id="Resource_Card372"]
 script = ExtResource("1_v0pgv")
-card_key = "ambush-v1"
+card_key = "ambush-b"
 image = ExtResource("ImageImport_372")
 
 [sub_resource type="Resource" id="Resource_Card373"]
 script = ExtResource("1_v0pgv")
-card_key = "curse-of-the-tower-v1"
+card_key = "curse-of-the-tower-b"
 image = ExtResource("ImageImport_373")
 
 [sub_resource type="Resource" id="Resource_Card374"]
 script = ExtResource("1_v0pgv")
-card_key = "dry-baby-v1"
+card_key = "dry-baby-b"
 image = ExtResource("ImageImport_374")
 
 [sub_resource type="Resource" id="Resource_Card375"]
 script = ExtResource("1_v0pgv")
-card_key = "xxi-the-world-v1"
+card_key = "xxi-the-world-b"
 image = ExtResource("ImageImport_375")
 
 [sub_resource type="Resource" id="Resource_Card376"]
 script = ExtResource("1_v0pgv")
-card_key = "fly-v1"
+card_key = "fly-b"
 image = ExtResource("ImageImport_376")
 
 [sub_resource type="Resource" id="Resource_Card377"]
 script = ExtResource("1_v0pgv")
-card_key = "envy-v1"
+card_key = "envy-b"
 image = ExtResource("ImageImport_377")
 
 [sub_resource type="Resource" id="Resource_Card378"]
 script = ExtResource("1_v0pgv")
-card_key = "iv-the-emperor-v1"
+card_key = "iv-the-emperor-b"
 image = ExtResource("ImageImport_378")
 
 [sub_resource type="Resource" id="Resource_Card379"]
 script = ExtResource("1_v0pgv")
-card_key = "mini-mush-v1"
+card_key = "mini-mush-b"
 image = ExtResource("ImageImport_379")
 
 [sub_resource type="Resource" id="Resource_Card380"]
 script = ExtResource("1_v0pgv")
-card_key = "squirt-v1"
+card_key = "squirt-b"
 image = ExtResource("ImageImport_380")
 
 [sub_resource type="Resource" id="Resource_Card381"]
 script = ExtResource("1_v0pgv")
-card_key = "xi-strength-v1"
+card_key = "xi-strength-b"
 image = ExtResource("ImageImport_381")
 
 [sub_resource type="Resource" id="Resource_Card382"]
 script = ExtResource("1_v0pgv")
-card_key = "ring-of-flies-v1"
+card_key = "ring-of-flies-b"
 image = ExtResource("ImageImport_382")
 
 [sub_resource type="Resource" id="Resource_Card383"]
 script = ExtResource("1_v0pgv")
-card_key = "horf-v1"
+card_key = "horf-b"
 image = ExtResource("ImageImport_383")
 
 [sub_resource type="Resource" id="Resource_Card384"]
 script = ExtResource("1_v0pgv")
-card_key = "mom-v1"
+card_key = "mom-b"
 image = ExtResource("ImageImport_384")
 
 [sub_resource type="Resource" id="Resource_Card385"]
 script = ExtResource("1_v0pgv")
-card_key = "golden-horseshoe-v1"
+card_key = "golden-horseshoe-b"
 image = ExtResource("ImageImport_385")
 
 [sub_resource type="Resource" id="Resource_Card386"]
 script = ExtResource("1_v0pgv")
-card_key = "wizoob-v1"
+card_key = "wizoob-b"
 image = ExtResource("ImageImport_386")
 
 [sub_resource type="Resource" id="Resource_Card387"]
 script = ExtResource("1_v0pgv")
-card_key = "smelter-v1"
+card_key = "smelter-b"
 image = ExtResource("ImageImport_387")
 
 [sub_resource type="Resource" id="Resource_Card388"]
 script = ExtResource("1_v0pgv")
-card_key = "fat-bat-v1"
+card_key = "fat-bat-b"
 image = ExtResource("ImageImport_388")
 
 [sub_resource type="Resource" id="Resource_Card389"]
 script = ExtResource("1_v0pgv")
-card_key = "iii-the-empress-v1"
+card_key = "iii-the-empress-b"
 image = ExtResource("ImageImport_389")
 
 [sub_resource type="Resource" id="Resource_Card390"]
 script = ExtResource("1_v0pgv")
-card_key = "the-polaroid-v1"
+card_key = "the-polaroid-b"
 image = ExtResource("ImageImport_390")
 
 [sub_resource type="Resource" id="Resource_Card391"]
 script = ExtResource("1_v0pgv")
-card_key = "dank-globin-v1"
+card_key = "dank-globin-b"
 image = ExtResource("ImageImport_391")
 
 [sub_resource type="Resource" id="Resource_Card392"]
 script = ExtResource("1_v0pgv")
-card_key = "champion-belt-v1"
+card_key = "champion-belt-b"
 image = ExtResource("ImageImport_392")
 
 [sub_resource type="Resource" id="Resource_Card393"]
 script = ExtResource("1_v0pgv")
-card_key = "daddy-long-legs-v1"
+card_key = "daddy-long-legs-b"
 image = ExtResource("ImageImport_393")
 
 [sub_resource type="Resource" id="Resource_Card394"]
 script = ExtResource("1_v0pgv")
-card_key = "black-bony-v1"
+card_key = "black-bony-b"
 image = ExtResource("ImageImport_394")
 
 [sub_resource type="Resource" id="Resource_Card395"]
 script = ExtResource("1_v0pgv")
-card_key = "a-nickel-v1"
+card_key = "a-nickel-b"
 image = ExtResource("ImageImport_395")
 
 [sub_resource type="Resource" id="Resource_Card396"]
 script = ExtResource("1_v0pgv")
-card_key = "guppys-collar-v1"
+card_key = "guppys-collar-b"
 image = ExtResource("ImageImport_396")
 
 [sub_resource type="Resource" id="Resource_Card397"]
 script = ExtResource("1_v0pgv")
-card_key = "dark-bum-v1"
+card_key = "dark-bum-b"
 image = ExtResource("ImageImport_397")
 
 [sub_resource type="Resource" id="Resource_Card398"]
 script = ExtResource("1_v0pgv")
-card_key = "boomerang-v1"
+card_key = "boomerang-b"
 image = ExtResource("ImageImport_398")
 
 [sub_resource type="Resource" id="Resource_Card399"]
 script = ExtResource("1_v0pgv")
-card_key = "sacred-heart-v1"
+card_key = "sacred-heart-b"
 image = ExtResource("ImageImport_399")
 
 [sub_resource type="Resource" id="Resource_Card400"]
 script = ExtResource("1_v0pgv")
-card_key = "bloody-penny-v1"
+card_key = "bloody-penny-b"
 image = ExtResource("ImageImport_400")
 
 [sub_resource type="Resource" id="Resource_Card401"]
 script = ExtResource("1_v0pgv")
-card_key = "bum-friend-v1"
+card_key = "bum-friend-b"
 image = ExtResource("ImageImport_401")
 
 [sub_resource type="Resource" id="Resource_Card402"]
 script = ExtResource("1_v0pgv")
-card_key = "secret-room-v1"
+card_key = "secret-room-b"
 image = ExtResource("ImageImport_402")
 
 [sub_resource type="Resource" id="Resource_Card403"]
 script = ExtResource("1_v0pgv")
-card_key = "book-of-belial-v1"
+card_key = "book-of-belial-b"
 image = ExtResource("ImageImport_403")
 
 [sub_resource type="Resource" id="Resource_Card404"]
 script = ExtResource("1_v0pgv")
-card_key = "curse-of-loss-v1"
+card_key = "curse-of-loss-b"
 image = ExtResource("ImageImport_404")
 
 [sub_resource type="Resource" id="Resource_Card405"]
 script = ExtResource("1_v0pgv")
-card_key = "guppys-hairball-v1"
+card_key = "guppys-hairball-b"
 image = ExtResource("ImageImport_405")
 
 [sub_resource type="Resource" id="Resource_Card406"]
 script = ExtResource("1_v0pgv")
-card_key = "vi-the-lovers-v1"
+card_key = "vi-the-lovers-b"
 image = ExtResource("ImageImport_406")
 
 [sub_resource type="Resource" id="Resource_Card407"]
 script = ExtResource("1_v0pgv")
-card_key = "soul-of-gluttony-v1"
+card_key = "soul-of-gluttony-b"
 image = ExtResource("ImageImport_407")
 
 [sub_resource type="Resource" id="Resource_Card408"]
 script = ExtResource("1_v0pgv")
-card_key = "cains-eye-v1"
+card_key = "cains-eye-b"
 image = ExtResource("ImageImport_408")
 
 [sub_resource type="Resource" id="Resource_Card409"]
 script = ExtResource("1_v0pgv")
-card_key = "blood-lust-v1"
+card_key = "blood-lust-b"
 image = ExtResource("ImageImport_409")
 
 [sub_resource type="Resource" id="Resource_Card410"]
 script = ExtResource("1_v0pgv")
-card_key = "mask-of-infamy-v1"
+card_key = "mask-of-infamy-b"
 image = ExtResource("ImageImport_410")
 
 [sub_resource type="Resource" id="Resource_Card411"]
 script = ExtResource("1_v0pgv")
-card_key = "keeper-head-v1"
+card_key = "keeper-head-b"
 image = ExtResource("ImageImport_411")
 
 [sub_resource type="Resource" id="Resource_Card412"]
 script = ExtResource("1_v0pgv")
-card_key = "sack-of-pennies-v1"
+card_key = "sack-of-pennies-b"
 image = ExtResource("ImageImport_412")
 
 [sub_resource type="Resource" id="Resource_Card413"]
 script = ExtResource("1_v0pgv")
-card_key = "the-shovel-v1"
+card_key = "the-shovel-b"
 image = ExtResource("ImageImport_413")
 
 [sub_resource type="Resource" id="Resource_Card414"]
 script = ExtResource("1_v0pgv")
-card_key = "dark-chest-v1"
+card_key = "dark-chest-b"
 image = ExtResource("ImageImport_414")
 
 [sub_resource type="Resource" id="Resource_Card415"]
 script = ExtResource("1_v0pgv")
-card_key = "mulliboom-v1"
+card_key = "mulliboom-b"
 image = ExtResource("ImageImport_415")
 
 [sub_resource type="Resource" id="Resource_Card416"]
 script = ExtResource("1_v0pgv")
-card_key = "the-bone-v1"
+card_key = "the-bone-b"
 image = ExtResource("ImageImport_416")
 
 [sub_resource type="Resource" id="Resource_Card417"]
 script = ExtResource("1_v0pgv")
-card_key = "x-wheel-of-fortune-v1"
+card_key = "x-wheel-of-fortune-b"
 image = ExtResource("ImageImport_417")
 
 [sub_resource type="Resource" id="Resource_Card418"]
 script = ExtResource("1_v0pgv")
-card_key = "holy-dinga-v1"
+card_key = "holy-dinga-b"
 image = ExtResource("ImageImport_418")
 
 [sub_resource type="Resource" id="Resource_Card419"]
 script = ExtResource("1_v0pgv")
-card_key = "monster-manual-v1"
+card_key = "monster-manual-b"
 image = ExtResource("ImageImport_419")
 
 [sub_resource type="Resource" id="Resource_Card420"]
 script = ExtResource("1_v0pgv")
-card_key = "xl-floor-v1"
+card_key = "xl-floor-b"
 image = ExtResource("ImageImport_420")
 
 [sub_resource type="Resource" id="Resource_Card421"]
 script = ExtResource("1_v0pgv")
-card_key = "dice-shard-v1"
+card_key = "dice-shard-b"
 image = ExtResource("ImageImport_421")
 
 [sub_resource type="Resource" id="Resource_Card422"]
 script = ExtResource("1_v0pgv")
-card_key = "dark-one-v1"
+card_key = "dark-one-b"
 image = ExtResource("ImageImport_422")
 
 [sub_resource type="Resource" id="Resource_Card423"]
 script = ExtResource("1_v0pgv")
-card_key = "spoon-bender-v1"
+card_key = "spoon-bender-b"
 image = ExtResource("ImageImport_423")
 
 [sub_resource type="Resource" id="Resource_Card424"]
 script = ExtResource("1_v0pgv")
-card_key = "book-of-sin-v1"
+card_key = "book-of-sin-b"
 image = ExtResource("ImageImport_424")
 
 [sub_resource type="Resource" id="Resource_Card425"]
 script = ExtResource("1_v0pgv")
-card_key = "glass-cannon-v1"
+card_key = "glass-cannon-b"
 image = ExtResource("ImageImport_425")
 
 [sub_resource type="Resource" id="Resource_Card426"]
 script = ExtResource("1_v0pgv")
-card_key = "satan-v1"
+card_key = "satan-b"
 image = ExtResource("ImageImport_426")
 
 [sub_resource type="Resource" id="Resource_Card427"]
 script = ExtResource("1_v0pgv")
-card_key = "leaper-v1"
+card_key = "leaper-b"
 image = ExtResource("ImageImport_427")
 
 [sub_resource type="Resource" id="Resource_Card428"]
 script = ExtResource("1_v0pgv")
-card_key = "breakfast-v1"
+card_key = "breakfast-b"
 image = ExtResource("ImageImport_428")
 
 [sub_resource type="Resource" id="Resource_Card429"]
 script = ExtResource("1_v0pgv")
-card_key = "dads-lost-coin-v1"
+card_key = "dads-lost-coin-b"
 image = ExtResource("ImageImport_429")
 
 [sub_resource type="Resource" id="Resource_Card430"]
 script = ExtResource("1_v0pgv")
-card_key = "suicide-king-v1"
+card_key = "suicide-king-b"
 image = ExtResource("ImageImport_430")
 
 [sub_resource type="Resource" id="Resource_Card431"]
 script = ExtResource("1_v0pgv")
-card_key = "pooter-v1"
+card_key = "pooter-b"
 image = ExtResource("ImageImport_431")
 
 [sub_resource type="Resource" id="Resource_Card432"]
 script = ExtResource("1_v0pgv")
-card_key = "gold-chest-2-v1"
+card_key = "gold-chest-2-b"
 image = ExtResource("ImageImport_432")
 
 [sub_resource type="Resource" id="Resource_Card433"]
 script = ExtResource("1_v0pgv")
-card_key = "chest-2-v1"
+card_key = "chest-2-b"
 image = ExtResource("ImageImport_433")
 
 [sub_resource type="Resource" id="Resource_Card434"]
 script = ExtResource("1_v0pgv")
-card_key = "host-hat-v1"
+card_key = "host-hat-b"
 image = ExtResource("ImageImport_434")
 
 [sub_resource type="Resource" id="Resource_Card435"]
 script = ExtResource("1_v0pgv")
-card_key = "the-relic-v1"
+card_key = "the-relic-b"
 image = ExtResource("ImageImport_435")
 
 [sub_resource type="Resource" id="Resource_Card436"]
 script = ExtResource("1_v0pgv")
-card_key = "4-cents-v1"
+card_key = "4-cents-b"
 image = ExtResource("ImageImport_436")
 
 [sub_resource type="Resource" id="Resource_Card437"]
 script = ExtResource("1_v0pgv")
-card_key = "bum-bo-v1"
+card_key = "bum-bo-b"
 image = ExtResource("ImageImport_437")
 
 [sub_resource type="Resource" id="Resource_Card438"]
 script = ExtResource("1_v0pgv")
-card_key = "butter-bean-v1"
+card_key = "butter-bean-b"
 image = ExtResource("ImageImport_438")
 
 [sub_resource type="Resource" id="Resource_Card439"]
 script = ExtResource("1_v0pgv")
-card_key = "isaac-v1"
+card_key = "isaac-b"
 image = ExtResource("ImageImport_439")
 
 [sub_resource type="Resource" id="Resource_Card440"]
 script = ExtResource("1_v0pgv")
-card_key = "dinner-v1"
+card_key = "dinner-b"
 image = ExtResource("ImageImport_440")
 
 [sub_resource type="Resource" id="Resource_Card441"]
 script = ExtResource("1_v0pgv")
-card_key = "pale-fatty-v1"
+card_key = "pale-fatty-b"
 image = ExtResource("ImageImport_441")
 
 [sub_resource type="Resource" id="Resource_Card442"]
 script = ExtResource("1_v0pgv")
-card_key = "potato-peeler-v1"
+card_key = "potato-peeler-b"
 image = ExtResource("ImageImport_442")
 
 [sub_resource type="Resource" id="Resource_Card443"]
 script = ExtResource("1_v0pgv")
-card_key = "guppys-head-v1"
+card_key = "guppys-head-b"
 image = ExtResource("ImageImport_443")
 
 [sub_resource type="Resource" id="Resource_Card444"]
 script = ExtResource("1_v0pgv")
-card_key = "cheese-grater-v1"
+card_key = "cheese-grater-b"
 image = ExtResource("ImageImport_444")
 
 [sub_resource type="Resource" id="Resource_Card445"]
 script = ExtResource("1_v0pgv")
-card_key = "the-d100-v1"
+card_key = "the-d100-b"
 image = ExtResource("ImageImport_445")
 
 [sub_resource type="Resource" id="Resource_Card446"]
 script = ExtResource("1_v0pgv")
-card_key = "eve-v1"
+card_key = "eve-b"
 image = ExtResource("ImageImport_446")
 
 [sub_resource type="Resource" id="Resource_Card447"]
 script = ExtResource("1_v0pgv")
-card_key = "tarot-cloth-v1"
+card_key = "tarot-cloth-b"
 image = ExtResource("ImageImport_447")
 
 [sub_resource type="Resource" id="Resource_Card448"]
 script = ExtResource("1_v0pgv")
-card_key = "moms-box-v1"
+card_key = "moms-box-b"
 image = ExtResource("ImageImport_448")
 
 [sub_resource type="Resource" id="Resource_Card449"]
 script = ExtResource("1_v0pgv")
-card_key = "famine-v1"
+card_key = "famine-b"
 image = ExtResource("ImageImport_449")
 
 [sub_resource type="Resource" id="Resource_Card450"]
 script = ExtResource("1_v0pgv")
-card_key = "portal-v1"
+card_key = "portal-b"
 image = ExtResource("ImageImport_450")
 
 [sub_resource type="Resource" id="Resource_Card451"]
 script = ExtResource("1_v0pgv")
-card_key = "shop-upgrade-v1"
+card_key = "shop-upgrade-b"
 image = ExtResource("ImageImport_451")
 
 [sub_resource type="Resource" id="Resource_Card452"]
 script = ExtResource("1_v0pgv")
-card_key = "golden-razor-blade-v1"
+card_key = "golden-razor-blade-b"
 image = ExtResource("ImageImport_452")
 
 [sub_resource type="Resource" id="Resource_Card453"]
 script = ExtResource("1_v0pgv")
-card_key = "donation-machine-v1"
+card_key = "donation-machine-b"
 image = ExtResource("ImageImport_453")
 
 [sub_resource type="Resource" id="Resource_Card454"]
 script = ExtResource("1_v0pgv")
-card_key = "pestilence-v1"
+card_key = "pestilence-b"
 image = ExtResource("ImageImport_454")
 
 [sub_resource type="Resource" id="Resource_Card455"]
 script = ExtResource("1_v0pgv")
-card_key = "curved-horn-v1"
+card_key = "curved-horn-b"
 image = ExtResource("ImageImport_455")
 
 [sub_resource type="Resource" id="Resource_Card456"]
 script = ExtResource("1_v0pgv")
-card_key = "empty-vessel-v1"
+card_key = "empty-vessel-b"
 image = ExtResource("ImageImport_456")
 
 [sub_resource type="Resource" id="Resource_Card457"]
 script = ExtResource("1_v0pgv")
-card_key = "steamy-sale-v1"
+card_key = "steamy-sale-b"
 image = ExtResource("ImageImport_457")
 
 [sub_resource type="Resource" id="Resource_Card458"]
 script = ExtResource("1_v0pgv")
-card_key = "baby-haunt-v1"
+card_key = "baby-haunt-b"
 image = ExtResource("ImageImport_458")
 
 [sub_resource type="Resource" id="Resource_Card459"]
 script = ExtResource("1_v0pgv")
-card_key = "samson-v1"
+card_key = "samson-b"
 image = ExtResource("ImageImport_459")
 
 [sub_resource type="Resource" id="Resource_Card460"]
 script = ExtResource("1_v0pgv")
-card_key = "cod-worm-v1"
+card_key = "cod-worm-b"
 image = ExtResource("ImageImport_460")
 
 [sub_resource type="Resource" id="Resource_Card461"]
 script = ExtResource("1_v0pgv")
-card_key = "dead-bird-v1"
+card_key = "dead-bird-b"
 image = ExtResource("ImageImport_461")
 
 [sub_resource type="Resource" id="Resource_Card462"]
 script = ExtResource("1_v0pgv")
-card_key = "the-d4-v1"
+card_key = "the-d4-b"
 image = ExtResource("ImageImport_462")
 
 [sub_resource type="Resource" id="Resource_Card463"]
 script = ExtResource("1_v0pgv")
-card_key = "blank-rune-v1"
+card_key = "blank-rune-b"
 image = ExtResource("ImageImport_463")
 
 [sub_resource type="Resource" id="Resource_Card464"]
 script = ExtResource("1_v0pgv")
-card_key = "hanger-v1"
+card_key = "hanger-b"
 image = ExtResource("ImageImport_464")
 
 [sub_resource type="Resource" id="Resource_Card465"]
 script = ExtResource("1_v0pgv")
-card_key = "the-dead-cat-v1"
+card_key = "the-dead-cat-b"
 image = ExtResource("ImageImport_465")
 
 [sub_resource type="Resource" id="Resource_Card466"]
 script = ExtResource("1_v0pgv")
-card_key = "larry-jr-v1"
+card_key = "larry-jr-b"
 image = ExtResource("ImageImport_466")
 
 [sub_resource type="Resource" id="Resource_Card467"]
 script = ExtResource("1_v0pgv")
-card_key = "moms-bra-v1"
+card_key = "moms-bra-b"
 image = ExtResource("ImageImport_467")
 
 [sub_resource type="Resource" id="Resource_ue8l3"]
 script = ExtResource("1_v0pgv")
-card_key = "edens-blessing-v2"
+card_key = "edens-blessing-b2"
 image = ExtResource("469_m1w63")
 
 [sub_resource type="Resource" id="Resource_tquvc"]
 script = ExtResource("1_v0pgv")
-card_key = "death-v2"
+card_key = "death-b2"
 image = ExtResource("470_ka7tg")
 
 [sub_resource type="Resource" id="Resource_0m4hs"]
 script = ExtResource("1_v0pgv")
-card_key = "holy-dip-v2"
+card_key = "holy-dip-b2"
 image = ExtResource("471_0rp7c")
 
 [sub_resource type="Resource" id="Resource_p6jky"]
 script = ExtResource("1_v0pgv")
-card_key = "battery-bum-v2"
+card_key = "battery-bum-b2"
 image = ExtResource("472_swpfv")
 
 [sub_resource type="Resource" id="Resource_hm0ds"]
 script = ExtResource("1_v0pgv")
-card_key = "smelter-v2"
+card_key = "smelter-b2"
 image = ExtResource("473_k86uc")
 
 [sub_resource type="Resource" id="Resource_uwlfp"]
 script = ExtResource("1_v0pgv")
-card_key = "placenta-v2"
+card_key = "placenta-b2"
 image = ExtResource("474_wresi")
 
 [sub_resource type="Resource" id="Resource_e660h"]
 script = ExtResource("1_v0pgv")
-card_key = "squirt-v2"
+card_key = "squirt-b2"
 image = ExtResource("475_3h6ik")
 
 [resource]

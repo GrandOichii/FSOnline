@@ -68,8 +68,6 @@ public class Program {
         // TODO prompt player name with default name
         // TODO prompt player with character key
 
-        // var chKey = "guppy-v2";
-
         await match.AddPlayer(name, c);
     }
 
@@ -80,7 +78,7 @@ public class Program {
         // TODO prompt player name with default name
         // TODO prompt player with character key
 
-        var chKey = "the-keeper-v2";
+        var chKey = "the-keeper-b2";
 
         await match.AddPlayer(name, c, chKey);
     }

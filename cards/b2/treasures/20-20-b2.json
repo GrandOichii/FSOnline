@@ -1,0 +1,7 @@
+{
+    "Key": "20-20-b2",
+    "Name": "20/20",
+    "Type": "Item",
+    "Text": "{T}: Add up to 2 to an attack roll.",
+    "Script": "20-20-b2.lua"
+}

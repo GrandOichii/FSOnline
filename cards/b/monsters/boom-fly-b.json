@@ -1,0 +1,11 @@
+{
+    "Key": "boom-fly-b",
+    "Name": "Boom Fly",
+    "Type": "Monster",
+    "Health": 1,
+    "Evasion": 4,
+    "Attack": 1,
+    "Text": "When this dies, it deals 1 damage to all players.",
+    "RewardsText": "4{cent}",
+    "Script": "boom-fly-b.lua"
+}

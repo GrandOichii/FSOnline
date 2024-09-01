@@ -1,0 +1,11 @@
+{
+    "Key": "swarmer-b2",
+    "Name": "Swarmer",
+    "Type": "Monster",
+    "Health": 4,
+    "Evasion": 3,
+    "Attack": 2,
+    "Text": "When this dies, expand monster slots by 2.",
+    "RewardsText": "+1 Treasure",
+    "Script": "swarmer-b2.lua"
+}

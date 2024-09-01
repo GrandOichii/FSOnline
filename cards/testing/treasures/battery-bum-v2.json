@@ -1,7 +1,0 @@
-{
-    "Key": "battery-bum-v2",
-    "Name": "Battery Bum",
-    "Type": "Item",
-    "Text": "Pay 4{cent}: Recharge an Item.",
-    "Script": "battery-bum-v2.lua"
-}

@@ -1,0 +1,7 @@
+{
+    "Key": "pageant-boy-b2",
+    "Name": "Pageant Boy",
+    "Type": "Item",
+    "Text": "Destroy this: Roll-\nGain x{cent}, where x is 4 times the result.",
+    "Script": "pageant-boy-b2.lua"
+}

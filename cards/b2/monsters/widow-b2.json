@@ -1,0 +1,12 @@
+{
+    "Key": "widow-b2",
+    "Name": "Widow",
+    "Type": "Monster",
+    "Health": 3,
+    "Evasion": 4,
+    "Attack": 1,
+    "Text": "",
+    "RewardsText": "Loot 2",
+    "SoulValue": 1,
+    "Script": "widow-b2.lua"
+}

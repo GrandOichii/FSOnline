@@ -1,0 +1,7 @@
+{
+    "Key": "angel-room-b2",
+    "Name": "Angel Room",
+    "Type": "Event",
+    "Text": "Roll-\n1: Gain +2 treasure.\n2-3: Gain +1 treasure.\n4-6: Loot 2.",
+    "Script": "angel-room-b2.lua"
+}

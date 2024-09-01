@@ -1,0 +1,7 @@
+{
+    "Key": "hourglass-b2",
+    "Name": "Hourglass",
+    "Type": "Item",
+    "Text": "Each time a player rolls a {roll:2}, you may deactivate an item.",
+    "Script": "hourglass-b2.lua"
+}

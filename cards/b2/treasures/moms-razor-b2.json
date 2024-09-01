@@ -1,0 +1,7 @@
+{
+    "Key": "moms-razor-b2",
+    "Name": "Mom's Razor",
+    "Type": "Item",
+    "Text": "Each time a player rolls a {roll:6}, you may deal 1 damage to them.",
+    "Script": "moms-razor-b2.lua"
+}

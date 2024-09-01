@@ -1,0 +1,7 @@
+{
+    "Key": "the-d20-b2",
+    "Name": "The D20",
+    "Type": "Item",
+    "Text": "{T}: Reroll an item.",
+    "Script": "the-d20-b2.lua"
+}

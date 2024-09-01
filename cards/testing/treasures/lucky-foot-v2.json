@@ -1,7 +1,0 @@
-{
-    "Key": "lucky-foot-v2",
-    "Name": "Lucky Foot",
-    "Type": "Item",
-    "Text": "{T}: Add up to 2 to a non-attack roll.",
-    "Script": "lucky-foot-v2.lua"
-}

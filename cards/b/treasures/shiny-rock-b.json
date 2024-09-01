@@ -1,0 +1,7 @@
+{
+    "Key": "shiny-rock-b",
+    "Name": "Shiny Rock",
+    "Type": "Item",
+    "Text": "Each time you activate an Item, gain 1{cent}.",
+    "Script": "shiny-rock-b.lua"
+}

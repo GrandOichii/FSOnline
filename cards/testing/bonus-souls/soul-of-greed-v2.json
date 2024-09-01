@@ -1,8 +1,0 @@
-{
-    "Key": "soul-of-greed-v2",
-    "Name": "Soulf of Greed",
-    "Type": "BonusSoul",
-    "Text": "The first player to have 25{cent} or more gains this soul.",
-    "SoulValue": 1,
-    "Script": "soul-of-greed-v2.lua"
-}

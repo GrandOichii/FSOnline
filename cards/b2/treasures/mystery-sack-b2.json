@@ -1,0 +1,7 @@
+{
+    "Key": "mystery-sack-b2",
+    "Name": "Mystery Sack",
+    "Type": "Item",
+    "Text": "{T}: Roll-\n1-2: Loot 1.\n3-4: Gain 4{cent}.",
+    "Script": "mystery-sack-b2.lua"
+}

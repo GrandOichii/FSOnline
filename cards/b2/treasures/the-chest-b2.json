@@ -1,0 +1,8 @@
+{
+    "Key": "the-chest-b2",
+    "Name": "The Chest",
+    "Type": "Item",
+    "Text": "If this would be destroyed. it becomes a Soul instead.",
+    "SoulValue": 1,
+    "Script": "the-chest-b2.lua"
+}

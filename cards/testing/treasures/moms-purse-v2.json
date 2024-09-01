@@ -1,7 +1,0 @@
-{
-    "Key": "moms-purse-v2",
-    "Name": "Mom's Purse",
-    "Type": "Item",
-    "Text": "Loot +1 during your loot step.",
-    "Script": "moms-purse-v2.lua"
-}

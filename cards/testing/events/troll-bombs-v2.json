@@ -1,8 +1,0 @@
-{
-    "Key": "troll-bombs-v2",
-    "Name": "Troll Bombs",
-    "Type": "Event",
-    "Text": "Take 2 damage!",
-    "Script": "troll-bombs-v2.lua",
-    "RewardsText": "Loot 2"
-}

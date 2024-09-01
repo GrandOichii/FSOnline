@@ -1,0 +1,7 @@
+{
+    "Key": "curse-of-the-blind-b2",
+    "Name": "Curse of the Blind",
+    "Type": "Curse",
+    "Text": "Monsters have +1{evasion} on your turn.",
+    "Script": "curse-of-the-blind-b2.lua"
+}

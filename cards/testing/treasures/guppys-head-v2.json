@@ -1,7 +1,0 @@
-{
-    "Key": "guppys-head-v2",
-    "Name": "Guppy's Head",
-    "Type": "Item",
-    "Text": "{T}: Choose a player. That player gives you a loot card.",
-    "Script": "guppys-head-v2.lua"
-}

@@ -1,6 +1,6 @@
 extends Control
 
-@export var default_character: String = 'isaac-v2'
+@export var default_character: String = 'isaac-b2'
 
 @onready var ConnectPanel = %ConnectPanel
 @onready var Match = %Match

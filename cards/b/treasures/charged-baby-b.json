@@ -1,0 +1,7 @@
+{
+    "Key": "charged-baby-b",
+    "Name": "Charged Baby",
+    "Type": "Item",
+    "Text": "When anyone rolls a {roll:2}, you may recharge any item.",
+    "Script": "charged-baby-b.lua"
+}

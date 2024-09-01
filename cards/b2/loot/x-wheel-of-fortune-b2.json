@@ -1,0 +1,7 @@
+{
+    "Key": "x-wheel-of-fortune-b2",
+    "Name": "X. Wheel of Fortune",
+    "Type": "Loot",
+    "Text": "Roll-\n1: Gain 1{cent}.\n2: Take 2 damage.\n3: Loot 3.\n4: Lose 4{cent}.\n5: Gain 5{cent}.\n6: Gain +1 Treasure.",
+    "Script": "x-wheel-of-fortune-b2.lua"
+}

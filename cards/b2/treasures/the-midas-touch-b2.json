@@ -1,0 +1,7 @@
+{
+    "Key": "the-midas-touch-b2",
+    "Name": "The Midas Touch",
+    "Type": "Item",
+    "Text": "Each time a monster dies, gain 3{cent}.",
+    "Script": "the-midas-touch-b2.lua"
+}

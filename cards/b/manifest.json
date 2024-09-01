@@ -1,0 +1,57 @@
+{
+    "Cards": {
+        "Characters": [
+            "characters/isaac-b",
+            "characters/judas-b",
+            "characters/samson-b",
+            "characters/lazarus-b"
+        ],
+        "StartingItems": [
+            "starting-items/the-d6-b",
+            "starting-items/book-of-belial-b",
+            "starting-items/blood-lust-b",
+            "starting-items/lazarus-rags-b"
+        ],
+        "Treasures": [
+            "treasures/sacred-heart-b",
+            "treasures/dry-baby-b",
+            "treasures/godhead-b",
+            "treasures/eye-of-greed-b",
+            "treasures/breakfast-b",
+            "treasures/dads-lost-coin-b",
+            "treasures/synthoil-b",
+            "treasures/charged-baby-b",
+            "treasures/dark-bum-b",
+            "treasures/dinner-b",
+            "treasures/edens-blessing-b",
+            "treasures/fanny-pack-b",
+            "treasures/greeds-gullet-b",
+            "treasures/meat-b",
+            "treasures/moms-box-b",
+            "treasures/moms-coin-purse-b",
+            "treasures/moms-purse-b",
+            "treasures/moms-razor-b",
+            "treasures/shadow-b",
+            "treasures/shiny-rock-b"
+        ],
+        "Loot": [
+            "loot/2-cents-b",
+            "loot/3-cents-b",
+            "loot/4-cents-b",
+            "loot/a-dime-b",
+            "loot/a-nickel-b",
+            "loot/a-penny-b"
+        ],
+        "BonusSouls": [],
+        "Rooms": [],
+        "Monsters": [
+            "monsters/trite-b",
+            "monsters/war-b",
+            "monsters/boom-fly-b",
+            "monsters/clotty-b",
+            "monsters/conjoined-fatty-b"
+        ],
+        "Events": [],
+        "Curses": []
+    }
+}

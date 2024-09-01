@@ -1,0 +1,12 @@
+{
+    "Key": "hush-b2",
+    "Name": "Hush",
+    "Type": "Monster",
+    "Health": 8,
+    "Evasion": 3,
+    "Attack": 2,
+    "Text": "",
+    "RewardsText": "+2 Treasure",
+    "SoulValue": 2,
+    "Script": "hush-b2.lua"
+}

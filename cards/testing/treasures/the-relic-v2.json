@@ -1,7 +1,0 @@
-{
-    "Key": "the-relic-v2",
-    "Name": "The Relic",
-    "Type": "Item",
-    "Text": "Each time a player rolls a {roll:1}, loot 1.",
-    "Script": "the-relic-v2.lua"
-}

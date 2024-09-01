@@ -1,7 +1,0 @@
-{
-    "Key": "mini-mush-v2",
-    "Name": "Mini Mush",
-    "Type": "Item",
-    "Text": "{T}: Subtract up to 2 from a roll.",
-    "Script": "mini-mush-v2.lua"
-}

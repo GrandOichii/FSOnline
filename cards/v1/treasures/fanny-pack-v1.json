@@ -1,7 +1,0 @@
-{
-    "Key": "fanny-pack-v1",
-    "Name": "Fanny Pack",
-    "Type": "Item",
-    "Text": "Each time you take damage, loot 1.",
-    "Script": "fanny-pack-v1.lua"
-}

@@ -1,7 +1,0 @@
-{
-    "Key": "bomb-v2",
-    "Name": "Bomb",
-    "Type": "Loot",
-    "Text": "Deal 1 damage to a Monster or player.",
-    "Script": "bomb-v2.lua"
-}

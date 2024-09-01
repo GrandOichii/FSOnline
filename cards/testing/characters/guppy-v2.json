@@ -1,9 +1,0 @@
-{
-    "Key": "guppy-v2",
-    "Name": "Guppy",
-    "Type": "Character",
-    "Health": 2,
-    "Attack": 1,
-    "Text": "{T}: Play an additional Loot card this turn.",
-    "Script": "guppy-v2.lua"
-}

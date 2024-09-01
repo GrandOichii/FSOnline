@@ -1,7 +1,0 @@
-{
-    "Key": "holy-card-v2",
-    "Name": "Holy Card",
-    "Type": "Loot",
-    "Text": "Choose a player. The next time that player would die this turn, prevent death. If it's their turn, cancel everything that hasn't resolved and end it.",
-    "Script": "holy-card-v2.lua"
-}

@@ -1,7 +1,0 @@
-{
-    "Key": "smelter-v2",
-    "Name": "Smelter",
-    "Type": "Item",
-    "Text": "Discard a loot card: Gain 3{cent}.",
-    "Script": "smelter-v2.lua"
-}

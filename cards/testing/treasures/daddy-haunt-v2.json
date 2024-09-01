@@ -1,7 +1,0 @@
-{
-    "Key": "daddy-haunt-v2",
-    "Name": "Daddy Haunt",
-    "Type": "Item",
-    "Text": "If you would take any amount of damage, take that much damage +1 instead.\nWhen you die, before paying penalties, give this to another player.",
-    "Script": "daddy-haunt-v2.lua"
-}

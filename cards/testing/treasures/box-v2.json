@@ -1,7 +1,0 @@
-{
-    "Key": "box-v2",
-    "Name": "Box!",
-    "Type": "Item",
-    "Text": "{T}: Destroy this. If you do, you may play any number of additional loot cards till end of turn.",
-    "Script": "box-v2.lua"
-}

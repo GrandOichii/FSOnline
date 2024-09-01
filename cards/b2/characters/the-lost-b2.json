@@ -1,0 +1,10 @@
+{
+    "Key": "the-lost-b2",
+    "Name": "The Lost",
+    "Type": "Character",
+    "Health": 1,
+    "Attack": 1,
+    "Text": "{T}: Play an additional Loot card this turn.\nAt the end of your turn, recharge up to 1 Character.",
+    "SoulValue": 1,
+    "Script": "the-lost-b2.lua"
+}

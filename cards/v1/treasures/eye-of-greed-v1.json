@@ -1,7 +1,0 @@
-{
-    "Key": "eye-of-greed-v1",
-    "Name": "Eye of Greed",
-    "Type": "Item",
-    "Text": "When anyone rolls a {roll:5}, gain 3{cent}.",
-    "Script": "eye-of-greed-v1.lua"
-}

@@ -1,9 +1,0 @@
-{
-    "Key": "bum-bo-v2",
-    "Name": "Bum-Bo",
-    "Type": "Character",
-    "Health": 2,
-    "Attack": 1,
-    "Text": "{T}: Play an additional Loot card this turn.",
-    "Script": "bum-bo-v2.lua"
-}

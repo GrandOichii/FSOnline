@@ -1,7 +1,0 @@
-{
-    "Key": "guppys-paw-v2",
-    "Name": "Guppy's Paw",
-    "Type": "Item",
-    "Text": "{T}: Pay 1{health}. If you do, choose a player. Prevent the next instance of up to 2 damage they would take this turn.",
-    "Script": "guppys-paw-v2.lua"
-}

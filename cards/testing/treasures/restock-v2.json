@@ -1,7 +1,0 @@
-{
-    "Key": "restock-v2",
-    "Name": "Restock",
-    "Type": "Item",
-    "Text": "At the start of your turn, you may put any number of shop items into discard.",
-    "Script": "restock-v2.lua"
-}

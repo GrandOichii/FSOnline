@@ -1,0 +1,11 @@
+{
+    "Key": "cursed-keeper-head-b2",
+    "Name": "Cursed Keeper Head",
+    "Type": "Monster",
+    "Health": 2,
+    "Evasion": 4,
+    "Attack": 1,
+    "Text": "Each time a player rolls a {roll:1}, they lose 2{cent}.",
+    "RewardsText": "Roll- gain x {cent}",
+    "Script": "cursed-keeper-head-b2.lua"
+}

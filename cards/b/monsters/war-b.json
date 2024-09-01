@@ -1,0 +1,12 @@
+{
+    "Key": "war-b",
+    "Name": "War",
+    "Type": "Monster",
+    "Health": 3,
+    "Evasion": 3,
+    "Attack": 1,
+    "Text": "Each time this takes damage, it gains +1{attack} till end of turn.",
+    "RewardsText": "8{cent}",
+    "SoulValue": 1,
+    "Script": "war-b.lua"
+}

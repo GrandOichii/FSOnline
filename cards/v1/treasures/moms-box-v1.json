@@ -1,7 +1,0 @@
-{
-    "Key": "moms-box-v1",
-    "Name": "Mom's Box",
-    "Type": "Item",
-    "Text": "When anyone rolls a {roll:4}, you may loot 1 and then discard a loot card.",
-    "Script": "moms-box-v1.lua"
-}

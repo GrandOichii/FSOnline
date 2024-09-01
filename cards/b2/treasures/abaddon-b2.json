@@ -1,0 +1,7 @@
+{
+    "Key": "abaddon-b2",
+    "Name": "Abaddon",
+    "Type": "Item",
+    "Text": "+3{attack}\nEach time you take damage, die!",
+    "Script": "abaddon-b2.lua"
+}

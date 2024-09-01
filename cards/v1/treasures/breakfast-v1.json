@@ -1,7 +1,0 @@
-{
-    "Key": "breakfast-v1",
-    "Name": "Breakfast",
-    "Type": "Item",
-    "Text": "+1{health}",
-    "Script": "breakfast-v1.lua"
-}

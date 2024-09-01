@@ -1,7 +1,0 @@
-{
-    "Key": "donation-machine-v2",
-    "Name": "Donation Machine",
-    "Type": "Item",
-    "Text": "Give another non-eternal item you control to another player:\nGain 8{cent}.",
-    "Script": "donation-machine-v2.lua"
-}

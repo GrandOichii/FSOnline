@@ -1,0 +1,11 @@
+{
+    "Key": "dip-b2",
+    "Name": "Dip",
+    "Type": "Monster",
+    "Health": 1,
+    "Evasion": 4,
+    "Attack": 1,
+    "Text": "",
+    "RewardsText": "1{cent}",
+    "Script": "dip-b2.lua"
+}

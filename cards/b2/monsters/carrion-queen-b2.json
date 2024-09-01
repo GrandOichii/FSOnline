@@ -1,0 +1,12 @@
+{
+    "Key": "carrion-queen-b2",
+    "Name": "Carrion Queen",
+    "Type": "Monster",
+    "Text": "This takes no combat damage on attack rolls of 4 or 5.",
+    "SoulValue": 1,
+    "Script": "carrion-queen-b2.lua",
+    "Health": 3,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "+1 Treasure"
+}

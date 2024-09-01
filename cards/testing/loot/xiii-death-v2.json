@@ -1,7 +1,0 @@
-{
-    "Key": "xiii-death-v2",
-    "Name": "XIII. Death",
-    "Type": "Loot",
-    "Text": "Kill a player.",
-    "Script": "xiii-death-v2.lua"
-}
