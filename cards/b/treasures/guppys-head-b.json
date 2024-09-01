@@ -1,0 +1,12 @@
+{
+    "Key": "guppys-head-b",
+    "Name": "Guppy's Head",
+    "Type": "Item",
+    "Text": "{T}: Choose a player. That player gives you a loot card.",
+    "Script": "guppys-head-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

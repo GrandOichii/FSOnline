@@ -1,0 +1,12 @@
+{
+    "Key": "steamy-sale-b",
+    "Name": "Steamy Sale!",
+    "Type": "Item",
+    "Text": "Shop items you purchase cost 5{cent} less.",
+    "Script": "steamy-sale-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

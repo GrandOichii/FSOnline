@@ -1,0 +1,12 @@
+{
+    "Key": "the-battery-b",
+    "Name": "The Battery",
+    "Type": "Item",
+    "Text": "{T}: Recharge another item.",
+    "Script": "the-battery-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

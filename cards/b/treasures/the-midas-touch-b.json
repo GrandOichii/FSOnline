@@ -1,0 +1,12 @@
+{
+    "Key": "the-midas-touch-b",
+    "Name": "The Midas Touch",
+    "Type": "Item",
+    "Text": "Each time a monster dies, gain 3{cent}.",
+    "Script": "the-midas-touch-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

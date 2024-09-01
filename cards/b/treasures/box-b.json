@@ -1,0 +1,12 @@
+{
+    "Key": "box-b",
+    "Name": "Box!",
+    "Type": "Item",
+    "Text": "{T}: Destroy this. If you do, you may play any number of additional loot cards till end of turn.",
+    "Script": "box-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

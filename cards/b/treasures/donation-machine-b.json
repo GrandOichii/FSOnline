@@ -1,0 +1,12 @@
+{
+    "Key": "donation-machine-b",
+    "Name": "Donation Machine",
+    "Type": "Item",
+    "Text": "Give another non-eternal item you control to another player:\nGain 8{cent}.",
+    "Script": "donation-machine-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

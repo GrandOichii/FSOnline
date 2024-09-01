@@ -1,0 +1,12 @@
+{
+    "Key": "battery-bum-b",
+    "Name": "Battery Bum",
+    "Type": "Item",
+    "Text": "Pay 4{cent}: Recharge an Item.",
+    "Script": "battery-bum-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

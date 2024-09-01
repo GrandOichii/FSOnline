@@ -1,0 +1,12 @@
+{
+    "Key": "mr-boom-b",
+    "Name": "Mr. Boom",
+    "Type": "Item",
+    "Text": "{T}: Deal 1 damage to a monster.",
+    "Script": "mr-boom-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}
