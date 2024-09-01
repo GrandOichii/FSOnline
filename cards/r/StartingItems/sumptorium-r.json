@@ -1,0 +1,12 @@
+{
+    "Key": "sumptorium-r",
+    "Name": "Sumptorium",
+    "Type": "StartingItem",
+    "Text": "Each time you take damage, put a counter on this.\nRemove 2 counters from this: A monster gains -1{evasion} till end of turn.",
+    "Script": "sumptorium-r.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

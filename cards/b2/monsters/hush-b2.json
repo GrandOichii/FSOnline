@@ -2,11 +2,11 @@
     "Key": "hush-b2",
     "Name": "Hush",
     "Type": "Monster",
-    "Health": 8,
-    "Evasion": 3,
-    "Attack": 2,
     "Text": "",
+    "Script": "hush-b2.lua",
+    "Health": 8,
+    "Attack": 2,
+    "Evasion": 3,
     "RewardsText": "+2 Treasure",
-    "SoulValue": 2,
-    "Script": "hush-b2.lua"
+    "SoulValue": 2
 }

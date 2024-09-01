@@ -3,5 +3,10 @@
     "Name": "Shiny Rock",
     "Type": "Item",
     "Text": "Each time you activate an Item, gain 1{cent}.",
-    "Script": "shiny-rock-b2.lua"
+    "Script": "shiny-rock-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

@@ -2,8 +2,11 @@
     "Key": "whore-of-babylon-b2",
     "Name": "Whore of Babylon",
     "Type": "Character",
+    "Text": "{T}: Play an additional Loot card this turn.",
+    "Script": "whore-of-babylon-b2.lua",
     "Health": 2,
     "Attack": 1,
-    "Text": "{T}: Play an additional Loot card this turn.",
-    "Script": "whore-of-babylon-b2.lua"
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

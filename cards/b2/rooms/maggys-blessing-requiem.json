@@ -1,7 +1,0 @@
-{
-    "Key": "maggys-blessing-requiem",
-    "Name": "Maggy's Blessing",
-    "Type": "Room",
-    "Text": "Players have +1{health}.",
-    "Script": "maggys-blessing-requiem.lua"
-}

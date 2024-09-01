@@ -1,7 +1,0 @@
-{
-    "Key": "chunk-of-amber-warp",
-    "Name": "Chunk of Amber",
-    "Type": "Loot",
-    "Text": "Roll-\nGain x{cent}, where x is 2 times the result.",
-    "Script": "chunk-of-amber-warp.lua"
-}

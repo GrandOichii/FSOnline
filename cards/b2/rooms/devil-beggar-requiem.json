@@ -1,7 +1,0 @@
-{
-    "Key": "devil-beggar-requiem",
-    "Name": "Devil Beggar",
-    "Type": "Room",
-    "Text": "Pay 1{health}: Roll-\n1-2: Loot 2.\n3-4: Loot 1.\n5-6: Take 1 damage.",
-    "Script": "devil-beggar-requiem.lua"
-}

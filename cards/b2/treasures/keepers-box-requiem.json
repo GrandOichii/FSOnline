@@ -1,7 +1,0 @@
-{
-    "Key": "keepers-box-requiem",
-    "Name": "Keeper's Box",
-    "Type": "Item",
-    "Text": "When this enters play, expand shop slots by 2.\nEach time another player purchases a shop item, gain 2{cent} and loot 1.",
-    "Script": "keepers-box-requiem.lua"
-}

@@ -3,5 +3,10 @@
     "Name": "Fanny Pack",
     "Type": "Item",
     "Text": "Each time you take damage, loot 1.",
-    "Script": "fanny-pack-b2.lua"
+    "Script": "fanny-pack-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

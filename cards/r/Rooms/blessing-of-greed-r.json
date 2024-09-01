@@ -1,0 +1,12 @@
+{
+    "Key": "blessing-of-greed-r",
+    "Name": "Blessing of Greed",
+    "Type": "Room",
+    "Text": "At the start of each turn, the active player gains 3{cent}.",
+    "Script": "blessing-of-greed-r.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

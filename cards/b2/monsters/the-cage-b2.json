@@ -3,10 +3,10 @@
     "Name": "The Cage",
     "Type": "Monster",
     "Text": "",
-    "SoulValue": 1,
     "Script": "the-cage-b2.lua",
     "Health": 6,
-    "Evasion": 4,
     "Attack": 1,
-    "RewardsText": "+2 Treasure"
+    "Evasion": 4,
+    "RewardsText": "+2 Treasure",
+    "SoulValue": 1
 }

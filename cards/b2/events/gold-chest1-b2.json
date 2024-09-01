@@ -3,5 +3,10 @@
     "Name": "Gold Chest",
     "Type": "Event",
     "Text": "Roll-\n1-2: Gain +1 Treasure.\n3-4: Loot 1.\n5-6: Loot 2.",
-    "Script": "gold-chest1-b2.lua"
+    "Script": "gold-chest1-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

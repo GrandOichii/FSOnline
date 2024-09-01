@@ -1,7 +1,0 @@
-{
-    "Key": "blessing-of-greed-requiem",
-    "Name": "Blessing of Greed",
-    "Type": "Room",
-    "Text": "At the start of each turn, the active player gains 3{cent}.",
-    "Script": "blessing-of-greed-requiem.lua"
-}

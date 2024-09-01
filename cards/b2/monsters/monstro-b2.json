@@ -2,11 +2,11 @@
     "Key": "monstro-b2",
     "Name": "Monstro",
     "Type": "Monster",
-    "Health": 4,
-    "Evasion": 4,
-    "Attack": 1,
     "Text": "",
+    "Script": "monstro-b2.lua",
+    "Health": 4,
+    "Attack": 1,
+    "Evasion": 4,
     "RewardsText": "6{cent}",
-    "SoulValue": 1,
-    "Script": "monstro-b2.lua"
+    "SoulValue": 1
 }

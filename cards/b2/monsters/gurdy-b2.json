@@ -2,11 +2,11 @@
     "Key": "gurdy-b2",
     "Name": "Gurdy",
     "Type": "Monster",
-    "Health": 5,
-    "Evasion": 4,
-    "Attack": 1,
     "Text": "",
+    "Script": "gurdy-b2.lua",
+    "Health": 5,
+    "Attack": 1,
+    "Evasion": 4,
     "RewardsText": "7{cent}",
-    "SoulValue": 1,
-    "Script": "gurdy-b2.lua"
+    "SoulValue": 1
 }

@@ -1,0 +1,12 @@
+{
+    "Key": "blood-lust-b2",
+    "Name": "Blood Lust",
+    "Type": "StartingItem",
+    "Text": "{T}: Choose a player or monster. They gain +1{attack} till end of turn.\nAt the end of your turn, recharge this.",
+    "Script": "blood-lust-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

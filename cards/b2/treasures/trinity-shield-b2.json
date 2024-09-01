@@ -3,5 +3,10 @@
     "Name": "Trinity Shield",
     "Type": "Item",
     "Text": "Other players can't play loot cards or activate items on your turn.",
-    "Script": "trinity-shield-b2.lua"
+    "Script": "trinity-shield-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

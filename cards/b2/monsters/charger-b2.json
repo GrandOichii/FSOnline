@@ -3,10 +3,10 @@
     "Name": "Charger",
     "Type": "Monster",
     "Text": "",
-    "SoulValue": 0,
     "Script": "charger-b2.lua",
     "Health": 1,
-    "Evasion": 5,
     "Attack": 1,
-    "RewardsText": "3{cent}"
+    "Evasion": 5,
+    "RewardsText": "3{cent}",
+    "SoulValue": 0
 }

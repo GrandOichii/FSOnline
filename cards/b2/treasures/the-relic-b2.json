@@ -3,5 +3,10 @@
     "Name": "The Relic",
     "Type": "Item",
     "Text": "Each time a player rolls a {roll:1}, loot 1.",
-    "Script": "the-relic-b2.lua"
+    "Script": "the-relic-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

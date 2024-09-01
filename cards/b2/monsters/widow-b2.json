@@ -2,11 +2,11 @@
     "Key": "widow-b2",
     "Name": "Widow",
     "Type": "Monster",
-    "Health": 3,
-    "Evasion": 4,
-    "Attack": 1,
     "Text": "",
+    "Script": "widow-b2.lua",
+    "Health": 3,
+    "Attack": 1,
+    "Evasion": 4,
     "RewardsText": "Loot 2",
-    "SoulValue": 1,
-    "Script": "widow-b2.lua"
+    "SoulValue": 1
 }

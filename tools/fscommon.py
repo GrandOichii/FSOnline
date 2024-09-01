@@ -1,4 +1,6 @@
-from os.path import join
+import copy
+from os import mkdir
+from os.path import join, isdir
 import json
 
 from lupa.lua54 import LuaRuntime
@@ -13,21 +15,20 @@ class RelationTypes:
     OlderVersion = 3
 
 TYPE_TO_DECK_INDEX = {
-    'character': 'Characters',
-    'startingitem': 'StartingItems',
-    'treasure': 'Treasures',
-    'loot': 'Loot',
-    'bonussoul': 'BonusSouls',
-    'room': 'Rooms',
-    'monster': 'Monsters',
-    'event': 'Events',
-    'curse': 'Curses',
+    'Character': 'Characters',
+    'StartingItem': 'StartingItems',
+    'Item': 'Treasures',
+    'Loot': 'Loot',
+    'BonusSoul': 'BonusSouls',
+    'Room': 'Rooms',
+    'Monster': 'Monsters',
+    'Event': 'Events',
+    'Curse': 'Curses',
 }
 
 DECK_KEYS = list(TYPE_TO_DECK_INDEX.values())
 
 _lua = LuaRuntime()
-# print(dir(_lua))
 _lua.execute(open(CORE_FILE, 'r').read())
 
 def get_or_default(d: dict, key: str, default):
@@ -50,6 +51,13 @@ class Card:
         self.soul_value = 0
         self.lua_table = None
 
+    def copy(self, new_collection: 'CardCollection') -> 'Card':
+        result = Card(self.collection)
+        result.__dict__ = copy.copy(self.__dict__)
+
+        result.collection = new_collection
+        return result
+
     def from_dict(collection: 'CardCollection', d: dict):
         result = Card(collection)
 
@@ -65,6 +73,22 @@ class Card:
         result.soul_value = get_or_default(d, 'SoulValue', 0)
 
         result.create_lua_table()
+
+        return result
+
+    def as_json(self) -> dict:
+        result = {}
+
+        result['Key'] = self.key
+        result['Name'] = self.name
+        result['Type'] = self.type
+        result['Text'] = self.text
+        result['Script'] = self.script
+        result['Health'] = self.health
+        result['Attack'] = self.attack
+        result['Evasion'] = self.evasion
+        result['RewardsText'] = self.rewards_text
+        result['SoulValue'] = self.soul_value
 
         return result
 
@@ -89,6 +113,11 @@ class CardCollection:
     def __init__(self) -> None:
         self.cards: list[Card] = []
 
+    def load_from_cards(cards: list[Card]) -> 'CardCollection':
+        result = CardCollection()
+        result.cards = [card.copy(result) for card in cards]
+        return result 
+
     def load_from_dir(dir: str) -> 'CardCollection':
         result = CardCollection()
 
@@ -108,9 +137,33 @@ class CardCollection:
         # TODO
         return ''
 
-    def save_to(dir: str):
-        # TODO
-        pass
+    def form_manifest(self) -> dict:
+        result = {}
+        result['Cards'] = {}
+        for deck in DECK_KEYS:
+            result['Cards'][deck] = []
+        for card in self.cards:
+            deck = TYPE_TO_DECK_INDEX[card.type]
+            result['Cards'][deck] += [f'{deck}/{card.key}']
+        return result
+
+    def save_to(self, dir: str):
+        if isdir(dir):
+            raise Exception(f'Directory {dir} already exists')
+        mkdir(dir)
+
+        manifest = self.form_manifest()
+        open(join(dir, MANIFEST_FILE), 'w').write(json.dumps(manifest, indent=4))
+
+        for deck in DECK_KEYS:
+            mkdir(join(dir, deck))
+        for card in self.cards:
+            deck = TYPE_TO_DECK_INDEX[card.type]
+            card_path = join(dir, deck, card.key)
+            c = card.copy(self)
+            c.script = f'{c.key}.lua'
+            open(f'{card_path}.lua', 'w').write(card.script)
+            open(f'{card_path}.json', 'w').write(json.dumps(c.as_json(), indent=4))
 
     def get(self, key: str) -> Card:
         return next((card for card in self.cards if card.key == key), None)

@@ -3,5 +3,10 @@
     "Name": "Pills!",
     "Type": "Loot",
     "Text": "Roll-\n1-2: You gain +1{attack} till end of turn.\n3-4: You gain +1{health} till end of turn.\n5-6: Take 1 damage.",
-    "Script": "pills-red-b2.lua"
+    "Script": "pills-red-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

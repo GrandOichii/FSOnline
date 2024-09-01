@@ -3,5 +3,10 @@
     "Name": "A Dime!!",
     "Type": "Loot",
     "Text": "Gain 10{cent}.",
-    "Script": "a-dime-b2.lua"
+    "Script": "a-dime-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

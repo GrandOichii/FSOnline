@@ -1,0 +1,12 @@
+{
+    "Key": "bag-of-crafting-r",
+    "Name": "Bag of Crafting",
+    "Type": "StartingItem",
+    "Text": "Discard a loot card:\nPut a counter on this.\nRemove 4 counters from this:\nGain +1 treasure.",
+    "Script": "bag-of-crafting-r.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

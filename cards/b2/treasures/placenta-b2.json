@@ -3,5 +3,10 @@
     "Name": "Placenta",
     "Type": "Item",
     "Text": "+1{health}\nYou take no combat damage on attack rolls of 4.",
-    "Script": "placenta-b2.lua"
+    "Script": "placenta-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

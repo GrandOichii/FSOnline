@@ -1,7 +1,0 @@
-{
-    "Key": "lucky-toe-requiem",
-    "Name": "Lucky Toe",
-    "Type": "Loot",
-    "Text": "If you would loot, except during the loot step, instead loot that much +1.\n{label:Trinket}",
-    "Script": "lucky-toe-requiem.lua"
-}

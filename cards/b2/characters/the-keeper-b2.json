@@ -2,8 +2,11 @@
     "Key": "the-keeper-b2",
     "Name": "The Keeper",
     "Type": "Character",
+    "Text": "{T}: Play an additional Loot card this turn.",
+    "Script": "the-keeper-b2.lua",
     "Health": 2,
     "Attack": 1,
-    "Text": "{T}: Play an additional Loot card this turn.",
-    "Script": "the-keeper-b2.lua"
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

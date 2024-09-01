@@ -1,0 +1,12 @@
+{
+    "Key": "xvii-the-stars-aa",
+    "Name": "XVII. The Stars",
+    "Type": "Loot",
+    "Text": "Each player gains +1 Treasure, then you gain +1 Treasure.",
+    "Script": "xvii-the-stars-aa.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

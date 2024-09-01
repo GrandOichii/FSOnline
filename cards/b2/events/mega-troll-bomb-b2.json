@@ -3,5 +3,10 @@
     "Name": "Mega Troll Bomb!",
     "Type": "Event",
     "Text": "Each player takes 2 damage!",
-    "Script": "mega-troll-bomb-b2.lua"
+    "Script": "mega-troll-bomb-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

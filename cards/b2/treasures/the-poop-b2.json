@@ -3,5 +3,10 @@
     "Name": "The Poop",
     "Type": "Item",
     "Text": "Each time you take damage, put a counter on this.\nRemove a counter from this: Prevent the next 1 damage you would take this turn.",
-    "Script": "the-poop-b2.lua"
+    "Script": "the-poop-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

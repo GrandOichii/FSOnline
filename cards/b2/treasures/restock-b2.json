@@ -3,5 +3,10 @@
     "Name": "Restock",
     "Type": "Item",
     "Text": "At the start of your turn, you may put any number of shop items into discard.",
-    "Script": "restock-b2.lua"
+    "Script": "restock-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

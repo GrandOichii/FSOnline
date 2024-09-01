@@ -1,0 +1,12 @@
+{
+    "Key": "keepers-bargain-r",
+    "Name": "Keeper's Bargain",
+    "Type": "StartingItem",
+    "Text": "{T}: Each other player may choose to gain 1{cent}. Gain 1{cent} + 1{cent} for each player who did.\nShop items you purchase cost 3{cent} less.",
+    "Script": "keepers-bargain-r.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

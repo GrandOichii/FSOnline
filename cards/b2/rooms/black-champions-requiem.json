@@ -1,7 +1,0 @@
-{
-    "Key": "black-champions-requiem",
-    "Name": "Black Champions",
-    "Type": "Room",
-    "Text": "Monsters have +1{attack}",
-    "Script": "black-champions-requiem.lua"
-}

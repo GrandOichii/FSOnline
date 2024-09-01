@@ -3,5 +3,10 @@
     "Name": "Infamy",
     "Type": "Item",
     "Text": "You take no combat damage on attack rolls of 1.",
-    "Script": "infamy-b2.lua"
+    "Script": "infamy-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

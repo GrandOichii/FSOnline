@@ -1,7 +1,0 @@
-{
-    "Key": "abyss-requiem",
-    "Name": "Abyss",
-    "Type": "StartingItem",
-    "Text": "{T}: Destroy an item you control. If you do, put a counter on this.\nYou have +1{attack} for every 2 counters on this.",
-    "Script": "abyss-requiem.lua"
-}

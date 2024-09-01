@@ -2,8 +2,11 @@
     "Key": "bum-bo-b2",
     "Name": "Bum-Bo",
     "Type": "Character",
+    "Text": "{T}: Play an additional Loot card this turn.",
+    "Script": "bum-bo-b2.lua",
     "Health": 2,
     "Attack": 1,
-    "Text": "{T}: Play an additional Loot card this turn.",
-    "Script": "bum-bo-b2.lua"
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

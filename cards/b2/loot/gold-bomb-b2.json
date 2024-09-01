@@ -3,5 +3,10 @@
     "Name": "Gold Bomb!!",
     "Type": "Loot",
     "Text": "Deal 3 damage to a monster or player.",
-    "Script": "gold-bomb-b2.lua"
+    "Script": "gold-bomb-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

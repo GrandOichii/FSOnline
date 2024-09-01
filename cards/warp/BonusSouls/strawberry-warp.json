@@ -1,0 +1,12 @@
+{
+    "Key": "strawberry-warp",
+    "Name": "Strawberry",
+    "Type": "BonusSoul",
+    "Text": "The first active player to roll a 1 three times on the same turn gains this Soul.",
+    "Script": "strawberry-warp.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 1
+}

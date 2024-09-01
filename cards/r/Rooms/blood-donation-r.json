@@ -1,0 +1,12 @@
+{
+    "Key": "blood-donation-r",
+    "Name": "Blood Donation",
+    "Type": "Room",
+    "Text": "Pay 1{health}: Gain 3{cent}.",
+    "Script": "blood-donation-r.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

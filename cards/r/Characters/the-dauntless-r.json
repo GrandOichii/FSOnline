@@ -1,0 +1,12 @@
+{
+    "Key": "the-dauntless-r",
+    "Name": "The Dauntless",
+    "Type": "Character",
+    "Text": "{T}: Play an additional Loot card this turn.",
+    "Script": "the-dauntless-r.lua",
+    "Health": 1,
+    "Attack": 1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

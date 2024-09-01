@@ -1,0 +1,12 @@
+{
+    "Key": "experimental-treatment-r",
+    "Name": "Experimental Treatment",
+    "Type": "Item",
+    "Text": "Destroy this: Roll-\n1: You die.\n2: Loot 3.\n3: Gain 9{cent}.\n4: Gain +1 treasure.\n5: Gain +2 treasure.\n6: This becomes a soul. gain it.",
+    "Script": "experimental-treatment-r.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 1
+}

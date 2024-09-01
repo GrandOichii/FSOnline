@@ -1,0 +1,12 @@
+{
+    "Key": "soul-of-greed-b2",
+    "Name": "Soulf of Greed",
+    "Type": "BonusSoul",
+    "Text": "The first player to have 25{cent} or more gains this soul.",
+    "Script": "soul-of-greed-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 1
+}

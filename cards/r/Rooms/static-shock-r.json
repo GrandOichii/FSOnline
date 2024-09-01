@@ -1,0 +1,12 @@
+{
+    "Key": "static-shock-r",
+    "Name": "Static Shock",
+    "Type": "Room",
+    "Text": "Each time a player activates an item, they take 1 damage.",
+    "Script": "static-shock-r.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

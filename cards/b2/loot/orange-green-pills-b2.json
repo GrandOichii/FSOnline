@@ -3,5 +3,10 @@
     "Name": "Pills!",
     "Type": "Loot",
     "Text": "Roll-\n1-2: Gain 4{cent}.\n3-4: Gain 7{cent}.\n5-6: Lose 4{cent}.",
-    "Script": "orange-green-pills-b2.lua"
+    "Script": "orange-green-pills-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

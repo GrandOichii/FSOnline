@@ -3,10 +3,10 @@
     "Name": "Trite",
     "Type": "Monster",
     "Text": "",
-    "SoulValue": 0,
     "Script": "trite-b2.lua",
     "Health": 1,
-    "Evasion": 5,
     "Attack": 1,
-    "RewardsText": "Loot 2"
+    "Evasion": 5,
+    "RewardsText": "Loot 2",
+    "SoulValue": 0
 }

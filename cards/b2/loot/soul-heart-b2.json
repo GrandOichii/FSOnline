@@ -3,5 +3,10 @@
     "Name": "Soul Heart",
     "Type": "Loot",
     "Text": "Choose a player. Prevent the next 1 damage they would take this turn.",
-    "Script": "soul-heart-b2.lua"
+    "Script": "soul-heart-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

@@ -2,10 +2,11 @@
     "Key": "fly-b2",
     "Name": "Fly",
     "Type": "Monster",
-    "Health": 1,
-    "Evasion": 2,
-    "Attack": 1,
     "Text": "",
+    "Script": "fly-b2.lua",
+    "Health": 1,
+    "Attack": 1,
+    "Evasion": 2,
     "RewardsText": "1{cent}",
-    "Script": "fly-b2.lua"
+    "SoulValue": 0
 }

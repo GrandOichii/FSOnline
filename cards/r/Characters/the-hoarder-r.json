@@ -1,0 +1,12 @@
+{
+    "Key": "the-hoarder-r",
+    "Name": "The Hoarder",
+    "Type": "Character",
+    "Text": "{T}: Play an additional Loot card this turn.",
+    "Script": "the-hoarder-r.lua",
+    "Health": 2,
+    "Attack": 1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

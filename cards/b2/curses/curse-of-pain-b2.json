@@ -3,5 +3,10 @@
     "Name": "Curse of Pain",
     "Type": "Curse",
     "Text": "At the start of your turn, take 1 damage.",
-    "Script": "curse-of-pain-b2.lua"
+    "Script": "curse-of-pain-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

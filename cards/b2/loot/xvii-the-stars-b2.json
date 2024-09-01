@@ -3,5 +3,10 @@
     "Name": "XVII. The Stars",
     "Type": "Loot",
     "Text": "Gain +1 Treasure.",
-    "Script": "xvii-the-stars-b2.lua"
+    "Script": "xvii-the-stars-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

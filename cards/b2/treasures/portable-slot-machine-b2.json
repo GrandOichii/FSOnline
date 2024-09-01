@@ -3,5 +3,10 @@
     "Name": "Portable Slot Machine",
     "Type": "Item",
     "Text": "Pay 3{cent}: Roll-\n1-2: Loot 1.\n3-4: Gain 4{cent}.",
-    "Script": "portable-slot-machine-b2.lua"
+    "Script": "portable-slot-machine-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

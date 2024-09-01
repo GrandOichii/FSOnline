@@ -1,9 +1,0 @@
-{
-    "Key": "the-hoarder-requiem",
-    "Name": "The Hoarder",
-    "Type": "Character",
-    "Health": 2,
-    "Attack": 1,
-    "Text": "{T}: Play an additional Loot card this turn.",
-    "Script": "the-hoarder-requiem.lua"
-}

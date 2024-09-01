@@ -2,10 +2,11 @@
     "Key": "clotty-b2",
     "Name": "Clotty",
     "Type": "Monster",
-    "Health": 2,
-    "Evasion": 3,
-    "Attack": 1,
     "Text": "",
+    "Script": "clotty-b2.lua",
+    "Health": 2,
+    "Attack": 1,
+    "Evasion": 3,
     "RewardsText": "4{cent}",
-    "Script": "clotty-b2.lua"
+    "SoulValue": 0
 }

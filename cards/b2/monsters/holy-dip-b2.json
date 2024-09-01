@@ -5,7 +5,8 @@
     "Text": "Each time a player rolls a {roll:1}, they gain 1{cent}.",
     "Script": "holy-dip-b2.lua",
     "Health": 1,
-    "Evasion": 4,
     "Attack": 1,
-    "RewardsText": "1{cent}"
+    "Evasion": 4,
+    "RewardsText": "1{cent}",
+    "SoulValue": 0
 }

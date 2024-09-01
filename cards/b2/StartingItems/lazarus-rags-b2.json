@@ -1,0 +1,12 @@
+{
+    "Key": "lazarus-rags-b2",
+    "Name": "Lazarus' Rags",
+    "Type": "StartingItem",
+    "Text": "Each time you die, after paying penalties, gain +1 Treasure.",
+    "Script": "lazarus-rags-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

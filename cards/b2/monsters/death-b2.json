@@ -3,10 +3,10 @@
     "Name": "Death",
     "Type": "Monster",
     "Text": "When this dies, the active player kills a player.",
-    "SoulValue": 1,
     "Script": "death-b2.lua",
     "Health": 3,
-    "Evasion": 4,
     "Attack": 2,
-    "RewardsText": "+1 Treasure"
+    "Evasion": 4,
+    "RewardsText": "+1 Treasure",
+    "SoulValue": 1
 }

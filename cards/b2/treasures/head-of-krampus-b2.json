@@ -3,5 +3,10 @@
     "Name": "Head of Krampus",
     "Type": "Item",
     "Text": "{T}: Roll-\n1-3: Deal 1 damage to each player.\n4-6: Deal 1 damage to each monster.",
-    "Script": "head-of-krampus-b2.lua"
+    "Script": "head-of-krampus-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

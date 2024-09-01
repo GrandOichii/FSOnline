@@ -3,5 +3,10 @@
     "Name": "Lil Battery",
     "Type": "Loot",
     "Text": "Recharge an Item.",
-    "Script": "lil-battery-b2.lua"
+    "Script": "lil-battery-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

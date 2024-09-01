@@ -4,5 +4,9 @@
     "Type": "Event",
     "Text": "Take 2 damage!",
     "Script": "troll-bombs-b2.lua",
-    "RewardsText": "Loot 2"
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "Loot 2",
+    "SoulValue": 0
 }

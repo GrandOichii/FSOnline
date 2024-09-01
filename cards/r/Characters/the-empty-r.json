@@ -1,0 +1,12 @@
+{
+    "Key": "the-empty-r",
+    "Name": "The Empty",
+    "Type": "Character",
+    "Text": "{T}: Play an additional Loot card this turn.",
+    "Script": "the-empty-r.lua",
+    "Health": 2,
+    "Attack": 1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

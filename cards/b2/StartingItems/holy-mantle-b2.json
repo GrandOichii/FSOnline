@@ -1,0 +1,12 @@
+{
+    "Key": "holy-mantle-b2",
+    "Name": "Holy Mantle",
+    "Type": "StartingItem",
+    "Text": "{T}: Choose a player. The next time that player would die this turn, prevent it. If it's their turn, cancel everything that hasn't resolved and end it.\nAt the end of your turn, recharge this.",
+    "Script": "holy-mantle-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

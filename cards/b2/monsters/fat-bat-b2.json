@@ -3,10 +3,10 @@
     "Name": "Fat Bat",
     "Type": "Monster",
     "Text": "",
-    "SoulValue": 0,
     "Script": "fat-bat-b2.lua",
     "Health": 3,
-    "Evasion": 5,
     "Attack": 1,
-    "RewardsText": "+1 Treasure"
+    "Evasion": 5,
+    "RewardsText": "+1 Treasure",
+    "SoulValue": 0
 }

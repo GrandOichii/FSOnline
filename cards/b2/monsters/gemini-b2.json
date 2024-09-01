@@ -2,11 +2,11 @@
     "Key": "gemini-b2",
     "Name": "Gemini",
     "Type": "Monster",
-    "Health": 3,
-    "Evasion": 4,
-    "Attack": 1,
     "Text": "While this is at 1{health}, it has +1{attack}.",
+    "Script": "gemini-b2.lua",
+    "Health": 3,
+    "Attack": 1,
+    "Evasion": 4,
     "RewardsText": "5{cent}",
-    "SoulValue": 1,
-    "Script": "gemini-b2.lua"
+    "SoulValue": 1
 }

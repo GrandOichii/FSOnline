@@ -1,0 +1,17 @@
+{
+    "Cards": {
+        "Characters": [],
+        "StartingItems": [],
+        "Treasures": [],
+        "Loot": [
+            "Loot/chunk-of-amber-warp"
+        ],
+        "BonusSouls": [
+            "BonusSouls/strawberry-warp"
+        ],
+        "Rooms": [],
+        "Monsters": [],
+        "Events": [],
+        "Curses": []
+    }
+}

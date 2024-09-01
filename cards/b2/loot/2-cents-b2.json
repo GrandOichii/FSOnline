@@ -3,5 +3,10 @@
     "Name": "2 Cents!",
     "Type": "Loot",
     "Text": "Gain 2{cent}.",
-    "Script": "2-cents-b2.lua"
+    "Script": "2-cents-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

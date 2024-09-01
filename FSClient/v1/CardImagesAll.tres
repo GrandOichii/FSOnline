@@ -479,7 +479,7 @@
 
 [sub_resource type="Resource" id="Resource_Card1"]
 script = ExtResource("1_v0pgv")
-card_key = "the-empty-requiem"
+card_key = "the-empty-r"
 image = ExtResource("ImageImport_1")
 
 [sub_resource type="Resource" id="Resource_Card2"]
@@ -509,7 +509,7 @@ image = ExtResource("ImageImport_6")
 
 [sub_resource type="Resource" id="Resource_Card7"]
 script = ExtResource("1_v0pgv")
-card_key = "perthro-requiem"
+card_key = "perthro-r"
 image = ExtResource("ImageImport_7")
 
 [sub_resource type="Resource" id="Resource_Card8"]
@@ -519,12 +519,12 @@ image = ExtResource("ImageImport_8")
 
 [sub_resource type="Resource" id="Resource_Card9"]
 script = ExtResource("1_v0pgv")
-card_key = "experimental-treatment-requiem"
+card_key = "experimental-treatment-r"
 image = ExtResource("ImageImport_9")
 
 [sub_resource type="Resource" id="Resource_Card10"]
 script = ExtResource("1_v0pgv")
-card_key = "bag-of-crafting-requiem"
+card_key = "bag-of-crafting-r"
 image = ExtResource("ImageImport_10")
 
 [sub_resource type="Resource" id="Resource_Card11"]
@@ -559,27 +559,27 @@ image = ExtResource("ImageImport_16")
 
 [sub_resource type="Resource" id="Resource_Card17"]
 script = ExtResource("1_v0pgv")
-card_key = "lucky-toe-requiem"
+card_key = "lucky-toe-r"
 image = ExtResource("ImageImport_17")
 
 [sub_resource type="Resource" id="Resource_Card18"]
 script = ExtResource("1_v0pgv")
-card_key = "the-dauntless-requiem"
+card_key = "the-dauntless-r"
 image = ExtResource("ImageImport_18")
 
 [sub_resource type="Resource" id="Resource_Card19"]
 script = ExtResource("1_v0pgv")
-card_key = "shell-game-requiem"
+card_key = "shell-game-r"
 image = ExtResource("ImageImport_19")
 
 [sub_resource type="Resource" id="Resource_Card20"]
 script = ExtResource("1_v0pgv")
-card_key = "abyss-requiem"
+card_key = "abyss-r"
 image = ExtResource("ImageImport_20")
 
 [sub_resource type="Resource" id="Resource_Card21"]
 script = ExtResource("1_v0pgv")
-card_key = "blessing-of-steam-requiem"
+card_key = "blessing-of-steam-r"
 image = ExtResource("ImageImport_21")
 
 [sub_resource type="Resource" id="Resource_Card22"]
@@ -589,7 +589,7 @@ image = ExtResource("ImageImport_22")
 
 [sub_resource type="Resource" id="Resource_Card23"]
 script = ExtResource("1_v0pgv")
-card_key = "halo-of-flies-requiem"
+card_key = "halo-of-flies-r"
 image = ExtResource("ImageImport_23")
 
 [sub_resource type="Resource" id="Resource_Card24"]
@@ -609,7 +609,7 @@ image = ExtResource("ImageImport_26")
 
 [sub_resource type="Resource" id="Resource_Card27"]
 script = ExtResource("1_v0pgv")
-card_key = "the-miser-requiem"
+card_key = "the-miser-r"
 image = ExtResource("ImageImport_27")
 
 [sub_resource type="Resource" id="Resource_Card28"]
@@ -634,12 +634,12 @@ image = ExtResource("ImageImport_31")
 
 [sub_resource type="Resource" id="Resource_Card32"]
 script = ExtResource("1_v0pgv")
-card_key = "bag-lunch-requiem"
+card_key = "bag-lunch-r"
 image = ExtResource("ImageImport_32")
 
 [sub_resource type="Resource" id="Resource_Card33"]
 script = ExtResource("1_v0pgv")
-card_key = "devil-beggar-requiem"
+card_key = "devil-beggar-r"
 image = ExtResource("ImageImport_33")
 
 [sub_resource type="Resource" id="Resource_Card34"]
@@ -684,7 +684,7 @@ image = ExtResource("ImageImport_41")
 
 [sub_resource type="Resource" id="Resource_Card42"]
 script = ExtResource("1_v0pgv")
-card_key = "hypercoagulation-requiem"
+card_key = "hypercoagulation-r"
 image = ExtResource("ImageImport_42")
 
 [sub_resource type="Resource" id="Resource_Card43"]
@@ -704,7 +704,7 @@ image = ExtResource("ImageImport_45")
 
 [sub_resource type="Resource" id="Resource_Card46"]
 script = ExtResource("1_v0pgv")
-card_key = "the-baleful-requiem"
+card_key = "the-baleful-r"
 image = ExtResource("ImageImport_46")
 
 [sub_resource type="Resource" id="Resource_Card47"]
@@ -714,7 +714,7 @@ image = ExtResource("ImageImport_47")
 
 [sub_resource type="Resource" id="Resource_Card48"]
 script = ExtResource("1_v0pgv")
-card_key = "slot-machine-requiem"
+card_key = "slot-machine-r"
 image = ExtResource("ImageImport_48")
 
 [sub_resource type="Resource" id="Resource_Card49"]
@@ -729,7 +729,7 @@ image = ExtResource("ImageImport_50")
 
 [sub_resource type="Resource" id="Resource_Card51"]
 script = ExtResource("1_v0pgv")
-card_key = "blessing-of-greed-requiem"
+card_key = "blessing-of-greed-r"
 image = ExtResource("ImageImport_51")
 
 [sub_resource type="Resource" id="Resource_Card52"]
@@ -869,7 +869,7 @@ image = ExtResource("ImageImport_78")
 
 [sub_resource type="Resource" id="Resource_Card79"]
 script = ExtResource("1_v0pgv")
-card_key = "keepers-bargain-requiem"
+card_key = "keepers-bargain-r"
 image = ExtResource("ImageImport_79")
 
 [sub_resource type="Resource" id="Resource_Card80"]
@@ -919,7 +919,7 @@ image = ExtResource("ImageImport_88")
 
 [sub_resource type="Resource" id="Resource_Card89"]
 script = ExtResource("1_v0pgv")
-card_key = "the-curdled-requiem"
+card_key = "the-curdled-r"
 image = ExtResource("ImageImport_89")
 
 [sub_resource type="Resource" id="Resource_Card90"]
@@ -939,7 +939,7 @@ image = ExtResource("ImageImport_92")
 
 [sub_resource type="Resource" id="Resource_Card93"]
 script = ExtResource("1_v0pgv")
-card_key = "samsons-blessing-requiem"
+card_key = "samsons-blessing-r"
 image = ExtResource("ImageImport_93")
 
 [sub_resource type="Resource" id="Resource_Card94"]
@@ -1179,7 +1179,7 @@ image = ExtResource("ImageImport_140")
 
 [sub_resource type="Resource" id="Resource_Card141"]
 script = ExtResource("1_v0pgv")
-card_key = "blood-donation-requiem"
+card_key = "blood-donation-r"
 image = ExtResource("ImageImport_141")
 
 [sub_resource type="Resource" id="Resource_Card142"]
@@ -1189,7 +1189,7 @@ image = ExtResource("ImageImport_142")
 
 [sub_resource type="Resource" id="Resource_Card143"]
 script = ExtResource("1_v0pgv")
-card_key = "xvii-the-stars-alt1"
+card_key = "xvii-the-stars-aa"
 image = ExtResource("ImageImport_143")
 
 [sub_resource type="Resource" id="Resource_Card144"]
@@ -1204,7 +1204,7 @@ image = ExtResource("ImageImport_145")
 
 [sub_resource type="Resource" id="Resource_Card146"]
 script = ExtResource("1_v0pgv")
-card_key = "black-champions-requiem"
+card_key = "black-champions-r"
 image = ExtResource("ImageImport_146")
 
 [sub_resource type="Resource" id="Resource_Card147"]
@@ -1224,7 +1224,7 @@ image = ExtResource("ImageImport_149")
 
 [sub_resource type="Resource" id="Resource_Card150"]
 script = ExtResource("1_v0pgv")
-card_key = "keepers-box-requiem"
+card_key = "keepers-box-r"
 image = ExtResource("ImageImport_150")
 
 [sub_resource type="Resource" id="Resource_Card151"]
@@ -1249,7 +1249,7 @@ image = ExtResource("ImageImport_154")
 
 [sub_resource type="Resource" id="Resource_Card155"]
 script = ExtResource("1_v0pgv")
-card_key = "sumptorium-requiem"
+card_key = "sumptorium-r"
 image = ExtResource("ImageImport_155")
 
 [sub_resource type="Resource" id="Resource_Card156"]
@@ -1264,7 +1264,7 @@ image = ExtResource("ImageImport_157")
 
 [sub_resource type="Resource" id="Resource_Card158"]
 script = ExtResource("1_v0pgv")
-card_key = "white-champions-requiem"
+card_key = "white-champions-r"
 image = ExtResource("ImageImport_158")
 
 [sub_resource type="Resource" id="Resource_Card159"]
@@ -1274,22 +1274,22 @@ image = ExtResource("ImageImport_159")
 
 [sub_resource type="Resource" id="Resource_Card160"]
 script = ExtResource("1_v0pgv")
-card_key = "maggys-blessing-requiem"
+card_key = "maggys-blessing-r"
 image = ExtResource("ImageImport_160")
 
 [sub_resource type="Resource" id="Resource_Card161"]
 script = ExtResource("1_v0pgv")
-card_key = "lemegeton-requiem"
+card_key = "lemegeton-r"
 image = ExtResource("ImageImport_161")
 
 [sub_resource type="Resource" id="Resource_Card162"]
 script = ExtResource("1_v0pgv")
-card_key = "the-hoarder-requiem"
+card_key = "the-hoarder-r"
 image = ExtResource("ImageImport_162")
 
 [sub_resource type="Resource" id="Resource_Card163"]
 script = ExtResource("1_v0pgv")
-card_key = "soulbond-requiem"
+card_key = "soulbond-r"
 image = ExtResource("ImageImport_163")
 
 [sub_resource type="Resource" id="Resource_Card164"]
@@ -1304,7 +1304,7 @@ image = ExtResource("ImageImport_165")
 
 [sub_resource type="Resource" id="Resource_Card166"]
 script = ExtResource("1_v0pgv")
-card_key = "dice-room2-requiem"
+card_key = "dice-room2-r"
 image = ExtResource("ImageImport_166")
 
 [sub_resource type="Resource" id="Resource_Card167"]
@@ -1339,7 +1339,7 @@ image = ExtResource("ImageImport_172")
 
 [sub_resource type="Resource" id="Resource_Card173"]
 script = ExtResource("1_v0pgv")
-card_key = "static-shock-requiem"
+card_key = "static-shock-r"
 image = ExtResource("ImageImport_173")
 
 [sub_resource type="Resource" id="Resource_Card174"]
@@ -1349,12 +1349,12 @@ image = ExtResource("ImageImport_174")
 
 [sub_resource type="Resource" id="Resource_Card175"]
 script = ExtResource("1_v0pgv")
-card_key = "bible-thump-requiem"
+card_key = "bible-thump-r"
 image = ExtResource("ImageImport_175")
 
 [sub_resource type="Resource" id="Resource_Card176"]
 script = ExtResource("1_v0pgv")
-card_key = "red-champions-requiem"
+card_key = "red-champions-r"
 image = ExtResource("ImageImport_176")
 
 [sub_resource type="Resource" id="Resource_Card177"]
@@ -1369,7 +1369,7 @@ image = ExtResource("ImageImport_178")
 
 [sub_resource type="Resource" id="Resource_Card179"]
 script = ExtResource("1_v0pgv")
-card_key = "the-zealot-requiem"
+card_key = "the-zealot-r"
 image = ExtResource("ImageImport_179")
 
 [sub_resource type="Resource" id="Resource_Card180"]

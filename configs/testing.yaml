@@ -31,20 +31,20 @@ LootCards:
   xvii-the-stars-b2: 10
   dice-shard-b2: 10
   lil-battery-b2: 10
-  lucky-toe-requiem: 10
+  lucky-toe-r: 10
   xvii-the-stars-alt1: 10
   lost-soul-b2: 100
-  perthro-requiem: 10
-  bag-lunch-requiem: 10
+  perthro-r: 10
+  bag-lunch-r: 10
   blank-rune-b2: 10
   bloody-penny-b2: 10
-  bible-thump-requiem: 10
+  bible-thump-r: 10
   xiii-death-b2: 10
   x-wheel-of-fortune-b2: 10
   xiv-temperance-b2: 10
   butter-bean-b2: 10
 Treasures:
-  - keepers-box-requiem
+  - keepers-box-r
   - portable-slot-machine-b2
   - the-butter-bean-b2
   - pageant-boy-b2
@@ -76,7 +76,7 @@ Treasures:
   - belly-button-b2
   - dark-bum-b2
   - fanny-pack-b2
-  - experimental-treatment-requiem
+  - experimental-treatment-r
   - moms-razor-b2
   - shadow-b2
   - razor-blade-b2
@@ -87,26 +87,26 @@ Characters:
   - the-keeper-b2
   - isaac-b2
   - judas-b2
-  - the-miser-requiem
-  - the-empty-requiem
+  - the-miser-r
+  - the-empty-r
   - dark-judas-b2
   - lazarus-b2
-  - the-dauntless-requiem
-  - the-baleful-requiem
-  - the-hoarder-requiem
+  - the-dauntless-r
+  - the-baleful-r
+  - the-hoarder-r
 StartingItems:
-  - hypercoagulation-requiem
+  - hypercoagulation-r
   - infestation-b2
   - wooden-nickel-b2
   - book-of-belial-b2
   - the-d6-b2
-  - keepers-bargain-requiem
-  - abyss-requiem
+  - keepers-bargain-r
+  - abyss-r
   - dark-arts-b2
   - lazarus-rags-b2
-  - soulbond-requiem
+  - soulbond-r
   - bag-o-trash-b2
-  - bag-of-crafting-requiem
+  - bag-of-crafting-r
 BonusSouls:
   - soul-of-greed-b2
   - soul-of-gluttony-b2

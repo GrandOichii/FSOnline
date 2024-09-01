@@ -1,0 +1,52 @@
+{
+    "Cards": {
+        "Characters": [
+            "Characters/the-hoarder-r",
+            "Characters/the-empty-r",
+            "Characters/the-miser-r",
+            "Characters/the-baleful-r",
+            "Characters/the-dauntless-r",
+            "Characters/the-curdled-r",
+            "Characters/the-zealot-r"
+        ],
+        "StartingItems": [
+            "StartingItems/abyss-r",
+            "StartingItems/keepers-bargain-r",
+            "StartingItems/bag-of-crafting-r",
+            "StartingItems/soulbond-r",
+            "StartingItems/hypercoagulation-r",
+            "StartingItems/sumptorium-r",
+            "StartingItems/lemegeton-r"
+        ],
+        "Treasures": [
+            "Treasures/experimental-treatment-r",
+            "Treasures/keepers-box-r",
+            "Treasures/halo-of-flies-r"
+        ],
+        "Loot": [
+            "Loot/lucky-toe-r",
+            "Loot/perthro-r",
+            "Loot/bible-thump-r",
+            "Loot/bag-lunch-r"
+        ],
+        "BonusSouls": [],
+        "Rooms": [
+            "Rooms/dice-room2-r",
+            "Rooms/shell-game-r",
+            "Rooms/devil-beggar-r",
+            "Rooms/blessing-of-steam-r",
+            "Rooms/maggys-blessing-r",
+            "Rooms/static-shock-r",
+            "Rooms/blessing-of-greed-r",
+            "Rooms/blood-donation-r",
+            "Rooms/black-champions-r",
+            "Rooms/white-champions-r",
+            "Rooms/red-champions-r",
+            "Rooms/slot-machine-r",
+            "Rooms/samsons-blessing-r"
+        ],
+        "Monsters": [],
+        "Events": [],
+        "Curses": []
+    }
+}

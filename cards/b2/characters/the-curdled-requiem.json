@@ -1,9 +1,0 @@
-{
-    "Key": "the-curdled-requiem",
-    "Name": "The Curdled",
-    "Type": "Character",
-    "Text": "{T}: Play an additional Loot card this turn.",
-    "Script": "the-curdled-requiem.lua",
-    "Health": 2,
-    "Attack": 1
-}

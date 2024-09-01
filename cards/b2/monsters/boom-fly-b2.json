@@ -2,10 +2,11 @@
     "Key": "boom-fly-b2",
     "Name": "Boom Fly",
     "Type": "Monster",
-    "Health": 1,
-    "Evasion": 4,
-    "Attack": 1,
     "Text": "When this dies, it deals 1 damage to each player.",
+    "Script": "boom-fly-b2.lua",
+    "Health": 1,
+    "Attack": 1,
+    "Evasion": 4,
     "RewardsText": "4{cent}",
-    "Script": "boom-fly-b2.lua"
+    "SoulValue": 0
 }

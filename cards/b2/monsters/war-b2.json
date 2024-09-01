@@ -2,11 +2,11 @@
     "Key": "war-b2",
     "Name": "War",
     "Type": "Monster",
-    "Health": 3,
-    "Evasion": 3,
-    "Attack": 1,
     "Text": "Each time this takes damage, it gains +1{attack} till end of turn.",
+    "Script": "war-b2.lua",
+    "Health": 3,
+    "Attack": 1,
+    "Evasion": 3,
     "RewardsText": "8{cent}",
-    "SoulValue": 1,
-    "Script": "war-b2.lua"
+    "SoulValue": 1
 }

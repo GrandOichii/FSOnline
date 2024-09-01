@@ -1,9 +1,0 @@
-{
-    "Key": "the-empty-requiem",
-    "Name": "The Empty",
-    "Type": "Character",
-    "Health": 2,
-    "Attack": 1,
-    "Text": "{T}: Play an additional Loot card this turn.",
-    "Script": "the-empty-requiem.lua"
-}

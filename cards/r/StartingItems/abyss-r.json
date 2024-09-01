@@ -1,0 +1,12 @@
+{
+    "Key": "abyss-r",
+    "Name": "Abyss",
+    "Type": "StartingItem",
+    "Text": "{T}: Destroy an item you control. If you do, put a counter on this.\nYou have +1{attack} for every 2 counters on this.",
+    "Script": "abyss-r.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

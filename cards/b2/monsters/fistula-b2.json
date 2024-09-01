@@ -2,11 +2,11 @@
     "Key": "fistula-b2",
     "Name": "Fistula",
     "Type": "Monster",
-    "Health": 4,
-    "Evasion": 2,
-    "Attack": 1,
     "Text": "Each time this takes damage, it gains +1{evasion} till end of turn.",
+    "Script": "fistula-b2.lua",
+    "Health": 4,
+    "Attack": 1,
+    "Evasion": 2,
     "RewardsText": "7{cent}",
-    "SoulValue": 1,
-    "Script": "fistula-b2.lua"
+    "SoulValue": 1
 }

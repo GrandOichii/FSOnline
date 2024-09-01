@@ -2,10 +2,11 @@
     "Key": "holy-squirt-b2",
     "Name": "Holy Squirt",
     "Type": "Monster",
-    "Health": 2,
-    "Evasion": 3,
-    "Attack": 1,
     "Text": "Each time a player rolls a {roll:5}, they loot 1.",
+    "Script": "holy-squirt-b2.lua",
+    "Health": 2,
+    "Attack": 1,
+    "Evasion": 3,
     "RewardsText": "Loot 2",
-    "Script": "holy-squirt-b2.lua"
+    "SoulValue": 0
 }

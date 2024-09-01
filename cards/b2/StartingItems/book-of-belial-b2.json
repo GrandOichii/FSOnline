@@ -1,0 +1,12 @@
+{
+    "Key": "book-of-belial-b2",
+    "Name": "Book of Belial",
+    "Type": "StartingItem",
+    "Text": "{T}: Add or subtract 1 from a roll.\nAt the end of your turn, recharge this.",
+    "Script": "book-of-belial-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

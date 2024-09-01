@@ -2,11 +2,11 @@
     "Key": "larry-jr-b2",
     "Name": "Larry Jr.",
     "Type": "Monster",
-    "Health": 4,
-    "Evasion": 3,
-    "Attack": 1,
     "Text": "While this is at 2{health} or less, it has +1{evasion}.",
+    "Script": "larry-jr-b2.lua",
+    "Health": 4,
+    "Attack": 1,
+    "Evasion": 3,
     "RewardsText": "6{cent}",
-    "SoulValue": 1,
-    "Script": "larry-jr-b2.lua"
+    "SoulValue": 1
 }

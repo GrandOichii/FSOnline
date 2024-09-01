@@ -1,0 +1,12 @@
+{
+    "Key": "white-champions-r",
+    "Name": "White Champions",
+    "Type": "Room",
+    "Text": "Monsters have +1{evasion}",
+    "Script": "white-champions-r.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
+}

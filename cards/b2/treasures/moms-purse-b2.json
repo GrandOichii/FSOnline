@@ -3,5 +3,10 @@
     "Name": "Mom's Purse",
     "Type": "Item",
     "Text": "Loot +1 during your loot step.",
-    "Script": "moms-purse-b2.lua"
+    "Script": "moms-purse-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

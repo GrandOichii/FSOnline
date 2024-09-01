@@ -3,5 +3,10 @@
     "Name": "The D20",
     "Type": "Item",
     "Text": "{T}: Reroll an item.",
-    "Script": "the-d20-b2.lua"
+    "Script": "the-d20-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 0
 }

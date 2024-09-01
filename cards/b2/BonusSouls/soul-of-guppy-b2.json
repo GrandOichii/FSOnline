@@ -1,0 +1,12 @@
+{
+    "Key": "soul-of-guppy-b2",
+    "Name": "Soulf of Guppy",
+    "Type": "BonusSoul",
+    "Text": "The first player to control 2 or more Guppy items gains this soul.",
+    "Script": "soul-of-guppy-b2.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 1
+}

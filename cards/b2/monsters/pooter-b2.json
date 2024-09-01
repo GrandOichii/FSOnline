@@ -3,10 +3,10 @@
     "Name": "Pooter",
     "Type": "Monster",
     "Text": "",
-    "SoulValue": 0,
     "Script": "pooter-b2.lua",
     "Health": 2,
-    "Evasion": 3,
     "Attack": 1,
-    "RewardsText": "Loot 1"
+    "Evasion": 3,
+    "RewardsText": "Loot 1",
+    "SoulValue": 0
 }

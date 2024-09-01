@@ -1,12 +1,12 @@
 {
     "Key": "sloth-b2",
     "Name": "Monstro",
-    "Type": "Sloth",
-    "Health": 3,
-    "Evasion": 4,
-    "Attack": 1,
+    "Type": "Monster",
     "Text": "When this dies, the player that killed it discards their hand.",
+    "Script": "sloth-b2.lua",
+    "Health": 3,
+    "Attack": 1,
+    "Evasion": 4,
     "RewardsText": "1{cent}",
-    "SoulValue": 1,
-    "Script": "sloth-b2.lua"
+    "SoulValue": 1
 }

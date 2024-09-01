@@ -1,0 +1,15 @@
+{
+    "Cards": {
+        "Characters": [],
+        "StartingItems": [],
+        "Treasures": [
+            "Treasures/a-friend-summer"
+        ],
+        "Loot": [],
+        "BonusSouls": [],
+        "Rooms": [],
+        "Monsters": [],
+        "Events": [],
+        "Curses": []
+    }
+}

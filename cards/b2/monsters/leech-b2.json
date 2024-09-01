@@ -3,10 +3,10 @@
     "Name": "Leech",
     "Type": "Monster",
     "Text": "",
-    "SoulValue": 0,
     "Script": "leech-b2.lua",
     "Health": 1,
-    "Evasion": 4,
     "Attack": 2,
-    "RewardsText": "Loot 1"
+    "Evasion": 4,
+    "RewardsText": "Loot 1",
+    "SoulValue": 0
 }

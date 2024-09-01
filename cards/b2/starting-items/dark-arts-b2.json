@@ -1,7 +1,0 @@
-{
-    "Key": "dark-arts-b2",
-    "Name": "Dark Arts",
-    "Type": "StartingItem",
-    "Text": "Each time a player rolls a {roll:6}. gain 2{cent}.\nEach time another player dies, loot 1.",
-    "Script": "dark-arts-b2.lua"
-}
