@@ -1,5 +1,6 @@
 #!/bin/python3
 
+import itertools
 from sys import argv
 
 import fscommon as fs
@@ -7,7 +8,9 @@ import fscommon as fs
 INSERT_RELATION_FORMAT = 'INSERT INTO "CardRelations"("RelatedToKey", "RelatedCardKey", "RelationType") VALUES (\'{card_key}\', \'{related_card_key}\', {relation_type});\n'
 
 class RelationTypes:
+    General = 0
     StartingItem = 1
+    GuppyItem = 2
 
 if len(argv) != 3:
     print('Invalid amount of arguments')
@@ -30,5 +33,16 @@ for character in characters:
             'related_card_key': item.key,
             'relation_type': RelationTypes.StartingItem
         })
+
+# guppy items
+cards = cards.guppy_items()
+combinations = itertools.combinations(cards, 2)
+for comb in combinations:
+    result += INSERT_RELATION_FORMAT.format_map({
+        'card_key': comb[0].key,
+        'related_card_key': comb[1].key,
+        'relation_type': RelationTypes.GuppyItem
+    })
+
 
 open(out_path, 'w').write(result)

@@ -67,6 +67,9 @@ class Card:
         g = _lua.globals()
 
         self.lua_table = g._Create()
+
+    def is_guppy_item(self):
+        return 'Guppy\'s' in list(self.lua_table.Labels.values())
     
     def extract_starting_items(self) -> list['Card']:
         item_keys = self.lua_table.StartingItemKeys
@@ -111,3 +114,6 @@ class CardCollection:
 
     def get_of_type(self, cType: str) -> list[Card]:
         return [card for card in self.cards if card.type == cType]
+
+    def guppy_items(self) -> list[Card]:
+        return [card for card in self.cards if card.is_guppy_item()]
