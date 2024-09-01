@@ -104,7 +104,7 @@ public class CardRepository : DbContext, ICardRepository
         return FetchCards();
     }
 
-    public async Task CreateRelation(CardRelation relation)
+    public async Task SaveRelation(CardRelation relation)
     {
         relation.RelatedTo.Relations.Add(relation);
         await SaveChangesAsync();

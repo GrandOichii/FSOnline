@@ -107,7 +107,7 @@ public class CardService : ICardService
             RelationType = relationType
         };
 
-        await _cards.CreateRelation(relation);
+        await _cards.SaveRelation(relation);
     }
 
     private static CardRelation? GetRelation(CardModel card1, CardModel card2) {

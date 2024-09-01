@@ -17,9 +17,9 @@ public class CardServiceTests {
         _cardService = new CardService(_cardRepo, mapper);
     }
 
-    private async Task<CardModel> GetDummyCardModel() {
+    private async Task<CardModel> GetDummyCardModel(string cardKey = "card-key") {
         var result = new CardModel() {
-            Key = "card-key",
+            Key = cardKey,
             Name = "Card",
             Type = "Type1",
             Health = 2,
@@ -154,5 +154,325 @@ public class CardServiceTests {
         // Assert
         result.Should().HaveCount(1);
         result.ElementAt(0).Name.Should().Be(card.Name);
+    }
+
+    [Fact]
+    public async Task ShouldCreateRelation() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.SaveRelation(A<CardRelation>._)).WithAnyArguments();
+        var key1 = "card-key";
+        var key2 = "related-card-key";
+        A.CallTo(() => _cardRepo.ByKey(key1)).Returns(await GetDummyCardModel(cardKey: key1));
+        A.CallTo(() => _cardRepo.ByKey(key2)).Returns(await GetDummyCardModel(cardKey: key2));
+        call.DoesNothing();
+
+        // Act
+        var act = () => _cardService.CreateRelation(key1, key2, CardRelationType.GENERAL);
+
+        // Assert
+        await act.Should().NotThrowAsync();
+        call.MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldNotCreateRelationWithSelf() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.SaveRelation(A<CardRelation>._)).WithAnyArguments();
+        var key = "card-key";
+        A.CallTo(() => _cardRepo.ByKey(key)).Returns(await GetDummyCardModel(cardKey: key));
+        call.DoesNothing();
+
+        // Act
+        var act = () => _cardService.CreateRelation(key, key, CardRelationType.GENERAL);
+
+        // Assert
+        await act.Should().ThrowExactlyAsync<RelationWithSelfException>();
+        call.MustNotHaveHappened();
+    }
+
+    [Fact]
+    public async Task ShouldNotCreateRelationWithNonexistantCard1() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.SaveRelation(A<CardRelation>._)).WithAnyArguments();
+        var key1 = "card-key";
+        var key2 = "related-card-key";
+        A.CallTo(() => _cardRepo.ByKey(key1)).Returns(await GetDummyCardModel(cardKey: key1));
+        A.CallTo(() => _cardRepo.ByKey(key2)).Returns<CardModel?>(null);
+        call.DoesNothing();
+
+        // Act
+        var act = () => _cardService.CreateRelation(key1, key2, CardRelationType.GENERAL);
+
+        // Assert
+        await act.Should().ThrowExactlyAsync<CardNotFoundException>();
+        call.MustNotHaveHappened();
+    }
+
+    [Fact]
+    public async Task ShouldNotCreateRelationWithNonexistantCard2() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.SaveRelation(A<CardRelation>._)).WithAnyArguments();
+        var key1 = "card-key";
+        var key2 = "related-card-key";
+        A.CallTo(() => _cardRepo.ByKey(key1)).Returns<CardModel?>(null);
+        A.CallTo(() => _cardRepo.ByKey(key2)).Returns(await GetDummyCardModel(cardKey: key2));
+        call.DoesNothing();
+
+        // Act
+        var act = () => _cardService.CreateRelation(key1, key2, CardRelationType.GENERAL);
+
+        // Assert
+        await act.Should().ThrowExactlyAsync<CardNotFoundException>();
+        call.MustNotHaveHappened();
+    }
+
+    [Fact]
+    public async Task ShouldNotCreateRelationWhichAlreadyExists1() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.SaveRelation(A<CardRelation>._)).WithAnyArguments();
+        call.DoesNothing();
+        var c1 = await GetDummyCardModel(cardKey: "card-key");
+        var c2 = await GetDummyCardModel(cardKey: "related-card-key");
+
+        c1.Relations.Add(new CardRelation() {
+            RelatedTo = c1,
+            RelatedCard = c2,
+            RelationType = CardRelationType.GENERAL
+        });
+        A.CallTo(() => _cardRepo.ByKey(c1.Key)).Returns(c1);
+        A.CallTo(() => _cardRepo.ByKey(c2.Key)).Returns(c2);
+
+        // Act
+        var act = () => _cardService.CreateRelation(c1.Key, c2.Key, CardRelationType.GENERAL);
+
+        // Assert
+        await act.Should().ThrowExactlyAsync<RelationAlreadyExistsException>();
+        call.MustNotHaveHappened();
+    }
+
+    [Fact]
+    public async Task ShouldNotCreateRelationWhichAlreadyExists2() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.SaveRelation(A<CardRelation>._)).WithAnyArguments();
+        call.DoesNothing();
+        var c1 = await GetDummyCardModel(cardKey: "card-key");
+        var c2 = await GetDummyCardModel(cardKey: "related-card-key");
+
+        c1.RelatedTo.Add(new CardRelation() {
+            RelatedTo = c2,
+            RelatedCard = c1,
+            RelationType = CardRelationType.GENERAL
+        });
+        A.CallTo(() => _cardRepo.ByKey(c1.Key)).Returns(c1);
+        A.CallTo(() => _cardRepo.ByKey(c2.Key)).Returns(c2);
+
+        // Act
+        var act = () => _cardService.CreateRelation(c1.Key, c2.Key, CardRelationType.GENERAL);
+
+        // Assert
+        await act.Should().ThrowExactlyAsync<RelationAlreadyExistsException>();
+        call.MustNotHaveHappened();
+    }
+
+    [Fact]
+    public async Task ShouldDeleteRelation() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.DeleteRelation(A<CardRelation>._)).WithAnyArguments();
+        call.DoesNothing();
+
+        var c1 = await GetDummyCardModel(cardKey: "card-key");
+        var c2 = await GetDummyCardModel(cardKey: "related-card-key");
+
+        c1.Relations.Add(new CardRelation() {
+            RelatedTo = c1,
+            RelatedCard = c2,
+            RelationType = CardRelationType.GENERAL
+        });
+        A.CallTo(() => _cardRepo.ByKey(c1.Key)).Returns(c1);
+        A.CallTo(() => _cardRepo.ByKey(c2.Key)).Returns(c2);
+
+        // Act
+        var act = () => _cardService.DeleteRelation(c1.Key, c2.Key);
+
+        // Assert
+        await act.Should().NotThrowAsync();
+        call.MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldNotDeleteNonexistantRelation() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.DeleteRelation(A<CardRelation>._)).WithAnyArguments();
+        call.DoesNothing();
+
+        var c1 = await GetDummyCardModel(cardKey: "card-key");
+        var c2 = await GetDummyCardModel(cardKey: "related-card-key");
+
+        A.CallTo(() => _cardRepo.ByKey(c1.Key)).Returns(c1);
+        A.CallTo(() => _cardRepo.ByKey(c2.Key)).Returns(c2);
+
+        // Act
+        var act = () => _cardService.DeleteRelation(c1.Key, c2.Key);
+
+        // Assert
+        await act.Should().ThrowAsync<RelationNotFoundException>();
+        call.MustNotHaveHappened();
+    }
+
+    [Fact]
+    public async Task ShouldNotDeleteRelationBetweenNonexistantCards1() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.DeleteRelation(A<CardRelation>._)).WithAnyArguments();
+        call.DoesNothing();
+
+        var c1 = await GetDummyCardModel(cardKey: "card-key");
+
+        A.CallTo(() => _cardRepo.ByKey(c1.Key)).Returns(c1);
+        A.CallTo(() => _cardRepo.ByKey("related-card-key")).Returns<CardModel?>(null);
+
+        // Act
+        var act = () => _cardService.DeleteRelation(c1.Key, "related-card-key");
+
+        // Assert
+        await act.Should().ThrowAsync<CardNotFoundException>();
+        call.MustNotHaveHappened();
+    }
+    
+    [Fact]
+    public async Task ShouldNotDeleteRelationBetweenNonexistantCards2() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.DeleteRelation(A<CardRelation>._)).WithAnyArguments();
+        call.DoesNothing();
+
+        var c2 = await GetDummyCardModel(cardKey: "related-card-key");
+
+        A.CallTo(() => _cardRepo.ByKey("card-key")).Returns<CardModel?>(null);
+        A.CallTo(() => _cardRepo.ByKey(c2.Key)).Returns(c2);
+
+        // Act
+        var act = () => _cardService.DeleteRelation("card-key", c2.Key);
+
+        // Assert
+        await act.Should().ThrowAsync<CardNotFoundException>();
+        call.MustNotHaveHappened();
+    }
+
+    [Fact]
+    public async Task ShouldNotDeleteRelationWithSelf() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.DeleteRelation(A<CardRelation>._)).WithAnyArguments();
+        call.DoesNothing();
+
+        var c = await GetDummyCardModel(cardKey: "card-key");
+
+        A.CallTo(() => _cardRepo.ByKey(c.Key)).Returns(c);
+
+        // Act
+        var act = () => _cardService.DeleteRelation(c.Key, c.Key);
+
+        // Assert
+        await act.Should().ThrowAsync<RelationWithSelfException>();
+        call.MustNotHaveHappened();
+    }
+
+    [Fact]
+    public async Task ShouldEditRelation() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.UpdateRelationType(A<CardRelation>._, A<CardRelationType>._)).WithAnyArguments();
+        call.DoesNothing();
+
+        var c1 = await GetDummyCardModel(cardKey: "card-key");
+        var c2 = await GetDummyCardModel(cardKey: "related-card-key");
+
+        c1.Relations.Add(new CardRelation() {
+            RelatedTo = c1,
+            RelatedCard = c2,
+            RelationType = CardRelationType.GENERAL
+        });
+        A.CallTo(() => _cardRepo.ByKey(c1.Key)).Returns(c1);
+        A.CallTo(() => _cardRepo.ByKey(c2.Key)).Returns(c2);
+
+        // Act
+        var act = () => _cardService.EditRelationType(c1.Key, c2.Key, CardRelationType.GENERAL);
+
+        // Assert
+        await act.Should().NotThrowAsync();
+        call.MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldNotEditNonexistantRelation() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.UpdateRelationType(A<CardRelation>._, A<CardRelationType>._)).WithAnyArguments();
+        call.DoesNothing();
+
+        var c1 = await GetDummyCardModel(cardKey: "card-key");
+        var c2 = await GetDummyCardModel(cardKey: "related-card-key");
+
+        A.CallTo(() => _cardRepo.ByKey(c1.Key)).Returns(c1);
+        A.CallTo(() => _cardRepo.ByKey(c2.Key)).Returns(c2);
+
+        // Act
+        var act = () => _cardService.EditRelationType(c1.Key, c2.Key, CardRelationType.GENERAL);
+
+        // Assert
+        await act.Should().ThrowAsync<RelationNotFoundException>();
+        call.MustNotHaveHappened();
+    }
+
+    [Fact]
+    public async Task ShouldNotEditRelationBetweenNonexistantCards1() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.UpdateRelationType(A<CardRelation>._, A<CardRelationType>._)).WithAnyArguments();
+        call.DoesNothing();
+
+        var c1 = await GetDummyCardModel(cardKey: "card-key");
+
+        A.CallTo(() => _cardRepo.ByKey(c1.Key)).Returns(c1);
+        A.CallTo(() => _cardRepo.ByKey("related-card-key")).Returns<CardModel?>(null);
+
+        // Act
+        var act = () => _cardService.EditRelationType(c1.Key, "related-card-key", CardRelationType.GENERAL);
+
+        // Assert
+        await act.Should().ThrowAsync<CardNotFoundException>();
+        call.MustNotHaveHappened();
+    }
+    
+    [Fact]
+    public async Task ShouldNotEditRelationBetweenNonexistantCards2() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.UpdateRelationType(A<CardRelation>._, A<CardRelationType>._)).WithAnyArguments();
+        call.DoesNothing();
+
+        var c2 = await GetDummyCardModel(cardKey: "related-card-key");
+
+        A.CallTo(() => _cardRepo.ByKey("card-key")).Returns<CardModel?>(null);
+        A.CallTo(() => _cardRepo.ByKey(c2.Key)).Returns(c2);
+
+        // Act
+        var act = () => _cardService.EditRelationType("card-key", c2.Key, CardRelationType.GENERAL);
+
+        // Assert
+        await act.Should().ThrowAsync<CardNotFoundException>();
+        call.MustNotHaveHappened();
+    }
+
+    [Fact]
+    public async Task ShouldNotEditRelationWithSelf() {
+        // Arrange
+        var call = A.CallTo(() => _cardRepo.UpdateRelationType(A<CardRelation>._, A<CardRelationType>._)).WithAnyArguments();
+        call.DoesNothing();
+
+        var c = await GetDummyCardModel(cardKey: "card-key");
+
+        A.CallTo(() => _cardRepo.ByKey(c.Key)).Returns(c);
+
+        // Act
+        var act = () => _cardService.EditRelationType(c.Key, c.Key, CardRelationType.GENERAL);
+
+        // Assert
+        await act.Should().ThrowAsync<RelationWithSelfException>();
+        call.MustNotHaveHappened();
     }
 }
