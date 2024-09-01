@@ -8,13 +8,31 @@ extends Control
 
 @export var numeric_card_row_scene: PackedScene
 
+# TODO remove
+var loot_index = {
+	'a-penny-b': 6 + 3 + 2,
+	'2-cents-b': 12 + 3 + 2,
+	'3-cents-b': 15 + 4 + 2,
+	'4-cents-b': 9 + 2 + 2,
+	'a-nickel-b': 5,
+	'lil-battery-b': 4,
+	'bomb-b': 4,
+	'butter-bean-b': 3,
+	'dice-shard-b': 3,
+	'soul-heart-b': 2,
+}
+
 func _ready():
 	%ListName.text = list_label
 
 	# fill default
 	var cards = card_source.of_type(card_type)
 	for card in cards:
-		add_key(card.Key, base_value)
+		# TODO remove
+		var value = base_value
+		if card.Key in loot_index:
+			value = loot_index[card.Key]
+		add_key(card.Key, value)
 	set_key_filter('')
 
 func set_key_filter(filter: String):

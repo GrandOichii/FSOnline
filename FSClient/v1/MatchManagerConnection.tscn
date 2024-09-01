@@ -44,7 +44,6 @@ text = "Show/hide configuration"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-base_loot_amount = 10
 
 [node name="CopyConfigButton" type="Button" parent="ConnectPanel/VBoxContainer"]
 layout_mode = 2

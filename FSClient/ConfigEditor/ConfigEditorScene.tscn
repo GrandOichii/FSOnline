@@ -217,7 +217,7 @@ unique_name_in_owner = true
 [node name="Sources" type="Node" parent="."]
 
 [node name="FileCardSource" parent="Sources" instance=ExtResource("5_1guxq")]
-card_paths = Array[String](["../cards/v1"])
+card_paths = Array[String](["../cards/b"])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -288,7 +288,6 @@ unique_name_in_owner = true
 layout_mode = 2
 list_name = "LootCards"
 list_label = "Loot"
-base_value = 10
 card_type = "Loot"
 card_source = NodePath("../../../../Sources/FileCardSource")
 

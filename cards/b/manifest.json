@@ -42,7 +42,11 @@
             "loot/a-nickel-b",
             "loot/a-penny-b"
         ],
-        "BonusSouls": [],
+        "BonusSouls": [
+            "BonusSouls/soul-of-greed-b",
+            "BonusSouls/soul-of-guppy-b",
+            "BonusSouls/soul-of-gluttony-b"
+        ],
         "Rooms": [],
         "Monsters": [
             "monsters/trite-b",

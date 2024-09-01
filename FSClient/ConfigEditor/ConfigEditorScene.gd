@@ -13,6 +13,7 @@ extends Node
 func _ready():
 	append_simple_values()
 	get_tree().root.files_dropped.connect(_on_files_dropped)
+	%Loot.base_value = base_loot_amount
 	
 func append_simple_values():
 	for value in simple_values:
@@ -22,7 +23,6 @@ func build() -> Dictionary:
 	var result = {}
 	
 	# values
-	# TODO
 	for child in %SimpleValuesContainer.get_children():
 		if child is Label: continue
 		
