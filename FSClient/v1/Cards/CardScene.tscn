@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://c2s3cqas6maos"]
 
-[ext_resource type="Texture2D" uid="uid://coc1p7rl5x6ip" path="res://assets/images/card/cards/3-cents-v2.png" id="1_oq06u"]
-[ext_resource type="Texture2D" uid="uid://dbsttoe2t228y" path="res://assets/images/card/cards/guppy-v2.png" id="1_tfuyw"]
+[ext_resource type="Texture2D" uid="uid://djyaxqbokd2d3" path="res://assets/images/card/cards/b/a-dime-b.png" id="1_oq06u"]
+[ext_resource type="Texture2D" uid="uid://can1xbi1uus3y" path="res://assets/images/card/cards/fsp2/athame-fsp2.png" id="1_tfuyw"]
 [ext_resource type="Script" path="res://v1/Cards/CardScene.gd" id="1_xf4km"]
-[ext_resource type="Resource" uid="uid://btf10w685i2ea" path="res://v1/CardImagesAll.tres" id="2_ogt37"]
+[ext_resource type="Resource" uid="uid://ga4038ek2rk3" path="res://v1/CardImagesAll.tres" id="2_ogt37"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npfr2"]
 resource_local_to_scene = true
