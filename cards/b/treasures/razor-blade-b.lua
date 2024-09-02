@@ -13,7 +13,7 @@ function _Create()
                     end
                 )
                 .Effect:Common(
-                    FS.C.Effect.DamageToTargetPlayer(0, 4)
+                    FS.C.Effect.DamageToTargetPlayer(0, 1)
                 )
             :Build()
         )

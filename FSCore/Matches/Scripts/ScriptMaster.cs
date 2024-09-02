@@ -570,4 +570,10 @@ public class ScriptMaster {
     public MatchConfig GetConfig() {
         return _match.Config;
     }
+
+    [LuaCommand]
+    public Player GetPlayerOrCurrent(int idx) {
+        if (idx < 0) return _match.CurrentPlayer;
+        return _match.GetPlayer(idx);
+    }
 }

@@ -1556,7 +1556,7 @@ function FS.B._Ability(effectText)
             end
             local target = stackEffect.Targets[targetIdx].Value
 
-            local options = filterFunc(stackEffect.Card, GetPlayer(stackEffect.OwnerIdx))
+            local options = filterFunc(stackEffect.Card, GetPlayerOrCurrent(stackEffect.OwnerIdx))
             for _, o in ipairs(options) do
                 if extractFunc(o) == target then
                     return true

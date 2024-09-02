@@ -9,6 +9,7 @@ public class WebSocketIOHandler(WebSocket socket) : IIOHandler
 
     public async Task Close()
     {
+        // TODO crashes
         await _socket.CloseAsync(WebSocketCloseStatus.NormalClosure, "MatchEnd", CancellationToken.None);
     }
 

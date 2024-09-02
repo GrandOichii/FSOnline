@@ -1,6 +1,5 @@
 -- status: not tested
 
--- !FIXME threw an exception when killed
 function _Create()
     return FS.B.Monster()
         :TriggeredAbility(

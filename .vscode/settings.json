@@ -76,7 +76,8 @@
         "CreateCurseCard",
         "KillMonster",
         "IsAbilityStackEffect",
-        "GetConfig"
+        "GetConfig",
+        "GetPlayerOrCurrent"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"
