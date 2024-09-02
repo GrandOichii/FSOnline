@@ -1,0 +1,7 @@
+{
+    "Key": "sack-of-pennies-b",
+    "Name": "Sack of Pennies",
+    "Type": "Item",
+    "Text": "{T}: Gain 1{cent}.\nWhen any player rolls a {roll:1}, you may recharge this.",
+    "Script": "sack-of-pennies-b.lua"
+}

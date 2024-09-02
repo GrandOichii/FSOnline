@@ -17,6 +17,7 @@
             "Treasures/sacred-heart-b",
             "Treasures/dry-baby-b",
             "Treasures/godhead-b",
+            "Treasures/daddy-haunt-b",
             "Treasures/eye-of-greed-b",
             "Treasures/breakfast-b",
             "Treasures/dads-lost-coin-b",
@@ -57,7 +58,10 @@
             "Treasures/baby-haunt-b",
             "Treasures/the-poop-b",
             "Treasures/smelter-b",
-            "Treasures/shiny-rock-b"
+            "Treasures/shiny-rock-b",
+            "Treasures/golden-razor-b",
+            "Treasures/the-d100-b",
+            "Treasures/sack-of-pennies-b"
         ],
         "Loot": [
             "Loot/2-cents-b",

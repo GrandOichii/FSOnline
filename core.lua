@@ -334,11 +334,19 @@ function FS.C.Effect.DeactivateTarget(target_idx, optional)
     end
 end
 
-function FS.C.Effect.RechargeMe()
+function FS.C.Effect.RechargeMe(optional)
+    optional = optional or false
     return function (stackEffect)
         assert(IsAbilityActivation(stackEffect) or IsTrigger(stackEffect), 'Provided a non-ability stack effect for FS.C.Effect.RechargeMe')
 
         local card = stackEffect.Card
+        if optional then
+            local accept = FS.C.Choose.YesNo(stackEffect.OwnerIdx, 'Recharge '..card.LogName..'?')
+            if not accept then
+                return true
+                -- TODO? return false
+            end
+        end
         Recharge(card.IPID)
         return true
     end
@@ -541,6 +549,32 @@ function FS.C.Effect.MantleTargetPlayer(target_idx)
             return true
         end)
 
+        return true
+    end
+end
+
+function FS.C.Effect.ModPlayerAttackTEOT(mod)
+    return function (stackEffect)
+        TillEndOfTurn(
+            FS.ModLayers.PLAYER_ATTACK,
+            function ()
+                local player = GetPlayer(tonumber(stackEffect.OwnerIdx))
+                player.Stats.State.Attack = player.Stats.State.Attack + mod
+            end
+        )
+        return true
+    end
+end
+
+function FS.C.Effect.ModPlayerHealthTEOT(mod)
+    return function (stackEffect)
+        TillEndOfTurn(
+            FS.ModLayers.PLAYER_ATTACK,
+            function ()
+                local player = GetPlayer(tonumber(stackEffect.OwnerIdx))
+                player.Stats.State.Health = player.Stats.State.Health + mod
+            end
+        )
         return true
     end
 end

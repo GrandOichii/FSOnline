@@ -9,7 +9,7 @@ REWARDS_FOR = ['monster']
 
 TYPE_TO_SCRIPT_INDEX = {
     'character':
-'''-- status: implemented
+'''-- status: not tested
 
 function _Create()
     return FS.B.Character()
@@ -18,7 +18,7 @@ function _Create()
     :Build()
 end''',
     'startingitem':
-'''-- status: implemented
+'''-- status: not tested
 
 function _Create()
     return FS.B.Item()
@@ -27,7 +27,7 @@ function _Create()
     :Build()
 end''',
     'treasure':
-'''-- status: implemented
+'''-- status: not tested
 
 function _Create()
     return FS.B.Item()
@@ -35,7 +35,7 @@ function _Create()
     :Build()
 end''',
     'loot':
-'''-- status: implemented
+'''-- status: not tested
 
 function _Create()
     -- Effect text here
@@ -52,7 +52,7 @@ end''',
     :Build()
 end''',
     'room':
-'''-- status: implemented
+'''-- status: not tested
 
 function _Create()
     return FS.B.Room()
@@ -60,7 +60,7 @@ function _Create()
     :Build()
 end''',
     'monster':
-'''-- status: implemented
+'''-- status: not tested
 
 function _Create()
     return FS.B.Monster()
@@ -74,7 +74,7 @@ function _Create()
     :Build()
 end''',
     'event':
-'''-- status: implemented
+'''-- status: not tested
 
 function _Create()
     return FS.B.Event()
@@ -83,7 +83,7 @@ function _Create()
     :Build()
 end''',
     'curse':
-'''-- status: implemented
+'''-- status: not tested
 
 function _Create()
     return FS.B.Curse()
@@ -117,15 +117,15 @@ TYPE_TO_DECK_INDEX = {
 }
 
 TYPE_TO_DIR_INDEX = {
-    'character': 'characters',
-    'startingitem': 'starting-items',
-    'treasure': 'treasures',
-    'loot': 'loot',
-    'bonussoul': 'bonus-souls',
-    'room': 'rooms',
-    'monster': 'monsters',
-    'event': 'events',
-    'curse': 'curses',
+    'character': 'Characters',
+    'startingitem': 'StartingItems',
+    'treasure': 'Treasures',
+    'loot': 'Loot',
+    'bonussoul': 'BonusSouls',
+    'room': 'Rooms',
+    'monster': 'Monsters',
+    'event': 'Events',
+    'curse': 'Curses',
 }
 
 if (len(argv)) != 5:

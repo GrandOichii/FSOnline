@@ -1,0 +1,7 @@
+{
+    "Key": "the-d100-b",
+    "Name": "The D100",
+    "Type": "Item",
+    "Text": "Roll:\n1: Loot 1.\n2: Loot 2.\n\n3: Gain 3{cent}.\n4: gain 4{cent}.\n5: gain +1{health} till the end of turn.\n6: gain +1{attack} till the end of turn.",
+    "Script": "the-d100-b.lua"
+}
