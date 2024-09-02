@@ -3,9 +3,9 @@
 
 function _Create()
     return FS.B.Item()
-        -- Each time a player would roll a {roll:1}, you may force that player to reroll it.
         .Static:Raw(
             FS.ModLayers.ROLL_REPLACEMENT_EFFECTS,
+            'Each time a player would roll a {roll:1}, you may force that player to reroll it.',
             function (me)
                 local players = GetPlayers()
                 for _, player in ipairs(players) do

@@ -27,8 +27,8 @@ function _Create()
                 )
             :Build()
         )
-        -- Shop items you purchase cost 3{cent} less.
         .Static:Common(
+            'Shop items you purchase cost 3{cent} less.',
             FS.C.StateMod.ShopItemsCostsNLess(3)
         )
         :Label(FS.Labels.Eternal)

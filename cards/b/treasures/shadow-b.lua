@@ -1,11 +1,11 @@
 -- status: implemented
--- Each time another player dies, you choose what item they destroy.\nEach time another player dies, you gain any loot or {cent} they lose.
 -- TODO? does this work differently
 
 function _Create()
     return FS.B.Card()
         .Static:Raw(
             FS.ModLayers.DEATH_PENALTY_REPLACEMENT_EFFECTS,
+            'Each time another player dies, you choose what item they destroy.\nEach time another player dies, you gain any loot or {cent} they lose.',
             function (me)
                 local players = FS.F.Players():Except(me.Owner.Idx):Do()
                 for _, player in ipairs(players) do

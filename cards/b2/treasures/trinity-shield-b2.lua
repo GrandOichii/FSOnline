@@ -3,9 +3,9 @@
 
 function _Create()
     return FS.B.Item()
-        -- Each other player plays with their hand revealed.",
         .Static:Raw(
             FS.ModLayers.LOOT_PLAY_RESTRICTIONS,
+            'Other players can\'t play loot cards on your turn.',
             function (me)
                 local players = FS.F.Players():Except(me.Owner.Idx):Do()
                 for _, player in ipairs(players) do
@@ -20,6 +20,7 @@ function _Create()
         )
         .Static:Raw(
             FS.ModLayers.ITEM_ACTIVATION_RESTRICTIONS,
+            'Other players can\'t activate items on your turn.',
             function (me)
                 local items = FS.F.Items()
                     :ControlledByPlayer()

@@ -2,8 +2,8 @@
 
 function _Create()
     return FS.B.Item()
-        -- +3{attack}
         .Static:Common(
+            '+3{attack}',
             FS.C.StateMod.ModPlayerAttack(function (me, player)
                 return 3
             end)

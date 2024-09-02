@@ -3,9 +3,9 @@
 
 function _Create()
     return FS.B.Item()
-        -- Each time you roll a 1, you may change it into a 6.
         .Static:Raw(
             FS.ModLayers.ROLL_REPLACEMENT_EFFECTS,
+            'Each time you roll a 1, you may change it into a 6.',
             function (me)
                 local player = me.Owner
                 local replacement = 6

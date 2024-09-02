@@ -83,9 +83,9 @@ public class InPlayMatchCard : IStateModifier {
         return GetActivatedAbilities()[idx];
     }
 
-    public List<LuaFunction> GetStateModifiers(ModificationLayer layer) {
+    public List<StateModFunc> GetStateModifiers(ModificationLayer layer) {
         // TODO use abilities from state
-        if (!Card.StateModifiers.TryGetValue(layer, out List<LuaFunction>? value))
+        if (!Card.StateModifiers.TryGetValue(layer, out List<StateModFunc>? value))
             return [];
         return value;
     }
@@ -95,7 +95,7 @@ public class InPlayMatchCard : IStateModifier {
         try {
             var stateModifiers = GetStateModifiers(layer);
             foreach (var mod in stateModifiers) {
-                mod.Call(this);
+                mod.Modify(this);
             }
         } catch (Exception e) {
             throw new MatchException($"Failed to modify state by card {LogName}", e);

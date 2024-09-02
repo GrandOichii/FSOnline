@@ -1239,17 +1239,20 @@ function FS.B.Card()
 
     result.Static = {}
 
-    function result.Static:Raw(layer, func)
+    function result.Static:Raw(layer, text, func)
         if result.stateModifiers[layer] == nil then
             result.stateModifiers[layer] = {}
         end
         local t = result.stateModifiers[layer]
-        t[#t+1] = func
+        t[#t+1] = {
+            func = func,
+            text = text
+        }
         return result
     end
 
-    function result.Static:Common(commonMod)
-        return result.Static:Raw(commonMod.Layer, commonMod.Mod)
+    function result.Static:Common(text, commonMod)
+        return result.Static:Raw(commonMod.Layer, text, commonMod.Mod)
     end
 
     function result:Haunt()
@@ -1382,6 +1385,7 @@ function FS.B.BonusSoul()
     function result:Check(predicate)
         result.Static:Raw(
             FS.ModLayers.LAST,
+            '',
             function (me)
                 local players = FS.F.Players():Custom(predicate):Do()
                 local indicies = FS.C.PlayerIndicies(players)

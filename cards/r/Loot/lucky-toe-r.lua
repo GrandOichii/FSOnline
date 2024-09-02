@@ -5,6 +5,7 @@ function _Create()
         :Trinket()
         .Static:Raw(
             FS.ModLayers.LOOT_AMOUNT,
+            'If you would loot, except during the loot step, instead loot that much +1.',
             function (me)
                 local pState = me.Owner.State
                 pState.LootAmountModifiers:Add(function (player, amount, reason)

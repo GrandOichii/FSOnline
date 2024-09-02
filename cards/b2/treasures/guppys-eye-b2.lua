@@ -3,9 +3,9 @@
 
 function _Create()
     return FS.B.Item()
-        -- Each other player plays with their hand revealed.",
         .Static:Raw(
             FS.ModLayers.HAND_CARD_VISIBILITY,
+            'Each other player plays with their hand revealed.',
             function (me)
                 local players = GetPlayers()
                 local indicies = {}

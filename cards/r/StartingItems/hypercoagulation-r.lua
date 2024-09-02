@@ -8,9 +8,9 @@ function _Create()
                 )
             :Build()
         )
-        -- You have +1{health} for each counter on this.
         .Static:Raw(
             FS.ModLayers.PLAYER_MAX_HEALTH,
+            'You have +1{health} for each counter on this.',
             function (me)
                 me.Owner.Stats.State.Health = me.Owner.Stats.State.Health + GetCountersCount(me.IPID)
             end

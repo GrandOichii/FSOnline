@@ -3,9 +3,9 @@
 
 function _Create()
     return FS.B.Item()
-        -- When you would roll a 1, you may change the result to a 6.
         .Static:Raw(
             FS.ModLayers.ROLL_REPLACEMENT_EFFECTS,
+            'When you would roll a 1, you may change the result to a 6.',
             function (me)
                 local player = me.Owner
                 local replacement = 6

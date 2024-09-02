@@ -1,6 +1,6 @@
 {
     "Key": "soul-of-gluttony-b2",
-    "Name": "Soulf of Gluttony",
+    "Name": "Soul of Gluttony",
     "Type": "BonusSoul",
     "Text": "The first player to have 10 or more loot cards in their hand gains this soul.",
     "Script": "soul-of-gluttony-b2.lua",

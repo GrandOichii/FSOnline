@@ -3,6 +3,7 @@
 function _Create()
     return FS.B.Monster()
         .Static:Common(
+            'This takes no combat damage on attack rolls of 6.',
             FS.C.StateMod.TakeNoCombatDamageOnRollsForMonster({ 6 })
         )
         :Reward(

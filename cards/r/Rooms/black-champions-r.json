@@ -2,7 +2,7 @@
     "Key": "black-champions-r",
     "Name": "Black Champions",
     "Type": "Room",
-    "Text": "Monsters have +1{attack}",
+    "Text": "Monsters have +1{attack}.",
     "Script": "black-champions-r.lua",
     "Health": -1,
     "Attack": -1,

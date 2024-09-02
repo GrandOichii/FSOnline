@@ -1,11 +1,11 @@
 -- status: implemented
--- TODO this works differently that v2
+-- TODO this works differently than v2
 
 function _Create()
     return FS.B.Item()
-        -- When anyone rolls a {roll:1}, you may force that player to reroll it.
         .Static:Raw(
             FS.ModLayers.ROLL_REPLACEMENT_EFFECTS,
+            'When anyone rolls a {roll:1}, you may force that player to reroll it.',
             function (me)
                 local players = GetPlayers()
                 for _, player in ipairs(players) do

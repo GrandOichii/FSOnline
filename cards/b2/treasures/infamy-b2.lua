@@ -2,8 +2,8 @@
 
 function _Create()
     return FS.B.Item()
-        -- Damage you would take is reduced to 1.
         .Static:Common(
+            'You take no combat damage on attack rolls of 1.',
             FS.C.StateMod.TakeNoCombatDamageOnRollsForPlayer({ 1 })
         )
     :Build()

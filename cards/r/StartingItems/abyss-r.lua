@@ -29,6 +29,7 @@ function _Create()
             :Build()
         )
         .Static:Common(
+            'You have +1{attack} for every 2 counters on this.',
             FS.C.StateMod.ModPlayerAttack(function (me, player)
                 return GetCountersCount(me.IPID) / 2
             end)

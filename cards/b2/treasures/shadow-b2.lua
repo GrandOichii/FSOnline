@@ -1,10 +1,10 @@
--- If another player would pay the death penalty, you choose what item they would destroy and you gain any loot cards and {cent} they would lose.
 -- status: implemented
 
 function _Create()
     return FS.B.Card()
         .Static:Raw(
             FS.ModLayers.DEATH_PENALTY_REPLACEMENT_EFFECTS,
+            'If another player would pay the death penalty, you choose what item they would destroy and you gain any loot cards and {cent} they would lose.',
             function (me)
                 local players = FS.F.Players():Except(me.Owner.Idx):Do()
                 for _, player in ipairs(players) do

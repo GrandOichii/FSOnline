@@ -4,6 +4,7 @@ function _Create()
     return FS.B.Card()
         .Static:Raw(
             FS.ModLayers.MONSTER_EVASION,
+            'Monsters have +1{evasion} on your turn.',
             function (me)
                 if me.Owner.Idx ~= GetCurPlayerIdx() then
                     return

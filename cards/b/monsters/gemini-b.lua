@@ -5,6 +5,7 @@ function _Create()
     return FS.B.Monster()
         .Static:Raw(
             FS.ModLayers.MONSTER_EVASION,
+            'While this is at 1{health}, it has +1{attack}.',
             function (me)
                 if me.Stats:GetCurrentHealth() ~= 1 then
                     return

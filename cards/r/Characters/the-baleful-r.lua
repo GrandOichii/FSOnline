@@ -5,6 +5,7 @@ function _Create()
         :Basic()
         .Static:Raw(
             FS.ModLayers.PLAYER_ATTACK,
+            'While you control 1 or 2 Souls, you have +1{attack}. If you control 3+ souls, you have +2{attack} instead.',
             function (me)
                 local mod = 0
                 local count = GetSoulCount(me.Owner.Idx)

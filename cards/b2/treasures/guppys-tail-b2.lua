@@ -4,6 +4,7 @@ function _Create()
     return FS.B.Loot()
         .Static:Raw(
             FS.ModLayers.LOOT_AMOUNT,
+            'Loot +1 during your loot step.',
             function (me)
                 local pState = me.Owner.State
                 pState.LootAmountModifiers:Add(function (player, amount, reason)

@@ -12,11 +12,11 @@ public class BonusSoulMatchCard : MatchCard, IStateModifier
     public void Modify(ModificationLayer layer)
     {
         // TODO move to a getter function
-        if (!StateModifiers.TryGetValue(layer, out List<LuaFunction>? stateModifiers)) return;
+        if (!StateModifiers.TryGetValue(layer, out List<StateModFunc>? stateModifiers)) return;
 
         try {
             foreach (var mod in stateModifiers) {
-                mod.Call(this);
+                mod.Modify(this);
             }
         } catch (Exception e) {
             throw new MatchException($"Failed to execute state modification function of bonus soul card {LogName}", e);

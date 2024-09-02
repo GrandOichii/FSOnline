@@ -247,9 +247,11 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
             // var controller = new RecordingPlayerController(baseController, record);
             var controller = baseController;
 
+            System.Console.WriteLine($"Adding controller for {player.GetName()}");
             await match.AddPlayer(player.GetName(), controller!, player.GetCharacterKey());
             System.Console.WriteLine("Added controller for " + player.GetName());
         }
+        System.Console.WriteLine("Player controller created");
     }
 
     public async Task AddWSPlayer(WebSocket socket) {

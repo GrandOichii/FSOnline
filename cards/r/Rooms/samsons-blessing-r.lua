@@ -2,8 +2,8 @@
 
 function _Create()
     return FS.B.Room()
-    -- Players have +1{attack}.
         .Static:Common(
+            'Players have +1{attack}.',
             FS.C.StateMod.ModPlayerAttack(
                 function (me, player)
                     return 1

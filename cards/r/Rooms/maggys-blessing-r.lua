@@ -3,6 +3,7 @@
 function _Create()
     return FS.B.Room()
         .Static:Common(
+            'Players have +1{health}.',
             FS.C.StateMod.ModPlayerHealth(
                 function (me, player)
                     return 1

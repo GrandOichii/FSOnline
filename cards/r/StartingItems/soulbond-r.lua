@@ -15,9 +15,9 @@ function _Create()
                     )
                 :Build()
             )
-            -- You don\'t lose {cent} or discard loot cards when paying the death penalty.
             .Static:Raw(
                 FS.ModLayers.DEATH_PENALTY_MODIFIERS,
+                'You don\'t lose {cent} or discard loot cards when paying the death penalty.',
                 function (me)
                     -- TODO too low level
                     local owner = me.Owner

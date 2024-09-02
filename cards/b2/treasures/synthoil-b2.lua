@@ -3,9 +3,9 @@
 
 function _Create()
     return FS.B.Item()
-        -- You have +1 to attack rolls.
         .Static:Raw(
             FS.ModLayers.ROLL_RESULT_MODIFIERS,
+            'You have +1 to attack rolls.',
             function (me)
                 me.Owner.State.RollResultModifiers:Add(
                     function (roll, stackEffect)

@@ -62,7 +62,7 @@ public class MatchCard {
     /// <summary>
     /// State modifiers
     /// </summary>
-    public Dictionary<ModificationLayer, List<LuaFunction>> StateModifiers { get; }
+    public Dictionary<ModificationLayer, List<StateModFunc>> StateModifiers { get; }
     /// <summary>
     /// Rewards for killing the monster
     /// </summary>
@@ -209,8 +209,8 @@ public class MatchCard {
         // Match.LogInfo($"Constructed card {LogName}");
     }
 
-    public Dictionary<ModificationLayer, List<LuaFunction>> ExtractStateModifiers(LuaTable data) {
-        var result = new Dictionary<ModificationLayer, List<LuaFunction>>();
+    public static Dictionary<ModificationLayer, List<StateModFunc>> ExtractStateModifiers(LuaTable data) {
+        var result = new Dictionary<ModificationLayer, List<StateModFunc>>();
         var table = LuaUtility.TableGet<LuaTable>(data, "StateModifiers");
 
         foreach (var keyRaw in table.Keys) {
@@ -218,7 +218,8 @@ public class MatchCard {
             var modifiers = (
                 table[keyRaw] as LuaTable
                     ?? throw new MatchException($"Expected a table while parsing state modifiers for layer {key}, but found ({table[keyRaw].GetType()})")
-            ).Values.Cast<LuaFunction>().ToList();
+            ).Values.Cast<LuaTable>().Select(table => new StateModFunc(table)).ToList();
+            
             result.Add(key, modifiers);
         }
 

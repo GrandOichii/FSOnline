@@ -5,6 +5,7 @@ function _Create()
     return FS.B.Monster()
         .Static:Raw(
             FS.ModLayers.MONSTER_EVASION,
+            'While this is at 2{health} or less, it has +1{evasion}.',
             function (me)
                 if me.Stats:GetCurrentHealth() > 2 then
                     return

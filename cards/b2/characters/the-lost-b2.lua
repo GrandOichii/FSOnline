@@ -4,6 +4,7 @@ function _Create()
     return FS.B.Character()
         :Basic()
         .Static:Common(
+            '',
             FS.C.StateMod.AddSouls(1)
         )
         :TriggeredAbility(
