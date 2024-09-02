@@ -39,7 +39,7 @@ func set_attack_opportunities(ao: int):
 	AttackOpportunities.text = str(ao) + ' Ao'
 	
 func set_purchase_opportunities(po: int):
-	PurchaseOpportunities.text = str(po) + ' Ao'
+	PurchaseOpportunities.text = str(po) + ' Po'
 
 func set_soul_count(soul_count: int):
 	Souls.text = str(soul_count)

@@ -34,20 +34,11 @@ public partial class FileCardMasterWrapper : Node
 		CardTemplates.Add(new(card));
 	}
 
-	private void AddMonsterCard(string key) {
-		var card = Cards.Get(key).GetAwaiter().GetResult();
-		CardTemplates.Add(new(card));
-	}
-
 	public void Load(string path) {
 		Cards.Load(path);
 
 		foreach (var key in Cards.GetKeys().GetAwaiter().GetResult()) {
 			AddCard(key);
-		}
-
-		foreach (var key in (Cards as ICardMaster).GetMonsterKeys().GetAwaiter().GetResult()) {
-			AddMonsterCard(key);
 		}
 	}
 

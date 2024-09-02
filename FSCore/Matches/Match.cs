@@ -369,12 +369,13 @@ public class Match {
 
         // monster deck
         var monsters = new List<MatchCard>();
-        foreach (var key in Config.Monsters)
+        foreach (var key in Config.Monsters) {
             monsters.Add(new MatchCard(
                 this,
                 await _cardMaster.Get(key),
                 DeckType.MONSTER
             ));
+        }
         MonsterDeck.Populate(monsters);
         // TODO shuffle all of the monster cards into the deck, create the monster slots, THEN add all of the event cards and shuffle the monster deck again
 
