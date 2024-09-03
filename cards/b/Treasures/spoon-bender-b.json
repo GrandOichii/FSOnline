@@ -1,0 +1,7 @@
+{
+    "Key": "spoon-bender-b",
+    "Name": "Spoon Bender",
+    "Type": "Item",
+    "Text": "{T}: Add 1 to any dice roll.",
+    "Script": "spoon-bender-b.lua"
+}

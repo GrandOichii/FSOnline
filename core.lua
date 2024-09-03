@@ -390,10 +390,10 @@ function FS.C.Effect.ModifyTargetRoll(target_idx, options, hint)
         local optionsT = {}
         for _, pair in ipairs(options) do
             local potential = pair.modFunc(rolled)
-            if potential >= 1 and potential <= 6 then
+            -- if potential >= 1 and potential <= 6 then
                 optionsT[#optionsT+1] = pair.option
                 optionsIndex[pair.option] = pair.modFunc
-            end
+            -- end
         end
 
         assert(#optionsT > 0, 'Provided invalid options table for FS.C.Effect.ModifyTargetRoll (optionsT table is empty)')

@@ -41,7 +41,7 @@ public class RollStackEffect : StackEffect
     }
 
     public void SetValue(int value) {
-        Value = value;
+        Value = Math.Clamp(value, 1, 6);
 
         Match.LogInfo($"Roll value of roll {SID} is set to {Value}");
     }
