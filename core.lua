@@ -873,6 +873,23 @@ function FS.C.StateMod.ModPlayerAttack(modF, playerFilterFunc)
     return result
 end
 
+function FS.C.StateMod.PlusToAttackRolls(modF, playerFilterFunc)
+    local result = {}
+    result.Layer = FS.ModLayers.ROLL_RESULT_MODIFIERS
+    function result.Mod(me)
+        me.Owner.State.RollResultModifiers:Add(
+            function (roll, stackEffect)
+                if not stackEffect.IsAttackRoll then
+                    return roll
+                end
+                return roll + 1
+            end
+        )
+    end
+
+    return result
+end
+
 function FS.C.StateMod.ModMonsterEvasion(modF, monsterFilterFunc)
     monsterFilterFunc = monsterFilterFunc or FS.C.AllMonsters
 
