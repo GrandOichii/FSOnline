@@ -209,6 +209,21 @@ function FS.C.Effect.KillTargetPlayer(target_idx)
     end
 end
 
+function FS.C.Effect.RechargeItemsOfTargetPlayer(target_idx)
+    return function (stackEffect)
+        local idx = tonumber(stackEffect.Targets[target_idx].Value)
+        local items = FS.F.Items()
+            :ControlledBy(idx)
+            :Rechargeable()
+            :Do()
+
+        for _, item in ipairs(items) do
+            Recharge(item.IPID)
+        end
+        return true
+    end
+end
+
 function FS.C.Effect.KillTargetMonster(target_idx)
     return function (stackEffect)
         local ipid = stackEffect.Targets[target_idx].Value

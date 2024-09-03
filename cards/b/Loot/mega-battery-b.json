@@ -1,0 +1,7 @@
+{
+    "Key": "mega-battery-b",
+    "Name": "Mega Battery",
+    "Type": "Loot",
+    "Text": "Choose a player. Recharge each item they control.",
+    "Script": "mega-battery-b.lua"
+}

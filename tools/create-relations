@@ -9,7 +9,6 @@ INSERT_RELATION_FORMAT = 'INSERT INTO "CardRelations"("RelatedToKey", "RelatedCa
 
 # TODO relation ideas:
 # non-monster soul cards (Lost Soul, The Bone, etc)
-# new card -> old card
 # warp cards from the same franchise (Hotline Miami treasures)
 # functionally same cards (Two Cents!, Three Cents!)
 # haunt cards
