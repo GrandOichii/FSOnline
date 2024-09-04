@@ -1,0 +1,7 @@
+{
+    "Key": "curse-of-amnesia-b",
+    "Name": "Curse of Amnesia",
+    "Type": "Curse",
+    "Text": "At the end of your turn, discard 2 loot.",
+    "Script": "curse-of-amnesia-b.lua"
+}

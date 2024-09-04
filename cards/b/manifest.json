@@ -141,7 +141,8 @@
         "Curses": [
             "Curses/curse-of-greed-b",
             "Curses/curse-of-pain-b",
-            "Curses/curse-of-the-blind-b"
+            "Curses/curse-of-the-blind-b",
+            "Curses/curse-of-amnesia-b"
         ]
     }
 }
