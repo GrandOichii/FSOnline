@@ -1,0 +1,7 @@
+{
+    "Key": "v-the-hierophant-b",
+    "Name": "V. The Heirophant",
+    "Type": "Loot",
+    "Text": "Prevent up to 2 damage dealt to a player or monster.",
+    "Script": "v-the-hierophant-b.lua"
+}
