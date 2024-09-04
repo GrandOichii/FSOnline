@@ -2118,7 +2118,7 @@ image = ExtResource("ImageImport_165")
 
 [sub_resource type="Resource" id="Resource_Card166"]
 script = ExtResource("1_v0pgv")
-card_key = "2-of-clubs-b"
+card_key = "two-of-clubs-b"
 image = ExtResource("ImageImport_166")
 
 [sub_resource type="Resource" id="Resource_Card167"]

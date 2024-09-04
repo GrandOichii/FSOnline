@@ -37,8 +37,7 @@ end''',
     'loot':
 '''-- status: not tested
 
-function _Create()
-    -- Effect text here
+function _Create('TEXTHERE')
     return FS.B.Loot()
 
     :Build()

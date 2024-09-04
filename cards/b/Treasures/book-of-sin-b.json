@@ -1,0 +1,7 @@
+{
+    "Key": "book-of-sin-b",
+    "Name": "Book of Sin",
+    "Type": "Item",
+    "Text": "{T}: Roll:\n1-2: gain 1{cent}.\n3-4: Loot 1.\n5-6: Gain +1{health} till the end of turn.",
+    "Script": "book-of-sin-b.lua"
+}

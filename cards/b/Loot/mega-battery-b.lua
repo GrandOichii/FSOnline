@@ -1,8 +1,7 @@
--- status: not tested
+-- status: implemented
 
 function _Create()
-    -- Effect text here
-    return FS.B.Loot()
+    return FS.B.Loot('Choose a player. Recharge each item they control.')
         .Target:Player(
             function (me, player)
                 return FS.F.Players():Killable():Do()

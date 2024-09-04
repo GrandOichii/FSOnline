@@ -1,0 +1,7 @@
+{
+    "Key": "two-of-clubs-b",
+    "Name": "Two of Clubs",
+    "Type": "Item",
+    "Text": "{T}: Double the number of loot cards a player would draw, till the end of turn.",
+    "Script": "two-of-clubs-b.lua"
+}
