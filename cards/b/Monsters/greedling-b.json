@@ -1,0 +1,11 @@
+{
+    "Key": "greedling-b",
+    "Name": "Greedling",
+    "Type": "Monster",
+    "Text": "When this dies, force a player to lose 7{cent}.",
+    "Script": "greedling-b.lua",
+    "Health": 2,
+    "Evasion": 5,
+    "Attack": 1,
+    "RewardsText": "7{cent}"
+}

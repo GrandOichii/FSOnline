@@ -1,0 +1,12 @@
+{
+    "Key": "wrath-b",
+    "Name": "Wrath",
+    "Type": "Monster",
+    "Text": "When this dies, roll:\n1-3: All players take 1 damage.\n4-6: All players take 2 damage.",
+    "SoulValue": 1,
+    "Script": "wrath-b.lua",
+    "Health": 3,
+    "Evasion": 3,
+    "Attack": 1,
+    "RewardsText": "6{cent}"
+}

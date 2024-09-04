@@ -122,7 +122,14 @@
             "Monsters/holy-dip-b",
             "Monsters/cursed-keeper-head-b",
             "Monsters/carrion-queen-b",
-            "Monsters/conjoined-fatty-b"
+            "Monsters/conjoined-fatty-b",
+            "Monsters/wrath-b",
+            "Monsters/psy-horf-b",
+            "Monsters/mulligan-b",
+            "Monsters/greedling-b",
+            "Monsters/hanger-b",
+            "Monsters/mulliboom-b",
+            "Monsters/dank-globin-b"
         ],
         "Events": [
             "Events/secret-room-b",

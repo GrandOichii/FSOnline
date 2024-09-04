@@ -209,6 +209,27 @@ function FS.C.Effect.KillTargetPlayer(target_idx)
     end
 end
 
+function FS.C.Effect.TargetPlayerDiscards(target_idx, amount, hint)
+    hint = hint or 'Choose a card to discard'
+    return function (stackEffect)
+        local idx = tonumber(stackEffect.Targets[target_idx].Value)
+        for di = 0, amount - 1 do
+            local hand = GetPlayer(idx).Hand
+            local indicies = {}
+            for i = 0, hand.Count - 1 do
+                indicies[#indicies+1] = i
+            end
+            if #indicies == 0 then
+                return false
+            end
+            local choice = ChooseCardInHand(idx, indicies, hint)
+            DiscardFromHand(idx, choice)
+            SoftReloadState()
+        end
+        return true
+    end
+end
+
 function FS.C.Effect.RechargeItemsOfTargetPlayer(target_idx)
     return function (stackEffect)
         local idx = tonumber(stackEffect.Targets[target_idx].Value)
@@ -363,6 +384,19 @@ function FS.C.Effect.RechargeMe(optional)
             end
         end
         Recharge(card.IPID)
+        return true
+    end
+end
+
+function FS.C.Effect.RechargeAllItems()
+    return function (stackEffect)
+        local items = FS.F.Items()
+            :ControlledBy(stackEffect.OwnerIdx)
+            :Rechargeable()
+            :Do()
+        for _, item in ipairs(items) do
+            Recharge(item.IPID)
+        end
         return true
     end
 end

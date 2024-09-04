@@ -1,0 +1,11 @@
+{
+    "Key": "mulliboom-b",
+    "Name": "Mulliboom",
+    "Type": "Monster",
+    "Text": "When this dies, deal 3 damage to any player.",
+    "Script": "mulliboom-b.lua",
+    "Health": 1,
+    "Evasion": 2,
+    "Attack": 4,
+    "RewardsText": "6{cent}"
+}

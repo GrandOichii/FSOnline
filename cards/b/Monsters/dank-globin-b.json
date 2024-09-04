@@ -1,0 +1,11 @@
+{
+    "Key": "dank-globin-b",
+    "Name": "Dank Globin",
+    "Type": "Monster",
+    "Text": "When this dies, force a player to discard 2 loot cards.",
+    "Script": "dank-globin-b.lua",
+    "Health": 2,
+    "Evasion": 4,
+    "Attack": 2,
+    "RewardsText": "Loot 2"
+}

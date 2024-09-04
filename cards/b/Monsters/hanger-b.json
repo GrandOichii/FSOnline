@@ -1,0 +1,11 @@
+{
+    "Key": "hanger-b",
+    "Name": "Hanger",
+    "Type": "Monster",
+    "Text": "When this dies, expand the number of items in the shop by 1.",
+    "Script": "hanger-b.lua",
+    "Health": 2,
+    "Evasion": 4,
+    "Attack": 2,
+    "RewardsText": "7{cent}"
+}

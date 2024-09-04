@@ -1,0 +1,11 @@
+{
+    "Key": "psy-horf-b",
+    "Name": "Psy Horf",
+    "Type": "Monster",
+    "Text": "When this dies, recharge all of your active items.",
+    "Script": "psy-horf-b.lua",
+    "Health": 1,
+    "Evasion": 5,
+    "Attack": 1,
+    "RewardsText": "Loot 1"
+}

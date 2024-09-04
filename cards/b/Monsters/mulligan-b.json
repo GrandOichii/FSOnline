@@ -1,0 +1,11 @@
+{
+    "Key": "mulligan-b",
+    "Name": "Mulligan",
+    "Type": "Monster",
+    "Text": "When this dies, expand the number of active monsters by 1.",
+    "Script": "mulligan-b.lua",
+    "Health": 1,
+    "Evasion": 3,
+    "Attack": 1,
+    "RewardsText": "3{cent}"
+}
