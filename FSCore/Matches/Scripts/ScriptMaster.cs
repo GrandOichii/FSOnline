@@ -497,6 +497,12 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
+    public void AddGenericDamagePreventorsToMonster(string ipid, int amount) {
+        _match.GetMonster(ipid).AddDamagePreventors(amount)
+            .Wait();
+    }
+
+    [LuaCommand]
     public void LoseHealth(int playerIdx, int amount, StackEffect source) {
         _match.GetPlayer(playerIdx).LoseHealth(amount, source)
             .Wait();

@@ -160,6 +160,24 @@ function FS.C.Effect.PreventNextDamageToPlayer(amount, filterFunc)
     end, filterFunc)
 end
 
+function FS.C.Effect.PreventNextDamageToTarget(target_idx, amount)
+    return function (stackEffect)
+        local target = stackEffect.Targets[target_idx]
+        local type = TargetTypeToInt(target.Type)
+        if type == FS.TargetTypes.PLAYER then
+            AddGenericDamagePreventors(tonumber(target.Value), amount)
+            return true
+        end
+
+        if type == FS.TargetTypes.IN_PLAY_CARD then
+        AddGenericDamagePreventorsToMonster(target.Value, amount)
+            return true
+        end
+
+        error('Invalid damage prevention target: '..tostring(type))
+    end
+end
+
 function FS.C.Effect.LoseCoins(amount, filterFunc)
     return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
         LoseCoins(player.Idx, amount)

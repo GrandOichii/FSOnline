@@ -5,13 +5,15 @@
             "Characters/isaac-b",
             "Characters/judas-b",
             "Characters/samson-b",
-            "Characters/lazarus-b"
+            "Characters/lazarus-b",
+            "Characters/maggy-b"
         ],
         "StartingItems": [
             "StartingItems/the-d6-b",
             "StartingItems/book-of-belial-b",
             "StartingItems/blood-lust-b",
-            "StartingItems/lazarus-rags-b"
+            "StartingItems/lazarus-rags-b",
+            "StartingItems/yum-heart-b"
         ],
         "Treasures": [
             "Treasures/sacred-heart-b",

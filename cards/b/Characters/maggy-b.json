@@ -1,0 +1,9 @@
+{
+    "Key": "maggy-b",
+    "Name": "Maggy",
+    "Type": "Character",
+    "Text": "{T}: Play an additional loot card this turn.",
+    "Script": "maggy-b.lua",
+    "Health": 2,
+    "Attack": 1
+}

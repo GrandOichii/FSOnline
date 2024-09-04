@@ -317,4 +317,11 @@ public class InPlayMatchCard : IStateModifier {
         await Card.Match.PlaceOnStack(effect);
     }
 
+    public async Task AddDamagePreventors(int amount) {
+        if (Stats is null) throw new MatchException($"Tried to add damage preventors to non-living item {LogName}");
+        
+        Stats.AddDamagePreventors(amount);
+        // TODO? update
+    }
+
 }

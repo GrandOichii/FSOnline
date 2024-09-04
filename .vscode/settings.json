@@ -77,7 +77,8 @@
         "KillMonster",
         "IsAbilityStackEffect",
         "GetConfig",
-        "GetPlayerOrCurrent"
+        "GetPlayerOrCurrent",
+        "AddGenericDamagePreventorsToMonster"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

@@ -1,0 +1,7 @@
+{
+    "Key": "yum-heart-b",
+    "Name": "Yum Heart",
+    "Type": "StartingItem",
+    "Text": "Prevent 1 damage dealt to any player or monster.",
+    "Script": "yum-heart-b.lua"
+}
