@@ -550,13 +550,13 @@ function FS.C.Effect.HandShift(direction)
 end
 
 -- TODO change hint to hintFunc
--- TODO change to _ApplyToPlayer
-function FS.C.Effect.Discard(amount, hint)
+function FS.C.Effect.Discard(amount, filterFunc, hint)
     hint = hint or 'Choose a card to discard'
-    return function (stackEffect)
+    
+    return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
         -- TODO could be better
         for di = 0, amount - 1 do
-            local player_idx = stackEffect.OwnerIdx
+            local player_idx = player.Idx
             local hand = GetPlayer(player_idx).Hand
             local indicies = {}
             for i = 0, hand.Count - 1 do
@@ -569,9 +569,8 @@ function FS.C.Effect.Discard(amount, hint)
             DiscardFromHand(player_idx, choice)
             SoftReloadState()
         end
-
         return true
-    end
+    end, filterFunc)
 end
 
 function FS.C.Effect.TillEndOfTurnRaw(layer, effect)
@@ -2549,6 +2548,10 @@ end
 
 FS.C.AllPlayers = function (...)
     return FS.F.Players():Do()
+end
+
+FS.C.EffectOwner = function (stackEffect)
+    return FS.F.Players():Idx(stackEffect.OwnerIdx):Do()
 end
 
 FS.C.AllMonsters = function (...)

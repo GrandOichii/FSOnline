@@ -1,0 +1,11 @@
+{
+    "Key": "cursed-fatty-b",
+    "Name": "Cursed Fatty",
+    "Type": "Monster",
+    "Text": "When any player rolls a {roll:5}, they discard a loot card.",
+    "Script": "cursed-fatty-b.lua",
+    "Health": 4,
+    "Evasion": 2,
+    "Attack": 1,
+    "RewardsText": "Loot 2"
+}

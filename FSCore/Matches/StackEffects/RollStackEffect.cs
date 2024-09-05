@@ -26,8 +26,8 @@ public class RollStackEffect : StackEffect
     /// Sets the roll value to a random value between 1 and 6
     /// </summary>
     private void Roll() {
-        Value = Match.Rng.Next(1, 7);
-        // Value = 5;
+        // Value = Match.Rng.Next(1, 7);
+        Value = 5;
 
         Match.LogInfo($"Player {Match.GetPlayer(Parent!.OwnerIdx).LogName} rolled a {Value}");
 

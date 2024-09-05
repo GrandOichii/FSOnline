@@ -1,0 +1,11 @@
+{
+    "Key": "spider-b",
+    "Name": "Spider",
+    "Type": "Monster",
+    "Text": "",
+    "Script": "spider-b.lua",
+    "Health": 1,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "Loot 1"
+}

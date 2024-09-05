@@ -133,7 +133,9 @@
             "Monsters/greedling-b",
             "Monsters/hanger-b",
             "Monsters/mulliboom-b",
-            "Monsters/dank-globin-b"
+            "Monsters/dank-globin-b",
+            "Monsters/spider-b",
+            "Monsters/cursed-fatty-b"
         ],
         "Events": [
             "Events/secret-room-b",
