@@ -1,7 +1,7 @@
 using FSCore.Matches;
 using FSCore.Matches.Players.Controllers;
 
-namespace FSTester;
+namespace FSCore.Matches.Players.Controllers;
 
 public class RandomPlayerController : IPlayerController
 {
@@ -90,5 +90,11 @@ public class RandomPlayerController : IPlayerController
             ipids.Contains(result) ? TargetType.ITEM : TargetType.PLAYER,
             result
         );
+    }
+
+    public async Task<DeckType> ChooseDeck(Match match, int playerIdx, List<DeckType> options, string hint)
+    {
+        await Task.Delay(_delay);
+        return GetRandom(options);
     }
 }

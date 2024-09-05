@@ -102,4 +102,6 @@ public interface IPlayerController {
     /// <param name="hint">Hint</param>
     /// <returns>A tuple of target type and identifier</returns>
     public Task<(TargetType, string)> ChooseMonsterOrPlayer(Match match, int playerIdx, List<string> ipids, List<int> indicies, string hint);
+
+    public Task<DeckType> ChooseDeck(Match match, int playerIdx, List<DeckType> options, string hint);
 }

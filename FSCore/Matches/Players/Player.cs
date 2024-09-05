@@ -815,6 +815,21 @@ public class Player : IStateModifier {
         }
     }
 
+    public async Task<DeckType> ChooseDeck(List<DeckType> options, string hint, bool optional=false) {
+        // TODO use optional
+        while (true) {
+            var result = await Controller.ChooseDeck(Match, Idx, options, hint);
+
+            if (!options.Contains(result)) {
+                if (Match.Config.StrictMode)
+                    throw new MatchException($"Invalid choice for picking dekc - {result} (player: {LogName})");
+                continue;
+            }
+
+            return result;
+        }
+    }
+
     #endregion
 
     public async Task UpdateController() {

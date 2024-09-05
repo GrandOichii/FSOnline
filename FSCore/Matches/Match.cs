@@ -1111,5 +1111,18 @@ public class Match {
         return true;
     }
 
+    public List<MatchCard> RemoveTopCards(DeckType deckType, int amount) {
+        var ok = DeckIndex.TryGetValue(deckType, out var deck);
+        if (!ok) throw new MatchException($"Unrecognized deck type: {deckType}");
+
+        return deck!.RemoveTop(amount);
+    }
+
+    public void PutOnTop(DeckType deckType, MatchCard card) {
+        var ok = DeckIndex.TryGetValue(deckType, out var deck);
+        if (!ok) throw new MatchException($"Unrecognized deck type: {deckType}");
+
+        deck!.PutOnTop(card);
+    }
 }
 

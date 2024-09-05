@@ -730,6 +730,48 @@ function FS.C.Effect.ModMonsterEvasionTEOT(mod, monsterFilter)
     end
 end
 
+function FS.C.Effect.ReorderTop(amount, deckID)
+    return function (stackEffect)
+        local dID = deckID
+        if dID == nil then
+            local deckIDs = GetDeckIDs()
+            dID = ChooseDeck(stackEffect.OwnerIdx, deckIDs, 'Choose a deck')
+        end
+        local cards = RemoveTopCards(dID, amount)
+        
+        local extract = function (card)
+            return card.LogName
+        end
+        local remove = function (s)
+            local result = nil
+            local newCards = {}
+            for _, card in ipairs(cards) do
+                if extract(card) == s then
+                    result = card
+                else
+                    newCards[#newCards+1] = card
+                end
+            end
+            cards = newCards
+            return result
+        end
+        local getChoices = function ()
+            local result = {}
+            for _, card in ipairs(cards) do
+                result[#result+1] = extract(card)
+            end
+            return result
+        end
+        while #cards > 0 do
+            -- TODO change
+            local choice = PromptString(stackEffect.OwnerIdx, getChoices(), 'Choose a card to put on top')
+            local card = remove(choice)
+            PutOnTop(dID, card)
+        end
+        return true
+    end
+end
+
 -- common costs (for activated abilities)
 FS.C.Cost = {}
 

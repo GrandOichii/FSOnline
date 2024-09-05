@@ -193,4 +193,15 @@ public class IOPlayerController : IPlayerController
         }
         throw new MatchException($"Read bad message for picking monster/player - {read}");
     }
+
+    public async Task<DeckType> ChooseDeck(Match match, int playerIdx, List<DeckType> options, string hint)
+    {
+        await WriteData(new(match, playerIdx) {
+            Request = "ChooseDeck",
+            Hint = "",
+            Args = ToArgs(options.Select(id => (int)id)),
+        });
+        
+        return (DeckType)int.Parse(await _handler.Read());
+    }
 }

@@ -277,7 +277,6 @@ public class ScriptMaster {
             .GetAwaiter().GetResult();
 
         return result;
-   
     }
 
     [LuaCommand]
@@ -581,5 +580,33 @@ public class ScriptMaster {
     public Player GetPlayerOrCurrent(int idx) {
         if (idx < 0) return _match.CurrentPlayer;
         return _match.GetPlayer(idx);
+    }
+
+    [LuaCommand]
+    public LuaTable GetDeckIDs() {
+        var ids = _match.DeckIndex.Keys.Select(id => (int)id).ToList();
+        return LuaUtility.CreateTable(_match.LState, ids);
+    }
+
+    [LuaCommand]
+    public int ChooseDeck(int playerIdx, LuaTable optionsTable, string hint) {
+        var options = LuaUtility.ParseTable(optionsTable).Select(id => (DeckType)id).ToList();
+
+        var player = _match.GetPlayer(playerIdx);
+        var result = player.ChooseDeck(options, hint)
+            .GetAwaiter().GetResult();
+
+        return (int)result;
+    }
+
+    [LuaCommand]
+    public LuaTable RemoveTopCards(int deckId, int amount) {
+        var cards = _match.RemoveTopCards((DeckType)deckId, amount);
+        return LuaUtility.CreateTable(_match.LState, cards);
+    }
+
+    [LuaCommand]
+    public void PutOnTop(int deckId, MatchCard card) {
+        _match.PutOnTop((DeckType)deckId, card);
     }
 }

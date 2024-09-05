@@ -107,4 +107,8 @@ public class Deck {
 
         return false;
     }
+
+    public void PutOnTop(MatchCard card) {
+        Cards.AddLast(card);
+    }
 }

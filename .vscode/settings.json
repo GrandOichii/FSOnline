@@ -78,7 +78,11 @@
         "IsAbilityStackEffect",
         "GetConfig",
         "GetPlayerOrCurrent",
-        "AddGenericDamagePreventorsToMonster"
+        "AddGenericDamagePreventorsToMonster",
+        "GetDeckIDs",
+        "ChooseDeck",
+        "RemoveTopCards",
+        "PutOnTop"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"
