@@ -609,4 +609,9 @@ public class ScriptMaster {
     public void PutOnTop(int deckId, MatchCard card) {
         _match.PutOnTop((DeckType)deckId, card);
     }
+
+    [LuaCommand]
+    public void PutToBottom(int deckId, MatchCard card) {
+        _match.PutToBottom((DeckType)deckId, card);
+    }
 }

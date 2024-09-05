@@ -82,7 +82,8 @@
         "GetDeckIDs",
         "ChooseDeck",
         "RemoveTopCards",
-        "PutOnTop"
+        "PutOnTop",
+        "PutToBottom"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

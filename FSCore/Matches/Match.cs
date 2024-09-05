@@ -1124,5 +1124,12 @@ public class Match {
 
         deck!.PutOnTop(card);
     }
+
+    public void PutToBottom(DeckType deckType, MatchCard card) {
+        var ok = DeckIndex.TryGetValue(deckType, out var deck);
+        if (!ok) throw new MatchException($"Unrecognized deck type: {deckType}");
+
+        deck!.PutToBottom(card);
+    }
 }
 

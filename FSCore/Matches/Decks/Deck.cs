@@ -111,4 +111,8 @@ public class Deck {
     public void PutOnTop(MatchCard card) {
         Cards.AddLast(card);
     }
+
+    public void PutToBottom(MatchCard card) {
+        Cards.AddFirst(card);
+    }
 }
