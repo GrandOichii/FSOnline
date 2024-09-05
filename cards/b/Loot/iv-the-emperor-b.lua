@@ -1,4 +1,4 @@
--- status: not tested
+-- status: implemented
 
 function _Create()
     return FS.B.Loot('Look at the top 5 cards of the monster deck, put 4 on the bottom of the deck, and one back on top.')

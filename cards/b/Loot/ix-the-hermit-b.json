@@ -1,0 +1,7 @@
+{
+    "Key": "ix-the-hermit-b",
+    "Name": "IX. The Hermit",
+    "Type": "Loot",
+    "Text": "Look at the top 5 cards of the treasure deck, put 4 on the bottom of the deck, and one back on top.",
+    "Script": "ix-the-hermit-b.lua"
+}
