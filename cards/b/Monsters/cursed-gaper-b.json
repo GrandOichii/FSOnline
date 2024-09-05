@@ -1,0 +1,11 @@
+{
+    "Key": "cursed-gaper-b",
+    "Name": "Cursed Gaper",
+    "Type": "Monster",
+    "Text": "When any player rolls a {roll:4}, all active monsters gain +1{attack} till the end of turn.",
+    "Script": "cursed-gaper-b.lua",
+    "Health": 2,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "3{cent}"
+}
