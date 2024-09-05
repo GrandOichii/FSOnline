@@ -1,0 +1,7 @@
+{
+    "Key": "the-compass-b",
+    "Name": "The Compass",
+    "Type": "Item",
+    "Text": "At the end of your turn, look at the top 4 cards of the loot deck. You may put them back in any order.",
+    "Script": "the-compass-b.lua"
+}

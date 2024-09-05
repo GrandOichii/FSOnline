@@ -1,6 +1,13 @@
 -- core object
 FS = {}
 
+FS.DeckIDs = {
+    LOOT = 0,
+    TREASURE = 1,
+    MONSTER = 2,
+    ROOM = 3
+}
+
 FS.TargetTypes = {
     PLAYER = 0,
     STACK_EFFECT = 1,

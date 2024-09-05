@@ -1,0 +1,7 @@
+{
+    "Key": "the-blue-map-b",
+    "Name": "The Blue Map",
+    "Type": "Item",
+    "Text": "At the end of your turn, look at the top 4 cards of the treasure deck. You may put them back in any order.",
+    "Script": "the-blue-map-b.lua"
+}

@@ -1,0 +1,7 @@
+{
+    "Key": "the-map-b",
+    "Name": "The Map",
+    "Type": "Item",
+    "Text": "At the end of your turn, look at the top 4 cards of the monster deck. You may put them back in any order.",
+    "Script": "the-map-b.lua"
+}
