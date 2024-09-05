@@ -2550,8 +2550,8 @@ FS.C.AllPlayers = function (...)
     return FS.F.Players():Do()
 end
 
-FS.C.EffectOwner = function (stackEffect)
-    return FS.F.Players():Idx(stackEffect.OwnerIdx):Do()
+FS.C.ActivationOwner = function (stackEffect, args)
+    return FS.F.Players():Idx(args.Player.Idx):Do()
 end
 
 FS.C.AllMonsters = function (...)

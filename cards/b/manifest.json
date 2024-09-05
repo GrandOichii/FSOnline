@@ -135,7 +135,9 @@
             "Monsters/mulliboom-b",
             "Monsters/dank-globin-b",
             "Monsters/spider-b",
-            "Monsters/cursed-fatty-b"
+            "Monsters/cursed-fatty-b",
+            "Monsters/cursed-horf-b",
+            "Monsters/cursed-psy-horf-b"
         ],
         "Events": [
             "Events/secret-room-b",

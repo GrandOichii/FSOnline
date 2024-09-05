@@ -1,0 +1,11 @@
+{
+    "Key": "cursed-psy-horf-b",
+    "Name": "Cursed Psy Horf",
+    "Type": "Monster",
+    "Text": "When any player activates an item, they take 1 damage.",
+    "Script": "cursed-psy-horf-b.lua",
+    "Health": 1,
+    "Evasion": 5,
+    "Attack": 1,
+    "RewardsText": "Loot 2"
+}

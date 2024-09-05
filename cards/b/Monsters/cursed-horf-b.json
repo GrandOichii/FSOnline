@@ -1,0 +1,11 @@
+{
+    "Key": "cursed-horf-b",
+    "Name": "Cursed Horf",
+    "Type": "Monster",
+    "Text": "When any player rolls a {roll:2}, they take 2 damage.",
+    "Script": "cursed-horf-b.lua",
+    "Health": 1,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "3{cent}"
+}
