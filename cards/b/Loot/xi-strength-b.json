@@ -1,0 +1,7 @@
+{
+    "Key": "xi-strength-b",
+    "Name": "XI. Strength",
+    "Type": "Loot",
+    "Text": "A player gains +1ATK till the end of turn and may attack an additional time.",
+    "Script": "xi-strength-b.lua"
+}

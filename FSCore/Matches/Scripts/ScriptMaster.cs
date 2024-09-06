@@ -614,4 +614,10 @@ public class ScriptMaster {
     public void PutToBottom(int deckId, MatchCard card) {
         _match.PutToBottom((DeckType)deckId, card);
     }
+
+    [LuaCommand]
+    public void AddAttackOpportunities(int playerIdx, int amount) {
+        var player = _match.GetPlayer(playerIdx);
+        player.AddAttackOpportunities(amount);
+    }
 }

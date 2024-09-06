@@ -639,6 +639,28 @@ function FS.C.Effect.ModPlayerAttackTEOT(mod)
     end
 end
 
+function FS.C.Effect.ModTargetPlayerAttackTEOT(target_idx, mod)
+    return function (stackEffect)
+        TillEndOfTurn(
+            FS.ModLayers.PLAYER_ATTACK,
+            function ()
+                local idx = tonumber(stackEffect.Targets[target_idx].Value)
+                local player = GetPlayer(idx)
+                player.Stats.State.Attack = player.Stats.State.Attack + mod
+            end
+        )
+        return true
+    end
+end
+
+function FS.C.Effect.AddAOToTarget(target_idx, amount)
+    return function (stackEffect)
+        local idx = tonumber(stackEffect.Targets[target_idx].Value)
+        AddAttackOpportunities(idx, amount)
+        return true
+    end
+end
+
 function FS.C.Effect.ModPlayerHealthTEOT(mod)
     return function (stackEffect)
         TillEndOfTurn(
