@@ -1,0 +1,7 @@
+{
+    "Key": "ii-the-high-priestess-b",
+    "Name": "II. The High Priestess",
+    "Type": "Loot",
+    "Text": "Choose a player or monster, then roll: deal damage to that target equal to the number rolled.",
+    "Script": "ii-the-high-priestess-b.lua"
+}
