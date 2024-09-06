@@ -1,7 +1,7 @@
 {
-    "Key": "golden-razor-b",
+    "Key": "golden-razor-blade-b",
     "Name": "Golden Razor",
     "Type": "Item",
     "Text": "Pay 5{cent}: Deal 1 damage to a player or monster.",
-    "Script": "golden-razor-b.lua"
+    "Script": "golden-razor-blade-b.lua"
 }
