@@ -653,6 +653,13 @@ function FS.C.Effect.ModTargetPlayerAttackTEOT(target_idx, mod)
     end
 end
 
+function FS.C.Effect.AddAO(amount, filterFunc)
+    return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
+        AddAttackOpportunities(player.Idx, amount)
+        return true
+    end, filterFunc)
+end
+
 function FS.C.Effect.AddAOToTarget(target_idx, amount)
     return function (stackEffect)
         local idx = tonumber(stackEffect.Targets[target_idx].Value)

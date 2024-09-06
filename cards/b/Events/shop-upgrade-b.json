@@ -1,0 +1,7 @@
+{
+    "Key": "shop-upgrade-b",
+    "Name": "Shop Upgrade",
+    "Type": "Event",
+    "Text": "Expand the number of items in the shop by 2.\nYou may attack an additional time this turn.",
+    "Script": "shop-upgrade-b.lua"
+}

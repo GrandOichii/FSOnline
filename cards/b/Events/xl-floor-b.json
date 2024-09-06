@@ -1,0 +1,7 @@
+{
+    "Key": "xl-floor-b",
+    "Name": "XL Floor!",
+    "Type": "Event",
+    "Text": "Expand the number of active monsters by 1.\nYou may attack an additional time this turn.",
+    "Script": "xl-floor-b.lua"
+}
