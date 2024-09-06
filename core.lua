@@ -779,6 +779,29 @@ function FS.C.Effect.ReorderTop(amount, deckID)
     end
 end
 
+function FS.C.Effect.Scry(amount, deckID)
+    assert(amount == 1, 'No support for FS.C.Effect.Scry for more or less than 1 card :(')
+    return function (stackEffect)
+        local dID = deckID
+        if dID == nil then
+            local deckIDs = GetDeckIDs()
+            dID = ChooseDeck(stackEffect.OwnerIdx, deckIDs, 'Choose a deck')
+        end
+        local cards = RemoveTopCards(dID, amount)
+        if #cards == 0 then
+            return true
+        end
+        local card = cards[1]
+        local accept = FS.C.Choose.YesNo(stackEffect.OwnerIdx, 'Leave '..card.LogName..' on top?')
+        if accept then
+            PutOnTop(dID, card)
+            return true
+        end
+        PutToBottom(dID, card)
+        return true
+    end
+end
+
 function FS.C.Effect.LootAndPlaceOnTopRestToBottom(amount, toTop, deckID)
     assert(amount > toTop, 'Provided invalid arguments for LootAndPlaceOnTopRestToBottom: amount is less than toTop')
 

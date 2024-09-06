@@ -1,0 +1,7 @@
+{
+    "Key": "cains-eye-b",
+    "Name": "Cain's Eye",
+    "Type": "Loot",
+    "Text": "At the start of your turn, look at the top card of the loot deck, you may put it on the bottom.",
+    "Script": "cains-eye-b.lua"
+}

@@ -1,0 +1,7 @@
+{
+    "Key": "purple-heart-b",
+    "Name": "Purple Heart",
+    "Type": "Loot",
+    "Text": "At the start of your turn, look at the top card of the monster deck, you may put it on the bottom.",
+    "Script": "purple-heart-b.lua"
+}

@@ -461,7 +461,7 @@ public class Match {
                 var phaseName = CurrentPhase.GetName();
                 await phase.PreEmit(this, CurPlayerIdx);
                 await Emit(phaseName, new(){ {"playerIdx", CurPlayerIdx} });
-                await DequeueTriggers();
+                await ResolveStack(true);
                 await phase.PostEmit(this, CurPlayerIdx);
                 
                 await ReloadState();

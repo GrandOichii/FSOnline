@@ -1,0 +1,7 @@
+{
+    "Key": "golden-horseshoe-b",
+    "Name": "Golden Horseshoe",
+    "Type": "Loot",
+    "Text": "At the start of your turn, look at the top card of the treasure deck, you may put it on the bottom.",
+    "Script": "golden-horseshoe-b.lua"
+}
