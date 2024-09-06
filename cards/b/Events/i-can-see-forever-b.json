@@ -1,0 +1,7 @@
+{
+    "Key": "i-can-see-forever-b",
+    "Name": "I Can See Forever!",
+    "Type": "Event",
+    "Text": "Look at the top 6 cards of the loot deck, you may put them back in any order, then loot 1.",
+    "Script": "i-can-see-forever-b.lua"
+}

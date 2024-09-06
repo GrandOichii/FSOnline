@@ -76,8 +76,7 @@ end''',
 '''-- status: not tested
 
 function _Create()
-    return FS.B.Event()
-        -- Text here
+    return FS.B.Event('TEXTHERE')
 
     :Build()
 end''',

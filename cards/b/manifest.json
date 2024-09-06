@@ -154,7 +154,8 @@
         "Events": [
             "Events/secret-room-b",
             "Events/mega-troll-bomb-b",
-            "Events/troll-bombs-b"
+            "Events/troll-bombs-b",
+            "Events/i-can-see-forever-b"
         ],
         "Curses": [
             "Curses/curse-of-greed-b",
