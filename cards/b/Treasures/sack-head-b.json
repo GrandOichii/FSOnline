@@ -1,0 +1,7 @@
+{
+    "Key": "sack-head-b",
+    "Name": "Sack Head",
+    "Type": "Item",
+    "Text": "{T}: Look at the top card of any deck. You may put that card on the bottom of that deck.",
+    "Script": "sack-head-b.lua"
+}
