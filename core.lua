@@ -653,6 +653,20 @@ function FS.C.Effect.ModTargetPlayerAttackTEOT(target_idx, mod)
     end
 end
 
+function FS.C.Effect.ModTargetHealthTEOT(target_idx, mod)
+    return function (stackEffect)
+        TillEndOfTurn(
+            FS.ModLayers.PLAYER_MAX_HEALTH,
+            function ()
+                local idx = tonumber(stackEffect.Targets[target_idx].Value)
+                local player = GetPlayer(idx)
+                player.Stats.State.Health = player.Stats.State.Health + mod
+            end
+        )
+        return true
+    end
+end
+
 function FS.C.Effect.AddAO(amount, filterFunc)
     return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
         AddAttackOpportunities(player.Idx, amount)

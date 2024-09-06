@@ -1,0 +1,7 @@
+{
+    "Key": "vii-the-chariot-b",
+    "Name": "VII. The Chariot",
+    "Type": "Loot",
+    "Text": "A player gains +1{attack} and +1{health} till the end of turn.",
+    "Script": "vii-the-chariot-b.lua"
+}

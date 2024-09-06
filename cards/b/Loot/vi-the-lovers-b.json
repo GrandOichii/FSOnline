@@ -1,0 +1,7 @@
+{
+    "Key": "vi-the-lovers-b",
+    "Name": "VI. The Lovers",
+    "Type": "Loot",
+    "Text": "A player gains +2{health} till the end of turn.",
+    "Script": "vi-the-lovers-b.lua"
+}
