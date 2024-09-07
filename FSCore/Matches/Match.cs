@@ -272,8 +272,26 @@ public class Match {
         await SetupDecks();
         await SetupSlots();
         await SetupPlayers();
+        await OnMatchStart();
         await Turns();
         await CleanUp();
+    }
+
+    /// <summary>
+    /// Execute all "When you start the game" effects
+    /// </summary>
+    public async Task OnMatchStart() {
+        // owned cards
+        foreach (var player in Players) {
+            var cards = player.GetInPlayCards();
+            foreach (var card in cards) {
+                var effects = card.Card.MatchStartEffects;
+                foreach (var effect in effects) {
+                    // TODO catch exceptions
+                    effect.Call(player);
+                }
+            }
+        }
     }
 
     /// <summary>

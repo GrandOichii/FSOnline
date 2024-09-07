@@ -1271,6 +1271,7 @@ function FS.B.Card()
     local result = {}
 
     result.startingItemKeys = {}
+    result.matchStartEffects = {}
 
     result.effectGroups = {}
     result.activatedAbilities = {}
@@ -1290,6 +1291,9 @@ function FS.B.Card()
 
         -- starting items
         card.StartingItemKeys = result.startingItemKeys
+
+        -- match start effects
+        card.MatchStartEffects = result.matchStartEffects
 
         -- effects
         card.Effects = {}
@@ -1681,6 +1685,11 @@ function FS.B.Character()
 
     function result:StartingItem(key)
         result.startingItemKeys[#result.startingItemKeys+1] = key
+        return result
+    end
+
+    function result:OnStart(func)
+        result.matchStartEffects[#result.matchStartEffects+1] = func
         return result
     end
 

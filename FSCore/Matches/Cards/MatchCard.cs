@@ -71,6 +71,10 @@ public class MatchCard {
     /// Keys of starting items
     /// </summary>
     public List<string> StartingItemKeys { get; }
+    /// <summary>
+    /// Effects that execute at the start of the match (if the card is in play)
+    /// </summary>
+    public List<LuaFunction> MatchStartEffects { get; set; }
 
     #endregion
 
@@ -139,6 +143,14 @@ public class MatchCard {
             StartingItemKeys = keys.Values.Cast<string>().ToList();
         } catch (Exception e) {
             throw new MatchException($"Failed to get starting items for card {template.Name}", e);
+        }
+
+        // match start effects
+        try {
+            MatchStartEffects = LuaUtility.TableGet<LuaTable>(data, "MatchStartEffects")
+                .Values.Cast<LuaFunction>().ToList();
+        } catch (Exception e) {
+            throw new MatchException($"Failed to get match start effects for card {template.Name}", e);
         }
 
         // activated abilities

@@ -1,0 +1,9 @@
+{
+    "Key": "eden-b",
+    "Name": "Eden",
+    "Type": "Character",
+    "Text": "{T}: Play an additional loot card this turn.\nWhen you start the game look at the top 3 cards of the treasure deck, choose one, it becomes your starting item and gains Eternal.",
+    "Script": "eden-b.lua",
+    "Health": 2,
+    "Attack": 1
+}
