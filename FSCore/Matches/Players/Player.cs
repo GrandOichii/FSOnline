@@ -49,9 +49,9 @@ public class Player : IStateModifier {
     /// </summary>
     public int Coins { get; private set; }
     /// <summary>
-    /// Amount of loot cards the player can play for this turn
+    /// Amount of loot cards played this turn
     /// </summary>
-    public int LootPlays { get; private set; }
+    public int LootPlayed { get; private set; }
     /// <summary>
     /// Amount of treasure cards a player can purchase
     /// </summary>
@@ -356,16 +356,7 @@ public class Player : IStateModifier {
     /// Adds a number of loot plays for the turn
     /// </summary>
     public void AddLootPlayForTurn() {
-        AddLootPlay(State.LootPlaysForTurn);
-    }
-
-    /// <summary>
-    /// Adds loot plays
-    /// </summary>
-    /// <param name="amount">Amount of loot plays</param>
-    public void AddLootPlay(int amount) {
-        if (LootPlays < 0) return;
-        LootPlays += amount;
+        LootPlayed = 0;
     }
 
     public void AddPurchaseOpportunitiesForTurn() {
@@ -386,13 +377,6 @@ public class Player : IStateModifier {
         AttackOpportunities += amount;
     }
 
-    /// <summary>
-    /// Removes all loot plays from the player
-    /// </summary>
-    public void RemoveLootPlays() {
-        LootPlays = 0;
-    }
-
     public void RemovePurchaseOpportunities() {
         PurchaseOpportunities = 0;
     }
@@ -409,7 +393,7 @@ public class Player : IStateModifier {
     public bool CanPlay(HandMatchCard card) {
         if (!card.CanPlay(this)) return false;
 
-        return LootPlays < 0 || card.State.LootCost <= LootPlays;
+        return State.UnlimitedLootPlays || LootPlayed < State.LootPlaysForTurn;
     }
 
     /// <summary>
@@ -425,11 +409,7 @@ public class Player : IStateModifier {
             return false;
         }
 
-        if (LootPlays > 0) {
-            LootPlays--;
-            if (LootPlays < 0)
-                throw new MatchException($"Unexpected scenario: player payed loot cost for card {card.Card.LogName}, which resulted in their loot plays being equal to {LootPlays}");
-        }
+        LootPlayed++;
 
         return true;
     }

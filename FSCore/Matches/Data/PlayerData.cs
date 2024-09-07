@@ -49,7 +49,7 @@ public readonly struct PlayerData {
         Name = player.Name;
         Idx = player.Idx;
         Coins = player.Coins;
-        LootPlays = player.LootPlays;
+        LootPlays = player.State.LootPlaysForTurn - player.LootPlayed;
         PurchaseOpportunities = player.PurchaseOpportunities;
         AttackOpportunities = player.AttackOpportunities;
 

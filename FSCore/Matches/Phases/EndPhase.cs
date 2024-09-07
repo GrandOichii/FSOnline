@@ -27,7 +27,6 @@ public class EndPhase : IPhase
         match.AdvanceCurrentPlayerIdx();
 
         foreach (var p in match.Players) {
-            p.RemoveLootPlays();
             p.RemovePurchaseOpportunities();
             p.RemoveAttackOpportunities();
             p.HealToMax();

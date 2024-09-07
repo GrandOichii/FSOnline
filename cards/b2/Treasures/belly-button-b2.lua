@@ -1,15 +1,11 @@
 -- status: implemented
--- TODO too low-level
 
 function _Create()
-    return FS.B.Item()
+    return FS.B.Loot()
         -- !FIXME this does nothing when it enters play, only at the start of the next turn
-        .Static:Raw(
-            FS.ModLayers.MOD_MAX_LOOT_PLAYS,
+        .Static:Common(
             'You may play an additional loot card on your turn.',
-            function (me)
-                me.Owner.State.LootPlaysForTurn = me.Owner.State.LootPlaysForTurn + 1
-            end
+            FS.C.StateMod.ModMaxLootPlays(1)
         )
         :TriggeredAbility(
             FS.B.TriggeredAbility('Each time you take damage, you may recharge your Character.')
@@ -19,5 +15,6 @@ function _Create()
                 )
             :Build()
         )
+        :Trinket()
     :Build()
 end

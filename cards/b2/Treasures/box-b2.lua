@@ -1,3 +1,5 @@
+-- status: implemented
+-- TODO too low-level
 
 function _Create()
     return FS.B.Item()
@@ -13,7 +15,12 @@ function _Create()
                         return
                     end
 
-                    owner.LootPlays = -1
+                    TillEndOfTurn(
+                        FS.ModLayers.MOD_MAX_LOOT_PLAYS,
+                        function ()
+                            owner.State.UnlimitedLootPlays = true
+                        end
+                    )
                 end)
             :Build()
         )

@@ -194,7 +194,12 @@ end
 
 function FS.C.Effect.AddLootPlay(amount, filterFunc)
     return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
-        AddLootPlay(player.Idx, amount)
+        TillEndOfTurn(
+            FS.ModLayers.MOD_MAX_LOOT_PLAYS,
+            function ()
+                player.State.LootPlaysForTurn = player.State.LootPlaysForTurn + amount
+            end
+        )
         return true
     end, filterFunc)
 end
@@ -1075,6 +1080,9 @@ function FS.C.StateMod.ModMaxLootPlays(amount)
     
     result.Layer = FS.ModLayers.MOD_MAX_LOOT_PLAYS
     function result.Mod(me)
+        if me.Owner.Idx ~= GetCurPlayerIdx() then
+            return
+        end
         me.Owner.State.LootPlaysForTurn = me.Owner.State.LootPlaysForTurn + amount
     end
 

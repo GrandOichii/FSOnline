@@ -12,7 +12,7 @@ public class ConsolePlayerController : IPlayerController
 
         var player = match.GetPlayer(playerIdx);
         System.Console.WriteLine($"{indentStr}[{player.LogName}]");
-        System.Console.WriteLine($"{indentStr}Loot plays: {player.LootPlays}");
+        System.Console.WriteLine($"{indentStr}Loot plays: {player.LootPlayed}");
         System.Console.WriteLine($"{indentStr}Coins: {player.Coins}");
     }
     public static void PrintStack(Match match) {
