@@ -33,6 +33,7 @@ public class PlayerState {
     {
         Original = original;
 
+        // TODO do the same for AttackOpportunities and PurchaseOpportunities
         LootPlaysForTurn = original.Match.CurPlayerIdx == original.Idx
             ? original.Match.Config.LootPlay 
             : 0;
