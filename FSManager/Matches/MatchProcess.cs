@@ -189,6 +189,7 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
 
         var cm = new FileCardMaster();
         cm.Load("../cards/b");
+        // cm.Load("../cards/b2");
 
         Match = new(Params.Config, _rng.Next(), cm, File.ReadAllText("../core.lua"));
         Match.Logger = LoggerFactory

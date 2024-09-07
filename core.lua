@@ -894,6 +894,22 @@ function FS.C.Effect.LootAndPlaceOnTopRestToBottom(amount, toTop, deckID)
     end
 end
 
+function FS.C.Effect.RechargeCharacter(optional)
+    optional = optional or false
+    return function (stackEffect)
+        local card = GetPlayer(stackEffect.OwnerIdx).Character
+        if optional then
+            local accept = FS.C.Choose.YesNo(stackEffect.OwnerIdx, 'Recharge '..card.LogName..'?')
+            if not accept then
+                return true
+                -- TODO? return false
+            end
+        end
+        Recharge(card.IPID)
+        return true
+    end
+end
+
 -- common costs (for activated abilities)
 FS.C.Cost = {}
 
@@ -1053,6 +1069,17 @@ function FS.C.Cost.PayHealth(amount)
 end
 
 FS.C.StateMod = {}
+
+function FS.C.StateMod.ModMaxLootPlays(amount)
+    local result = {}
+    
+    result.Layer = FS.ModLayers.MOD_MAX_LOOT_PLAYS
+    function result.Mod(me)
+        me.Owner.State.LootPlaysForTurn = me.Owner.State.LootPlaysForTurn + amount
+    end
+
+    return result
+end
 
 function FS.C.StateMod.AddSouls(amount, playerFilterFunc)
     playerFilterFunc = playerFilterFunc or function (me)

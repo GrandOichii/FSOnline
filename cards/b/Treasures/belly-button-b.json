@@ -1,0 +1,12 @@
+{
+    "Key": "belly-button-b",
+    "Name": "Belly Button",
+    "Type": "Loot",
+    "Text": "You may play an additional loot card on your turn.\nEach time you take damage, you may recharge your Character card.",
+    "Script": "belly-button-b.lua",
+    "Health": -1,
+    "Attack": -1,
+    "Evasion": -1,
+    "RewardsText": "",
+    "SoulValue": 1
+}

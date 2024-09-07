@@ -20,6 +20,7 @@ var loot_index = {
 	'butter-bean-b': 3,
 	'dice-shard-b': 3,
 	'soul-heart-b': 2,
+	'belly-button-b': 2000,
 }
 
 func _ready():
