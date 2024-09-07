@@ -352,10 +352,7 @@ public class Player : IStateModifier {
         await Match.DiscardFromPlay(slot.Card!);
     }
 
-    /// <summary>
-    /// Adds a number of loot plays for the turn
-    /// </summary>
-    public void AddLootPlayForTurn() {
+    public void ResetLootPlays() {
         LootPlayed = 0;
     }
 

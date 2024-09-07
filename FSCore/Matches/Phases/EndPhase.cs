@@ -33,6 +33,7 @@ public class EndPhase : IPhase
             p.RollHistory.Clear();
             p.Stats.DamagePreventors.Clear();
             p.DeathPreventors.Clear();
+            p.ResetLootPlays();
 
             // reset trigger limits
             foreach (var card in p.GetInPlayCards()) {

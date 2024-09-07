@@ -14,7 +14,7 @@ public class RollStackEffect : StackEffect
     public bool IsAttackRoll { get; }
 
     public RollStackEffect(Match match, StackEffect parent, bool isAttackRoll)
-        : base(match, parent.OwnerIdx)
+        : base(match, parent.OwnerIdx > 0 ? parent.OwnerIdx : match.CurPlayerIdx)
     {
         Parent = parent;
         IsAttackRoll = isAttackRoll;
@@ -26,8 +26,8 @@ public class RollStackEffect : StackEffect
     /// Sets the roll value to a random value between 1 and 6
     /// </summary>
     private void Roll() {
-        // Value = Match.Rng.Next(1, 7);
-        Value = 1;
+        Value = Match.Rng.Next(1, 7);
+        // Value = 1;
 
         Match.LogInfo($"Player {Match.GetPlayer(Parent!.OwnerIdx).LogName} rolled a {Value}");
 

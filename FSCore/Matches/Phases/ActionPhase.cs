@@ -25,7 +25,6 @@ public class ActionPhase : IPhase
     public async Task PostEmit(Match match, int playerIdx)
     {
         var current = match.GetPlayer(playerIdx);
-        current.AddLootPlayForTurn();
         current.AddPurchaseOpportunitiesForTurn();
         current.AddAttackOpportunitiesForTurn();
         // TODO attack opportunities
