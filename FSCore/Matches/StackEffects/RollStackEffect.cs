@@ -27,7 +27,7 @@ public class RollStackEffect : StackEffect
     /// </summary>
     private void Roll() {
         // Value = Match.Rng.Next(1, 7);
-        Value = 5;
+        Value = 1;
 
         Match.LogInfo($"Player {Match.GetPlayer(Parent!.OwnerIdx).LogName} rolled a {Value}");
 

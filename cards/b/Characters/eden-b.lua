@@ -20,7 +20,11 @@ function _Create()
                     -- TODO change
                     -- TODO grant eternal label
                     PutOnTop(FS.DeckIDs.TREASURE, card)
-                    GainTreasure(player.Idx, 1)
+                    local gained = GainTreasure(player.Idx, 1)
+                    assert(#gained == 1, player.LogName .. ' is playing Eden and didn\'t start with an item')
+                    local c = gained[1]
+                    assert(c.Card.ID == card.ID, 'Inconsistent starting items for Eden; expected: '..card.LogName..', got: '..c.LogName)
+                    c.Labels:Add(FS.Labels.Eternal)
                 else
                     PutToBottom(FS.DeckIDs.TREASURE, card)
                 end

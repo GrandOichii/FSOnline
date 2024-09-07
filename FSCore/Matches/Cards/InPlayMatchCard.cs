@@ -22,6 +22,7 @@ public class InPlayMatchCard : IStateModifier {
     /// </summary>
     public InPlayMatchCardState State { get; private set; }
     public Stats? Stats { get; set; }
+    public List<string> Labels { get; }
 
     public Dictionary<TriggeredAbility, int> TriggerCountMap { get; }
 
@@ -31,6 +32,7 @@ public class InPlayMatchCard : IStateModifier {
         IPID = card.Match.GenerateInPlayID();
         Counters = [];
         TriggerCountMap = [];
+        Labels = [];
 
         // Initial state
         State = new(this);
@@ -158,7 +160,7 @@ public class InPlayMatchCard : IStateModifier {
     #endregion
 
     public bool HasLabel(string label) {
-        return State.Labels.Contains(label);
+        return State.Labels.Contains(label) || Labels.Contains(label);
     }
 
     public List<TriggeredAbilityWrapper> GetTriggeredAbilities() {
