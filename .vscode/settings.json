@@ -84,7 +84,8 @@
         "RemoveTopCards",
         "PutOnTop",
         "PutToBottom",
-        "AddAttackOpportunities"
+        "AddAttackOpportunities",
+        "RandInt"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

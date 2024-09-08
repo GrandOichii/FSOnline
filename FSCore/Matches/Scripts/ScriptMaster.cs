@@ -614,4 +614,9 @@ public class ScriptMaster {
         var player = _match.GetPlayer(playerIdx);
         player.AddAttackOpportunities(amount);
     }
+
+    [LuaCommand]
+    public int RandInt(int start, int end) {
+        return _match.Rng.Next(start, end);
+    }
 }

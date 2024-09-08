@@ -611,6 +611,21 @@ function FS.C.Effect.TargetPlayerGivesLootCards(target_idx, amount)
     end
 end
 
+function FS.C.Effect.StealRandomLootCardsFromTarget(target_idx, amount)
+    return function (stackEffect)
+        local idx = tonumber(stackEffect.Targets[target_idx].Value)
+        for i = 1, amount do
+            local player_idx = tonumber(idx)
+            local hand = GetPlayer(player_idx).Hand
+            local cardIdx = RandInt(0, hand.Count)
+            local card = GetPlayer(player_idx).Hand[cardIdx].Card
+            RemoveFromHand(player_idx, cardIdx)
+            AddToHand(stackEffect.OwnerIdx, card)
+        end
+        return true
+    end
+end
+
 function FS.C.Effect.MantleTargetPlayer(target_idx)
     return function (stackEffect)
         -- The next time that player would die this turn, prevent it.

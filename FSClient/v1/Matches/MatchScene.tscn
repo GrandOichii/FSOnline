@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq604p6filu2h"]
+[gd_scene load_steps=6 format=3 uid="uid://bq604p6filu2h"]
 
 [ext_resource type="Script" path="res://v1/Matches/MatchScene.gd" id="1_5tr14"]
 [ext_resource type="PackedScene" uid="uid://c13opuwxeaul8" path="res://v1/Matches/StackEffects/StackEffectScene.tscn" id="2_0una2"]
 [ext_resource type="Texture2D" uid="uid://c2srlpd22820d" path="res://assets/bg_tile.png" id="2_f6mni"]
 [ext_resource type="PackedScene" uid="uid://c0j3qjge22ei4" path="res://v1/Matches/Boards/BoardScene.tscn" id="2_ukb4f"]
+[ext_resource type="PackedScene" uid="uid://c2s3cqas6maos" path="res://v1/Cards/CardScene.tscn" id="5_17r6r"]
 
 [node name="MatchScene" type="Control"]
 layout_mode = 3
@@ -45,10 +46,9 @@ text = "Display: "
 
 [node name="OptionButton" type="OptionButton" parent="HBoxContainer/Control/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-item_count = 1
 selected = 0
+item_count = 1
 popup/item_0/text = "Grid"
-popup/item_0/id = 0
 
 [node name="Boards" type="Control" parent="HBoxContainer/Control/VBoxContainer"]
 unique_name_in_owner = true
@@ -107,5 +107,27 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="CardZoomOverlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.596078)
+
+[node name="CenterContainer" type="CenterContainer" parent="CardZoomOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ZoomedCard" parent="CardZoomOverlay/CenterContainer" instance=ExtResource("5_17r6r")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [connection signal="item_selected" from="HBoxContainer/Control/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]

@@ -1,0 +1,7 @@
+{
+    "Key": "boomerang-b",
+    "Name": "Boomerang",
+    "Type": "Item",
+    "Text": "{T}: Steal a loot card at random from a player.",
+    "Script": "boomerang-b.lua"
+}
