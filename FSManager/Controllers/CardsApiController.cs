@@ -94,4 +94,9 @@ public class CardsApiController : ControllerBase {
             return BadRequest(e.Message);
         }
     }
+
+    [HttpGet("Collections")]
+    public async Task<IActionResult> GetCollections() {
+        return Ok(await _cardService.GetCollections());
+    }
 }

@@ -149,6 +149,14 @@ class _AllCardsPageState extends State<AllCardsPage> {
   }
 }
 
+class CollectionSearchPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+
 class FSApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -156,8 +164,8 @@ class FSApp extends StatelessWidget {
       routes: {
         '/': (ctx) => AllCardsPage(),
         '/bykey': (ctx) => KeySearchPage(),
+        '/bycollection': (ctx) => CollectionSearchPage(),
       },
-      // home: AllCardsPage(),
     );
   }
 }

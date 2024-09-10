@@ -29,5 +29,20 @@ public class AutoMapperProfile : Profile {
 
         CreateMap<CardRelation, GetCardRelation>()
         ;
+
+        CreateMap<CardCollection, GetCollection>()
+            .ForMember(
+                c => c.CardCount,
+                o => o.MapFrom(
+                    c => c.Cards.Count
+                )
+            )
+            .ForMember(
+                c => c.Name,
+                o => o.MapFrom(
+                    c => c.Key
+                )
+            )
+        ;
     }
 }

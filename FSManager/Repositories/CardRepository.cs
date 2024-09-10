@@ -3,9 +3,12 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace FSManager.Repositories;
 
-public class CardRepository : DbContext, ICardRepository
+public class CardRepository : DbContext, 
+    ICardRepository,
+    ICollectionRepository
 {
     public DbSet<CardModel> Cards { get; set; }
+    public DbSet<CardCollection> Collections { get; set; }
 
     public CardRepository(DbContextOptions<CardRepository> options)
         : base(options)
@@ -119,5 +122,14 @@ public class CardRepository : DbContext, ICardRepository
     {
         relation.RelationType = relationType;
         await SaveChangesAsync();
+    }
+
+    public Task<IEnumerable<CardCollection>> All()
+    {
+        return Task.FromResult( 
+            Collections
+                .Include(c => c.Cards)
+                .AsEnumerable()
+        );
     }
 }

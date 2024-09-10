@@ -1,5 +1,4 @@
 using FSManager.Mapping;
-using FSManager.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace FSManager;
@@ -16,6 +15,7 @@ public class Program {
             options.UseNpgsql(builder.Configuration.GetConnectionString("CardsContext")));
 
         builder.Services.AddTransient<ICardRepository, CardRepository>();
+        builder.Services.AddTransient<ICollectionRepository, CardRepository>();
 
         // services
         builder.Services.AddTransient<ICardService, CardService>();

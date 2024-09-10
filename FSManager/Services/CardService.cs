@@ -3,15 +3,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FSManager.Services;
 
-
 public class CardService : ICardService
 // public class CardService
 {
     private readonly ICardRepository _cards;
+    private readonly ICollectionRepository _collections;
     private readonly IMapper _mapper;
 
-    public CardService(ICardRepository cards, IMapper mapper) {
+    public CardService(ICardRepository cards, ICollectionRepository collections, IMapper mapper) {
         _cards = cards;
+        _collections = collections;
         _mapper = mapper;
     }
 
@@ -148,5 +149,10 @@ public class CardService : ICardService
         ;
 
         await _cards.UpdateRelationType(relation, relationType);
+    }
+
+    public async Task<IEnumerable<GetCollection>> GetCollections()
+    {
+        return (await _collections.All()).Select(_mapper.Map<GetCollection>);
     }
 }
