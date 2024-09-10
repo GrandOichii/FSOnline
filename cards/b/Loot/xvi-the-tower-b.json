@@ -2,6 +2,6 @@
     "Key": "xvi-the-tower-b",
     "Name": "XVI. The Tower",
     "Type": "Loot",
-    "Text": "Toll:\n1-2: All players take 1 damage.\n3-4: All monsterss take 1 damage.\n5-6: All players take 2 damage.",
+    "Text": "Toll:\n1-2: All players take 1 damage.\n3-4: All monsters take 1 damage.\n5-6: All players take 2 damage.",
     "Script": "xvi-the-tower-b.lua"
 }

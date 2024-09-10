@@ -1,12 +1,8 @@
 {
-    "Key": "lost-soul-b2",
+    "Key": "lost-soul-b",
     "Name": "Lost Soul",
     "Type": "Loot",
     "Text": "Gain this Soul.",
-    "Script": "lost-soul-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
+    "Script": "lost-soul-b.lua",
     "SoulValue": 1
 }
