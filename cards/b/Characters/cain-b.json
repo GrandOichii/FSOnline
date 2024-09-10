@@ -2,10 +2,8 @@
     "Key": "cain-b",
     "Name": "Cain",
     "Type": "Character",
-    "Text": "TEXT",
-    "SoulValue": 0,
+    "Text": "{T}: Play an additional loot card this turn.",
     "Script": "cain-b.lua",
-    "Health": 0,
-    "Evasion": 0,
-    "Attack": 0
+    "Health": 2,
+    "Attack": 1
 }
