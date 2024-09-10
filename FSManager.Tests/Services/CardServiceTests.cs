@@ -2,6 +2,7 @@ namespace FSManager.Tests.Services;
 
 public class CardServiceTests {
     private readonly ICardRepository _cardRepo;
+    private readonly ICollectionRepository _collectionRepo;
 
     private readonly CardService _cardService;
 
@@ -13,8 +14,9 @@ public class CardServiceTests {
         );
 
         _cardRepo = A.Fake<ICardRepository>();
+        _collectionRepo = A.Fake<ICollectionRepository>();
 
-        _cardService = new CardService(_cardRepo, mapper);
+        _cardService = new CardService(_cardRepo, _collectionRepo, mapper);
     }
 
     private async Task<CardModel> GetDummyCardModel(string cardKey = "card-key") {
@@ -474,5 +476,20 @@ public class CardServiceTests {
         // Assert
         await act.Should().ThrowAsync<RelationWithSelfException>();
         call.MustNotHaveHappened();
+    }
+
+    [Fact]
+    public async Task ShouldGetAllCollections() {
+        // Arrange
+        List<CardCollection> returns = [A.Fake<CardCollection>(), A.Fake<CardCollection>()];
+        var call = A.CallTo(() => _collectionRepo.All());
+        call.Returns(returns);        
+
+        // Act
+        var result = await _cardService.GetCollections();
+
+        // Assert
+        result.Should().HaveCount(returns.Count);
+        call.MustHaveHappenedOnceExactly();
     }
 }

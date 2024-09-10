@@ -1,3 +1,4 @@
+using FSManager.Dto.Collections;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FSManager.Tests.Controllers;
@@ -278,6 +279,20 @@ public class CardsApiControllerTests {
         // Assert
         call.MustHaveHappenedOnceExactly();
         result.Should().BeOfType<BadRequestObjectResult>();
+    }
+
+    [Fact]
+    public async Task ShouldFetchCollections() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.GetCollections());
+        call.Returns(A.Fake<IEnumerable<GetCollection>>());
+
+        // Act
+        var result = await _controller.GetCollections();
+
+        // Assert
+        call.MustHaveHappenedOnceExactly();
+        result.Should().BeOfType<OkObjectResult>();
     }
 
 }
