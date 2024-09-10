@@ -11,7 +11,7 @@ public class CardsController : Controller {
     }
 
     public async Task<IActionResult> All() {
-        var cards = (await _cards.All()).ToList();
+        var cards = (await _cards.All(0)).ToList();
         return View(cards);
     }
 

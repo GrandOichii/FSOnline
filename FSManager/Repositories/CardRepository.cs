@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Options;
 
 namespace FSManager.Repositories;
 
@@ -9,6 +10,7 @@ public class CardRepository : DbContext,
 {
     public DbSet<CardModel> Cards { get; set; }
     public DbSet<CardCollection> Collections { get; set; }
+
 
     public CardRepository(DbContextOptions<CardRepository> options)
         : base(options)
@@ -77,13 +79,6 @@ public class CardRepository : DbContext,
         ;
     } 
 
-    public Task<IEnumerable<CardModel>> AllCards() {
-        return Task.FromResult(
-            FetchCards()
-                .AsEnumerable()
-        );
-    }
-
     public Task<CardModel?> ByKey(string key) {
         return Task.FromResult(
             FetchCards()
@@ -103,7 +98,7 @@ public class CardRepository : DbContext,
         return true;
     }
 
-    public async Task<IEnumerable<CardModel>> GetCards() {
+    public async Task<IQueryable<CardModel>> GetCards() {
         return FetchCards();
     }
 

@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fs_app/card.dart';
-import 'package:fs_app/pages/lifeCounterPage.dart';
+import 'package:fs_app/pages/life_counter_page.dart';
 import 'package:http/http.dart' as http;
 
-// const host = 'localhost';
-const host = '127.0.0.1';
+const host = 'localhost';
+// const host = '127.0.0.1';
 // const host = '10.0.2.2';
 
 void main() {
@@ -179,7 +179,8 @@ class FSApp extends StatelessWidget {
         '/': (ctx) => AllCardsPage(),
         '/bykey': (ctx) => KeySearchPage(),
         '/bycollection': (ctx) => CollectionSearchPage(),
-        '/lifecounter': (ctx) => createScaffold('Life counter', LifeCounterPage()),
+        '/lifecounter': (ctx) =>
+            createScaffold('Life counter', LifeCounterPage()),
       },
     );
   }

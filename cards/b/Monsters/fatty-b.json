@@ -1,9 +1,9 @@
 {
-    "Key": "fatty-b2",
+    "Key": "fatty-b",
     "Name": "Fatty",
     "Type": "Monster",
     "Text": "",
-    "Script": "fatty-b2.lua",
+    "Script": "fatty-b.lua",
     "Health": 4,
     "Attack": 1,
     "Evasion": 2,

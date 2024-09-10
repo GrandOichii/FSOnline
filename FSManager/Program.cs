@@ -34,6 +34,9 @@ public class Program {
         builder.Services.Configure<MatchesSettings>(
             builder.Configuration.GetSection("Matches")
         );
+        builder.Services.Configure<CardSettings>(
+            builder.Configuration.GetSection("Cards")
+        );
 
 
         var app = builder.Build();

@@ -12,8 +12,8 @@ public class CardsApiController : ControllerBase {
     }
 
     [HttpGet]
-    public async Task<IActionResult> All() {
-        return Ok(await _cardService.All());
+    public async Task<IActionResult> All(int page = 0) {
+        return Ok(await _cardService.All(page));
     }
 
     [HttpGet("{key}")]
@@ -49,8 +49,8 @@ public class CardsApiController : ControllerBase {
     }
 
     [HttpGet("From/{key}")]
-    public async Task<IActionResult> FromCollection(string key) {
-        return Ok(await _cardService.FromCollection(key));
+    public async Task<IActionResult> FromCollection(string key, [FromQuery] int page = 0) {
+        return Ok(await _cardService.FromCollection(key, page));
     }
 
     [HttpPost("Relation")]
