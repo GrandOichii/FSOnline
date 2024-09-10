@@ -1,10 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fs_app/card.dart';
+import 'package:fs_app/pages/lifeCounterPage.dart';
 import 'package:http/http.dart' as http;
 
-const host = 'localhost';
+// const host = 'localhost';
+const host = '127.0.0.1';
 // const host = '10.0.2.2';
 
 void main() {
@@ -87,6 +90,13 @@ class FSDrawer extends StatelessWidget {
               Navigator.pushNamed(context, '/bykey');
             },
           ),
+          ListTile(
+            title: const Text('Life counter'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/lifecounter');
+            },
+          ),
         ],
       ),
     );
@@ -160,11 +170,16 @@ class CollectionSearchPage extends StatelessWidget {
 class FSApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
       routes: {
         '/': (ctx) => AllCardsPage(),
         '/bykey': (ctx) => KeySearchPage(),
         '/bycollection': (ctx) => CollectionSearchPage(),
+        '/lifecounter': (ctx) => createScaffold('Life counter', LifeCounterPage()),
       },
     );
   }
