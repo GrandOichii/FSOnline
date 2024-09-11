@@ -2,7 +2,7 @@
     ViewData["Title"] = "Cards";
 }
 
-@model List<GetCard>
+@model CardsPage
 
 <div class="text-center">
     <h1 class="display-4">Cards</h1>
@@ -20,7 +20,7 @@
         </thead>
         <tbody>
             @{
-                foreach (var card in Model) {
+                foreach (var card in Model.Cards) {
                     <tr>
                         <td>
                             <a asp-action="ByKey" asp-route-key="@card.Key">@card.Key</a>
@@ -46,5 +46,25 @@
             }
         </tbody>
     </table>
+    <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <a class="page-link" asp-route-page=0 aria-label="First">
+            <span aria-hidden="true">&laquo;</span>
+        </a>
+        <li class="page-item">
+        <a class="page-link" asp-route-page=@(@Model.Page - 1) aria-label="Previous">
+            <span aria-hidden="true">&lsaquo;</span>
+        </a>
+        </li>
+        <li class="page-item"><a class="page-link" asp-route-page=0>1</a></li>
+        <li class="page-item"><a class="page-link" asp-route-page=1>2</a></li>
+        <li class="page-item"><a class="page-link" asp-route-page=2>3</a></li>
+        <li class="page-item">
+        <a class="page-link" asp-route-page=@(@Model.Page + 1) aria-label="Next">
+            <span aria-hidden="true">&rsaquo;</span>
+        </a>
+        </li>
+    </ul>
+    </nav>
     <a class="btn btn-primary" asp-action="CreateForm">Create</a>
 </div>

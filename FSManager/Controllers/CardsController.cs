@@ -3,6 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FSManager.Controllers;
 
+public class CardsPage {
+    public required List<GetCard> Cards { get; set; }
+    public required int Page { get; set; }
+}
+
 public class CardsController : Controller {
     private readonly ICardService _cards;
 
@@ -12,7 +17,10 @@ public class CardsController : Controller {
 
     public async Task<IActionResult> All(int page = 0) {
         var cards = (await _cards.All(page)).ToList();
-        return View(cards);
+        return View(new CardsPage {
+            Cards = cards,
+            Page = page,
+        });
     }
 
     public async Task<IActionResult> ByKey(string key) {

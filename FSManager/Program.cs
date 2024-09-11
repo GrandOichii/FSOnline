@@ -1,5 +1,7 @@
+using System.Runtime.CompilerServices;
 using FSManager.Mapping;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 
 namespace FSManager;
 
