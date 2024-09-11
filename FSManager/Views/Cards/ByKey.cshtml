@@ -10,7 +10,14 @@
         <div class="col">
             <h3>Text</h3>
             <p>@Model.Text</p>
-            <p>@Model.Script</p>
+            <h3>Script</h3>
+            @* @{
+                foreach (var line in @Model.Script.Split('\n')) {
+                    <code>@line</code>
+                    <br>
+                }
+            } *@
+            <pre>@Model.Script</pre>
         </div>
         <div class="col">
             <img src="@Model.ImageUrl" alt="-" class="img-fluid" style="width: 320px">

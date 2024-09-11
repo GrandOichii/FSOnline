@@ -10,8 +10,8 @@ public class CardsController : Controller {
         _cards = cards;
     }
 
-    public async Task<IActionResult> All() {
-        var cards = (await _cards.All(0)).ToList();
+    public async Task<IActionResult> All(int page = 0) {
+        var cards = (await _cards.All(page)).ToList();
         return View(cards);
     }
 

@@ -109,7 +109,7 @@ Scaffold createScaffold(String title, Widget body) {
       backgroundColor: Colors.orange,
       title: Text(title),
     ),
-    body: body,
+    body: SafeArea(child: body),
     drawer: FSDrawer(),
   );
 }
@@ -122,6 +122,8 @@ class KeySearchPage extends StatelessWidget {
 }
 
 class AllCardsPage extends StatefulWidget {
+  const AllCardsPage({super.key});
+
   @override
   State<AllCardsPage> createState() => _AllCardsPageState();
 }
@@ -147,15 +149,29 @@ class _AllCardsPageState extends State<AllCardsPage> {
   Widget build(BuildContext context) {
     return createScaffold(
         'Home',
-        (cards == null)
-            ? const Text('Fetching cards...')
-            : ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: cards!.length,
-                itemBuilder: (ctx, index) {
-                  return FSCardView(card: cards![index]);
-                },
-              ));
+        Column(
+          children: [
+            Expanded(
+              child: (cards == null)
+                  ? const Text('Fetching cards...')
+                  : ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: cards!.length,
+                      itemBuilder: (ctx, index) {
+                        return FSCardView(card: cards![index]);
+                      },
+                    ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [1, 2]
+                  .map<Widget>(
+                    (e) => (Text('i$e')),
+                  )
+                  .toList(),
+            )
+          ],
+        ));
   }
 }
 
