@@ -1,7 +1,7 @@
 namespace FSManager.Services;
 
 public interface ICardService {
-    public Task<IEnumerable<GetCard>> All(int page);
+    public Task<CardsPage> All(int page);
     public Task<GetCard> Create(PostCard card);
     public Task Delete(string key);
     public Task<GetCardWithRelations> ByKey(string key);

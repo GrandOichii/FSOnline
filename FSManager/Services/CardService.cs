@@ -19,13 +19,18 @@ public class CardService : ICardService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<GetCard>> All(int page)
+    public async Task<CardsPage> All(int page)
     {
-        var cards = Paginate(await _cards.GetCards(), page);
+        var cards = await _cards.GetCards();
 
-        return cards.Select(
-            MapToGetCard
-        );
+        return new CardsPage
+        {
+            Cards = Paginate(cards, page)
+                .Select(_mapper.Map<GetCard>)
+                .ToList(),
+            Page = page,
+            PageCount = PageCount(cards),
+        };
     }
 
     public async Task<GetCard> Create(PostCard card)
@@ -90,7 +95,7 @@ public class CardService : ICardService
     public async Task<IEnumerable<GetCard>> FromCollection(string collectionKey, int page)
     {
         return Paginate(
-                (await _cards.GetCards()).Where(c => c.Collection.Key == collectionKey), 
+                (await _cards.GetCards()).Where(c => c.Collection.Key == collectionKey),
                 page
             ).AsEnumerable()
             .Select(c => MapToGetCard(c));
@@ -178,5 +183,10 @@ public class CardService : ICardService
             .OrderBy(c => c.Key)
             .Skip(page * _settings.Value.CardsPerPage)
             .Take(_settings.Value.CardsPerPage);
+    }
+
+    private int PageCount(IQueryable<CardModel> query)
+    {
+        return (int)Math.Ceiling(query.Count() * 1.0 / _settings.Value.CardsPerPage);
     }
 }
