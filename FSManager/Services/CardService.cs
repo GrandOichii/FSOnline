@@ -92,13 +92,14 @@ public class CardService : ICardService
             .Select(card => card.Key);
     }
 
-    public async Task<IEnumerable<GetCard>> FromCollection(string collectionKey, int page)
+    public async Task<CardsPage> FromCollection(string collectionKey, int page)
     {
-        return Paginate(
-                (await _cards.GetCards()).Where(c => c.Collection.Key == collectionKey),
-                page
-            ).AsEnumerable()
-            .Select(c => MapToGetCard(c));
+        var cards = (await _cards.GetCards()).Where(c => c.Collection.Key == collectionKey);
+        return new() {
+            Cards = Paginate(cards, page).AsEnumerable().Select(_mapper.Map<GetCard>).ToList(),
+            Page = page,
+            PageCount = PageCount(cards)
+        };
     }
 
     public async Task<IEnumerable<GetCard>> OfType(string type)

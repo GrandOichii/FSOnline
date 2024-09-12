@@ -6,7 +6,7 @@ public interface ICardService {
     public Task Delete(string key);
     public Task<GetCardWithRelations> ByKey(string key);
     public Task<IEnumerable<string>> GetKeys();
-    public Task<IEnumerable<GetCard>> FromCollection(string collectionKey, int page);
+    public Task<CardsPage> FromCollection(string collectionKey, int page);
     public Task<IEnumerable<GetCard>> OfType(string type);
     public Task<IEnumerable<GetCollection>> GetCollections();
 
