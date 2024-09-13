@@ -8,17 +8,18 @@ import 'package:http/http.dart' as http;
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 // const host = 'localhost';
-const host = '127.0.0.1';
-// const host = '10.0.2.2';
+// const host = '127.0.0.1';
+// const host = '127.0.1.1';
+const host = '10.0.2.2';
 
 void main() {
   runApp(FSApp());
 }
 
 class CardList extends StatefulWidget {
-  final Function createUrl;
+  final String baseUrl;
 
-  const CardList({super.key, required this.createUrl});
+  const CardList({super.key, required this.baseUrl});
 
   @override
   State<CardList> createState() => _CardListState();
@@ -43,7 +44,7 @@ class _CardListState extends State<CardList> {
   }
 
   Future<void> _fetchPage(int page) async {
-    var url = widget.createUrl(page);
+    var url = '${widget.baseUrl}?page=$page';
 
     var resp = await http.get(Uri.parse(url));
     if (resp.statusCode != 200) {
@@ -64,12 +65,20 @@ class _CardListState extends State<CardList> {
 
   @override
   Widget build(BuildContext context) {
-    return PagedListView<int, FSCard>(
-      scrollDirection: Axis.vertical,
-      pagingController: _pagingController,
-      builderDelegate: PagedChildBuilderDelegate<FSCard>(
-        itemBuilder: (ctx, item, idx) => FSCardView(card: item),
-      ),
+    _pagingController.refresh();
+    return Column(
+      children: [
+        Text(widget.baseUrl),
+        Expanded(
+          child: PagedListView<int, FSCard>(
+            scrollDirection: Axis.vertical,
+            pagingController: _pagingController,
+            builderDelegate: PagedChildBuilderDelegate<FSCard>(
+              itemBuilder: (ctx, item, idx) => FSCardView(card: item),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -216,11 +225,13 @@ class _AllCardsPageState extends State<AllCardsPage> {
   Widget build(BuildContext context) {
     return createScaffold(
         'Home',
-        CardList(
-            createUrl: (page) => 'http://$host:5000/api/v1/Card?page=$page'));
+        const CardList(
+          baseUrl: 'http://$host:5000/api/v1/Card',
+        )
+    );
   }
-}
 
+}
 class CollectionSearchPage extends StatefulWidget {
   @override
   State<CollectionSearchPage> createState() => _CollectionSearchPageState();
@@ -235,7 +246,8 @@ class _CollectionSearchPageState extends State<CollectionSearchPage> {
     return Column(
       children: [
         DropdownMenu(
-          initialSelection: cardCollections.first,
+          initialSelection: '',
+          
           onSelected: (value) {
             setState(() {
               _currentCollection = value;
@@ -245,6 +257,13 @@ class _CollectionSearchPageState extends State<CollectionSearchPage> {
             return DropdownMenuEntry(value: collection, label: collection);
           }).toList(),
         ),
+        (_currentCollection == null)
+            ? const Text('Loading cards...')
+            : Expanded(
+                child: CardList(
+                  baseUrl: 'http://$host:5000/api/v1/Card/From/$_currentCollection',
+                ),
+              ),
       ],
     );
   }
