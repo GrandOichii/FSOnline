@@ -30,10 +30,8 @@ class _CardListState extends State<CardList> {
 
   @override
   void initState() {
-    print('init state');
     super.initState();
     _pagingController.addPageRequestListener((pageKey) {
-      print('fetch page $pageKey');
       _fetchPage(pageKey);
     });
   }
@@ -70,9 +68,7 @@ class _CardListState extends State<CardList> {
       scrollDirection: Axis.vertical,
       pagingController: _pagingController,
       builderDelegate: PagedChildBuilderDelegate<FSCard>(
-        itemBuilder: (ctx, item, idx) {
-          return FSCardView(card: item);
-        },
+        itemBuilder: (ctx, item, idx) => FSCardView(card: item),
       ),
     );
   }
@@ -148,6 +144,13 @@ class FSDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            title: const Text('By collection'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/bycollection');
+            },
+          ),
+          ListTile(
             title: const Text('By card key'),
             onTap: () {
               Navigator.pop(context);
@@ -211,17 +214,39 @@ class _AllCardsPageState extends State<AllCardsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return createScaffold('Home', CardList(createUrl: (page) {
-      return 'http://$host:5000/api/v1/Card?page=$page';
-    }));
+    return createScaffold(
+        'Home',
+        CardList(
+            createUrl: (page) => 'http://$host:5000/api/v1/Card?page=$page'));
   }
 }
 
-class CollectionSearchPage extends StatelessWidget {
+class CollectionSearchPage extends StatefulWidget {
+  @override
+  State<CollectionSearchPage> createState() => _CollectionSearchPageState();
+}
+
+class _CollectionSearchPageState extends State<CollectionSearchPage> {
+  List<String> cardCollections = ['b', 'b2'];
+  String? _currentCollection;
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Column(
+      children: [
+        DropdownMenu(
+          initialSelection: cardCollections.first,
+          onSelected: (value) {
+            setState(() {
+              _currentCollection = value;
+            });
+          },
+          dropdownMenuEntries: cardCollections.map((collection) {
+            return DropdownMenuEntry(value: collection, label: collection);
+          }).toList(),
+        ),
+      ],
+    );
   }
 }
 
@@ -236,7 +261,8 @@ class FSApp extends StatelessWidget {
       routes: {
         '/': (ctx) => AllCardsPage(),
         '/bykey': (ctx) => KeySearchPage(),
-        '/bycollection': (ctx) => CollectionSearchPage(),
+        '/bycollection': (ctx) =>
+            createScaffold('Life counter', CollectionSearchPage()),
         '/lifecounter': (ctx) =>
             createScaffold('Life counter', LifeCounterPage()),
       },
