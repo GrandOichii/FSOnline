@@ -190,4 +190,20 @@ public class CardService : ICardService
     {
         return (int)Math.Ceiling(query.Count() * 1.0 / _settings.Value.CardsPerPage);
     }
+
+    public async Task<CardsPage> Filter(CardFilter filter, int page)
+    {
+        var query = await _cards.GetCards();
+        var cards = filter.Modify(query);
+
+        return new CardsPage
+        {
+            Cards = Paginate(cards, page)
+                .Select(_mapper.Map<GetCard>)
+                .ToList(),
+            Page = page,
+            PageCount = PageCount(cards),
+        };
+
+    }
 }
