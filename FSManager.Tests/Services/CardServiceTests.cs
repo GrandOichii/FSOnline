@@ -24,8 +24,25 @@ public class CardServiceTests {
         }));
     }
 
+    private async Task<PostCard> GetDummyPostCard(string cardKey = "card1") {
+        return new PostCard {
+            Key = cardKey,
+            Name = "Card",
+            Type = "Monster",
+            Health = 2,
+            Evasion = 3,
+            Attack = 1,
+            Text = "(no text)",
+            Script = "print('Missing script')",
+            SoulValue = 1,
+            CollectionKey = "test",
+            RewardsText = "",
+            ImageUrl = "http://imageurl.example",
+        };
+    }
+
     private async Task<CardModel> GetDummyCardModel(string cardKey = "card-key") {
-        var result = new CardModel() {
+        return new CardModel() {
             Key = cardKey,
             Name = "Card",
             Type = "Type1",
@@ -41,7 +58,6 @@ public class CardServiceTests {
             RelatedTo = [],
             Relations = []
         };
-        return result;
     } 
 
     [Fact]
@@ -99,26 +115,44 @@ public class CardServiceTests {
         var call = A.CallTo(() => _cardRepo.CreateCard(
             key,
             "Name",
-            "Type1",
+            "Monster",
             2,
             1,
             3,
             "(no text)",
             "print('missing script')",
             1,
+            "rewards",
             "test",
             "image-source"
         )).WithAnyArguments();
         A.CallTo(() => _cardRepo.ByKey(A<string>._)).Returns( await GetDummyCardModel() );
 
         // Act
-        var result = await _cardService.Create(A.Fake<PostCard>());
+        var result = await _cardService.Create(await GetDummyPostCard());
 
         // Assert
         result.Should().NotBeNull();
         result.Key.Should().Be(key);
         call.MustHaveHappenedOnceExactly();
     }
+
+    // [Fact]
+    // public async Task ShouldNotCreate() {
+    //     // Assert
+    //     var call = A.CallTo(() => _cardRepo.CreateCard(
+    //         key,
+    //         "Name",
+    //         "Type1",
+    //         2,
+    //         1,
+    //         3,
+    //         "(no text)",
+    //         "print('missing script')",
+    //         1,
+    //         "test",
+    //         "image-source"
+    //     )).WithAnyArguments();    }
 
     [Fact]
     public async Task ShouldFetchKeys() {
