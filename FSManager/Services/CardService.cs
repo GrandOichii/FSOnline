@@ -1,5 +1,4 @@
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace FSManager.Services;
@@ -19,10 +18,7 @@ public class CardService : ICardService
         _mapper = mapper;
     }
 
-    public async Task<CardsPage> All(int page)
-    {
-        var cards = await _cards.GetCards();
-
+    private CardsPage ToCardsPage(IQueryable<CardModel> cards, int page) {
         return new CardsPage
         {
             Cards = Paginate(cards, page)
@@ -31,6 +27,13 @@ public class CardService : ICardService
             Page = page,
             PageCount = PageCount(cards),
         };
+    }
+
+    public async Task<CardsPage> All(int page)
+    {
+        var cards = await _cards.GetCards();
+
+        return ToCardsPage(cards, page);
     }
 
     public async Task<GetCard> Create(PostCard card)
@@ -95,11 +98,7 @@ public class CardService : ICardService
     public async Task<CardsPage> FromCollection(string collectionKey, int page)
     {
         var cards = (await _cards.GetCards()).Where(c => c.Collection.Key == collectionKey);
-        return new() {
-            Cards = Paginate(cards, page).AsEnumerable().Select(_mapper.Map<GetCard>).ToList(),
-            Page = page,
-            PageCount = PageCount(cards)
-        };
+        return ToCardsPage(cards, page);
     }
 
     public async Task<IEnumerable<GetCard>> OfType(string type)
@@ -195,14 +194,6 @@ public class CardService : ICardService
         var query = await _cards.GetCards();
         var cards = filter.Modify(query);
 
-        return new CardsPage
-        {
-            Cards = Paginate(cards, page)
-                .Select(_mapper.Map<GetCard>)
-                .ToList(),
-            Page = page,
-            PageCount = PageCount(cards),
-        };
-
+        return ToCardsPage(cards, page);
     }
 }

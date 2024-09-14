@@ -44,7 +44,6 @@ class _CardListState extends State<CardList> {
 
   Future<void> _fetchPage(int page) async {
     var url = '${widget.baseUrl}&page=$page';
-    print(url);
 
     var resp = await http.get(Uri.parse(url));
     if (resp.statusCode != 200) {
