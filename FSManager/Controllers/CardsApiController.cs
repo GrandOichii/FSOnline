@@ -1,4 +1,5 @@
 using System.Reflection.Metadata.Ecma335;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FSManager.Controllers;
@@ -47,7 +48,7 @@ public class CardsApiController : ControllerBase {
         try {
             System.Console.WriteLine(card.ImageUrl);
             var result = await _cardService.Create(card);
-            return Created();
+            return StatusCode(201);
         } catch (CardValidationException e) {
             return BadRequest(e.Message);
         }

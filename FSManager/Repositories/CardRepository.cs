@@ -15,6 +15,7 @@ public class CardRepository : DbContext,
     public CardRepository(DbContextOptions<CardRepository> options)
         : base(options)
     {
+        // Database.Migrate();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
