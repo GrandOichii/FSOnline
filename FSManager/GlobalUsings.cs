@@ -11,7 +11,6 @@ global using FSManager.Services.Exceptions;
 global using FSManager.Dto.Collections;
 global using FSManager.Controllers;
 
-
 global using FSManager.Shared.Models;
 
 global using FSCore.Cards;

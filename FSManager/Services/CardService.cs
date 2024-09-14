@@ -1,7 +1,21 @@
+using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using Microsoft.Extensions.Options;
 
 namespace FSManager.Services;
+
+[System.Serializable]
+public class CardValidationException : CardServiceException
+{
+    public CardValidationException() { }
+    public CardValidationException(string message) : base(message) { }
+    public CardValidationException(string prefix, List<ValidationResult> validationResults) 
+        : base(
+            $"{prefix}\n\t" + string.Join("\n\t", validationResults.Select(r => r.ErrorMessage))
+        )
+    { }
+    public CardValidationException(string message, System.Exception inner) : base(message, inner) { }
+}
 
 public class CardService : ICardService
 {
@@ -38,6 +52,22 @@ public class CardService : ICardService
 
     public async Task<GetCard> Create(PostCard card)
     {
+        // validate
+
+        var validationResults = new List<ValidationResult>();
+        var validateAllProperties = false;
+        bool isValid = Validator.TryValidateObject(
+            card,
+            new ValidationContext(card, null, null),
+            validationResults,
+            validateAllProperties
+        );
+
+        if (!isValid) {
+            throw new CardValidationException("Failed to create card", validationResults);
+        }
+
+        // create
         await _cards.CreateCard(
             card.Key,
             card.Name,

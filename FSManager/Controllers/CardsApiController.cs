@@ -44,13 +44,12 @@ public class CardsApiController : ControllerBase {
 
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] PostCard card) {
-        // TODO catch validation exceptions
-        // try {
+        try {
             var result = await _cardService.Create(card);
             return Ok(result);
-        // } catch () {
-
-        // }
+        } catch (CardValidationException e) {
+            return BadRequest(e.Message);
+        }
     }
 
     [HttpGet("From/{key}")]
