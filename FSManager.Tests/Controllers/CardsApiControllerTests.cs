@@ -1,5 +1,6 @@
 using FSManager.Dto.Collections;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace FSManager.Tests.Controllers;
 
@@ -16,11 +17,11 @@ public class CardsApiControllerTests {
     [Fact]
     public async Task ShouldFetchAll() {
         // Arrange
-        var call = A.CallTo(() => _cardService.All(null)).WithAnyArguments();
-        call.Returns([ A.Fake<GetCard>() ]);
+        var call = A.CallTo(() => _cardService.All(A<int>._)).WithAnyArguments();
+        call.Returns(A.Fake<CardsPage>());
 
         // Act
-        var result = await _controller.All();
+        var result = await _controller.All(0);
 
         // Arrange
         call.MustHaveHappenedOnceExactly();
@@ -100,8 +101,8 @@ public class CardsApiControllerTests {
     [Fact]
     public async Task ShouldFetchFromCollection() {
         // Arrange
-        var call = A.CallTo(() => _cardService.FromCollection(A<string>._)).WithAnyArguments();
-        call.Returns([ A.Fake<GetCard>() ]);
+        var call = A.CallTo(() => _cardService.FromCollection(A<string>._, A<int>._)).WithAnyArguments();
+        call.Returns(A.Fake<CardsPage>());
 
         // Act
         var result = await _controller.FromCollection("collection-key");
@@ -295,4 +296,17 @@ public class CardsApiControllerTests {
         result.Should().BeOfType<OkObjectResult>();
     }
 
+    [Fact]
+    public async Task ShouldFetchFilteredCards() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.Filter(A<CardFilter>._, A<int>._)).WithAnyArguments();
+        call.Returns(A.Fake<CardsPage>());
+
+        // Act
+        var result = await _controller.Filter(new CardFilter(), 0);
+
+        // Assert
+        result.Should().BeOfType<OkObjectResult>();
+        call.MustHaveHappenedOnceExactly();
+    }
 }

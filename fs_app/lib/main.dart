@@ -7,10 +7,9 @@ import 'package:fs_app/pages/life_counter_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-// const host = 'localhost';
+const host = 'localhost';
 // const host = '127.0.0.1';
-// const host = '127.0.1.1';
-const host = '10.0.2.2';
+// const host = '10.0.2.2';
 
 void main() {
   runApp(FSApp());
@@ -84,6 +83,8 @@ class _CardListState extends State<CardList> {
 }
 
 class CardSearch extends StatefulWidget {
+  const CardSearch({super.key});
+
   @override
   State<CardSearch> createState() => _CardSearchState();
 }
@@ -140,6 +141,8 @@ class _CardSearchState extends State<CardSearch> {
 }
 
 class FSDrawer extends StatelessWidget {
+  const FSDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -191,6 +194,8 @@ Scaffold createScaffold(String title, Widget body) {
 }
 
 class KeySearchPage extends StatelessWidget {
+  const KeySearchPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return createScaffold('Card Search', CardSearch());
@@ -227,12 +232,13 @@ class _AllCardsPageState extends State<AllCardsPage> {
         'Home',
         const CardList(
           baseUrl: 'http://$host:5000/api/v1/Card',
-        )
-    );
+        ));
   }
-
 }
+
 class CollectionSearchPage extends StatefulWidget {
+  const CollectionSearchPage({super.key});
+
   @override
   State<CollectionSearchPage> createState() => _CollectionSearchPageState();
 }
@@ -247,7 +253,6 @@ class _CollectionSearchPageState extends State<CollectionSearchPage> {
       children: [
         DropdownMenu(
           initialSelection: '',
-          
           onSelected: (value) {
             setState(() {
               _currentCollection = value;
@@ -261,7 +266,8 @@ class _CollectionSearchPageState extends State<CollectionSearchPage> {
             ? const Text('Loading cards...')
             : Expanded(
                 child: CardList(
-                  baseUrl: 'http://$host:5000/api/v1/Card/From/$_currentCollection',
+                  baseUrl:
+                      'http://$host:5000/api/v1/Card/From/$_currentCollection',
                 ),
               ),
       ],
@@ -270,6 +276,8 @@ class _CollectionSearchPageState extends State<CollectionSearchPage> {
 }
 
 class FSApp extends StatelessWidget {
+  const FSApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([

@@ -1,3 +1,6 @@
+using FSManager.Settings;
+using Microsoft.Extensions.Options;
+
 namespace FSManager.Tests.Services;
 
 public class CardServiceTests {
@@ -16,7 +19,9 @@ public class CardServiceTests {
         _cardRepo = A.Fake<ICardRepository>();
         _collectionRepo = A.Fake<ICollectionRepository>();
 
-        _cardService = new CardService(_cardRepo, _collectionRepo, mapper);
+        _cardService = new CardService(_cardRepo, _collectionRepo, mapper, Options.Create(new CardSettings() {
+            CardsPerPage = 10
+        }));
     }
 
     private async Task<CardModel> GetDummyCardModel(string cardKey = "card-key") {
@@ -38,18 +43,6 @@ public class CardServiceTests {
         };
         return result;
     } 
-
-    [Fact]
-    public async Task ShouldFetchAll() {
-        // Arrange
-        A.CallTo(() => _cardRepo.AllCards()).Returns([ A.Fake<CardModel>() ]);
-
-        // Act
-        var result = await _cardService.All();
-
-        // Assert
-        result.Should().NotBeEmpty();
-    }
 
     [Fact]
     public async Task ShouldFetchByKey() {
@@ -132,7 +125,10 @@ public class CardServiceTests {
         // Arrange
         var card = await GetDummyCardModel();
         var call = A.CallTo(() => _cardRepo.GetCards());
-        call.Returns([ card ]);
+        call.Returns(
+            new List<CardModel>() { card }
+                .AsQueryable()
+        );
 
         // Act
         var result = await _cardService.GetKeys();
@@ -148,14 +144,18 @@ public class CardServiceTests {
         // Arrange
         var card = await GetDummyCardModel();
         var call = A.CallTo(() => _cardRepo.GetCards());
-        call.Returns([ card ]);
+        call.Returns(
+            new List<CardModel>() { card }
+                .AsQueryable()
+        );
 
         // Act
-        var result = await _cardService.FromCollection(card.Collection.Key);
+        var result = await _cardService.FromCollection(card.Collection.Key, 0);
 
         // Assert
-        result.Should().HaveCount(1);
-        result.ElementAt(0).Name.Should().Be(card.Name);
+        result.Page.Should().Be(0);
+        result.Cards.Should().HaveCount(1);
+        result.Cards.ElementAt(0).Name.Should().Be(card.Name);
     }
 
     [Fact]

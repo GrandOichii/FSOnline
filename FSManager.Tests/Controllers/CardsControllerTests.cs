@@ -15,15 +15,19 @@ public class CardsControllerTests {
     [Fact]
     public async Task ShouldGetAll() {
         // Arrange
-        var call = A.CallTo(() => _cardService.All(null)).WithAnyArguments();
-        call.Returns([ A.Fake<GetCard>() ]);
+        var call = A.CallTo(() => _cardService.All(A<int>._)).WithAnyArguments();
+        call.Returns(new CardsPage() {
+            Cards = [ A.Fake<GetCard>() ],
+            Page = 0,
+            PageCount = 1
+        });
 
         // Act
         var result = await _controller.All() as ViewResult;
-        var model = (List<GetCard>)result!.ViewData.Model!;
+        var model = (CardsPage)result!.ViewData.Model!;
 
         // Assert
-        model.Should().HaveCount(1);
+        model.Cards.Should().HaveCount(1);
         call.MustHaveHappenedOnceExactly();
     }
 

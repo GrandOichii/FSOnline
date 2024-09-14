@@ -12,7 +12,7 @@ public class CardsApiController : ControllerBase {
     }
 
     [HttpGet]
-    public async Task<IActionResult> All(CardFilter filter, int page = 0) {
+    public async Task<IActionResult> All(int page = 0) {
         return Ok(await _cardService.All(page));
     }
 
