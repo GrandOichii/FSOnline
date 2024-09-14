@@ -97,7 +97,7 @@ END; $$;");
         });
     }
 
-
+    // move to Shared
     private async Task<PostCard> GetDummyPostCard(string cardKey = "card1") {
         return new PostCard {
             Key = cardKey,
@@ -115,18 +115,57 @@ END; $$;");
         };
     }
 
+    private async Task<PostCard> CreateCard(
+        HttpClient client,
+        string key = "card-key",
+        string name = "Card Name",
+        string type = "Item",
+        int health = -1,
+        int attack = -1,
+        int evasion = -1,
+        string text = "card text here",
+        string rewardsText = "rewards here",
+        int soulValue = 0,
+
+        string script = "print('card script missing')",
+        string collectionKey = "testCollection",
+        string imageUrl = "http://test.image"
+
+    ) {
+        var card = new PostCard {
+            Key = key,
+            Name = name,
+            Type = type,
+            Health = health,
+            Attack = attack,
+            Evasion = evasion,
+            Text = text,
+            RewardsText = rewardsText,
+            SoulValue = soulValue,
+            Script = script,
+            CollectionKey = collectionKey,
+            ImageUrl = imageUrl,
+        };
+        var result = await client.PostAsJsonAsync("/api/v1/Cards", card);
+        result.Should().BeSuccessful();
+
+        return card;
+    }
+
     [Fact]
     public async Task ShouldFetchAll() {
         // Arrange
         var client = _factory.CreateClient();
 
+
         // Act
-        var result = await client.GetAsync("/api/v1/Card");
+        var result = await client.GetAsync("/api/v1/Cards");
 
         // Assert
         result.Should().BeSuccessful();
         var data = await result.Content.ReadFromJsonAsync<CardsPage>();
-        data.Cards.Should().BeEmpty();
+        data.Should().NotBeNull();
+        data!.Cards.Should().BeEmpty();
     }
 
     [Fact]
@@ -135,13 +174,83 @@ END; $$;");
         var client = _factory.CreateClient();
 
         // Act
-        var result = await client.PostAsync("/api/v1/Card", JsonContent.Create(await GetDummyPostCard()));
+        var result = await client.PostAsJsonAsync("/api/v1/Cards", await GetDummyPostCard());
 
         // Assert
         result.Should().BeSuccessful();
         result.Should().HaveStatusCode(HttpStatusCode.Created);
     }
 
+    [Fact] // TODO change to Theory, add more cases
+    public async Task ShouldNotCreate() {
+        // Arrange
+        var client = _factory.CreateClient();
 
+        // Act
+        var result = await client.PostAsJsonAsync("/api/v1/Cards", await GetDummyPostCard(""));
+
+        // Assert
+        result.Should().HaveClientError();
+    }
+
+    [Fact]
+    public async Task ShouldFetchByKey() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var cardKey = "card-key";
+        var created = await CreateCard(client, key: cardKey);
+
+        // Act
+        var result = await client.GetAsync($"/api/v1/Cards/{cardKey}");
+
+        // Assert
+        result.Should().BeSuccessful();
+        var data = await result.Content.ReadFromJsonAsync<GetCard>();
+        data.Should().NotBeNull();
+        data!.Should().BeEquivalentTo(
+            created, 
+            o => o.WithMapping("CollectionKey", "Collection")
+        );
+    }
+
+    [Fact]
+    public async Task ShouldNotFetchByKey() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var cardKey = "card-key";
+
+        // Act
+        var result = await client.GetAsync($"/api/v1/Cards/{cardKey}");
+
+        // Assert
+        result.Should().HaveStatusCode(HttpStatusCode.NotFound);
+    }
+
+    [Fact]
+    public async Task ShouldDelete() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var cardKey = "card-key";
+        await CreateCard(client, cardKey);
+
+        // Act
+        var result = await client.DeleteAsync($"/api/v1/Cards/{cardKey}");
+
+        // Assert
+        result.Should().BeSuccessful();
+    }
+
+    [Fact]
+    public async Task ShouldNotDelete() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var cardKey = "card-key";
+
+        // Act
+        var result = await client.DeleteAsync($"/api/v1/Cards/{cardKey}");
+
+        // Assert
+        result.Should().HaveClientError();
+    }
 
 }

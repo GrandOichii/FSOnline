@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FSManager.Controllers;
 
-[Route("/api/v1/Card")]
+[Route("/api/v1/Cards")]
 public class CardsApiController : ControllerBase {
     private readonly ICardService _cardService;
 
@@ -46,9 +46,8 @@ public class CardsApiController : ControllerBase {
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] PostCard card) {
         try {
-            System.Console.WriteLine(card.ImageUrl);
             var result = await _cardService.Create(card);
-            return StatusCode(201);
+            return CreatedAtAction(nameof(ByKey), new { key = card.Key}, result);
         } catch (CardValidationException e) {
             return BadRequest(e.Message);
         }

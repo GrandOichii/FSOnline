@@ -128,7 +128,7 @@ class _CardSearchState extends State<CardSearch> {
     var cardKey = searchController.text;
 
     var resp =
-        await http.get(Uri.parse('http://$host:5000/api/v1/Card/$cardKey'));
+        await http.get(Uri.parse('http://$host:5000/api/v1/Cards/$cardKey'));
     if (resp.statusCode != 200) {
       throw Exception('Failed to fetch card with key $cardKey');
     }
@@ -219,7 +219,7 @@ class _AllCardsPageState extends State<AllCardsPage> {
   }
 
   void fetchCards() async {
-    var resp = await http.get(Uri.parse('http://$host:5000/api/v1/Card'));
+    var resp = await http.get(Uri.parse('http://$host:5000/api/v1/Cards'));
     var data = jsonDecode(resp.body) as Map<String, dynamic>;
     setState(() {
       cards = FSCardCollection.fromJson(data);
@@ -231,7 +231,7 @@ class _AllCardsPageState extends State<AllCardsPage> {
     return createScaffold(
         'Home',
         const CardList(
-          baseUrl: 'http://$host:5000/api/v1/Card/f?',
+          baseUrl: 'http://$host:5000/api/v1/Cards/f?',
         ));
   }
 }
@@ -267,7 +267,7 @@ class _CollectionSearchPageState extends State<CollectionSearchPage> {
             : Expanded(
                 child: CardList(
                   baseUrl:
-                      'http://$host:5000/api/v1/Card/f?Collection=$_currentCollection&OrderBy=Type',
+                      'http://$host:5000/api/v1/Cards/f?Collection=$_currentCollection&OrderBy=Type',
                 ),
               ),
       ],
