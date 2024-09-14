@@ -11,9 +11,11 @@ public interface ICardRepository {
         string text,
         string script,
         int soulValue,
+        string rewardsText,
         string collectionKey,
-        string defaultImageSrc
+        string imageUrl
     );
+    public Task UpdateCard(CardModel existing, CardModel replacement);
     public Task<CardModel?> ByKey(string key);
     public Task<bool> RemoveCard(string key);
     public Task<IQueryable<CardModel>> GetCards();

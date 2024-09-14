@@ -4,7 +4,7 @@ namespace FSManager.Dto.Cards;
 
 public class PostCard : CardTemplate, IValidatableObject {
     public required string CollectionKey { get; set; }
-    public required string DefaultImageSrc { get; set; }
+    public required string ImageUrl { get; set; }
 
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
@@ -21,6 +21,8 @@ public class PostCard : CardTemplate, IValidatableObject {
         ) yield return new($"Unrecognized card type: {Type}");
 
         if (SoulValue < 0) yield return new($"Card soul value can't be less than zero");
-        if (!Uri.IsWellFormedUriString(DefaultImageSrc, UriKind.Absolute)) yield return new($"Card image is not a well formed URI string: {DefaultImageSrc}");
+        if (!Uri.IsWellFormedUriString(ImageUrl, UriKind.Absolute)) yield return new($"Card image is not a well formed URI string: {ImageUrl}");
+
+        // TODO validate script
     }
 }

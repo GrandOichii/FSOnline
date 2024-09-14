@@ -4,6 +4,7 @@ public interface ICardService {
     public Task<CardsPage> All(int page);
     public Task<CardsPage> Filter(CardFilter filter, int page);
     public Task<GetCard> Create(PostCard card);
+    public Task<GetCard> Edit(string key, PostCard card);
     public Task Delete(string key);
     public Task<GetCardWithRelations> ByKey(string key);
     public Task<IEnumerable<string>> GetKeys();

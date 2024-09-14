@@ -11,6 +11,13 @@ public class AutoMapperProfile : Profile {
             )
         ;
 
+        CreateMap<PostCard, CardModel>()
+            .ForMember(
+                c => c.Collection,
+                o => o.MapFrom(c => new CardCollection() {Key = c.CollectionKey, Cards = new()})
+            )
+        ;
+
         CreateMap<CardModel, GetCardWithRelations>()
             .ForMember(
                 c => c.Collection, 

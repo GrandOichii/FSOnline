@@ -62,10 +62,11 @@ public class CardRepository : DbContext,
         string text,
         string script,
         int soulValue,
+        string rewardsText,
         string collectionKey,
-        string defaultImageSrc
+        string imageUrl
     ) {
-        Database.ExecuteSql($"EXEC createCard {key}, {name}, {type}, {health}, {attack}, {evasion}, {text}, {script}, {soulValue}, {collectionKey}, {defaultImageSrc}");
+        Database.ExecuteSql($"CALL createcard({key}, {name}, {type}, {health}, {attack}, {evasion}, {text}, {script}, {soulValue}, {rewardsText}, {collectionKey}, {imageUrl})");
         await SaveChangesAsync();
     }
 
@@ -126,5 +127,11 @@ public class CardRepository : DbContext,
                 .Include(c => c.Cards)
                 .AsEnumerable()
         );
+    }
+
+    public async Task UpdateCard(CardModel existing, CardModel replacement)
+    {
+        Entry(existing).CurrentValues.SetValues(replacement);
+        await SaveChangesAsync();
     }
 }

@@ -45,10 +45,23 @@ public class CardsApiController : ControllerBase {
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] PostCard card) {
         try {
+            System.Console.WriteLine(card.ImageUrl);
             var result = await _cardService.Create(card);
             return Ok(result);
         } catch (CardValidationException e) {
             return BadRequest(e.Message);
+        }
+    }
+
+    [HttpPatch("{key}")]
+    public async Task<IActionResult> Edit([FromBody] PostCard card, string key) {
+        try {
+            var result = await _cardService.Edit(key, card);
+            return Ok(result);
+        } catch (CardValidationException e) {
+            return BadRequest(e.Message);
+        } catch (CardNotFoundException ex) {
+            return NotFound(ex.Message);
         }
     }
 

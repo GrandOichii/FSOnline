@@ -32,6 +32,21 @@ public class CardService : ICardService
         _mapper = mapper;
     }
 
+    private static void ValidatePostCard(PostCard card) {
+        var validationResults = new List<ValidationResult>();
+        var validateAllProperties = false;
+        bool isValid = Validator.TryValidateObject(
+            card,
+            new ValidationContext(card, null, null),
+            validationResults,
+            validateAllProperties
+        );
+
+        if (!isValid) {
+            throw new CardValidationException("Failed to create card", validationResults);
+        }
+    }
+
     private CardsPage ToCardsPage(IQueryable<CardModel> cards, int page) {
         return new CardsPage
         {
@@ -54,18 +69,7 @@ public class CardService : ICardService
     {
         // validate
 
-        var validationResults = new List<ValidationResult>();
-        var validateAllProperties = false;
-        bool isValid = Validator.TryValidateObject(
-            card,
-            new ValidationContext(card, null, null),
-            validationResults,
-            validateAllProperties
-        );
-
-        if (!isValid) {
-            throw new CardValidationException("Failed to create card", validationResults);
-        }
+       ValidatePostCard(card);
 
         // create
         await _cards.CreateCard(
@@ -78,13 +82,25 @@ public class CardService : ICardService
             card.Text,
             card.Script,
             card.SoulValue,
+            card.RewardsText,
             card.CollectionKey,
-            card.DefaultImageSrc
+            card.ImageUrl
         );
 
         return await ByKey(card.Key);
     }
 
+    public async Task<GetCard> Edit(string key, PostCard card)
+    {
+        var existing = await _cards.ByKey(key)
+            ?? throw new CardNotFoundException(key);
+
+        ValidatePostCard(card);
+
+        await _cards.UpdateCard(existing, _mapper.Map<CardModel>(card));
+
+        return await ByKey(card.Key);
+    }
     public async Task Delete(string key)
     {
         if (await _cards.ByKey(key) is null)
