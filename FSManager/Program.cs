@@ -18,10 +18,11 @@ public class Program {
 
         builder.Services.AddTransient<ICardRepository, CardRepository>();
         builder.Services.AddTransient<ICollectionRepository, CardRepository>();
+        builder.Services.AddSingleton<IMatchRepository, MatchRepository>();
 
         // services
         builder.Services.AddTransient<ICardService, CardService>();
-        builder.Services.AddSingleton<IMatchService, MatchService>();
+        builder.Services.AddTransient<IMatchService, MatchService>();
 
         // mapping
         builder.Services.AddAutoMapper(
@@ -39,7 +40,6 @@ public class Program {
         builder.Services.Configure<CardSettings>(
             builder.Configuration.GetSection("Cards")
         );
-
 
         var app = builder.Build();
 

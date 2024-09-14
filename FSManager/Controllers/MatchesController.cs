@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace FSManager.Controllers;
 
 [ApiController]
-[Route("api/v1/Match")]
-public class MatchController(IMatchService matchService) : ControllerBase {
+[Route("api/v1/Matches")]
+public class MatchesController(IMatchService matchService) : ControllerBase {
     private readonly IMatchService _matchService = matchService;
 
     [HttpGet]

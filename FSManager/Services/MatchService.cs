@@ -3,21 +3,20 @@ using Microsoft.Extensions.Options;
 
 namespace FSManager.Services;
 
-public class MatchService(IOptions<MatchesSettings> settings, ICardService cardService) : IMatchService {
+public class MatchService(IOptions<MatchesSettings> settings, ICardService cardService, IMatchRepository matchRepo) : IMatchService {
     private readonly IOptions<MatchesSettings> _settings = settings;
-    public List<MatchProcess> Matches { get; } = [];
     private readonly ICardService _cardService = cardService;
+    private readonly IMatchRepository _matchRepo = matchRepo;
 
-    public Task<List<MatchProcess>> All()
+    public async Task<IEnumerable<MatchProcess>> All()
     {
-        return Task.FromResult(Matches);
+        return await _matchRepo.All();
     }
 
-    public Task<MatchProcess> Get(string matchId) {
-        return Task.FromResult(
-            Matches.FirstOrDefault(m => m.ID.ToString() == matchId)
-                ?? throw new MatchNotFoundException($"Match with ID {matchId} not found")
-        );
+    public async Task<MatchProcess> Get(string matchId) {
+        return await _matchRepo.ById(matchId)
+            ?? throw new MatchNotFoundException($"Match with ID {matchId} not found")
+        ;
     }
 
     public async Task<MatchProcess> WebSocketCreate(WebSocketManager wsManager)
@@ -30,7 +29,7 @@ public class MatchService(IOptions<MatchesSettings> settings, ICardService cardS
         var creationParams = JsonSerializer.Deserialize<CreateMatchParams>(paramsRaw);
 
         var match = new MatchProcess(creationParams, _cardService);
-        Matches.Add(match);
+        await _matchRepo.Add(match);
         var _ = match.Configure();
 
         await socket.Write($"id:{match.ID}");
