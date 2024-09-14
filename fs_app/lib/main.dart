@@ -43,7 +43,8 @@ class _CardListState extends State<CardList> {
   }
 
   Future<void> _fetchPage(int page) async {
-    var url = '${widget.baseUrl}?page=$page';
+    var url = '${widget.baseUrl}&page=$page';
+    print(url);
 
     var resp = await http.get(Uri.parse(url));
     if (resp.statusCode != 200) {
@@ -231,7 +232,7 @@ class _AllCardsPageState extends State<AllCardsPage> {
     return createScaffold(
         'Home',
         const CardList(
-          baseUrl: 'http://$host:5000/api/v1/Card',
+          baseUrl: 'http://$host:5000/api/v1/Card/f?',
         ));
   }
 }
@@ -267,7 +268,7 @@ class _CollectionSearchPageState extends State<CollectionSearchPage> {
             : Expanded(
                 child: CardList(
                   baseUrl:
-                      'http://$host:5000/api/v1/Card/From/$_currentCollection',
+                      'http://$host:5000/api/v1/Card/f?Collection=$_currentCollection&OrderBy=Type',
                 ),
               ),
       ],

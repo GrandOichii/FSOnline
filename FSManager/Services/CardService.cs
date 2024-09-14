@@ -181,7 +181,6 @@ public class CardService : ICardService
     private IQueryable<CardModel> Paginate(IQueryable<CardModel> query, int page)
     {
         return query
-            .OrderBy(c => c.Key)
             .Skip(page * _settings.Value.CardsPerPage)
             .Take(_settings.Value.CardsPerPage);
     }
