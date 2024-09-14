@@ -1,3 +1,4 @@
+using System.Security;
 using FSManager.Settings;
 using Microsoft.Extensions.Options;
 
@@ -113,18 +114,18 @@ public class CardServiceTests {
         // Arrange
         var key = "card-key";
         var call = A.CallTo(() => _cardRepo.CreateCard(
-            key,
-            "Name",
-            "Monster",
-            2,
-            1,
-            3,
-            "(no text)",
-            "print('missing script')",
-            1,
-            "rewards",
-            "test",
-            "image-source"
+            A<string>._,
+            A<string>._,
+            A<string>._,
+            A<int>._,
+            A<int>._,
+            A<int>._,
+            A<string>._,
+            A<string>._,
+            A<int>._,
+            A<string>._,
+            A<string>._,
+            A<string>._
         )).WithAnyArguments();
         A.CallTo(() => _cardRepo.ByKey(A<string>._)).Returns( await GetDummyCardModel() );
 
@@ -137,22 +138,83 @@ public class CardServiceTests {
         call.MustHaveHappenedOnceExactly();
     }
 
-    // [Fact]
-    // public async Task ShouldNotCreate() {
-    //     // Assert
-    //     var call = A.CallTo(() => _cardRepo.CreateCard(
-    //         key,
-    //         "Name",
-    //         "Type1",
-    //         2,
-    //         1,
-    //         3,
-    //         "(no text)",
-    //         "print('missing script')",
-    //         1,
-    //         "test",
-    //         "image-source"
-    //     )).WithAnyArguments();    }
+    [Fact]
+    public async Task ShouldNotCreate() {
+        // Assert
+        var call = A.CallTo(() => _cardRepo.CreateCard(
+            A<string>._,
+            A<string>._,
+            A<string>._,
+            A<int>._,
+            A<int>._,
+            A<int>._,
+            A<string>._,
+            A<string>._,
+            A<int>._,
+            A<string>._,
+            A<string>._,
+            A<string>._
+        )).WithAnyArguments();    
+        var pc = await GetDummyPostCard("");
+
+        // Act
+        var act = () => _cardService.Create(pc);
+
+        // Assert
+        call.MustNotHaveHappened();
+        await act.Should().ThrowAsync<CardValidationException>();
+    }
+
+    [Fact]
+    public async Task ShouldEdit() {
+        // Assert
+        var updateCall = A.CallTo(() => _cardRepo.UpdateCard(A<CardModel>._, A<CardModel>._)).WithAnyArguments();
+        var fetchCall = A.CallTo(() => _cardRepo.ByKey(A<string>._)).WithAnyArguments();
+        fetchCall.Returns(A.Fake<CardModel>());
+        var pc = await GetDummyPostCard();
+
+        // Act
+        var act = () => _cardService.Edit("card-key", pc);
+
+        // Assert
+        await act.Should().NotThrowAsync();
+        updateCall.MustHaveHappenedOnceExactly();
+        fetchCall.MustHaveHappenedTwiceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldNotEdit_CardNotFound() {
+        // Assert
+        var updateCall = A.CallTo(() => _cardRepo.UpdateCard(A<CardModel>._, A<CardModel>._)).WithAnyArguments();
+        var fetchCall = A.CallTo(() => _cardRepo.ByKey(A<string>._)).WithAnyArguments();
+        fetchCall.Returns<CardModel?>(null);
+        var pc = await GetDummyPostCard();
+
+        // Act
+        var act = () => _cardService.Edit("card-key", pc);
+
+        // Assert
+        await act.Should().ThrowAsync<CardNotFoundException>();
+        updateCall.MustNotHaveHappened();
+        fetchCall.MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldNotEdit_ValidationFailed() {
+        // Assert
+        var updateCall = A.CallTo(() => _cardRepo.UpdateCard(A<CardModel>._, A<CardModel>._)).WithAnyArguments();
+        var fetchCall = A.CallTo(() => _cardRepo.ByKey(A<string>._)).WithAnyArguments();
+        fetchCall.Returns(A.Fake<CardModel>());
+        var pc = await GetDummyPostCard("");
+
+        // Act
+        var act = () => _cardService.Edit("card-key", pc);
+
+        // Assert
+        await act.Should().ThrowAsync<CardValidationException>();
+        updateCall.MustNotHaveHappened();
+        fetchCall.MustHaveHappenedOnceExactly();
+    }
 
     [Fact]
     public async Task ShouldFetchKeys() {

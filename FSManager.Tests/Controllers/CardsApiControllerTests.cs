@@ -309,4 +309,74 @@ public class CardsApiControllerTests {
         result.Should().BeOfType<OkObjectResult>();
         call.MustHaveHappenedOnceExactly();
     }
+
+    [Fact]
+    public async Task ShouldCreate() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.Create(A<PostCard>._)).WithAnyArguments();
+        call.Returns(A.Fake<GetCard>());
+
+        // Act
+        var result = await _controller.Create(A.Fake<PostCard>());
+
+        // Assert
+        result.Should().BeOfType<CreatedResult>();
+        call.MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldNotCreate() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.Create(A<PostCard>._)).WithAnyArguments();
+        call.Throws<CardValidationException>();
+
+        // Act
+        var result = await _controller.Create(A.Fake<PostCard>());
+
+        // Assert
+        result.Should().BeOfType<BadRequestObjectResult>();
+        call.MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldEdit() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.Edit(A<string>._, A<PostCard>._)).WithAnyArguments();
+        call.Returns(A.Fake<GetCard>());
+
+        // Act
+        var result = await _controller.Edit(A.Fake<PostCard>(), "card-key");
+
+        // Assert
+        result.Should().BeOfType<OkObjectResult>();
+        call.MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldNotEdit_ValidationFailed() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.Edit(A<string>._, A<PostCard>._)).WithAnyArguments();
+        call.Throws<CardValidationException>();
+
+        // Act
+        var result = await _controller.Edit(A.Fake<PostCard>(), "card-key");
+
+        // Assert
+        result.Should().BeOfType<BadRequestObjectResult>();
+        call.MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldNotEdit_CardNotFound() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.Edit(A<string>._, A<PostCard>._)).WithAnyArguments();
+        call.Throws<CardNotFoundException>();
+
+        // Act
+        var result = await _controller.Edit(A.Fake<PostCard>(), "card-key");
+
+        // Assert
+        result.Should().BeOfType<NotFoundObjectResult>();
+        call.MustHaveHappenedOnceExactly();
+    }
 }

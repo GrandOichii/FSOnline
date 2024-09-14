@@ -47,7 +47,7 @@ public class CardsApiController : ControllerBase {
         try {
             System.Console.WriteLine(card.ImageUrl);
             var result = await _cardService.Create(card);
-            return Ok(result);
+            return Created();
         } catch (CardValidationException e) {
             return BadRequest(e.Message);
         }
