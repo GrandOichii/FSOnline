@@ -9,6 +9,7 @@ public class CardRepository : DbContext,
     ICollectionRepository
 {
     public DbSet<CardModel> Cards { get; set; }
+    public DbSet<CardRelation> Relations { get; set; }
     public DbSet<CardCollection> Collections { get; set; }
 
 

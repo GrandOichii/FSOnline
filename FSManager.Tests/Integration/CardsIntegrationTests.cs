@@ -21,6 +21,10 @@ public class CardsIntegrationTests
         var dbContext = scope.ServiceProvider.GetRequiredService<CardRepository>();
         await dbContext.Database.MigrateAsync();
 
+        dbContext.Relations.ExecuteDelete();
+        dbContext.Cards.ExecuteDelete();
+        dbContext.Collections.ExecuteDelete();
+
         // TODO bad
         dbContext.Database.ExecuteSqlRaw(@"
 CREATE OR REPLACE PROCEDURE createCard(
@@ -73,7 +77,8 @@ BEGIN
 		collectionKey,
         image_url
 	);
-END; $$;");
+END; $$;"
+        );
     }
 
     public async Task DisposeAsync() {
@@ -86,6 +91,7 @@ END; $$;");
         _output = output;
         _dbContainer = new PostgreSqlBuilder()
             .WithCleanUp(true)
+            .WithReuse(true)
             .Build();
 
         _factory = factory.WithWebHostBuilder(builder => {
@@ -333,5 +339,7 @@ END; $$;");
         data2!.Key.Should().NotBe(relations2[0].RelatedTo.Key);
         data2!.Key.Should().Be(relations2[0].RelatedCard.Key);
     }
+
+
 
 }
