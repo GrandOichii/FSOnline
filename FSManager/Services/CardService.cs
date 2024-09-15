@@ -4,19 +4,6 @@ using Microsoft.Extensions.Options;
 
 namespace FSManager.Services;
 
-[System.Serializable]
-public class CardValidationException : CardServiceException
-{
-    public CardValidationException() { }
-    public CardValidationException(string message) : base(message) { }
-    public CardValidationException(string prefix, List<ValidationResult> validationResults) 
-        : base(
-            $"{prefix}\n\t" + string.Join("\n\t", validationResults.Select(r => r.ErrorMessage))
-        )
-    { }
-    public CardValidationException(string message, System.Exception inner) : base(message, inner) { }
-}
-
 public class CardService : ICardService
 {
     private readonly ICardRepository _cards;
@@ -68,8 +55,11 @@ public class CardService : ICardService
     public async Task<GetCard> Create(PostCard card)
     {
         // validate
+        ValidatePostCard(card);
 
-       ValidatePostCard(card);
+        // check if card with given key already exists
+        if (await _cards.ByKey(card.Key) is not null) 
+            throw new CardKeyAlreadyExistsException($"Card with key {card.Key} already exists");
 
         // create
         await _cards.CreateCard(

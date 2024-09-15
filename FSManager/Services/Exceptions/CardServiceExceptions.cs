@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace FSManager.Services.Exceptions;
 
 [System.Serializable]
@@ -33,7 +35,7 @@ public class RelationAlreadyExistsException : CardServiceException
 }
 
 [System.Serializable]
-public class RelationWithSelfException : System.Exception
+public class RelationWithSelfException : CardServiceException
 {
     public RelationWithSelfException() { }
     public RelationWithSelfException(string message) : base(message) { }
@@ -41,9 +43,31 @@ public class RelationWithSelfException : System.Exception
 }
 
 [System.Serializable]
-public class RelationNotFoundException : System.Exception
+public class RelationNotFoundException : CardServiceException
 {
     public RelationNotFoundException() { }
     public RelationNotFoundException(string cardKey, string relatedCardKey) : base($"Relation between {cardKey} and {relatedCardKey} not found") { }
     public RelationNotFoundException(string message, System.Exception inner) : base(message, inner) { }
+}
+
+[System.Serializable]
+public class CardKeyAlreadyExistsException : CardServiceException
+{
+    public CardKeyAlreadyExistsException() { }
+    public CardKeyAlreadyExistsException(string message) : base(message) { }
+    public CardKeyAlreadyExistsException(string message, System.Exception inner) : base(message, inner) { }
+}
+
+
+[System.Serializable]
+public class CardValidationException : CardServiceException
+{
+    public CardValidationException() { }
+    public CardValidationException(string message) : base(message) { }
+    public CardValidationException(string prefix, List<ValidationResult> validationResults) 
+        : base(
+            $"{prefix}\n\t" + string.Join("\n\t", validationResults.Select(r => r.ErrorMessage))
+        )
+    { }
+    public CardValidationException(string message, System.Exception inner) : base(message, inner) { }
 }

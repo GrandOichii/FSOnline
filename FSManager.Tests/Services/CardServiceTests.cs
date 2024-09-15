@@ -127,7 +127,7 @@ public class CardServiceTests {
             A<string>._,
             A<string>._
         )).WithAnyArguments();
-        A.CallTo(() => _cardRepo.ByKey(A<string>._)).Returns( await GetDummyCardModel() );
+        A.CallTo(() => _cardRepo.ByKey(A<string>._)).Returns<CardModel?>(null).Once().Then.Returns( await GetDummyCardModel() );
 
         // Act
         var result = await _cardService.Create(await GetDummyPostCard());
@@ -154,7 +154,7 @@ public class CardServiceTests {
             A<string>._,
             A<string>._,
             A<string>._
-        )).WithAnyArguments();    
+        )).WithAnyArguments();
         var pc = await GetDummyPostCard("");
 
         // Act
@@ -163,6 +163,36 @@ public class CardServiceTests {
         // Assert
         call.MustNotHaveHappened();
         await act.Should().ThrowAsync<CardValidationException>();
+    }
+
+    [Fact]
+    public async Task ShouldNotCreate_AlreadyExists() {
+        // Assert
+        var call = A.CallTo(() => _cardRepo.ByKey(A<string>._));
+        call.Returns(A.Fake<CardModel>());
+        var createCall = A.CallTo(() => _cardRepo.CreateCard(
+            A<string>._,
+            A<string>._,
+            A<string>._,
+            A<int>._,
+            A<int>._,
+            A<int>._,
+            A<string>._,
+            A<string>._,
+            A<int>._,
+            A<string>._,
+            A<string>._,
+            A<string>._
+        )).WithAnyArguments();    
+        var pc = await GetDummyPostCard("card1");
+
+        // Act
+        var act = () => _cardService.Create(pc);
+
+        // Assert
+        // call.MustHaveHappenedOnceExactly();
+        createCall.MustNotHaveHappened();
+        await act.Should().ThrowAsync<CardKeyAlreadyExistsException>();
     }
 
     [Fact]

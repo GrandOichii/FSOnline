@@ -50,7 +50,10 @@ public class CardsApiController : ControllerBase {
             return CreatedAtAction(nameof(ByKey), new { key = card.Key}, result);
         } catch (CardValidationException e) {
             return BadRequest(e.Message);
+        } catch (CardKeyAlreadyExistsException e) {
+            return BadRequest(e.Message);
         }
+
     }
 
     [HttpPatch("{key}")]

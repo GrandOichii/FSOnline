@@ -142,7 +142,7 @@ public class CardsApiControllerTests {
     }
 
     [Fact]
-    public async Task ShouldNotCreateCardNotFound() {
+    public async Task ShouldNotCreateRelationNotFound() {
         // Arrange
         var call = A.CallTo(() => _cardService.CreateRelation(A<string>._, A<string>._, A<CardRelationType>._)).WithAnyArguments();
         call.Throws<CardNotFoundException>();
@@ -325,10 +325,24 @@ public class CardsApiControllerTests {
     }
 
     [Fact]
-    public async Task ShouldNotCreate() {
+    public async Task ShouldNotCreate_ValidationFailed() {
         // Arrange
         var call = A.CallTo(() => _cardService.Create(A<PostCard>._)).WithAnyArguments();
         call.Throws<CardValidationException>();
+
+        // Act
+        var result = await _controller.Create(A.Fake<PostCard>());
+
+        // Assert
+        result.Should().BeOfType<BadRequestObjectResult>();
+        call.MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldNotCreate_CardKeyAlreadyExists() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.Create(A<PostCard>._)).WithAnyArguments();
+        call.Throws<CardKeyAlreadyExistsException>();
 
         // Act
         var result = await _controller.Create(A.Fake<PostCard>());
