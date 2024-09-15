@@ -618,4 +618,88 @@ public class CardServiceTests {
         result.Should().HaveCount(returns.Count);
         call.MustHaveHappenedOnceExactly();
     }
+
+    [Fact]
+    public async Task ShouldGetCardRelation() {
+        // Arrange
+        var key1 = "card-key";
+        var key2 = "related-card-key";
+        var related = new CardModelBuilder(key2).Build();
+        A.CallTo(() => _cardRepo.ByKey(key1))
+            .Returns(new CardModelBuilder(key1)
+                .HasRelatedCard(
+                    related,
+                    CardRelationType.GENERAL
+                )
+            .Build());
+        A.CallTo(() => _cardRepo.ByKey(key2))
+            .Returns(related);
+
+        // Act
+        var result1 = await _cardService.GetRelation(key1, key2);
+        var result2 = await _cardService.GetRelation(key2, key1);
+
+        // Assert
+        result1.Should().BeEquivalentTo(result2);
+    }
+
+    [Fact]
+    public async Task ShouldNotGetRelation_CardNotFound1() {
+        // Arrange
+        var key1 = "card-key";
+        var key2 = "related-card-key";
+        var related = new CardModelBuilder(key2).Build();
+        A.CallTo(() => _cardRepo.ByKey(key1))
+            .Returns(new CardModelBuilder(key1).Build());
+        A.CallTo(() => _cardRepo.ByKey(key2))
+            .Returns<CardModel?>(null);
+
+        // Act
+        var act1 = () => _cardService.GetRelation(key1, key2);
+        var act2 = () => _cardService.GetRelation(key2, key1);
+
+        // Assert
+        await act1.Should().ThrowExactlyAsync<CardNotFoundException>();
+        await act2.Should().ThrowExactlyAsync<CardNotFoundException>();
+    }
+
+    [Fact]
+    public async Task ShouldNotGetRelation_CardNotFound2() {
+        // Arrange
+        var key1 = "card-key";
+        var key2 = "related-card-key";
+        var related = new CardModelBuilder(key2).Build();
+        A.CallTo(() => _cardRepo.ByKey(key1))
+            .Returns<CardModel?>(null);
+        A.CallTo(() => _cardRepo.ByKey(key2))
+            .Returns(new CardModelBuilder(key1).Build());
+
+        // Act
+        var act1 = () => _cardService.GetRelation(key1, key2);
+        var act2 = () => _cardService.GetRelation(key2, key1);
+
+        // Assert
+        await act1.Should().ThrowExactlyAsync<CardNotFoundException>();
+        await act2.Should().ThrowExactlyAsync<CardNotFoundException>();
+    }
+    
+    [Fact]
+    public async Task ShouldNotGetRelation_RelationDoesntExist() {
+        // Arrange
+        var key1 = "card-key";
+        var key2 = "related-card-key";
+        var related = new CardModelBuilder(key2).Build();
+        A.CallTo(() => _cardRepo.ByKey(key1))
+            .Returns(new CardModelBuilder(key1).Build());
+        A.CallTo(() => _cardRepo.ByKey(key2))
+            .Returns(new CardModelBuilder(key2).Build());
+
+        // Act
+        var act1 = () => _cardService.GetRelation(key1, key2);
+        var act2 = () => _cardService.GetRelation(key2, key1);
+
+        // Assert
+        await act1.Should().ThrowExactlyAsync<RelationNotFoundException>();
+        await act2.Should().ThrowExactlyAsync<RelationNotFoundException>();
+    }
 }

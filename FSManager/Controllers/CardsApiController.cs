@@ -73,6 +73,18 @@ public class CardsApiController : ControllerBase {
         return Ok(await _cardService.FromCollection(key, page));
     }
 
+    [HttpGet("Relation/{key1}/{key2}")]
+    public async Task<IActionResult> GetRelation(string key1, string key2) {
+        try {
+            var result = await _cardService.GetRelation(key1, key2);
+            return Ok(result);
+        } catch (CardNotFoundException e) {
+            return NotFound(e.Message);
+        } catch (RelationNotFoundException e) {
+            return NotFound(e.Message);
+        }
+    }
+
     [HttpPost("Relation")]
     public async Task<IActionResult> CreateRelation([FromBody] PostCardRelationWithType relation) {
         try {

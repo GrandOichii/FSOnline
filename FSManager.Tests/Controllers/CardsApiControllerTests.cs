@@ -393,4 +393,46 @@ public class CardsApiControllerTests {
         result.Should().BeOfType<NotFoundObjectResult>();
         call.MustHaveHappenedOnceExactly();
     }
+
+    [Fact]
+    public async Task ShouldGetRelation() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.GetRelation(A<string>._, A<string>._)).WithAnyArguments();
+        call.Returns(A.Fake<GetCardRelation>());
+
+        // Act
+        var result = await _controller.GetRelation("key1", "key2");
+
+        // Assert
+        result.Should().BeOfType<OkObjectResult>();
+        call.MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldNotGetRelation_CardNotFound() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.GetRelation(A<string>._, A<string>._)).WithAnyArguments();
+        call.Throws<CardNotFoundException>();
+
+        // Act
+        var result = await _controller.GetRelation("key1", "key2");
+
+        // Assert
+        result.Should().BeOfType<NotFoundObjectResult>();
+        call.MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public async Task ShouldNotGetRelation_RelationNotFound() {
+        // Arrange
+        var call = A.CallTo(() => _cardService.GetRelation(A<string>._, A<string>._)).WithAnyArguments();
+        call.Throws<RelationNotFoundException>();
+
+        // Act
+        var result = await _controller.GetRelation("key1", "key2");
+
+        // Assert
+        result.Should().BeOfType<NotFoundObjectResult>();
+        call.MustHaveHappenedOnceExactly();
+    }
 }

@@ -232,4 +232,16 @@ public class CardService : ICardService
 
         return ToCardsPage(cards, page);
     }
+
+    public async Task<GetCardRelation> GetRelation(string key1, string key2)
+    {
+        if (await _cards.ByKey(key2) is null)
+            throw new CardNotFoundException(key1);
+
+        var card = await _cards.ByKey(key1)
+            ?? throw new CardNotFoundException(key1);
+        var relation = card.GetRelationWith(key2)
+            ?? throw new RelationNotFoundException(key1, key2);
+        return _mapper.Map<GetCardRelation>(relation);
+    }
 }
