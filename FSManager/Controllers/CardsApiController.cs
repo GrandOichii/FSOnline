@@ -74,7 +74,8 @@ public class CardsApiController : ControllerBase {
     public async Task<IActionResult> CreateRelation([FromBody] PostCardRelationWithType relation) {
         try {
             await _cardService.CreateRelation(relation.CardKey, relation.RelatedCardKey, relation.RelationType);
-            return Created();
+            // return CreatedAtAction(typeof());
+            return StatusCode(201);
         } catch (CardNotFoundException e) {
             return NotFound(e.Message);
         } catch (RelationAlreadyExistsException e) {

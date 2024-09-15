@@ -152,6 +152,17 @@ END; $$;");
         return card;
     }
 
+    private static async Task CreateRelation(HttpClient client, string key1, string key2, CardRelationType relationType = CardRelationType.GENERAL) {
+        var result = await client.PostAsJsonAsync("/api/v1/Cards/Relation", new PostCardRelationWithType {
+            CardKey = key1,
+            RelatedCardKey = key2,
+            RelationType = CardRelationType.GENERAL
+        });
+
+        // Assert
+        result.StatusCode.Should().Be(HttpStatusCode.Created);
+    }
+
     [Fact]
     public async Task ShouldFetchAll() {
         // Arrange
@@ -205,7 +216,7 @@ END; $$;");
 
         // Assert
         result.Should().BeSuccessful();
-        var data = await result.Content.ReadFromJsonAsync<GetCard>();
+        var data = await result.Content.ReadFromJsonAsync<GetCardWithRelations>();
         data.Should().NotBeNull();
         data!.Should().BeEquivalentTo(
             created, 
@@ -251,6 +262,76 @@ END; $$;");
 
         // Assert
         result.Should().HaveClientError();
+    }
+
+    // TODO add card Patch tests
+
+    // TODO remove, is replaced with /api/v1/Cards/f
+    [Fact]
+    public async Task ShouldFetchFromCollection() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var collection = "test1";
+        await CreateCard(client, key: "card1", collectionKey: collection);
+        await CreateCard(client, key: "card2", collectionKey: "collection");
+        await CreateCard(client, key: "card3", collectionKey: collection);
+
+        // Act
+        var result = await client.GetAsync($"/api/v1/Cards/From/{collection}");
+
+        // Assert
+        result.Should().BeSuccessful();
+        var data = await result.Content.ReadFromJsonAsync<CardsPage>();
+        data.Should().NotBeNull();
+        data!.Cards.Should().HaveCount(2);
+    }
+
+    [Fact]
+    public async Task ShouldCreateRelation() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var key1 = (await CreateCard(client, key: "card1")).Key;
+        var key2 = (await CreateCard(client, key: "card2")).Key;
+
+        // Act
+        var result = await client.PostAsJsonAsync("/api/v1/Cards/Relation", new PostCardRelationWithType {
+            CardKey = key1,
+            RelatedCardKey = key2,
+            RelationType = CardRelationType.GENERAL
+        });
+
+        // Assert
+        result.StatusCode.Should().Be(HttpStatusCode.Created);
+    }
+
+    [Fact]
+    public async Task ShouldCreateAndFetchRelation() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var key1 = (await CreateCard(client, key: "card1")).Key;
+        var key2 = (await CreateCard(client, key: "card2")).Key;
+        await CreateRelation(client, key1, key2);
+
+        // Act
+        var result1 = await client.GetAsync($"/api/v1/Cards/{key1}");
+        var result2 = await client.GetAsync($"/api/v1/Cards/{key2}");
+
+        // Assert
+        result1.Should().BeSuccessful();
+        var data1 = await result1.Content.ReadFromJsonAsync<GetCardWithRelations>();
+        data1.Should().NotBeNull();
+        var relations1 = data1!.Relations;
+        relations1.Should().HaveCount(1);
+        data1!.Key.Should().NotBe(relations1[0].RelatedCard.Key);
+        data1!.Key.Should().Be(relations1[0].RelatedTo.Key);
+
+        result2.Should().BeSuccessful();
+        var data2 = await result2.Content.ReadFromJsonAsync<GetCardWithRelations>();
+        data2.Should().NotBeNull();
+        var relations2 = data2!.Relations;
+        relations2.Should().HaveCount(1);
+        data2!.Key.Should().NotBe(relations2[0].RelatedTo.Key);
+        data2!.Key.Should().Be(relations2[0].RelatedCard.Key);
     }
 
 }
