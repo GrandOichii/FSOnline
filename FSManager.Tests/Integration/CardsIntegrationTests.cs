@@ -496,7 +496,44 @@ END; $$;"
         var client = _factory.CreateClient();
         var key1 = (await CreateCard(client, key: "card1")).Key;
         var key2 = (await CreateCard(client, key: "card2")).Key;
-        // await CreateRelation(client, key1, key2);
+
+        // Act
+        var result = await client.PatchAsJsonAsync($"/api/v1/Cards/Relation", new PostCardRelationWithType {
+            CardKey = key1,
+            RelatedCardKey = key2,
+            RelationType = CardRelationType.STARTING_ITEM
+        });
+
+        // Assert
+        result.Should().HaveClientError();
+    }
+
+    [Fact]
+    public async Task ShouldNotEditRelationType_CardNotFound1() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var key1 = (await CreateCard(client, key: "card1")).Key;
+        var key2 = "key2";
+        await CreateRelation(client, key1, key2, assertCreated: false);
+
+        // Act
+        var result = await client.PatchAsJsonAsync($"/api/v1/Cards/Relation", new PostCardRelationWithType {
+            CardKey = key1,
+            RelatedCardKey = key2,
+            RelationType = CardRelationType.STARTING_ITEM
+        });
+
+        // Assert
+        result.Should().HaveClientError();
+    }
+
+    [Fact]
+    public async Task ShouldNotEditRelationType_CardNotFound2() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var key1 = "key1";
+        var key2 = (await CreateCard(client, key: "card2")).Key;
+        await CreateRelation(client, key1, key2, assertCreated: false);
 
         // Act
         var result = await client.PatchAsJsonAsync($"/api/v1/Cards/Relation", new PostCardRelationWithType {
@@ -528,7 +565,7 @@ END; $$;"
     }
 
 
-     [Fact]
+    [Fact]
     public async Task ShouldDeleteRelation() {
         // Arrange
         var client = _factory.CreateClient();
@@ -541,6 +578,61 @@ END; $$;"
 
         // Assert
         result.Should().BeSuccessful();
+    }
+
+    [Fact]
+    public async Task ShouldNotDeleteRelation_DoesntExist() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var key1 = (await CreateCard(client, key: "card1")).Key;
+        var key2 = (await CreateCard(client, key: "card2")).Key;
+
+        // Act
+        var result = await client.DeleteAsync($"/api/v1/Cards/Relation/{key1}/{key2}");
+
+        // Assert
+        result.Should().HaveClientError();
+    }
+
+    [Fact]
+    public async Task ShouldNotDeleteRelation_CardNotFound1() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var key1 = (await CreateCard(client, key: "card1")).Key;
+        var key2 = "key2";
+
+        // Act
+        var result = await client.DeleteAsync($"/api/v1/Cards/Relation/{key1}/{key2}");
+
+        // Assert
+        result.Should().HaveClientError();
+    }
+
+    [Fact]
+    public async Task ShouldNotDeleteRelation_CardNotFound2() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var key1 = "key1";
+        var key2 = (await CreateCard(client, key: "card2")).Key;
+
+        // Act
+        var result = await client.DeleteAsync($"/api/v1/Cards/Relation/{key1}/{key2}");
+
+        // Assert
+        result.Should().HaveClientError();
+    }
+
+    [Fact]
+    public async Task ShouldNotDeleteRelation_WithSelf() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var key1 = (await CreateCard(client, key: "card1")).Key;
+
+        // Act
+        var result = await client.DeleteAsync($"/api/v1/Cards/Relation/{key1}/{key1}");
+
+        // Assert
+        result.Should().HaveClientError();
     }
    
 }
