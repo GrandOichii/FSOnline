@@ -186,7 +186,7 @@ END; $$;"
         data!.Cards.Should().BeEmpty();
     }
 
-    [Fact]
+    [Fact] // TODO change to Theory, add more cases
     public async Task ShouldCreate() {
         // Arrange
         var client = _factory.CreateClient();
@@ -199,16 +199,123 @@ END; $$;"
         result.Should().HaveStatusCode(HttpStatusCode.Created);
     }
 
-    [Fact] // TODO change to Theory, add more cases
-    public async Task ShouldNotCreate() {
+
+    public static IEnumerable<object[]> BadPostCards => [
+        // TODO add more cases
+        [
+            new PostCard {
+                Key = "",
+                Name = "Card Name",
+                Type = "Loot",
+                Health = -1,
+                Attack = -1,
+                Evasion = -1,
+                Text = "card text here",
+                RewardsText = "rewards text here",
+                SoulValue = 0,
+                Script = "print('no card script')",
+                CollectionKey = "col1",
+                ImageUrl = "http://card.image",
+            },
+            "card key can't be empty"
+        ],
+        [
+            new PostCard {
+                Key = "key",
+                Name = "",
+                Type = "Loot",
+                Health = -1,
+                Attack = -1,
+                Evasion = -1,
+                Text = "card text here",
+                RewardsText = "rewards text here",
+                SoulValue = 0,
+                Script = "print('no card script')",
+                CollectionKey = "col1",
+                ImageUrl = "http://card.image",
+            },
+            "card name can't be empty"
+        ],
+        [
+            new PostCard {
+                Key = "key",
+                Name = "Card name",
+                Type = "type",
+                Health = -1,
+                Attack = -1,
+                Evasion = -1,
+                Text = "card text here",
+                RewardsText = "rewards text here",
+                SoulValue = 0,
+                Script = "print('no card script')",
+                CollectionKey = "col1",
+                ImageUrl = "http://card.image",
+            },
+            "invalid card type"
+        ],
+        [
+            new PostCard {
+                Key = "key",
+                Name = "Card name",
+                Type = "Loot",
+                Health = -1,
+                Attack = -1,
+                Evasion = -1,
+                Text = "card text here",
+                RewardsText = "rewards text here",
+                SoulValue = -1,
+                Script = "print('no card script')",
+                CollectionKey = "col1",
+                ImageUrl = "http://card.image",
+            },
+            "card soul value can't be less than 0"
+        ],
+        [
+            new PostCard {
+                Key = "key",
+                Name = "Card name",
+                Type = "Loot",
+                Health = -1,
+                Attack = -1,
+                Evasion = -1,
+                Text = "card text here",
+                RewardsText = "rewards text here",
+                SoulValue = 0,
+                Script = "print('no card script')",
+                CollectionKey = "",
+                ImageUrl = "http://card.image",
+            },
+            "card collection key can't be empty"
+        ],
+        [
+            new PostCard {
+                Key = "key",
+                Name = "Card name",
+                Type = "Loot",
+                Health = -1,
+                Attack = -1,
+                Evasion = -1,
+                Text = "card text here",
+                RewardsText = "rewards text here",
+                SoulValue = 0,
+                Script = "print('no card script')",
+                CollectionKey = "col1",
+                ImageUrl = "card.image",
+            },
+            "card image has to be a valid URL"
+        ],
+    ];
+
+    [Theory, MemberData(nameof(BadPostCards))]
+    public async Task ShouldNotCreate(PostCard card, string because) {
         // Arrange
         var client = _factory.CreateClient();
 
         // Act
-        var result = await client.PostAsJsonAsync("/api/v1/Cards", await GetDummyPostCard(""));
+        var result = await client.PostAsJsonAsync("/api/v1/Cards", card);
 
         // Assert
-        result.Should().HaveClientError();
+        result.Should().HaveClientError(because);
     }
 
     [Fact]
