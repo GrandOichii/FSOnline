@@ -85,10 +85,10 @@ public class CardsApiController : ControllerBase {
         }
     }
 
-    [HttpDelete("Relation")]
-    public async Task<IActionResult> DeleteRelation([FromBody] PostCardRelation relation) {
+    [HttpDelete("Relation/{key1}/{key2}")]
+    public async Task<IActionResult> DeleteRelation(string key1, string key2) {
         try {
-            await _cardService.DeleteRelation(relation.CardKey, relation.RelatedCardKey);
+            await _cardService.DeleteRelation(key1, key2);
             return Ok();
         } catch (CardNotFoundException e) {
             return NotFound(e.Message);

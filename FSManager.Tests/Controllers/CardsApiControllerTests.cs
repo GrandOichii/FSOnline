@@ -177,7 +177,7 @@ public class CardsApiControllerTests {
         call.DoesNothing();
 
         // Act
-        var result = await _controller.DeleteRelation(new PostCardRelation() { CardKey = "card-key", RelatedCardKey = "related-card-key"} );
+        var result = await _controller.DeleteRelation("card-key", "related-card-key" );
 
         // Assert
         call.MustHaveHappenedOnceExactly();
@@ -191,7 +191,7 @@ public class CardsApiControllerTests {
         call.Throws<RelationNotFoundException>();
 
         // Act
-        var result = await _controller.DeleteRelation(new PostCardRelation() { CardKey = "card-key", RelatedCardKey = "realted-card-key"} );
+        var result = await _controller.DeleteRelation("card-key", "realted-card-key" );
 
         // Assert
         call.MustHaveHappenedOnceExactly();
@@ -205,7 +205,7 @@ public class CardsApiControllerTests {
         call.Throws<CardNotFoundException>();
 
         // Act
-        var result = await _controller.DeleteRelation(new PostCardRelation() { CardKey = "card-key", RelatedCardKey = "realted-card-key"} );
+        var result = await _controller.DeleteRelation("card-key", "realted-card-key" );
 
         // Assert
         call.MustHaveHappenedOnceExactly();
@@ -219,7 +219,7 @@ public class CardsApiControllerTests {
         call.Throws<RelationWithSelfException>();
 
         // Act
-        var result = await _controller.DeleteRelation(new PostCardRelation() { CardKey = "card-key", RelatedCardKey = "realted-card-key"} );
+        var result = await _controller.DeleteRelation("card-key", "realted-card-key" );
 
         // Assert
         call.MustHaveHappenedOnceExactly();
