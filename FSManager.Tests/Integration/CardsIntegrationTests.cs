@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Http.Json;
+using FSManager.Dto.Collections;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -633,6 +634,38 @@ END; $$;"
 
         // Assert
         result.Should().HaveClientError();
+    }
+
+    [Fact]
+    public async Task ShouldGetCollections() {
+        // Arrange
+        var client = _factory.CreateClient();
+        var col1 = "col1";
+        var col2 = "col2";
+        await CreateCard(client, key: "card1", collectionKey: col1);
+        await CreateCard(client, key: "card2", collectionKey: col1);
+        await CreateCard(client, key: "card3", collectionKey: col1);
+        await CreateCard(client, key: "card4", collectionKey: col2);
+
+        // Act
+        var result = await client.GetAsync("/api/v1/Cards/Collections");
+
+        // Assert
+        result.Should().BeSuccessful();
+        var data = await result.Content.ReadFromJsonAsync<IEnumerable<GetCollection>>();
+        data.Should().NotBeNull();
+        data!.Should().HaveCount(2);
+        data!.Should().BeEquivalentTo(new List<GetCollection>() {
+            new() {
+                Name = col1,
+                CardCount = 3,
+            },
+            new() {
+                Name = col2,
+                CardCount = 1,
+            },
+        });
+
     }
    
 }
