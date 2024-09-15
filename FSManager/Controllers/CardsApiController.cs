@@ -88,9 +88,8 @@ public class CardsApiController : ControllerBase {
     [HttpPost("Relation")]
     public async Task<IActionResult> CreateRelation([FromBody] PostCardRelationWithType relation) {
         try {
-            await _cardService.CreateRelation(relation.CardKey, relation.RelatedCardKey, relation.RelationType);
-            // return CreatedAtAction(typeof());
-            return StatusCode(201);
+            var result = await _cardService.CreateRelation(relation.CardKey, relation.RelatedCardKey, relation.RelationType);
+            return CreatedAtAction(nameof(GetRelation), new { key1 = relation.CardKey, key2 = relation.RelatedCardKey}, result);
         } catch (CardNotFoundException e) {
             return NotFound(e.Message);
         } catch (RelationAlreadyExistsException e) {

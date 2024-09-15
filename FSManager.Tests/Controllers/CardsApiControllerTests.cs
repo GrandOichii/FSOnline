@@ -122,7 +122,7 @@ public class CardsApiControllerTests {
         var result = await _controller.CreateRelation(new PostCardRelationWithType() { CardKey = "card-key", RelatedCardKey = "related-card-key", RelationType = CardRelationType.GENERAL});
 
         // Assert
-        // result.Should().BeOfType<CreatedResult>(); // TODO uncomment and fix
+        result.Should().BeOfType<CreatedAtActionResult>(); 
         call.MustHaveHappenedOnceExactly();
     }
     
@@ -130,7 +130,7 @@ public class CardsApiControllerTests {
     public async Task ShouldNotCreateRelationTwice() {
         // Arrange
         var call = A.CallTo(() => _cardService.CreateRelation(A<string>._, A<string>._, A<CardRelationType>._)).WithAnyArguments();
-        call.DoesNothing().Once().Then.Throws<RelationAlreadyExistsException>();
+        call.Returns(A.Fake<GetCardRelation>()).Once().Then.Throws<RelationAlreadyExistsException>();
 
         // Act
         await _controller.CreateRelation(new PostCardRelationWithType() { CardKey = "card-key", RelatedCardKey = "related-card-key", RelationType = CardRelationType.GENERAL});

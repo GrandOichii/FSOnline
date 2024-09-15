@@ -144,7 +144,7 @@ public class CardService : ICardService
             .Select(c => MapToGetCard(c));
     }
 
-    public async Task CreateRelation(string cardKey, string relatedCardKey, CardRelationType relationType)
+    public async Task<GetCardRelation> CreateRelation(string cardKey, string relatedCardKey, CardRelationType relationType)
     {
         if (cardKey == relatedCardKey)
             throw new RelationWithSelfException($"Tried to create a relation for card {cardKey} with itself");
@@ -165,6 +165,8 @@ public class CardService : ICardService
         };
 
         await _cards.SaveRelation(relation);
+
+        return _mapper.Map<GetCardRelation>(relation);
     }
 
     private static CardRelation? GetRelation(CardModel card1, CardModel card2)

@@ -13,7 +13,7 @@ public interface ICardService {
     public Task<IEnumerable<GetCollection>> GetCollections();
 
     public Task<GetCardRelation> GetRelation(string key1, string key2);
-    public Task CreateRelation(string cardKey, string relatedCardKey, CardRelationType relationType);
+    public Task<GetCardRelation> CreateRelation(string cardKey, string relatedCardKey, CardRelationType relationType);
     public Task DeleteRelation(string cardKey, string relatedCardKey);
     public Task EditRelationType(string cardKey, string relatedCardKey, CardRelationType relationType);
 }
