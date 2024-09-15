@@ -170,35 +170,43 @@ END; $$;"
         result.StatusCode.Should().Be(HttpStatusCode.Created);
     }
 
-    [Fact]
-    public async Task ShouldFetchAll() {
-        // Arrange
-        var client = _factory.CreateClient();
+    #region Test cases
 
-
-        // Act
-        var result = await client.GetAsync("/api/v1/Cards");
-
-        // Assert
-        result.Should().BeSuccessful();
-        var data = await result.Content.ReadFromJsonAsync<CardsPage>();
-        data.Should().NotBeNull();
-        data!.Cards.Should().BeEmpty();
-    }
-
-    [Fact] // TODO change to Theory, add more cases
-    public async Task ShouldCreate() {
-        // Arrange
-        var client = _factory.CreateClient();
-
-        // Act
-        var result = await client.PostAsJsonAsync("/api/v1/Cards", await GetDummyPostCard());
-
-        // Assert
-        result.Should().BeSuccessful();
-        result.Should().HaveStatusCode(HttpStatusCode.Created);
-    }
-
+    public static IEnumerable<object[]> GoodPostCards => [
+        // TODO add more cases
+        [
+            new PostCard {
+                Key = "key1",
+                Name = "Card Name",
+                Type = "Loot",
+                Health = -1,
+                Attack = -1,
+                Evasion = -1,
+                Text = "card text here",
+                RewardsText = "rewards text here",
+                SoulValue = 0,
+                Script = "print('no card script')",
+                CollectionKey = "col1",
+                ImageUrl = "http://card.image",
+            },
+        ],
+        [
+            new PostCard {
+                Key = "key1",
+                Name = "Card Name",
+                Type = "Item",
+                Health = -1,
+                Attack = -1,
+                Evasion = -1,
+                Text = "card text here",
+                RewardsText = "rewards text here",
+                SoulValue = 1,
+                Script = "print('no card script')",
+                CollectionKey = "c",
+                ImageUrl = "http://card.image",
+            },
+        ],
+    ];
 
     public static IEnumerable<object[]> BadPostCards => [
         // TODO add more cases
@@ -305,6 +313,37 @@ END; $$;"
             "card image has to be a valid URL"
         ],
     ];
+
+    #endregion
+
+    [Fact]
+    public async Task ShouldFetchAll() {
+        // Arrange
+        var client = _factory.CreateClient();
+
+
+        // Act
+        var result = await client.GetAsync("/api/v1/Cards");
+
+        // Assert
+        result.Should().BeSuccessful();
+        var data = await result.Content.ReadFromJsonAsync<CardsPage>();
+        data.Should().NotBeNull();
+        data!.Cards.Should().BeEmpty();
+    }
+
+    [Theory, MemberData(nameof(GoodPostCards))]
+    public async Task ShouldCreate(PostCard card) {
+        // Arrange
+        var client = _factory.CreateClient();
+
+        // Act
+        var result = await client.PostAsJsonAsync("/api/v1/Cards", card);
+
+        // Assert
+        result.Should().BeSuccessful();
+        result.Should().HaveStatusCode(HttpStatusCode.Created);
+    }
 
     [Theory, MemberData(nameof(BadPostCards))]
     public async Task ShouldNotCreate(PostCard card, string because) {
