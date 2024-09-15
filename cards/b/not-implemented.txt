@@ -1,0 +1,21 @@
+https://foursouls.com/cards/b-blue_baby/ - starting item
+https://foursouls.com/cards/b-forever_alone/ - looking at the top card of a deck (do with logs or with a separate window), targeting after choice
+https://foursouls.com/cards/b-eve/ - starting item
+https://foursouls.com/cards/b-the_curse/ - targeting discard piles, returning cards from discard to deck
+https://foursouls.com/cards/b-lilith/ - starting item
+https://foursouls.com/cards/b-incubus/ - looking at a player's hand an selecting a card
+https://foursouls.com/cards/b-the_forgotten/ - starting item
+https://foursouls.com/cards/b-the_bone/ - client is limited to first activated ability
+https://foursouls.com/cards/b-bobs_brain/ - choosing a target after the roll
+https://foursouls.com/cards/b-brimstone/ - "each time you deal damage to a monster"
+https://foursouls.com/cards/b-bum_bo/ - card levels, adding roll value to first roll of some kind, attacking any number of times
+https://foursouls.com/cards/b-cambion_conception/ - trigger for having N counters
+https://foursouls.com/cards/b-champion_belt/ - adding roll value to first roll of some kind
+https://foursouls.com/cards/b-cheese_grater/ - revealing top card of a deck
+https://foursouls.com/cards/b-curse_of_the_tower/ - targeting after roll
+https://foursouls.com/cards/b-dead_bird/ - looking and selecting cards from a player's hand
+https://foursouls.com/cards/b-empty_vessel/ - conditional state modification
+https://foursouls.com/cards/b-finger/ - swapping items
+https://foursouls.com/cards/b-goat_head/ - complex
+https://foursouls.com/cards/b-guppys_collar/ - preventing death
+https://foursouls.com/cards/b-ipecac/ - "each time you roll a 6 while attacking"
