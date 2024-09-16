@@ -1,0 +1,38 @@
+https://foursouls.com/cards/g-lord_of_the_pit/ - cancelling an attack
+https://foursouls.com/cards/g-apollyon/ - starting item
+https://foursouls.com/cards/g-void/ - discarding a monster or shop item after effect choice
+https://foursouls.com/cards/g-9_volt/ - 
+https://foursouls.com/cards/g-moms_knife/ - "each time you deal damage to a monster on a roll of 6, ..."
+https://foursouls.com/cards/g-more_options/ - adding purchase opportunities
+https://foursouls.com/cards/g-skeleton_key/ - adding attack opportunities
+https://foursouls.com/cards/g-soy_milk/ - "mosnters you attack gain ... till end of turn", "each time you deal damage to a monster on a roll of 6, ..."
+https://foursouls.com/cards/g-fruitcake/ - choosing deck after roll, checking if the same value was rolled N times in a row
+https://foursouls.com/cards/g-i_cant_believe_its_not_butter_bean/ - choosing effects that target your rolls and/or items
+https://foursouls.com/cards/g-lemon_mishap/ - 
+https://foursouls.com/cards/g-library_card/ - 
+https://foursouls.com/cards/g-ouija_board/ - playing all event cards from the top of the monster deck
+https://foursouls.com/cards/g-plan_c/ - killing all players at the end of turn
+https://foursouls.com/cards/g-the_bible/ - a lot of things
+https://foursouls.com/cards/g-dads_key/ - putting the top monster card into a slot that is not being attacked, conditioanl disallowing effect activation
+https://foursouls.com/cards/g-succubus/ - 
+https://foursouls.com/cards/g-charged_penny/ - 
+https://foursouls.com/cards/g-pills/ - adding values to dice rolls till end of turn
+https://foursouls.com/cards/g-credit_card/ - "the first shop item a player buys this turn costs 0{cent}"
+https://foursouls.com/cards/g-two_of_diamonds/ - 
+https://foursouls.com/cards/g-joker/ - looking at players' hands and stealing cards
+https://foursouls.com/cards/g-jera/ - 
+https://foursouls.com/cards/g-cancer/ - adding roll value to first attack roll
+https://foursouls.com/cards/g-pink_eye/ - "each time you take damage on a roll of 1, ..."
+https://foursouls.com/cards/g-deaths_head/ - disallowing attacking monsters
+https://foursouls.com/cards/g-gaper/ - checking what roll killed a monster
+https://foursouls.com/cards/g-imp/ - "when you roll a 3 while attacking this, ..."
+https://foursouls.com/cards/g-knight/ - "this takes damage on an attack roll of 1"
+https://foursouls.com/cards/g-parabite/ - "each time this takes damage, the attacking player gets -1 to their next attack roll this turn."
+https://foursouls.com/cards/g-ragling/ - deciding where the dead monster goes after a roll
+https://foursouls.com/cards/g-round_worm/ - "each time this deal damage, the attacking player gets +1 to their next attack roll this turn."
+https://foursouls.com/cards/g-polycephalus/ - "each time this takes damage, your next attack roll this turn gets -2."
+https://foursouls.com/cards/g-steven/ - cancelling the attack and ending the turn
+https://foursouls.com/cards/g-curse_of_fatigue/ - limiting the amount items recharged at the start of the turn
+https://foursouls.com/cards/g-curse_of_tiny_hands/ - discarding down to N cards in hand
+https://foursouls.com/cards/g-i_am_error/ - forcing to attack the monster deck
+https://foursouls.com/cards/g-trap_door/ - 

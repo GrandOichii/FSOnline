@@ -1,0 +1,59 @@
+https://foursouls.com/cards/fsp-1_up/ - "if you would die during your turn, destroy this and heal back up to full HP. you may attack an additional time this turn.
+https://foursouls.com/cards/fsp-cursed_eye/ - "when you roll a 6 while attacking, ..."
+https://foursouls.com/cards/fsp-euthanasia/ - "each time you roll the same number twice in a row while attacking, ..."
+https://foursouls.com/cards/fsp-game_breaking_bug/ - 
+https://foursouls.com/cards/fsp-head_of_the_keeper/ - "each time you deal damage, ...", "each time you kill a monster or a player, ..."
+https://foursouls.com/cards/fsp-lard/ - 
+https://foursouls.com/cards/fsp-magnet/ - coin gain trigger
+https://foursouls.com/cards/fsp-moms_eye_shadow/ - "each time another player attacks, you may choose which active monster they attack."
+https://foursouls.com/cards/fsp-phd/ - (same as Sacred Heart)
+https://foursouls.com/cards/fsp-rubber_cement/ - attack roll miss trigger
+https://foursouls.com/cards/fsp-telepathy_for_dummies/ - "at the start of your turn, roll. you may use the result of that roll to the next dice roll you make this turn."
+https://foursouls.com/cards/fsp-the_wiz/ - "each time you deal damage to a monster with an attack roll, ..."
+https://foursouls.com/cards/fsp-black_candle/ - playing curse cards from the top of the monster deck
+https://foursouls.com/cards/fsp-distant_admiration/ - "force another player to give you a loot card of their choosing, you must then play that card."
+https://foursouls.com/cards/fsp-divorce_papers/ - "... that player gives you half of their $ and loot cards rounded down. then gives you an item they own of their choosing."
+https://foursouls.com/cards/fsp-forget_me_now/ - choosing soul cards
+https://foursouls.com/cards/fsp-forget_me_now/ - replacing the roll
+https://foursouls.com/cards/fsp-rainbow_baby/ - 
+https://foursouls.com/cards/fsp-red_candle/ - "efore a dice is rolled, say a number. till the end of turn each time that number is rolled, deal 1 damage to any monster or player."
+https://foursouls.com/cards/fsp-smart_fly/ - 
+https://foursouls.com/cards/fsp-athame/ - 
+https://foursouls.com/cards/fsp-mama_haunt/ - forbid character recharging
+https://foursouls.com/cards/fsp-pills/ - targeting after roll
+https://foursouls.com/cards/fsp-pills_3/ - targeting after roll
+https://foursouls.com/cards/fsp-pills_2/ - targeting after roll
+https://foursouls.com/cards/fsp-questionmark_card/ - copying activated effects
+https://foursouls.com/cards/fsp-get_out_of_jail_card/ - "Trinity Shield" till end of turn
+https://foursouls.com/cards/fsp-ansuz/ - 
+https://foursouls.com/cards/fsp-black_rune/ - targeting after roll
+https://foursouls.com/cards/fsp-aaa_battery/ - targeting after roll
+https://foursouls.com/cards/fsp-poker_chip/ - the first time you would gain $ on your turn, roll: 1-3: only gain 1 $. 4-6: gain double the amount.
+https://foursouls.com/cards/fsp-tape_worm/ - attack roll miss trigger
+https://foursouls.com/cards/fsp-the_left_hand/ - 
+https://foursouls.com/cards/fsp-gold_key/ - the active player may attack the monster deck any number of times this turn.
+https://foursouls.com/cards/fsp-bony/ - "each time the attacking player rolls a 1, ..."
+https://foursouls.com/cards/fsp-brain/ - "each time the attacking player rolls a 6, ..."
+https://foursouls.com/cards/fsp-flaming_hopper/ - 
+https://foursouls.com/cards/fsp-globin/ - "when this is at 1{health}, roll:"
+https://foursouls.com/cards/fsp-roundy/ - "each time this deals damage, ..."
+https://foursouls.com/cards/fsp-sucker/ - 
+https://foursouls.com/cards/fsp-tumor/ - "each time this takes damage it deals 1 damage to all other players"
+https://foursouls.com/cards/fsp-cursed_globin/ - healing monster life
+https://foursouls.com/cards/fsp-cursed_tumor/ - 
+https://foursouls.com/cards/fsp-holy_bony/ - 
+https://foursouls.com/cards/fsp-holy_mulligan/ - 
+https://foursouls.com/cards/fsp-blastocyst/ - deck attack opportunity
+https://foursouls.com/cards/fsp-dingle/ - "each time this takes damage from an active player, "
+https://foursouls.com/cards/fsp-headless_horseman/ - "the first time this would die each turn, prevent death. it instead heals 2HP and gains +1DC and -1ATK till the end of turn.'
+https://foursouls.com/cards/fsp-krampus/ - "while this is active, each player must attack it during their turn if able."
+https://foursouls.com/cards/fsp-monstro_ii/ - "each time this deals damage to the attacking player, "
+https://foursouls.com/cards/fsp-the_fallen/ - 
+https://foursouls.com/cards/fsp-isaac/ - "each time this takes damage from an attack, "
+https://foursouls.com/cards/fsp-moms_heart/ - "when a player gains this soul card, end the game. choose a player with the most souls or tied for the most. they are the winner."
+https://foursouls.com/cards/fsp-curse_of_blood_lust/ - replacing base attack opportunity with a required one
+https://foursouls.com/cards/fsp-curse_of_impulse/ - 
+https://foursouls.com/cards/fsp-boss_rush/ - reveal cards off the top of the monster deck until you reveal 2 boss monster cards. put them into active piles and the rest in discard. you must attack one of these cards this turn.
+https://foursouls.com/cards/fsp-head_trauma/ - 
+https://foursouls.com/cards/fsp-holy_chest/ - 
+https://foursouls.com/cards/fsp-spiked_chest/ - 

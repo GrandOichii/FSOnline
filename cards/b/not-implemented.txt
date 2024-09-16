@@ -19,3 +19,92 @@ https://foursouls.com/cards/b-finger/ - swapping items
 https://foursouls.com/cards/b-goat_head/ - complex
 https://foursouls.com/cards/b-guppys_collar/ - preventing death
 https://foursouls.com/cards/b-ipecac/ - "each time you roll a 6 while attacking"
+https://foursouls.com/cards/b-monstros_tooth/ - choosing a random player
+https://foursouls.com/cards/b-polydactyly/ - adding attack to first roll
+https://foursouls.com/cards/b-spider_mod/ - discarding a monster and replacing with top of deck
+https://foursouls.com/cards/b-starter_deck/ - conditional trigger
+https://foursouls.com/cards/b-tarot_cloth/ - 
+https://foursouls.com/cards/b-the_d10/ - putting the top card of the monster deck into a slot, detecting if a monster is being attacked
+https://foursouls.com/cards/b-the_polaroid/ - conditional trigger
+https://foursouls.com/cards/b-theres_options/ - looking at the top of the treasure deck, ! is not an activated ability, purchasing additional cards
+https://foursouls.com/cards/b-blank_card/ - doubling loot effects of the next loot card played
+https://foursouls.com/cards/b-bum_friend/ - 
+https://foursouls.com/cards/b-chaos_card/ - targeting souls
+https://foursouls.com/cards/b-compost/ - changing the loot source
+https://foursouls.com/cards/b-crystal_ball/ - checking the next roll value, then triggering
+https://foursouls.com/cards/b-decoy/ - swapping items
+https://foursouls.com/cards/b-diplopia/ - becoming a copy of an item until end of turn, checking whether the item is a passive item
+https://foursouls.com/cards/b-flush/ - discarding all treasures, discarding all monsters
+https://foursouls.com/cards/b-glass_cannon/ - doesnt work within my rules engine
+https://foursouls.com/cards/b-host_hat/ - custom damage preventors
+https://foursouls.com/cards/b-modeling_clay/ - becoming a copy of an item indefinately
+https://foursouls.com/cards/b-moms_bra/ - reducing damage dealt to a player or monster
+https://foursouls.com/cards/b-moms_shovel/ - entering play deactivated, targeting souls, discarding souls
+https://foursouls.com/cards/b-monster_manual/ - forcing a player to attack a monster
+https://foursouls.com/cards/b-no/ - 
+https://foursouls.com/cards/b-pandoras_box/ - targeting a monster after a roll is done
+https://foursouls.com/cards/b-potato_peeler/ - milling
+https://foursouls.com/cards/b-remote_detonator/ - voting
+https://foursouls.com/cards/b-the_d4/ - 
+https://foursouls.com/cards/b-the_shovel/ - targeting monster cards in monster discard
+https://foursouls.com/cards/b-o_the_fool/ - ending the turn and cancelling all effects
+https://foursouls.com/cards/b-i_the_magician/ - 
+https://foursouls.com/cards/b-iii_the_empress/ - 
+https://foursouls.com/cards/b-viii_justice/ - weird if cards like Counterfeit Penny are in play
+https://foursouls.com/cards/b-xii_the_hanged_man/ - 
+https://foursouls.com/cards/b-xv_the_devil/ - 
+https://foursouls.com/cards/b-xix_the_sun/ - taking extra turns
+https://foursouls.com/cards/b-xx_judgement/ - choosing soul cards
+https://foursouls.com/cards/b-xxi_the_world/ - looking at players' hands
+https://foursouls.com/cards/b-dagaz/ - targeting curses, targeting a player after choosing an effect
+https://foursouls.com/cards/b-ehwaz/ - discarding all monsters and replacing them with top cards
+https://foursouls.com/cards/b-broken_ankh/ - attempting death prevention
+https://foursouls.com/cards/b-curved_horn/ - adding attack to first roll
+https://foursouls.com/cards/b-swallowed_penny/ - 
+https://foursouls.com/cards/b-big_spider/ - adding specific attack opportunities
+https://foursouls.com/cards/b-black_bony/ - dealing damage while dead, dealing damage to the player that killed it
+https://foursouls.com/cards/b-delirium/ - placing under N cards of the monster deck after death
+https://foursouls.com/cards/b-dinga/ - checking which roll killed the monster
+https://foursouls.com/cards/b-dople/ - duplicating damage to a neighboring player
+https://foursouls.com/cards/b-evil_twin/ - duplicating damage to a neighboring player
+https://foursouls.com/cards/b-horf/ - "each time the attacking player rolls a 2, ..."
+https://foursouls.com/cards/b-keeper_head/ - "when this deals damage to a player"
+https://foursouls.com/cards/b-leaper/ - dealing double damage on specific rolls
+https://foursouls.com/cards/b-moms_dead_hand/ - 
+https://foursouls.com/cards/b-moms_eye/ - looking at players' hands
+https://foursouls.com/cards/b-moms_hand/ - "when the attacking player rolls a 6, ..."
+https://foursouls.com/cards/b-portal/ - forcing to attack the monster deck
+https://foursouls.com/cards/b-rage_creep/ - "each time this deals damage, ..."
+https://foursouls.com/cards/b-ring_of_flies/ - "each time the attacking player rolls a 3, ..."
+https://foursouls.com/cards/b-stoney/ - disallowing attacking specific monsters
+https://foursouls.com/cards/b-swarm_of_flies/ - "each time the attacking player rolls a 5, ..."
+https://foursouls.com/cards/b-wizoob/ - choosing soul cards
+https://foursouls.com/cards/b-cursed_moms_hand/ - ending the turn (does this cancel the attack?)
+https://foursouls.com/cards/b-holy_dinga/ - healing player life
+https://foursouls.com/cards/b-holy_moms_eye/ - 
+https://foursouls.com/cards/b-chub/ - "each time the attacking player rolls a 1, ...", healing monster life
+https://foursouls.com/cards/b-conquest/ - forcing to attack
+https://foursouls.com/cards/b-daddy_long_legs/ - "each time the attacking player rolls a 1, ..."
+https://foursouls.com/cards/b-envy/ - forcing to attack
+https://foursouls.com/cards/b-famine/ - skipping the next turn
+https://foursouls.com/cards/b-gluttony/ - "each time this takes damage on a roll of 6"
+https://foursouls.com/cards/b-gurdy_jr/ - "each time the attackign player activates an item, ..."
+https://foursouls.com/cards/b-lust/ - "each time this takes damage from an attack, ..."
+https://foursouls.com/cards/b-mega_fatty/ - "each time this deals damage, ..."
+https://foursouls.com/cards/b-peep/ - searching the monster deck and placing the found card into a monster slot
+https://foursouls.com/cards/b-pestilence/ - dealing devided damage
+https://foursouls.com/cards/b-pride/ - "when this is attacked, ..."
+https://foursouls.com/cards/b-rag_man/ - deciding where the dead monster goes after a roll
+https://foursouls.com/cards/b-scolex/ - "each time this deals damage to a player, ..."
+https://foursouls.com/cards/b-sloth/ - "..., the player who killed it"
+https://foursouls.com/cards/b-the_bloat/ - "each time this deals damage, ..."
+https://foursouls.com/cards/b-the_duke_of_flies/ - "each time this takes damage, ...", damage prevention based on a roll
+https://foursouls.com/cards/b-the_haunt/ - "each time this takes 2 damage, ..."
+https://foursouls.com/cards/b-the_lamb/ - targeting soul cards
+https://foursouls.com/cards/b-mom/ - dealing double damage
+https://foursouls.com/cards/b-curse_of_loss/ - targeting soul cards
+https://foursouls.com/cards/b-ambush/ - forcing the player to attack the monster deck
+https://foursouls.com/cards/b-cursed_chest/ - searching for a specific treasure card
+https://foursouls.com/cards/b-devil_deal/ - searching for a specific treasure card
+https://foursouls.com/cards/b-greed_event/ - choosing the player with the most amount of coins
+https://foursouls.com/cards/b-we_need_to_go_deeper/ - "put any number of discarded monsters back on top of the monster deck"
