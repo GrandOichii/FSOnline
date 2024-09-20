@@ -1,8 +1,8 @@
 version: '3.1'
 
 services:
-  db:
-    container_name: fso-db
+  db: # TODO rename to card-db
+    container_name: fso-db # TODO rename to fso-card-db
     image: postgres
     environment:
       POSTGRES_USER: user
@@ -19,6 +19,19 @@ services:
     ports:
       - 5672:5672 # queue
       - 15672:15672 # web UI
+  logs-visualizer:
+    container_name: fso-logs-visualizer
+    image: grafana/grafana-oss
+    ports:
+      - 3000:3000
+  time-db:
+    image: influxdb:2
+    container_name: fso-time-db
+    ports:
+      - 8086:8086
+    volumes:
+      - time-db-data:/var/lib/influxdb2
+
   # cache:
   #   container_name: fso-cache
   #   hostname: valkey
@@ -41,4 +54,5 @@ services:
   #     - 6381:6379
 
 volumes:
-  fso-db-data:
+  fso-db-data: # TODO rename to fso-card-db-data
+  time-db-data:
