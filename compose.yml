@@ -13,6 +13,12 @@ services:
       - fso-db-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
+  message-broker:
+    image: rabbitmq:3-management-alpine
+    container_name: fso-messages
+    ports:
+      - 5672:5672 # queue
+      - 15672:15672 # web UI
   # cache:
   #   container_name: fso-cache
   #   hostname: valkey

@@ -2,15 +2,32 @@ using System.Runtime.CompilerServices;
 using FSManager.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
+using Serilog;
+using Serilog.Settings.Configuration;
 
 namespace FSManager;
 
 public class Program {
+    private static void ConfigureLogging(WebApplicationBuilder builder) {
+        var config = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json") // TODO this seems wrong
+            .Build();
+
+        Log.Logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(config)
+            .CreateLogger();
+    }
+
     public static void Main(string[] args) {
+
         var builder = WebApplication.CreateBuilder(args);
+
+        // configure logger
+        ConfigureLogging(builder);
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+        builder.Services.AddSerilog();
 
         // DB
         builder.Services.AddDbContext<CardRepository>(options =>
