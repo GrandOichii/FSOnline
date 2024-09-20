@@ -5,6 +5,7 @@ using FSManager.Dto.Collections;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using Testcontainers.PostgreSql;
 using Xunit.Abstractions;
 
@@ -98,6 +99,9 @@ END; $$;"
 
         _factory = factory.WithWebHostBuilder(builder => {
             builder.ConfigureServices(services => {
+                // * turn off logging
+                services.AddSerilog((_, _) => {});
+                
                 services.Remove(services.First(s => s.ServiceType == typeof(DbContextOptions<CardRepository>)));
                 services.AddDbContext<CardRepository>(o => 
                     o.UseNpgsql(_dbContainer.GetConnectionString()));
