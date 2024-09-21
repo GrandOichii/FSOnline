@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSClient", "FSClient\FSClie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSManager.Shared", "FSManager.Shared\FSManager.Shared.csproj", "{2512DDA4-6D60-4121-A585-8CF944F39DB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSLogsCollector", "FSLogsCollector\FSLogsCollector.csproj", "{487A0A65-ADCE-4FDD-B28B-A23067EC897C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{2512DDA4-6D60-4121-A585-8CF944F39DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2512DDA4-6D60-4121-A585-8CF944F39DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2512DDA4-6D60-4121-A585-8CF944F39DB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{487A0A65-ADCE-4FDD-B28B-A23067EC897C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{487A0A65-ADCE-4FDD-B28B-A23067EC897C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{487A0A65-ADCE-4FDD-B28B-A23067EC897C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{487A0A65-ADCE-4FDD-B28B-A23067EC897C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
