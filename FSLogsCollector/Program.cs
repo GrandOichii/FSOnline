@@ -5,6 +5,7 @@ using Serilog.AspNetCore;
 
 using FSLogsCollector.Settings;
 using FSLogsCollector;
+using FSLogsCollector.Services;
 
 
 Log.Logger = new LoggerConfiguration()
@@ -18,6 +19,8 @@ builder.Services.AddSerilog();
 builder.Services.Configure<RabbitMQSettings>(
     builder.Configuration.GetSection("RabbitMQ")
 );
+
+builder.Services.AddSingleton<ILoggedMessageProcessor, LoggedMessageLogger>();
 
 builder.Services.AddHostedService<LogsCollectorService>();
 
