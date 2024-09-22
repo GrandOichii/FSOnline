@@ -26,7 +26,7 @@ public class TriggeredAbilityStackEffect : StackEffect {
     public override async Task<bool> Resolve()
     {
         if (Ability.ShouldFizzle(this)) {
-            Match.LogInfo($"Triggered ability stack effect {SID} of card {Card.LogName} fizzles");
+            Match.LogDebug("Triggered ability stack effect {StackID} of card {LogName} fizzles", SID, Card.LogName);
             return true;
         }
 

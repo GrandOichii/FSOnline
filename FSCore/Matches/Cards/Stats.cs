@@ -46,7 +46,7 @@ public class Stats {
 
         var match = card.Card.Match;
 
-        match.LogInfo($"Card {card.LogName} was dealt {amount} damage");
+        match.LogDebug("Card {LogName} was dealt {Amount} damage", card.LogName, amount);
         Damage += amount;
         CheckDead(effect);
 
@@ -75,7 +75,7 @@ public class Stats {
         amount = PreventDamage(amount);
         if (amount == 0) return;
 
-        player.Match.LogInfo($"Player {player.LogName} was dealt {amount} damage");
+        player.Match.LogDebug("Player {LogName} was dealt {Amount} damage", player.LogName, amount);
         Damage += amount;
         CheckDead(stackEffect);
 

@@ -23,7 +23,7 @@ public class EventCardStackEffect : StackEffect
             Card.Card.ExecuteCardEffects(this);
 
         } else {
-            Match.LogInfo($"Event card {Card.LogName} fizzles");
+            Match.LogDebug("Event card {LogName} fizzles", Card.LogName);
         }
 
         // some cards put themselves into other zones !!! Trinkets

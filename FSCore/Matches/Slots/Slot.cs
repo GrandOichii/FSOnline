@@ -41,13 +41,13 @@ public abstract class Slot {
         var top = Source.RemoveTop(1);
         if (top.Count == 0) {
             Card = null;
-            Source.Match.LogInfo($"Tried to refill {Name} slot [{Idx}], but the source deck is empty");
+            Source.Match.LogDebug("Tried to refill {Slot} slot [{SlotIdx}], but the source deck is empty", Name, Idx);
             return;
         }
 
         var card = top[0];
         Card = new(card);
-        Source.Match.LogInfo($"Card {Card.LogName} is put into {Name} slot [{Idx}]");
+        Source.Match.LogDebug("Card {LogName} is put into {Slot} slot [{SlotIdx}]", Card.LogName, Name, Idx);
 
         await Source.Match.OnCardEnteredPlay(Card);
     }

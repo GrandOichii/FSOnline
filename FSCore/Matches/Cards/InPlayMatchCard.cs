@@ -250,7 +250,7 @@ public class InPlayMatchCard : IStateModifier {
         // foreach (var preventor in DeathPreventors) {
         //     var returned = preventor.Call(deathSource);
         //     if (LuaUtility.GetReturnAsBool(returned)) {
-        //         Match.LogInfo($"Death of player {LogName} was prevented");
+        //         Match.LogDebug("Death of player {LogName} was prevented", LogName);
         //         DeathPreventors.Remove(preventor);
         //         return;
         //     }
@@ -266,7 +266,7 @@ public class InPlayMatchCard : IStateModifier {
         Stats.IsDead = true;
 
         // TODO death replacement effects
-        Card.Match.LogInfo($"Card {LogName} dies");
+        Card.Match.LogDebug("Card {LogName} dies", LogName);
 
         await Card.Match.Emit("card_death", new() {
             { "Card", this },
@@ -313,7 +313,7 @@ public class InPlayMatchCard : IStateModifier {
 
 
     public async Task PushDeath(StackEffect deathSource) {
-        Card.Match.LogInfo($"Death of card {LogName} is pushed onto the stack");
+        Card.Match.LogDebug("Death of card {LogName} is pushed onto the stack", LogName);
 
         var effect = new CardDeathStackEffect(this, deathSource);
         await Card.Match.PlaceOnStack(effect);

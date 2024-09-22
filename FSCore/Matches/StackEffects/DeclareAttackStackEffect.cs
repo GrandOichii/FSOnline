@@ -15,7 +15,7 @@ public class DeclareAttackStackEffect : StackEffect {
 
         var available = owner.AvailableToAttack();
         if (available.Count == 0) {
-            Match.LogInfo($"Player {owner.LogName} can't attack anything");
+            Match.LogDebug("Player {LogName} can't attack anything", owner.LogName);
             return true;
         }
 
@@ -25,17 +25,17 @@ public class DeclareAttackStackEffect : StackEffect {
 
         // bool payed = owner.TryPayCoinsForSlot(slot);
         // if (!payed) {
-        //     Match.LogInfo($"Player {owner.LogName} failed to pay the cost to purchase an item");
+        //     Match.LogDebug("Player {LogName} failed to pay the cost to purchase an item", owner.LogName);
         //     return;
         // }
 
         if (slot == -1) {
-            Match.LogInfo($"Player {owner.LogName} attacks the top card of the monster deck");
+            Match.LogDebug("Player {LogName} attacks the top card of the monster deck", owner.LogName);
             // TODO
             return true;
         }
 
-        Match.LogInfo($"Player {owner.LogName} attacks the monster in Monster slot {slot}");
+        Match.LogDebug("Player {LogName} attacks the monster in Monster slot {SlotIdx}", owner.LogName, slot);
         await owner.AttackMonsterInSlot(slot);
         return true;
     }

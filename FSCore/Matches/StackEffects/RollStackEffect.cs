@@ -29,7 +29,7 @@ public class RollStackEffect : StackEffect
         Value = Match.Rng.Next(1, 7);
         // Value = 1;
 
-        Match.LogInfo($"Player {Match.GetPlayer(Parent!.OwnerIdx).LogName} rolled a {Value}");
+        Match.LogDebug("Player {LogName} rolled a {Roll}", Match.GetPlayer(Parent!.OwnerIdx).LogName, Value);
 
         // TODO request player to order replacement effects
         var owner = Match.GetPlayer(OwnerIdx);
@@ -43,7 +43,7 @@ public class RollStackEffect : StackEffect
     public void SetValue(int value) {
         Value = Math.Clamp(value, 1, 6);
 
-        Match.LogInfo($"Roll value of roll {SID} is set to {Value}");
+        Match.LogDebug("Roll value of roll {StackID} is set to {Roll}", SID, Value);
     }
 
     public override async Task<bool> Resolve()
@@ -71,7 +71,7 @@ public class RollStackEffect : StackEffect
     /// Rerolls the value
     /// </summary>
     public void Reroll() {
-        Match.LogInfo($"Roll stack effect {SID} reroll request");
+        Match.LogDebug("Roll stack effect {StackID} reroll request", SID);
 
         Roll();
     }
@@ -83,6 +83,6 @@ public class RollStackEffect : StackEffect
         if (Value < 1 || Value > 6) 
             throw new MatchException($"Roll modification led to roll value being set to {Value} (original: {prev}, mod: {mod})");
 
-        Match.LogInfo($"Modified roll value {prev} -> {Value}");
+        Match.LogDebug("Modified roll value {Old} -> {New}", prev, Value);
     }
 }

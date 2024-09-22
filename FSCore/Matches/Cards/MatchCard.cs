@@ -218,7 +218,7 @@ public class MatchCard {
         // Initial state
         State = new(this);
 
-        // Match.LogInfo($"Constructed card {LogName}");
+        // Match.LogDebug("Constructed card {LogName}", LogName);
     }
 
     public static Dictionary<ModificationLayer, List<StateModFunc>> ExtractStateModifiers(LuaTable data) {

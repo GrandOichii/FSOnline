@@ -220,7 +220,7 @@ public class Player : IStateModifier {
         // TODO? change card zone
         // TODO trigger (not draw)
 
-        Match.LogInfo($"Card {card.LogName} was put into hand of player {LogName}");
+        Match.LogDebug("Card {CardLogName} was put into hand of player {PlayerLogName}", card.LogName, LogName);
         // TODO add update
     }
 
@@ -269,7 +269,7 @@ public class Player : IStateModifier {
         var taken = Match.TakeCoins(amount);
         GainCoinsRaw(taken);
 
-        Match.LogInfo($"Player {LogName} gained {taken} coins (expected to gain {amount}), {Match.CoinPool} left in coin pool");
+        Match.LogDebug("Player {LogName} gained {Taken} coins (expected to gain {Amount}), {CoinPool} left in coin pool", LogName, taken, amount, Match.CoinPool);
 
         // TODO emit trigger
         // TODO add to update
@@ -426,11 +426,11 @@ public class Player : IStateModifier {
 
         if (!payed) {
             Match.RemoveTopOfStack();
-            Match.LogInfo($"Player {LogName} decided not to pay costs for loot card {card.Card.LogName}");
+            Match.LogDebug("Player {PlayerLogName} decided not to pay costs for loot card {CardLogName}", LogName, card.Card.LogName);
             return false;
         }
 
-        Match.LogInfo($"Player {LogName} played loot card {card.Card.LogName}");
+        Match.LogDebug("Player {PlayerLogName} played loot card {CardLogName}", LogName, card.Card.LogName);
 
         ShouldRemoveFromHand(card);
 
@@ -503,7 +503,7 @@ public class Player : IStateModifier {
 
         Items.Add(card);
 
-        Match.LogInfo($"Player {LogName} gained item {card.LogName}");
+        Match.LogDebug("Player {PlayerLogName} gained item {CardLogName}", LogName, card.LogName);
 
         await Match.Emit("item_gain", new() {
             { "player", this },
@@ -557,7 +557,7 @@ public class Player : IStateModifier {
 
         var effect = new DeclarePurchaseStackEffect(Match, Idx);
 
-        Match.LogInfo($"Player {LogName} declares a purchase");
+        Match.LogDebug("Player {LogName} declares a purchase", LogName);
         await Match.PlaceOnStack(effect);
 
         // TODO trigger
@@ -843,7 +843,7 @@ public class Player : IStateModifier {
         // TODO check if can gain souls
 
         Souls.Add(card);
-        Match.LogInfo($"Player {LogName} gained soul card {card.Original.LogName}");
+        Match.LogDebug("Player {PlayerLogName} gained soul card {CardLogName}", LogName, card.Original.LogName);
 
         await Match.Emit("soul_enter", new() {
             { "Owner", this },
@@ -870,7 +870,7 @@ public class Player : IStateModifier {
 
         Stats.CheckDead(source);
 
-        Match.LogInfo($"Player {LogName} lost {amount} health");
+        Match.LogDebug("Player {LogName} lost {Amount} health", LogName, amount);
 
         // TODO update
         // TODO? trigger
@@ -895,7 +895,7 @@ public class Player : IStateModifier {
     }
 
     public async Task PushDeath(StackEffect deathSource) {
-        Match.LogInfo($"Death of player {LogName} is pushed onto the stack");
+        Match.LogDebug("Death of player {LogName} is pushed onto the stack", LogName);
 
         var effect = new PlayerDeathStackEffect(this, deathSource);
         await Match.PlaceOnStack(effect);
@@ -923,7 +923,7 @@ public class Player : IStateModifier {
         foreach (var preventor in DeathPreventors) {
             var returned = preventor.Call(deathSource);
             if (LuaUtility.GetReturnAsBool(returned)) {
-                Match.LogInfo($"Death of player {LogName} was prevented");
+                Match.LogDebug("Death of player {LogName} was prevented", LogName);
                 DeathPreventors.Remove(preventor);
                 return;
             }
@@ -937,7 +937,7 @@ public class Player : IStateModifier {
 
         await PayDeathPenalty(deathSource);
 
-        Match.LogInfo($"Player {LogName} dies");
+        Match.LogDebug("Player {LogName} dies", LogName);
         // TODO fizzle all DeclarePurchaseStackEffects
 
         await Match.Emit("player_death", new() {
@@ -1068,7 +1068,7 @@ public class Player : IStateModifier {
 
         var effect = new DeclareAttackStackEffect(Match, Idx);
 
-        Match.LogInfo($"Player {LogName} declares an attack");
+        Match.LogDebug("Player {LogName} declares an attack", LogName);
         await Match.PlaceOnStack(effect);
 
         // TODO trigger

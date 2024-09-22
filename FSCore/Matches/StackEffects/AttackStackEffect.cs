@@ -29,7 +29,7 @@ public class AttackStackEffect : StackEffect
             if (playerDead)
                 logMsg += $"|player {player.LogName} died|";
 
-            Match.LogInfo(logMsg);
+            Match.LogDebug(logMsg);
 
             // ! When an attack ends due to a player or monster dying (or an attack being canceled), any unresolved attack rolls and combat damage are removed from the stack.
             // var newEffects = new List<StackEffect>();
@@ -43,7 +43,7 @@ public class AttackStackEffect : StackEffect
 
         if (Rolls.Count > 0) {
             var last = Rolls.Last();
-            Match.LogInfo($"Resolving attack roll of {last} by player {player.LogName} to monster {Monster.LogName}");
+            Match.LogDebug("Resolving attack roll of {Roll} by player {PlayerLogName} to monster {CardLogName}", last, player.LogName, Monster.LogName);
 
             if (Monster.IsMiss(last)) {
                 var effect = new DamageStackEffect(Match, OwnerIdx, Monster.GetAttack(), this, Match.GetPlayer(OwnerIdx))

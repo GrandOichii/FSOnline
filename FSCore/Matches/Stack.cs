@@ -56,7 +56,7 @@ public class Stack {
         
         // advance priority
         PriorityIdx = Match.NextInTurnOrder(PriorityIdx);
-        Match.LogInfo($"New priority player index: {PriorityIdx}");
+        Match.LogDebug("New priority player index: {PriorityIdx}", PriorityIdx);
 
         // var topOwner = top.OwnerIdx > 0
         //     ? top.OwnerIdx
@@ -76,7 +76,7 @@ public class Stack {
     /// Resolve the top effect and remove from stack
     /// </summary>
     public async Task ResolveTop() {
-        Match.LogInfo("Resolving top of stack");
+        Match.LogDebug("Resolving top of stack");
         var top = Top;
 
         var remove = await top.Resolve();
@@ -85,7 +85,7 @@ public class Stack {
             Effects.Remove(top);
         // PriorityIdx = Match.CurPlayerIdx;
         if (Effects.Count == 0) {
-            Match.LogInfo("Stack is now empty");
+            Match.LogDebug("Stack is now empty");
             PriorityIdx = NO_PRIORITY_IDX;
         }
     }
@@ -98,7 +98,7 @@ public class Stack {
         Effects.Add(effect);
         PriorityIdx = Match.CurPlayerIdx;
 
-        Match.LogInfo($"A new effect was added to the top of stack - {effect}");
+        Match.LogDebug("A new effect was added to the top of stack - {Effect}", typeof(Effect));
         // TODO add update
     }
 

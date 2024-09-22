@@ -190,7 +190,7 @@ public class Match {
         };
         TEOTEffects = [];
 
-        LogInfo("Running setup script");
+        LogDebug("Running setup script");
         LState.DoString(setupScript);
 
         _ = new ScriptMaster(this);
@@ -202,16 +202,24 @@ public class Match {
     /// Log info using system logger
     /// </summary>
     /// <param name="info">Info</param>
-    public void LogInfo(string info) {
-        Logger?.LogInformation(info);
+    public void LogDebug(string info, params object?[] args) {
+        Logger?.LogDebug(info, args: args);
+    }
+
+    /// <summary>
+    /// Log info using system logger
+    /// </summary>
+    /// <param name="info">Info</param>
+    public void LogInfo(string info, params object?[] args) {
+        Logger?.LogInformation(info, args: args);
     }
 
     /// <summary>
     /// Log warning using system logger
     /// </summary>
     /// <param name="msg">Warning message</param>
-    public void LogWarning(string msg) {
-        Logger?.LogWarning(msg);
+    public void LogWarning(string msg, params object?[] args) {
+        Logger?.LogWarning(msg, args: args);
     }
 
     /// <summary>
@@ -219,8 +227,8 @@ public class Match {
     /// </summary>
     /// <param name="msg">Error message</param>
     /// <exception cref="MatchException"></exception>
-    public void LogError(string msg) {
-        Logger?.LogError(msg);
+    public void LogError(string msg, params object?[] args) {
+        Logger?.LogError(msg, args: args);
         
         throw new MatchException(msg);
     }
@@ -299,7 +307,7 @@ public class Match {
     /// </summary>
     public async Task SetupSlots() {
         // treasure
-        LogInfo($"Filling treasure slots (initial count: {Config.InitialTreasureSlots})");
+        LogDebug("Filling treasure slots (initial count: {InitialTreasureSlots})", Config.InitialTreasureSlots);
         for (int i = 0; i < Config.InitialTreasureSlots; i++) {
             var slot = new TreasureSlot(TreasureDeck, i);
             await slot.Fill();
@@ -307,7 +315,7 @@ public class Match {
         }
 
         // monsters
-        LogInfo($"Filling monster slots (initial count: {Config.InitialMonsterSlots})");
+        LogDebug("Filling monster slots (initial count: {InitialMonsterSlots})", Config.InitialMonsterSlots);
         for (int i = 0; i < Config.InitialMonsterSlots; i++) {
             var slot = new MonsterSlot(MonsterDeck, i);
             await slot.Fill();
@@ -331,7 +339,7 @@ public class Match {
 
         // rooms
         if (Config.UseRooms) {
-            LogInfo($"Filling room slots (initial count: {Config.InitialRoomSlots})");
+            LogDebug("Filling room slots (initial count: {InitialRoomSlots})", Config.InitialRoomSlots);
             for (int i = 0; i < Config.InitialRoomSlots; i++) {
                 var slot = new RoomSlot(RoomDeck, i);
                 await slot.Fill();
@@ -419,10 +427,10 @@ public class Match {
     /// Sets up the match
     /// </summary>
     private async Task SetupView() {
-        LogInfo("Starting view");
+        LogDebug("Starting view");
         View?.Start(this);
 
-        LogInfo("Setup complete");
+        LogDebug("Setup complete");
     }
 
     /// <summary>
@@ -430,11 +438,11 @@ public class Match {
     /// </summary>
     private async Task SetupPlayers() {
         foreach (var player in Players) {
-            LogInfo($"Running setup for player {player.LogName}");
+            LogDebug("Running setup for player {LogName}", player.LogName);
             await player.Setup();
         }
         
-        LogInfo("Pushing initial state");
+        LogDebug("Pushing initial state");
         await PushUpdates();
     }
 
@@ -442,7 +450,7 @@ public class Match {
     /// Cleans up after the match is done executing
     /// </summary>
     private async Task CleanUp() {
-        LogInfo("Performing cleanup");
+        LogDebug("Performing cleanup");
 
         // push last update
         await PushUpdates();
@@ -459,7 +467,7 @@ public class Match {
     /// Goes over all of the players' turns until a winner is decided
     /// </summary>
     private async Task Turns() {
-        LogInfo("Started main match loop");
+        LogDebug("Started main match loop");
 
         // TODO add Logger back
         // Logger.Log("Match started");
@@ -471,7 +479,7 @@ public class Match {
 
             var cPlayer = CurrentPlayer;
 
-            LogInfo($"Player {cPlayer.LogName} starts their turn");
+            LogDebug("Player {LogName} starts their turn", cPlayer.LogName);
             // Logger.Log(cPlayer.Name + " started their turn.");
 
             foreach (var phase in _phases) {
@@ -656,7 +664,7 @@ public class Match {
         foreach (var pair in args) {
             logMessage += $"{pair.Key}:{pair.Value} ";
         }
-        LogInfo(logMessage);
+        LogDebug(logMessage);
         var queued = new QueuedTrigger(trigger, argsTable);
         Stack.QueueTrigger(queued);
     }
@@ -703,7 +711,7 @@ public class Match {
         var deck = DeckIndex[origin];
         deck.PlaceIntoDiscard(card);
 
-        LogInfo($"Card {card.LogName} was put into discard of deck {card.DeckOrigin}");
+        LogDebug("Card {LogName} was put into discard of deck {DeckOrigin}", card.LogName, card.DeckOrigin);
     }
 
     /// <summary>
@@ -714,7 +722,7 @@ public class Match {
     public List<MatchCard> RemoveCardsFromTopOfLootDeck(int amount) {
         var result = LootDeck.RemoveTop(amount);
 
-        LogInfo($"Removed {result.Count} cards from the loot deck");
+        LogDebug("Removed {Count} cards from the loot deck", result.Count);
 
         return result;
     }
@@ -727,7 +735,7 @@ public class Match {
     public List<MatchCard> RemoveCardsFromTopOfTreasureDeck(int amount) {
         var result = TreasureDeck.RemoveTop(amount);
 
-        LogInfo($"Removed {result.Count} cards from the treasure deck");
+        LogDebug("Removed {Count} cards from the treasure deck", result.Count);
 
         return result;
     }
@@ -894,14 +902,14 @@ public class Match {
         // TODO trigger and soft reload state, then discard the card
 
         if (card is OwnedInPlayMatchCard ownedCard) {
-            LogInfo($"Removing card {ownedCard.LogName} from player {ownedCard.Owner.LogName}");
+            LogDebug("Removing card {CardLogName} from player {PlayerLogName}", ownedCard.LogName, ownedCard.Owner.LogName);
             await ownedCard.Owner.RemoveFromPlay(ownedCard);
         }
 
         // shop items
         foreach (var slot in TreasureSlots) {
             if (slot.Card == card) {
-                LogInfo($"Removing card {card.LogName} from {slot.Name} slot [{slot.Idx}]");
+                LogDebug("Removing card {LogName} from {Slot} slot [{SlotIdx}]", card.LogName, slot.Name, slot.Idx);
                 await slot.Fill();
                 break;
             }
@@ -910,7 +918,7 @@ public class Match {
         // room slots
         foreach (var slot in RoomSlots) {
             if (slot.Card == card) {
-                LogInfo($"Removing card {card.LogName} from {slot.Name} slot [{slot.Idx}]");
+                LogDebug("Removing card {LogName} from {Slot} slot [{SlotIdx}]", card.LogName, slot.Name, slot.Idx);
                 await slot.Fill();
                 break;
             }
@@ -919,7 +927,7 @@ public class Match {
         // monster slots
         foreach (var slot in MonsterSlots) {
             if (slot.Card == card) {
-                LogInfo($"Removing card {card.LogName} from {slot.Name} slot [{slot.Idx}]");
+                LogDebug("Removing card {LogName} from {Slot} slot [{SlotIdx}]", card.LogName, slot.Name, slot.Idx);
                 await slot.Fill();
                 break;
             }
@@ -964,10 +972,10 @@ public class Match {
             var owner = ownedItem.Owner;
             var result = await owner.GainTreasureRaw(1);
             if (result.Count == 0) {
-                LogInfo($"Item {item.LogName} of player {owner.LogName} was rerolled with no replacement");
+                LogDebug("Item {ItemLogName} of player {OwnerLogName} was rerolled with no replacement", item.LogName, owner.LogName);
                 return;
             }
-            LogInfo($"Item {item.LogName} of player {owner.LogName} was rerolled into {result[0].LogName}");
+            LogDebug("Item {ItemLogName} of player {OwnerLogName} was rerolled into {NewItemLogName}", item.LogName, owner.LogName, result[0].LogName);
         }
     }
 
@@ -1010,7 +1018,7 @@ public class Match {
     }
 
     public async Task PlaceOwnedCard(OwnedInPlayMatchCard card, bool triggerEnter = true) {
-        LogInfo($"Item {card.LogName} enters play under control of {card.Owner.LogName}");
+        LogDebug("Item {CardLogName} enters play under control of {OwnerLogName}", card.LogName, card.Owner.LogName);
 
         if (triggerEnter)
             await OnCardEnteredPlay(card);
@@ -1053,7 +1061,7 @@ public class Match {
     #region Shop
 
     public async Task ExpandShotSlots(int amount) {
-        LogInfo($"Expanding shop slots by {amount}");
+        LogDebug("Expanding shop slots by {Amount}", amount);
         for (int i = 0; i < amount; i++) {
             var slot = new TreasureSlot(TreasureDeck, TreasureSlots.Count);
             await slot.Fill();
@@ -1118,7 +1126,7 @@ public class Match {
     }
 
     public async Task ExpandMonsterSlots(int amount) {
-        LogInfo($"Expanding monster slots by {amount}");
+        LogDebug("Expanding monster slots by {Amount}", amount);
         for (int i = 0; i < amount; i++) {
             var slot = new MonsterSlot(MonsterDeck, MonsterSlots.Count);
             await slot.Fill();

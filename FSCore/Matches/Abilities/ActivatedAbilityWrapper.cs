@@ -32,7 +32,7 @@ public class ActivatedAbilityWrapper {
         var payed = Ability.PayCosts(card, player, effect);
         if (!payed) {
             player.Match.RemoveTopOfStack();
-            player.Match.LogInfo($"Player {player.LogName} decided not to pay activation costs for activated ability {myIdx} of card {card.LogName}");
+            player.Match.LogDebug("Player {PlayerLogName} decided not to pay activation costs for activated ability {AbilityIdx} of card {CardLogName}", player.LogName, myIdx, card.LogName);
             return;
         }
 
@@ -42,7 +42,7 @@ public class ActivatedAbilityWrapper {
             { "Ability", this }
         });
 
-        player.Match.LogInfo($"Player {player.LogName} activated ability {myIdx} of card {card.LogName}");
+        player.Match.LogDebug("Player {PlayerLogName} activated ability {AbilityIdx} of card {CardLogName}", player.LogName, myIdx, card.LogName);
 
     }
 

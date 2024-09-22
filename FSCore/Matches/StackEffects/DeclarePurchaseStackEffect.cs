@@ -14,7 +14,7 @@ public class DeclarePurchaseStackEffect : StackEffect {
 
         var available = owner.AvailableToPurchase();
         if (available.Count == 0) {
-            Match.LogInfo($"Player {owner.LogName} can't purchase any items");
+            Match.LogDebug("Player {LogName} can't purchase any items", owner.LogName);
             return true;
         }
 
@@ -22,17 +22,17 @@ public class DeclarePurchaseStackEffect : StackEffect {
 
         bool payed = owner.TryPayCoinsForSlot(slot);
         if (!payed) {
-            Match.LogInfo($"Player {owner.LogName} failed to pay the cost to purchase an item");
+            Match.LogDebug("Player {LogName} failed to pay the cost to purchase an item", owner.LogName);
             return true;
         }
 
         if (slot == -1) {
-            Match.LogInfo($"Player {owner.LogName} purchases the top card of the treasure deck");
+            Match.LogDebug("Player {LogName} purchases the top card of the treasure deck", owner.LogName);
             await owner.GainTreasureRaw(1);
             return true;
         }
 
-        Match.LogInfo($"Player {owner.LogName} purchases item in Shop slot {slot}");
+        Match.LogDebug("Player {LogName} purchases item in Shop slot {SlotIdx}", owner.LogName, slot);
         await owner.GainControl(Match.TreasureSlots[slot]);
         
         return true;

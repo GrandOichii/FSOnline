@@ -14,7 +14,7 @@ public class PassAction : IAction
 
         var player = match.GetPlayer(playerIdx);
 
-        match.LogInfo($"Player {player.LogName} passes");
+        match.LogDebug("Player {LogName} passes", player.LogName);
         await match.ProcessPass(player);
     }
 

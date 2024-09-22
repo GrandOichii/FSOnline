@@ -25,7 +25,7 @@ public class LootCardStackEffect : StackEffect
         if (!Card.ShouldFizzle(this)) {
             Card.ExecuteCardEffects(this);
         } else {
-            Match.LogInfo($"Loot card {Card.LogName} fizzles");
+            Match.LogDebug("Loot card {LogName} fizzles", Card.LogName);
         }
 
         // some cards put themselves into other zones !!! Trinkets
