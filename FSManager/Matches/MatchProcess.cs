@@ -33,8 +33,12 @@ public enum MatchStatus {
     CRASHED
 }
 
-public class MatchProcess(CreateMatchParams creationParams, ICardService cardService, ILogger<MatchService> logger)
-{
+public class MatchProcess(
+    CreateMatchParams creationParams, 
+    ICardService cardService, 
+    ILogger<MatchService> _serviceLogger,
+    ILogger<MatchProcess> _matchLogger
+){
     private readonly Random _rng = new();
 
     /// <summary>
@@ -77,7 +81,7 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
     public List<QueuedPlayer> Players { get; private set; } = [];
 
     private readonly ICardService _cardService = cardService;
-    private readonly ILogger<MatchService> _logger = logger;
+    private readonly ILogger<MatchService> _logger = _serviceLogger;
     private IDisposable? _logScope = null;
 
     // [JsonIgnore] // TODO remove
@@ -108,7 +112,7 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
         // TcpPort = ((IPEndPoint)TcpListener.LocalEndpoint).Port;
         _logScope = _logger.BeginScope("{Name}:{Id} configuration", nameof(MatchProcess), ID.ToString());
 
-        _logger.LogDebug("Configuring match");
+        _logger.LogInformation("Configuring match");
         _logger.LogDebug("Creating bots");
 
         foreach (var bot in Params.Bots) {
@@ -147,11 +151,8 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
         player.Changed += OnPlayerChanged;
         player.StatusUpdated += OnPlayerStatusUpdated;
 
-        System.Console.WriteLine("Lock");
         lock (_addPlayerLock) {
-            System.Console.WriteLine("Before add");
             Players.Add(player);
-            System.Console.WriteLine("After add");
         }
     }
 
@@ -172,15 +173,16 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
     }
 
     public async Task<bool> RefreshConnections() {
-        System.Console.WriteLine("Refreshing connections");
+        _logger.LogDebug("Refreshing connections");
         var newPlayers = new List<QueuedPlayer>();
         foreach (var player in Players) {
             var valid = await player.Checker.Check();
-            System.Console.WriteLine(player.Checker + " " + valid);
+            _logger.LogDebug("Player {PlayerName} connection valid: {Valid}", player.GetName(), valid);
             if (!valid) continue;
             newPlayers.Add(player);
         }
-        System.Console.WriteLine($"Before: {Players.Count}\tAfter {newPlayers.Count}");
+        _logger.LogDebug("Before check: {OldPlayerCount}, after check: {NewPlayerCount}", Players.Count, newPlayers.Count);
+
         var prevCount = Players.Count;
         Players = newPlayers;
         // TODO update view
@@ -193,7 +195,6 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
         
         // TODO seed
         _logger.LogDebug("Initial match config");
-        System.Console.WriteLine("Configuring match");
         
         // var cm = new DBCardMaster(_cardService);
 
@@ -202,9 +203,7 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
         // cm.Load("../cards/b2");
 
         Match = new(Params.Config, _rng.Next(), cm, File.ReadAllText("../core.lua"));
-        Match.Logger = LoggerFactory
-            .Create(builder => builder.AddConsole())
-            .CreateLogger("Match");
+        Match.Logger = _matchLogger;
 
         // TODO match view
 
@@ -212,12 +211,12 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
         await SetStatus(MatchStatus.IN_PROGRESS);
 
         try {
-            _logger.LogDebug("Match started");
+            _logger.LogInformation("Match started");
 
             await Match.Run();
             await SetStatus(MatchStatus.FINISHED);
 
-            _logger.LogDebug("Match finished");
+            _logger.LogInformation("Match finished");
 
             // TODO add back
             // Record.WinnerName = Match.Winner!.Name;
@@ -318,7 +317,7 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
         if (Players.Count(p => !p.IsBot) > 1) return true;
 
         // TODO assign as owner player
-        System.Console.WriteLine("Player " + player.GetName() + " assigned as the main player");
+        _logger.LogInformation("Player {PlayerName} assigned as the main player", player.GetName());
         _ = WaitForStart(checker);
 
         return true;
@@ -327,9 +326,8 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
     public async Task WaitForStart(IConnectionChecker checker) {
         while (true) {
             await checker.Write("mpa");
-            System.Console.WriteLine("Reading from main player");
+            _logger.LogDebug("Requested Match Process Arguments from main player");
             var msg = await checker.Read();
-            System.Console.WriteLine("Read: " + msg);
             if (msg != "start") {
                 // TODO better exception
                 throw new Exception("Expected to read \"start\" from match owner, but got " + msg);
@@ -338,7 +336,7 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
             if (!await CanRun()) continue;
             break;
         }
-        System.Console.WriteLine("Match can start");
+        _logger.LogDebug("Match can start");
         await Run();
     }
 

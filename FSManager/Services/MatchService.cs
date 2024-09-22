@@ -3,7 +3,13 @@ using Microsoft.Extensions.Options;
 
 namespace FSManager.Services;
 
-public class MatchService(IOptions<MatchesSettings> settings, ICardService cardService, IMatchRepository matchRepo, ILogger<MatchService> logger) : IMatchService {
+public class MatchService(
+    IOptions<MatchesSettings> settings, 
+    ICardService cardService, 
+    IMatchRepository matchRepo, 
+    ILogger<MatchService> logger,
+    ILogger<MatchProcess> _matchLogger
+) : IMatchService {
     private readonly IOptions<MatchesSettings> _settings = settings;
     private readonly ICardService _cardService = cardService;
     private readonly IMatchRepository _matchRepo = matchRepo;
@@ -28,7 +34,7 @@ public class MatchService(IOptions<MatchesSettings> settings, ICardService cardS
         var paramsRaw = await socket.Read();
         var creationParams = JsonSerializer.Deserialize<CreateMatchParams>(paramsRaw);
 
-        var match = new MatchProcess(creationParams, _cardService, _logger);
+        var match = new MatchProcess(creationParams, _cardService, _logger, _matchLogger);
         await _matchRepo.Add(match);
         var _ = match.Configure();
 
