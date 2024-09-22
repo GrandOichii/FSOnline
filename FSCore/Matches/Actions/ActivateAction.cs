@@ -50,9 +50,11 @@ public class ActivateAction : IAction
         }
     }
 
-    private List<InPlayMatchCard> GetCards(Player player) {
+    private static List<InPlayMatchCard> GetCards(Player player) {
         // owned cards
-        var result = new List<InPlayMatchCard>(player.GetInPlayCards());
+        var result = new List<InPlayMatchCard>(
+            player.GetInPlayCards()
+        );
 
         // rooms
         if (player.Idx == player.Match.CurPlayerIdx)

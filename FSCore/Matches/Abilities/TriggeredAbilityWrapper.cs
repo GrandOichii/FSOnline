@@ -30,11 +30,12 @@ public class TriggeredAbilityWrapper {
         await match.PlaceOnStack(effect);
 
         var payed = Ability.PayCosts(card, owner ?? card.Card.Match.CurrentPlayer, effect, trigger.Args);
+        
         if (!payed) {
             match.RemoveTopOfStack();
-
             return;
         }
+
         card.AddToTriggerCount(Ability);
     }
 
