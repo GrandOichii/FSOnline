@@ -3,10 +3,11 @@ using Microsoft.Extensions.Options;
 
 namespace FSManager.Services;
 
-public class MatchService(IOptions<MatchesSettings> settings, ICardService cardService, IMatchRepository matchRepo) : IMatchService {
+public class MatchService(IOptions<MatchesSettings> settings, ICardService cardService, IMatchRepository matchRepo, ILogger<MatchService> logger) : IMatchService {
     private readonly IOptions<MatchesSettings> _settings = settings;
     private readonly ICardService _cardService = cardService;
     private readonly IMatchRepository _matchRepo = matchRepo;
+    private readonly ILogger<MatchService> _logger = logger;
 
     public async Task<IEnumerable<MatchProcess>> All()
     {
@@ -25,10 +26,9 @@ public class MatchService(IOptions<MatchesSettings> settings, ICardService cardS
         var socket = await wsManager.AcceptWebSocketAsync();
         await socket.Write("mcp");
         var paramsRaw = await socket.Read();
-        System.Console.WriteLine(paramsRaw);
         var creationParams = JsonSerializer.Deserialize<CreateMatchParams>(paramsRaw);
 
-        var match = new MatchProcess(creationParams, _cardService);
+        var match = new MatchProcess(creationParams, _cardService, _logger);
         await _matchRepo.Add(match);
         var _ = match.Configure();
 

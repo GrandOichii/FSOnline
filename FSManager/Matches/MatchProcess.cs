@@ -3,6 +3,7 @@ using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Text.Json.Serialization;
 using FSCore.Cards.CardMasters;
+using Microsoft.OpenApi.Writers;
 
 namespace FSManager.Matches;
 
@@ -32,7 +33,7 @@ public enum MatchStatus {
     CRASHED
 }
 
-public class MatchProcess(CreateMatchParams creationParams, ICardService cardService)
+public class MatchProcess(CreateMatchParams creationParams, ICardService cardService, ILogger<MatchService> logger)
 {
     private readonly Random _rng = new();
 
@@ -75,7 +76,9 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
 
     public List<QueuedPlayer> Players { get; private set; } = [];
 
-    public readonly ICardService _cardService = cardService;
+    private readonly ICardService _cardService = cardService;
+    private readonly ILogger<MatchService> _logger = logger;
+    private IDisposable? _logScope = null;
 
     // [JsonIgnore] // TODO remove
     // public TcpListener TcpListener { get; private set; }
@@ -103,13 +106,17 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
         // TcpListener = new TcpListener(IPAddress.Loopback, 0);
         // TcpListener.Start();
         // TcpPort = ((IPEndPoint)TcpListener.LocalEndpoint).Port;
-        System.Console.WriteLine("Configuring match..");
-        System.Console.WriteLine("Creating bots");
-        // config bots
+        _logScope = _logger.BeginScope("{Name}:{Id} configuration", nameof(MatchProcess), ID.ToString());
+
+        _logger.LogDebug("Configuring match");
+        _logger.LogDebug("Creating bots");
+
         foreach (var bot in Params.Bots) {
-            System.Console.WriteLine("Creating bot " + bot.Name);
+            _logger.LogDebug("Creating bot {BotName}", bot.Name);
+
             await CreateBotPlayer(bot);
-            System.Console.WriteLine("Bot " + bot.Name + " created!");
+
+            _logger.LogDebug("Bot {BotName} created!", bot.Name);
         }
     }
 
@@ -128,7 +135,6 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
             Name = name,
             Status = QueuedPlayerStatus.READY
         };
-        System.Console.WriteLine("Adding bot to the queue");
 
         AddQueuedPlayer(result);
 
@@ -182,7 +188,11 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
     }
 
     public async Task Run() {
+        _logScope?.Dispose();
+        _logScope = _logger.BeginScope("{Name}:{Id}", nameof(MatchProcess), ID.ToString());
+        
         // TODO seed
+        _logger.LogDebug("Initial match config");
         System.Console.WriteLine("Configuring match");
         
         // var cm = new DBCardMaster(_cardService);
@@ -202,30 +212,46 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
         await SetStatus(MatchStatus.IN_PROGRESS);
 
         try {
-            System.Console.WriteLine("Match started");
+            _logger.LogDebug("Match started");
+
             await Match.Run();
             await SetStatus(MatchStatus.FINISHED);
-            System.Console.WriteLine("Match finished!");
+
+            _logger.LogDebug("Match finished");
+
             // TODO add back
             // Record.WinnerName = Match.Winner!.Name;
             // await _matchService.ServiceStatusUpdated(this);
         } catch (Exception e) {
-            System.Console.WriteLine("Match crashed");
+            using var scope = _logger.BeginScope(new Dictionary<string, object> {
+                { "Exceptions", ToExceptionList(e)}
+            });
+            _logger.LogError("Match crashed");
+
             await SetStatus(MatchStatus.CRASHED);
             // TODO add back
             // Record.ExceptionMessage = e.Message;
             // if (e.InnerException is not null)
             //     Record.InnerExceptionMessage = e.InnerException.Message;      
-            System.Console.WriteLine("Match crashed");
-            PrintException(e);
+
             // TODO add back
             // await Match.View.End();
         }
     }
 
+    private static List<Exception> ToExceptionList(Exception e) {
+        var result = new List<Exception>();
+        var ex = e;
+        while (ex is not null) {
+            result.Add(ex);
+            ex = ex.InnerException;
+        }
+        return result;
+    }
+
     public async Task SetStatus(MatchStatus status) {
         Status = status;
-        System.Console.WriteLine("Setting match status to " + status);
+        _logger.LogDebug("Setting match status to {MatchStatus}", status);
         // TODO add back
         // await _matchService.ServiceStatusUpdated(this);
         
@@ -235,7 +261,7 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
     }
 
     public async Task CreatePlayerControllers(Match match) {
-        System.Console.WriteLine("Creating player controllers");
+        _logger.LogDebug("Creating player controllers");
         foreach (var player in Players) {
             var baseController = player!.Controller;
             // var record = new PlayerRecord() {
@@ -247,28 +273,30 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
             // var controller = new RecordingPlayerController(baseController, record);
             var controller = baseController;
 
-            System.Console.WriteLine($"Adding controller for {player.GetName()}");
+            _logger.LogDebug("Adding controller for {PlayerName}", player.GetName());
+
             await match.AddPlayer(player.GetName(), controller!, player.GetCharacterKey());
-            System.Console.WriteLine("Added controller for " + player.GetName());
+
+            _logger.LogInformation("Added controller for {PlayerName}", player.GetName());
         }
-        System.Console.WriteLine("Player controller created");
+        _logger.LogDebug("Player controller created");
     }
 
     public async Task AddWSPlayer(WebSocket socket) {
-        System.Console.WriteLine("Adding WebSocket player");
+        _logger.LogDebug("Adding WebSocket player");
         var controller = new IOPlayerController(new WebSocketIOHandler(socket));
         var added = await AddPlayer(controller, new WebSocketConnectionChecker(socket));
         if (!added) {
-            System.Console.WriteLine("Failed to read player info, not adding WebSocket player to the match");
+            _logger.LogWarning("Failed to read player info, not adding WebSocket player to the match");
             return;
         }
 
-        System.Console.WriteLine("WebSocket player added, adding the socket to the wait loop");
+        _logger.LogDebug("WebSocket player added, adding the socket to the wait loop");
         await Finish(socket);
     }
 
     public async Task<bool> AddPlayer(IOPlayerController controller, IConnectionChecker checker) {
-        System.Console.WriteLine("Request to add a real player");
+        _logger.LogDebug("Request to add a real player");
         var player = new QueuedPlayer(
             controller,
             checker,
@@ -280,7 +308,8 @@ public class MatchProcess(CreateMatchParams creationParams, ICardService cardSer
             await checker.Write(errMsg);
             return false;
         }
-        System.Console.WriteLine($"Read info of player " + player.GetName());
+        _logger.LogDebug("Received info of player {PlayerName}", player.GetName());
+        
         // TODO? change
         player.Status = QueuedPlayerStatus.READY;
         
