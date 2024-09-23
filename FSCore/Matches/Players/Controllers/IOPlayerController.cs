@@ -64,7 +64,7 @@ public class IOPlayerController : IPlayerController
         await WriteData(new(match, playerIdx) {
             Request = "Update",
             Hint = "",
-            Args = new(),
+            Args = [],
         });
     }
 

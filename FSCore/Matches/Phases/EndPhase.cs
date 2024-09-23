@@ -14,17 +14,13 @@ public class EndPhase : IPhase
         if (match.Stack.Effects.Count > 0)
             await match.ResolveStack(true);
 
-        // "at the end of your turn" effects
         // TODO catch exceptions
+        match.LogDebug("Executing \"at the end of your turn\" effects");
         foreach (var effect in player.AtEndOfTurnEffects)
             effect.Call();
 
-
         await player.DiscardToHandSize();
         await player.PromptToDiscardRoom();
-
-        // pass the turn to the next player
-        match.AdvanceCurrentPlayerIdx();
 
         foreach (var p in match.Players) {
             p.RemovePurchaseOpportunities();
@@ -48,6 +44,9 @@ public class EndPhase : IPhase
         match.TEOTEffects.Clear();
         match.DeadCards.Clear();
         player.AtEndOfTurnEffects.Clear();
+
+        // pass the turn to the next player
+        match.AdvanceCurrentPlayerIdx();
 
         match.TurnEnded = false;
     }

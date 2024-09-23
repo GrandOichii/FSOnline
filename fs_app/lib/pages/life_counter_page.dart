@@ -97,15 +97,15 @@ class LifeCounterPage extends StatefulWidget {
 class _LifeCounterPageState extends State<LifeCounterPage> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const Expanded(
+        Expanded(
           child: LifeCounter(
             label: 'Monster',
           ),
         ),
         DiceRoller(),
-        const Expanded(
+        Expanded(
           child: LifeCounter(
             label: 'You',
           ),

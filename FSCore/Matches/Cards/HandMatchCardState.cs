@@ -21,8 +21,8 @@ public class HandMatchCardState {
     public HandMatchCardState(HandMatchCard original) {
         Original = original;
 
-        VisibleTo = new() { Original.Owner.Idx };
+        VisibleTo = [ Original.Owner.Idx ];
         LootCost = 1;
-        PlayRestrictions = new();
+        PlayRestrictions = [];
     }
 }

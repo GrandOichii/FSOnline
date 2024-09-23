@@ -281,6 +281,7 @@ public class InPlayMatchCard : IStateModifier {
         });
 
         await Card.Match.ReloadState();
+
         await PushRewards(deathSource);
 
         // TODO add update
@@ -303,6 +304,7 @@ public class InPlayMatchCard : IStateModifier {
     public async Task PushRewards(StackEffect deathSource) {
         // TODO use death source
         // TODO? this uses only the first reward, change
+        Card.Match.LogDebug("Pusing rewards of card {CardLogName} to the stack", LogName);
         
         var rewards = GetRewards();
         if (rewards.Count == 0) return;
