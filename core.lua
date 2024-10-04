@@ -1735,7 +1735,7 @@ function FS.B.BonusSoul()
                 local idx = indicies[1]
                 if #indicies > 1 then
                     local choice = ChoosePlayer(GetCurPlayerIdx(), indicies, 'Choose a player to gain '..me.LogName)
-                    local idx = choice
+                    idx = choice
                 end
 
                 RemoveFromBonusSouls(me.ID)

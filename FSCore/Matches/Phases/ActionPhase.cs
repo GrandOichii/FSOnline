@@ -27,7 +27,6 @@ public class ActionPhase : IPhase
         var current = match.GetPlayer(playerIdx);
         current.AddPurchaseOpportunitiesForTurn();
         current.AddAttackOpportunitiesForTurn();
-        // TODO attack opportunities
         
         await match.ResolveStack();
     }

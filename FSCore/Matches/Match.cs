@@ -795,8 +795,7 @@ public class Match {
             TurnEnded = true;
             return;
         }
-        System.Console.WriteLine(Stack.Effects.Count);
-        System.Console.WriteLine(player.LogName + " " + player.Idx + " " + CurPlayerIdx);
+        
         throw new MatchException($"Unknown scenario: player {player.LogName} tried to pass, but didn't have a reason to");
     }
 

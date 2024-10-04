@@ -12,7 +12,7 @@ const host = 'localhost';
 // const host = '10.0.2.2';
 
 void main() {
-  runApp(FSApp());
+  runApp(const FSApp());
 }
 
 class CardList extends StatefulWidget {
@@ -189,7 +189,7 @@ Scaffold createScaffold(String title, Widget body) {
       title: Text(title),
     ),
     body: SafeArea(child: body),
-    drawer: FSDrawer(),
+    drawer: const FSDrawer(),
   );
 }
 
@@ -198,7 +198,7 @@ class KeySearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return createScaffold('Card Search', CardSearch());
+    return createScaffold('Card Search', const CardSearch());
   }
 }
 
@@ -286,12 +286,12 @@ class FSApp extends StatelessWidget {
     ]);
     return MaterialApp(
       routes: {
-        '/': (ctx) => AllCardsPage(),
-        '/bykey': (ctx) => KeySearchPage(),
+        '/': (ctx) => const AllCardsPage(),
+        '/bykey': (ctx) => const KeySearchPage(),
         '/bycollection': (ctx) =>
-            createScaffold('Life counter', CollectionSearchPage()),
+            createScaffold('Life counter', const CollectionSearchPage()),
         '/lifecounter': (ctx) =>
-            createScaffold('Life counter', LifeCounterPage()),
+            createScaffold('Life counter', const LifeCounterPage()),
       },
     );
   }

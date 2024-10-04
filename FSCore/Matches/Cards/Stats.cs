@@ -34,6 +34,7 @@ public class Stats {
             DamagePreventors.Remove(preventor);
             --amount;
         }
+
         return amount;
     }
 
@@ -41,7 +42,9 @@ public class Stats {
         amount = ModifyDealtDamage(amount, effect);
         if (amount == 0) return;
 
+        var original = amount;
         amount = PreventDamage(amount);
+        card.Card.Match.LogDebug("Prevented {Prevented} damage out of {Damage} for card {CardLogName}", original-amount, original, card.LogName);
         if (amount == 0) return;
 
         var match = card.Card.Match;
@@ -72,7 +75,9 @@ public class Stats {
         amount = ModifyDealtDamage(amount, stackEffect);
         if (amount == 0) return;
         
+        var original = amount;
         amount = PreventDamage(amount);
+        player.Match.LogDebug("Prevented {Prevented} damage out of {Damage} for player {PlayerLogName}", original-amount, original, player.LogName);
         if (amount == 0) return;
 
         player.Match.LogDebug("Player {LogName} was dealt {Amount} damage", player.LogName, amount);
@@ -108,10 +113,7 @@ public class Stats {
             ?? throw new MatchException($"Tried to get evasion from game object with no evasion")
         ;
 
-        if (e < 1) return 1;
-        if (e > 6) return 6;
-
-        return e;
+        return Math.Clamp(e, 1, 6);
     }
 
 }

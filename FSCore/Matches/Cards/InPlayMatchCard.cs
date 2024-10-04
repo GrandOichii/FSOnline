@@ -78,11 +78,16 @@ public class InPlayMatchCard : IStateModifier {
     /// <param name="player">Activator</param>
     /// <returns>True, if card can be activated</returns>
     public virtual bool CanBeActivatedBy(Player player) {
+        // TODO
         return true;
     }
 
     public ActivatedAbilityWrapper GetActivatedAbility(int idx) {
-        return GetActivatedAbilities()[idx];
+        if (idx < 0) throw new MatchException($"Tried to get ability with idx {idx}");
+        var abilities = GetActivatedAbilities();
+        if (abilities.Count <= idx) throw new MatchException($"Tried to get ability with idx {idx} (number of abilities: {abilities.Count})");
+
+        return abilities[idx];
     }
 
     public List<StateModFunc> GetStateModifiers(ModificationLayer layer) {
@@ -123,6 +128,7 @@ public class InPlayMatchCard : IStateModifier {
         }
 
         value.Add(amount);
+        Card.Match.LogDebug("Placed {Amount} generic counters on {CardLogName}", amount, LogName);
     }
 
     /// <summary>
@@ -138,6 +144,7 @@ public class InPlayMatchCard : IStateModifier {
 
     public async Task RemoveCounters(int amount) {
         // TODO this removes generic counters first, then picks at random - change to player choice
+        Card.Match.LogDebug("Requested to remive {Amount} counters from {CardLogName}", amount, LogName);
 
         while (amount > 0) {
             if (Counters.Count == 0)
@@ -274,6 +281,7 @@ public class InPlayMatchCard : IStateModifier {
         });
 
         await Card.Match.ReloadState();
+
         await PushRewards(deathSource);
 
         // TODO add update
@@ -296,6 +304,7 @@ public class InPlayMatchCard : IStateModifier {
     public async Task PushRewards(StackEffect deathSource) {
         // TODO use death source
         // TODO? this uses only the first reward, change
+        Card.Match.LogDebug("Pusing rewards of card {CardLogName} to the stack", LogName);
         
         var rewards = GetRewards();
         if (rewards.Count == 0) return;

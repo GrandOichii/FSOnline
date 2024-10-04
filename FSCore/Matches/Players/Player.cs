@@ -113,7 +113,6 @@ public class Player : IStateModifier {
     }
 
     public int SoulCount() {
-        // TODO other effects
         var result = State.AdditionalSoulCount;
         foreach (var card in Souls)
             result += card.GetSoulValue();
@@ -188,6 +187,7 @@ public class Player : IStateModifier {
     /// <param name="amount">Amount of cards to be drawn</param>
     /// <returns>Amount of cards drawn by the player</returns>
     private async Task<int> LootFromLootDeck(int amount) {
+        Match.LogDebug("Player {PlayerLogName} loots {Amount} cards from the loot deck", LogName, amount);
         var cards = Match.RemoveCardsFromTopOfLootDeck(amount);
         foreach (var card in cards) {
             await AddToHand(card);
@@ -234,7 +234,11 @@ public class Player : IStateModifier {
     }
 
     public bool RemoveFromHand(HandMatchCard card) {
-        return Hand.Remove(card);
+        var removed = Hand.Remove(card);
+        if (removed) {
+            Match.LogDebug("Card {CardLogName} was removed from hand of player {PlayerLogName}", card.Card.LogName, LogName);
+        }
+        return removed;
     }
 
     public void ShouldRemoveFromHand(HandMatchCard card) {
@@ -266,19 +270,19 @@ public class Player : IStateModifier {
     public async Task<int> GainCoins(int amount) {
         amount = ModCoinGain(amount);
 
-        var taken = Match.TakeCoins(amount);
-        GainCoinsRaw(taken);
-
-        Match.LogDebug("Player {LogName} gained {Taken} coins (expected to gain {Amount}), {CoinPool} left in coin pool", LogName, taken, amount, Match.CoinPool);
-
-        // TODO emit trigger
-        // TODO add to update
+        var taken = GainCoinsRaw(amount);
 
         return taken;
     }
 
-    public void GainCoinsRaw(int amount) {
-        Coins += amount;
+    public int GainCoinsRaw(int amount) {
+        var taken = Match.TakeCoins(amount);
+        Coins += taken;
+        Match.LogDebug("Player {LogName} gained {Taken} coins (expected to gain {Amount}), {CoinPool} left in coin pool", LogName, taken, amount, Match.CoinPool);
+
+        // TODO emit trigger
+        // TODO add to update
+        return taken;
     }
 
     #region Recharging
@@ -344,7 +348,10 @@ public class Player : IStateModifier {
         options.Add("-");
         var choice = await ChooseString(options, "Choose a room to discard");
 
-        if (choice == "-") return;
+        if (choice == "-") {
+            Match.LogDebug("Player {PlayerLogName} declined to discard a room", LogName);
+            return;
+        }
 
         var slot = Match.RoomSlots
             .First(slot => slot.Card is not null && slot.Card.LogName == choice);
@@ -480,6 +487,8 @@ public class Player : IStateModifier {
         var removed = Items.Remove(card);
         if (!removed)
             throw new MatchException($"Failed to remove item {card.LogName} from player {LogName}");
+        
+        Match.LogDebug("Item {CardLogName} was removed from player {PlayerLogName}", card.LogName, LogName);
         // TODO add to update
     }
 
@@ -488,7 +497,10 @@ public class Player : IStateModifier {
         if (removed) return;
 
         removed = Curses.Remove(card);
-        if (removed) return;
+        if (removed) {
+            Match.LogDebug("Curse {CardLogName} was removed from player {PlayerLogName}", card.LogName, LogName);
+            return;
+        }
 
         // TODO add to update
         throw new MatchException($"Failed to remove in-play card {card.LogName} from player {LogName}");
@@ -534,17 +546,18 @@ public class Player : IStateModifier {
     /// Add starting items of the character
     /// </summary>
     public async Task AddStartingItems() {
+        Match.LogDebug("Adding Starting Items for player {PlayerLogName}", LogName);
         await Match.CreateStartingItems(this, Character);
     }
 
     #endregion
 
     public void PayCoins(int amount) {
-        Coins -= amount;
+        LoseCoins(amount);
         if (Coins < 0)
             throw new MatchException($"Player {LogName} payed {amount} coins, which resulted in their balance being equal to {Coins}");
 
-        Match.AddToCoinPool(amount);
+        Match.LogDebug("Player {PlayerLogName} payed {Amount} coins", LogName, amount);
 
         // TODO add update
     }
