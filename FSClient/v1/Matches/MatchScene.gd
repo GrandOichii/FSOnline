@@ -12,6 +12,18 @@ var _controller: MatchController
 func _ready():
 	for board in %Boards.get_children():
 		_board_index.append(board)
+
+func _input(e: InputEvent):
+	if e.is_action_pressed('toggle_fullscreen'):
+		_toggle_fullscreen()
+		
+func _toggle_fullscreen():
+	var mode = DisplayServer.window_get_mode()
+	var targetMode = DisplayServer.WINDOW_MODE_FULLSCREEN
+	if mode == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		targetMode = DisplayServer.WINDOW_MODE_WINDOWED
+	DisplayServer.window_set_mode(targetMode)
+	
 		
 func load_match_info(match_info: Variant):
 	Board.load_match_info(match_info)
