@@ -1,0 +1,7 @@
+-= Issues =-
+
+(Client)
+- Popup windows doesnt resize to contents
+
+(Server)
+- Wrath is bugged
