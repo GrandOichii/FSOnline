@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSManager.Shared", "FSManag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSLogsCollector", "FSLogsCollector\FSLogsCollector.csproj", "{487A0A65-ADCE-4FDD-B28B-A23067EC897C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSCore.Tests", "FSCore.Tests\FSCore.Tests.csproj", "{54406538-F0A7-4E39-9E9D-480CC94A5BF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{487A0A65-ADCE-4FDD-B28B-A23067EC897C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{487A0A65-ADCE-4FDD-B28B-A23067EC897C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{487A0A65-ADCE-4FDD-B28B-A23067EC897C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54406538-F0A7-4E39-9E9D-480CC94A5BF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54406538-F0A7-4E39-9E9D-480CC94A5BF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54406538-F0A7-4E39-9E9D-480CC94A5BF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54406538-F0A7-4E39-9E9D-480CC94A5BF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
