@@ -15,6 +15,7 @@ public class Match {
         new ActionPhase(),
         new EndPhase(),
     ];
+
     private static readonly List<ModificationLayer> MODIFICATION_LAYERS = new() {
         ModificationLayer.COIN_GAIN_AMOUNT,
         ModificationLayer.LOOT_AMOUNT,
@@ -115,6 +116,8 @@ public class Match {
     /// Cards that died this turn
     /// </summary>
     public List<MatchCard> DeadCards { get; } = [];
+    // TODO add docs
+    public IRoller Roller { get; }
 
     #region Decks
 
@@ -159,10 +162,17 @@ public class Match {
     /// </summary>
     public Player CurrentPlayer => Players[CurPlayerIdx];
 
-    public Match(MatchConfig config, int seed, ICardMaster cardMaster, string setupScript) {
+    public Match(
+        MatchConfig config,
+        int seed,
+        ICardMaster cardMaster,
+        string setupScript,
+        IRoller? roller = null
+    ) {
         _cardMaster = cardMaster;
         Config = config;
         CoinPool = config.CoinPool;
+        Roller = roller ?? new Roller(Rng);
 
         CurrentPhase = new MatchSetupPhase();
         Rng = new(seed);
