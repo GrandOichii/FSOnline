@@ -16,14 +16,15 @@ public class RewardStackEffect : StackEffect
         Reward = reward;
     }
 
-    public override async Task<bool> Resolve()
+    public override Task<bool> Resolve()
     {
         // if (Ability.ShouldFizzle(this)) {
         //     Match.LogDebug("Reward ability stack effect {StackID} of card {LogName} fizzles", SID, Card.LogName);
         //     return true;
         // }
         Reward.ExecuteEffects(this);
-        return true;
+        // return true;
+        return Task.FromResult<bool>(true);
     }
 
     public override StackEffectData ToData() => new RewardStackEffectData(this);

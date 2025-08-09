@@ -201,10 +201,11 @@ public class Player : IStateModifier {
     /// </summary>
     /// <param name="amount">Amount of cards to be drawn</param>
     /// <returns>Amount of cards drawn by the player</returns>
-    private async Task<int> LootFromLootDiscard(int amount) {
+    private Task<int> LootFromLootDiscard(int amount) {
         // TODO
 
-        return 0;
+        // return 0;
+        return Task.FromResult<int>(0);
     }
 
     #region Hand
@@ -213,7 +214,7 @@ public class Player : IStateModifier {
     /// Adds a loot card to the player's hand
     /// </summary>
     /// <param name="card">Loot card</param>
-    public async Task AddToHand(MatchCard card) {
+    public Task AddToHand(MatchCard card) {
         var handCard = new HandMatchCard(card, this);
         Hand.Insert(0, handCard);
 
@@ -222,6 +223,8 @@ public class Player : IStateModifier {
 
         Match.LogDebug("Card {CardLogName} was put into hand of player {PlayerLogName}", card.LogName, LogName);
         // TODO add update
+
+        return Task.CompletedTask;
     }
 
     /// <summary>
@@ -267,12 +270,12 @@ public class Player : IStateModifier {
     /// </summary>
     /// <param name="amount">Initial amount of coins to be given to the player</param>
     /// <returns>Resulting amount of coins given to the player</returns>
-    public async Task<int> GainCoins(int amount) {
+    public Task<int> GainCoins(int amount) {
         amount = ModCoinGain(amount);
 
         var taken = GainCoinsRaw(amount);
 
-        return taken;
+        return Task.FromResult<int>(taken);
     }
 
     public int GainCoinsRaw(int amount) {
@@ -405,17 +408,19 @@ public class Player : IStateModifier {
     /// </summary>
     /// <param name="card">Loot card</param>
     /// <returns></returns>
-    public async Task<bool> PayCostsToPlay(HandMatchCard card, StackEffect effect) {
+    public Task<bool> PayCostsToPlay(HandMatchCard card, StackEffect effect) {
         // TODO additional costs
 
         var payed = card.PayCosts(effect);
         if (!payed) {
-            return false;
+            // return false;
+            return Task.FromResult<bool>(false);
         }
 
         LootPlayed++;
 
-        return true;
+        // return true;
+        return Task.FromResult<bool>(true);
     }
 
     /// <summary>
@@ -483,23 +488,25 @@ public class Player : IStateModifier {
         return result;
     }
 
-    public async Task RemoveItem(OwnedInPlayMatchCard card) {
+    public Task RemoveItem(OwnedInPlayMatchCard card) {
         var removed = Items.Remove(card);
         if (!removed)
             throw new MatchException($"Failed to remove item {card.LogName} from player {LogName}");
         
         Match.LogDebug("Item {CardLogName} was removed from player {PlayerLogName}", card.LogName, LogName);
         // TODO add to update
+
+        return Task.CompletedTask;
     }
 
-    public async Task RemoveFromPlay(OwnedInPlayMatchCard card) {
+    public Task RemoveFromPlay(OwnedInPlayMatchCard card) {
         var removed = Items.Remove(card);
-        if (removed) return;
+        if (removed) return Task.CompletedTask;
 
         removed = Curses.Remove(card);
         if (removed) {
             Match.LogDebug("Curse {CardLogName} was removed from player {PlayerLogName}", card.LogName, LogName);
-            return;
+            return Task.CompletedTask;
         }
 
         // TODO add to update
@@ -875,7 +882,7 @@ public class Player : IStateModifier {
         await Match.PlaceOnStack(effect);
     }
 
-    public async Task LoseHealth(int amount, StackEffect source) {
+    public Task LoseHealth(int amount, StackEffect source) {
         Stats.Damage += amount;
         if (Stats.Damage >= Stats.State.Health) {
             Stats.Damage = Stats.State.Health;
@@ -887,6 +894,8 @@ public class Player : IStateModifier {
 
         // TODO update
         // TODO? trigger
+
+        return Task.CompletedTask;
     }
 
     public void HealToMax() {
@@ -1066,9 +1075,11 @@ public class Player : IStateModifier {
         return Stats.DamagePreventors.Count;
     }
 
-    public async Task AddDamagePreventors(int amount) {
+    public Task AddDamagePreventors(int amount) {
         Stats.AddDamagePreventors(amount);
         // TODO? update
+
+        return Task.CompletedTask;
     }
 
     #endregion

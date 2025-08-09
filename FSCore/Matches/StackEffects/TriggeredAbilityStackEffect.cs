@@ -23,16 +23,18 @@ public class TriggeredAbilityStackEffect : StackEffect {
         Card = card;
     }
 
-    public override async Task<bool> Resolve()
+    public override Task<bool> Resolve()
     {
         if (Ability.ShouldFizzle(this)) {
             Match.LogDebug("Triggered ability stack effect {StackID} of card {LogName} fizzles", SID, Card.LogName);
-            return true;
+            return Task.FromResult<bool>(true);
+            // return true;
         }
 
         Ability.ExecuteEffects(this, Trigger.Args);
 
-        return true;
+        return Task.FromResult<bool>(true);
+        // return true;
     }
 
     public override StackEffectData ToData() => new TriggeredAbilityStackEffectData(this);

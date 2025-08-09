@@ -48,7 +48,7 @@ public class RandomPlayerController : IPlayerController
         await Task.Delay(_delay);
     }
 
-    public async Task Update(Match match, int playerI) { }
+    public Task Update(Match match, int playerI) { return Task.CompletedTask; }
 
     public async Task<string> ChooseStackEffect(Match match, int playerIdx, List<string> options, string hint)
     {

@@ -48,20 +48,22 @@ public class InPlayMatchCard : IStateModifier {
     /// <summary>
     /// Tap the card
     /// </summary>
-    public async Task Tap() {
+    public Task Tap() {
         Tapped = true;
 
         // TODO add update
+        return Task.CompletedTask;
     }
 
     /// <summary>
     /// Untap the card
     /// </summary>
     /// <returns></returns>
-    public async Task Untap() {
+    public Task Untap() {
         Tapped = false;
 
         // TODO add update
+        return Task.CompletedTask;
     }
 
     /// <summary>
@@ -121,7 +123,7 @@ public class InPlayMatchCard : IStateModifier {
     /// Add an amount of generic counters
     /// </summary>
     /// <param name="amount">Amount of counters to add</param>
-    public async Task AddCounters(int amount) {
+    public Task AddCounters(int amount) {
         if (!Counters.TryGetValue(Counter.GENERIC_NAME, out Counter? value)) {
             value = new(0);
             Counters.Add(Counter.GENERIC_NAME, value);
@@ -129,6 +131,8 @@ public class InPlayMatchCard : IStateModifier {
 
         value.Add(amount);
         Card.Match.LogDebug("Placed {Amount} generic counters on {CardLogName}", amount, LogName);
+
+        return Task.CompletedTask;
     }
 
     /// <summary>
@@ -142,7 +146,7 @@ public class InPlayMatchCard : IStateModifier {
         return result;
     }
 
-    public async Task RemoveCounters(int amount) {
+    public Task RemoveCounters(int amount) {
         // TODO this removes generic counters first, then picks at random - change to player choice
         Card.Match.LogDebug("Requested to remive {Amount} counters from {CardLogName}", amount, LogName);
 
@@ -162,6 +166,8 @@ public class InPlayMatchCard : IStateModifier {
             if (counter.Amount == 0)
                 Counters.Remove(key);
         }
+
+        return Task.CompletedTask;
     }
 
     #endregion
@@ -222,12 +228,14 @@ public class InPlayMatchCard : IStateModifier {
         await Stats.ProcessDamage(this, amount, effect);
     }
 
-    public async Task HealToMax() {
-        if (Stats is null) return;
+    public Task HealToMax() {
+        if (Stats is null) return Task.CompletedTask;
 
         Stats.Damage = 0;
         Stats.DeathSource = null;
         Stats.IsDead = false;
+
+        return Task.CompletedTask;
     }
 
     public async Task CheckDead() {
@@ -328,11 +336,12 @@ public class InPlayMatchCard : IStateModifier {
         await Card.Match.PlaceOnStack(effect);
     }
 
-    public async Task AddDamagePreventors(int amount) {
+    public Task AddDamagePreventors(int amount) {
         if (Stats is null) throw new MatchException($"Tried to add damage preventors to non-living item {LogName}");
         
         Stats.AddDamagePreventors(amount);
         // TODO? update
+        return Task.CompletedTask;
     }
 
 }

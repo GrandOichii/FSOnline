@@ -169,13 +169,14 @@ public class Match {
         string setupScript,
         IRoller? roller = null
     ) {
+        Rng = new(seed);
+
         _cardMaster = cardMaster;
         Config = config;
         CoinPool = config.CoinPool;
         Roller = roller ?? new Roller(Rng);
 
         CurrentPhase = new MatchSetupPhase();
-        Rng = new(seed);
         CurPlayerIdx = 0;
         if (config.RandomFirstPlayer)
             CurPlayerIdx = Rng.Next() % 2;
@@ -298,7 +299,7 @@ public class Match {
     /// <summary>
     /// Execute all "When you start the game" effects
     /// </summary>
-    public async Task OnMatchStart() {
+    public Task OnMatchStart() {
         // owned cards
         foreach (var player in Players) {
             var cards = player.GetInPlayCards();
@@ -310,6 +311,8 @@ public class Match {
                 }
             }
         }
+
+        return Task.CompletedTask;
     }
 
     /// <summary>
@@ -436,11 +439,13 @@ public class Match {
     /// <summary>
     /// Sets up the match
     /// </summary>
-    private async Task SetupView() {
+    private Task SetupView() {
         LogDebug("Starting view");
         View?.Start(this);
 
         LogDebug("Setup complete");
+
+        return Task.CompletedTask;
     }
 
     /// <summary>
@@ -535,15 +540,17 @@ public class Match {
     /// Checks whether any of the players are considered as winners
     /// </summary>
     /// <returns></returns>
-    public async Task CheckWinners() {
+    public Task CheckWinners() {
         // TODO? multiple winners
 
         foreach (var player in Players) {
             if (player.Wins()) {
                 WinnerIdx = player.Idx;
-                return;
+                return Task.CompletedTask;
             }
         }
+
+        return Task.CompletedTask;
     }
 
     public async Task PushUpdates() {
@@ -668,7 +675,7 @@ public class Match {
     /// </summary>
     /// <param name="trigger">Trigger name</param>
     /// <param name="args">Trigger arguments</param>
-    public async Task Emit(string trigger, Dictionary<string, object> args) {
+    public Task Emit(string trigger, Dictionary<string, object> args) {
         var logMessage = $"Emitted trigger {trigger}, args: ";
         var argsTable = LuaUtility.CreateTable(LState, args);
         foreach (var pair in args) {
@@ -677,6 +684,8 @@ public class Match {
         LogDebug(logMessage);
         var queued = new QueuedTrigger(trigger, argsTable);
         Stack.QueueTrigger(queued);
+
+        return Task.CompletedTask;
     }
 
     #endregion
@@ -711,9 +720,9 @@ public class Match {
     /// </summary>
     /// <param name="card">Match card</param>
     /// <returns></returns>
-    public async Task PlaceIntoDiscard(MatchCard card) {
+    public Task PlaceIntoDiscard(MatchCard card) {
         if (card.DeckOrigin is null) {
-            return;
+            return Task.CompletedTask;
             throw new MatchException($"Tried to put card {card.LogName} into discard, while it has no deck origin");
         }
 
@@ -722,6 +731,8 @@ public class Match {
         deck.PlaceIntoDiscard(card);
 
         LogDebug("Card {LogName} was put into discard of deck {DeckOrigin}", card.LogName, card.DeckOrigin);
+
+        return Task.CompletedTask;
     }
 
     /// <summary>
@@ -820,8 +831,10 @@ public class Match {
     /// Palce an effect on top of the stack
     /// </summary>
     /// <param name="effect">Stack effect</param>
-    public async Task PlaceOnStack(StackEffect effect) {
+    public Task PlaceOnStack(StackEffect effect) {
         Stack.AddEffect(effect);
+
+        return Task.CompletedTask;
     }
 
     /// <summary>
@@ -829,9 +842,11 @@ public class Match {
     /// </summary>
     /// <param name="parent">Parent effect</param>
     /// <returns></returns>
-    public async Task AddRoll(StackEffect parent, bool IsAttackRoll) {
+    public Task AddRoll(StackEffect parent, bool IsAttackRoll) {
         var effect = new RollStackEffect(this, parent, IsAttackRoll);
         Stack.AddEffect(effect);
+
+        return Task.CompletedTask;
     }
 
     #endregion
