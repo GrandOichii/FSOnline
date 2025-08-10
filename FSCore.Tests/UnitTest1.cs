@@ -7,18 +7,17 @@ public class UnitTest1
     {
         // Arrange
         var mainPlayerIdx = 0;
+        var cardKey = "a-nickel-b";
         var config = new MatchConfigBuilder()
-            .StartingPlayer(mainPlayerIdx)
             .InitialCoins(0)
             .InitialLoot(0)
-            .ConfigLootDeck().Add("a-nickel-b", 10).Done()
+            .ConfigLootDeck().Add(cardKey, 10).Done()
             .Build();
         
-        var mainPlayer = new ProgrammedPlayerControllerBuilder()
-            .SetCharacter("isaac-b")
+        var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
             .ConfigActions()
                 .AssertIsCurrentPlayer()
-                .PlayLootCard(0)
+                .PlayLootCard(cardKey)
                 .AutoPassUntilEmptyStack()
                 .SetWinner()
                 .Done()
@@ -29,7 +28,8 @@ public class UnitTest1
             ProgrammedPlayerControllers.AutoPassPlayerController("judas-b"),
         ];
 
-        var match = new TestMatch(config, players);
+        var match = new TestMatch(config, mainPlayerIdx);
+        await match.AddPlayers(players);
 
         // Act
         await match.Run();

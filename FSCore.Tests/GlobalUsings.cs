@@ -7,3 +7,6 @@ global using FSCore.Matches.Players;
 global using FSCore.Matches.Players.Controllers;
 global using FSCore.Matches.Targets;
 global using FSCore.Matches.Decks;
+global using FSCore.Matches.Actions;
+global using FSCore.Matches.Cards;
+global using FSCore.Cards.CardMasters;
