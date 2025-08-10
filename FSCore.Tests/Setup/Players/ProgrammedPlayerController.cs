@@ -14,38 +14,46 @@ public class ProgrammedPlayerControllerBuilder {
     public ProgrammedPlayerController Build() => Result;
 }
 
-public class ProgrammedPlayerActionsBuilder(ProgrammedPlayerControllerBuilder parent)
+public class ProgrammedPlayerActionsBuilder
 {
+    public ProgrammedPlayerControllerBuilder Parent { get; }
+    public ProgrammedPlayerControllerBuilder Done() => Parent;
 
-    public ProgrammedPlayerControllerBuilder Done() => parent;
+    public ChoiceBuilder Choose { get; }
+
+    public ProgrammedPlayerActionsBuilder(ProgrammedPlayerControllerBuilder parent)
+    {
+        Parent = parent;
+        Choose = new(this);
+    }
 
     public ProgrammedPlayerActionsBuilder AssertIsCurrentPlayer()
     {
-        parent.Result.Actions.Enqueue(AssertIsCurrentPlayerPPAction.Instance);
+        Parent.Result.Actions.Enqueue(AssertIsCurrentPlayerPPAction.Instance);
         return this;
     }
 
     public ProgrammedPlayerActionsBuilder GainTreasure(int amount)
     {
-        parent.Result.Actions.Enqueue(new GainTreasurePPAction(amount));
+        Parent.Result.Actions.Enqueue(new GainTreasurePPAction(amount));
         return this;
     }
 
     public ProgrammedPlayerActionsBuilder Pass()
     {
-        parent.Result.Actions.Enqueue(PassPPAction.Instance);
+        Parent.Result.Actions.Enqueue(PassPPAction.Instance);
         return this;
     }
 
     public ProgrammedPlayerActionsBuilder ActivateOwnedItem(string key, int abilityIdx)
     {
-        parent.Result.Actions.Enqueue(new ActivateOwnedItemPPAction(key, abilityIdx));
+        Parent.Result.Actions.Enqueue(new ActivateOwnedItemPPAction(key, abilityIdx));
         return this;
     }
 
     public ProgrammedPlayerActionsBuilder AssertHasCardsInHand(int amount)
     {
-        parent.Result.Actions.Enqueue(
+        Parent.Result.Actions.Enqueue(
             new AssertHasCardsInHandPPAction(amount)
         );
         return this;
@@ -53,7 +61,7 @@ public class ProgrammedPlayerActionsBuilder(ProgrammedPlayerControllerBuilder pa
 
     public ProgrammedPlayerActionsBuilder PlayLootCard(string cardKey)
     {
-        parent.Result.Actions.Enqueue(
+        Parent.Result.Actions.Enqueue(
             new PlayLootCardPPAction(cardKey)
         );
         return this;
@@ -61,39 +69,51 @@ public class ProgrammedPlayerActionsBuilder(ProgrammedPlayerControllerBuilder pa
 
     public ProgrammedPlayerActionsBuilder AutoPassUntilEmptyStack()
     {
-        parent.Result.Actions.Enqueue(AutoPassUntilEmptyStackPPAction.Instance);
+        Parent.Result.Actions.Enqueue(AutoPassUntilEmptyStackPPAction.Instance);
         return this;
     }
 
     public ProgrammedPlayerActionsBuilder AutoPassUntilMyTurn()
     {
-        parent.Result.Actions.Enqueue(AutoPassUntilMyTurnPPAction.Instance);
+        Parent.Result.Actions.Enqueue(AutoPassUntilMyTurnPPAction.Instance);
         return this;
     }
 
     public ProgrammedPlayerActionsBuilder SetWinner()
     {
-        parent.Result.Actions.Enqueue(SetWinnerPPAction.Instance);
+        Parent.Result.Actions.Enqueue(SetWinnerPPAction.Instance);
         return this;
     }
 
     public ProgrammedPlayerActionsBuilder AutoPass()
     {
-        parent.Result.Actions.Enqueue(AutoPassPPAction.Instance);
+        Parent.Result.Actions.Enqueue(AutoPassPPAction.Instance);
         return this;
     }
 
     public ProgrammedPlayerActionsBuilder RemoveItem(string cardKey)
     {
-        parent.Result.Actions.Enqueue(new RemoveFromPlayPPAction(cardKey));
+        Parent.Result.Actions.Enqueue(new RemoveFromPlayPPAction(cardKey));
         return this;
     }
 }
 
-public class ProgrammedPlayerController : IPlayerController {
+public class ChoiceBuilder(ProgrammedPlayerActionsBuilder parent)
+{
+    public ProgrammedPlayerActionsBuilder CardInHand(int idx)
+    {
+        parent.Parent.Result.HandCardChoiceQueue.Enqueue(idx);
+        return parent;
+    }
+}
+
+public class ProgrammedPlayerController : IPlayerController
+{
     public string Character { get; set; } = "";
 
     public Queue<IProgrammedPlayerAction> Actions { get; } = new();
+    public Queue<int> HandCardChoiceQueue { get; } = new();
+
 
     public Task<string> ChooseString(Match match, int playerIdx, List<string> options, string hint)
     {
@@ -149,7 +169,12 @@ public class ProgrammedPlayerController : IPlayerController {
 
     public Task<int> ChooseCardInHand(Match match, int playerIdx, List<int> options, string hint)
     {
-        throw new NotImplementedException();
+        if (HandCardChoiceQueue.TryDequeue(out var result))
+        {
+            return Task.FromResult(result);
+        }
+
+        throw new Exception("Hand card choice queue is empty");
     }
 
     public Task<string> ChooseItem(Match match, int playerIdx, List<string> options, string hint)
