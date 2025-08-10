@@ -1,8 +1,0 @@
-{
-    "Key": "the-tower-b",
-    "Name": "The Tower",
-    "Type": "Loot",
-    "Text": "TEXT",
-    "SoulValue": 0,
-    "Script": "the-tower-b.lua"
-}
