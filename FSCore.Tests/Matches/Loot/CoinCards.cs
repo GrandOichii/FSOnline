@@ -44,6 +44,4 @@ public class CoinCardTests
         match.AssertHasCoins(mainPlayerIdx, coinValue);
         match.AssertCoinsInBank(config.CoinPool - coinValue);
     }
-
-
 }

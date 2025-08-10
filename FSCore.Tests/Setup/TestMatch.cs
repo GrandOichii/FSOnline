@@ -49,6 +49,11 @@ public class TestMatch
         Assert.Equal(playerIdx, _match.WinnerIdx);
     }
 
+    public void AssertHasHealth(int playerIdx, int amount)
+    {
+        Assert.Equal(amount, _match.GetPlayer(playerIdx).Stats.GetCurrentHealth());
+    }
+
     public void AssertHasCoins(int playerIdx, int amount)
     {
         Assert.Equal(amount, _match.GetPlayer(playerIdx).Coins);

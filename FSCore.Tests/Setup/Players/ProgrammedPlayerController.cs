@@ -21,14 +21,32 @@ public class ProgrammedPlayerActionsBuilder(ProgrammedPlayerControllerBuilder pa
 
     public ProgrammedPlayerActionsBuilder AssertIsCurrentPlayer()
     {
-        parent.Result.Actions.Enqueue(AssertIsCurrentPlayerAction.Instance);
+        parent.Result.Actions.Enqueue(AssertIsCurrentPlayerPPAction.Instance);
+        return this;
+    }
+
+    public ProgrammedPlayerActionsBuilder GainTreasure(int amount)
+    {
+        parent.Result.Actions.Enqueue(new GainTreasurePPAction(amount));
+        return this;
+    }
+
+    public ProgrammedPlayerActionsBuilder Pass()
+    {
+        parent.Result.Actions.Enqueue(PassPPAction.Instance);
+        return this;
+    }
+
+    public ProgrammedPlayerActionsBuilder ActivateOwnedItem(string key, int abilityIdx)
+    {
+        parent.Result.Actions.Enqueue(new ActivateOwnedItemPPAction(key, abilityIdx));
         return this;
     }
 
     public ProgrammedPlayerActionsBuilder AssertHasCardsInHand(int amount)
     {
         parent.Result.Actions.Enqueue(
-            new AssertHasCardsInHand(amount)
+            new AssertHasCardsInHandPPAction(amount)
         );
         return this;
     }
@@ -36,32 +54,38 @@ public class ProgrammedPlayerActionsBuilder(ProgrammedPlayerControllerBuilder pa
     public ProgrammedPlayerActionsBuilder PlayLootCard(string cardKey)
     {
         parent.Result.Actions.Enqueue(
-            new PlayLootCardAction(cardKey)
+            new PlayLootCardPPAction(cardKey)
         );
         return this;
     }
 
     public ProgrammedPlayerActionsBuilder AutoPassUntilEmptyStack()
     {
-        parent.Result.Actions.Enqueue(AutoPassUntilEmptyStackAction.Instance);
+        parent.Result.Actions.Enqueue(AutoPassUntilEmptyStackPPAction.Instance);
+        return this;
+    }
+
+    public ProgrammedPlayerActionsBuilder AutoPassUntilMyTurn()
+    {
+        parent.Result.Actions.Enqueue(AutoPassUntilMyTurnPPAction.Instance);
         return this;
     }
 
     public ProgrammedPlayerActionsBuilder SetWinner()
     {
-        parent.Result.Actions.Enqueue(SetWinnerAction.Instance);
+        parent.Result.Actions.Enqueue(SetWinnerPPAction.Instance);
         return this;
     }
 
     public ProgrammedPlayerActionsBuilder AutoPass()
     {
-        parent.Result.Actions.Enqueue(AutoPassAction.Instance);
+        parent.Result.Actions.Enqueue(AutoPassPPAction.Instance);
         return this;
     }
 
     public ProgrammedPlayerActionsBuilder RemoveItem(string cardKey)
     {
-        parent.Result.Actions.Enqueue(new RemoveFromPlayAction(cardKey));
+        parent.Result.Actions.Enqueue(new RemoveFromPlayPPAction(cardKey));
         return this;
     }
 }

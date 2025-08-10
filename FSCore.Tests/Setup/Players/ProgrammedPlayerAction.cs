@@ -7,10 +7,10 @@ public interface IProgrammedPlayerAction {
 
 }
 
-public class AutoPassAction : IProgrammedPlayerAction {
-    public static AutoPassAction Instance { get; } = new();
+public class AutoPassPPAction : IProgrammedPlayerAction {
+    public static AutoPassPPAction Instance { get; } = new();
 
-    private AutoPassAction() {}
+    private AutoPassPPAction() {}
 
     public Task<(string, bool)> Do(Match match, int playerIdx) {
         return Task.FromResult(
@@ -19,21 +19,21 @@ public class AutoPassAction : IProgrammedPlayerAction {
     }
 }
 
-public class AssertIsCurrentPlayerAction : IProgrammedPlayerAction {
-    public static AssertIsCurrentPlayerAction Instance { get; } = new();
+public class AssertIsCurrentPlayerPPAction : IProgrammedPlayerAction {
+    public static AssertIsCurrentPlayerPPAction Instance { get; } = new();
 
-    private AssertIsCurrentPlayerAction() {}
+    private AssertIsCurrentPlayerPPAction() {}
 
     public Task<(string, bool)> Do(Match match, int playerIdx) {
         
         // TODO do an actual assert
         if (playerIdx == match.CurPlayerIdx)
             return Task.FromResult((IProgrammedPlayerAction.NEXT_ACTION, true));
-        throw new Exception($"Failed {nameof(AssertIsCurrentPlayerAction)} assertion");
+        throw new Exception($"Failed {nameof(AssertIsCurrentPlayerPPAction)} assertion");
     }
 }
 
-public class AssertHasCardsInHand(int amount) : IProgrammedPlayerAction
+public class AssertHasCardsInHandPPAction(int amount) : IProgrammedPlayerAction
 {
     public Task<(string, bool)> Do(Match match, int playerIdx)
     {
@@ -41,15 +41,15 @@ public class AssertHasCardsInHand(int amount) : IProgrammedPlayerAction
         // TODO do an actual assert
         if (player.Hand.Count == amount)
             return Task.FromResult((IProgrammedPlayerAction.NEXT_ACTION, true));
-        throw new Exception($"Failed {nameof(AssertIsCurrentPlayerAction)} assertion");
+        throw new Exception($"Failed {nameof(AssertIsCurrentPlayerPPAction)} assertion");
     }
 }
 
-public class SetWinnerAction : IProgrammedPlayerAction
+public class SetWinnerPPAction : IProgrammedPlayerAction
 {
-    public static SetWinnerAction Instance { get; } = new();
+    public static SetWinnerPPAction Instance { get; } = new();
 
-    private SetWinnerAction() { }
+    private SetWinnerPPAction() { }
 
     public async Task<(string, bool)> Do(Match match, int playerIdx)
     {
@@ -60,11 +60,11 @@ public class SetWinnerAction : IProgrammedPlayerAction
     }
 }
 
-public class AutoPassUntilEmptyStackAction : IProgrammedPlayerAction
+public class AutoPassUntilEmptyStackPPAction : IProgrammedPlayerAction
 {
-    public static AutoPassUntilEmptyStackAction Instance { get; } = new();
+    public static AutoPassUntilEmptyStackPPAction Instance { get; } = new();
 
-    private AutoPassUntilEmptyStackAction() { }
+    private AutoPassUntilEmptyStackPPAction() { }
 
     public Task<(string, bool)> Do(Match match, int playerIdx)
     {
@@ -76,7 +76,35 @@ public class AutoPassUntilEmptyStackAction : IProgrammedPlayerAction
     }
 }
 
-public class PlayLootCardAction(string key) : IProgrammedPlayerAction
+public class AutoPassUntilMyTurnPPAction : IProgrammedPlayerAction
+{
+    public static AutoPassUntilMyTurnPPAction Instance { get; } = new();
+
+    private AutoPassUntilMyTurnPPAction() { }
+
+    public Task<(string, bool)> Do(Match match, int playerIdx)
+    {
+        if (match.CurPlayerIdx != playerIdx)
+        {
+            return Task.FromResult((new PassAction().ActionWord(), false));
+        }
+        return Task.FromResult((IProgrammedPlayerAction.NEXT_ACTION, true));
+    }
+}
+
+public class PassPPAction : IProgrammedPlayerAction
+{
+    public static PassPPAction Instance { get; } = new();
+
+    private PassPPAction() { }
+
+    public Task<(string, bool)> Do(Match match, int playerIdx)
+    {
+        return Task.FromResult((new PassAction().ActionWord(), true));
+    }
+}
+
+public class PlayLootCardPPAction(string key) : IProgrammedPlayerAction
 {
     public Task<(string, bool)> Do(Match match, int playerIdx)
     {
@@ -94,7 +122,7 @@ public class PlayLootCardAction(string key) : IProgrammedPlayerAction
     }
 }
 
-public class RemoveFromPlayAction(string key) : IProgrammedPlayerAction
+public class RemoveFromPlayPPAction(string key) : IProgrammedPlayerAction
 {
     public async Task<(string, bool)> Do(Match match, int playerIdx)
     {
@@ -103,11 +131,40 @@ public class RemoveFromPlayAction(string key) : IProgrammedPlayerAction
             ?? throw new Exception($"Player {player.Name} doesn't have {key} item in play");
 
         await player.RemoveFromPlay(card);
-        await match.ReloadState();
         return (IProgrammedPlayerAction.NEXT_ACTION, true);
     }
 
     private static OwnedInPlayMatchCard? GetItem(Player player, string key) {
         return player.Items.FirstOrDefault(c => c.Card.Template.Key == key);
     }
+}
+
+public class GainTreasurePPAction(int amount) : IProgrammedPlayerAction
+{
+    public async Task<(string, bool)> Do(Match match, int playerIdx)
+    {
+        var player = match.GetPlayer(playerIdx);
+        await player.GainTreasure(amount);
+        return (IProgrammedPlayerAction.NEXT_ACTION, true);
+    }
+}
+
+public class ActivateOwnedItemPPAction(string key, int abilityIdx) : IProgrammedPlayerAction
+{
+    public Task<(string, bool)> Do(Match match, int playerIdx)
+    {
+        var player = match.GetPlayer(playerIdx);
+        var item = GetItem(player, key)
+            ?? throw new Exception($"Player {player.Name} doesn't have {key} item in play");
+        return Task.FromResult(
+            ($"{new ActivateAction().ActionWord()} {item.IPID} {abilityIdx}", true)
+        );
+    }
+
+    // TODO duplicate
+    private static OwnedInPlayMatchCard? GetItem(Player player, string key)
+    {
+        return player.Items.FirstOrDefault(c => c.Card.Template.Key == key);
+    }
+
 }
