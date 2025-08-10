@@ -3,10 +3,5 @@
     "Name": "Razor Blade",
     "Type": "Item",
     "Text": "{T}: Deal 1 damage to a player.",
-    "Script": "razor-blade-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "razor-blade-b2.lua"
 }

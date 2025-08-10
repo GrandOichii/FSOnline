@@ -3,10 +3,5 @@
     "Name": "Libra",
     "Type": "Item",
     "Text": "{T}: Change the result of a dice roll to a 3.",
-    "Script": "libra-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "libra-b2.lua"
 }

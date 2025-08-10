@@ -3,10 +3,5 @@
     "Name": "Smelter",
     "Type": "Item",
     "Text": "Discard a loot card: Gain 3{cent}.",
-    "Script": "smelter-b.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "smelter-b.lua"
 }

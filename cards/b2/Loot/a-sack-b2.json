@@ -3,10 +3,5 @@
     "Name": "A Sack",
     "Type": "Loot",
     "Text": "Loot 3.",
-    "Script": "a-sack-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "a-sack-b2.lua"
 }

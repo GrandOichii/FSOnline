@@ -3,10 +3,5 @@
     "Name": "Gimpy",
     "Type": "StartingItem",
     "Text": "Each time you take damage, choose one-\nGain 2{cent}.\nLoot 1, then discard a loot card.\nGain +2{attack} till end of turn.",
-    "Script": "gimpy-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "gimpy-b2.lua"
 }

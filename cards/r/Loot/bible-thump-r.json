@@ -3,10 +3,5 @@
     "Name": "Bible Thump!",
     "Type": "Loot",
     "Text": "Loot 2, then loot 2 for each player that died this turn.",
-    "Script": "bible-thump-r.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "bible-thump-r.lua"
 }

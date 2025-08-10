@@ -3,10 +3,5 @@
     "Name": "Chaos",
     "Type": "Item",
     "Text": "{T}: Each player gives their hand to the player to their left.",
-    "Script": "chaos-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "chaos-b2.lua"
 }

@@ -3,10 +3,5 @@
     "Name": "Eden's Blessing",
     "Type": "Item",
     "Text": "At the end of your turn, if you have 0{cent}, gain 6{cent}.",
-    "Script": "edens-blessing-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "edens-blessing-b2.lua"
 }

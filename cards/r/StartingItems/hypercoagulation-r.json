@@ -3,10 +3,5 @@
     "Name": "Hypercoagulation",
     "Type": "StartingItem",
     "Text": "At the start of your turn put a counter on this.\nYou have +1{health} for each counter on this.\nAt the end of your turn, if this has 3+ counters, remove all of them and loot 3.",
-    "Script": "hypercoagulation-r.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "hypercoagulation-r.lua"
 }

@@ -3,10 +3,5 @@
     "Name": "Tech X",
     "Type": "Item",
     "Text": "{T}: Put a counter on this.\nRemove 3 counters from this: Kill a player or monster.",
-    "Script": "tech-x-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "tech-x-b2.lua"
 }

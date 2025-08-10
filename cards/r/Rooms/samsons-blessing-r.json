@@ -3,10 +3,5 @@
     "Name": "Samson's Blessing",
     "Type": "Room",
     "Text": "Players have +1{attack}.",
-    "Script": "samsons-blessing-r.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "samsons-blessing-r.lua"
 }

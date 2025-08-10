@@ -3,10 +3,5 @@
     "Name": "Maggy's Blessing",
     "Type": "Room",
     "Text": "Players have +1{health}.",
-    "Script": "maggys-blessing-r.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "maggys-blessing-r.lua"
 }

@@ -4,9 +4,5 @@
     "Type": "Loot",
     "Text": "When this enters play, it becomes a soul.",
     "Script": "lost-soul-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
     "SoulValue": 1
 }

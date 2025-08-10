@@ -3,10 +3,5 @@
     "Name": "Soulbond",
     "Type": "StartingItem",
     "Text": "Each time you die, choose another player. That player dies.\nYou don't lose {cent} or discard loot cards when paying the death penalty.",
-    "Script": "soulbond-r.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "soulbond-r.lua"
 }

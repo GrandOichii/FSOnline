@@ -3,10 +3,5 @@
     "Name": "Infestation",
     "Type": "StartingItem",
     "Text": "{T}: Loot 2, then discard 1 Loot card.",
-    "Script": "infestation-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "infestation-b2.lua"
 }

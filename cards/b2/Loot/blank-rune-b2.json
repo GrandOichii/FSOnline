@@ -3,10 +3,5 @@
     "Name": "Blank Rune",
     "Type": "Loot",
     "Text": "Roll-\n1: Each player gains 1{cent}.\n2: Each player loots 2.\n3: Each player takes 3 damage.\n4: Each player gains 4{cent}.\n5: Each player loots 5.\n6: Each player gains 6{cent}.",
-    "Script": "blank-rune-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "blank-rune-b2.lua"
 }

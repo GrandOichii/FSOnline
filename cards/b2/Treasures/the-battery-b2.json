@@ -3,10 +3,5 @@
     "Name": "The Battery",
     "Type": "Item",
     "Text": "{T}: Recharge another item.",
-    "Script": "the-battery-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "the-battery-b2.lua"
 }

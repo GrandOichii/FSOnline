@@ -3,10 +3,5 @@
     "Name": "Lucky Toe",
     "Type": "Loot",
     "Text": "If you would loot, except during the loot step, instead loot that much +1.\n{label:Trinket}",
-    "Script": "lucky-toe-r.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "lucky-toe-r.lua"
 }

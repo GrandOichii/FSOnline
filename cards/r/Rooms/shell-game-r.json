@@ -3,10 +3,5 @@
     "Name": "Shell Game",
     "Type": "Room",
     "Text": "Pay 3{cent}: roll-\n3: Gain 1{cent}.\n4: Loot 1.\n5: Gain 5{cent}.\n6: Gain +1 treasure. Put this into discard.",
-    "Script": "shell-game-r.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "shell-game-r.lua"
 }

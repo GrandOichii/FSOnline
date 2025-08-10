@@ -3,10 +3,5 @@
     "Name": "XIII. Death",
     "Type": "Loot",
     "Text": "Kill a player.",
-    "Script": "xiii-death-b.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "xiii-death-b.lua"
 }

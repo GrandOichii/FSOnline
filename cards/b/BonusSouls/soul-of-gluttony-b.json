@@ -4,9 +4,5 @@
     "Type": "BonusSoul",
     "Text": "The first player to have 10 or more loot cards in their hand gains this soul.",
     "Script": "soul-of-gluttony-b.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
     "SoulValue": 1
 }

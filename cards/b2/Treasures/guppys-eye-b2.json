@@ -3,10 +3,5 @@
     "Name": "Guppy's Eye",
     "Type": "Item",
     "Text": "Each other player plays with their hand revealed.",
-    "Script": "guppys-eye-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "guppys-eye-b2.lua"
 }

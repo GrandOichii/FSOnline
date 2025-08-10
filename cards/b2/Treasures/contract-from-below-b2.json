@@ -3,10 +3,5 @@
     "Name": "Contract from Below",
     "Type": "Item",
     "Text": "Destroy 2 items you control: Steal a non-eternal item from a player.",
-    "Script": "contract-from-below-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "contract-from-below-b2.lua"
 }

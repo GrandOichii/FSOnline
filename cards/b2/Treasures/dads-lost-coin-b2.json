@@ -3,10 +3,5 @@
     "Name": "Dad's Lost Coin",
     "Type": "Item",
     "Text": "Each time a player would roll a {roll:1}, you may force that player to reroll it.",
-    "Script": "dads-lost-coin-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "dads-lost-coin-b2.lua"
 }

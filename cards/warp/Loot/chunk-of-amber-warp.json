@@ -3,10 +3,5 @@
     "Name": "Chunk of Amber",
     "Type": "Loot",
     "Text": "Roll-\nGain x{cent}, where x is 2 times the result.",
-    "Script": "chunk-of-amber-warp.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "chunk-of-amber-warp.lua"
 }

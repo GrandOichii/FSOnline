@@ -3,10 +3,5 @@
     "Name": "Lucky Foot",
     "Type": "Item",
     "Text": "{T}: Add up to 2 to a non-attack roll.",
-    "Script": "lucky-foot-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "lucky-foot-b2.lua"
 }

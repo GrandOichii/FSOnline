@@ -3,10 +3,5 @@
     "Name": "Mystery Sack",
     "Type": "Item",
     "Text": "{T}: Roll-\n1-2: Loot 1.\n3-4: Gain 4{cent}.\n5-6: Nothing.",
-    "Script": "mystery-sack-b.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "mystery-sack-b.lua"
 }

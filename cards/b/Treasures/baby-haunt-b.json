@@ -4,9 +4,5 @@
     "Type": "Item",
     "Text": "Monsters have +1{evasion} on your turn.\nWhen you die, before paying penalties, give this to another player.",
     "Script": "baby-haunt-b.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
     "SoulValue": 1
 }

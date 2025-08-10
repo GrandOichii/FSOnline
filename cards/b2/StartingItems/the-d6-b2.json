@@ -3,10 +3,5 @@
     "Name": "The D6",
     "Type": "StartingItem",
     "Text": "{T}: Choose a dice roll. its controller rerolls it.\nAt the end of your turn, recharge this.",
-    "Script": "the-d6-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "the-d6-b2.lua"
 }

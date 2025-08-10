@@ -3,10 +3,5 @@
     "Name": "Red Champions",
     "Type": "Room",
     "Text": "Monsters have +1{health}",
-    "Script": "red-champions-r.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "red-champions-r.lua"
 }

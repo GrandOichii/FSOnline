@@ -3,10 +3,5 @@
     "Name": "Slot Machine",
     "Type": "Room",
     "Text": "Pay 3{cent}: roll-\n2: Gain 1{cent}\n3: Gain 2{cent}\n4: Gain 5{cent}\n5: Gain 7{cent}\n6: Gain 15{cent}. Put this into discard.",
-    "Script": "slot-machine-r.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "slot-machine-r.lua"
 }

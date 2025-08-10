@@ -3,10 +3,5 @@
     "Name": "Halo of Flies",
     "Type": "Item",
     "Text": "You take no combat damage on attack rolls of 1 or 6.",
-    "Script": "halo-of-flies-r.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "halo-of-flies-r.lua"
 }

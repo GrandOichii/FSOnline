@@ -3,10 +3,5 @@
     "Name": "Synthoil",
     "Type": "Item",
     "Text": "You have +1 to attack rolls.",
-    "Script": "synthoil-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "synthoil-b2.lua"
 }

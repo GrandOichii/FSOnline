@@ -3,10 +3,5 @@
     "Name": "Lemegeton",
     "Type": "StartingItem",
     "Text": "{T}: Gain +1 treasure. The next time your turn ends, destroy a non-eternal item you control.",
-    "Script": "lemegeton-r.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "lemegeton-r.lua"
 }

@@ -3,10 +3,5 @@
     "Name": "20/20",
     "Type": "Item",
     "Text": "{T}: Add up to 2 to an attack roll.",
-    "Script": "20-20-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "20-20-b2.lua"
 }

@@ -3,10 +3,5 @@
     "Name": "Counterfeit Penny",
     "Type": "Loot",
     "Text": "If you would gain any number of {cent}, gain that much +1{cent} instead.\n{label:Trinket}",
-    "Script": "counterfeit-penny-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "counterfeit-penny-b2.lua"
 }

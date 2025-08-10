@@ -4,9 +4,5 @@
     "Type": "Item",
     "Text": "If this would be destroyed. it becomes a Soul instead.",
     "Script": "the-chest-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
     "SoulValue": 1
 }

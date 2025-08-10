@@ -3,10 +3,5 @@
     "Name": "Abaddon",
     "Type": "Item",
     "Text": "+3{attack}\nEach time you take damage, die!",
-    "Script": "abaddon-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "abaddon-b2.lua"
 }

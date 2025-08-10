@@ -3,10 +3,5 @@
     "Name": "Curse of the Blind",
     "Type": "Curse",
     "Text": "Monsters have +1{evasion} on your turn.",
-    "Script": "curse-of-the-blind-b.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "curse-of-the-blind-b.lua"
 }

@@ -3,10 +3,5 @@
     "Name": "Perthro",
     "Type": "Loot",
     "Text": "Reroll an Item.",
-    "Script": "perthro-r.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "perthro-r.lua"
 }

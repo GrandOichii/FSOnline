@@ -3,10 +3,5 @@
     "Name": "A Dollar!",
     "Type": "Item",
     "Text": "Destroy this: Steal all shop items.",
-    "Script": "a-dollar-uoi.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "a-dollar-uoi.lua"
 }

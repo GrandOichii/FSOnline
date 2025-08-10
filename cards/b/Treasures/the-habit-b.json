@@ -3,10 +3,5 @@
     "Name": "The Habit",
     "Type": "Item",
     "Text": "The first time you take damage each turn, you may recharge an item.",
-    "Script": "the-habit-b.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "the-habit-b.lua"
 }

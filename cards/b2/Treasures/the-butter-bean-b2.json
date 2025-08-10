@@ -3,10 +3,5 @@
     "Name": "The Butter Bean",
     "Type": "Item",
     "Text": "{T}: Roll-\n6: Recharge this.",
-    "Script": "the-butter-bean-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "the-butter-bean-b2.lua"
 }

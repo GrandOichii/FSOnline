@@ -3,10 +3,5 @@
     "Name": "Daddy Haunt",
     "Type": "Item",
     "Text": "If you would take any amount of damage, take that much damage +1 instead.\nWhen you die, before paying penalties, give this to another player.",
-    "Script": "daddy-haunt-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "daddy-haunt-b2.lua"
 }

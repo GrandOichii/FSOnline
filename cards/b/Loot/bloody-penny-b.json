@@ -3,10 +3,5 @@
     "Name": "Bloody Penny",
     "Type": "Loot",
     "Text": "Each time a player dies, before paying penalties. Loot 1.",
-    "Script": "bloody-penny-b.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "bloody-penny-b.lua"
 }

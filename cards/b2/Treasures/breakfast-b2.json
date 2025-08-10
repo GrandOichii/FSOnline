@@ -3,10 +3,5 @@
     "Name": "Breakfast",
     "Type": "Item",
     "Text": "+1{health}.",
-    "Script": "breakfast-b2.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "breakfast-b2.lua"
 }

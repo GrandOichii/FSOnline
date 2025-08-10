@@ -3,10 +3,5 @@
     "Name": "The D20",
     "Type": "Item",
     "Text": "{T}: Destroy any item in play and replace it with the top card of the treasure deck.",
-    "Script": "the-d20-b.lua",
-    "Health": -1,
-    "Attack": -1,
-    "Evasion": -1,
-    "RewardsText": "",
-    "SoulValue": 0
+    "Script": "the-d20-b.lua"
 }
