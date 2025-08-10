@@ -27,13 +27,13 @@ public class TriggeredAbilityStackEffect : StackEffect {
     {
         if (Ability.ShouldFizzle(this)) {
             Match.LogDebug("Triggered ability stack effect {StackID} of card {LogName} fizzles", SID, Card.LogName);
-            return Task.FromResult<bool>(true);
+            return Task.FromResult(true);
             // return true;
         }
 
         Ability.ExecuteEffects(this, Trigger.Args);
 
-        return Task.FromResult<bool>(true);
+        return Task.FromResult(true);
         // return true;
     }
 

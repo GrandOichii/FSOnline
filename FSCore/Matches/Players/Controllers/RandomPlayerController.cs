@@ -37,7 +37,7 @@ public class RandomPlayerController : IPlayerController
         throw new NotImplementedException();
     }
 
-    public async Task<string> PromptAction(Match match, int playerI, IEnumerable<string> options)
+    public async Task<string> PromptAction(Match match, int playerIdx, IEnumerable<string> options)
     {
         await Task.Delay(_delay);
         return GetRandom(options);

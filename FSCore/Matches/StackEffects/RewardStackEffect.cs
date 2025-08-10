@@ -24,7 +24,7 @@ public class RewardStackEffect : StackEffect
         // }
         Reward.ExecuteEffects(this);
         // return true;
-        return Task.FromResult<bool>(true);
+        return Task.FromResult(true);
     }
 
     public override StackEffectData ToData() => new RewardStackEffectData(this);

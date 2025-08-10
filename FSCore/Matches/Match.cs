@@ -283,7 +283,7 @@ public class Match {
     }
 
     /// <summary>
-    /// Starts the match execution
+    /// Execute the match
     /// </summary>
     /// <exception cref="MatchException"></exception>
     public async Task Run() {

@@ -1,4 +1,3 @@
-
 namespace FSCore.Matches.Actions;
 
 public class PassAction : IAction

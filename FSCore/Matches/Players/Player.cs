@@ -205,7 +205,7 @@ public class Player : IStateModifier {
         // TODO
 
         // return 0;
-        return Task.FromResult<int>(0);
+        return Task.FromResult(0);
     }
 
     #region Hand
@@ -275,7 +275,7 @@ public class Player : IStateModifier {
 
         var taken = GainCoinsRaw(amount);
 
-        return Task.FromResult<int>(taken);
+        return Task.FromResult(taken);
     }
 
     public int GainCoinsRaw(int amount) {
@@ -414,13 +414,13 @@ public class Player : IStateModifier {
         var payed = card.PayCosts(effect);
         if (!payed) {
             // return false;
-            return Task.FromResult<bool>(false);
+            return Task.FromResult(false);
         }
 
         LootPlayed++;
 
         // return true;
-        return Task.FromResult<bool>(true);
+        return Task.FromResult(true);
     }
 
     /// <summary>

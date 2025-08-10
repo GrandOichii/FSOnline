@@ -26,11 +26,11 @@ public class ActivatedAbilityStackEffect : StackEffect
         if (Ability.ShouldFizzle(this)) {
             Match.LogDebug("Activated ability stack effect {StackID} of card {LogName} fizzles", SID, Card.LogName);
             // return true;
-            return Task.FromResult<bool>(true);
+            return Task.FromResult(true);
         }
         Ability.ExecuteEffects(this);
         // return true;
-        return Task.FromResult<bool>(true);
+        return Task.FromResult(true);
     }
 
     public override StackEffectData ToData() => new ActivatedAbilityStackEffectData(this);
