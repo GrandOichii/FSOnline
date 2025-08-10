@@ -93,3 +93,21 @@ public class PlayLootCardAction(string key) : IProgrammedPlayerAction
         return player.Hand.FirstOrDefault(c => c.Card.Template.Key == key);
     }
 }
+
+public class RemoveFromPlayAction(string key) : IProgrammedPlayerAction
+{
+    public async Task<(string, bool)> Do(Match match, int playerIdx)
+    {
+        var player = match.GetPlayer(playerIdx);
+        var card = GetItem(player, key)
+            ?? throw new Exception($"Player {player.Name} doesn't have {key} item in play");
+
+        await player.RemoveFromPlay(card);
+        await match.ReloadState();
+        return (IProgrammedPlayerAction.NEXT_ACTION, true);
+    }
+
+    private static OwnedInPlayMatchCard? GetItem(Player player, string key) {
+        return player.Items.FirstOrDefault(c => c.Card.Template.Key == key);
+    }
+}

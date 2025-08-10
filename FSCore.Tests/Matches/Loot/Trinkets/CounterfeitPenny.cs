@@ -1,6 +1,6 @@
-namespace FSCore.Tests.Matches.Loot;
+namespace FSCore.Tests.Matches.Loot.Trinkets;
 
-public class CoinCardTests
+public class CounterfeitPennyTests
 {
     [Theory]
     [InlineData("a-penny-b", 1)]
@@ -9,20 +9,28 @@ public class CoinCardTests
     [InlineData("4-cents-b", 4)]
     [InlineData("a-nickel-b", 5)]
     [InlineData("a-dime-b", 10)]
-    public async Task BasicCoinCards(string cardKey, int coinValue)
+    public async Task WithBasicCoinCards(string coinCardKey, int coinValue)
     {
         // Arrange
         var mainPlayerIdx = 0;
+        var cardKey = "counterfeit-penny-b";
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
-            .ConfigLootDeck().Add(cardKey, 10).Done()
+            .LootStepLootAmount(3)
+            .LootPlay(3)
+            .ConfigLootDeck().Add(coinCardKey, 2).Add(cardKey).Done()
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
             .ConfigActions()
                 .AssertIsCurrentPlayer()
                 .PlayLootCard(cardKey)
+                .AutoPassUntilEmptyStack()
+                .PlayLootCard(coinCardKey)
+                .AutoPassUntilEmptyStack()
+                .RemoveItem(cardKey)
+                .PlayLootCard(coinCardKey)
                 .AutoPassUntilEmptyStack()
                 .SetWinner()
                 .Done()
@@ -41,9 +49,7 @@ public class CoinCardTests
 
         // Assert
         match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, coinValue);
-        match.AssertCoinsInBank(config.CoinPool - coinValue);
+        match.AssertHasCoins(mainPlayerIdx, 2 * coinValue + 1);
+        match.AssertCoinsInBank(config.CoinPool - 2 * coinValue - 1);
     }
-
-
 }

@@ -14,16 +14,19 @@ public class ProgrammedPlayerControllerBuilder {
     public ProgrammedPlayerController Build() => Result;
 }
 
-public class ProgrammedPlayerActionsBuilder(ProgrammedPlayerControllerBuilder parent) {    
+public class ProgrammedPlayerActionsBuilder(ProgrammedPlayerControllerBuilder parent)
+{
 
     public ProgrammedPlayerControllerBuilder Done() => parent;
 
-    public ProgrammedPlayerActionsBuilder AssertIsCurrentPlayer() {
+    public ProgrammedPlayerActionsBuilder AssertIsCurrentPlayer()
+    {
         parent.Result.Actions.Enqueue(AssertIsCurrentPlayerAction.Instance);
-        return this;    
+        return this;
     }
 
-    public ProgrammedPlayerActionsBuilder AssertHasCardsInHand(int amount) {
+    public ProgrammedPlayerActionsBuilder AssertHasCardsInHand(int amount)
+    {
         parent.Result.Actions.Enqueue(
             new AssertHasCardsInHand(amount)
         );
@@ -38,18 +41,27 @@ public class ProgrammedPlayerActionsBuilder(ProgrammedPlayerControllerBuilder pa
         return this;
     }
 
-    public ProgrammedPlayerActionsBuilder AutoPassUntilEmptyStack() {
+    public ProgrammedPlayerActionsBuilder AutoPassUntilEmptyStack()
+    {
         parent.Result.Actions.Enqueue(AutoPassUntilEmptyStackAction.Instance);
         return this;
     }
 
-    public ProgrammedPlayerActionsBuilder SetWinner() {
+    public ProgrammedPlayerActionsBuilder SetWinner()
+    {
         parent.Result.Actions.Enqueue(SetWinnerAction.Instance);
         return this;
     }
 
-    public ProgrammedPlayerActionsBuilder AutoPass() {
+    public ProgrammedPlayerActionsBuilder AutoPass()
+    {
         parent.Result.Actions.Enqueue(AutoPassAction.Instance);
+        return this;
+    }
+
+    public ProgrammedPlayerActionsBuilder RemoveItem(string cardKey)
+    {
+        parent.Result.Actions.Enqueue(new RemoveFromPlayAction(cardKey));
         return this;
     }
 }

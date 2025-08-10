@@ -46,32 +46,32 @@ public class TestMatch
 
     public void AssertIsWinner(int playerIdx)
     {
-        Assert.Equal(_match.WinnerIdx, playerIdx);
+        Assert.Equal(playerIdx, _match.WinnerIdx);
     }
 
     public void AssertHasCoins(int playerIdx, int amount)
     {
-        Assert.Equal(_match.GetPlayer(playerIdx).Coins, amount);
+        Assert.Equal(amount, _match.GetPlayer(playerIdx).Coins);
     }
 
     public void AssertCoinsInBank(int amount)
     {
-        Assert.Equal(_match.CoinPool, amount);
+        Assert.Equal(amount, _match.CoinPool);
     }
 
     public void AssertCardsInHand(int playerIdx, int amount)
     {
-        Assert.Equal(_match.GetPlayer(playerIdx).Hand.Count, amount);
+        Assert.Equal(amount, _match.GetPlayer(playerIdx).Hand.Count);
     }
 
     public void AssertCardsInLootDeck(int amount)
     {
-        Assert.Equal(_match.LootDeck.Size, amount);
+        Assert.Equal(amount, _match.LootDeck.Size);
     }
 
     public void AssertCardsInLootDiscard(int amount)
     {
-        Assert.Equal(_match.LootDeck.Discard!.Count, amount);
+        Assert.Equal(amount, _match.LootDeck.Discard!.Count);
     }
 
     #endregion

@@ -59,10 +59,23 @@ public class MatchConfigBuilder {
         return this;
     }
 
-    public MatchConfig Build() {
+    public MatchConfigBuilder LootStepLootAmount(int amount)
+    {
+        _result.LootStepLootAmount = amount;
+        return this;
+    }
+
+    public MatchConfigBuilder LootPlay(int amount)
+    {
+        _result.LootPlay = amount;
+        return this;
+    }
+
+    public MatchConfig Build()
+    {
         _result.LootCards = _lootBuilder.Cards;
         // TODO build decks
-        
+
         return _result;
     }
 }
@@ -72,7 +85,7 @@ public class LootDeckBuilder(MatchConfigBuilder parent) {
 
     public Dictionary<string, int> Cards { get; } = [];
 
-    public LootDeckBuilder Add(string card, int amount) {
+    public LootDeckBuilder Add(string card, int amount = 1) {
         if (!Cards.TryGetValue(card, out int value)) {
             value = 0;
             Cards.Add(card, value);

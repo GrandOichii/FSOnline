@@ -1,4 +1,4 @@
-namespace FSCore.Tests;
+namespace FSCore.Tests.Matches.Loot;
 
 public class BlankRuneTests
 {
@@ -94,4 +94,6 @@ public class BlankRuneTests
         match.AssertCardsInLootDeck(lootDeckSize - 2 * lootDraw - 1);
         match.AssertCardsInLootDiscard(1);
     }
+
+    // TODO add 3 tests
 }
