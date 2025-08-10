@@ -1,7 +1,8 @@
 
 namespace FSCore.Tests.Setup;
 
-public class TestMatch {
+public class TestMatch
+{
     private readonly Match _match;
     private readonly FileCardMaster _cm;
 
@@ -43,16 +44,34 @@ public class TestMatch {
 
     #region Asserts
 
-    public void AssertIsWinner(int playerIdx) {
+    public void AssertIsWinner(int playerIdx)
+    {
         Assert.Equal(_match.WinnerIdx, playerIdx);
     }
 
-    public void AssertHasCoins(int playerIdx, int amount) {
+    public void AssertHasCoins(int playerIdx, int amount)
+    {
         Assert.Equal(_match.GetPlayer(playerIdx).Coins, amount);
     }
 
-    public void AssertCoinsInBank(int amount) {
+    public void AssertCoinsInBank(int amount)
+    {
         Assert.Equal(_match.CoinPool, amount);
+    }
+
+    public void AssertCardsInHand(int playerIdx, int amount)
+    {
+        Assert.Equal(_match.GetPlayer(playerIdx).Hand.Count, amount);
+    }
+
+    public void AssertCardsInLootDeck(int amount)
+    {
+        Assert.Equal(_match.LootDeck.Size, amount);
+    }
+
+    public void AssertCardsInLootDiscard(int amount)
+    {
+        Assert.Equal(_match.LootDeck.Discard!.Count, amount);
     }
 
     #endregion

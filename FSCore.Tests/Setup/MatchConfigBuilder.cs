@@ -77,7 +77,7 @@ public class LootDeckBuilder(MatchConfigBuilder parent) {
             value = 0;
             Cards.Add(card, value);
         }
-        Cards[card] = ++value;
+        Cards[card] = value + amount;
 
         return this;
     }
