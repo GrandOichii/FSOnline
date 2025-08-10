@@ -185,5 +185,7 @@
         "infamy-b2",
         "halo-of-flies-r"
     ],
-    "UseRooms": true
+    "UseRooms": true,
+    "PromptWhenPayingCoins": true,
+    "PromptWhenPayingLife": true
 }
