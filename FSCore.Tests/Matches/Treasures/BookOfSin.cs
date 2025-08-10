@@ -151,5 +151,6 @@ public class BookOfSinTests
         // Assert
         match.AssertIsWinner(mainPlayerIdx);
         match.AssertHasHealth(mainPlayerIdx, health);
+        match.AssertHasItemCount(mainPlayerIdx, 2);
     }
 }
