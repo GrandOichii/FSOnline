@@ -1,3 +1,5 @@
+global using Shouldly;
+
 global using FSCore.Tests.Setup;
 global using FSCore.Tests.Setup.Players;
 

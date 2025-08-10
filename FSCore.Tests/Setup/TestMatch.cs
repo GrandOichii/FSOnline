@@ -3,7 +3,7 @@ namespace FSCore.Tests.Setup;
 
 public class TestMatch
 {
-    private readonly Match _match;
+    public Match Match { get; }
     private readonly FileCardMaster _cm;
 
     public TestMatch(
@@ -16,8 +16,9 @@ public class TestMatch
         _cm = new();
         // TODO
         _cm.Load("../../../../cards/b");
+        _cm.Load("../../../../cards/b2");
 
-        _match = new(
+        Match = new(
             config,
             seed, // TODO change
             _cm,
@@ -33,63 +34,62 @@ public class TestMatch
     {
         for (int i = 0; i < players.Count; ++i)
         {
-            await _match.AddPlayer($"pp{i + 1}", players[i], players[i].Character);
+            await Match.AddPlayer($"pp{i + 1}", players[i], players[i].Character);
         }
     }
 
     public async Task Run()
     {
-        await _match.Run();
+        await Match.Run();
     }
 
     #region Asserts
 
     public void AssertIsWinner(int playerIdx)
     {
-        Assert.Equal(playerIdx, _match.WinnerIdx);
+        Match.WinnerIdx.ShouldBe(playerIdx);
     }
 
     public void AssertHasHealth(int playerIdx, int amount)
+
     {
-        Assert.Equal(amount, _match.GetPlayer(playerIdx).Stats.GetCurrentHealth());
+        Match.GetPlayer(playerIdx).Stats.GetCurrentHealth().ShouldBe(amount);
     }
 
     public void AssertHasCoins(int playerIdx, int amount)
     {
-        Assert.Equal(amount, _match.GetPlayer(playerIdx).Coins);
+        Match.GetPlayer(playerIdx).Coins.ShouldBe(amount);
     }
 
     public void AssertCoinsInBank(int amount)
     {
-        Assert.Equal(amount, _match.CoinPool);
+        Match.CoinPool.ShouldBe(amount);
     }
 
     public void AssertCardsInHand(int playerIdx, int amount)
     {
-        Assert.Equal(amount, _match.GetPlayer(playerIdx).Hand.Count);
+        Match.GetPlayer(playerIdx).Hand.Count.ShouldBe(amount);
     }
 
     public void AssertCardsInLootDeck(int amount)
     {
-        Assert.Equal(amount, _match.LootDeck.Size);
+        Match.LootDeck.Size.ShouldBe(amount);
     }
 
     public void AssertCardsInLootDiscard(int amount)
     {
-        Assert.Equal(amount, _match.LootDeck.Discard!.Count);
+        Match.LootDeck.Discard!.Count.ShouldBe(amount);
     }
 
     public void AssertHasItemCount(int playerIdx, int amount)
     {
-        Assert.Equal(amount, _match.GetPlayer(playerIdx).Items.Count);
+        Match.GetPlayer(playerIdx).Items.Count.ShouldBe(amount);
     }
     
     public void AssertHasItem(int playerIdx, string key)
     {
-        Assert.NotNull(_match.GetPlayer(playerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == key));
+        Match.GetPlayer(playerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == key).ShouldNotBeNull();
     }
-
-
 
     #endregion
 }
