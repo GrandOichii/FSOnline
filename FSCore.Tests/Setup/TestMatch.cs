@@ -51,9 +51,13 @@ public class TestMatch
     }
 
     public void AssertHasHealth(int playerIdx, int amount)
-
     {
         Match.GetPlayer(playerIdx).Stats.GetCurrentHealth().ShouldBe(amount);
+    }
+
+    public void AssertHasAttack(int playerIdx, int amount)
+    {
+        Match.GetPlayer(playerIdx).Stats.State.Attack.ShouldBe(amount);
     }
 
     public void AssertHasCoins(int playerIdx, int amount)

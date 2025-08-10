@@ -1,6 +1,6 @@
 namespace FSCore.Tests.Matches.Loot;
 
-public class TheLovers
+public class TheLoversTests
 {
     [Fact]
     public async Task Play()
