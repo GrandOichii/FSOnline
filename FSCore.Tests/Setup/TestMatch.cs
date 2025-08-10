@@ -74,5 +74,17 @@ public class TestMatch
         Assert.Equal(amount, _match.LootDeck.Discard!.Count);
     }
 
+    public void AssertHasItemCount(int playerIdx, int amount)
+    {
+        Assert.Equal(amount, _match.GetPlayer(playerIdx).Items.Count);
+    }
+    
+    public void AssertHasItem(int playerIdx, string key)
+    {
+        Assert.NotNull(_match.GetPlayer(playerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == key));
+    }
+
+
+
     #endregion
 }

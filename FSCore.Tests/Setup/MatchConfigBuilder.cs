@@ -1,12 +1,15 @@
 namespace FSCore.Tests.Setup;
 
-public class MatchConfigBuilder {
+public class MatchConfigBuilder
+{
     private MatchConfig _result; // TODO set default
-    private LootDeckBuilder _lootBuilder;
+    private readonly LootDeckBuilder _lootBuilder;
+    private readonly TreasureDeckBuilder _treasureBuilder;
 
     public MatchConfigBuilder()
     {
         _lootBuilder = new(this);
+        _treasureBuilder = new(this);
 
         _result = new()
         {
@@ -48,14 +51,23 @@ public class MatchConfigBuilder {
     }
 
     public LootDeckBuilder ConfigLootDeck() => _lootBuilder;
+    public TreasureDeckBuilder ConfigTreasureDeck() => _treasureBuilder;
 
-    public MatchConfigBuilder InitialCoins(int amount) {
+    public MatchConfigBuilder InitialCoins(int amount)
+    {
         _result.InitialDealCoins = amount;
         return this;
     }
 
-    public MatchConfigBuilder InitialLoot(int amount) {
+    public MatchConfigBuilder InitialLoot(int amount)
+    {
         _result.InitialDealLoot = amount;
+        return this;
+    }
+    
+    public MatchConfigBuilder InitialTreasureSlots(int amount)
+    {
+        _result.InitialTreasureSlots = amount;
         return this;
     }
 
@@ -74,19 +86,37 @@ public class MatchConfigBuilder {
     public MatchConfig Build()
     {
         _result.LootCards = _lootBuilder.Cards;
+        _result.Treasures = _treasureBuilder.Cards;
         // TODO build decks
 
         return _result;
     }
 }
 
-public class LootDeckBuilder(MatchConfigBuilder parent) {
+public class TreasureDeckBuilder(MatchConfigBuilder parent)
+{
+    public MatchConfigBuilder Done() => parent;
+
+    public List<string> Cards { get; } = [];
+
+    public TreasureDeckBuilder Add(string key)
+    {
+        // TODO? duplicates
+        Cards.Add(key);
+        return this;
+    }
+}
+
+public class LootDeckBuilder(MatchConfigBuilder parent)
+{
     public MatchConfigBuilder Done() => parent;
 
     public Dictionary<string, int> Cards { get; } = [];
 
-    public LootDeckBuilder Add(string card, int amount = 1) {
-        if (!Cards.TryGetValue(card, out int value)) {
+    public LootDeckBuilder Add(string card, int amount = 1)
+    {
+        if (!Cards.TryGetValue(card, out int value))
+        {
             value = 0;
             Cards.Add(card, value);
         }
