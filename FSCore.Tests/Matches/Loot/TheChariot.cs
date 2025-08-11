@@ -38,7 +38,7 @@ public class TheChariotTests
 
         // Assert
         match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasHealth(mainPlayerIdx, 3);
+        match.AssertPlayerHasHealth(mainPlayerIdx, 3);
         match.AssertHasAttack(mainPlayerIdx, 2);
     }
 

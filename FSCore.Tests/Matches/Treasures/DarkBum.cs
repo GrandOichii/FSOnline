@@ -1,12 +1,12 @@
 namespace FSCore.Tests.Matches.Treasures;
 
-public class BookOfSinTests
+public class DarkBumTests
 {
-    private static readonly string CARD_KEY = "book-of-sin-b";
+    private static readonly string CARD_KEY = "dark-bum-b";
     
     [Theory]
-    [InlineData(1, 1)]
-    [InlineData(2, 1)]
+    [InlineData(1, 3)]
+    [InlineData(2, 3)]
     public async Task CoinRolls(int roll, int coins)
     {
         // Arrange
@@ -26,7 +26,6 @@ public class BookOfSinTests
                 .GainTreasure(1)
                 .Pass()
                 .AutoPassUntilMyTurn()
-                .ActivateOwnedItem(CARD_KEY, 0)
                 .AutoPassUntilEmptyStack()
                 .SetWinner()
                 .Done()
@@ -78,7 +77,6 @@ public class BookOfSinTests
                 .GainTreasure(1)
                 .Pass()
                 .AutoPassUntilMyTurn()
-                .ActivateOwnedItem(CARD_KEY, 0)
                 .AutoPassUntilEmptyStack()
                 .SetWinner()
                 .Done()
@@ -106,9 +104,9 @@ public class BookOfSinTests
     }
 
     [Theory]
-    [InlineData(5, 3)]
-    [InlineData(6, 3)]
-    public async Task HealthGainRolls(int roll, int health)
+    [InlineData(5, 1, 1)]
+    [InlineData(6, 1, 1)]
+    public async Task DamageRolls(int roll, int health, int damage)
     {
         // Arrange
         var mainPlayerIdx = 0;
@@ -127,7 +125,6 @@ public class BookOfSinTests
                 .GainTreasure(1)
                 .Pass()
                 .AutoPassUntilMyTurn()
-                .ActivateOwnedItem(CARD_KEY, 0)
                 .AutoPassUntilEmptyStack()
                 .SetWinner()
                 .Done()
@@ -151,6 +148,6 @@ public class BookOfSinTests
         // Assert
         match.AssertIsWinner(mainPlayerIdx);
         match.AssertPlayerHasHealth(mainPlayerIdx, health);
-        match.AssertHasItemCount(mainPlayerIdx, 2);
+        match.AssertPlayerHasDamage(mainPlayerIdx, damage);
     }
 }

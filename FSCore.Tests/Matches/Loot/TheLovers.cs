@@ -38,7 +38,7 @@ public class TheLoversTests
 
         // Assert
         match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasHealth(mainPlayerIdx, 4);
+        match.AssertPlayerHasHealth(mainPlayerIdx, 4);
     }
 
 }

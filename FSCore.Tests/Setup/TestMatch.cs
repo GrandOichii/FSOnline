@@ -50,9 +50,14 @@ public class TestMatch
         Match.WinnerIdx.ShouldBe(playerIdx);
     }
 
-    public void AssertHasHealth(int playerIdx, int amount)
+    public void AssertPlayerHasHealth(int playerIdx, int amount)
     {
         Match.GetPlayer(playerIdx).Stats.GetCurrentHealth().ShouldBe(amount);
+    }
+
+    public void AssertPlayerHasDamage(int playerIdx, int amount)
+    {
+        Match.GetPlayer(playerIdx).Stats.Damage.ShouldBe(amount);
     }
 
     public void AssertHasAttack(int playerIdx, int amount)

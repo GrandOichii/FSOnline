@@ -40,6 +40,6 @@ public class BreakfastDinnerTests
         // Assert
         match.AssertIsWinner(mainPlayerIdx);
         match.AssertHasItemCount(mainPlayerIdx, 2);
-        match.AssertHasHealth(mainPlayerIdx, 3);
+        match.AssertPlayerHasHealth(mainPlayerIdx, 3);
     }
 }
