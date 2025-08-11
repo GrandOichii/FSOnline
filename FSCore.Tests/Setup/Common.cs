@@ -1,0 +1,57 @@
+namespace FSCore.Tests.Setup;
+
+public static class Common
+{
+    // Common roll treasures
+    public static async Task SetupTreasureRollTest(
+        string cardKey,
+        int roll,
+        Action<TestMatch, int> asserts
+    )
+    {
+        // Arrange
+        var activatable = "the-butter-bean-b2";
+        var mainPlayerIdx = 0;
+        var config = new MatchConfigBuilder()
+            .InitialCoins(0)
+            .InitialLoot(0)
+            .LootStepLootAmount(0)
+            .LootPlay(0)
+            .InitialTreasureSlots(0)
+            .ConfigTreasureDeck().Add(cardKey).Add(activatable).Done()
+            .ConfigLootDeck().Add("a-penny-b", 10).Done()
+            .Build();
+
+        var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
+            .ConfigActions()
+                .AssertIsCurrentPlayer()
+                .GainTreasure(1)
+                .GainTreasure(1)
+                .Pass()
+                .AutoPassUntilMyTurn()
+                .ActivateOwnedItem(activatable, 0)
+                .AutoPassUntilEmptyStack()
+                .SetWinner()
+                .Done()
+            .Build();
+
+        var roller = new ProgrammedRollerBuilder()
+            .Then(roll)
+            .Build();
+
+        List<ProgrammedPlayerController> players = [
+            mainPlayer,
+            ProgrammedPlayerControllers.AutoPassPlayerController("judas-b"),
+        ];
+
+        var match = new TestMatch(config, mainPlayerIdx, roller: roller);
+        await match.AddPlayers(players);
+
+        // Act
+        await match.Run();
+
+        // Assert
+        match.AssertIsWinner(mainPlayerIdx);
+        asserts.Invoke(match, mainPlayerIdx);
+    }
+}
