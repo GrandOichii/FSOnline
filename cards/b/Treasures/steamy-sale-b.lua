@@ -1,5 +1,7 @@
 -- status: implemented
 
+-- TODO this works differently in b
+
 function _Create()
     return FS.B.Item()
         .Static:Common(

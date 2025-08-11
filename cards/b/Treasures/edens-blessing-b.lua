@@ -12,7 +12,7 @@ function _Create()
                     end
                 )
                 .Effect:Common(
-                    FS.C.Effect.RechargeMe()
+                    FS.C.Effect.GainCoins(6)
                 )
             :Build()
         )
