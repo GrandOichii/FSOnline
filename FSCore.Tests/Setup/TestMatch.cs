@@ -50,6 +50,12 @@ public class TestMatch
         Match.WinnerIdx.ShouldBe(playerIdx);
     }
 
+    public void AssertHasLootPlays(int playerIdx, int amount)
+    {
+        var p = Match.GetPlayer(playerIdx);
+        (p.State.LootPlaysForTurn - p.LootPlayed).ShouldBe(amount);
+    }
+
     public void AssertPlayerHasHealth(int playerIdx, int amount)
     {
         Match.GetPlayer(playerIdx).Stats.GetCurrentHealth().ShouldBe(amount);

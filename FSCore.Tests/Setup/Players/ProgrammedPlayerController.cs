@@ -51,6 +51,12 @@ public class ProgrammedPlayerActionsBuilder
         return this;
     }
 
+    public ProgrammedPlayerActionsBuilder ActivateCharacter(int abilityIdx = 0)
+    {
+        Parent.Result.Actions.Enqueue(new ActivateCharacterPPAction(abilityIdx));
+        return this;
+    }
+
     public ProgrammedPlayerActionsBuilder AssertHasCardsInHand(int amount)
     {
         Parent.Result.Actions.Enqueue(

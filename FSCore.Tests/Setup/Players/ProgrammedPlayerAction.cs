@@ -166,5 +166,15 @@ public class ActivateOwnedItemPPAction(string key, int abilityIdx) : IProgrammed
     {
         return player.Items.FirstOrDefault(c => c.Card.Template.Key == key);
     }
+}
 
+public class ActivateCharacterPPAction(int abilityIdx) : IProgrammedPlayerAction
+{
+    public Task<(string, bool)> Do(Match match, int playerIdx)
+    {
+        var player = match.GetPlayer(playerIdx);
+        return Task.FromResult(
+            ($"{new ActivateAction().ActionWord()} {player.Character.IPID} {abilityIdx}", true)
+        );
+    }
 }
