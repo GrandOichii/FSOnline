@@ -117,6 +117,12 @@ public class ChoiceBuilder(ProgrammedPlayerActionsBuilder parent)
         parent.Parent.Result.PlayerChoiceQueue.Enqueue(-1);
         return parent;
     }
+
+    public ProgrammedPlayerActionsBuilder Option(int optionIdx)
+    {
+        parent.Parent.Result.OptionsQueue.Enqueue(optionIdx);
+        return parent;
+    }
 }
 
 public class ProgrammedPlayerController : IPlayerController
@@ -126,11 +132,17 @@ public class ProgrammedPlayerController : IPlayerController
     public Queue<IProgrammedPlayerAction> Actions { get; } = new();
     public Queue<int> HandCardChoiceQueue { get; } = new();
     public Queue<int> PlayerChoiceQueue { get; } = new();
+    public Queue<int> OptionsQueue { get; } = new();
 
 
     public Task<string> ChooseString(Match match, int playerIdx, List<string> options, string hint)
     {
-        throw new NotImplementedException();
+        if (OptionsQueue.TryDequeue(out var result))
+        {
+            return Task.FromResult(options[result]);
+        }
+
+        throw new Exception("Choose string queue is empty");
     }
 
     public Task<int> ChoosePlayer(Match match, int playerIdx, List<int> options, string hint)
