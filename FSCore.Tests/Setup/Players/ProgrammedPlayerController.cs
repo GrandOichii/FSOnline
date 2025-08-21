@@ -102,6 +102,12 @@ public class ProgrammedPlayerActionsBuilder
         Parent.Result.Actions.Enqueue(new RemoveFromPlayPPAction(cardKey));
         return this;
     }
+
+    public ProgrammedPlayerActionsBuilder PreventDamage(int amount = 1)
+    {
+        Parent.Result.Actions.Enqueue(new PreventDamagePPAction(amount));
+        return this;
+    }
 }
 
 public class ChoiceBuilder(ProgrammedPlayerActionsBuilder parent)

@@ -139,6 +139,21 @@ public class RemoveFromPlayPPAction(string key) : IProgrammedPlayerAction
     }
 }
 
+public class PreventDamagePPAction(int amount) : IProgrammedPlayerAction
+{
+    public async Task<(string, bool)> Do(Match match, int playerIdx)
+    {
+        var player = match.GetPlayer(playerIdx);
+        await player.AddDamagePreventors(amount);
+        
+        return (IProgrammedPlayerAction.NEXT_ACTION, true);
+    }
+
+    private static OwnedInPlayMatchCard? GetItem(Player player, string key) {
+        return player.Items.FirstOrDefault(c => c.Card.Template.Key == key);
+    }
+}
+
 public class GainTreasurePPAction(int amount) : IProgrammedPlayerAction
 {
     public async Task<(string, bool)> Do(Match match, int playerIdx)
