@@ -70,6 +70,11 @@ public class TestMatch
     {
         Match.GetPlayer(playerIdx).Stats.State.Attack.ShouldBe(amount);
     }
+    
+    public void AssertPlayerHasAttackOpportunities(int playerIdx, int amount)
+    {
+        Match.GetPlayer(playerIdx).AttackOpportunities.ShouldBe(amount);
+    }
 
     public void AssertHasCoins(int playerIdx, int amount)
     {
