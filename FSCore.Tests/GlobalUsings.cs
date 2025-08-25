@@ -11,4 +11,5 @@ global using FSCore.Matches.Targets;
 global using FSCore.Matches.Decks;
 global using FSCore.Matches.Actions;
 global using FSCore.Matches.Cards;
+global using FSCore.Matches.StackEffects;
 global using FSCore.Cards.CardMasters;

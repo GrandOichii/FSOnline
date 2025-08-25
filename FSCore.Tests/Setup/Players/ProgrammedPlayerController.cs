@@ -1,3 +1,4 @@
+
 namespace FSCore.Tests.Setup.Players;
 
 public class ProgrammedPlayerControllerBuilder {
@@ -45,7 +46,7 @@ public class ProgrammedPlayerActionsBuilder
         return this;
     }
 
-    public ProgrammedPlayerActionsBuilder ActivateOwnedItem(string key, int abilityIdx)
+    public ProgrammedPlayerActionsBuilder ActivateOwnedItem(string key, int abilityIdx=0)
     {
         Parent.Result.Actions.Enqueue(new ActivateOwnedItemPPAction(key, abilityIdx));
         return this;
@@ -118,6 +119,14 @@ public class ChoiceBuilder(ProgrammedPlayerActionsBuilder parent)
         return parent;
     }
 
+    public ProgrammedPlayerActionsBuilder DiceRoll(int idx)
+    {
+        parent.Parent.Result.StackEffectsQueue.Enqueue(
+            new DiceRollStackEffectChoice(idx)
+        );
+        return parent;
+    }
+
     public ProgrammedPlayerActionsBuilder Me()
     {
         parent.Parent.Result.PlayerChoiceQueue.Enqueue(-1);
@@ -131,6 +140,35 @@ public class ChoiceBuilder(ProgrammedPlayerActionsBuilder parent)
     }
 }
 
+public interface IStackEffectChoice
+{
+    public string GetEffectId(Match match, int playerIdx);
+}
+
+public class DiceRollStackEffectChoice(int idx) : IStackEffectChoice
+{
+    public string GetEffectId(Match match, int playerIdx)
+    {
+        var count = idx;
+        var rollCount = 0;
+        foreach (var effect in match.Stack.Effects)
+        {
+            if (effect is not RollStackEffect)
+            {
+                continue;
+            }
+            ++rollCount;
+            if (count > 0)
+            {
+                --count;
+                continue;
+            }
+            return effect.SID;
+        }
+        throw new Exception($"Not enough roll stack effects in stack! (want: {idx + 1}, have: {rollCount})");
+    }
+}
+
 public class ProgrammedPlayerController : IPlayerController
 {
     public string Character { get; set; } = "";
@@ -139,6 +177,7 @@ public class ProgrammedPlayerController : IPlayerController
     public Queue<int> HandCardChoiceQueue { get; } = new();
     public Queue<int> PlayerChoiceQueue { get; } = new();
     public Queue<int> OptionsQueue { get; } = new();
+    public Queue<IStackEffectChoice> StackEffectsQueue { get; } = new();
 
 
     public Task<string> ChooseString(Match match, int playerIdx, List<string> options, string hint)
@@ -157,6 +196,7 @@ public class ProgrammedPlayerController : IPlayerController
         {
             if (result == -1)
                 result = playerIdx;
+            // TODO check options
             return Task.FromResult(result);
         }
 
@@ -201,14 +241,24 @@ public class ProgrammedPlayerController : IPlayerController
 
     public Task<string> ChooseStackEffect(Match match, int playerIdx, List<string> options, string hint)
     {
-        throw new NotImplementedException();
-        // return Task.CompletedTask;
+        if (!StackEffectsQueue.TryDequeue(out var choice))
+        {
+            throw new Exception("Stack effect choice queue is empty");
+        }
+
+        var result = choice.GetEffectId(match, playerIdx);
+        if (!options.Contains(result))
+        {
+            throw new Exception($"Stack effect with ID {result} is not a valid option for stack effect choice (options: {string.Join(", ", options)})");
+        }
+        return Task.FromResult(result);
     }
 
     public Task<int> ChooseCardInHand(Match match, int playerIdx, List<int> options, string hint)
     {
         if (HandCardChoiceQueue.TryDequeue(out var result))
         {
+            // TODO check options
             return Task.FromResult(result);
         }
 
