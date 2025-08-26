@@ -15,13 +15,12 @@ public class BreakfastDinnerTests
             .LootStepLootAmount(0)
             .LootPlay(0)
             .InitialTreasureSlots(0)
-            .ConfigTreasureDeck().Add(cardKey).Done()
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
+            .HasItemAtStart(cardKey)
             .ConfigActions()
                 .AssertIsCurrentPlayer()
-                .GainTreasure(1)
                 .SetWinner()
                 .Done()
             .Build();

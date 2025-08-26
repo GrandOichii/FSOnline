@@ -18,16 +18,13 @@ public class SmelterTests
             .LootStepLootAmount(0)
             .LootPlay(0)
             .InitialTreasureSlots(0)
-            .ConfigTreasureDeck().Add(CARD_KEY).Done()
             .ConfigLootDeck().Add("a-penny-b", 3).Done()
             .Build();
 
         var builder = new ProgrammedPlayerControllerBuilder("isaac-b")
+            .HasItemAtStart(CARD_KEY)
             .ConfigActions()
-                .AssertIsCurrentPlayer()
-                .GainTreasure(1)
-                .Pass()
-                .AutoPassUntilMyTurn();
+                .AssertIsCurrentPlayer();
                 
         for (int i = 0; i < activations; ++i) {
             builder

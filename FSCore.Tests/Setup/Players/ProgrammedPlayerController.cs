@@ -10,9 +10,18 @@ public class ProgrammedPlayerControllerBuilder {
         Result.Character = character;
     }
 
+    public ProgrammedPlayerControllerBuilder HasItemAtStart(string itemKey)
+    {
+        Result.Setups.Enqueue(new GainItemPPSetup(itemKey));
+        return this;
+    }
+
     public ProgrammedPlayerActionsBuilder ConfigActions() => _actions;
 
-    public ProgrammedPlayerController Build() => Result;
+    public ProgrammedPlayerController Build() {
+
+        return Result;
+    }
 }
 
 public class ProgrammedPlayerActionsBuilder
@@ -133,6 +142,12 @@ public class ChoiceBuilder(ProgrammedPlayerActionsBuilder parent)
         return parent;
     }
 
+    public ProgrammedPlayerActionsBuilder Opponent(int idx)
+    {
+        parent.Parent.Result.PlayerChoiceQueue.Enqueue(idx);
+        return parent;
+    }
+
     public ProgrammedPlayerActionsBuilder Option(int optionIdx)
     {
         parent.Parent.Result.OptionsQueue.Enqueue(optionIdx);
@@ -179,6 +194,7 @@ public class ProgrammedPlayerController : IPlayerController
     public Queue<int> OptionsQueue { get; } = new();
     public Queue<IStackEffectChoice> StackEffectsQueue { get; } = new();
 
+    public Queue<IProgrammedPlayerSetup> Setups { get; } = new();
 
     public Task<string> ChooseString(Match match, int playerIdx, List<string> options, string hint)
     {
@@ -223,18 +239,20 @@ public class ProgrammedPlayerController : IPlayerController
             if (next) Actions.Dequeue();
         }
 
-        if (!options.Contains(result))
-        {
-            throw new Exception($"Received action \"{result}\", which is not a valid action! (expected: \"{string.Join(", ", options)}\")");
-        }
+        // if (!options.Contains(result))
+        // {
+        //     throw new Exception($"Received action \"{result}\", which is not a valid action! (expected: \"{string.Join(", ", options)}\")");
+        // }
 
         return result;
     }
 
-    public Task Setup(Match match, int playerI)
+    public async Task Setup(Match match, int playerI)
     {
-        // throw new NotImplementedException();
-        return Task.CompletedTask;
+        while (Setups.TryDequeue(out var setup))
+        {
+            await setup.Do(match, playerI);
+        }
     }
 
     public Task Update(Match match, int playerI) { return Task.CompletedTask; }

@@ -15,15 +15,13 @@ public class EdensBlessing
             .LootStepLootAmount(0)
             .LootPlay(0)
             .InitialTreasureSlots(0)
-            .ConfigTreasureDeck().Add(CARD_KEY).Done()
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
+            .HasItemAtStart(CARD_KEY)
             .ConfigActions()
                 .AssertIsCurrentPlayer()
-                .GainTreasure(1)
                 .Pass()
-                .AutoPassUntilMyTurn()
                 .AutoPassUntilEmptyStack()
                 .SetWinner()
                 .Done()
@@ -48,4 +46,6 @@ public class EdensBlessing
         match.AssertHasCoins(mainPlayerIdx, 6);
         match.AssertCoinsInBank(config.CoinPool - 6);
     }
+
+    // TODO add with coins
 }

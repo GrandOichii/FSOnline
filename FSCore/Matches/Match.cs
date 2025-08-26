@@ -63,7 +63,7 @@ public class Match {
     /// <summary>
     /// Card master
     /// </summary>
-    private readonly ICardMaster _cardMaster;
+    public ICardMaster CardMaster { get; }
     /// <summary>
     /// Index of the current player
     /// </summary>
@@ -171,7 +171,7 @@ public class Match {
     ) {
         Rng = new(seed);
 
-        _cardMaster = cardMaster;
+        CardMaster = cardMaster;
         Config = config;
         CoinPool = config.CoinPool;
         Roller = roller ?? new Roller(Rng);
@@ -248,7 +248,7 @@ public class Match {
 
     private async Task<CardTemplate> GetRandomCharacter() {
         var key = Config.Characters[Rng.Next() % Config.Characters.Count];
-        return await _cardMaster.Get(key);
+        return await CardMaster.Get(key);
     }
 
     /// <summary>
@@ -263,7 +263,7 @@ public class Match {
 
         var character = string.IsNullOrEmpty(characterKey)
             ? await GetRandomCharacter()
-            : await _cardMaster.Get(characterKey);
+            : await CardMaster.Get(characterKey);
 
         try {
             var player = new Player(
@@ -338,14 +338,14 @@ public class Match {
         foreach (var key in Config.Events)
             MonsterDeck.Cards.AddLast(new MatchCard(
                 this,
-                await _cardMaster.Get(key),
+                await CardMaster.Get(key),
                 DeckType.MONSTER
             ));
         // add curses
         foreach (var key in Config.Curses)
             MonsterDeck.Cards.AddLast(new MatchCard(
                 this,
-                await _cardMaster.Get(key),
+                await CardMaster.Get(key),
                 DeckType.MONSTER
             ));
         MonsterDeck.Shuffle();
@@ -369,7 +369,7 @@ public class Match {
         var result = new List<MatchCard>();
         foreach (var pair in Config.LootCards) {
             var amount = pair.Value;
-            var card = await _cardMaster.Get(pair.Key);
+            var card = await CardMaster.Get(pair.Key);
             for (int i = 0; i < amount; i++) {
                 result.Add(new(this, card, DeckType.LOOT));
             }
@@ -390,7 +390,7 @@ public class Match {
         foreach (var key in Config.Treasures)
             treasureCards.Add(new MatchCard(
                 this,
-                await _cardMaster.Get(key),
+                await CardMaster.Get(key),
                 DeckType.TREASURE
             ));
 
@@ -402,7 +402,7 @@ public class Match {
         foreach (var key in keys)
             souls.Add(new BonusSoulMatchCard(
                 this,
-                await _cardMaster.Get(key)
+                await CardMaster.Get(key)
             ));
         BonusSouls.AddRange(souls);
 
@@ -411,7 +411,7 @@ public class Match {
         foreach (var key in Config.Monsters) {
             monsters.Add(new MatchCard(
                 this,
-                await _cardMaster.Get(key),
+                await CardMaster.Get(key),
                 DeckType.MONSTER
             ));
         }
@@ -424,7 +424,7 @@ public class Match {
             foreach (var key in Config.Rooms)
                 roomCards.Add(new MatchCard(
                     this,
-                    await _cardMaster.Get(key),
+                    await CardMaster.Get(key),
                     DeckType.ROOM
                 ));
 
@@ -1032,7 +1032,7 @@ public class Match {
 
     public async Task CreateStartingItems(Player owner, CharacterMatchCard character) {
         foreach (var key in character.Card.StartingItemKeys) {
-            var template = await _cardMaster.Get(key);
+            var template = await CardMaster.Get(key);
             var card = new OwnedInPlayMatchCard(
                 new MatchCard(this, template),
                 owner
