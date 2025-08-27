@@ -3,7 +3,7 @@ namespace FSCore.Tests.Setup.Players;
 public interface IProgrammedPlayerAction {
     public static readonly string NEXT_ACTION = "";
 
-    public Task<(string, bool)> Do(Match match, int playerIdx);
+    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options);
 
 }
 
@@ -12,7 +12,7 @@ public class AutoPassPPAction : IProgrammedPlayerAction {
 
     private AutoPassPPAction() {}
 
-    public Task<(string, bool)> Do(Match match, int playerIdx) {
+    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options) {
         return Task.FromResult(
             (new PassAction().ActionWord(), false)
         );
@@ -24,7 +24,7 @@ public class AssertIsCurrentPlayerPPAction : IProgrammedPlayerAction {
 
     private AssertIsCurrentPlayerPPAction() {}
 
-    public Task<(string, bool)> Do(Match match, int playerIdx) {
+    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options) {
         
         // TODO do an actual assert
         if (playerIdx == match.CurPlayerIdx)
@@ -35,7 +35,7 @@ public class AssertIsCurrentPlayerPPAction : IProgrammedPlayerAction {
 
 public class AssertHasCardsInHandPPAction(int amount) : IProgrammedPlayerAction
 {
-    public Task<(string, bool)> Do(Match match, int playerIdx)
+    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         // TODO do an actual assert
@@ -51,7 +51,7 @@ public class SetWinnerPPAction : IProgrammedPlayerAction
 
     private SetWinnerPPAction() { }
 
-    public async Task<(string, bool)> Do(Match match, int playerIdx)
+    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         player.State.AdditionalSoulCount = match.Config.SoulsToWin;
@@ -66,7 +66,7 @@ public class AutoPassUntilEmptyStackPPAction : IProgrammedPlayerAction
 
     private AutoPassUntilEmptyStackPPAction() { }
 
-    public Task<(string, bool)> Do(Match match, int playerIdx)
+    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         if (match.Stack.Effects.Count > 0)
         {
@@ -82,7 +82,7 @@ public class AutoPassUntilMyTurnPPAction : IProgrammedPlayerAction
 
     private AutoPassUntilMyTurnPPAction() { }
 
-    public Task<(string, bool)> Do(Match match, int playerIdx)
+    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         if (match.CurPlayerIdx != playerIdx)
         {
@@ -98,7 +98,7 @@ public class PassPPAction : IProgrammedPlayerAction
 
     private PassPPAction() { }
 
-    public Task<(string, bool)> Do(Match match, int playerIdx)
+    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         return Task.FromResult((new PassAction().ActionWord(), true));
     }
@@ -106,7 +106,7 @@ public class PassPPAction : IProgrammedPlayerAction
 
 public class PlayLootCardPPAction(string key) : IProgrammedPlayerAction
 {
-    public Task<(string, bool)> Do(Match match, int playerIdx)
+    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         var card = GetHandMatchCard(player, key)
@@ -124,7 +124,7 @@ public class PlayLootCardPPAction(string key) : IProgrammedPlayerAction
 
 public class RemoveFromPlayPPAction(string key) : IProgrammedPlayerAction
 {
-    public async Task<(string, bool)> Do(Match match, int playerIdx)
+    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         var card = GetItem(player, key)
@@ -141,7 +141,7 @@ public class RemoveFromPlayPPAction(string key) : IProgrammedPlayerAction
 
 public class PreventDamagePPAction(int amount) : IProgrammedPlayerAction
 {
-    public async Task<(string, bool)> Do(Match match, int playerIdx)
+    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         await player.AddDamagePreventors(amount);
@@ -156,7 +156,7 @@ public class PreventDamagePPAction(int amount) : IProgrammedPlayerAction
 
 public class GainTreasurePPAction(int amount) : IProgrammedPlayerAction
 {
-    public async Task<(string, bool)> Do(Match match, int playerIdx)
+    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         await player.GainTreasure(amount);
@@ -166,7 +166,7 @@ public class GainTreasurePPAction(int amount) : IProgrammedPlayerAction
 
 public class ActivateOwnedItemPPAction(string key, int abilityIdx) : IProgrammedPlayerAction
 {
-    public Task<(string, bool)> Do(Match match, int playerIdx)
+    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         var item = GetItem(player, key)
@@ -185,11 +185,35 @@ public class ActivateOwnedItemPPAction(string key, int abilityIdx) : IProgrammed
 
 public class ActivateCharacterPPAction(int abilityIdx) : IProgrammedPlayerAction
 {
-    public Task<(string, bool)> Do(Match match, int playerIdx)
+    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         return Task.FromResult(
             ($"{new ActivateAction().ActionWord()} {player.Character.IPID} {abilityIdx}", true)
         );
     }
+}
+
+public class AssertCantActivateItemPPAction(string itemKey) : IProgrammedPlayerAction
+{
+    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    {
+        var player = match.GetPlayer(playerIdx);
+        // !FIXME what if player has duplicate items
+        var item = GetItem(player, itemKey)
+            ?? throw new Exception($"Player {player.Name} doesn't have {itemKey} item in play");
+        var prefix = $"{new ActivateAction().ActionWord()} {item.IPID}";
+        var action = options.FirstOrDefault(o => o.StartsWith(prefix));
+        action.ShouldBeNull();
+
+        return Task.FromResult((IProgrammedPlayerAction.NEXT_ACTION, true));
+    }
+
+
+    // TODO duplicate
+    private static OwnedInPlayMatchCard? GetItem(Player player, string key)
+    {
+        return player.Items.FirstOrDefault(c => c.Card.Template.Key == key);
+    }
+
 }

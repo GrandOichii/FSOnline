@@ -89,6 +89,12 @@ public class ProgrammedPlayerActionsBuilder
         return this;
     }
 
+    public ProgrammedPlayerActionsBuilder AssertCantActivateItem(string itemKey)
+    {
+        Parent.Result.Actions.Enqueue(new AssertCantActivateItemPPAction(itemKey));
+        return this;
+    }
+
     public ProgrammedPlayerActionsBuilder AutoPassUntilMyTurn()
     {
         Parent.Result.Actions.Enqueue(AutoPassUntilMyTurnPPAction.Instance);
@@ -235,7 +241,7 @@ public class ProgrammedPlayerController : IPlayerController
             if (!Actions.TryPeek(out var action))
                 throw new Exception("No actions left in queue!");
             bool next;
-            (result, next) = await action.Do(match, playerIdx);
+            (result, next) = await action.Do(match, playerIdx, options);
             if (next) Actions.Dequeue();
         }
 

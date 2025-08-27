@@ -12,7 +12,7 @@ public class JawboneTests
     {
         // Arrange
         var mainPlayerIdx = 0;
-        var opponentIdx =  1 - mainPlayerIdx;
+        var opponentIdx = 1 - mainPlayerIdx;
         var config = new MatchConfigBuilder()
             .InitialCoins(initialCoins)
             .InitialLoot(0)
@@ -50,6 +50,50 @@ public class JawboneTests
         match.AssertIsWinner(mainPlayerIdx);
         match.AssertHasCoins(mainPlayerIdx, initialCoins + expectedGain);
         match.AssertHasCoins(opponentIdx, initialCoins - 3);
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    [InlineData(2)]
+    public async Task CantActivate(int initialCoins)
+    {
+        // Arrange
+        var mainPlayerIdx = 0;
+        var config = new MatchConfigBuilder()
+            .InitialCoins(initialCoins)
+            .InitialLoot(0)
+            .LootStepLootAmount(0)
+            .LootPlay(0)
+            .InitialTreasureSlots(0)
+            .Build();
+
+        var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
+            .HasItemAtStart(CARD_KEY)
+            .ConfigActions()
+                .AssertCantActivateItem(CARD_KEY)
+                .AutoPassUntilEmptyStack()
+                .SetWinner()
+                .Done()
+            .Build();
+
+        var roller = new ProgrammedRollerBuilder()
+            .Then(1)
+            .Build();
+
+        List<ProgrammedPlayerController> players = [
+            mainPlayer,
+            ProgrammedPlayerControllers.AutoPassPlayerController("judas-b"),
+        ];
+
+        var match = new TestMatch(config, mainPlayerIdx, roller: roller);
+        await match.AddPlayers(players);
+
+        // Act
+        await match.Run();
+
+        // Assert
+        match.AssertIsWinner(mainPlayerIdx);
     }
 
     // TODO? add tests for stealing from self
