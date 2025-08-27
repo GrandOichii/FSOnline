@@ -239,10 +239,10 @@ public class ProgrammedPlayerController : IPlayerController
             if (next) Actions.Dequeue();
         }
 
-        // if (!options.Contains(result))
-        // {
-        //     throw new Exception($"Received action \"{result}\", which is not a valid action! (expected: \"{string.Join(", ", options)}\")");
-        // }
+        if (!options.Contains(result))
+        {
+            throw new Exception($"Received action \"{result}\", which is not a valid action! (expected: \"{string.Join(", ", options)}\")");
+        }
 
         return result;
     }
