@@ -45,8 +45,8 @@ public class MatchConfigBuilder
             StrictMode = true,
             Treasures = [],
             UseRooms = true,
-            PromptWhenPayingCoins = true,
-            PromptWhenPayingLife = true
+            PromptWhenPayingCoins = false,
+            PromptWhenPayingLife = false
         };
     }
 
