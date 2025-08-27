@@ -217,3 +217,25 @@ public class AssertCantActivateItemPPAction(string itemKey) : IProgrammedPlayerA
     }
 
 }
+
+public class PlaceCountersPPAction(string itemKey, int amount) : IProgrammedPlayerAction
+{
+    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    {
+        var player = match.GetPlayer(playerIdx);
+        // !FIXME what if player has duplicate items
+        var item = GetItem(player, itemKey)
+            ?? throw new Exception($"Player {player.Name} doesn't have {itemKey} item in play");
+        await item.AddCounters(amount);
+
+        return (IProgrammedPlayerAction.NEXT_ACTION, true);
+    }
+
+
+    // TODO duplicate
+    private static OwnedInPlayMatchCard? GetItem(Player player, string key)
+    {
+        return player.Items.FirstOrDefault(c => c.Card.Template.Key == key);
+    }
+
+}

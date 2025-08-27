@@ -61,6 +61,12 @@ public class ProgrammedPlayerActionsBuilder
         return this;
     }
 
+    public ProgrammedPlayerActionsBuilder PlaceCounters(string key, int amount)
+    {
+        Parent.Result.Actions.Enqueue(new PlaceCountersPPAction(key, amount));
+        return this;
+    }
+
     public ProgrammedPlayerActionsBuilder ActivateCharacter(int abilityIdx = 0)
     {
         Parent.Result.Actions.Enqueue(new ActivateCharacterPPAction(abilityIdx));
