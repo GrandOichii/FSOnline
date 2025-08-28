@@ -111,5 +111,10 @@ public class TestMatch
         Match.GetPlayer(playerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == key).ShouldNotBeNull();
     }
 
+    public void AssertHasSoulCard(int playerIdx, string key)
+    {
+        Match.GetPlayer(playerIdx).Souls.FirstOrDefault(s => s.Original.Template.Key == key).ShouldNotBeNull();
+    }
+
     #endregion
 }
