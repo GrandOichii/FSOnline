@@ -130,6 +130,13 @@ public class ProgrammedPlayerActionsBuilder
         Parent.Result.Actions.Enqueue(new PreventDamagePPAction(amount));
         return this;
     }
+
+    public ProgrammedPlayerActionsBuilder DeclareAttack(int monsterSlot)
+    {
+        Parent.Result.Actions.Enqueue(DeclareAttackPPAction.Instance);
+        Parent.Result.AttackSlotQueue.Enqueue(monsterSlot);
+        return this;
+    }
 }
 
 public class ChoiceBuilder(ProgrammedPlayerActionsBuilder parent)
@@ -205,6 +212,7 @@ public class ProgrammedPlayerController : IPlayerController
     public Queue<int> PlayerChoiceQueue { get; } = new();
     public Queue<int> OptionsQueue { get; } = new();
     public Queue<IStackEffectChoice> StackEffectsQueue { get; } = new();
+    public Queue<int> AttackSlotQueue { get; } = new();
 
     public Queue<IProgrammedPlayerSetup> Setups { get; } = new();
 
@@ -307,7 +315,13 @@ public class ProgrammedPlayerController : IPlayerController
 
     public Task<int> ChooseMonsterToAttack(Match match, int playerIdx, List<int> options)
     {
-        throw new NotImplementedException();
+        if (AttackSlotQueue.TryDequeue(out var result))
+        {
+            // TODO check options
+            return Task.FromResult(result);
+        }
+
+        throw new Exception("Attack slot queue is empty");
     }
 
     public Task<(TargetType, string)> ChooseMonsterOrPlayer(Match match, int playerIdx, List<string> ipids, List<int> indicies, string hint)

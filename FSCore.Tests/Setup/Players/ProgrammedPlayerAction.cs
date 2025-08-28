@@ -239,3 +239,14 @@ public class PlaceCountersPPAction(string itemKey, int amount) : IProgrammedPlay
     }
 
 }
+
+public class DeclareAttackPPAction : IProgrammedPlayerAction
+{
+    public readonly static DeclareAttackPPAction Instance = new();
+    private DeclareAttackPPAction() { }
+
+    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    {
+        return (new DeclareAttackAction().ActionWord(), true);
+    }
+}

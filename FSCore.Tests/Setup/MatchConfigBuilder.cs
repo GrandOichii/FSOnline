@@ -5,11 +5,13 @@ public class MatchConfigBuilder
     private MatchConfig _result; // TODO set default
     private readonly LootDeckBuilder _lootBuilder;
     private readonly TreasureDeckBuilder _treasureBuilder;
+    private readonly MonsterDeckBuilder _monsterBuilder;
 
     public MatchConfigBuilder()
     {
         _lootBuilder = new(this);
         _treasureBuilder = new(this);
+        _monsterBuilder = new(this);
 
         _result = new()
         {
@@ -52,6 +54,7 @@ public class MatchConfigBuilder
 
     public LootDeckBuilder ConfigLootDeck() => _lootBuilder;
     public TreasureDeckBuilder ConfigTreasureDeck() => _treasureBuilder;
+    public MonsterDeckBuilder ConfigMonsterDeck() => _monsterBuilder;
 
     public MatchConfigBuilder InitialCoins(int amount)
     {
@@ -71,6 +74,12 @@ public class MatchConfigBuilder
         return this;
     }
 
+    public MatchConfigBuilder InitialMonsterSlots(int amount)
+    {
+        _result.InitialMonsterSlots = amount;
+        return this;
+    }
+
     public MatchConfigBuilder LootStepLootAmount(int amount)
     {
         _result.LootStepLootAmount = amount;
@@ -87,6 +96,7 @@ public class MatchConfigBuilder
     {
         _result.LootCards = _lootBuilder.Cards;
         _result.Treasures = _treasureBuilder.Cards;
+        _result.Monsters = _monsterBuilder.Monsters;
         // TODO build decks
 
         return _result;
@@ -103,6 +113,20 @@ public class TreasureDeckBuilder(MatchConfigBuilder parent)
     {
         // TODO? duplicates
         Cards.Add(key);
+        return this;
+    }
+}
+
+public class MonsterDeckBuilder(MatchConfigBuilder parent)
+{
+    public MatchConfigBuilder Done() => parent;
+
+    public List<string> Monsters { get; } = [];
+
+    public MonsterDeckBuilder AddMonster(string key)
+    {
+        // TODO? duplicates
+        Monsters.Add(key);
         return this;
     }
 }
