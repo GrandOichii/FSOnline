@@ -37,8 +37,9 @@ public class BreakfastDinnerTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasItemCount(mainPlayerIdx, 2);
-        match.AssertPlayerHasHealth(mainPlayerIdx, 3);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasItemCount(2)
+            .HasHealth(3);
     }
 }

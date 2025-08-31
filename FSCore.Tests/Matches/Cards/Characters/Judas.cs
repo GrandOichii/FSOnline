@@ -47,7 +47,7 @@ public class JudasTests
         var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == activatable);
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
+        match.AssertPlayer(mainPlayerIdx).IsWinner();
         item.ShouldNotBeNull();
         item.Tapped.ShouldBeFalse();
     }
@@ -96,7 +96,7 @@ public class JudasTests
         var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == activatable);
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
+        match.AssertPlayer(mainPlayerIdx).IsWinner();
         item.ShouldNotBeNull();
         item.Tapped.ShouldBeTrue();
     }

@@ -49,7 +49,7 @@ public class TheButterBeanTests
         var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == CARD_KEY);
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
+        match.AssertPlayer(mainPlayerIdx).IsWinner();
         item.ShouldNotBeNull();
         item.Tapped.ShouldBeTrue();
     }
@@ -94,7 +94,7 @@ public class TheButterBeanTests
         var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == CARD_KEY);
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
+        match.AssertPlayer(mainPlayerIdx).IsWinner();
         item.ShouldNotBeNull();
         item.Tapped.ShouldBeFalse();
     }

@@ -37,9 +37,10 @@ public class TemperanceTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, 4);
-        match.AssertPlayerHasHealth(mainPlayerIdx, 1);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCoins(4)
+            .HasHealth(1);
     }
 
     [Fact]
@@ -76,8 +77,9 @@ public class TemperanceTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, 8);
-        match.AssertPlayerHasHealth(mainPlayerIdx, 1);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCoins(8)
+            .HasHealth(1);
     }
 }

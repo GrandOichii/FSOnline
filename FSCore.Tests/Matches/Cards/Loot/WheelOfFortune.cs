@@ -43,8 +43,9 @@ public class WheelOfFortuneTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, coinValue);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCoins(coinValue);
         match.AssertCoinsInBank(config.CoinPool - coinValue);
     }
 
@@ -87,8 +88,9 @@ public class WheelOfFortuneTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertCardsInHand(mainPlayerIdx, 3);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCardsInHand(3);
         match.AssertCardsInLootDeck(lootDeckSize - 3 - 1);
     }
 
@@ -130,8 +132,9 @@ public class WheelOfFortuneTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, 0);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCoins(0);
         match.AssertCoinsInBank(config.CoinPool - initialCoins);
     }
 
@@ -175,8 +178,9 @@ public class WheelOfFortuneTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasItemCount(mainPlayerIdx, 2);
-        match.AssertHasItem(mainPlayerIdx, itemKey);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasItemCount(2)
+            .HasItem(itemKey);
     }
 }

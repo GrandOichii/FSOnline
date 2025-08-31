@@ -42,8 +42,9 @@ public class EdensBlessing
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, 6);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCoins(6);
         match.AssertCoinsInBank(config.CoinPool - 6);
     }
 

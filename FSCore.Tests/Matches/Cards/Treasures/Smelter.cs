@@ -54,8 +54,9 @@ public class SmelterTests
         var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == CARD_KEY);
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertCardsInHand(mainPlayerIdx, 3 - activations);
-        match.AssertHasCoins(mainPlayerIdx, coins);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCardsInHand(3 - activations)
+            .HasCoins(coins);
     }
 }

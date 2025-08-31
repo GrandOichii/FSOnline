@@ -9,7 +9,8 @@ public class BasicMonsterTests
             "squirt-b",
             (match, mainPlayerIdx) =>
             {
-                match.AssertCardsInHand(mainPlayerIdx, 1);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCardsInHand(1);
             }
         );
     }
@@ -21,7 +22,8 @@ public class BasicMonsterTests
             "fly-b",
             (match, mainPlayerIdx) =>
             {
-                match.AssertHasCoins(mainPlayerIdx, 1);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCoins(1);
             }
         );
     }
@@ -33,7 +35,8 @@ public class BasicMonsterTests
             "fatty-b",
             (match, mainPlayerIdx) =>
             {
-                match.AssertCardsInHand(mainPlayerIdx, 1);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCardsInHand(1);
             }
         );
     }
@@ -45,7 +48,8 @@ public class BasicMonsterTests
             "spider-b",
             (match, mainPlayerIdx) =>
             {
-                match.AssertCardsInHand(mainPlayerIdx, 1);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCardsInHand(1);
             }
         );
     }
@@ -57,7 +61,8 @@ public class BasicMonsterTests
             "fat-bat-b",
             (match, mainPlayerIdx) =>
             {
-                match.AssertHasItemCount(mainPlayerIdx, 2);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasItemCount(2);
             }
         );
     }
@@ -70,8 +75,9 @@ public class BasicMonsterTests
             key,
             (match, mainPlayerIdx) =>
             {
-                match.AssertHasCoins(mainPlayerIdx, 7);
-                match.AssertHasSoulCard(mainPlayerIdx, key);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCoins(7)
+                    .HasSoulCard(key);
             }
         );
     }
@@ -84,7 +90,8 @@ public class BasicMonsterTests
     //         key,
     //         (match, mainPlayerIdx) =>
     //         {
-    //             match.AssertHasCoins(mainPlayerIdx, 3);
+    //             match.AssertPlayer(mainPlayerIdx)
+    //  .HasCoins(3);
     //         }
     //     );
     // }
@@ -97,7 +104,8 @@ public class BasicMonsterTests
             key,
             (match, mainPlayerIdx) =>
             {
-                match.AssertHasCoins(mainPlayerIdx, 1);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCoins(1);
             }
         );
     }
@@ -110,7 +118,8 @@ public class BasicMonsterTests
             key,
             (match, mainPlayerIdx) =>
             {
-                match.AssertCardsInHand(mainPlayerIdx, 2);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCardsInHand(2);
             }
         );
     }
@@ -123,7 +132,8 @@ public class BasicMonsterTests
             key,
             (match, mainPlayerIdx) =>
             {
-                match.AssertCardsInHand(mainPlayerIdx, 2);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCardsInHand(2);
             }
         );
     }
@@ -136,7 +146,8 @@ public class BasicMonsterTests
             key,
             (match, mainPlayerIdx) =>
             {
-                match.AssertHasCoins(mainPlayerIdx, 4);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCoins(4);
             }
         );
     }
@@ -149,7 +160,8 @@ public class BasicMonsterTests
             key,
             (match, mainPlayerIdx) =>
             {
-                match.AssertHasCoins(mainPlayerIdx, 6);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCoins(6);
             }
         );
     }
@@ -163,7 +175,8 @@ public class BasicMonsterTests
             key,
             (match, mainPlayerIdx) =>
             {
-                match.AssertCardsInHand(mainPlayerIdx, 1);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCardsInHand(1);
             }
         );
     }
@@ -176,7 +189,8 @@ public class BasicMonsterTests
             key,
             (match, mainPlayerIdx) =>
             {
-                match.AssertHasCoins(mainPlayerIdx, 5);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCoins(5);
             }
         );
     }
@@ -189,7 +203,8 @@ public class BasicMonsterTests
             key,
             (match, mainPlayerIdx) =>
             {
-                match.AssertCardsInHand(mainPlayerIdx, 1);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCardsInHand(1);
             }
         );
     }
@@ -202,8 +217,9 @@ public class BasicMonsterTests
             key,
             (match, mainPlayerIdx) =>
             {
-                match.AssertHasCoins(mainPlayerIdx, 6);
-                match.AssertHasSoulCard(mainPlayerIdx, key);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCoins(6)
+                    .HasSoulCard(key);
             }
         );
     }
@@ -216,11 +232,14 @@ public class BasicMonsterTests
             key,
             (match, mainPlayerIdx) =>
             {
-                match.AssertCardsInHand(mainPlayerIdx, 2);
-                match.AssertHasSoulCard(mainPlayerIdx, key);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCardsInHand(2)
+                    .HasSoulCard(key);
             }
         );
     }
 }
-                // match.AssertHasCoins(mainPlayerIdx, 1);
-                // match.AssertCardsInHand(mainPlayerIdx, 1);
+                // match.AssertPlayer(mainPlayerIdx)
+                //  .HasCoins(1);
+                // match.AssertPlayer(mainPlayerIdx)
+                //  .HasCardsInHand(1);

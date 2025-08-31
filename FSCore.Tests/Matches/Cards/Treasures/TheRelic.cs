@@ -12,7 +12,8 @@ public class TheRelicTests
             1,
             (match, mainPlayerIdx) =>
             {
-                match.AssertCardsInHand(mainPlayerIdx, 1);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCardsInHand(1);
             }
         );
     }
@@ -30,7 +31,8 @@ public class TheRelicTests
             roll,
             (match, mainPlayerIdx) =>
             {
-                match.AssertCardsInHand(mainPlayerIdx, 0);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCardsInHand(0);
             }
         );
     }

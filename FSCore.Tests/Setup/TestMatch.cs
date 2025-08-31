@@ -45,50 +45,9 @@ public class TestMatch
 
     #region Asserts
 
-    public void AssertIsWinner(int playerIdx)
-    {
-        Match.WinnerIdx.ShouldBe(playerIdx);
-    }
-
-    public void AssertHasLootPlays(int playerIdx, int amount)
-    {
-        var p = Match.GetPlayer(playerIdx);
-        (p.State.LootPlaysForTurn - p.LootPlayed).ShouldBe(amount);
-    }
-
-    public void AssertPlayerHasHealth(int playerIdx, int amount)
-    {
-        Match.GetPlayer(playerIdx).Stats.GetCurrentHealth().ShouldBe(amount);
-    }
-
-    public void AssertPlayerHasDamage(int playerIdx, int amount)
-    {
-        Match.GetPlayer(playerIdx).Stats.Damage.ShouldBe(amount);
-    }
-
-    public void AssertHasAttack(int playerIdx, int amount)
-    {
-        Match.GetPlayer(playerIdx).Stats.State.Attack.ShouldBe(amount);
-    }
-
-    public void AssertPlayerHasAttackOpportunities(int playerIdx, int amount)
-    {
-        Match.GetPlayer(playerIdx).AttackOpportunities.ShouldBe(amount);
-    }
-
-    public void AssertHasCoins(int playerIdx, int amount)
-    {
-        Match.GetPlayer(playerIdx).Coins.ShouldBe(amount);
-    }
-
     public void AssertCoinsInBank(int amount)
     {
         Match.CoinPool.ShouldBe(amount);
-    }
-
-    public void AssertCardsInHand(int playerIdx, int amount)
-    {
-        Match.GetPlayer(playerIdx).Hand.Count.ShouldBe(amount);
     }
 
     public void AssertCardsInLootDeck(int amount)
@@ -99,21 +58,6 @@ public class TestMatch
     public void AssertCardsInLootDiscard(int amount)
     {
         Match.LootDeck.Discard!.Count.ShouldBe(amount);
-    }
-
-    public void AssertHasItemCount(int playerIdx, int amount)
-    {
-        Match.GetPlayer(playerIdx).Items.Count.ShouldBe(amount);
-    }
-
-    public void AssertHasItem(int playerIdx, string key)
-    {
-        Match.GetPlayer(playerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == key).ShouldNotBeNull();
-    }
-
-    public void AssertHasSoulCard(int playerIdx, string key)
-    {
-        Match.GetPlayer(playerIdx).Souls.FirstOrDefault(s => s.Original.Template.Key == key).ShouldNotBeNull();
     }
 
     public PlayerAssertions AssertPlayer(int playerIdx)
@@ -146,5 +90,64 @@ public class PlayerAssertions(Player player)
         Match.CurPlayerIdx.ShouldBe(player.Idx);
         return this;
     }
-    
+
+    public PlayerAssertions HasLootPlays(int amount)
+    {
+        (player.State.LootPlaysForTurn - player.LootPlayed).ShouldBe(amount);
+        return this;
+    }
+
+    public PlayerAssertions HasHealth(int amount)
+    {
+        player.Stats.GetCurrentHealth().ShouldBe(amount);
+        return this;
+    }
+
+    public PlayerAssertions HasDamage(int amount)
+    {
+        player.Stats.Damage.ShouldBe(amount);
+        return this;
+    }
+
+    public PlayerAssertions HasAttack(int amount)
+    {
+        player.Stats.State.Attack.ShouldBe(amount);
+        return this;
+    }
+
+    public PlayerAssertions HasAttackOpportunities(int amount)
+    {
+        player.AttackOpportunities.ShouldBe(amount);
+        return this;
+    }
+
+    public PlayerAssertions HasCoins(int amount)
+    {
+        player.Coins.ShouldBe(amount);
+        return this;
+    }
+
+    public PlayerAssertions HasCardsInHand(int amount)
+    {
+        player.Hand.Count.ShouldBe(amount);
+        return this;
+    }
+
+    public PlayerAssertions HasItemCount(int amount)
+    {
+        player.Items.Count.ShouldBe(amount);
+        return this;
+    }
+
+    public PlayerAssertions HasItem(string key)
+    {
+        player.Items.FirstOrDefault(i => i.Card.Template.Key == key).ShouldNotBeNull();
+        return this;
+    }
+
+    public PlayerAssertions HasSoulCard(string key)
+    {
+        player.Souls.FirstOrDefault(s => s.Original.Template.Key == key).ShouldNotBeNull();
+        return this;
+    }
 }

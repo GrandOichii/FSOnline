@@ -37,9 +37,10 @@ public class TheChariotTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertPlayerHasHealth(mainPlayerIdx, 3);
-        match.AssertHasAttack(mainPlayerIdx, 2);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasHealth(3)
+            .HasAttack(2);
     }
 
 }

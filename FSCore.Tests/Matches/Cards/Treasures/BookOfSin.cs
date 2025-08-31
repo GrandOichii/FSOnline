@@ -45,8 +45,9 @@ public class BookOfSinTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, coins);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCoins(coins);
         match.AssertCoinsInBank(config.CoinPool - coins);
     }
 
@@ -94,8 +95,9 @@ public class BookOfSinTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertCardsInHand(mainPlayerIdx, loot);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCardsInHand(loot);
         match.AssertCardsInLootDeck(lootDeckSize - loot);
     }
 
@@ -140,8 +142,9 @@ public class BookOfSinTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertPlayerHasHealth(mainPlayerIdx, health);
-        match.AssertHasItemCount(mainPlayerIdx, 2);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasHealth(health)
+            .HasItemCount(2);
     }
 }

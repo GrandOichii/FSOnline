@@ -39,7 +39,8 @@ public class BasicCharacterTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasLootPlays(mainPlayerIdx, 2);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasLootPlays(2);
     }
 }

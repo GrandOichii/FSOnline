@@ -47,9 +47,11 @@ public class JawboneTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, initialCoins + expectedGain);
-        match.AssertHasCoins(opponentIdx, initialCoins - 3);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCoins(initialCoins + expectedGain);
+        match.AssertPlayer(opponentIdx)
+            .HasCoins(initialCoins - 3);
     }
 
     [Theory]
@@ -93,7 +95,7 @@ public class JawboneTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
+        match.AssertPlayer(mainPlayerIdx).IsWinner();
     }
 
     // TODO? add tests for stealing from self

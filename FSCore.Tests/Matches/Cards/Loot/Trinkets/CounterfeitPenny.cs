@@ -48,8 +48,9 @@ public class CounterfeitPennyTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, 2 * coinValue + 1);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCoins(2 * coinValue + 1);
         match.AssertCoinsInBank(config.CoinPool - 2 * coinValue - 1);
     }
 }

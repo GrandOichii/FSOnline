@@ -45,7 +45,8 @@ public class ShinyRockTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, 1);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCoins(1);
     }
 }

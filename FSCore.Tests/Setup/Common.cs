@@ -48,7 +48,8 @@ public static class Common
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner();
         asserts.Invoke(match, mainPlayerIdx);
     }
 
@@ -96,7 +97,8 @@ public static class Common
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner();
         asserts.Invoke(match, mainPlayerIdx);
     }
 }

@@ -53,7 +53,7 @@ public class DiceShardTests
         var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == treasureKey);
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
+        match.AssertPlayer(mainPlayerIdx).IsWinner();
         item.ShouldNotBeNull();
         item.Tapped.ShouldBeFalse();
     }
@@ -107,7 +107,8 @@ public class DiceShardTests
         var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == treasureKey);
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner();
         item.ShouldNotBeNull();
         item.Tapped.ShouldBeTrue();
     }

@@ -44,8 +44,9 @@ public class PillsWhiteBlueTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertCardsInHand(mainPlayerIdx, lootAmount);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCardsInHand(lootAmount);
         match.AssertCardsInLootDeck(lootDeckSize - 1 - lootAmount);
     }
 
@@ -90,7 +91,8 @@ public class PillsWhiteBlueTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertCardsInHand(mainPlayerIdx, expectedHandSize);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCardsInHand(expectedHandSize);
     }
 }

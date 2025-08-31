@@ -40,8 +40,9 @@ public class TheStarsTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasItemCount(mainPlayerIdx, 2);
-        match.AssertHasItem(mainPlayerIdx, itemKey);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasItemCount(2)
+            .HasItem(itemKey);
     }
 }

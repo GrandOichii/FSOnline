@@ -10,6 +10,7 @@ public class BlankRuneTests
     {
         // Arrange
         var mainPlayerIdx = 0;
+        var opponentIdx = 1 - mainPlayerIdx;
         var cardKey = "blank-rune-b";
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
@@ -42,9 +43,11 @@ public class BlankRuneTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, coinValue);
-        match.AssertHasCoins(1 - mainPlayerIdx, coinValue);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCoins(coinValue);
+        match.AssertPlayer(opponentIdx)
+            .HasCoins(coinValue);
         match.AssertCoinsInBank(config.CoinPool - 2 * coinValue);
     }
 
@@ -55,6 +58,7 @@ public class BlankRuneTests
     {
         // Arrange
         var mainPlayerIdx = 0;
+        var opponentIdx = 1 - mainPlayerIdx;
         var cardKey = "blank-rune-b";
         var lootDeckSize = 100;
         var config = new MatchConfigBuilder()
@@ -88,9 +92,11 @@ public class BlankRuneTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertCardsInHand(mainPlayerIdx, lootDraw);
-        match.AssertCardsInHand(1 - mainPlayerIdx, lootDraw);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCardsInHand(lootDraw);
+        match.AssertPlayer(opponentIdx)
+            .HasCardsInHand(lootDraw);
         match.AssertCardsInLootDeck(lootDeckSize - 2 * lootDraw - 1);
         match.AssertCardsInLootDiscard(1);
     }

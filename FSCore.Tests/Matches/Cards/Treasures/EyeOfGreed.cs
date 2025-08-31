@@ -12,7 +12,8 @@ public class EyeOfGreedTests
             5,
             (match, mainPlayerIdx) =>
             {
-                match.AssertHasCoins(mainPlayerIdx, 3);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCoins(3);
             }
         );
     }
@@ -30,7 +31,8 @@ public class EyeOfGreedTests
             roll,
             (match, mainPlayerIdx) =>
             {
-                match.AssertHasCoins(mainPlayerIdx, 0);
+                match.AssertPlayer(mainPlayerIdx)
+                    .HasCoins(0);
             }
         );
     }

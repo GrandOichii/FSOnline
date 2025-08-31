@@ -40,8 +40,9 @@ public class CoinCardTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, coinValue);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCoins(coinValue);
         match.AssertCoinsInBank(config.CoinPool - coinValue);
     }
 }

@@ -245,8 +245,9 @@ public class DeclareAttackPPAction : IProgrammedPlayerAction
     public readonly static DeclareAttackPPAction Instance = new();
     private DeclareAttackPPAction() { }
 
-    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
-        return (new DeclareAttackAction().ActionWord(), true);
+        return Task.FromResult((new DeclareAttackAction().ActionWord(), true));
+        // return (new DeclareAttackAction().ActionWord(), true);
     }
 }

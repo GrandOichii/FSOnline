@@ -42,7 +42,7 @@ public class ThePoopTests
         var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == CARD_KEY);
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
+        match.AssertPlayer(mainPlayerIdx).IsWinner();
         item.ShouldNotBeNull();
         item.GetCountersCount().ShouldBe(1);
     }
@@ -86,7 +86,7 @@ public class ThePoopTests
         var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == CARD_KEY);
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
+        match.AssertPlayer(mainPlayerIdx).IsWinner();
         item.ShouldNotBeNull();
         item.GetCountersCount().ShouldBe(0);
     }
@@ -125,7 +125,7 @@ public class ThePoopTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
+        match.AssertPlayer(mainPlayerIdx).IsWinner();
     }
 
     [Fact]
@@ -168,7 +168,8 @@ public class ThePoopTests
         var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == CARD_KEY);
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertPlayerHasDamage(mainPlayerIdx, 0);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasDamage(0);
     }
 }

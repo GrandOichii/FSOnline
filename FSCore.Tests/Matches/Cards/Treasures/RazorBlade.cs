@@ -39,8 +39,9 @@ public class RazorBladeTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertPlayerHasDamage(mainPlayerIdx, 1);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasDamage(1);
     }
 
     [Fact]
@@ -80,7 +81,9 @@ public class RazorBladeTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertPlayerHasDamage(opponentIdx, 1);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner();
+        match.AssertPlayer(opponentIdx)
+            .HasDamage(1);
     }
 }

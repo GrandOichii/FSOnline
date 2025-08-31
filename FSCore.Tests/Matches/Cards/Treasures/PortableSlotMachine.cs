@@ -42,7 +42,7 @@ public class PortableSlotMachineTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
+        match.AssertPlayer(mainPlayerIdx).IsWinner();
     }
 
     [Theory]
@@ -87,8 +87,9 @@ public class PortableSlotMachineTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertCardsInHand(mainPlayerIdx, 1);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCardsInHand(1);
     }
 
     [Theory]
@@ -132,8 +133,9 @@ public class PortableSlotMachineTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, 4);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCoins(4);
     }
 
     [Theory]
@@ -177,8 +179,9 @@ public class PortableSlotMachineTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasCoins(mainPlayerIdx, 0);
-        match.AssertCardsInHand(mainPlayerIdx, 0);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasCoins(0)
+            .HasCardsInHand(0);
     }
 }

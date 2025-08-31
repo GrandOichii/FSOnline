@@ -37,9 +37,10 @@ public class StrengthTests
         await match.Run();
 
         // Assert
-        match.AssertIsWinner(mainPlayerIdx);
-        match.AssertHasAttack(mainPlayerIdx, 2);
-        match.AssertPlayerHasAttackOpportunities(mainPlayerIdx, 2);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner()
+            .HasAttack(2)
+            .HasAttackOpportunities(2);
     }
 
 }
