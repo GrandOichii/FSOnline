@@ -62,7 +62,7 @@ public class RazorBladeTests
             .HasItemAtStart(CARD_KEY)
             .ConfigActions()
                 .ActivateOwnedItem(CARD_KEY, 0)
-                .Choose.Opponent(opponentIdx)
+                .Choose.Player(opponentIdx)
                 .AutoPassUntilEmptyStack()
                 .SetWinner()
                 .Done()

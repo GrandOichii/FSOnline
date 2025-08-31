@@ -25,7 +25,7 @@ public class JawboneTests
             .HasItemAtStart(CARD_KEY)
             .ConfigActions()
                 .ActivateOwnedItem(CARD_KEY)
-                .Choose.Opponent(opponentIdx)
+                .Choose.Player(opponentIdx)
                 .AutoPassUntilEmptyStack()
                 .SetWinner()
                 .Done()

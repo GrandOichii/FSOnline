@@ -161,7 +161,7 @@ public class ChoiceBuilder(ProgrammedPlayerActionsBuilder parent)
         return parent;
     }
 
-    public ProgrammedPlayerActionsBuilder Opponent(int idx)
+    public ProgrammedPlayerActionsBuilder Player(int idx)
     {
         parent.Parent.Result.PlayerChoiceQueue.Enqueue(idx);
         return parent;

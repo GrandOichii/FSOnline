@@ -70,7 +70,7 @@ public class TestMatch
     {
         Match.GetPlayer(playerIdx).Stats.State.Attack.ShouldBe(amount);
     }
-    
+
     public void AssertPlayerHasAttackOpportunities(int playerIdx, int amount)
     {
         Match.GetPlayer(playerIdx).AttackOpportunities.ShouldBe(amount);
@@ -105,7 +105,7 @@ public class TestMatch
     {
         Match.GetPlayer(playerIdx).Items.Count.ShouldBe(amount);
     }
-    
+
     public void AssertHasItem(int playerIdx, string key)
     {
         Match.GetPlayer(playerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == key).ShouldNotBeNull();
@@ -116,5 +116,35 @@ public class TestMatch
         Match.GetPlayer(playerIdx).Souls.FirstOrDefault(s => s.Original.Template.Key == key).ShouldNotBeNull();
     }
 
+    public PlayerAssertions AssertPlayer(int playerIdx)
+    {
+        return new(Match.GetPlayer(playerIdx));
+    }
+
     #endregion
+}
+
+
+public class PlayerAssertions(Player player)
+{
+    private Match Match => player.Match;
+
+    public PlayerAssertions IsWinner()
+    {
+        Match.WinnerIdx.ShouldBe(player.Idx);
+        return this;
+    }
+
+    public PlayerAssertions IsDead()
+    {
+        player.Stats.IsDead.ShouldBeTrue();
+        return this;
+    }
+
+    public PlayerAssertions IsCurrentPlayer()
+    {
+        Match.CurPlayerIdx.ShouldBe(player.Idx);
+        return this;
+    }
+    
 }

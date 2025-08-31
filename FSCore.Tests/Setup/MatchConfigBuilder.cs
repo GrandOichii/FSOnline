@@ -62,6 +62,14 @@ public class MatchConfigBuilder
         return this;
     }
 
+    public MatchConfigBuilder DisableDeathPenalty()
+    {
+        _result.DeathPenaltyCoins = 0;
+        _result.DeathPenaltyLoot = 0;
+        _result.DeathPenaltyItems = 0;
+        return this;
+    }
+
     public MatchConfigBuilder InitialLoot(int amount)
     {
         _result.InitialDealLoot = amount;
