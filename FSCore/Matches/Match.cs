@@ -398,7 +398,7 @@ public class Match {
 
         // bonus souls
         var souls = new List<BonusSoulMatchCard>();
-        var keys = Config.BonusSouls.OrderBy(k => Rng.Next()).Take(5);
+        var keys = Config.BonusSouls.OrderBy(k => Rng.Next()).Take(5); // TODO config amount
         foreach (var key in keys)
             souls.Add(new BonusSoulMatchCard(
                 this,

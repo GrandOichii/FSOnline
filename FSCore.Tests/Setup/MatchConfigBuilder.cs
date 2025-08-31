@@ -6,12 +6,15 @@ public class MatchConfigBuilder
     private readonly LootDeckBuilder _lootBuilder;
     private readonly TreasureDeckBuilder _treasureBuilder;
     private readonly MonsterDeckBuilder _monsterBuilder;
+    private readonly BonusSoulDeckBuilder _bonusSoulsBuilder;
+
 
     public MatchConfigBuilder()
     {
         _lootBuilder = new(this);
         _treasureBuilder = new(this);
         _monsterBuilder = new(this);
+        _bonusSoulsBuilder = new(this);
 
         _result = new()
         {
@@ -55,6 +58,7 @@ public class MatchConfigBuilder
     public LootDeckBuilder ConfigLootDeck() => _lootBuilder;
     public TreasureDeckBuilder ConfigTreasureDeck() => _treasureBuilder;
     public MonsterDeckBuilder ConfigMonsterDeck() => _monsterBuilder;
+    public BonusSoulDeckBuilder ConfigBonusSouls() => _bonusSoulsBuilder;
 
     public MatchConfigBuilder InitialCoins(int amount)
     {
@@ -105,6 +109,7 @@ public class MatchConfigBuilder
         _result.LootCards = _lootBuilder.Cards;
         _result.Treasures = _treasureBuilder.Cards;
         _result.Monsters = _monsterBuilder.Monsters;
+        _result.BonusSouls = _bonusSoulsBuilder.Cards;
         // TODO build decks
 
         return _result;
@@ -135,6 +140,24 @@ public class MonsterDeckBuilder(MatchConfigBuilder parent)
     {
         // TODO? duplicates
         Monsters.Add(key);
+        return this;
+    }
+}
+
+public class BonusSoulDeckBuilder(MatchConfigBuilder parent)
+{
+    public MatchConfigBuilder Done() => parent;
+
+    public List<string> Cards { get; } = [];
+
+    public BonusSoulDeckBuilder Add(string key)
+    {
+        if (Cards.Contains(key))
+        {
+            throw new Exception($"Can't add duplicate bonus soul card (key: {key})");
+        }
+
+        Cards.Add(key);
         return this;
     }
 }
