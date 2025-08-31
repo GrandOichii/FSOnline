@@ -12,6 +12,6 @@ public class Roller : IRoller {
     }
 
     public int Roll() {
-        return _rng.Next();
+        return _rng.Next() % 6 + 1;
     }
 }

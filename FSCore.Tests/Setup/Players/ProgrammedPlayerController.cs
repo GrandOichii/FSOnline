@@ -223,7 +223,7 @@ public class ProgrammedPlayerController : IPlayerController
             return Task.FromResult(options[result]);
         }
 
-        throw new Exception("Choose string queue is empty");
+        throw new Exception($"Choose string queue is empty (hint: \"{hint}\", options: {string.Join(", ", options)})");
     }
 
     public Task<int> ChoosePlayer(Match match, int playerIdx, List<int> options, string hint)
