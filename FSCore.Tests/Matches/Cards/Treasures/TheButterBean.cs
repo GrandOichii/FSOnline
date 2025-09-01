@@ -46,12 +46,12 @@ public class TheButterBeanTests
 
         // Act
         await match.Run();
-        var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == CARD_KEY);
 
         // Assert
-        match.AssertPlayer(mainPlayerIdx).IsWinner();
-        item.ShouldNotBeNull();
-        item.Tapped.ShouldBeTrue();
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner();
+        match.AssertSingleItem(mainPlayerIdx, CARD_KEY)
+            .IsTapped();
     }
 
     [Fact]
@@ -91,11 +91,11 @@ public class TheButterBeanTests
 
         // Act
         await match.Run();
-        var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == CARD_KEY);
 
         // Assert
-        match.AssertPlayer(mainPlayerIdx).IsWinner();
-        item.ShouldNotBeNull();
-        item.Tapped.ShouldBeFalse();
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner();
+        match.AssertSingleItem(mainPlayerIdx, CARD_KEY)
+            .IsUntapped();
     }
 }

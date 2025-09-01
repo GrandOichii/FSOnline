@@ -95,7 +95,8 @@ public class JawboneTests
         await match.Run();
 
         // Assert
-        match.AssertPlayer(mainPlayerIdx).IsWinner();
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner();
     }
 
     // TODO? add tests for stealing from self

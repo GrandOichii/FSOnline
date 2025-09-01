@@ -50,12 +50,12 @@ public class DiceShardTests
 
         // Act
         await match.Run();
-        var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == treasureKey);
 
         // Assert
-        match.AssertPlayer(mainPlayerIdx).IsWinner();
-        item.ShouldNotBeNull();
-        item.Tapped.ShouldBeFalse();
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner();
+        match.AssertSingleItem(mainPlayerIdx, treasureKey)
+            .IsUntapped();
     }
 
     [Fact]
@@ -104,12 +104,11 @@ public class DiceShardTests
 
         // Act
         await match.Run();
-        var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == treasureKey);
 
         // Assert
         match.AssertPlayer(mainPlayerIdx)
             .IsWinner();
-        item.ShouldNotBeNull();
-        item.Tapped.ShouldBeTrue();
+        match.AssertSingleItem(mainPlayerIdx, treasureKey)
+            .IsTapped();
     }
 }

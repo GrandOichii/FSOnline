@@ -65,6 +65,24 @@ public class TestMatch
         return new(Match.GetPlayer(playerIdx));
     }
 
+    public OwnedInPlayMatchCardAssertions AssertStartingItem(int playerIdx)
+    {
+        var player = Match.GetPlayer(playerIdx);
+        var startingItems = player.StartingItems();
+        if (startingItems.Count != 1)
+        {
+            throw new Exception($"Invalid starting item count for {nameof(AssertStartingItem)}: {startingItems.Count} (playerIdx: {playerIdx})");
+        }
+        return new(startingItems[0]);
+    }
+
+    public OwnedInPlayMatchCardAssertions AssertSingleItem(int playerIdx, string itemKey)
+    {
+        var player = Match.GetPlayer(playerIdx);
+        var item = player.Items.Single(i => i.Card.Template.Key == itemKey);
+        return new(item);
+    }
+
     #endregion
 }
 
@@ -148,6 +166,37 @@ public class PlayerAssertions(Player player)
     public PlayerAssertions HasSoulCard(string key)
     {
         player.Souls.FirstOrDefault(s => s.Original.Template.Key == key).ShouldNotBeNull();
+        return this;
+    }
+}
+
+public class InPlayMatchCardAssertions(InPlayMatchCard card)
+{
+    public InPlayMatchCardAssertions HasCounters(int count)
+    {
+        card.GetCountersCount().ShouldBe(count);
+        return this;
+    }
+
+    public InPlayMatchCardAssertions HasNoCounters()
+    {
+        card.GetCountersCount().ShouldBe(0);
+        return this;
+    }
+}
+
+public class OwnedInPlayMatchCardAssertions(OwnedInPlayMatchCard card)
+    : InPlayMatchCardAssertions(card)
+{
+    public OwnedInPlayMatchCardAssertions IsUntapped()
+    {
+        card.Tapped.ShouldBeFalse();
+        return this;
+    }
+
+    public OwnedInPlayMatchCardAssertions IsTapped()
+    {
+        card.Tapped.ShouldBeTrue();
         return this;
     }
 }

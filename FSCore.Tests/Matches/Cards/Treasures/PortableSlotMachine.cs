@@ -42,7 +42,8 @@ public class PortableSlotMachineTests
         await match.Run();
 
         // Assert
-        match.AssertPlayer(mainPlayerIdx).IsWinner();
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner();
     }
 
     [Theory]

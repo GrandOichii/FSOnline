@@ -51,7 +51,6 @@ public class SmelterTests
 
         // Act
         await match.Run();
-        var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == CARD_KEY);
 
         // Assert
         match.AssertPlayer(mainPlayerIdx)

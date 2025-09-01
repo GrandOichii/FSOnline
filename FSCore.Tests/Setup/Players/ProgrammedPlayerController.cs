@@ -172,6 +172,36 @@ public class ChoiceBuilder(ProgrammedPlayerActionsBuilder parent)
         parent.Parent.Result.OptionsQueue.Enqueue(optionIdx);
         return parent;
     }
+
+    public ProgrammedPlayerActionsBuilder StartingItem(int ownerIdx = -1)
+    {
+        parent.Parent.Result.ItemChoiceQueue.Enqueue(
+            new StartingItemChoice(ownerIdx)
+        );
+        return parent;
+    }
+}
+
+public interface IItemChoice
+{
+    public string GetItemIPID(Match match, int playerIdx);
+}
+
+public class StartingItemChoice(int ownerIdx) : IItemChoice
+{
+    public string GetItemIPID(Match match, int playerIdx)
+    {
+        var pIdx = ownerIdx == -1
+            ? playerIdx
+            : ownerIdx;
+        var player = match.GetPlayer(pIdx);
+        var startingItems = player.StartingItems();
+        if (startingItems.Count != 1)
+        {
+            throw new Exception($"Invalid starting item count for {nameof(StartingItemChoice)}: {startingItems.Count} (playerIdx: {playerIdx})");
+        }
+        return startingItems[0].IPID;
+    }
 }
 
 public interface IStackEffectChoice
@@ -213,6 +243,7 @@ public class ProgrammedPlayerController : IPlayerController
     public Queue<int> OptionsQueue { get; } = new();
     public Queue<IStackEffectChoice> StackEffectsQueue { get; } = new();
     public Queue<int> AttackSlotQueue { get; } = new();
+    public Queue<IItemChoice> ItemChoiceQueue { get; } = new();
 
     public Queue<IProgrammedPlayerSetup> Setups { get; } = new();
 
@@ -305,7 +336,17 @@ public class ProgrammedPlayerController : IPlayerController
 
     public Task<string> ChooseItem(Match match, int playerIdx, List<string> options, string hint)
     {
-        throw new NotImplementedException();
+        if (!ItemChoiceQueue.TryDequeue(out var choice))
+        {
+            throw new Exception("Stack effect choice queue is empty");
+        }
+
+        var result = choice.GetItemIPID(match, playerIdx);
+        if (!options.Contains(result))
+        {
+            throw new Exception($"Stack effect with ID {result} is not a valid option for stack effect choice (options: {string.Join(", ", options)})");
+        }
+        return Task.FromResult(result);
     }
 
     public Task<int> ChooseItemToPurchase(Match match, int playerIdx, List<int> options)

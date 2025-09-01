@@ -3,7 +3,7 @@ namespace FSCore.Tests.Matches.Treasures;
 public class ThePoopTests
 {
     private static readonly string CARD_KEY = "the-poop-b";
-    
+
     [Fact]
     public async Task DamageTrigger()
     {
@@ -39,12 +39,12 @@ public class ThePoopTests
 
         // Act
         await match.Run();
-        var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == CARD_KEY);
 
         // Assert
-        match.AssertPlayer(mainPlayerIdx).IsWinner();
-        item.ShouldNotBeNull();
-        item.GetCountersCount().ShouldBe(1);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner();
+        match.AssertSingleItem(mainPlayerIdx, CARD_KEY)
+            .HasCounters(1);
     }
 
     [Fact]
@@ -83,12 +83,12 @@ public class ThePoopTests
 
         // Act
         await match.Run();
-        var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == CARD_KEY);
 
         // Assert
-        match.AssertPlayer(mainPlayerIdx).IsWinner();
-        item.ShouldNotBeNull();
-        item.GetCountersCount().ShouldBe(0);
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner();
+        match.AssertSingleItem(mainPlayerIdx, CARD_KEY)
+            .HasNoCounters();
     }
 
     [Fact]
@@ -125,7 +125,8 @@ public class ThePoopTests
         await match.Run();
 
         // Assert
-        match.AssertPlayer(mainPlayerIdx).IsWinner();
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner();
     }
 
     [Fact]
@@ -165,7 +166,6 @@ public class ThePoopTests
 
         // Act
         await match.Run();
-        var item = match.Match.GetPlayer(mainPlayerIdx).Items.FirstOrDefault(i => i.Card.Template.Key == CARD_KEY);
 
         // Assert
         match.AssertPlayer(mainPlayerIdx)
