@@ -83,6 +83,13 @@ public class TestMatch
         return new(item);
     }
 
+    public MonsterAssertions AssertMonsterInSlot(int slotIdx)
+    {
+        // TODO check for null
+        var slot = Match.MonsterSlots[slotIdx];
+        return new(slot.Card!);
+    }
+
     #endregion
 }
 
@@ -197,6 +204,17 @@ public class OwnedInPlayMatchCardAssertions(OwnedInPlayMatchCard card)
     public OwnedInPlayMatchCardAssertions IsTapped()
     {
         card.Tapped.ShouldBeTrue();
+        return this;
+    }
+}
+
+public class MonsterAssertions(InPlayMatchCard card)
+    : InPlayMatchCardAssertions(card)
+{
+    public MonsterAssertions HasDamage(int amount)
+    {
+        card.Stats.ShouldNotBeNull();
+        card.Stats.Damage.ShouldBe(amount);
         return this;
     }
 }

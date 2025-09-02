@@ -21,7 +21,7 @@ public class RazorBladeTests
             .HasItemAtStart(CARD_KEY)
             .ConfigActions()
                 .ActivateOwnedItem(CARD_KEY, 0)
-                .Choose.Me()
+                    .Choose.Me()
                 .AutoPassUntilEmptyStack()
                 .SetWinner()
                 .Done()

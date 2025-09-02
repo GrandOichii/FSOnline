@@ -157,13 +157,17 @@ public class ChoiceBuilder(ProgrammedPlayerActionsBuilder parent)
 
     public ProgrammedPlayerActionsBuilder Me()
     {
-        parent.Parent.Result.PlayerChoiceQueue.Enqueue(-1);
+        parent.Parent.Result.PlayerOrItemChoiceQueue.Add(
+            new SelfPlayerChoice()
+        );
         return parent;
     }
 
     public ProgrammedPlayerActionsBuilder Player(int idx)
     {
-        parent.Parent.Result.PlayerChoiceQueue.Enqueue(idx);
+        parent.Parent.Result.PlayerOrItemChoiceQueue.Add(
+            new PlayerChoice(idx)
+        );
         return parent;
     }
 
@@ -175,32 +179,18 @@ public class ChoiceBuilder(ProgrammedPlayerActionsBuilder parent)
 
     public ProgrammedPlayerActionsBuilder StartingItem(int ownerIdx = -1)
     {
-        parent.Parent.Result.ItemChoiceQueue.Enqueue(
+        parent.Parent.Result.PlayerOrItemChoiceQueue.Add(
             new StartingItemChoice(ownerIdx)
         );
         return parent;
     }
-}
 
-public interface IItemChoice
-{
-    public string GetItemIPID(Match match, int playerIdx);
-}
-
-public class StartingItemChoice(int ownerIdx) : IItemChoice
-{
-    public string GetItemIPID(Match match, int playerIdx)
+    public ProgrammedPlayerActionsBuilder MonsterInSlot(int slotIdx)
     {
-        var pIdx = ownerIdx == -1
-            ? playerIdx
-            : ownerIdx;
-        var player = match.GetPlayer(pIdx);
-        var startingItems = player.StartingItems();
-        if (startingItems.Count != 1)
-        {
-            throw new Exception($"Invalid starting item count for {nameof(StartingItemChoice)}: {startingItems.Count} (playerIdx: {playerIdx})");
-        }
-        return startingItems[0].IPID;
+        parent.Parent.Result.PlayerOrItemChoiceQueue.Add(
+            new MonsterInSlotChoice(slotIdx)
+        );
+        return parent;
     }
 }
 
@@ -233,19 +223,84 @@ public class DiceRollStackEffectChoice(int idx) : IStackEffectChoice
     }
 }
 
+public interface IPlayerOrItemChoice
+{
+    (TargetType, string) Choose(Match match, int playerIdx);
+}
+
+public class PlayerChoice(int choiceIdx) : IPlayerOrItemChoice
+{
+    public (TargetType, string) Choose(Match match, int playerIdx)
+    {
+        return (TargetType.PLAYER, choiceIdx.ToString());
+    }
+}
+
+public class SelfPlayerChoice : IPlayerOrItemChoice
+{
+    public (TargetType, string) Choose(Match match, int playerIdx)
+    {
+        return (TargetType.PLAYER, playerIdx.ToString());
+    }
+}
+
+public class StartingItemChoice(int ownerIdx) : IPlayerOrItemChoice
+{
+    public (TargetType, string) Choose(Match match, int playerIdx)
+    {
+        var pIdx = ownerIdx == -1
+            ? playerIdx
+            : ownerIdx;
+        var player = match.GetPlayer(pIdx);
+        var startingItems = player.StartingItems();
+        if (startingItems.Count != 1)
+        {
+            throw new Exception($"Invalid starting item count for {nameof(StartingItemChoice)}: {startingItems.Count} (playerIdx: {playerIdx})");
+        }
+        return (TargetType.ITEM, startingItems[0].IPID);
+    }
+}
+
+public class MonsterInSlotChoice(int slotIdx) : IPlayerOrItemChoice
+{
+    public (TargetType, string) Choose(Match match, int playerIdx)
+    {
+        // TODO check for null
+        return (TargetType.ITEM, match.MonsterSlots[slotIdx].Card!.IPID);
+    }
+}
+
+// public class MonsterInSlotChoice : IPlayerOrItemChoice
+// {
+
+// }
+
+
 public class ProgrammedPlayerController : IPlayerController
 {
     public string Character { get; set; } = "";
 
     public Queue<IProgrammedPlayerAction> Actions { get; } = new();
     public Queue<int> HandCardChoiceQueue { get; } = new();
-    public Queue<int> PlayerChoiceQueue { get; } = new();
+    public List<IPlayerOrItemChoice> PlayerOrItemChoiceQueue { get; } = new();
     public Queue<int> OptionsQueue { get; } = new();
     public Queue<IStackEffectChoice> StackEffectsQueue { get; } = new();
     public Queue<int> AttackSlotQueue { get; } = new();
-    public Queue<IItemChoice> ItemChoiceQueue { get; } = new();
 
     public Queue<IProgrammedPlayerSetup> Setups { get; } = new();
+
+    private (TargetType, string) GetPOMChoice(Match match, int playerIdx, List<TargetType> availableTargets)
+    {
+        foreach (var choice in PlayerOrItemChoiceQueue)
+        {
+            var (type, result) = choice.Choose(match, playerIdx);
+            if (!availableTargets.Contains(type)) continue;
+
+            return (type, result);
+        }
+
+        throw new Exception("TODO write a better exception message");
+    }
 
     public Task<string> ChooseString(Match match, int playerIdx, List<string> options, string hint)
     {
@@ -259,15 +314,8 @@ public class ProgrammedPlayerController : IPlayerController
 
     public Task<int> ChoosePlayer(Match match, int playerIdx, List<int> options, string hint)
     {
-        if (PlayerChoiceQueue.TryDequeue(out var result))
-        {
-            if (result == -1)
-                result = playerIdx;
-            // TODO check options
-            return Task.FromResult(result);
-        }
-
-        throw new Exception("Player choice queue is empty");
+        var (_, result) = GetPOMChoice(match, playerIdx, [TargetType.PLAYER]);
+        return Task.FromResult(int.Parse(result));
     }
 
     public Task CleanUp(Match match, int playerIdx)
@@ -336,16 +384,7 @@ public class ProgrammedPlayerController : IPlayerController
 
     public Task<string> ChooseItem(Match match, int playerIdx, List<string> options, string hint)
     {
-        if (!ItemChoiceQueue.TryDequeue(out var choice))
-        {
-            throw new Exception("Stack effect choice queue is empty");
-        }
-
-        var result = choice.GetItemIPID(match, playerIdx);
-        if (!options.Contains(result))
-        {
-            throw new Exception($"Stack effect with ID {result} is not a valid option for stack effect choice (options: {string.Join(", ", options)})");
-        }
+        var (_, result) = GetPOMChoice(match, playerIdx, [TargetType.ITEM]);
         return Task.FromResult(result);
     }
 
@@ -367,7 +406,9 @@ public class ProgrammedPlayerController : IPlayerController
 
     public Task<(TargetType, string)> ChooseMonsterOrPlayer(Match match, int playerIdx, List<string> ipids, List<int> indicies, string hint)
     {
-        throw new NotImplementedException();
+        return Task.FromResult(
+            GetPOMChoice(match, playerIdx, [TargetType.ITEM, TargetType.PLAYER])
+        );
     }
 
     public Task<DeckType> ChooseDeck(Match match, int playerIdx, List<DeckType> options, string hint)
@@ -377,7 +418,8 @@ public class ProgrammedPlayerController : IPlayerController
 
 }
 
-public static class ProgrammedPlayerControllers {
+public static class ProgrammedPlayerControllers
+{
     public static ProgrammedPlayerController AutoPassPlayerController(string characterKey) => new ProgrammedPlayerControllerBuilder(characterKey)
         .ConfigActions()
             .AutoPass()
