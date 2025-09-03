@@ -4,6 +4,50 @@ public class SmelterTests
 {    
     private static readonly string CARD_KEY = "smelter-b";
 
+    [Fact]
+    public async Task CantActivate()
+    {
+        // Arrange
+        var mainPlayerIdx = 0;
+        var config = new MatchConfigBuilder()
+            .InitialCoins(0)
+            .InitialLoot(0)
+            .LootStepLootAmount(0)
+            .LootPlay(0)
+            .InitialTreasureSlots(0)
+            .ConfigLootDeck().Add("a-penny-b", 3).Done()
+            .Build();
+
+        var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
+            .HasItemAtStart(CARD_KEY)
+            .ConfigActions()
+                .AssertIsCurrentPlayer()
+                .AssertCantActivateItem(CARD_KEY)
+                .AutoPassUntilEmptyStack()
+                .SetWinner()
+                .Done()
+            .Build();
+
+        var roller = new ProgrammedRollerBuilder()
+            .Build();
+
+        List<ProgrammedPlayerController> players = [
+            mainPlayer,
+            ProgrammedPlayerControllers.AutoPassPlayerController("judas-b"),
+        ];
+
+        var match = new TestMatch(config, mainPlayerIdx, roller: roller);
+        await match.AddPlayers(players);
+
+        // Act
+        await match.Run();
+
+        // Assert
+        match.AssertPlayer(mainPlayerIdx)
+            .IsWinner();
+    }
+
+
     [Theory]
     [InlineData(1, 3)]
     [InlineData(2, 6)]

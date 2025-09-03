@@ -175,6 +175,12 @@ public class PlayerAssertions(Player player)
         player.Souls.FirstOrDefault(s => s.Original.Template.Key == key).ShouldNotBeNull();
         return this;
     }
+
+    public PlayerAssertions DoesntHaveSoulCard(string key)
+    {
+        player.Souls.FirstOrDefault(s => s.Original.Template.Key == key).ShouldBeNull();
+        return this;
+    }
 }
 
 public class InPlayMatchCardAssertions(InPlayMatchCard card)
