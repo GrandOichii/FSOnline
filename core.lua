@@ -1515,15 +1515,21 @@ function FS.B.Card()
         result.Target._AddFizzleCheck(playerFilterFunc, function (player)
             return tostring(player.Idx)
         end, FS.TargetTypes.PLAYER)
-        result.Target._AddLootCheck(playerFilterFunc)
 
-        monsterFilterFunc = monsterFilterFunc or function (monster)
+        monsterFilterFunc = monsterFilterFunc or function (player)
             return FS.F.Monsters():Do()
         end
         result.Target._AddFizzleCheck(monsterFilterFunc, function (monster)
             return monster.IPID
         end, FS.TargetTypes.IN_PLAY_CARD)
-        result.Target._AddLootCheck(monsterFilterFunc)
+
+        result.Target._AddLootCheck(function (player) 
+            local result = playerFilterFunc(player)
+            if #result == 0 then
+                return monsterFilterFunc(player)
+            end
+            return result
+        end)
 
         result.lootTargets[#result.lootTargets+1] = function (me, player, stackEffect)
             local pOptions = playerFilterFunc(player)

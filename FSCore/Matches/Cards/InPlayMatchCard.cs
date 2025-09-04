@@ -1,6 +1,7 @@
 namespace FSCore.Matches.Cards;
 
-public class InPlayMatchCard : IStateModifier {
+public class InPlayMatchCard : IStateModifier
+{
     /// <summary>
     /// Original card
     /// </summary>

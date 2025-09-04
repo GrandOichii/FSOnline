@@ -5,7 +5,8 @@ namespace FSCore.Matches.Players;
 /// <summary>
 /// Participant of a match
 /// </summary>
-public class Player : IStateModifier {
+public class Player : IStateModifier
+{
     /// <summary>
     /// Setup-list of actions a player can make
     /// </summary>

@@ -104,6 +104,11 @@ public class PlayerAssertions(Player player)
         return this;
     }
 
+    public PlayerAssertions HasNoDamagePreventors() {
+        player.Stats.DamagePreventors.Count.ShouldBe(0);
+        return this;
+    }
+
     public PlayerAssertions IsDead()
     {
         player.Stats.IsDead.ShouldBeTrue();
@@ -131,6 +136,12 @@ public class PlayerAssertions(Player player)
     public PlayerAssertions HasDamage(int amount)
     {
         player.Stats.Damage.ShouldBe(amount);
+        return this;
+    }
+
+    public PlayerAssertions HasNoDamage()
+    {
+        player.Stats.Damage.ShouldBe(0);
         return this;
     }
 
@@ -221,6 +232,19 @@ public class MonsterAssertions(InPlayMatchCard card)
     {
         card.Stats.ShouldNotBeNull();
         card.Stats.Damage.ShouldBe(amount);
+        return this;
+    }
+
+    public MonsterAssertions HasNoDamage()
+    {
+        card.Stats.ShouldNotBeNull();
+        card.Stats.Damage.ShouldBe(0);
+        return this;
+    }
+
+    public MonsterAssertions HasNoDamagePreventors() {
+        card.Stats.ShouldNotBeNull();
+        card.Stats.DamagePreventors.Count.ShouldBe(0);
         return this;
     }
 }
