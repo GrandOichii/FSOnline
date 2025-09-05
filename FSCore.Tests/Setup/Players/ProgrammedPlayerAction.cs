@@ -251,3 +251,23 @@ public class DeclareAttackPPAction : IProgrammedPlayerAction
         // return (new DeclareAttackAction().ActionWord(), true);
     }
 }
+
+public class GainCoinsPPAction(int coins) : IProgrammedPlayerAction
+{
+    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    {
+        var player = match.GetPlayer(playerIdx);
+        await player.GainCoins(coins);
+        return (IProgrammedPlayerAction.NEXT_ACTION, true);
+    }
+}
+
+public class LootCardsPPAction(int amount) : IProgrammedPlayerAction
+{
+    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    {
+        var player = match.GetPlayer(playerIdx);
+        await player.LootCards(amount, LootReasons.Empty(match.LState));
+        return (IProgrammedPlayerAction.NEXT_ACTION, true);
+    }
+}

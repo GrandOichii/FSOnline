@@ -137,6 +137,18 @@ public class ProgrammedPlayerActionsBuilder
         Parent.Result.AttackSlotQueue.Enqueue(monsterSlot);
         return this;
     }
+
+    public ProgrammedPlayerActionsBuilder GainCoins(int amount)
+    {
+        Parent.Result.Actions.Enqueue(new GainCoinsPPAction(amount));
+        return this;
+    }
+
+    public ProgrammedPlayerActionsBuilder LootCards(int amount)
+    {
+        Parent.Result.Actions.Enqueue(new LootCardsPPAction(amount));
+        return this;
+    }
 }
 
 public class ChoiceBuilder(ProgrammedPlayerActionsBuilder parent)

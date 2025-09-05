@@ -1,6 +1,11 @@
 namespace FSCore.Matches.Players;
 
 public static class LootReasons {
+    public static LuaTable Empty(Lua state) 
+        => LuaUtility.CreateTable(state, new() {
+            {"type", "empty"},
+        });
+
     public static LuaTable LootPhase(Lua state) 
         => LuaUtility.CreateTable(state, new() {
             {"type", "loot_phase"},
