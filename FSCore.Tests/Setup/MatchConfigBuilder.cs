@@ -2,7 +2,7 @@ namespace FSCore.Tests.Setup;
 
 public class MatchConfigBuilder
 {
-    private MatchConfig _result; // TODO set default
+    private MatchConfig _result;
     private readonly LootDeckBuilder _lootBuilder;
     private readonly TreasureDeckBuilder _treasureBuilder;
     private readonly MonsterDeckBuilder _monsterBuilder;

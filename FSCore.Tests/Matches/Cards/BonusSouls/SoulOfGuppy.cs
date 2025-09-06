@@ -1,4 +1,4 @@
-namespace FSCore.Tests.Matches.BonusSouls;
+namespace FSCore.Tests.Matches.Cards.BonusSouls;
 
 public class SoulOfGuppyTests
 {

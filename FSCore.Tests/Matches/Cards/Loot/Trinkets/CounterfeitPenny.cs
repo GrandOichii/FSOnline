@@ -1,4 +1,4 @@
-namespace FSCore.Tests.Matches.Loot.Trinkets;
+namespace FSCore.Tests.Matches.Cards.Loot.Trinkets;
 
 public class CounterfeitPennyTests
 {

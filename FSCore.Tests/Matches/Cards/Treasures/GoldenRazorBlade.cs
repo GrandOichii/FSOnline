@@ -1,4 +1,4 @@
-namespace FSCore.Tests.Matches.Loot;
+namespace FSCore.Tests.Matches.Cards.Treasures;
 
 public class GoldenRazorTests
 {
@@ -9,7 +9,6 @@ public class GoldenRazorTests
     {
         // Arrange
         var mainPlayerIdx = 0;
-        var lootDeckSize = 10;
         var config = new MatchConfigBuilder()
             .InitialCoins(4)
             .InitialLoot(0)
@@ -48,7 +47,6 @@ public class GoldenRazorTests
     {
         // Arrange
         var mainPlayerIdx = 0;
-        var lootDeckSize = 10;
         var config = new MatchConfigBuilder()
             .InitialCoins(10)
             .InitialLoot(0)
@@ -91,7 +89,6 @@ public class GoldenRazorTests
         // Arrange
         var mainPlayerIdx = 0;
         var opponentIdx = 1 - mainPlayerIdx;
-        var lootDeckSize = 10;
         var config = new MatchConfigBuilder()
             .InitialCoins(10)
             .InitialLoot(0)

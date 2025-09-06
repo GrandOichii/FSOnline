@@ -1,4 +1,4 @@
-namespace FSCore.Tests.Matches.Monsters;
+namespace FSCore.Tests.Matches.Cards.Monsters;
 
 public class BasicMonsterTests
 {

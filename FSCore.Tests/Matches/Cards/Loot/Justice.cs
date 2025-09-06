@@ -1,5 +1,5 @@
 // TODO uncomment after implementing
-// namespace FSCore.Tests.Matches.Loot;
+// namespace FSCore.Tests.Matches.Cards.Loot;
 
 // public class JusticeTests
 // {

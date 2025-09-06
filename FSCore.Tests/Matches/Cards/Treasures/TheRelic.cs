@@ -1,4 +1,4 @@
-namespace FSCore.Tests.Matches.Treasures;
+namespace FSCore.Tests.Matches.Cards.Treasures;
 
 public class TheRelicTests
 {

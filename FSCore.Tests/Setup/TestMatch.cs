@@ -1,4 +1,3 @@
-
 namespace FSCore.Tests.Setup;
 
 public class TestMatch
