@@ -1,5 +1,3 @@
--- status: not tested
-
 function _Create()
     return FS.B.Loot('Choose a player or monster, then roll: deal damage to that target equal to the number rolled.')
         .Target:MonsterOrPlayer()

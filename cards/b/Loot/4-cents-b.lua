@@ -1,5 +1,3 @@
--- status: implemented
-
 function _Create()
     return FS.B.Loot('Gain 4{cent}.')
         .Effect:Common(

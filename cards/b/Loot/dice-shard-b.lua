@@ -1,5 +1,3 @@
--- status: implemented
-
 function _Create()
     return FS.B.Loot('Choose a dice roll. Its controller rerolls it.')
         .Target:StackEffect(

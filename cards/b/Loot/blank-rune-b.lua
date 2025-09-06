@@ -1,5 +1,3 @@
--- status: implemented
-
 function _Create()
     local ff = function (stackEffect)
         return FS.F.Players():Do(stackEffect.OwnerIdx)

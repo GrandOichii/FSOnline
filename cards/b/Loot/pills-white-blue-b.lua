@@ -1,5 +1,3 @@
--- status: not tested
-
 function _Create()
     return FS.B.Loot('Roll-\n1-2: Loot 1.\n3-4: Loot 3.\n5-6: Discard 1 loot card.')
         .Effect:Roll(FS.C.Effect.SwitchRoll(0,

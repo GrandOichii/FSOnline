@@ -1,4 +1,3 @@
--- status: not tested
 -- TODO too low-level
 
 function _Create()

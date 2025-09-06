@@ -1,4 +1,4 @@
-namespace FSCore.Tests.Matches.Characters;
+namespace FSCore.Tests.Matches.Cards.Characters;
 
 public class BasicCharacterTests
 {

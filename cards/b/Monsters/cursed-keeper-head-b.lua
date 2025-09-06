@@ -1,5 +1,3 @@
--- status: implemented
-
 function _Create()
     return FS.B.Monster()
         :TriggeredAbility(

@@ -1,5 +1,3 @@
--- status: not tested
-
 function _Create()
     return FS.B.Loot('A player gains +1{attack} till the end of turn and may attack an additional time.')
         .Target:Player()

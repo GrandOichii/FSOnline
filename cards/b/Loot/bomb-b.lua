@@ -1,5 +1,3 @@
--- status: implemented
-
 function _Create()
     return FS.B.Loot('Deal 1 damage to a Monster or player.')
         .Target:MonsterOrPlayer()

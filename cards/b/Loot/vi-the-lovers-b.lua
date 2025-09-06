@@ -1,5 +1,3 @@
--- status: not tested
-
 function _Create()
     return FS.B.Loot('A player gains +2{health} till the end of turn.')
         .Target:Player()

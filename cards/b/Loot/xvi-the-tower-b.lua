@@ -1,5 +1,3 @@
--- status: not tested
-
 function _Create()
     return FS.B.Loot('Toll:\n1-2: All players take 1 damage.\n3-4: All monsters take 1 damage.\n5-6: All players take 2 damage.')
         .Effect:Roll(

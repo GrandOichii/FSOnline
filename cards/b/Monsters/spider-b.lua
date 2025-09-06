@@ -1,5 +1,3 @@
--- status: not tested
-
 function _Create()
     return FS.B.Monster()
         :Reward(
