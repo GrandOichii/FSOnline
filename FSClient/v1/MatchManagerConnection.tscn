@@ -64,7 +64,7 @@ layout_mode = 2
 [node name="BotCount" type="SpinBox" parent="ConnectPanel/VBoxContainer/VBoxContainer" groups=["create_control"]]
 unique_name_in_owner = true
 layout_mode = 2
-value = 1.0
+value = 3.0
 prefix = "Bot count: "
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="ConnectPanel/VBoxContainer"]

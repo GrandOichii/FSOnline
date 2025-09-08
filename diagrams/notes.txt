@@ -1,0 +1,39 @@
+- Frontend
+    - FSClient
+        - Auth
+        - Matches
+            - Match creation
+            - Match connection
+            - Configurations
+                - Loading
+                - Storage
+                - Last storage
+                - Editing
+            - (ADMIN) Playback
+            - Gameplay
+                - Basic gameplay
+                    - Play cards
+                    - Activate cards
+                    - Purchase cards
+                    - Attack monsters
+                    - Bribes
+                - Chat
+                    - @all
+                    - @specific player
+        - Card viewer
+            - Card filtering
+            - (ADMIN) Editing
+                - Script editing
+        - Settings
+            - Card images
+
+- Backend
+    - Cards
+        - GET
+        - (ADMIN) POST
+        - (ADMIN) PUT
+        - (ADMIN) DELETE
+    - Matches
+        - Connect
+        - Create
+        - (ADMIN) fetch finished matches

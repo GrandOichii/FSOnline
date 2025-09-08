@@ -13,24 +13,24 @@ services:
       - fso-db-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
-  message-broker:
-    image: rabbitmq:3-management-alpine
-    container_name: fso-messages
-    ports:
-      - 5672:5672 # queue
-      - 15672:15672 # web UI
-  logs-visualizer:
-    container_name: fso-logs-visualizer
-    image: grafana/grafana-oss
-    ports:
-      - 3000:3000
-  time-db:
-    image: influxdb:2
-    container_name: fso-time-db
-    ports:
-      - 8086:8086
-    volumes:
-      - time-db-data:/var/lib/influxdb2
+  # message-broker:
+  #   image: rabbitmq:3-management-alpine
+  #   container_name: fso-messages
+  #   ports:
+  #     - 5672:5672
+  #     - 15672:15672 # web UI
+  # logs-visualizer:
+  #   container_name: fso-logs-visualizer
+  #   image: grafana/grafana-oss
+  #   ports:
+  #     - 3000:3000
+  # time-db:
+  #   image: influxdb:2
+  #   container_name: fso-time-db
+  #   ports:
+  #     - 8086:8086
+  #   volumes:
+  #     - time-db-data:/var/lib/influxdb2
 
   # cache:
   #   container_name: fso-cache
