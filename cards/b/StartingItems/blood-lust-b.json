@@ -2,6 +2,6 @@
     "Key": "blood-lust-b",
     "Name": "Blood Lust",
     "Type": "StartingItem",
-    "Text": "Add +1{attack} to a player or monster till the end of turn.",
-    "Script": "blood-lust-b"
+    "Text": "{T}: Add +1{attack} to a player or monster till the end of turn.\n-Eternal-",
+    "Script": "blood-lust-b.lua"
 }

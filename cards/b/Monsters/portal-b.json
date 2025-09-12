@@ -1,0 +1,11 @@
+{
+    "Key": "portal-b",
+    "Name": "Portal",
+    "Type": "Monster",
+    "Health": 2,
+    "Evasion": 4,
+    "Attack": 1,
+    "Text": "When this dies, you must make an additional attack this turn.",
+    "RewardsText": "3{cent}",
+    "Script": "portal-b.lua"
+}

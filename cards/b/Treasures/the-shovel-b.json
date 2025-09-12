@@ -1,0 +1,7 @@
+{
+    "Key": "the-shovel-b",
+    "Name": "The Shovel",
+    "Type": "Item",
+    "Text": "{T}: Put any discarded monster back on top of the monster deck.",
+    "Script": "the-shovel-b.lua"
+}

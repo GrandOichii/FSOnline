@@ -1,0 +1,7 @@
+{
+    "Key": "brimstone-b",
+    "Name": "Brimstone",
+    "Type": "Item",
+    "Text": "+1{attack}\nEach time you deal damage to a monster, also deal 1 damage to another player.",
+    "Script": "brimstone-b.lua"
+}

@@ -1,0 +1,7 @@
+{
+    "Key": "the-curse-b",
+    "Name": "The Curse",
+    "Type": "StartingItem",
+    "Text": "{T}: Put the top card of any discard pile on top of its deck.\n-Eternal-",
+    "Script": "the-curse-b.lua"
+}

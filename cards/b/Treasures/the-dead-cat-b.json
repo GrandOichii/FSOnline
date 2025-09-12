@@ -1,0 +1,7 @@
+{
+    "Key": "the-dead-cat-b",
+    "Name": "The Dead Cat",
+    "Type": "Item",
+    "Text": "This item starts with 9 counters.\nEach time you take damage, remove that many counters from this and prevent that damage.\nThis counts as a guppy item.",
+    "Script": "the-dead-cat-b.lua"
+}

@@ -1,0 +1,11 @@
+{
+    "Key": "holy-dinga-b",
+    "Name": "Holy Dinga",
+    "Type": "Monster",
+    "Health": 3,
+    "Evasion": 3,
+    "Attack": 1,
+    "Text": "When any player rolls a {roll:6}, they heal 1{heath}.",
+    "RewardsText": "Roll: Gain X{cent}",
+    "Script": "holy-dinga-b.lua"
+}

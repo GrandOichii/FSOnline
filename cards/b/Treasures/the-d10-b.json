@@ -1,0 +1,7 @@
+{
+    "Key": "the-d10-b",
+    "Name": "The D10",
+    "Type": "Item",
+    "Text": "When anyone rolls a {rools:3}, you may put the top card of the monster deck info an active slot that isn't being attacked.",
+    "Script": "the-d10-b.lua"
+}

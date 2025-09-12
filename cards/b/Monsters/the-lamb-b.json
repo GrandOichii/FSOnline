@@ -1,0 +1,12 @@
+{
+    "Key": "the-lamb-b",
+    "Name": "The Lamb",
+    "Type": "Monster",
+    "Health": 6,
+    "Evasion": 3,
+    "Attack": 6,
+    "Text": "When this dies, you may force a player to give you a soul card.",
+    "RewardsText": "3 {cent}",
+    "Script": "the-lamb-b.lua",
+    "SoulValue": 1
+}

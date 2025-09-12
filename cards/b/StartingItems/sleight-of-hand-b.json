@@ -2,6 +2,6 @@
     "Key": "sleight-of-hand-b",
     "Name": "Sleight of Hand",
     "Type": "StartingItem",
-    "Text": "{T}: Look at the top 3 cards of a deck. Put them back in any order.",
+    "Text": "{T}: Look at the top 3 cards of a deck. Put them back in any order.\n-Eternal-",
     "Script": "sleight-of-hand-b.lua"
 }

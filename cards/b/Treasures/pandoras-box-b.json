@@ -1,0 +1,8 @@
+{
+    "Key": "pandoras-box-b",
+    "Name": "Pandora's Box",
+    "Type": "Item",
+    "Text": "{T}: Destroy this, then roll:\n1. Gain 1{cent}.\n2: Gain 6{cent}.\n3: Kill a monster\n4: Loot 3.\n5: Gain 9{cent}.\n6: This decomes a soul, gait it.",
+    "SoulValue": 1,
+    "Script": "pandoras-box-b.lua"
+}

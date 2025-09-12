@@ -1,0 +1,7 @@
+{
+    "Key": "mini-mush-b",
+    "Name": "Mini Mush",
+    "Type": "Item",
+    "Text": "{T}: Subtract up to 2 from any dice roll.",
+    "Script": "mini-mush-b.lua"
+}

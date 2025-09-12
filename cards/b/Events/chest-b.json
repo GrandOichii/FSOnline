@@ -1,0 +1,7 @@
+{
+    "Key": "chest-b",
+    "Name": "Chest",
+    "Type": "Event",
+    "Text": "Roll:\n1-2: Gain 1{cent}.\n3-4: Gain 3{cent}.\n5-6: Gain 6{cent}.",
+    "Script": "chest-b.lua"
+}

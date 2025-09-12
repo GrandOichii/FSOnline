@@ -2,6 +2,6 @@
     "Key": "the-d6-b",
     "Name": "The D6",
     "Type": "StartingItem",
-    "Text": "{T}: Force a player to reroll any dice roll.",
+    "Text": "{T}: Force a player to reroll any dice roll.\n-Eternal-",
     "Script": "the-d6-b.lua"
 }

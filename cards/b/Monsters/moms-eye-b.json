@@ -1,0 +1,11 @@
+{
+    "Key": "moms-eye-b",
+    "Name": "Mom's Eye",
+    "Type": "Monster",
+    "Health": 1,
+    "Evasion": 4,
+    "Attack": 2,
+    "Text": "When this dies, you may look at a player's hand.",
+    "RewardsText": "Loot 1",
+    "Script": "moms-eye-b.lua"
+}

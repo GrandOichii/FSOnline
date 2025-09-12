@@ -1,0 +1,7 @@
+{
+    "Key": "compost-b",
+    "Name": "Compost",
+    "Type": "Item",
+    "Text": "{T}: The next time a player would loot, they loot from the top of the loot deck's discard pile instead.",
+    "Script": "compost-b.lua"
+}

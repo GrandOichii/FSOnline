@@ -2,6 +2,6 @@
     "Key": "book-of-belial-b",
     "Name": "Book of Belial",
     "Type": "StartingItem",
-    "Text": "{T}: Add or subtract 1 from any dice roll.",
+    "Text": "{T}: Add or subtract 1 from any dice roll.\n-Eternal-",
     "Script": "book-of-belial-b.lua"
 }

@@ -2,6 +2,6 @@
     "Key": "lazarus-rags-b",
     "Name": "Lazarus' Rags",
     "Type": "StartingItem",
-    "Text": "Each time you die, after paying penalties: gain +1 Treasure.",
+    "Text": "Each time you die, after paying penalties: gain +1 Treasure.\n-Eternal-",
     "Script": "lazarus-rags-b.lua"
 }

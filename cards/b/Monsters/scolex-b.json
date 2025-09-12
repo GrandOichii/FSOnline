@@ -1,0 +1,12 @@
+{
+    "Key": "scolex-b",
+    "Name": "Scolex",
+    "Type": "Monster",
+    "Health": 3,
+    "Evasion": 5,
+    "Attack": 2,
+    "Text": "Each time this deals damage to a player, they also discard a loot card.",
+    "RewardsText": "+1 Treasure",
+    "SoulValue": 1,
+    "Script": "scolex-b.lua"
+}

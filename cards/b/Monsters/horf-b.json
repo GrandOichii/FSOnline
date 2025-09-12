@@ -1,0 +1,11 @@
+{
+    "Key": "horf-b",
+    "Name": "Horf",
+    "Type": "Monster",
+    "Health": 1,
+    "Evasion": 4,
+    "Attack": 1,
+    "Text": "Each time the attacking player rolls a {roll:2}, this deals an additional 1 damage to them.",
+    "RewardsText": "3{cent}",
+    "Script": "horf-b.lua"
+}

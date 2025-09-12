@@ -1,0 +1,7 @@
+{
+    "Key": "blank-card-b",
+    "Name": "Blank Card",
+    "Type": "Item",
+    "Text": "{T}: Double the effect of the next loot card you play this turn.",
+    "Script": "blank-card-b.lua"
+}

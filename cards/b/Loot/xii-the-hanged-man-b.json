@@ -1,0 +1,7 @@
+{
+    "Key": "xii-the-hanged-man-b",
+    "Name": "XII. The Hanged Man",
+    "Type": "Loot",
+    "Text": "Look at the top card of all decks, you may put those cards on the bottom of their decks, then loot 2.",
+    "Script": "xii-the-hanged-man-b.lua"
+}

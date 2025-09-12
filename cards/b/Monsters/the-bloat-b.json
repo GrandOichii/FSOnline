@@ -1,0 +1,12 @@
+{
+    "Key": "the-bloat-b",
+    "Name": "The Bloat",
+    "Type": "Monster",
+    "Health": 4,
+    "Evasion": 4,
+    "Attack": 2,
+    "Text": "Each time this deals damage, it also deals 1 damage to all other players.",
+    "RewardsText": "+1 Treasure",
+    "SoulValue": 1,
+    "Script": "the-bloat-b.lua"
+}

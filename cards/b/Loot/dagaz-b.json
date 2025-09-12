@@ -1,0 +1,7 @@
+{
+    "Key": "dagaz-b",
+    "Name": "Dagaz",
+    "Type": "Loot",
+    "Text": "Choose one:\nDestroy a curse.\nPrevent 1 damage to any player.",
+    "Script": "dagaz-b.lua"
+}

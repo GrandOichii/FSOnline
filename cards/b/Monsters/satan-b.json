@@ -1,0 +1,12 @@
+{
+    "Key": "satan-b",
+    "Name": "Satan!",
+    "Type": "Monster",
+    "Health": 6,
+    "Evasion": 4,
+    "Attack": 2,
+    "Text": "Each time the attacking player rolls a 6, they must kill a player.",
+    "RewardsText": "+2 treasure",
+    "Script": "satan-b.lua",
+    "SoulValue": 2
+}

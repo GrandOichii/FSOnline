@@ -1,0 +1,12 @@
+{
+    "Key": "mega-fatty-b",
+    "Name": "Mega Fatty",
+    "Type": "Monster",
+    "Health": 3,
+    "Evasion": 3,
+    "Attack": 1,
+    "Text": "Each time this deals damage, it heals 1{health}.",
+    "RewardsText": "Loot 2",
+    "SoulValue": 1,
+    "Script": "mega-fatty-b.lua"
+}

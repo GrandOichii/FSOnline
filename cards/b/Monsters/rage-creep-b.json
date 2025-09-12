@@ -1,0 +1,11 @@
+{
+    "Key": "rage-creep-b",
+    "Name": "Rage Creep",
+    "Type": "Monster",
+    "Health": 1,
+    "Evasion": 5,
+    "Attack": 1,
+    "Text": "Each time this deals damage, it also deals damage to the player to your right.",
+    "RewardsText": "Loot 2",
+    "Script": "rage-creep-b.lua"
+}

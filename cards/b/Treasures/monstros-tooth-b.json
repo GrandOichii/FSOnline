@@ -1,0 +1,7 @@
+{
+    "Key": "monstros-tooth-b",
+    "Name": "Monstro's Tooth",
+    "Type": "Item",
+    "Text": "At the start of your turn, choose a player at random. That player destroys an item they own of their choosing.",
+    "Script": "monstros-tooth-b.lua"
+}

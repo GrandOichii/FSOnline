@@ -1,0 +1,7 @@
+{
+    "Key": "0-the-fool-b",
+    "Name": "0. The Fool",
+    "Type": "Loot",
+    "Text": "End a player's turn.\nCancel any effects or loot cards that haven't resolved.",
+    "Script": "0-the-fool-b.lua"
+}

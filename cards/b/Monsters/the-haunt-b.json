@@ -1,0 +1,12 @@
+{
+    "Key": "the-haunt-b",
+    "Name": "The Haunt",
+    "Type": "Monster",
+    "Health": 3,
+    "Evasion": 4,
+    "Attack": 1,
+    "Text": "Each time this takes 2 damage, it gains +1{evasion} till the end of turn.",
+    "RewardsText": "+1 Treasure",
+    "SoulValue": 1,
+    "Script": "the-haunt-b.lua"
+}

@@ -1,0 +1,7 @@
+{
+    "Key": "decoy-b",
+    "Name": "Decoy",
+    "Type": "Item",
+    "Text": "{T}: Swap ths item with any non-eternal item a player controls.",
+    "Script": "decoy-b.lua"
+}
