@@ -1,0 +1,11 @@
+{
+    "Key": "holy-keeper-head-b",
+    "Name": "Holy Keeper Head",
+    "Type": "Monster",
+    "Text": "When any player rolls a {roll:4}, they gain 2{cent}.",
+    "Health": 2,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "Roll: Gain X{cent}",
+    "Script": "holy-keeper-head-b.lua"
+}

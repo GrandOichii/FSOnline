@@ -1,0 +1,7 @@
+{
+    "Key": "bobs-brain-b",
+    "Name": "Bob's Brain",
+    "Type": "Item",
+    "Text": "When you start an attack, roll:\n1-2: Deal 1 damage to an active monster.\n3-4: Deal 1 damage to a player.\n5-6: Deal 1 damage to yourself.",
+    "Script": "bobs-brain-b.lua"
+}

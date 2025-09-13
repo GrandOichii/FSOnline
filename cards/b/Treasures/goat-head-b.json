@@ -1,0 +1,7 @@
+{
+    "Key": "goat-head-b",
+    "Name": "Goat Head",
+    "Type": "Item",
+    "Text": "At the end of your turn, you may discard any number of loot cards, then loot equal to the number of cards discarded this way.",
+    "Script": "goat-head-b.lua"
+}

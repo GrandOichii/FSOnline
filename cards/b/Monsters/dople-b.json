@@ -1,0 +1,11 @@
+{
+    "Key": "dople-b",
+    "Name": "Dople",
+    "Type": "Monster",
+    "Health": 2,
+    "Evasion": 4,
+    "Attack": 2,
+    "Text": "Any damage deal to this is also dealt to the player to your right.",
+    "RewardsText": "7{cent}",
+    "Script": "dople-b.lua"
+}

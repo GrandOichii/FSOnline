@@ -1,0 +1,7 @@
+{
+    "Key": "curved-horn-b",
+    "Name": "Curved Horn",
+    "Type": "Loot",
+    "Text": "Gain +1{attack} for the first attack roll of your turn.\n-Trinket-",
+    "Script": "curved-horn-b.lua"
+}

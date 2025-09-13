@@ -1,0 +1,12 @@
+{
+    "Key": "mask-of-infamy-b",
+    "Name": "Mask of Infamy",
+    "Type": "Monster",
+    "Text": "When this is at 1{health}, it gains +2{evasion} till the end of turn.",
+    "Script": "mask-of-infamy-b.lua",
+    "Health": 4,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "+1 Treasure",
+    "SoulValue": 1
+}

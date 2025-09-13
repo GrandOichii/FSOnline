@@ -1,0 +1,7 @@
+{
+    "Key": "tarot-cloth-b",
+    "Name": "Tarot Cloth",
+    "Type": "Item",
+    "Text": "When anyone rolls a {roll:4}, that player must choose a loot card in their hand and give it to you.",
+    "Script": "tarot-cloth-b.lua"
+}

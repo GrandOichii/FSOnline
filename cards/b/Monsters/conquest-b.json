@@ -1,0 +1,12 @@
+{
+    "Key": "conquest-b",
+    "Name": "Conquest",
+    "Type": "Monster",
+    "Health": 2,
+    "Evasion": 3,
+    "Attack": 1,
+    "Text": "When this dies, the active player must make an additional attack.",
+    "RewardsText": "6{cent}",
+    "SoulValue": 1,
+    "Script": "conquest-b.lua"
+}

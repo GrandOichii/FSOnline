@@ -1,0 +1,7 @@
+{
+    "Key": "moms-shovel-b",
+    "Name": "Mom's Shovel",
+    "Type": "Item",
+    "Text": "This enters play deactivated.\n{T}, Destroy this:\nSteal a soul card from a player.",
+    "Script": "moms-shovel-b.lua"
+}

@@ -1,0 +1,11 @@
+{
+    "Key": "black-bony-b",
+    "Name": "Black Bony",
+    "Type": "Monster",
+    "Text": "When this dies, it deals 1 damage to the player that killed it.",
+    "Health": 3,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "Roll: Loot X",
+    "Script": "black-bony-b.lua"
+}

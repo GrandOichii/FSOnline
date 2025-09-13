@@ -1,0 +1,11 @@
+{
+    "Key": "holy-moms-eye-b",
+    "Name": "Holy Mom's Eye",
+    "Type": "Monster",
+    "Text": "When any player rolls a {roll:2}, they may recharge an item.",
+    "Health": 1,
+    "Evasion": 4,
+    "Attack": 2,
+    "RewardsText": "Loot 1",
+    "Script": "holy-moms-eye-b.lua"
+}

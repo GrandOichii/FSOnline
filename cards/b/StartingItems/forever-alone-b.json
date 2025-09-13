@@ -1,0 +1,7 @@
+{
+    "Key": "forever-alone-b",
+    "Name": "Forever Alone",
+    "Type": "StartingItem",
+    "Text": "{T}: Choose one:\nSteal 1{cent} from a player\nLook at the top card of any deck.\nDiscard a loot card, then draw a loot card.\nEach time you take damage, recharge this.\n-Eternal-",
+    "Script": "forever-alone-b.lua"
+}

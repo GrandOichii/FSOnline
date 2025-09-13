@@ -1,0 +1,7 @@
+{
+    "Key": "ehwaz-b",
+    "Name": "Ehwaz",
+    "Type": "Loot",
+    "Text": "Discard all active monsters not being attacked and replace them with cards from the top of the monster deck.",
+    "Script": "ehwaz-b.lua"
+}

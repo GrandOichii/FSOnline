@@ -1,0 +1,7 @@
+{
+    "Key": "modeling-clay-b",
+    "Name": "Modeling Clay",
+    "Type": "Item",
+    "Text": "{T}: This becomes a copy of any non-eternal item in play. This change is permanent.",
+    "Script": "modeling-clay-b.lua"
+}

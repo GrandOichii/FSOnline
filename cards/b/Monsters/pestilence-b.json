@@ -1,0 +1,12 @@
+{
+    "Key": "pestilence-b",
+    "Name": "Pestilence",
+    "Type": "Monster",
+    "Text": "When this dies, deal 2 damage divided as you choose to any players or monsters.",
+    "Script": "pestilence-b.lua",
+    "Health": 4,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "Loot 2",
+    "SoulValue": 1
+}

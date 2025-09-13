@@ -1,0 +1,7 @@
+{
+    "Key": "ipecac-b",
+    "Name": "Ipecac",
+    "Type": "Item",
+    "Text": "+1{attack}\nEach time you roll a 6 while attacking, deal 1 damage to all other players.",
+    "Script": "ipecac-b.lua"
+}

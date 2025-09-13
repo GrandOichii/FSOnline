@@ -1,0 +1,11 @@
+{
+    "Key": "moms-hand-b",
+    "Name": "Mom's Hand",
+    "Type": "Monster",
+    "Text": "When the attacking player rolls a 6, cancel combat and end their turn.",
+    "Health": 2,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "4{cent}",
+    "Script": "moms-hand-b.lua"
+}

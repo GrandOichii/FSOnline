@@ -1,0 +1,11 @@
+{
+    "Key": "ring-of-flies-b",
+    "Name": "Ring of Flies",
+    "Type": "Monster",
+    "Text": "Each time the attacking player rolls a 3, they must steal a loot card at random from another player.",
+    "Script": "ring-of-flies-b.lua",
+    "Health": 3,
+    "Evasion": 3,
+    "Attack": 1,
+    "RewardsText": "3{cent}"
+}

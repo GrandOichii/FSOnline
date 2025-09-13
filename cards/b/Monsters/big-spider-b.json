@@ -1,0 +1,11 @@
+{
+    "Key": "big-spider-b",
+    "Name": "Big Spider",
+    "Type": "Monster",
+    "Text": "When this dies, you may attack the monster deck an additional time.",
+    "Health": 2,
+    "Evasion": 3,
+    "Attack": 1,
+    "RewardsText": "3{cent}",
+    "Script": "big-spider-b.lua"
+}

@@ -1,0 +1,7 @@
+{
+    "Key": "finger-b",
+    "Name": "Finger!",
+    "Type": "Item",
+    "Text": "When anyone rolls a {roll:2}, you may steal an item from that player, if you do, give that player on of your items.",
+    "Script": "finger-b.lua"
+}

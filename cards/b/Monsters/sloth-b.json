@@ -1,0 +1,12 @@
+{
+    "Key": "sloth-b",
+    "Name": "Sloth",
+    "Type": "Monster",
+    "Text": "When this dies, the player that killed it discards all loot cards in their hand.",
+    "Health": 3,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "1{cent}",
+    "SoulValue": 1,
+    "Script": "sloth-b.lua"
+}

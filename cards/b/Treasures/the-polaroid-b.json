@@ -1,0 +1,7 @@
+{
+    "Key": "the-polaroid-b",
+    "Name": "The Polaroid",
+    "Type": "Item",
+    "Text": "If you have 0 loot cards in your hand at the end of your turn, loot 2.",
+    "Script": "the-polaroid-b.lua"
+}

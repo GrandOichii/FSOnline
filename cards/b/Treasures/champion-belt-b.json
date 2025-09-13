@@ -1,0 +1,7 @@
+{
+    "Key": "champion-belt-b",
+    "Name": "Champion Belt",
+    "Type": "Item",
+    "Text": "Gain +1{attack} for the first attack roll on your turn.\nYou may attack an additional time on your turn.",
+    "Script": "champion-belt-b.lua"
+}

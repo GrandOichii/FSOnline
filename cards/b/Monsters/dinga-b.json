@@ -1,0 +1,11 @@
+{
+    "Key": "dinga-b",
+    "Name": "Dinga",
+    "Type": "Monster",
+    "Text": "When this is killed on a roll of 6, double its rewards.",
+    "Health": 3,
+    "Evasion": 3,
+    "Attack": 1,
+    "RewardsText": "Roll: Gain X{cent}",
+    "Script": "dinga-b.lua"
+}

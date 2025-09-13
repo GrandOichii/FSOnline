@@ -1,0 +1,7 @@
+{
+    "Key": "crystal-ball-b",
+    "Name": "Crystall Ball",
+    "Type": "Item",
+    "Text": "{T}: Before a dice is rolled, pick a number. If the next dice result is that number, loot 3.",
+    "Script": "crystal-ball-b.lua"
+}

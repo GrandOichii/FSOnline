@@ -1,0 +1,7 @@
+{
+    "Key": "spider-mod-b",
+    "Name": "Spider Mod",
+    "Type": "Item",
+    "Text": "When anyone rolls a {roll:5}, discard an active monster that isn't being attacked and replace it with the top card of the monster deck.",
+    "Script": "spider-mod-b.lua"
+}

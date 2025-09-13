@@ -3,10 +3,10 @@
     "Name": "Monstro",
     "Type": "Monster",
     "Text": "",
-    "Script": "monstro-b.lua",
     "Health": 4,
-    "Attack": 1,
     "Evasion": 4,
+    "Attack": 1,
     "RewardsText": "6{cent}",
-    "SoulValue": 1
+    "SoulValue": 1,
+    "Script": "monstro-b.lua"
 }

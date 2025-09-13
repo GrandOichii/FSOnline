@@ -1,0 +1,11 @@
+{
+    "Key": "keeper-head-b",
+    "Name": "Keeper Head",
+    "Type": "Monster",
+    "Text": "When this deals damage to a player, they also lose 2{cent}.",
+    "Health": 2,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "Roll: Gain X{cent}",
+    "Script": "keeper-head-b.lua"
+}

@@ -1,0 +1,11 @@
+{
+    "Key": "stoney-b",
+    "Name": "Stoney",
+    "Type": "Monster",
+    "Text": "All monsters gain +1{evasion} while this is active.\nThis can't be attacked. When another active monster dies, this dies.",
+    "Health": 3,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "Loot 1",
+    "Script": "stoney-b.lua"
+}

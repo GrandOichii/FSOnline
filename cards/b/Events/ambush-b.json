@@ -1,0 +1,7 @@
+{
+    "Key": "ambush-b",
+    "Name": "Ambush",
+    "Type": "Event",
+    "Text": "You must attack the monster deck 2 times this turn.",
+    "Script": "ambush-b.lua"
+}

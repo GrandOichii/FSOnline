@@ -1,0 +1,7 @@
+{
+    "Key": "devil-deal-b",
+    "Name": "Devil Deal",
+    "Type": "Event",
+    "Text": "Choose one:\nDiscard this.\nLoot 2, take 1 damage.\nSeatch the treasure deck for a Guppy item, gain it and take 2 damage. Shuffle the deck.",
+    "Script": "devil-deal-b.lua"
+}

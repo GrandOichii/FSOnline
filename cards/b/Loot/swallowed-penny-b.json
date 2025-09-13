@@ -1,0 +1,7 @@
+{
+    "Key": "swallowed-penny-b",
+    "Name": "Swallowed Penny",
+    "Type": "Loot",
+    "Text": "Each time you take damage, gain 1{cent}.\n-Trinket-",
+    "Script": "swallowed-penny-b.lua"
+}

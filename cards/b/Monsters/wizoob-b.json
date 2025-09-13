@@ -1,0 +1,11 @@
+{
+    "Key": "wizoob-b",
+    "Name": "Wizoob",
+    "Type": "Monster",
+    "Text": "When this dies, you may force a player to discard a soul card.",
+    "Script": "wizoob-b.lua",
+    "Health": 3,
+    "Evasion": 5,
+    "Attack": 1,
+    "RewardsText": "Loot 3"
+}

@@ -1,0 +1,12 @@
+{
+    "Key": "rag-man-b",
+    "Name": "Rag Man",
+    "Type": "Monster",
+    "Text": "When this dies, after gaining it's rewards, roll:\nOn a 1 or 6, put this back on the top of the monster deck.",
+    "Health": 2,
+    "Evasion": 3,
+    "Attack": 2,
+    "RewardsText": "Loot 3",
+    "SoulValue": 1,
+    "Script": "rag-man-b.lua"
+}

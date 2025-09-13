@@ -1,0 +1,7 @@
+{
+    "Key": "bum-friend-b",
+    "Name": "Bum Friend",
+    "Type": "Item",
+    "Text": "{T}: Loot 1, then put a loot card from your hand on top of the loot deck.",
+    "Script": "bum-friend-b.lua"
+}

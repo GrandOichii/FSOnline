@@ -1,0 +1,7 @@
+{
+    "Key": "placebo-b",
+    "Name": "Placebo",
+    "Type": "Item",
+    "Text": "{T}: Copy the activated effect of any non-eternal item in play.",
+    "Script": "placebo-b.lua"
+}

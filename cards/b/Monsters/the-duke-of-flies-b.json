@@ -1,0 +1,12 @@
+{
+    "Key": "the-duke-of-flies-b",
+    "Name": "The Duke of Flies",
+    "Type": "Monster",
+    "Health": 4,
+    "Evasion": 3,
+    "Attack": 1,
+    "Text": "When this takes damage, roll:\nOn a roll of 1, prevent that damage.",
+    "RewardsText": "7{cent}",
+    "SoulValue": 1,
+    "Script": "the-duke-of-flies-b.lua"
+}

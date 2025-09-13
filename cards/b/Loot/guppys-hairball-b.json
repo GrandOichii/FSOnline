@@ -1,0 +1,7 @@
+{
+    "Key": "guppys-hairball-b",
+    "Name": "Guppy's Hairball",
+    "Type": "Loot",
+    "Text": "Each time you take damage, roll:\n1-5: Nothing.\n6: Prevent 1 damage.\n-Trinket-",
+    "Script": "guppys-hairball-b.lua"
+}

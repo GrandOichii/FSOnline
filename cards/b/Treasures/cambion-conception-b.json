@@ -1,0 +1,7 @@
+{
+    "Key": "cambion-conception-b",
+    "Name": "Cambion Conception",
+    "Type": "Item",
+    "Text": "Each time you take damage, put a counter on this.\nWhenever this has 6 counters on it, remove them and gain +1 Treasure.",
+    "Script": "cambion-conception-b.lua"
+}

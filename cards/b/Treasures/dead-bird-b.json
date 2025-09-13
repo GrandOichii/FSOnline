@@ -1,0 +1,7 @@
+{
+    "Key": "dead-bird-b",
+    "Name": "Dead Bird",
+    "Type": "Item",
+    "Text": "When anyone rolls a {roll:3}, you may loot at that player's hand and steal a loot card.",
+    "Script": "dead-bird-b.lua"
+}

@@ -1,0 +1,7 @@
+{
+    "Key": "no-b",
+    "Name": "No!",
+    "Type": "Item",
+    "Text": "{T}: Cancel the effect of any active item.",
+    "Script": "no-b.lua"
+}

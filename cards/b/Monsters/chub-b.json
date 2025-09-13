@@ -1,0 +1,12 @@
+{
+    "Key": "chub-b",
+    "Name": "Chub",
+    "Type": "Monster",
+    "Text": "Each time the attacking player rolls a 1, this heals 2{health}.",
+    "Health": 4,
+    "Evasion": 3,
+    "Attack": 1,
+    "RewardsText": "7{cent}",
+    "SoulValue": 1,
+    "Script": "chub-b.lua"
+}

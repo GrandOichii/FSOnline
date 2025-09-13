@@ -1,0 +1,7 @@
+{
+    "Key": "diplopia-b",
+    "Name": "Diplopia",
+    "Type": "Item",
+    "Text": "{T}: This becomes a copy of any non-eternal passive item in play till the end of turn.",
+    "Script": "diplopia-b.lua"
+}

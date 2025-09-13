@@ -1,0 +1,11 @@
+{
+    "Key": "delirium-b",
+    "Name": "Delirium",
+    "Type": "Monster",
+    "Text": "When this dies, place it back inside the monster deck 6 cards from the top.\nOther monsters gain +1{evasion} while this is active.",
+    "Health": 5,
+    "Evasion": 4,
+    "Attack": 3,
+    "RewardsText": "+2 Treasure",
+    "Script": "chub-b.lua"
+}

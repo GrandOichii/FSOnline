@@ -1,0 +1,7 @@
+{
+    "Key": "glass-cannon-b",
+    "Name": "Glass Cannon",
+    "Type": "Item",
+    "Text": "{T}: Destroy another item in play, then roll:\n1-5: Destroy this and loot 2.\n6: Recharge this.",
+    "Script": "glass-cannon-b.lua"
+}

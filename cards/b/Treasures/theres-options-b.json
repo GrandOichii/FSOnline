@@ -1,0 +1,7 @@
+{
+    "Key": "theres-options-b",
+    "Name": "There's Options",
+    "Type": "Item",
+    "Text": "You may look at the top card of the treasure deck at any time during your turn.\nYou may purchase an additional item on your turn.",
+    "Script": "theres-options-b.lua"
+}

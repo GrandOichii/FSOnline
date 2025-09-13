@@ -1,0 +1,7 @@
+{
+    "Key": "incubus-b",
+    "Name": "Incubus",
+    "Type": "StartingItem",
+    "Text": "{T}: Choose one:\nLook at a players hand, you may switch a card from your hand with one of theirs.\nLoot 1, then place a card from your hand on top of the loot deck.\n-Eternal-",
+    "Script": "incubus-b.lua"
+}

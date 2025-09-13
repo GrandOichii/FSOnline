@@ -1,0 +1,7 @@
+{
+    "Key": "xx-judgement-b",
+    "Name": "XX. Judgement",
+    "Type": "Loot",
+    "Text": "Choose the player with the most souls, that player discards a soul card they control.",
+    "Script": "xx-judgement-b.lua"
+}

@@ -1,0 +1,7 @@
+{
+    "Key": "cursed-chest-b",
+    "Name": "Cursed Chest",
+    "Type": "Event",
+    "Text": "Roll-\n1-3: Take 1 damage.\n4-5: Take 2 damage.\n6: Search the treasure deck for a guppy item and gain it. Shuffle the deck.",
+    "Script": "cursed-chest-b.lua"
+}

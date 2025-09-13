@@ -1,0 +1,12 @@
+{
+    "Key": "pride-b",
+    "Name": "Pride",
+    "Type": "Monster",
+    "Text": "When this is attacked, you must force a player to discard 2 loot cards.",
+    "Health": 2,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "5{cent}",
+    "SoulValue": 1,
+    "Script": "pride-b.lua"
+}

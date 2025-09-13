@@ -1,0 +1,12 @@
+{
+    "Key": "mom-b",
+    "Name": "Mom!",
+    "Type": "Monster",
+    "Health": 5,
+    "Evasion": 4,
+    "Attack": 2,
+    "Text": "This deals double damage on a roll of 1.\nWhen this dies, expand the number of active monsters by 1.",
+    "RewardsText": "+1 Treasure",
+    "SoulValue": 2,
+    "Script": "mom-b.lua"
+}

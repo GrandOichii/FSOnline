@@ -1,0 +1,11 @@
+{
+    "Key": "swarm-of-flies-b",
+    "Name": "Swarm of Flies",
+    "Type": "Monster",
+    "Text": "Each time the attacking player rolls a 5, they take 1 damage.",
+    "Health": 5,
+    "Evasion": 2,
+    "Attack": 1,
+    "RewardsText": "5{cent}",
+    "Script": "swarm-of-flies-b.lua"
+}

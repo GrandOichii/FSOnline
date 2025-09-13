@@ -1,0 +1,12 @@
+{
+    "Key": "peep-b",
+    "Name": "Peep",
+    "Type": "Monster",
+    "Text": "When this dies, search the monster deck for The Bloat, put it into an active slot. Shuffle the deck.",
+    "Health": 3,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "+1 Treasure",
+    "SoulValue": 1,
+    "Script": "peep-b.lua"
+}

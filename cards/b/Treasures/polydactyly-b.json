@@ -1,0 +1,7 @@
+{
+    "Key": "polydactyly-b",
+    "Name": "Polydactyly",
+    "Type": "Item",
+    "Text": "You may play an additional loot card on your turn.\nGain +1{attack} for the first attack roll of your turn.",
+    "Script": "polydactyly-b.lua"
+}

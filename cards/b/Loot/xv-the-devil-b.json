@@ -1,0 +1,7 @@
+{
+    "Key": "xv-the-devil-b",
+    "Name": "XV. The Devil",
+    "Type": "Loot",
+    "Text": "Destroy an item you control:\nSteal any item another player controls, or any item in the shop.",
+    "Script": "xv-the-devil-b.lua"
+}

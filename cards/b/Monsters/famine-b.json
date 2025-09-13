@@ -1,0 +1,12 @@
+{
+    "Key": "famine-b",
+    "Name": "Famine",
+    "Type": "Monster",
+    "Text": "When this dies, the active player skips their next turn.",
+    "Health": 2,
+    "Evasion": 3,
+    "Attack": 1,
+    "RewardsText": "Loot 3",
+    "SoulValue": 1,
+    "Script": "famine-b.lua"
+}

@@ -1,0 +1,7 @@
+{
+    "Key": "i-the-magician-b",
+    "Name": "I. The Magician",
+    "Type": "Loot",
+    "Text": "Change the result of a dice roll to the number of your choosing.",
+    "Script": "i-the-magician-b.lua"
+}

@@ -1,0 +1,7 @@
+{
+    "Key": "cheese-grater-b",
+    "Name": "Cheese Grater",
+    "Type": "Item",
+    "Text": "When anyone rolls a {roll:6}, reveal the top card of any deck to all players, you may discard it or put it back on top.",
+    "Script": "cheese-grater-b.lua"
+}

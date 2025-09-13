@@ -1,0 +1,12 @@
+{
+    "Key": "gluttony-b",
+    "Name": "Gluttony",
+    "Type": "Monster",
+    "Text": "Each time this takes damage on a roll of 6, deal 1 damage to the player to your left.",
+    "Health": 4,
+    "Evasion": 3,
+    "Attack": 1,
+    "RewardsText": "Loot 1",
+    "SoulValue": 1,
+    "Script": "gluttony-b.lua"
+}
