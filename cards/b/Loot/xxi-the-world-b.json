@@ -1,0 +1,7 @@
+{
+    "Key": "xxi-the-world-b",
+    "Name": "XXI. The World",
+    "Type": "Loot",
+    "Text": "Look at all players' hands, then loot 2.",
+    "Script": "xxi-the-world-b.lua"
+}

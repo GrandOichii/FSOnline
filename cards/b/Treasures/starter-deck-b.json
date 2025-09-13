@@ -1,0 +1,7 @@
+{
+    "Key": "starter-deck-b",
+    "Name": "Starter Deck",
+    "Type": "Item",
+    "Text": "If you have 8 or more loot cards in your hand at the end of your turn, loot 2.",
+    "Script": "starter-deck-b.lua"
+}

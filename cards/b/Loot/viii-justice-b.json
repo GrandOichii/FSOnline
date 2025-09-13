@@ -1,0 +1,7 @@
+{
+    "Key": "viii-justice-b",
+    "Name": "VIII. Justice",
+    "Type": "Loot",
+    "Text": "Choose a player: gain loot and {cent} up to the amount that player has.",
+    "Script": "viii-justice-b.lua"
+}

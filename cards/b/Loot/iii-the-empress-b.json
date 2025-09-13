@@ -1,0 +1,7 @@
+{
+    "Key": "iii-the-empress-b",
+    "Name": "III. The Empress",
+    "Type": "Loot",
+    "Text": "A player gains +1{attack} and +1 to all dice rolls till the end of turn.",
+    "Script": "iii-the-empress-b.lua"
+}

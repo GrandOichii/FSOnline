@@ -1,0 +1,11 @@
+{
+    "Key": "cod-worm-b",
+    "Name": "Cod Worm",
+    "Type": "Monster",
+    "Text": "",
+    "Health": 2,
+    "Evasion": 5,
+    "Attack": 0,
+    "RewardsText": "4{cent}",
+    "Script": "cod-worm-b.lua"
+}

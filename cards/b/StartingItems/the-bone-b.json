@@ -1,0 +1,8 @@
+{
+    "Key": "the-bone-b",
+    "Name": "The Bone",
+    "Type": "StartingItem",
+    "Text": "{T}: Put a counter on this\nRemove 1 counter: add +1 to a dice roll.\nRemove 2 counters: deal 1 damage to a monster or player.\nRemove 3 counters: this loses all abilities and becomes a soul.\n-Eternal-",
+    "SoulValue": 1,
+    "Script": "the-bone-b.lua"
+}

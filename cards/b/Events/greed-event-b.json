@@ -1,0 +1,7 @@
+{
+    "Key": "greed-event-b",
+    "Name": "Greed!",
+    "Type": "Event",
+    "Text": "Choose the player with the most {cent} or that is tied for the most, that player loses all their {cent}.",
+    "Script": "greed-event-b.lua"
+}

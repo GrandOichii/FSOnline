@@ -1,0 +1,11 @@
+{
+    "Key": "gurdy-jr-b",
+    "Name": "Gurdy Jr.",
+    "Type": "Monster",
+    "Text": "Each time the attacking player activates an item, they take 1 damage.",
+    "Health": 2,
+    "Evasion": 5,
+    "Attack": 1,
+    "RewardsText": "+1 Treasure",
+    "Script": "gurdy-jr-b.lua"
+}

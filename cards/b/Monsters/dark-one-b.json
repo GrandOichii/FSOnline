@@ -1,0 +1,12 @@
+{
+    "Key": "dark-one-b",
+    "Name": "Dark One",
+    "Type": "Monster",
+    "Text": "Each time this takes damage, it gains +1{attack} till the end of turn.",
+    "Health": 3,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "+1 Treasure",
+    "SoulValue": 1,
+    "Script": "dark-one-b.lua"
+}

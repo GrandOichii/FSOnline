@@ -1,0 +1,12 @@
+{
+    "Key": "envy-b",
+    "Name": "Envy",
+    "Type": "Monster",
+    "Text": "When this dies, the active player must make an additional attack.",
+    "Health": 2,
+    "Evasion": 5,
+    "Attack": 1,
+    "RewardsText": "1{cent}",
+    "SoulValue": 1,
+    "Script": "envy-b.lua"
+}

@@ -1,0 +1,7 @@
+{
+    "Key": "we-need-to-go-deeper-b",
+    "Name": "We Need to Go Deeper",
+    "Type": "Event",
+    "Text": "Put any number of discarded monsters back on top of the monster deck.\nYou may attack an additional time this turn.",
+    "Script": "we-need-to-go-deeper-b.lua"
+}

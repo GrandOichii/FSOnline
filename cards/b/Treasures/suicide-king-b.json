@@ -1,0 +1,7 @@
+{
+    "Key": "suicide-king-b",
+    "Name": "Suicide King",
+    "Type": "Item",
+    "Text": "Each time you die, before paying penalties, loot 3.",
+    "Script": "suicide-king-b.lua"
+}

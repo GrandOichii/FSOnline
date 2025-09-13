@@ -1,0 +1,7 @@
+{
+    "Key": "guppys-collar-b",
+    "Name": "Guppys Collar",
+    "Type": "Item",
+    "Text": "Each time you die, roll:\n1-3: Prevent death, if it was your turn, end it.\n4-6: you die :(",
+    "Script": "guppys-collar-b.lua"
+}

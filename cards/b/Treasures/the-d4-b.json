@@ -1,0 +1,7 @@
+{
+    "Key": "the-d4-b",
+    "Name": "The D4",
+    "Type": "Item",
+    "Text": "{T}, destroy this, choose a player: that player destroys all items they control, then gains treasure equal to the number of items destroyed.",
+    "Script": "the-d4-b.lua"
+}

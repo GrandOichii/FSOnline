@@ -1,0 +1,7 @@
+{
+    "Key": "remote-detonator-b",
+    "Name": "Remote Detonator",
+    "Type": "Item",
+    "Text": "{T}: Each player votes on an item in play; destroy the item with the most votes. If there is a tie, cancel this effect.",
+    "Script": "remote-detonator-b.lua"
+}

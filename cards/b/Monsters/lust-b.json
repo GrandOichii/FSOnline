@@ -1,0 +1,12 @@
+{
+    "Key": "lust-b",
+    "Name": "Lust",
+    "Type": "Monster",
+    "Text": "Each time this takes damage from an attack, deal 1 damage to the attacking player.",
+    "Health": 4,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "6{cent}",
+    "SoulValue": 1,
+    "Script": "lust-b.lua"
+}

@@ -1,0 +1,12 @@
+{
+    "Key": "daddy-long-legs-b",
+    "Name": "Daddy Long Legs",
+    "Type": "Monster",
+    "Text": "Each time the attacking player rolls a 1, all monsters gain +1{evasion} till the end of turn.",
+    "Health": 4,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "6{cent}",
+    "SoulValue": 1,
+    "Script": "daddy-long-legs-b.lua"
+}

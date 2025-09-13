@@ -1,0 +1,7 @@
+{
+    "Key": "flush-b",
+    "Name": "Flush!",
+    "Type": "Item",
+    "Text": "{T}, choose one:\nPut all active monsters not being attacked on the botom of the monster deck.\nPut all shop items on the bottom of the treasure deck.",
+    "Script": "flush-b.lua"
+}

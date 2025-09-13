@@ -1,0 +1,7 @@
+{
+    "Key": "bum-bo-b",
+    "Name": "Bum-Bo!",
+    "Type": "Item",
+    "Text": "If you would gain {cent}, instead put that many counters on this.\n1+: Add +2 to your first attack roll each turn.\n10+: Gain +1{attack}.\n25+: You may attack any number of times.",
+    "Script": "bum-bo-b.lua"
+}

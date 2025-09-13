@@ -1,7 +1,7 @@
 {
-    "Key": "gold-chest-2-b",
+    "Key": "gold-chest-2-b2",
     "Name": "Gold Chest",
     "Type": "Event",
     "Text": "Roll-\n1-2: Gain +1 Treasure.\n3-4: Loot 1.\n5-6: Loot 2.",
-    "Script": "gold-chest-2-b.lua"
+    "Script": "gold-chest-2-b2.lua"
 }

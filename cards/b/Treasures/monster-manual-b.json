@@ -1,0 +1,7 @@
+{
+    "Key": "monster-manual-b",
+    "Name": "Monster Manual",
+    "Type": "Item",
+    "Text": "{T}: force the active player to attack, you choose what they attack.",
+    "Script": "monster-manual-b.lua"
+}

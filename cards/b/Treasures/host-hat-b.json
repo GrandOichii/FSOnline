@@ -1,0 +1,7 @@
+{
+    "Key": "host-hat-b",
+    "Name": "Host Hat",
+    "Type": "Item",
+    "Text": "{T}: prevent 1 damage to you. If any damage was prevented, deal 1 damage to another player.",
+    "Script": "host-hat-b.lua"
+}

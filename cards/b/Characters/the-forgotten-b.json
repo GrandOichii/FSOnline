@@ -1,0 +1,9 @@
+{
+    "Key": "the-forgotten-b",
+    "Name": "The Forgotten",
+    "Type": "Character",
+    "Text": "{T}: Play an additional loot card this turn.",
+    "Script": "the-forgotten-b.lua",
+    "Health": 2,
+    "Attack": 1
+}

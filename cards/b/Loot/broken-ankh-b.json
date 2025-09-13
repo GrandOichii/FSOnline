@@ -1,0 +1,7 @@
+{
+    "Key": "broken-ankh-b",
+    "Name": "Broken Ankh",
+    "Type": "Loot",
+    "Text": "Each time you die, roll:\n1-5: You die.\n6: Prevent death, if it was your turn, end it.\n-Trinket-",
+    "Script": "broken-ankh-b.lua"
+}

@@ -1,0 +1,7 @@
+{
+    "Key": "chaos-card-b",
+    "Name": "Chaos Card",
+    "Type": "Item",
+    "Text": "{T}, destroy this:\nDestroy any monster, player, item or soul card.",
+    "Script": "chaos-card-b.lua"
+}

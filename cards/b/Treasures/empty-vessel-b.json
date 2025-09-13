@@ -1,0 +1,7 @@
+{
+    "Key": "empty-vessel-b",
+    "Name": "Empty Vessel",
+    "Type": "Item",
+    "Text": "If you have 0 loot carsd in your hand, you gain +1{attack}.\nIf you have 0{cent}, you gain +1 to all attack rolls.",
+    "Script": "empty-vessel-b.lua"
+}

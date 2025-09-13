@@ -1,0 +1,7 @@
+{
+    "Key": "moms-bra-b",
+    "Name": "Mom's Bra",
+    "Type": "Item",
+    "Text": "{T}: Reduce the damage dealt to any player or monster to 1.",
+    "Script": "moms-bra-b.lua"
+}

@@ -1,0 +1,11 @@
+{
+    "Key": "leaper-b",
+    "Name": "Leaper",
+    "Type": "Monster",
+    "Text": "This deals double damage on a roll of 1.",
+    "Health": 2,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "5{cent}",
+    "Script": "leaper-b.lua"
+}

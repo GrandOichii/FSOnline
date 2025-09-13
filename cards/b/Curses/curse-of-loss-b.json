@@ -1,0 +1,7 @@
+{
+    "Key": "curse-of-loss-b",
+    "Name": "Curse of Loss",
+    "Type": "Curse",
+    "Text": "When revealed, give this curse to any player.\nWhen you die, lose a soul of your choosing.",
+    "Script": "curse-of-loss-b.lua"
+}

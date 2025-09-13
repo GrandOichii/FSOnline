@@ -1,0 +1,7 @@
+{
+    "Key": "potato-peeler-b",
+    "Name": "Potato Peeler",
+    "Type": "Item",
+    "Text": "{T}: put the top cards of all decks into their discard piles.",
+    "Script": "potato-peeler-b.lua"
+}

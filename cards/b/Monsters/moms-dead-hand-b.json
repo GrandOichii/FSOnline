@@ -1,0 +1,11 @@
+{
+    "Key": "moms-dead-hand-b",
+    "Name": "Mom's Dead Hand",
+    "Type": "Monster",
+    "Text": "When this dies, you may steal an item from a player.",
+    "Health": 2,
+    "Evasion": 5,
+    "Attack": 1,
+    "RewardsText": "4{cent}",
+    "Script": "moms-dead-hand-b.lua"
+}

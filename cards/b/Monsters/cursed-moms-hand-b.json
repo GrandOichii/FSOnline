@@ -1,0 +1,11 @@
+{
+    "Key": "cursed-moms-hand-b",
+    "Name": "Cursed Mom's Hand",
+    "Type": "Monster",
+    "Text": "When any player rolls a {roll:6} end that players turn.",
+    "Health": 2,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "4{cent}",
+    "Script": "cursed-moms-hand-b.lua"
+}

@@ -1,0 +1,12 @@
+{
+    "Key": "greed-b",
+    "Name": "Greed",
+    "Type": "Monster",
+    "Text": "Each time this deals damage, all players lose 4{cent}.",
+    "Health": 3,
+    "Evasion": 4,
+    "Attack": 1,
+    "RewardsText": "9{cent}",
+    "SoulValue": 1,
+    "Script": "greed-b.lua"
+}
