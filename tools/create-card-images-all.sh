@@ -1,5 +1,5 @@
 # ./pack-card-images ../FSClient/assets/images/card/cards CardImagesAll.tres ../FSClient/assets/images/card/cards/b
-./pack-card-images ../FSClient/ CardImagesAll.tres \
+python ./pack-card-images.py ../FSClient/ CardImagesAll.tres \
     assets/images/card/cards/aa/ \
     assets/images/card/cards/b/ \
     assets/images/card/cards/b2/ \

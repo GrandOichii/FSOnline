@@ -1,5 +1,3 @@
-#!/bin/python3
-
 from sys import argv
 from os import listdir
 from pathlib import Path
