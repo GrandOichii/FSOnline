@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://drydnu70qwpve"
-path="res://.godot/imported/3-cents-fsp.png-5fac168f5beee20b0f34ae1e3bfb8e64.ctex"
+path="res://.godot/imported/3-cents-fsp.png-b227ab0b41026c6d4fa132e3d771a536.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/images/card/cards/fsp/3-cents-fsp.png"
-dest_files=["res://.godot/imported/3-cents-fsp.png-5fac168f5beee20b0f34ae1e3bfb8e64.ctex"]
+dest_files=["res://.godot/imported/3-cents-fsp.png-b227ab0b41026c6d4fa132e3d771a536.ctex"]
 
 [params]
 

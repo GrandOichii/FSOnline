@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8ijho8ccax4d"
-path="res://.godot/imported/gold-chest-1-b2.png-4c92dbbf79f4a1ed8d0e0d2bb0027760.ctex"
+path="res://.godot/imported/gold-chest-1-b2.png-d4aba296ca5c5b75bee1d5b5fc0dcd45.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/images/card/cards/b2/gold-chest-1-b2.png"
-dest_files=["res://.godot/imported/gold-chest-1-b2.png-4c92dbbf79f4a1ed8d0e0d2bb0027760.ctex"]
+dest_files=["res://.godot/imported/gold-chest-1-b2.png-d4aba296ca5c5b75bee1d5b5fc0dcd45.ctex"]
 
 [params]
 

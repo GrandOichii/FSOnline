@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3yoq5kfg2g8g"
-path="res://.godot/imported/pills-white-spotted-fsp.png-73ac2af85273e506f3ba0446f6673a7a.ctex"
+path="res://.godot/imported/pills-white-spotted-fsp.png-f995c40d08cb1f82c38c1c91fac4159e.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/images/card/cards/fsp/pills-white-spotted-fsp.png"
-dest_files=["res://.godot/imported/pills-white-spotted-fsp.png-73ac2af85273e506f3ba0446f6673a7a.ctex"]
+dest_files=["res://.godot/imported/pills-white-spotted-fsp.png-f995c40d08cb1f82c38c1c91fac4159e.ctex"]
 
 [params]
 

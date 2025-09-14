@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://h1u2446x7yq2"
-path="res://.godot/imported/4-cents-g.png-6a0eb1f844b569dddf90ca44ffcbe24a.ctex"
+path="res://.godot/imported/4-cents-g.png-573c625c29d828b38a7004b0b79400e7.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/images/card/cards/g/4-cents-g.png"
-dest_files=["res://.godot/imported/4-cents-g.png-6a0eb1f844b569dddf90ca44ffcbe24a.ctex"]
+dest_files=["res://.godot/imported/4-cents-g.png-573c625c29d828b38a7004b0b79400e7.ctex"]
 
 [params]
 

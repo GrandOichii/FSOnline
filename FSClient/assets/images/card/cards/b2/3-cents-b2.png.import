@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b02lqxnra8a24"
-path="res://.godot/imported/3-cents-b2.png-8b2eb363c7fb84cb367717aa24295792.ctex"
+path="res://.godot/imported/3-cents-b2.png-09beb1e7b01a7d7e4a2f3b2b77ff5b2c.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/images/card/cards/b2/3-cents-b2.png"
-dest_files=["res://.godot/imported/3-cents-b2.png-8b2eb363c7fb84cb367717aa24295792.ctex"]
+dest_files=["res://.godot/imported/3-cents-b2.png-09beb1e7b01a7d7e4a2f3b2b77ff5b2c.ctex"]
 
 [params]
 

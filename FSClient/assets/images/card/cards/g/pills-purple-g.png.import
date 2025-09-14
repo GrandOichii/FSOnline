@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djskghg1dvy7y"
-path="res://.godot/imported/pills-purple-g.png-5a5613d40c12f098a328b1a4f119b36b.ctex"
+path="res://.godot/imported/pills-purple-g.png-48eed66fb3cac8f70fa52d8d0f81b2fe.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/images/card/cards/g/pills-purple-g.png"
-dest_files=["res://.godot/imported/pills-purple-g.png-5a5613d40c12f098a328b1a4f119b36b.ctex"]
+dest_files=["res://.godot/imported/pills-purple-g.png-48eed66fb3cac8f70fa52d8d0f81b2fe.ctex"]
 
 [params]
 
