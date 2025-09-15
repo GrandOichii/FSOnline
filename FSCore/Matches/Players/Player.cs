@@ -1,3 +1,4 @@
+using FSCore.Matches.Players.Attacking;
 using Microsoft.VisualBasic;
 
 namespace FSCore.Matches.Players;
@@ -57,7 +58,22 @@ public class Player : IStateModifier
     /// Amount of treasure cards a player can purchase
     /// </summary>
     public int PurchaseOpportunities { get; set; } // TODO change to private set;
-    public int AttackOpportunities { get; set; } // TODO change to private set;
+    /// <summary>
+    /// Attack opportunities, assigned for the current turn
+    /// </summary>
+    public List<IAttackOpportunity> AttackOpportunitiesForTurn { get; }
+    /// <summary>
+    /// Attack opportunities, used during current turn
+    /// </summary>
+    public List<IAttackOpportunity> UsedAttackOpportunities { get; }
+
+    /// <summary>
+    /// Available attack opportunities
+    /// </summary>
+    public IEnumerable<IAttackOpportunity> AvailableAttackOpportunities
+        => AttackOpportunitiesForTurn
+            .Where(ao => !UsedAttackOpportunities.Contains(ao)); // TODO this could really slow down the match
+
     /// <summary>
     /// Player's hand
     /// </summary>
@@ -108,6 +124,8 @@ public class Player : IStateModifier
         RollHistory = [];
         Stats = new();
         DeathPreventors = [];
+        UsedAttackOpportunities = [];
+        AttackOpportunitiesForTurn = [];
 
         // Initial state
         State = new(this);
@@ -380,9 +398,10 @@ public class Player : IStateModifier
         PurchaseOpportunities += amount;
     }
 
-    public void AddAttackOpportunities(int amount) {
-        if (AttackOpportunities < 0) return;
-        AttackOpportunities += amount;
+    public void AddAttackOpportunities(int amount, IAttackOpportunity? ao = null) {
+        ao ??= AttackOpportunity.Default;
+        for (int i = 0; i < amount; ++i)
+            AttackOpportunitiesForTurn.Add(ao.Copy());
     }
 
     public void RemovePurchaseOpportunities() {
@@ -390,7 +409,8 @@ public class Player : IStateModifier
     }
 
     public void RemoveAttackOpportunities() {
-        AttackOpportunities = 0;
+        AttackOpportunitiesForTurn.Clear();
+        UsedAttackOpportunities.Clear();
     }
 
     /// <summary>
@@ -1088,9 +1108,6 @@ public class Player : IStateModifier
     #region Attacking
 
     public async Task DeclareAttack() {
-        // TODO is this supposed to be here or during resolution
-        AttackOpportunities--;
-
         var effect = new DeclareAttackStackEffect(Match, Idx);
 
         Match.LogDebug("Player {LogName} declares an attack", LogName);
@@ -1104,26 +1121,75 @@ public class Player : IStateModifier
     /// </summary>
     /// <returns>List of monster slot indicies + -1 if can attack the top of the monster deck</returns>
     public List<int> AvailableToAttack() {
-        var result = new List<int>();
+        HashSet<int> availableSlots = [];
+        foreach (var opportunity in AvailableAttackOpportunities)
+            foreach (var idx in opportunity.GetAvailableAttackSlots(Match))
+                availableSlots.Add(idx);
 
-        // top of monster deck
-        result.Add(-1);
+        List<int> result = [];
+        // if (availableSlots.Count > 0)
+        // {
+            // throw new Exception($"amogus {string.Join(", ", AvailableAttackOpportunities.ToList()[0].GetAvailableAttackSlots(Match))}");
+        // }
 
-        // monster card slots
-        foreach (var slot in Match.MonsterSlots)
-            if (slot.Card is not null && slot.Card.Card.Template.Type == "Monster")
-                result.Add(slot.Idx);
+        foreach (var slotIdx in availableSlots)
+        {
+            if (slotIdx == -1)
+            {
+                // TODO check whether there are cards in monster deck
+                result.Add(slotIdx);
+                continue;
+            }
+            var slot = Match.MonsterSlots[slotIdx];
+            
+            if (
+                slot.Card is not null &&
+                slot.Card.Card.Template.Type == "Monster" // TODO feels weird
+            )
+            {
+                result.Add(slotIdx);
+            }
+        }
         return result;
     }
 
+    public void RemoveAttackOpportunity(int chosenSlotIdx)
+    {
+        var aos = AvailableAttackOpportunities;
+        IAttackOpportunity? result = null;
+        int resultCount = -1;
+        foreach (var ao in aos)
+        {
+            var allowedSlots = ao.GetAvailableAttackSlots(Match);
+            if (!allowedSlots.Contains(chosenSlotIdx))
+                continue;
+            var count = allowedSlots.Count();
+            if (result is null || count < resultCount)
+            {
+                result = ao;
+                resultCount = count;
+            }
+        }
 
-    public async Task<int> ChooseMonsterToAttack() {
+        if (result is null)
+        {
+            throw new Exception($"Player {LogName} tried to attack monster slot {chosenSlotIdx}, which they can't");// TODO type
+        }
+
+        UsedAttackOpportunities.Add(result);
+    }
+
+
+    public async Task<int> ChooseMonsterToAttack()
+    {
         var options = AvailableToAttack();
 
-        while (true) {
+        while (true)
+        {
             var result = await Controller.ChooseMonsterToAttack(Match, Idx, options);
 
-            if (!options.Contains(result)) {
+            if (!options.Contains(result))
+            {
                 if (Match.Config.StrictMode)
                     throw new MatchException($"Invalid choice for picking slot index to purchase - {result} (player: {LogName})");
                 continue;

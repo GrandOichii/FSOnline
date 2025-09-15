@@ -29,7 +29,10 @@ public class DeclareAttackStackEffect : StackEffect {
         //     return;
         // }
 
-        if (slot == -1) {
+        owner.RemoveAttackOpportunity(slot);
+
+        if (slot == -1)
+        {
             Match.LogDebug("Player {LogName} attacks the top card of the monster deck", owner.LogName);
             // TODO
             return true;

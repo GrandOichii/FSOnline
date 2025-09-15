@@ -51,14 +51,16 @@ public readonly struct PlayerData {
         Coins = player.Coins;
         LootPlays = player.State.LootPlaysForTurn - player.LootPlayed;
         PurchaseOpportunities = player.PurchaseOpportunities;
-        AttackOpportunities = player.AttackOpportunities;
+        
+        // AttackOpportunities = player.AvailableAttackOpportunities.Count();
+        AttackOpportunities = player.AttackOpportunitiesForTurn.Count - player.UsedAttackOpportunities.Count;
 
         Stats = new(player.Stats);
         Character = new(player.Character);
         HandSize = player.Hand.Count;
         VisibleHandCards = [];
-        Items = player.Items.Select(item => new OwnedCardData(item)).ToList();
-        Curses = player.Curses.Select(curse => new OwnedCardData(curse)).ToList();
+        Items = [.. player.Items.Select(item => new OwnedCardData(item))];
+        Curses = [.. player.Curses.Select(curse => new OwnedCardData(curse))];
         SoulCount = player.SoulCount();
     }
 }

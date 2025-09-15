@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
 using System.Reflection;
+using FSCore.Matches.Players.Attacking;
 
 namespace FSCore.Matches.Scripts;
 
@@ -163,7 +164,7 @@ public class ScriptMaster {
             if (cur == result[0]) break;
         }
 
-        return LuaUtility.CreateTable(_match.LState, result.Select(idx => _match.GetPlayer(idx)).ToList());
+        return LuaUtility.CreateTable(_match.LState, result.Select(_match.GetPlayer).ToList());
     }
 
     [LuaCommand]
@@ -606,13 +607,19 @@ public class ScriptMaster {
 
     [LuaCommand]
     public void PutToBottom(int deckId, MatchCard card) {
-        _match.PutToBottom((DeckType)deckId, card);
+        _match.PutToBottom((DeckType)deckId, card); 
     }
 
     [LuaCommand]
     public void AddAttackOpportunities(int playerIdx, int amount) {
         var player = _match.GetPlayer(playerIdx);
         player.AddAttackOpportunities(amount);
+    }
+
+    [LuaCommand]
+    public void AddTopOfDeckAttackOpportunities(int playerIdx, int amount) {
+        var player = _match.GetPlayer(playerIdx);
+        player.AddAttackOpportunities(amount, AttackOpportunity.TopOfDeckOnly);
     }
 
     [LuaCommand]

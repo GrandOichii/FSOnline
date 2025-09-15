@@ -1,6 +1,10 @@
 namespace FSCore.Matches.Abilities;
 
-public class TriggeredAbility : Ability {
+/// <summary>
+/// Triggered ability of a card
+/// </summary>
+public class TriggeredAbility : Ability
+{
     /// <summary>
     /// Ability trigger
     /// </summary>

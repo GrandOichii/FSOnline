@@ -1,14 +1,14 @@
 namespace FSCore.Tests.Matches.Cards.Monsters;
 
-public class BoomFlyTests
+public class BigSpiderTests
 {
+    private static readonly string CARD_KEY = "big-spider-b";
+
     [Fact]
     public static async Task DeathTrigger()
     {
         // Arrange
-        var monsterCardKey = "boom-fly-b";
         var mainPlayerIdx = 0;
-        var opponentIdx = 1 - mainPlayerIdx;
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
@@ -16,7 +16,8 @@ public class BoomFlyTests
             .LootPlay(0)
             .InitialTreasureSlots(0)
             .InitialMonsterSlots(1)
-            .ConfigMonsterDeck().AddMonster(monsterCardKey).Done()
+            .ConfigLootDeck().Add("a-dime-b", 10).Done() // TODO add configuration
+            .ConfigMonsterDeck().AddMonster(CARD_KEY).Done()
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -28,7 +29,7 @@ public class BoomFlyTests
             .Build();
 
         var roller = new ProgrammedRollerBuilder()
-            .Then(4)
+            .ThenNTimes(4, 3)
             .Build();
 
         List<ProgrammedPlayerController> players = [
@@ -45,10 +46,11 @@ public class BoomFlyTests
         // Assert
         match.AssertPlayer(mainPlayerIdx)
             .IsWinner()
-            .HasDamage(1)
-            .HasCoins(4);
-        match.AssertPlayer(opponentIdx)
-            .HasDamage(1);
+            .HasCardsInHand(1)
+            .HasAttackOpportunities(1)
+            .CanAttackTopOfMonsterDeck()
+            .CannotAttackMonsterSlots();
+            ;
     }
 
 }

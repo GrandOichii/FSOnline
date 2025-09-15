@@ -103,12 +103,14 @@ public class PlayerAssertions(Player player)
         return this;
     }
 
-    public PlayerAssertions HasNoDamagePreventors() {
+    public PlayerAssertions HasNoDamagePreventors()
+    {
         player.Stats.DamagePreventors.Count.ShouldBe(0);
         return this;
     }
 
-    public PlayerAssertions HasDamagePreventors(int amount) {
+    public PlayerAssertions HasDamagePreventors(int amount)
+    {
         player.Stats.DamagePreventors.Count.ShouldBe(amount);
         return this;
     }
@@ -157,7 +159,7 @@ public class PlayerAssertions(Player player)
 
     public PlayerAssertions HasAttackOpportunities(int amount)
     {
-        player.AttackOpportunities.ShouldBe(amount);
+        player.AvailableAttackOpportunities.Count().ShouldBe(amount);
         return this;
     }
 
@@ -194,6 +196,24 @@ public class PlayerAssertions(Player player)
     public PlayerAssertions DoesntHaveSoulCard(string key)
     {
         player.Souls.FirstOrDefault(s => s.Original.Template.Key == key).ShouldBeNull();
+        return this;
+    }
+
+    public PlayerAssertions CanAttackTopOfMonsterDeck()
+    {
+        player.AvailableToAttack().ShouldContain(-1);
+        return this;
+    }
+
+    public PlayerAssertions CannotAttackMonsterSlots()
+    {
+        player.AvailableToAttack().All(s => s < 0).ShouldBeTrue();
+        return this;
+    }
+
+    public PlayerAssertions CanAttackMonsterSlots()
+    {
+        player.AvailableToAttack().Any(s => s >= 0).ShouldBeTrue();
         return this;
     }
 }

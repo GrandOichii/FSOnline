@@ -23,7 +23,7 @@ public class DeclareAttackAction : IAction
 
         var player = match.GetPlayer(playerIdx);
 
-        if (player.AttackOpportunities == 0) yield break;
+        // if (player.AttackOpportunities == 0) yield break;
 
         if (player.AvailableToAttack().Count == 0) yield break;
 

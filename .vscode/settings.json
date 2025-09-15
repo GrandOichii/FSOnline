@@ -85,7 +85,8 @@
         "PutOnTop",
         "PutToBottom",
         "AddAttackOpportunities",
-        "RandInt"
+        "RandInt",
+        "AddTopOfDeckAttackOpportunities"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

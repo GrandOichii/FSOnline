@@ -12,7 +12,9 @@ public class StrengthTests
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
+            .AttackCountDefault(0)
             .ConfigLootDeck().Add(cardKey, lootDeckSize).Done()
+            .ConfigMonsterDeck().AddMonster("clotty-b").Done()
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -40,7 +42,9 @@ public class StrengthTests
         match.AssertPlayer(mainPlayerIdx)
             .IsWinner()
             .HasAttack(2)
-            .HasAttackOpportunities(2);
+            .HasAttackOpportunities(1)
+            .CanAttackTopOfMonsterDeck()
+            .CanAttackMonsterSlots();
     }
 
 }

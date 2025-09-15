@@ -3,9 +3,9 @@
     "Name": "Big Spider",
     "Type": "Monster",
     "Text": "When this dies, you may attack the monster deck an additional time.",
-    "Health": 2,
-    "Evasion": 3,
+    "Health": 3,
+    "Evasion": 4,
     "Attack": 1,
-    "RewardsText": "3{cent}",
+    "RewardsText": "Loot 1",
     "Script": "big-spider-b.lua"
 }

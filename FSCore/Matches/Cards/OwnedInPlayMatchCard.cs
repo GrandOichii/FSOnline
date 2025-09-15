@@ -23,7 +23,10 @@ public class OwnedInPlayMatchCard : InPlayMatchCard
         Counters = original.Counters;
     }
 
-    public void SetOwner(Player owner) {
+    public override Player? GetOwner() => Owner;
+
+    public void SetOwner(Player owner)
+    {
         Owner = owner;
     }
 

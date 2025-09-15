@@ -40,10 +40,7 @@ public class TriggeredAbilityWrapper {
     }
 
     public async Task TryTrigger(InPlayMatchCard card, QueuedTrigger trigger) {
-        Player? owner = null;
-        if (card is OwnedInPlayMatchCard ownedCard)
-            owner = ownedCard.Owner;
-        await TryTrigger(card, owner, trigger);
+        await TryTrigger(card, card.GetOwner(), trigger);
     }
 
 }

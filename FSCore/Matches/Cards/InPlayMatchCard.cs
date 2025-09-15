@@ -40,6 +40,8 @@ public class InPlayMatchCard : IStateModifier
         Stats = Card.Template.Health == -1 ? null : new();
     }
 
+    public virtual Player? GetOwner() => null;
+
     public string LogName => $"{Card.Template.Name} [{IPID} ({Card.ID})]";
 
     public virtual string GetFormattedName() {

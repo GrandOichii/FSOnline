@@ -52,6 +52,7 @@ func load_snapshot(snapshot: Variant, player_idx: int):
 	set_coins(player.Coins)
 	set_loot_plays(player.LootPlays)
 	set_purchase_opportunities(player.PurchaseOpportunities)
+	set_attack_opportunities(player.AttackOpportunities)
 	set_soul_count(player.SoulCount)
 
 	# Stats

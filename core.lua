@@ -687,6 +687,13 @@ function FS.C.Effect.ModTargetHealthTEOT(target_idx, mod)
     end
 end
 
+function FS.C.Effect.AddTopOfDeckAO(amount, filterFunc)
+    return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
+        AddTopOfDeckAttackOpportunities(player.Idx, amount)
+        return true
+    end, filterFunc)
+end
+
 function FS.C.Effect.AddAO(amount, filterFunc)
     return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
         AddAttackOpportunities(player.Idx, amount)
@@ -2159,6 +2166,7 @@ function FS.B.TriggeredAbility(effectText)
     end
 
     function result.On:MonsterDies(check)
+        
         result.trigger = FS.Triggers.CARD_DEATH
         check = check or function (me, player, args)
             return true

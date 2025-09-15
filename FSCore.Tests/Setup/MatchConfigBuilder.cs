@@ -60,6 +60,13 @@ public class MatchConfigBuilder
     public MonsterDeckBuilder ConfigMonsterDeck() => _monsterBuilder;
     public BonusSoulDeckBuilder ConfigBonusSouls() => _bonusSoulsBuilder;
 
+
+    public MatchConfigBuilder AttackCountDefault(int amount)
+    {
+        _result.AttackCountDefault = amount;
+        return this;
+    }
+    
     public MatchConfigBuilder InitialCoins(int amount)
     {
         _result.InitialDealCoins = amount;
