@@ -24,7 +24,7 @@ public class EndPhase : IPhase
 
         foreach (var p in match.Players) {
             p.RemovePurchaseOpportunities();
-            p.RemoveAttackOpportunities();
+            p.AttackOpportunities.Clear();
             p.HealToMax();
             p.RollHistory.Clear();
             p.Stats.DamagePreventors.Clear();

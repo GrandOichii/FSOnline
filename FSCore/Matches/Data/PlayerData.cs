@@ -53,7 +53,7 @@ public readonly struct PlayerData {
         PurchaseOpportunities = player.PurchaseOpportunities;
         
         // AttackOpportunities = player.AvailableAttackOpportunities.Count();
-        AttackOpportunities = player.AttackOpportunitiesForTurn.Count - player.UsedAttackOpportunities.Count;
+        AttackOpportunities = player.AttackOpportunities.Count();
 
         Stats = new(player.Stats);
         Character = new(player.Character);

@@ -271,3 +271,14 @@ public class LootCardsPPAction(int amount) : IProgrammedPlayerAction
         return (IProgrammedPlayerAction.NEXT_ACTION, true);
     }
 }
+
+public class AssertPPAction(Action<PlayerAssertions> assertionsFunc) : IProgrammedPlayerAction
+{
+    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    {
+        var player = match.GetPlayer(playerIdx);
+        var assertions = new PlayerAssertions(player);
+        assertionsFunc.Invoke(assertions);
+        return (IProgrammedPlayerAction.NEXT_ACTION, true);
+    }
+}

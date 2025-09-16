@@ -24,8 +24,10 @@ public class Player : IStateModifier
     /// </summary>
     private static readonly Dictionary<string, IAction> ACTION_MAP = [];
 
-    static Player() {
-        foreach (var action in ACTIONS) {
+    static Player()
+    {
+        foreach (var action in ACTIONS)
+        {
             ACTION_MAP.Add(action.ActionWord(), action);
         }
     }
@@ -58,21 +60,10 @@ public class Player : IStateModifier
     /// Amount of treasure cards a player can purchase
     /// </summary>
     public int PurchaseOpportunities { get; set; } // TODO change to private set;
-    /// <summary>
-    /// Attack opportunities, assigned for the current turn
-    /// </summary>
-    public List<IAttackOpportunity> AttackOpportunitiesForTurn { get; }
-    /// <summary>
-    /// Attack opportunities, used during current turn
-    /// </summary>
-    public List<IAttackOpportunity> UsedAttackOpportunities { get; }
+    
+    public AttackOpportunityCalculator AttackOpportunities { get; }
 
-    /// <summary>
-    /// Available attack opportunities
-    /// </summary>
-    public IEnumerable<IAttackOpportunity> AvailableAttackOpportunities
-        => AttackOpportunitiesForTurn
-            .Where(ao => !UsedAttackOpportunities.Contains(ao)); // TODO this could really slow down the match
+    public List<IAttackRestriction> AttackRestrictions { get; }
 
     /// <summary>
     /// Player's hand
@@ -111,7 +102,8 @@ public class Player : IStateModifier
     /// </summary>
     public string LogName => $"{Name} [{Idx}]";
 
-    public Player(Match match, string name, int idx, CardTemplate characterTemplate, IPlayerController controller) {
+    public Player(Match match, string name, int idx, CardTemplate characterTemplate, IPlayerController controller)
+    {
         Match = match;
         Name = name;
         Idx = idx;
@@ -124,21 +116,24 @@ public class Player : IStateModifier
         RollHistory = [];
         Stats = new();
         DeathPreventors = [];
-        UsedAttackOpportunities = [];
-        AttackOpportunitiesForTurn = [];
+
+        AttackOpportunities = new(this);
+        AttackRestrictions = [];
 
         // Initial state
         State = new(this);
     }
 
-    public int SoulCount() {
+    public int SoulCount()
+    {
         var result = State.AdditionalSoulCount;
         foreach (var card in Souls)
             result += card.GetSoulValue();
         return result;
     }
 
-    public bool Wins() {
+    public bool Wins()
+    {
         var count = SoulCount();
 
         // TODO some cards modify required soul count to win
@@ -148,7 +143,8 @@ public class Player : IStateModifier
     /// <summary>
     /// Sets up the player
     /// </summary>
-    public async Task Setup() {
+    public async Task Setup()
+    {
         await Controller.Setup(Match, Idx);
 
         if (Match.Config.CharactersStartTapped)
@@ -167,9 +163,12 @@ public class Player : IStateModifier
     /// <summary>
     /// Cleans up the player
     /// </summary>
-    public async Task CleanUp() {
+    public async Task CleanUp()
+    {
         await Controller.CleanUp(Match, Idx);
     }
+
+    #region Looting
 
     /// <summary>
     /// Make player draw loot cards
@@ -179,16 +178,21 @@ public class Player : IStateModifier
     /// <param name="source">Loot source</param>
     /// <returns>Resulting amount of cards drawn by the player</returns>
     /// <exception cref="MatchException"></exception>
-    public async Task<int> LootCards(int amount, LuaTable reason, LootSource source = LootSource.DETERMINE) {
+    public async Task<int> LootCards(int amount, LuaTable reason, LootSource source = LootSource.DETERMINE)
+    {
         if (source == LootSource.DETERMINE)
             source = LootSource.LOOT_DECK;
 
-        try {
-            foreach (var modifier in State.LootAmountModifiers) {
+        try
+        {
+            foreach (var modifier in State.LootAmountModifiers)
+            {
                 var returned = modifier.Call(this, amount, reason);
                 amount = LuaUtility.GetReturnAsInt(returned);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             throw new MatchException($"Failed to call loot amount modification function for player {LogName}", e);
         }
 
@@ -205,10 +209,12 @@ public class Player : IStateModifier
     /// </summary>
     /// <param name="amount">Amount of cards to be drawn</param>
     /// <returns>Amount of cards drawn by the player</returns>
-    private async Task<int> LootFromLootDeck(int amount) {
+    private async Task<int> LootFromLootDeck(int amount)
+    {
         Match.LogDebug("Player {PlayerLogName} loots {Amount} cards from the loot deck", LogName, amount);
         var cards = Match.RemoveCardsFromTopOfLootDeck(amount);
-        foreach (var card in cards) {
+        foreach (var card in cards)
+        {
             await AddToHand(card);
         }
 
@@ -220,12 +226,15 @@ public class Player : IStateModifier
     /// </summary>
     /// <param name="amount">Amount of cards to be drawn</param>
     /// <returns>Amount of cards drawn by the player</returns>
-    private Task<int> LootFromLootDiscard(int amount) {
+    private Task<int> LootFromLootDiscard(int amount)
+    {
         // TODO
 
         // return 0;
         return Task.FromResult(0);
     }
+
+    #endregion
 
     #region Hand
 
@@ -233,7 +242,8 @@ public class Player : IStateModifier
     /// Adds a loot card to the player's hand
     /// </summary>
     /// <param name="card">Loot card</param>
-    public Task AddToHand(MatchCard card) {
+    public Task AddToHand(MatchCard card)
+    {
         var handCard = new HandMatchCard(card, this);
         Hand.Insert(0, handCard);
 
@@ -251,19 +261,23 @@ public class Player : IStateModifier
     /// </summary>
     /// <param name="id">Card ID</param>
     /// <returns>Hand card if found, else <c>null</c></returns>
-    public HandMatchCard? HandCardOrDefault(string id) {
+    public HandMatchCard? HandCardOrDefault(string id)
+    {
         return Hand.FirstOrDefault(c => c.Card.ID == id);
     }
 
-    public bool RemoveFromHand(HandMatchCard card) {
+    public bool RemoveFromHand(HandMatchCard card)
+    {
         var removed = Hand.Remove(card);
-        if (removed) {
+        if (removed)
+        {
             Match.LogDebug("Card {CardLogName} was removed from hand of player {PlayerLogName}", card.Card.LogName, LogName);
         }
         return removed;
     }
 
-    public void ShouldRemoveFromHand(HandMatchCard card) {
+    public void ShouldRemoveFromHand(HandMatchCard card)
+    {
         if (RemoveFromHand(card)) return;
 
         throw new MatchException($"Player {LogName} tried to remove card {card.Card.LogName} from hand, but failed");
@@ -271,15 +285,22 @@ public class Player : IStateModifier
 
     #endregion
 
-    private int ModCoinGain(int amount) {
+    #region Coins
+
+    private int ModCoinGain(int amount)
+    {
         var initial = amount;
-        try {
-            foreach (var mod in State.CoinGainModifiers) {
+        try
+        {
+            foreach (var mod in State.CoinGainModifiers)
+            {
                 var returned = mod.Call(this, amount);
                 amount = LuaUtility.GetReturnAsInt(returned);
             }
             return amount;
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             throw new MatchException($"Failed to modify coin gain amount for player {LogName} (initial amount: {initial})", e);
         }
     }
@@ -289,7 +310,8 @@ public class Player : IStateModifier
     /// </summary>
     /// <param name="amount">Initial amount of coins to be given to the player</param>
     /// <returns>Resulting amount of coins given to the player</returns>
-    public Task<int> GainCoins(int amount) {
+    public Task<int> GainCoins(int amount)
+    {
         amount = ModCoinGain(amount);
 
         var taken = GainCoinsRaw(amount);
@@ -297,7 +319,8 @@ public class Player : IStateModifier
         return Task.FromResult(taken);
     }
 
-    public int GainCoinsRaw(int amount) {
+    public int GainCoinsRaw(int amount)
+    {
         var taken = Match.TakeCoins(amount);
         Coins += taken;
         Match.LogDebug("Player {LogName} gained {Taken} coins (expected to gain {Amount}), {CoinPool} left in coin pool", LogName, taken, amount, Match.CoinPool);
@@ -307,13 +330,17 @@ public class Player : IStateModifier
         return taken;
     }
 
+    #endregion
+
     #region Recharging
 
     /// <summary>
     /// Untaps (recharges) all items the player has under their control
     /// </summary>
-    public async Task UntapAll() {
-        foreach (var card in GetInPlayCards()) {
+    public async Task UntapAll()
+    {
+        foreach (var card in GetInPlayCards())
+        {
             await card.Untap();
         }
     }
@@ -322,7 +349,8 @@ public class Player : IStateModifier
 
     #region Discard
 
-    public async Task DiscardFromHand(int handIdx) {
+    public async Task DiscardFromHand(int handIdx)
+    {
         var card = Hand[handIdx];
         var removed = RemoveFromHand(card);
         if (!removed)
@@ -337,11 +365,13 @@ public class Player : IStateModifier
     /// <summary>
     /// Forces the player to discard to hand size
     /// </summary>
-    public async Task DiscardToHandSize() {
+    public async Task DiscardToHandSize()
+    {
         // TODO modify max hand size
         var maxHandSize = Match.Config.MaxHandSize;
 
-        while (Hand.Count > maxHandSize) {
+        while (Hand.Count > maxHandSize)
+        {
             var options = new List<int>();
             for (int i = 0; i < Hand.Count; i++) options.Add(i);
             var idx = await ChooseCardInHand(options, $"Choose a card to discard (to hand size: {maxHandSize})");
@@ -354,7 +384,8 @@ public class Player : IStateModifier
     /// <summary>
     /// Prompts the player to discard a room card (if they defeated a monster during their turn)
     /// </summary>
-    public async Task PromptToDiscardRoom() {
+    public async Task PromptToDiscardRoom()
+    {
         if (Match.DeadCards.Count == 0) return;
 
         // TODO could be better
@@ -366,11 +397,12 @@ public class Player : IStateModifier
 
         // no rooms
         if (options.Count == 0) return;
-        
+
         options.Add("-");
         var choice = await ChooseString(options, "Choose a room to discard");
 
-        if (choice == "-") {
+        if (choice == "-")
+        {
             Match.LogDebug("Player {PlayerLogName} declined to discard a room", LogName);
             return;
         }
@@ -381,44 +413,39 @@ public class Player : IStateModifier
         await Match.DiscardFromPlay(slot.Card!);
     }
 
-    public void ResetLootPlays() {
+    public void ResetLootPlays()
+    {
         LootPlayed = 0;
     }
 
-    public void AddPurchaseOpportunitiesForTurn() {
+    #region Attack opportunities
+
+    public void AddPurchaseOpportunitiesForTurn()
+    {
         AddPurchaseOpportunities(Match.Config.PurchaseCountDefault);
     }
-    
-    public void AddAttackOpportunitiesForTurn() {
-        AddAttackOpportunities(Match.Config.AttackCountDefault);
-    }
 
-    public void AddPurchaseOpportunities(int amount) {
+    public void AddPurchaseOpportunities(int amount)
+    {
         if (PurchaseOpportunities < 0) return;
         PurchaseOpportunities += amount;
     }
 
-    public void AddAttackOpportunities(int amount, IAttackOpportunity? ao = null) {
-        ao ??= AttackOpportunity.Default;
-        for (int i = 0; i < amount; ++i)
-            AttackOpportunitiesForTurn.Add(ao.Copy());
-    }
+    #endregion
 
-    public void RemovePurchaseOpportunities() {
+    public void RemovePurchaseOpportunities()
+    {
         PurchaseOpportunities = 0;
     }
 
-    public void RemoveAttackOpportunities() {
-        AttackOpportunitiesForTurn.Clear();
-        UsedAttackOpportunities.Clear();
-    }
 
     /// <summary>
     /// Checks, whether the player can play a loot card from their hand
     /// </summary>
     /// <param name="card">Hand card</param>
     /// <returns>True, if none of the play checks failed</returns>
-    public bool CanPlay(HandMatchCard card) {
+    public bool CanPlay(HandMatchCard card)
+    {
         if (!card.CanPlay(this)) return false;
 
         return State.UnlimitedLootPlays || LootPlayed < State.LootPlaysForTurn;
@@ -429,11 +456,13 @@ public class Player : IStateModifier
     /// </summary>
     /// <param name="card">Loot card</param>
     /// <returns></returns>
-    public Task<bool> PayCostsToPlay(HandMatchCard card, StackEffect effect) {
+    public Task<bool> PayCostsToPlay(HandMatchCard card, StackEffect effect)
+    {
         // TODO additional costs
 
         var payed = card.PayCosts(effect);
-        if (!payed) {
+        if (!payed)
+        {
             // return false;
             return Task.FromResult(false);
         }
@@ -449,7 +478,8 @@ public class Player : IStateModifier
     /// </summary>
     /// <param name="card">Hand card</param>
     /// <returns>True if successfully played the loot card</returns>
-    public async Task<bool> TryPlayCard(HandMatchCard card) {
+    public async Task<bool> TryPlayCard(HandMatchCard card)
+    {
         if (!CanPlay(card)) return false;
 
         var stackEffect = new LootCardStackEffect(Match, Idx, card.Card);
@@ -457,7 +487,8 @@ public class Player : IStateModifier
 
         var payed = await PayCostsToPlay(card, stackEffect);
 
-        if (!payed) {
+        if (!payed)
+        {
             Match.RemoveTopOfStack();
             Match.LogDebug("Player {PlayerLogName} decided not to pay costs for loot card {CardLogName}", LogName, card.Card.LogName);
             return false;
@@ -474,7 +505,8 @@ public class Player : IStateModifier
 
     #region In-play cards
 
-    public async Task GainControl(TreasureSlot slot) {
+    public async Task GainControl(TreasureSlot slot)
+    {
         var card = slot.Card
             ?? throw new MatchException($"Player {LogName} tried to gain control of treasure slot item at index [{slot.Idx}], which is empty");
 
@@ -489,18 +521,21 @@ public class Player : IStateModifier
         await Match.PlaceOwnedCard(newCard, false);
     }
 
-    public async Task<List<OwnedInPlayMatchCard>> GainTreasure(int amount) {
+    public async Task<List<OwnedInPlayMatchCard>> GainTreasure(int amount)
+    {
         // TODO calculate actual amount
 
         return await GainTreasureRaw(amount);
     }
 
-    public async Task<List<OwnedInPlayMatchCard>> GainTreasureRaw(int amount) {
+    public async Task<List<OwnedInPlayMatchCard>> GainTreasureRaw(int amount)
+    {
         var cards = Match.RemoveCardsFromTopOfTreasureDeck(amount);
 
         var result = new List<OwnedInPlayMatchCard>();
-        
-        foreach (var card in cards) {
+
+        foreach (var card in cards)
+        {
             var c = new OwnedInPlayMatchCard(card, this);
             await Match.PlaceOwnedCard(c);
             result.Add(c);
@@ -509,23 +544,26 @@ public class Player : IStateModifier
         return result;
     }
 
-    public Task RemoveItem(OwnedInPlayMatchCard card) {
+    public Task RemoveItem(OwnedInPlayMatchCard card)
+    {
         var removed = Items.Remove(card);
         if (!removed)
             throw new MatchException($"Failed to remove item {card.LogName} from player {LogName}");
-        
+
         Match.LogDebug("Item {CardLogName} was removed from player {PlayerLogName}", card.LogName, LogName);
         // TODO add to update
 
         return Task.CompletedTask;
     }
 
-    public Task RemoveFromPlay(OwnedInPlayMatchCard card) {
+    public Task RemoveFromPlay(OwnedInPlayMatchCard card)
+    {
         var removed = Items.Remove(card);
         if (removed) return Task.CompletedTask;
 
         removed = Curses.Remove(card);
-        if (removed) {
+        if (removed)
+        {
             Match.LogDebug("Curse {CardLogName} was removed from player {PlayerLogName}", card.LogName, LogName);
             return Task.CompletedTask;
         }
@@ -538,7 +576,8 @@ public class Player : IStateModifier
     /// Gain control of item
     /// </summary>
     /// <param name="card">Item card</param>
-    public async Task GainItem(OwnedInPlayMatchCard card) {
+    public async Task GainItem(OwnedInPlayMatchCard card)
+    {
         // TODO add to update
 
         Items.Add(card);
@@ -551,17 +590,20 @@ public class Player : IStateModifier
         });
     }
 
-    public async Task LoseItem(OwnedInPlayMatchCard card) {
+    public async Task LoseItem(OwnedInPlayMatchCard card)
+    {
         await RemoveItem(card);
 
         // TODO trigger
     }
 
-    public OwnedInPlayMatchCard? GetInPlayCardOrDefault(string ipid) {
+    public OwnedInPlayMatchCard? GetInPlayCardOrDefault(string ipid)
+    {
         return GetInPlayCards().FirstOrDefault(c => c.IPID == ipid);
     }
 
-    public List<OwnedInPlayMatchCard> GetInPlayCards() {
+    public List<OwnedInPlayMatchCard> GetInPlayCards()
+    {
         var result = new List<OwnedInPlayMatchCard>(Items) {
             Character
         };
@@ -573,14 +615,16 @@ public class Player : IStateModifier
     /// <summary>
     /// Add starting items of the character
     /// </summary>
-    public async Task AddStartingItems() {
+    public async Task AddStartingItems()
+    {
         Match.LogDebug("Adding Starting Items for player {PlayerLogName}", LogName);
         await Match.CreateStartingItems(this, Character);
     }
 
     #endregion
 
-    public void PayCoins(int amount) {
+    public void PayCoins(int amount)
+    {
         LoseCoins(amount);
         if (Coins < 0)
             throw new MatchException($"Player {LogName} payed {amount} coins, which resulted in their balance being equal to {Coins}");
@@ -592,7 +636,8 @@ public class Player : IStateModifier
 
     #region Purchasing
 
-    public async Task DeclarePurchase() {
+    public async Task DeclarePurchase()
+    {
         // TODO is this supposed to be here or during resolution
         PurchaseOpportunities--;
 
@@ -609,23 +654,29 @@ public class Player : IStateModifier
     /// </summary>
     /// <param name="slot">Shop slot, -1 for top of treasure deck</param>
     /// <returns>The item's cost</returns>
-    public int CostOfSlot(int slot) {
+    public int CostOfSlot(int slot)
+    {
         // TODO catch exceptions
         var result = Match.Config.PurchaseCost;
 
-        try {
-            foreach (var mod in State.PurchaseCostModifiers) {
+        try
+        {
+            foreach (var mod in State.PurchaseCostModifiers)
+            {
                 var returned = mod.Call(slot, result);
                 result = LuaUtility.GetReturnAsInt(returned);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             throw new MatchException($"Failed to execute coin gain amount modification function for player {LogName}", e);
         }
-        
+
         return result;
     }
 
-    public bool TryPayCoinsForSlot(int slot) {
+    public bool TryPayCoinsForSlot(int slot)
+    {
         var cost = CostOfSlot(slot);
         if (Coins < cost) return false;
 
@@ -633,14 +684,16 @@ public class Player : IStateModifier
         return true;
     }
 
-    public List<int> AvailableToPurchase() {
+    public List<int> AvailableToPurchase()
+    {
         var indicies = new List<int>();
         if (Match.TreasureDeck.Size > 0) indicies.Add(-1);
 
         indicies.AddRange(Match.TreasureSlots.Select(slot => slot.Idx));
 
         var result = new List<int>();
-        foreach (var idx in indicies) {
+        foreach (var idx in indicies)
+        {
             if (idx > 0 && Match.TreasureSlots[idx].Card is null) continue;
             if (Coins < CostOfSlot(idx)) continue;
             result.Add(idx);
@@ -651,15 +704,17 @@ public class Player : IStateModifier
 
     #endregion
 
-    public int LoseCoinsRaw(int amount) {
+    public int LoseCoinsRaw(int amount)
+    {
         if (Coins < amount)
             amount = Coins;
-            
+
         Coins -= amount;
         return amount;
     }
 
-    public int LoseCoins(int amount) {
+    public int LoseCoins(int amount)
+    {
         var lost = LoseCoinsRaw(amount);
         Match.AddToCoinPool(lost);
         return lost;
@@ -681,6 +736,7 @@ public class Player : IStateModifier
     {
         State = new(this);
         Stats.UpdateState(this);
+        AttackOpportunities.UpdateState();
 
         // hand
         foreach (var card in Hand)
@@ -692,11 +748,14 @@ public class Player : IStateModifier
             card.UpdateState();
     }
 
-    public async Task<string> PromptAction(List<string> options) {
-        while (true) {
+    public async Task<string> PromptAction(List<string> options)
+    {
+        while (true)
+        {
             var result = await Controller.PromptAction(Match, Idx, options);
 
-            if (!options.Contains(result)) {
+            if (!options.Contains(result))
+            {
                 if (Match.Config.StrictMode)
                     throw new MatchException($"Invalid choice for picking action - {result} (player: {LogName})");
                 continue;
@@ -715,11 +774,14 @@ public class Player : IStateModifier
     /// <param name="hint">Hint</param>
     /// <returns>The picked valid string</returns>
     /// <exception cref="MatchException"></exception>
-    public async Task<string> ChooseString(List<string> options, string hint) {
-        while (true) {
+    public async Task<string> ChooseString(List<string> options, string hint)
+    {
+        while (true)
+        {
             var result = await Controller.ChooseString(Match, Idx, options, hint);
 
-            if (!options.Contains(result)) {
+            if (!options.Contains(result))
+            {
                 if (Match.Config.StrictMode)
                     throw new MatchException($"Invalid choice for picking option - {result} (player: {LogName})");
                 continue;
@@ -736,11 +798,14 @@ public class Player : IStateModifier
     /// <param name="hint">Hint</param>
     /// <returns>The picked valid IPID</returns>
     /// <exception cref="MatchException"></exception>
-    public async Task<string> ChooseItem(List<string> options, string hint) {
-        while (true) {
+    public async Task<string> ChooseItem(List<string> options, string hint)
+    {
+        while (true)
+        {
             var result = await Controller.ChooseItem(Match, Idx, options, hint);
 
-            if (!options.Contains(result)) {
+            if (!options.Contains(result))
+            {
                 if (Match.Config.StrictMode)
                     throw new MatchException($"Invalid choice for picking item IPID - {result} (player: {LogName})");
                 continue;
@@ -750,11 +815,14 @@ public class Player : IStateModifier
         }
     }
 
-    public async Task<int> ChoosePlayer(List<int> options, string hint, bool optional=false) {
-        while (true) {
+    public async Task<int> ChoosePlayer(List<int> options, string hint, bool optional = false)
+    {
+        while (true)
+        {
             var result = await Controller.ChoosePlayer(Match, Idx, options, hint);
 
-            if (!options.Contains(result)) {
+            if (!options.Contains(result))
+            {
                 if (Match.Config.StrictMode)
                     throw new MatchException($"Invalid choice for picking player - {result} (player: {LogName})");
                 continue;
@@ -763,37 +831,45 @@ public class Player : IStateModifier
             return result;
         }
     }
-    public async Task<(TargetType, string)> ChooseMonsterOrPlayer(List<string> ipids, List<int> indicies, string hint, bool optional=false) {
-        while (true) {
+    public async Task<(TargetType, string)> ChooseMonsterOrPlayer(List<string> ipids, List<int> indicies, string hint, bool optional = false)
+    {
+        while (true)
+        {
             var (type, value) = await Controller.ChooseMonsterOrPlayer(Match, Idx, ipids, indicies, hint);
 
-            switch (type) {
-            case TargetType.PLAYER:
-                if (!indicies.Contains(int.Parse(value))) {
-                    if (Match.Config.StrictMode)
-                        throw new MatchException($"Invalid choice for picking monster/player - {value} (player: {LogName})");
-                    continue;
-                }
-                break;
-            case TargetType.ITEM:
-                if (!ipids.Contains(value)) {
-                    if (Match.Config.StrictMode)
-                        throw new MatchException($"Invalid choice for picking monster/player - {value} (player: {LogName})");
-                    continue;
-                }
-                break;
-            default:
-                throw new MatchException($"Invalid out TargetType for choosing monster/player: {type}");
+            switch (type)
+            {
+                case TargetType.PLAYER:
+                    if (!indicies.Contains(int.Parse(value)))
+                    {
+                        if (Match.Config.StrictMode)
+                            throw new MatchException($"Invalid choice for picking monster/player - {value} (player: {LogName})");
+                        continue;
+                    }
+                    break;
+                case TargetType.ITEM:
+                    if (!ipids.Contains(value))
+                    {
+                        if (Match.Config.StrictMode)
+                            throw new MatchException($"Invalid choice for picking monster/player - {value} (player: {LogName})");
+                        continue;
+                    }
+                    break;
+                default:
+                    throw new MatchException($"Invalid out TargetType for choosing monster/player: {type}");
             }
 
             return (type, value);
         }
     }
-    public async Task<string> ChooseStackEffect(List<string> options, string hint, bool optional=false) {
-        while (true) {
+    public async Task<string> ChooseStackEffect(List<string> options, string hint, bool optional = false)
+    {
+        while (true)
+        {
             var result = await Controller.ChooseStackEffect(Match, Idx, options, hint);
 
-            if (!options.Contains(result)) {
+            if (!options.Contains(result))
+            {
                 if (Match.Config.StrictMode)
                     throw new MatchException($"Invalid choice for picking stack effect - {result} (player: {LogName})");
                 continue;
@@ -802,12 +878,15 @@ public class Player : IStateModifier
             return result;
         }
     }
-    
-    public async Task<int> ChooseCardInHand(List<int> options, string hint, bool optional=false) {
-        while (true) {
+
+    public async Task<int> ChooseCardInHand(List<int> options, string hint, bool optional = false)
+    {
+        while (true)
+        {
             var result = await Controller.ChooseCardInHand(Match, Idx, options, hint);
 
-            if (!options.Contains(result)) {
+            if (!options.Contains(result))
+            {
                 if (Match.Config.StrictMode)
                     throw new MatchException($"Invalid choice for picking card in hand - {result} (player: {LogName})");
                 continue;
@@ -817,13 +896,16 @@ public class Player : IStateModifier
         }
     }
 
-    public async Task<int> ChooseItemToPurchase() {
+    public async Task<int> ChooseItemToPurchase()
+    {
         var options = AvailableToPurchase();
 
-        while (true) {
+        while (true)
+        {
             var result = await Controller.ChooseItemToPurchase(Match, Idx, options);
 
-            if (!options.Contains(result)) {
+            if (!options.Contains(result))
+            {
                 if (Match.Config.StrictMode)
                     throw new MatchException($"Invalid choice for picking slot index to purchase - {result} (player: {LogName})");
                 continue;
@@ -833,12 +915,15 @@ public class Player : IStateModifier
         }
     }
 
-    public async Task<DeckType> ChooseDeck(List<DeckType> options, string hint, bool optional=false) {
+    public async Task<DeckType> ChooseDeck(List<DeckType> options, string hint, bool optional = false)
+    {
         // TODO use optional
-        while (true) {
+        while (true)
+        {
             var result = await Controller.ChooseDeck(Match, Idx, options, hint);
 
-            if (!options.Contains(result)) {
+            if (!options.Contains(result))
+            {
                 if (Match.Config.StrictMode)
                     throw new MatchException($"Invalid choice for picking dekc - {result} (player: {LogName})");
                 continue;
@@ -850,24 +935,29 @@ public class Player : IStateModifier
 
     #endregion
 
-    public async Task UpdateController() {
+    public async Task UpdateController()
+    {
         await Controller.Update(Match, Idx);
     }
 
-    public async Task PerformAction() {
+    public async Task PerformAction()
+    {
         var options = new List<string>();
         foreach (var a in ACTION_MAP.Values)
             options.AddRange(a.GetAvailable(Match, Idx));
-        
-        if (options.Count == 0) {
+
+        if (options.Count == 0)
+        {
             throw new MatchException($"Player {LogName} doens't have any available actions");
         }
         var action = await PromptAction(options);
 
         var words = action.Split(" ");
         var actionWord = words[0];
-        if (!ACTION_MAP.ContainsKey(actionWord)) {
-            if (!Match.Config.StrictMode) {
+        if (!ACTION_MAP.ContainsKey(actionWord))
+        {
+            if (!Match.Config.StrictMode)
+            {
                 Match.LogWarning($"Unknown action word from player {LogName}: {actionWord}");
                 return;
             }
@@ -880,7 +970,8 @@ public class Player : IStateModifier
 
     #region Souls
 
-    public async Task AddSoulCard(SoulCard card) {
+    public async Task AddSoulCard(SoulCard card)
+    {
         // TODO check if can gain souls
 
         Souls.Add(card);
@@ -898,14 +989,17 @@ public class Player : IStateModifier
 
     #region Damage
 
-    public async Task DamageToPlayerRequest(int toIdx, int amount, StackEffect damageSource) {
+    public async Task DamageToPlayerRequest(int toIdx, int amount, StackEffect damageSource)
+    {
         var effect = new DamageStackEffect(Match, Idx, amount, damageSource, Match.GetPlayer(toIdx));
         await Match.PlaceOnStack(effect);
     }
 
-    public Task LoseHealth(int amount, StackEffect source) {
+    public Task LoseHealth(int amount, StackEffect source)
+    {
         Stats.Damage += amount;
-        if (Stats.Damage >= Stats.State.Health) {
+        if (Stats.Damage >= Stats.State.Health)
+        {
             Stats.Damage = Stats.State.Health;
         }
 
@@ -919,13 +1013,15 @@ public class Player : IStateModifier
         return Task.CompletedTask;
     }
 
-    public void HealToMax() {
+    public void HealToMax()
+    {
         Stats.Damage = 0;
         Stats.IsDead = false;
         Stats.DeathSource = null;
     }
 
-    public async Task ProcessDamage(int amount, DamageStackEffect effect) {
+    public async Task ProcessDamage(int amount, DamageStackEffect effect)
+    {
         await Stats.ProcessDamage(this, amount, effect);
     }
 
@@ -933,11 +1029,13 @@ public class Player : IStateModifier
 
     #region Death
 
-    public void AddDeathPreventor(LuaFunction preventorFunc) {
+    public void AddDeathPreventor(LuaFunction preventorFunc)
+    {
         DeathPreventors.Add(preventorFunc);
     }
 
-    public async Task PushDeath(StackEffect deathSource) {
+    public async Task PushDeath(StackEffect deathSource)
+    {
         Match.LogDebug("Death of player {LogName} is pushed onto the stack", LogName);
 
         var effect = new PlayerDeathStackEffect(this, deathSource);
@@ -950,7 +1048,8 @@ public class Player : IStateModifier
 
     }
 
-    public async Task CheckDead() {
+    public async Task CheckDead()
+    {
         if (Stats.DeathSource is null) return;
 
         // dead
@@ -959,13 +1058,16 @@ public class Player : IStateModifier
         Stats.DeathSource = null;
     }
 
-    public async Task ProcessDeath(StackEffect deathSource) {
+    public async Task ProcessDeath(StackEffect deathSource)
+    {
         if (Stats.IsDead) return;
 
         // TODO catch exceptions
-        foreach (var preventor in DeathPreventors) {
+        foreach (var preventor in DeathPreventors)
+        {
             var returned = preventor.Call(deathSource);
-            if (LuaUtility.GetReturnAsBool(returned)) {
+            if (LuaUtility.GetReturnAsBool(returned))
+            {
                 Match.LogDebug("Death of player {LogName} was prevented", LogName);
                 DeathPreventors.Remove(preventor);
                 return;
@@ -973,7 +1075,8 @@ public class Player : IStateModifier
         }
 
         // TODO death replacement effects
-        if (Match.CurPlayerIdx == Idx) {
+        if (Match.CurPlayerIdx == Idx)
+        {
             Match.TurnEnded = true;
         }
         Stats.IsDead = true;
@@ -990,35 +1093,46 @@ public class Player : IStateModifier
         // TODO add update
     }
 
-    public int GetDeathPenaltyCoinLoss() {
+    public int GetDeathPenaltyCoinLoss()
+    {
         var result = Match.Config.DeathPenaltyCoins;
-        try {
-            foreach (var mod in State.DeathPenaltyCoinLoseAmountModifiers) {
+        try
+        {
+            foreach (var mod in State.DeathPenaltyCoinLoseAmountModifiers)
+            {
                 var returned = mod.Call(result);
                 result = LuaUtility.GetReturnAsInt(returned);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             throw new MatchException($"Failed to execute death penalty coin loss replacement effects for player {LogName}", e);
         }
         return result;
     }
 
-    public int GetDeathPenaltyLootDiscardAmount() {
+    public int GetDeathPenaltyLootDiscardAmount()
+    {
         var result = Match.Config.DeathPenaltyLoot;
-        
-        try {
-            foreach (var mod in State.DeathPenaltyCoinLoseAmountModifiers) {
+
+        try
+        {
+            foreach (var mod in State.DeathPenaltyCoinLoseAmountModifiers)
+            {
                 var returned = mod.Call(result);
                 result = LuaUtility.GetReturnAsInt(returned);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             throw new MatchException($"Failed to execute death penalty coin loss replacement effects for player {LogName}", e);
         }
 
         return result;
     }
 
-    public int GetDeathPenaltyDestroyedItemsAmount() {
+    public int GetDeathPenaltyDestroyedItemsAmount()
+    {
         var result = Match.Config.DeathPenaltyItems;
 
         // TODO
@@ -1026,16 +1140,19 @@ public class Player : IStateModifier
         return result;
     }
 
-    public async Task PayDeathPenalty(StackEffect deathSource) {
+    public async Task PayDeathPenalty(StackEffect deathSource)
+    {
         // TODO? move this to a Lua script
         // death penalty replacement effects
-        foreach (var effect in State.DeathPenaltyReplacementEffects) {
+        foreach (var effect in State.DeathPenaltyReplacementEffects)
+        {
             var returned = effect.Call(this, deathSource);
             if (LuaUtility.GetReturnAsBool(returned)) return;
         }
 
         var itemsAmount = GetDeathPenaltyDestroyedItemsAmount();
-        for (int i = 0; i < itemsAmount; i++) {
+        for (int i = 0; i < itemsAmount; i++)
+        {
             var ipids = Items.Where(item => !item.HasLabel("Eternal")).Select(item => item.IPID).ToList();
             if (ipids.Count == 0) break;
             var ipid = await ChooseItem(ipids, "Choose an item to destroy (for death penalty)");
@@ -1043,7 +1160,8 @@ public class Player : IStateModifier
         }
 
         var lootDiscardAmount = GetDeathPenaltyLootDiscardAmount();
-        for (int i = 0; i < lootDiscardAmount; i++) {
+        for (int i = 0; i < lootDiscardAmount; i++)
+        {
             if (Hand.Count == 0) break;
 
             var options = new List<int>();
@@ -1054,7 +1172,8 @@ public class Player : IStateModifier
 
         LoseCoins(GetDeathPenaltyCoinLoss());
 
-        foreach (var item in GetInPlayCards()) {
+        foreach (var item in GetInPlayCards())
+        {
             // TODO check if item has an activated ability with the "Tap" label
             await item.Tap();
         }
@@ -1062,41 +1181,48 @@ public class Player : IStateModifier
 
     #endregion
 
-    public bool Remove(string id) {
+    public bool Remove(string id)
+    {
         var card = Hand.FirstOrDefault(c => c.Card.ID == id);
-        if (card is not null) {
+        if (card is not null)
+        {
             Hand.Remove(card);
             return true;
         }
 
         var iCard = Items.FirstOrDefault(c => c.Card.ID == id);
-        if (iCard is not null) {
+        if (iCard is not null)
+        {
             Items.Remove(iCard);
             return true;
         }
 
         var sCard = Souls.FirstOrDefault(c => c.Original.ID == id);
-        if (sCard is not null) {
+        if (sCard is not null)
+        {
             Souls.Remove(sCard);
             return true;
         }
 
         var cCard = Curses.FirstOrDefault(c => c.Card.ID == id);
-        if (cCard is not null) {
+        if (cCard is not null)
+        {
             Curses.Remove(cCard);
             return true;
         }
-        
+
         return false;
     }
 
     #region Damage prevention
 
-    public int PreventableDamage() {
+    public int PreventableDamage()
+    {
         return Stats.DamagePreventors.Count;
     }
 
-    public Task AddDamagePreventors(int amount) {
+    public Task AddDamagePreventors(int amount)
+    {
         Stats.AddDamagePreventors(amount);
         // TODO? update
 
@@ -1107,7 +1233,8 @@ public class Player : IStateModifier
 
     #region Attacking
 
-    public async Task DeclareAttack() {
+    public async Task DeclareAttack()
+    {
         var effect = new DeclareAttackStackEffect(Match, Idx);
 
         Match.LogDebug("Player {LogName} declares an attack", LogName);
@@ -1120,16 +1247,14 @@ public class Player : IStateModifier
     /// Gets all monster slot indicies that can be attacked by the player
     /// </summary>
     /// <returns>List of monster slot indicies + -1 if can attack the top of the monster deck</returns>
-    public List<int> AvailableToAttack() {
-        HashSet<int> availableSlots = [];
-        foreach (var opportunity in AvailableAttackOpportunities)
-            foreach (var idx in opportunity.GetAvailableAttackSlots(Match))
-                availableSlots.Add(idx);
+    public List<int> AvailableToAttack()
+    {
+        var availableSlots = AttackOpportunities.GetAvailableSlots();
 
         List<int> result = [];
         // if (availableSlots.Count > 0)
         // {
-            // throw new Exception($"amogus {string.Join(", ", AvailableAttackOpportunities.ToList()[0].GetAvailableAttackSlots(Match))}");
+        // throw new Exception($"amogus {string.Join(", ", AvailableAttackOpportunities.ToList()[0].GetAvailableAttackSlots(Match))}");
         // }
 
         foreach (var slotIdx in availableSlots)
@@ -1141,7 +1266,7 @@ public class Player : IStateModifier
                 continue;
             }
             var slot = Match.MonsterSlots[slotIdx];
-            
+
             if (
                 slot.Card is not null &&
                 slot.Card.Card.Template.Type == "Monster" // TODO feels weird
@@ -1153,37 +1278,8 @@ public class Player : IStateModifier
         return result;
     }
 
-    public void RemoveAttackOpportunity(int chosenSlotIdx)
+    public async Task<int> ChooseMonsterToAttack(List<int> options)
     {
-        var aos = AvailableAttackOpportunities;
-        IAttackOpportunity? result = null;
-        int resultCount = -1;
-        foreach (var ao in aos)
-        {
-            var allowedSlots = ao.GetAvailableAttackSlots(Match);
-            if (!allowedSlots.Contains(chosenSlotIdx))
-                continue;
-            var count = allowedSlots.Count();
-            if (result is null || count < resultCount)
-            {
-                result = ao;
-                resultCount = count;
-            }
-        }
-
-        if (result is null)
-        {
-            throw new Exception($"Player {LogName} tried to attack monster slot {chosenSlotIdx}, which they can't");// TODO type
-        }
-
-        UsedAttackOpportunities.Add(result);
-    }
-
-
-    public async Task<int> ChooseMonsterToAttack()
-    {
-        var options = AvailableToAttack();
-
         while (true)
         {
             var result = await Controller.ChooseMonsterToAttack(Match, Idx, options);
@@ -1199,10 +1295,11 @@ public class Player : IStateModifier
         }
     }
 
-    public async Task AttackMonsterInSlot(int slot) {
+    public async Task AttackMonsterInSlot(int slot)
+    {
         var monster = Match.MonsterSlots[slot].Card
             ?? throw new MatchException($"Player {LogName} tried to attack monster slot {slot}, where there are no monsters")
-        ;       
+        ;
 
         var attack = new AttackStackEffect(Match, Idx, monster);
         await Match.PlaceOnStack(attack);
@@ -1212,14 +1309,38 @@ public class Player : IStateModifier
 
     public int GetAttack() => Stats.State.Attack;
 
-    public int CalculateRollResult(RollStackEffect stackEffect) {
-        var result = stackEffect.Value;       
+    public int CalculateRollResult(RollStackEffect stackEffect)
+    {
+        var result = stackEffect.Value;
 
         // TODO catch exceptions
-        foreach (var mod in State.RollResultModifiers) {
+        foreach (var mod in State.RollResultModifiers)
+        {
             var returned = mod.Call(result, stackEffect);
             result = LuaUtility.GetReturnAsInt(returned);
         }
         return Math.Clamp(result, 1, 6);
     }
+
+    public bool CanPassTurn()
+    {
+        return true;
+        if (Idx != Match.CurPlayerIdx)
+        {
+            throw new Exception($"Tried to check whether a non-active player can pass the turn ({LogName})");
+        }
+
+        if (Match.Stack.Effects.Count > 0)
+        {
+            return false;
+        }
+
+        if (AttackRestrictions.Count > 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
 }

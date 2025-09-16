@@ -1,6 +1,7 @@
 namespace FSCore.Matches;
 
-public enum ModificationLayer {
+public enum ModificationLayer
+{
     COIN_GAIN_AMOUNT = 1,
     ROLL_REPLACEMENT_EFFECTS = 2,
     LOOT_AMOUNT = 3,
@@ -21,6 +22,7 @@ public enum ModificationLayer {
     DAMAGE_RECEIVED_MODIFICATORS = 18,
     ROLL_RESULT_MODIFIERS = 19,
     PLAYER_SOUL_COUNT = 20,
+    PLAYER_ATTACK_OPPORTUNITIES = 21,
 }
 
 /// <summary>

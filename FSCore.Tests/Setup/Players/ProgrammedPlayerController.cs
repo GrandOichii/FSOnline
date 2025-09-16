@@ -36,6 +36,12 @@ public class ProgrammedPlayerActionsBuilder
         Choose = new(this);
     }
 
+    public ProgrammedPlayerActionsBuilder Assert(Action<PlayerAssertions> assertions)
+    {
+        Parent.Result.Actions.Enqueue(new AssertPPAction(assertions));
+        return this;
+    }
+
     public ProgrammedPlayerActionsBuilder AssertIsCurrentPlayer()
     {
         Parent.Result.Actions.Enqueue(AssertIsCurrentPlayerPPAction.Instance);

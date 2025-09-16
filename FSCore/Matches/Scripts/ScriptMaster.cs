@@ -613,17 +613,24 @@ public class ScriptMaster {
     [LuaCommand]
     public void AddAttackOpportunities(int playerIdx, int amount) {
         var player = _match.GetPlayer(playerIdx);
-        player.AddAttackOpportunities(amount);
+        player.AttackOpportunities.Add(amount);
     }
 
     [LuaCommand]
     public void AddTopOfDeckAttackOpportunities(int playerIdx, int amount) {
         var player = _match.GetPlayer(playerIdx);
-        player.AddAttackOpportunities(amount, AttackOpportunity.TopOfDeckOnly);
+        player.AttackOpportunities.Add(amount, AttackOpportunity.TopOfDeckOnly);
     }
 
     [LuaCommand]
     public int RandInt(int start, int end) {
         return _match.Rng.Next(start, end);
+    }
+
+    [LuaCommand]
+    public void AddAttackOpportunityFromCard(int playerIdx, string ipid)
+    {
+        var player = _match.GetPlayer(playerIdx);
+        player.State.AttackOpportunitiesFromCards.Add(ipid, AttackOpportunity.Default); // TODO change type
     }
 }

@@ -6,7 +6,8 @@ namespace FSCore.Matches;
 /// <summary>
 /// Match process
 /// </summary>
-public class Match {
+public class Match
+{
     /// <summary>
     /// Turn structure
     /// </summary>
@@ -30,6 +31,9 @@ public class Match {
         // player stats
         ModificationLayer.PLAYER_MAX_HEALTH,
         ModificationLayer.PLAYER_ATTACK,
+
+        // player opportunities
+        ModificationLayer.PLAYER_ATTACK_OPPORTUNITIES,
 
         // montser stats
         ModificationLayer.MONSTER_HEALTH,
@@ -168,7 +172,8 @@ public class Match {
         ICardMaster cardMaster,
         string setupScript,
         IRoller? roller = null
-    ) {
+    )
+    {
         Rng = new(seed);
 
         CardMaster = cardMaster;
@@ -213,7 +218,8 @@ public class Match {
     /// Log info using system logger
     /// </summary>
     /// <param name="info">Info</param>
-    public void LogDebug(string info, params object?[] args) {
+    public void LogDebug(string info, params object?[] args)
+    {
         Logger?.LogDebug(info, args: args);
     }
 
@@ -221,7 +227,8 @@ public class Match {
     /// Log info using system logger
     /// </summary>
     /// <param name="info">Info</param>
-    public void LogInfo(string info, params object?[] args) {
+    public void LogInfo(string info, params object?[] args)
+    {
         Logger?.LogInformation(info, args: args);
     }
 
@@ -229,7 +236,8 @@ public class Match {
     /// Log warning using system logger
     /// </summary>
     /// <param name="msg">Warning message</param>
-    public void LogWarning(string msg, params object?[] args) {
+    public void LogWarning(string msg, params object?[] args)
+    {
         Logger?.LogWarning(msg, args: args);
     }
 
@@ -238,15 +246,17 @@ public class Match {
     /// </summary>
     /// <param name="msg">Error message</param>
     /// <exception cref="MatchException"></exception>
-    public void LogError(string msg, params object?[] args) {
+    public void LogError(string msg, params object?[] args)
+    {
         Logger?.LogError(msg, args: args);
-        
+
         throw new MatchException(msg);
     }
 
     #endregion
 
-    private async Task<CardTemplate> GetRandomCharacter() {
+    private async Task<CardTemplate> GetRandomCharacter()
+    {
         var key = Config.Characters[Rng.Next() % Config.Characters.Count];
         return await CardMaster.Get(key);
     }
@@ -257,7 +267,8 @@ public class Match {
     /// <param name="name"></param>
     /// <param name="controller"></param>
     /// <returns></returns>
-    public async Task AddPlayer(string name, IPlayerController controller, string characterKey = "") {
+    public async Task AddPlayer(string name, IPlayerController controller, string characterKey = "")
+    {
         if (Players.Count == Config.MaxPlayerCount)
             throw new MatchException($"tried to add another player to the match, while it is already full (max player count: {Config.MaxPlayerCount})");
 
@@ -265,7 +276,8 @@ public class Match {
             ? await GetRandomCharacter()
             : await CardMaster.Get(characterKey);
 
-        try {
+        try
+        {
             var player = new Player(
                 this,
                 name,
@@ -275,7 +287,9 @@ public class Match {
             );
 
             Players.Add(player);
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             System.Console.WriteLine("FAILED ADDING CHARACTER");
             System.Console.WriteLine(e);
             throw;
@@ -286,7 +300,8 @@ public class Match {
     /// Execute the match
     /// </summary>
     /// <exception cref="MatchException"></exception>
-    public async Task Run() {
+    public async Task Run()
+    {
         await SetupView();
         await SetupDecks();
         await SetupSlots();
@@ -299,13 +314,17 @@ public class Match {
     /// <summary>
     /// Execute all "When you start the game" effects
     /// </summary>
-    public Task OnMatchStart() {
+    public Task OnMatchStart()
+    {
         // owned cards
-        foreach (var player in Players) {
+        foreach (var player in Players)
+        {
             var cards = player.GetInPlayCards();
-            foreach (var card in cards) {
+            foreach (var card in cards)
+            {
                 var effects = card.Card.MatchStartEffects;
-                foreach (var effect in effects) {
+                foreach (var effect in effects)
+                {
                     // TODO catch exceptions
                     effect.Call(player);
                 }
@@ -318,10 +337,12 @@ public class Match {
     /// <summary>
     /// Setup the slots
     /// </summary>
-    public async Task SetupSlots() {
+    public async Task SetupSlots()
+    {
         // treasure
         LogDebug("Filling treasure slots (initial count: {InitialTreasureSlots})", Config.InitialTreasureSlots);
-        for (int i = 0; i < Config.InitialTreasureSlots; i++) {
+        for (int i = 0; i < Config.InitialTreasureSlots; i++)
+        {
             var slot = new TreasureSlot(TreasureDeck, i);
             await slot.Fill();
             TreasureSlots.Add(slot);
@@ -329,7 +350,8 @@ public class Match {
 
         // monsters
         LogDebug("Filling monster slots (initial count: {InitialMonsterSlots})", Config.InitialMonsterSlots);
-        for (int i = 0; i < Config.InitialMonsterSlots; i++) {
+        for (int i = 0; i < Config.InitialMonsterSlots; i++)
+        {
             var slot = new MonsterSlot(MonsterDeck, i);
             await slot.Fill();
             MonsterSlots.Add(slot);
@@ -351,9 +373,11 @@ public class Match {
         MonsterDeck.Shuffle();
 
         // rooms
-        if (Config.UseRooms) {
+        if (Config.UseRooms)
+        {
             LogDebug("Filling room slots (initial count: {InitialRoomSlots})", Config.InitialRoomSlots);
-            for (int i = 0; i < Config.InitialRoomSlots; i++) {
+            for (int i = 0; i < Config.InitialRoomSlots; i++)
+            {
                 var slot = new RoomSlot(RoomDeck, i);
                 await slot.Fill();
                 RoomSlots.Add(slot);
@@ -365,12 +389,15 @@ public class Match {
     /// Creates a list of loot cards using the card keys provided in the configuration object
     /// </summary>
     /// <returns>List of loot cards</returns>
-    private async Task<List<MatchCard>> CreateLootCards() {
+    private async Task<List<MatchCard>> CreateLootCards()
+    {
         var result = new List<MatchCard>();
-        foreach (var pair in Config.LootCards) {
+        foreach (var pair in Config.LootCards)
+        {
             var amount = pair.Value;
             var card = await CardMaster.Get(pair.Key);
-            for (int i = 0; i < amount; i++) {
+            for (int i = 0; i < amount; i++)
+            {
                 result.Add(new(this, card, DeckType.LOOT));
             }
         }
@@ -380,7 +407,8 @@ public class Match {
     /// <summary>
     /// Sets up the decks
     /// </summary>
-    public async Task SetupDecks() {
+    public async Task SetupDecks()
+    {
         // loot deck
         var lootCards = await CreateLootCards();
         LootDeck.Populate(lootCards);
@@ -408,7 +436,8 @@ public class Match {
 
         // monster deck
         var monsters = new List<MatchCard>();
-        foreach (var key in Config.Monsters) {
+        foreach (var key in Config.Monsters)
+        {
             monsters.Add(new MatchCard(
                 this,
                 await CardMaster.Get(key),
@@ -419,7 +448,8 @@ public class Match {
         // TODO shuffle all of the monster cards into the deck, create the monster slots, THEN add all of the event cards and shuffle the monster deck again
 
         // rooms
-        if (Config.UseRooms) {
+        if (Config.UseRooms)
+        {
             var roomCards = new List<MatchCard>();
             foreach (var key in Config.Rooms)
                 roomCards.Add(new MatchCard(
@@ -439,7 +469,8 @@ public class Match {
     /// <summary>
     /// Sets up the match
     /// </summary>
-    private Task SetupView() {
+    private Task SetupView()
+    {
         LogDebug("Starting view");
         View?.Start(this);
 
@@ -451,12 +482,14 @@ public class Match {
     /// <summary>
     /// Sets up the players, participating in the match
     /// </summary>
-    private async Task SetupPlayers() {
-        foreach (var player in Players) {
+    private async Task SetupPlayers()
+    {
+        foreach (var player in Players)
+        {
             LogDebug("Running setup for player {LogName}", player.LogName);
             await player.Setup();
         }
-        
+
         LogDebug("Pushing initial state");
         await PushUpdates();
     }
@@ -464,13 +497,15 @@ public class Match {
     /// <summary>
     /// Cleans up after the match is done executing
     /// </summary>
-    private async Task CleanUp() {
+    private async Task CleanUp()
+    {
         LogDebug("Performing cleanup");
 
         // push last update
         await PushUpdates();
 
-        foreach (var player in Players) {
+        foreach (var player in Players)
+        {
             await player.CleanUp();
         }
 
@@ -481,12 +516,14 @@ public class Match {
     /// <summary>
     /// Goes over all of the players' turns until a winner is decided
     /// </summary>
-    private async Task Turns() {
+    private async Task Turns()
+    {
         LogDebug("Started main match loop");
 
         // TODO add Logger back
         // Logger.Log("Match started");
-        while (Active) {
+        while (Active)
+        {
             // TurnCount++;
 
             await ReloadState();
@@ -497,17 +534,19 @@ public class Match {
             LogDebug("Player {LogName} starts their turn", cPlayer.LogName);
             // Logger.Log(cPlayer.Name + " started their turn.");
 
-            foreach (var phase in _phases) {
+            foreach (var phase in _phases)
+            {
                 CurrentPhase = phase;
                 var phaseName = CurrentPhase.GetName();
                 await phase.PreEmit(this, CurPlayerIdx);
-                await Emit(phaseName, new(){ {"playerIdx", CurPlayerIdx} });
+                await Emit(phaseName, new() { { "playerIdx", CurPlayerIdx } });
                 await DequeueTriggers();
-                if (Stack.Effects.Count > 0) {
+                if (Stack.Effects.Count > 0)
+                {
                     await ResolveStack(true);
                 }
                 await phase.PostEmit(this, CurPlayerIdx);
-                
+
                 await ReloadState();
                 if (!Active) return;
             }
@@ -518,7 +557,8 @@ public class Match {
     /// <summary>
     /// Decides the index of the next player
     /// </summary>
-    public void AdvanceCurrentPlayerIdx() {
+    public void AdvanceCurrentPlayerIdx()
+    {
         // TODO more complex
         CurPlayerIdx = NextInTurnOrder(CurPlayerIdx);
     }
@@ -526,7 +566,8 @@ public class Match {
     /// <summary>
     /// Reloads the state and pushes the updates
     /// </summary>
-    public async Task ReloadState() {
+    public async Task ReloadState()
+    {
         await SoftReloadState();
         await CheckWinners();
         if (!Active) return;
@@ -540,11 +581,14 @@ public class Match {
     /// Checks whether any of the players are considered as winners
     /// </summary>
     /// <returns></returns>
-    public Task CheckWinners() {
+    public Task CheckWinners()
+    {
         // TODO? multiple winners
 
-        foreach (var player in Players) {
-            if (player.Wins()) {
+        foreach (var player in Players)
+        {
+            if (player.Wins())
+            {
                 WinnerIdx = player.Idx;
                 return Task.CompletedTask;
             }
@@ -553,43 +597,51 @@ public class Match {
         return Task.CompletedTask;
     }
 
-    public async Task PushUpdates() {
-        if (View is not null) {
+    public async Task PushUpdates()
+    {
+        if (View is not null)
+        {
             await View.Update(this);
         }
-        
-        foreach (var player in Players) {
+
+        foreach (var player in Players)
+        {
             await player.UpdateController();
         }
     }
 
-    public async Task SoftReloadState() {
+    public async Task SoftReloadState()
+    {
         // players
         foreach (var player in Players)
             player.UpdateState();
 
         // monsters
-        foreach (var slot in MonsterSlots) {
+        foreach (var slot in MonsterSlots)
+        {
             if (slot.Card is null) continue;
 
             slot.Card.UpdateState();
         }
 
         // rooms
-        foreach (var slot in RoomSlots) {
+        foreach (var slot in RoomSlots)
+        {
             if (slot.Card is null) continue;
 
             slot.Card.UpdateState();
         }
 
         // monsters
-        foreach (var slot in MonsterSlots) {
+        foreach (var slot in MonsterSlots)
+        {
             if (slot.Card is null) continue;
 
             slot.Card.UpdateState();
         }
 
-        foreach (var layer in MODIFICATION_LAYERS) {
+        foreach (var layer in MODIFICATION_LAYERS)
+        {
             // players
             foreach (var player in Players)
                 player.Modify(layer);
@@ -600,25 +652,32 @@ public class Match {
                 soul.Modify(layer);
 
             // "till end of turn" effects
-            if (TEOTEffects.TryGetValue(layer, out List<LuaFunction>? mods)) {
-                try {
-                    foreach (var mod in mods) {
+            if (TEOTEffects.TryGetValue(layer, out List<LuaFunction>? mods))
+            {
+                try
+                {
+                    foreach (var mod in mods)
+                    {
                         mod.Call();
                     }
-                } catch (Exception e) {
+                }
+                catch (Exception e)
+                {
                     throw new MatchException($"Failed to execute \"till end of turn\" effect in layer {layer}", e);
                 }
             }
 
             // rooms
-            foreach (var slot in RoomSlots) {
+            foreach (var slot in RoomSlots)
+            {
                 if (slot.Card is null) continue;
 
                 slot.Card.Modify(layer);
             }
 
             // monsters
-            foreach (var slot in MonsterSlots) {
+            foreach (var slot in MonsterSlots)
+            {
                 if (slot.Card is null) continue;
 
                 slot.Card.Modify(layer);
@@ -628,44 +687,52 @@ public class Match {
         // check player deaths
         foreach (var player in Players)
             await player.CheckDead();
-        
+
         foreach (var item in GetInPlayCards())
             await item.CheckDead();
     }
 
     #region Triggers
 
-    public async Task DequeueTriggers() {
-        while (Stack.QueuedTriggers.Count > 0) {
+    public async Task DequeueTriggers()
+    {
+        while (Stack.QueuedTriggers.Count > 0)
+        {
             var trigger = Stack.QueuedTriggers.Dequeue();
             await ProcessTrigger(trigger);
         }
     }
 
-    private async Task ProcessTrigger(QueuedTrigger trigger) {
+    private async Task ProcessTrigger(QueuedTrigger trigger)
+    {
         // TODO monsters
 
         // owned items
-        foreach (var player in Players) {
+        foreach (var player in Players)
+        {
             var items = player.GetInPlayCards();
             // TODO prompt the player to order the effects
-            foreach (var item in items) {
+            foreach (var item in items)
+            {
                 await item.ProcessTrigger(trigger);
             }
         }
 
         // treasure slots
-        foreach (var slot in TreasureSlots) {
+        foreach (var slot in TreasureSlots)
+        {
             await slot.ProcessTrigger(trigger);
         }
 
         // rooms
-        foreach (var slot in RoomSlots) {
+        foreach (var slot in RoomSlots)
+        {
             await slot.ProcessTrigger(trigger);
         }
 
         // monster slots
-        foreach (var slot in MonsterSlots) {
+        foreach (var slot in MonsterSlots)
+        {
             await slot.ProcessTrigger(trigger);
         }
     }
@@ -675,10 +742,12 @@ public class Match {
     /// </summary>
     /// <param name="trigger">Trigger name</param>
     /// <param name="args">Trigger arguments</param>
-    public Task Emit(string trigger, Dictionary<string, object> args) {
+    public Task Emit(string trigger, Dictionary<string, object> args)
+    {
         var logMessage = $"Emitted trigger {trigger}, args: ";
         var argsTable = LuaUtility.CreateTable(LState, args);
-        foreach (var pair in args) {
+        foreach (var pair in args)
+        {
             logMessage += $"{pair.Key}:{pair.Value} ";
         }
         LogDebug(logMessage);
@@ -695,11 +764,13 @@ public class Match {
     /// </summary>
     /// <param name="amount">Number of coins to be removed</param>
     /// <returns>Actual amount of coins removed</returns>
-    public int TakeCoins(int amount) {
+    public int TakeCoins(int amount)
+    {
         if (CoinPool < 0) return amount;
 
         CoinPool -= amount;
-        if (CoinPool < 0) {
+        if (CoinPool < 0)
+        {
             amount -= -CoinPool;
             CoinPool = 0;
         }
@@ -707,7 +778,8 @@ public class Match {
         return amount;
     }
 
-    public void AddToCoinPool(int amount) {
+    public void AddToCoinPool(int amount)
+    {
         CoinPool += amount;
         if (CoinPool > Config.CoinPool)
             throw new MatchException($"Unexpected scenario: coin pool is larger than provided in configuration (expected: {Config.CoinPool}, actual: {CoinPool})");
@@ -720,8 +792,10 @@ public class Match {
     /// </summary>
     /// <param name="card">Match card</param>
     /// <returns></returns>
-    public Task PlaceIntoDiscard(MatchCard card) {
-        if (card.DeckOrigin is null) {
+    public Task PlaceIntoDiscard(MatchCard card)
+    {
+        if (card.DeckOrigin is null)
+        {
             return Task.CompletedTask;
             throw new MatchException($"Tried to put card {card.LogName} into discard, while it has no deck origin");
         }
@@ -740,7 +814,8 @@ public class Match {
     /// </summary>
     /// <param name="amount">Amount of cards to be removed</param>
     /// <returns>Removed cards</returns>
-    public List<MatchCard> RemoveCardsFromTopOfLootDeck(int amount) {
+    public List<MatchCard> RemoveCardsFromTopOfLootDeck(int amount)
+    {
         var result = LootDeck.RemoveTop(amount);
 
         LogDebug("Removed {Count} cards from the loot deck", result.Count);
@@ -753,7 +828,8 @@ public class Match {
     /// </summary>
     /// <param name="amount">Amount of cards to be removed</param>
     /// <returns>Removed cards</returns>
-    public List<MatchCard> RemoveCardsFromTopOfTreasureDeck(int amount) {
+    public List<MatchCard> RemoveCardsFromTopOfTreasureDeck(int amount)
+    {
         var result = TreasureDeck.RemoveTop(amount);
 
         LogDebug("Removed {Count} cards from the treasure deck", result.Count);
@@ -776,7 +852,8 @@ public class Match {
     /// Cancel the effect with the specified Stack ID
     /// </summary>
     /// <param name="sid">Stack ID</param>
-    public void CancelEffect(string sid) {
+    public void CancelEffect(string sid)
+    {
         var effect = Stack.Effects.First(e => e.SID == sid);
         effect.Cancelled = true;
         Stack.Effects.Remove(effect);
@@ -787,9 +864,11 @@ public class Match {
     /// Get the player with priority/current player
     /// </summary>
     /// <returns>Player with priority/current player</returns>
-    public Player GetPriorityPlayer() {
+    public Player GetPriorityPlayer()
+    {
         var pIdx = Stack.PriorityIdx;
-        if (pIdx >= 0) {
+        if (pIdx >= 0)
+        {
             return Players[pIdx];
         }
         return CurrentPlayer;
@@ -799,7 +878,8 @@ public class Match {
     /// Resolve the stack
     /// </summary>
     /// <returns></returns>
-    public async Task ResolveStack(bool breakIfPass = false) {
+    public async Task ResolveStack(bool breakIfPass = false)
+    {
         await Stack.Resolve(breakIfPass);
     }
 
@@ -807,23 +887,26 @@ public class Match {
     /// Process a pass action from a player
     /// </summary>
     /// <param name="player">Action owner</param>
-    public async Task ProcessPass(Player player) {
+    public async Task ProcessPass(Player player)
+    {
         var shouldEnd = await Stack.ProcessPass(player);
         if (!shouldEnd) return;
 
         // check if turn should end
-        if (player.Idx == CurPlayerIdx) {
+        if (player.Idx == CurPlayerIdx)
+        {
             TurnEnded = true;
             return;
         }
-        
+
         throw new MatchException($"Unknown scenario: player {player.LogName} tried to pass, but didn't have a reason to");
     }
 
     /// <summary>
     /// Remove the top effect of the stack
     /// </summary>
-    public void RemoveTopOfStack() {
+    public void RemoveTopOfStack()
+    {
         Stack.Effects.Remove(Stack.Top);
     }
 
@@ -831,7 +914,8 @@ public class Match {
     /// Palce an effect on top of the stack
     /// </summary>
     /// <param name="effect">Stack effect</param>
-    public Task PlaceOnStack(StackEffect effect) {
+    public Task PlaceOnStack(StackEffect effect)
+    {
         Stack.AddEffect(effect);
 
         return Task.CompletedTask;
@@ -842,7 +926,8 @@ public class Match {
     /// </summary>
     /// <param name="parent">Parent effect</param>
     /// <returns></returns>
-    public Task AddRoll(StackEffect parent, bool IsAttackRoll) {
+    public Task AddRoll(StackEffect parent, bool IsAttackRoll)
+    {
         var effect = new RollStackEffect(this, parent, IsAttackRoll);
         Stack.AddEffect(effect);
 
@@ -855,7 +940,8 @@ public class Match {
     /// Throw exception if strict mode is enabled, else log a warning to system logger
     /// </summary>
     /// <param name="errMsg">Error message</param>
-    public void PotentialError(string errMsg) {
+    public void PotentialError(string errMsg)
+    {
         if (Config.StrictMode)
             LogError(errMsg);
 
@@ -868,7 +954,8 @@ public class Match {
     /// Generate a new ID for a match card
     /// </summary>
     /// <returns>New ID</returns>
-    public string GenerateCardID() {
+    public string GenerateCardID()
+    {
         var result = CardIDGenerator.Next();
         // LogInfo($"Generated match card ID: {result}");
         return result;
@@ -878,7 +965,8 @@ public class Match {
     /// Generate a new ID for a stack effect
     /// </summary>
     /// <returns>New ID</returns>
-    public string GenerateStackID() {
+    public string GenerateStackID()
+    {
         var result = "s" + CardIDGenerator.Next();
         // LogInfo($"Generated stack effect ID: {result}");
         return result;
@@ -888,7 +976,8 @@ public class Match {
     /// Generate a new ID for an in-play match card
     /// </summary>
     /// <returns>New ID</returns>
-    public string GenerateInPlayID() {
+    public string GenerateInPlayID()
+    {
         var result = "i" + CardIDGenerator.Next();
         // LogInfo($"Generated item match card ID: {result}");
         return result;
@@ -896,24 +985,28 @@ public class Match {
 
     #endregion
 
-    public int NextInTurnOrder(int playerIdx) {
+    public int NextInTurnOrder(int playerIdx)
+    {
         // TODO change if there are cards that change the turn order
         return (playerIdx + 1) % Players.Count;
     }
 
     #region In-play cards
 
-    public async Task OnCardEnteredPlay(InPlayMatchCard card) {
+    public async Task OnCardEnteredPlay(InPlayMatchCard card)
+    {
         await Emit("item_enter", new() {
             { "Card", card },
         });
     }
 
-    public async Task DiscardFromPlay(string ipid) {
+    public async Task DiscardFromPlay(string ipid)
+    {
         await DiscardFromPlay(GetInPlayCard(ipid));
     }
 
-    public async Task<bool> TryDiscardFromPlay(string ipid) {
+    public async Task<bool> TryDiscardFromPlay(string ipid)
+    {
         var card = GetInPlayCardOrDefault(ipid);
         if (card is null) return false;
 
@@ -921,18 +1014,22 @@ public class Match {
         return true;
     }
 
-    public async Task RemoveFromPlay(InPlayMatchCard card) {
+    public async Task RemoveFromPlay(InPlayMatchCard card)
+    {
         // players
         // TODO trigger and soft reload state, then discard the card
 
-        if (card is OwnedInPlayMatchCard ownedCard) {
+        if (card is OwnedInPlayMatchCard ownedCard)
+        {
             LogDebug("Removing card {CardLogName} from player {PlayerLogName}", ownedCard.LogName, ownedCard.Owner.LogName);
             await ownedCard.Owner.RemoveFromPlay(ownedCard);
         }
 
         // shop items
-        foreach (var slot in TreasureSlots) {
-            if (slot.Card == card) {
+        foreach (var slot in TreasureSlots)
+        {
+            if (slot.Card == card)
+            {
                 LogDebug("Removing card {LogName} from {Slot} slot [{SlotIdx}]", card.LogName, slot.Name, slot.Idx);
                 await slot.Fill();
                 break;
@@ -940,8 +1037,10 @@ public class Match {
         }
 
         // room slots
-        foreach (var slot in RoomSlots) {
-            if (slot.Card == card) {
+        foreach (var slot in RoomSlots)
+        {
+            if (slot.Card == card)
+            {
                 LogDebug("Removing card {LogName} from {Slot} slot [{SlotIdx}]", card.LogName, slot.Name, slot.Idx);
                 await slot.Fill();
                 break;
@@ -949,8 +1048,10 @@ public class Match {
         }
 
         // monster slots
-        foreach (var slot in MonsterSlots) {
-            if (slot.Card == card) {
+        foreach (var slot in MonsterSlots)
+        {
+            if (slot.Card == card)
+            {
                 LogDebug("Removing card {LogName} from {Slot} slot [{SlotIdx}]", card.LogName, slot.Name, slot.Idx);
                 await slot.Fill();
                 break;
@@ -959,24 +1060,28 @@ public class Match {
 
     }
 
-    public async Task DiscardFromPlay(InPlayMatchCard card) {
+    public async Task DiscardFromPlay(InPlayMatchCard card)
+    {
         await RemoveFromPlay(card);
         await PlaceIntoDiscard(card.Card);
     }
 
-    public async Task<bool> StealItem(int playerIdx, string ipid) {
+    public async Task<bool> StealItem(int playerIdx, string ipid)
+    {
         var item = GetInPlayCardOrDefault(ipid);
         if (item is null) return false;
         var newOwner = GetPlayer(playerIdx);
 
-        if (item is OwnedInPlayMatchCard ownedItem) {
+        if (item is OwnedInPlayMatchCard ownedItem)
+        {
             await ownedItem.Owner.LoseItem(ownedItem);
             await newOwner.GainItem(ownedItem);
             ownedItem.SetOwner(newOwner);
             return true;
         }
 
-        foreach (var slot in TreasureSlots) {
+        foreach (var slot in TreasureSlots)
+        {
             var card = slot.Card;
             if (card is null || card.IPID != ipid) continue;
             await newOwner.GainItem(new(card, newOwner));
@@ -987,15 +1092,18 @@ public class Match {
         throw new MatchException($"Failed to find source of item {item.LogName} to steal to player {newOwner.LogName}");
     }
 
-    public async Task RerollItem(string ipid) {
+    public async Task RerollItem(string ipid)
+    {
         var item = GetInPlayCard(ipid);
 
         await DestroyItem(ipid);
 
-        if (item is OwnedInPlayMatchCard ownedItem) {
+        if (item is OwnedInPlayMatchCard ownedItem)
+        {
             var owner = ownedItem.Owner;
             var result = await owner.GainTreasureRaw(1);
-            if (result.Count == 0) {
+            if (result.Count == 0)
+            {
                 LogDebug("Item {ItemLogName} of player {OwnerLogName} was rerolled with no replacement", item.LogName, owner.LogName);
                 return;
             }
@@ -1003,7 +1111,8 @@ public class Match {
         }
     }
 
-    public List<InPlayMatchCard> GetItems() {
+    public List<InPlayMatchCard> GetItems()
+    {
         var result = new List<InPlayMatchCard>();
 
         foreach (var player in Players)
@@ -1016,22 +1125,27 @@ public class Match {
         return result;
     }
 
-    public InPlayMatchCard? GetItemOrDefault(string ipid) {
+    public InPlayMatchCard? GetItemOrDefault(string ipid)
+    {
         return GetItems().FirstOrDefault(item => item.IPID == ipid);
     }
 
-    public InPlayMatchCard? GetInPlayCardOrDefault(string ipid) {
+    public InPlayMatchCard? GetInPlayCardOrDefault(string ipid)
+    {
         return GetInPlayCards().FirstOrDefault(card => card.IPID == ipid);
     }
 
-    public InPlayMatchCard GetInPlayCard(string ipid) {
+    public InPlayMatchCard GetInPlayCard(string ipid)
+    {
         return GetInPlayCardOrDefault(ipid)
             ?? throw new MatchException($"Failed to get in-play card with IPID {ipid}")
         ;
     }
 
-    public async Task CreateStartingItems(Player owner, CharacterMatchCard character) {
-        foreach (var key in character.Card.StartingItemKeys) {
+    public async Task CreateStartingItems(Player owner, CharacterMatchCard character)
+    {
+        foreach (var key in character.Card.StartingItemKeys)
+        {
             var template = await CardMaster.Get(key);
             var card = new OwnedInPlayMatchCard(
                 new MatchCard(this, template),
@@ -1041,7 +1155,8 @@ public class Match {
         }
     }
 
-    public async Task PlaceOwnedCard(OwnedInPlayMatchCard card, bool triggerEnter = true) {
+    public async Task PlaceOwnedCard(OwnedInPlayMatchCard card, bool triggerEnter = true)
+    {
         LogDebug("Item {CardLogName} enters play under control of {OwnerLogName}", card.LogName, card.Owner.LogName);
 
         if (triggerEnter)
@@ -1050,18 +1165,24 @@ public class Match {
         await card.Owner.GainItem(card);
     }
 
-    public async Task<bool> DestroyItem(string ipid) {
+    public async Task<bool> DestroyItem(string ipid)
+    {
         var card = GetInPlayCard(ipid);
         return await DestroyItem(card);
     }
 
-    public async Task<bool> DestroyItem(InPlayMatchCard card) {
-        try {
-            foreach (var effect in card.State.DestructionReplacementEffects) {
+    public async Task<bool> DestroyItem(InPlayMatchCard card)
+    {
+        try
+        {
+            foreach (var effect in card.State.DestructionReplacementEffects)
+            {
                 var returned = effect.Call(card);
                 if (LuaUtility.GetReturnAsBool(returned)) return false;
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             throw new MatchException($"Failed to call destruction replacement effect of card {card.LogName}", e);
         }
 
@@ -1073,7 +1194,8 @@ public class Match {
 
     #region Souls
 
-    public async Task AddSoulCard(int playerIdx, MatchCard card) {
+    public async Task AddSoulCard(int playerIdx, MatchCard card)
+    {
         var player = GetPlayer(playerIdx);
         var soul = new SoulCard(card);
 
@@ -1084,28 +1206,33 @@ public class Match {
 
     #region Shop
 
-    public async Task ExpandShotSlots(int amount) {
+    public async Task ExpandShotSlots(int amount)
+    {
         LogDebug("Expanding shop slots by {Amount}", amount);
-        for (int i = 0; i < amount; i++) {
+        for (int i = 0; i < amount; i++)
+        {
             var slot = new TreasureSlot(TreasureDeck, TreasureSlots.Count);
             await slot.Fill();
-            TreasureSlots.Add(slot);           
+            TreasureSlots.Add(slot);
         }
     }
 
     #endregion
 
-    public async Task DamageToPlayerRequest(int toIdx, int amount, StackEffect source) {
+    public async Task DamageToPlayerRequest(int toIdx, int amount, StackEffect source)
+    {
         var effect = new DamageStackEffect(this, -1, amount, source, GetPlayer(toIdx));
         await PlaceOnStack(effect);
     }
 
-    public async Task DamageToCardRequest(string ipid, int amount, StackEffect source) {
+    public async Task DamageToCardRequest(string ipid, int amount, StackEffect source)
+    {
         var effect = new DamageStackEffect(this, source.OwnerIdx, amount, source, GetInPlayCard(ipid));
         await PlaceOnStack(effect);
     }
 
-    public InPlayMatchCard GetMonster(string ipid) {
+    public InPlayMatchCard GetMonster(string ipid)
+    {
         return MonsterSlots
             .Where(slot => slot.Card is not null)
             .Select(slot => slot.Card!)
@@ -1113,10 +1240,12 @@ public class Match {
         ;
     }
 
-    public List<InPlayMatchCard> GetInPlayCards() {
-        var result = GetItems();        
+    public List<InPlayMatchCard> GetInPlayCards()
+    {
+        var result = GetItems();
 
-        foreach (var player in Players) {
+        foreach (var player in Players)
+        {
             // characters
             result.Add(player.Character);
 
@@ -1138,7 +1267,8 @@ public class Match {
         return result;
     }
 
-    public List<InPlayMatchCard> GetMonsters() {
+    public List<InPlayMatchCard> GetMonsters()
+    {
         // TODO? more
         var result = new List<InPlayMatchCard>();
 
@@ -1149,40 +1279,47 @@ public class Match {
         return result;
     }
 
-    public async Task ExpandMonsterSlots(int amount) {
+    public async Task ExpandMonsterSlots(int amount)
+    {
         LogDebug("Expanding monster slots by {Amount}", amount);
-        for (int i = 0; i < amount; i++) {
+        for (int i = 0; i < amount; i++)
+        {
             var slot = new MonsterSlot(MonsterDeck, MonsterSlots.Count);
             await slot.Fill();
-            MonsterSlots.Add(slot);           
+            MonsterSlots.Add(slot);
         }
     }
 
-    public async Task<bool> KillMonster(string ipid, StackEffect source) {
+    public async Task<bool> KillMonster(string ipid, StackEffect source)
+    {
         var monster = GetMonster(ipid);
         await monster.PushDeath(source);
         return true;
     }
 
-    public List<MatchCard> RemoveTopCards(DeckType deckType, int amount) {
+    public List<MatchCard> RemoveTopCards(DeckType deckType, int amount)
+    {
         var ok = DeckIndex.TryGetValue(deckType, out var deck);
         if (!ok) throw new MatchException($"Unrecognized deck type: {deckType}");
 
         return deck!.RemoveTop(amount);
     }
 
-    public void PutOnTop(DeckType deckType, MatchCard card) {
+    public void PutOnTop(DeckType deckType, MatchCard card)
+    {
         var ok = DeckIndex.TryGetValue(deckType, out var deck);
         if (!ok) throw new MatchException($"Unrecognized deck type: {deckType}");
 
         deck!.PutOnTop(card);
     }
 
-    public void PutToBottom(DeckType deckType, MatchCard card) {
+    public void PutToBottom(DeckType deckType, MatchCard card)
+    {
         var ok = DeckIndex.TryGetValue(deckType, out var deck);
         if (!ok) throw new MatchException($"Unrecognized deck type: {deckType}");
 
         deck!.PutToBottom(card);
     }
 }
+
 

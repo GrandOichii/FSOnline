@@ -1,3 +1,5 @@
+using FSCore.Matches.Players.Attacking;
+
 namespace FSCore.Matches.Players;
 
 public class PlayerState {
@@ -5,6 +7,8 @@ public class PlayerState {
     public int LootPlaysForTurn { get; set; }
     public bool UnlimitedLootPlays { get; set; }
     public int AdditionalSoulCount { get; set; }
+
+    public Dictionary<string, IAttackOpportunity> AttackOpportunitiesFromCards { get; set;  }
 
     #region Modifiers
 
@@ -48,5 +52,6 @@ public class PlayerState {
         DeathPenaltyLootDiscardAmountModifiers = [];
         DeathPenaltyReplacementEffects = [];
         RollResultModifiers = [];
+        AttackOpportunitiesFromCards = [];
     }
 }

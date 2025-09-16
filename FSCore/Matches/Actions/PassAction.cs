@@ -19,7 +19,8 @@ public class PassAction : IAction
 
     public IEnumerable<string> GetAvailable(Match match, int playerIdx)
     {
-        // TODO check if current player can end the turn
+        if (!match.GetPlayer(playerIdx).CanPassTurn())
+            yield break;
 
         yield return ActionWord();
     }

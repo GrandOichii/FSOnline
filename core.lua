@@ -43,6 +43,7 @@ FS.ModLayers = {
     DAMAGE_RECEIVED_MODIFICATORS = 18,
     ROLL_RESULT_MODIFIERS = 19,
     PLAYER_SOUL_COUNT = 20,
+    PLAYER_ATTACK_OPPORTUNITIES = 21,
 }
 
 -- triggers
@@ -1218,6 +1219,24 @@ function FS.C.StateMod.ModPlayerHealth(modF, playerFilterFunc)
         local players = playerFilterFunc(me)
         for _, player in ipairs(players) do
             player.Stats.State.Health = player.Stats.State.Health + modF(me, player)
+        end
+    end
+
+    return result
+end
+
+function FS.C.StateMod.ModAO(playerFilterFunc)
+    playerFilterFunc = playerFilterFunc or function (me)
+        return FS.F.Players():Idx(me.Owner.Idx):Do()
+    end
+
+    local result = {}
+    result.Layer = FS.ModLayers.PLAYER_ATTACK_OPPORTUNITIES
+    function result.Mod(me)
+        local players = playerFilterFunc(me)
+        for _, player in ipairs(players) do
+            player.AttackOpportunities.State:Add(1)
+            -- AddAttackOpportunityFromCard(player.Idx, me.IPID)
         end
     end
 

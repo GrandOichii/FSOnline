@@ -10,7 +10,6 @@ public class DeclareAttackStackEffect : StackEffect {
 
     public override async Task<bool> Resolve()
     {
-        // TODO
         var owner = Match.GetPlayer(OwnerIdx);
 
         var available = owner.AvailableToAttack();
@@ -19,7 +18,7 @@ public class DeclareAttackStackEffect : StackEffect {
             return true;
         }
 
-        var slot = await owner.ChooseMonsterToAttack();
+        var slot = await owner.ChooseMonsterToAttack(available);
 
         // TODO pay costs for attacking
 
@@ -29,7 +28,7 @@ public class DeclareAttackStackEffect : StackEffect {
         //     return;
         // }
 
-        owner.RemoveAttackOpportunity(slot);
+        owner.AttackOpportunities.ProcessAttackedSlot(slot);
 
         if (slot == -1)
         {

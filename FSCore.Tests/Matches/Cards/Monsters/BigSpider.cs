@@ -50,7 +50,6 @@ public class BigSpiderTests
             .HasAttackOpportunities(1)
             .CanAttackTopOfMonsterDeck()
             .CannotAttackMonsterSlots();
-            ;
     }
 
 }

@@ -159,7 +159,7 @@ public class PlayerAssertions(Player player)
 
     public PlayerAssertions HasAttackOpportunities(int amount)
     {
-        player.AvailableAttackOpportunities.Count().ShouldBe(amount);
+        player.AttackOpportunities.Count().ShouldBe(amount);
         return this;
     }
 

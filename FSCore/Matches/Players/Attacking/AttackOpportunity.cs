@@ -24,6 +24,7 @@ public class AttackOpportunity : IAttackOpportunity
     public static AttackOpportunity TopOfDeckOnly => new()
     {
         AllowedAttackSlots = [-1]
+        // AllowedAttackSlots = [0] // TODO! remove this after attacking top of deck is implemented
     };
 
     public required List<int> AllowedAttackSlots { get; set; }
