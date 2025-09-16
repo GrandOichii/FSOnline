@@ -23,6 +23,6 @@ public interface IAction {
     /// </summary>
     /// <param name="match">Parent match</param>
     /// <param name="playerIdx">Player index</param>
-    /// <returns>Enumerable of all available actions</returns>
-    public IEnumerable<string> GetAvailable(Match match, int playerIdx);
+    /// <returns>Enumerable of all available actions and whether the action is exclusive</returns>
+    public (IEnumerable<string> options, bool exclusive) GetAvailable(Match match, int playerIdx);
 }

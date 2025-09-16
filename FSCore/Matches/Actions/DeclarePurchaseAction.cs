@@ -16,17 +16,17 @@ public class DeclarePurchaseAction : IAction
         await player.DeclarePurchase();
     }
 
-    public IEnumerable<string> GetAvailable(Match match, int playerIdx)
+    public (IEnumerable<string> options, bool exclusive) GetAvailable(Match match, int playerIdx)
     {
-        if (match.CurPlayerIdx != playerIdx) yield break;
-        if (match.Stack.Effects.Count > 0) yield break;
+        if (match.CurPlayerIdx != playerIdx) return ([], false);
+        if (match.Stack.Effects.Count > 0) return ([], false);
 
         var player = match.GetPlayer(playerIdx);
 
-        if (player.PurchaseOpportunities == 0) yield break;
+        if (player.PurchaseOpportunities == 0) return ([], false);
 
-        if (player.AvailableToPurchase().Count == 0) yield break;
+        if (player.AvailableToPurchase().Count == 0) return ([], false);
 
-        yield return ActionWord();        
+        return ([ActionWord()], false);        
     }
 }

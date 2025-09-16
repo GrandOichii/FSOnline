@@ -26,12 +26,16 @@ public class PlayLootAction : IAction
         }
     }
 
-    public IEnumerable<string> GetAvailable(Match match, int playerIdx)
+    public (IEnumerable<string> options, bool exclusive) GetAvailable(Match match, int playerIdx)
     {
         var player = match.GetPlayer(playerIdx);
 
+        List<string> result = [];
+
         foreach (var card in player.Hand)
             if (player.CanPlay(card))
-                yield return $"{ActionWord()} {card.Card.ID}";
+                result.Add($"{ActionWord()} {card.Card.ID}");
+
+        return (result, false);
     }
 }

@@ -100,9 +100,21 @@ public class ProgrammedPlayerActionsBuilder
         return this;
     }
 
+    public ProgrammedPlayerActionsBuilder AutoPassUntilCant()
+    {
+        Parent.Result.Actions.Enqueue(AutoPassUntilCantPPAction.Instance);
+        return this;
+    }
+
     public ProgrammedPlayerActionsBuilder AssertCantActivateItem(string itemKey)
     {
         Parent.Result.Actions.Enqueue(new AssertCantActivateItemPPAction(itemKey));
+        return this;
+    }
+    
+    public ProgrammedPlayerActionsBuilder AssertOptions(Action<AssertOptionsPPAction.OptionsAssertions> assertFunc)
+    {
+        Parent.Result.Actions.Enqueue(new AssertOptionsPPAction(assertFunc));
         return this;
     }
 

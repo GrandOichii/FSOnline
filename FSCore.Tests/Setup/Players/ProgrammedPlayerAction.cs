@@ -3,7 +3,7 @@ namespace FSCore.Tests.Setup.Players;
 public interface IProgrammedPlayerAction {
     public static readonly string NEXT_ACTION = "";
 
-    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options);
+    public Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options);
 
 }
 
@@ -12,7 +12,7 @@ public class AutoPassPPAction : IProgrammedPlayerAction {
 
     private AutoPassPPAction() {}
 
-    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options) {
+    public Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options) {
         return Task.FromResult(
             (new PassAction().ActionWord(), false)
         );
@@ -24,7 +24,7 @@ public class AssertIsCurrentPlayerPPAction : IProgrammedPlayerAction {
 
     private AssertIsCurrentPlayerPPAction() {}
 
-    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options) {
+    public Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options) {
         
         // TODO do an actual assert
         if (playerIdx == match.CurPlayerIdx)
@@ -35,7 +35,7 @@ public class AssertIsCurrentPlayerPPAction : IProgrammedPlayerAction {
 
 public class AssertHasCardsInHandPPAction(int amount) : IProgrammedPlayerAction
 {
-    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         // TODO do an actual assert
@@ -51,12 +51,12 @@ public class SetWinnerPPAction : IProgrammedPlayerAction
 
     private SetWinnerPPAction() { }
 
-    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public async Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         player.State.AdditionalSoulCount = match.Config.SoulsToWin;
         await match.CheckWinners();
-        return (new PassAction().ActionWord(), true);
+        return (options.ToList()[0], true);
     }
 }
 
@@ -66,11 +66,28 @@ public class AutoPassUntilEmptyStackPPAction : IProgrammedPlayerAction
 
     private AutoPassUntilEmptyStackPPAction() { }
 
-    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         if (match.Stack.Effects.Count > 0)
         {
             return Task.FromResult((new PassAction().ActionWord(), false));
+        }
+        return Task.FromResult((IProgrammedPlayerAction.NEXT_ACTION, true));
+    }
+}
+
+public class AutoPassUntilCantPPAction : IProgrammedPlayerAction
+{
+    public static AutoPassUntilCantPPAction Instance { get; } = new();
+
+    private AutoPassUntilCantPPAction() { }
+
+    public Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    {
+        var word = new PassAction().ActionWord();
+        if (options.Contains(word))
+        {
+            return Task.FromResult((word, false));
         }
         return Task.FromResult((IProgrammedPlayerAction.NEXT_ACTION, true));
     }
@@ -82,7 +99,7 @@ public class AutoPassUntilMyTurnPPAction : IProgrammedPlayerAction
 
     private AutoPassUntilMyTurnPPAction() { }
 
-    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         if (match.CurPlayerIdx != playerIdx)
         {
@@ -98,7 +115,7 @@ public class PassPPAction : IProgrammedPlayerAction
 
     private PassPPAction() { }
 
-    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         return Task.FromResult((new PassAction().ActionWord(), true));
     }
@@ -106,7 +123,7 @@ public class PassPPAction : IProgrammedPlayerAction
 
 public class PlayLootCardPPAction(string key) : IProgrammedPlayerAction
 {
-    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         var card = GetHandMatchCard(player, key)
@@ -122,9 +139,34 @@ public class PlayLootCardPPAction(string key) : IProgrammedPlayerAction
     }
 }
 
+public class AssertOptionsPPAction(Action<AssertOptionsPPAction.OptionsAssertions> assertFunc) : IProgrammedPlayerAction
+{
+    public async Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    {
+        assertFunc.Invoke(new OptionsAssertions(options));
+        return (IProgrammedPlayerAction.NEXT_ACTION, true);
+    }
+
+    public class OptionsAssertions(IEnumerable<string> options)
+    {
+        public OptionsAssertions CanOnlyDeclareAttack()
+        {
+            options.Count().ShouldBe(1);
+            options.ToList()[0].ShouldBe(new DeclareAttackAction().ActionWord());
+            return this;
+        }
+
+        public OptionsAssertions CanPass()
+        {
+            options.ShouldContain(new PassAction().ActionWord());
+            return this;
+        }
+    }
+}
+
 public class RemoveFromPlayPPAction(string key) : IProgrammedPlayerAction
 {
-    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public async Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         var card = GetItem(player, key)
@@ -141,7 +183,7 @@ public class RemoveFromPlayPPAction(string key) : IProgrammedPlayerAction
 
 public class PreventDamagePPAction(int amount) : IProgrammedPlayerAction
 {
-    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public async Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         await player.AddDamagePreventors(amount);
@@ -156,7 +198,7 @@ public class PreventDamagePPAction(int amount) : IProgrammedPlayerAction
 
 public class GainTreasurePPAction(int amount) : IProgrammedPlayerAction
 {
-    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public async Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         await player.GainTreasure(amount);
@@ -166,7 +208,7 @@ public class GainTreasurePPAction(int amount) : IProgrammedPlayerAction
 
 public class ActivateOwnedItemPPAction(string key, int abilityIdx) : IProgrammedPlayerAction
 {
-    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         var item = GetItem(player, key)
@@ -185,7 +227,7 @@ public class ActivateOwnedItemPPAction(string key, int abilityIdx) : IProgrammed
 
 public class ActivateCharacterPPAction(int abilityIdx) : IProgrammedPlayerAction
 {
-    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         return Task.FromResult(
@@ -196,7 +238,7 @@ public class ActivateCharacterPPAction(int abilityIdx) : IProgrammedPlayerAction
 
 public class AssertCantActivateItemPPAction(string itemKey) : IProgrammedPlayerAction
 {
-    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         // !FIXME what if player has duplicate items
@@ -220,7 +262,7 @@ public class AssertCantActivateItemPPAction(string itemKey) : IProgrammedPlayerA
 
 public class PlaceCountersPPAction(string itemKey, int amount) : IProgrammedPlayerAction
 {
-    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public async Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         // !FIXME what if player has duplicate items
@@ -245,7 +287,7 @@ public class DeclareAttackPPAction : IProgrammedPlayerAction
     public readonly static DeclareAttackPPAction Instance = new();
     private DeclareAttackPPAction() { }
 
-    public Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         return Task.FromResult((new DeclareAttackAction().ActionWord(), true));
         // return (new DeclareAttackAction().ActionWord(), true);
@@ -254,7 +296,7 @@ public class DeclareAttackPPAction : IProgrammedPlayerAction
 
 public class GainCoinsPPAction(int coins) : IProgrammedPlayerAction
 {
-    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public async Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         await player.GainCoins(coins);
@@ -264,7 +306,7 @@ public class GainCoinsPPAction(int coins) : IProgrammedPlayerAction
 
 public class LootCardsPPAction(int amount) : IProgrammedPlayerAction
 {
-    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public async Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         await player.LootCards(amount, LootReasons.Empty(match.LState));
@@ -274,7 +316,7 @@ public class LootCardsPPAction(int amount) : IProgrammedPlayerAction
 
 public class AssertPPAction(Action<PlayerAssertions> assertionsFunc) : IProgrammedPlayerAction
 {
-    public async Task<(string, bool)> Do(Match match, int playerIdx, IEnumerable<string> options)
+    public async Task<(string action, bool removeFromQueue)> Do(Match match, int playerIdx, IEnumerable<string> options)
     {
         var player = match.GetPlayer(playerIdx);
         var assertions = new PlayerAssertions(player);

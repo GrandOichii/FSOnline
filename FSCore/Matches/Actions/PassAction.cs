@@ -1,3 +1,5 @@
+using FSCore.Matches.Players.Attacking;
+
 namespace FSCore.Matches.Actions;
 
 public class PassAction : IAction
@@ -6,7 +8,8 @@ public class PassAction : IAction
 
     public async Task Exec(Match match, int playerIdx, string[] args)
     {
-        if (args.Length != 1) {
+        if (args.Length != 1)
+        {
             match.PotentialError($"Expected args count of \"{ActionWord()}\" to be 1, but found {args.Length} (args: {string.Join(' ', args)})");
             return;
         }
@@ -17,11 +20,8 @@ public class PassAction : IAction
         await match.ProcessPass(player);
     }
 
-    public IEnumerable<string> GetAvailable(Match match, int playerIdx)
+    public (IEnumerable<string> options, bool exclusive) GetAvailable(Match match, int playerIdx)
     {
-        if (!match.GetPlayer(playerIdx).CanPassTurn())
-            yield break;
-
-        yield return ActionWord();
+        return ([ActionWord()], false);
     }
 }

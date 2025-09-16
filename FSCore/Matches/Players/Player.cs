@@ -61,9 +61,7 @@ public class Player : IStateModifier
     /// </summary>
     public int PurchaseOpportunities { get; set; } // TODO change to private set;
     
-    public AttackOpportunityCalculator AttackOpportunities { get; }
-
-    public List<IAttackRestriction> AttackRestrictions { get; }
+    public AttackOpportunityManager AttackOpportunities { get; }
 
     /// <summary>
     /// Player's hand
@@ -118,7 +116,7 @@ public class Player : IStateModifier
         DeathPreventors = [];
 
         AttackOpportunities = new(this);
-        AttackRestrictions = [];
+        // AttackRestrictions = new(this);
 
         // Initial state
         State = new(this);
@@ -944,7 +942,15 @@ public class Player : IStateModifier
     {
         var options = new List<string>();
         foreach (var a in ACTION_MAP.Values)
-            options.AddRange(a.GetAvailable(Match, Idx));
+        {
+            var (newOptions, exclusive) = a.GetAvailable(Match, Idx);
+            if (exclusive)
+            {
+                options = [.. newOptions];
+                break;
+            }
+            options.AddRange(newOptions);
+        }
 
         if (options.Count == 0)
         {
@@ -1321,26 +1327,4 @@ public class Player : IStateModifier
         }
         return Math.Clamp(result, 1, 6);
     }
-
-    public bool CanPassTurn()
-    {
-        return true;
-        if (Idx != Match.CurPlayerIdx)
-        {
-            throw new Exception($"Tried to check whether a non-active player can pass the turn ({LogName})");
-        }
-
-        if (Match.Stack.Effects.Count > 0)
-        {
-            return false;
-        }
-
-        if (AttackRestrictions.Count > 0)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
 }

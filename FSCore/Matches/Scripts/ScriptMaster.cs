@@ -628,9 +628,9 @@ public class ScriptMaster {
     }
 
     [LuaCommand]
-    public void AddAttackOpportunityFromCard(int playerIdx, string ipid)
+    public void AddRequiredAdditionalAttack(int playerIdx)
     {
         var player = _match.GetPlayer(playerIdx);
-        player.State.AttackOpportunitiesFromCards.Add(ipid, AttackOpportunity.Default); // TODO change type
+        player.AttackOpportunities.AddRequired(AttackOpportunity.Default);
     }
 }

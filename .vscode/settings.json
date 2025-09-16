@@ -87,7 +87,7 @@
         "AddAttackOpportunities",
         "RandInt",
         "AddTopOfDeckAttackOpportunities",
-        "AddAttackOpportunityFromCard"
+        "AddRequiredAdditionalAttack"
     ],
     "Lua.diagnostics.disable": [
         "empty-block"

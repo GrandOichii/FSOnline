@@ -161,6 +161,14 @@ function FS.C.Effect.GainCoins(amount, filterFunc)
     end, filterFunc)
 end
 
+function FS.C.Effect.MustMakeAnAdditionalAttack(filterFunc)
+    return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
+        -- AddCoins(player.Idx, amount)
+        AddRequiredAdditionalAttack(player.Idx)
+        return true
+    end, filterFunc)
+end
+
 function FS.C.Effect.PreventNextDamageToPlayer(amount, filterFunc)
     return FS.C.Effect._ApplyToPlayer(function (player, stackEffect)
         AddGenericDamagePreventors(player.Idx, amount)
@@ -1236,7 +1244,6 @@ function FS.C.StateMod.ModAO(playerFilterFunc)
         local players = playerFilterFunc(me)
         for _, player in ipairs(players) do
             player.AttackOpportunities.State:Add(1)
-            -- AddAttackOpportunityFromCard(player.Idx, me.IPID)
         end
     end
 

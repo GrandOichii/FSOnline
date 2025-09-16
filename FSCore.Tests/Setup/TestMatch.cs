@@ -216,6 +216,18 @@ public class PlayerAssertions(Player player)
         player.AvailableToAttack().Any(s => s >= 0).ShouldBeTrue();
         return this;
     }
+
+    public PlayerAssertions HasRequiredAttacks(int amount)
+    {
+        player.AttackOpportunities.RequiredAttackQueue.Count.ShouldBe(amount);
+        return this;
+    }
+
+    public PlayerAssertions HasNoRequiredAttacks()
+    {
+        player.AttackOpportunities.RequiredAttackQueue.Count.ShouldBe(0);
+        return this;
+    }
 }
 
 public class InPlayMatchCardAssertions(InPlayMatchCard card)

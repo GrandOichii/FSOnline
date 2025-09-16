@@ -34,20 +34,26 @@ public class ActivateAction : IAction
         await ability.Activate(card, player, abilityIdx);
     }
 
-    public IEnumerable<string> GetAvailable(Match match, int playerIdx)
+    public (IEnumerable<string> options, bool exclusive) GetAvailable(Match match, int playerIdx)
     {
         var player = match.GetPlayer(playerIdx);
 
         var cards = GetCards(player);
 
-        foreach (var card in cards) {
+        List<string> result = [];
+
+        foreach (var card in cards)
+        {
             var abilities = card.GetActivatedAbilities();
-            for (int i = 0; i < abilities.Count; i++) {
+            for (int i = 0; i < abilities.Count; i++)
+            {
                 if (!abilities[i].CanBeActivatedBy(card, player)) continue;
 
-                yield return $"{ActionWord()} {card.IPID} {i}";
+                result.Add($"{ActionWord()} {card.IPID} {i}");
             }
         }
+
+        return (result, false);
     }
 
     private static List<InPlayMatchCard> GetCards(Player player) {

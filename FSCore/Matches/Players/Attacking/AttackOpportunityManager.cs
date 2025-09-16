@@ -1,7 +1,8 @@
+using System.Diagnostics;
+
 namespace FSCore.Matches.Players.Attacking;
 
-
-public class AttackOpportunityCalculator
+public class AttackOpportunityManager
 {
     public Player _player;
 
@@ -15,8 +16,10 @@ public class AttackOpportunityCalculator
     public Dictionary<IAttackOpportunity, int> Used { get; }
     public StateT State { get; private set; }
 
+    public Queue<IAttackOpportunity> RequiredAttackQueue { get; set; }
 
-    public AttackOpportunityCalculator(Player player)
+
+    public AttackOpportunityManager(Player player)
     {
         _player = player;
 
@@ -24,6 +27,17 @@ public class AttackOpportunityCalculator
         Used = [];
 
         State = new(this);
+        RequiredAttackQueue = [];
+    }
+
+    public bool HasToAttack()
+    {
+        return _player.Match.Stack.Effects.Count == 0 && RequiredAttackQueue.Count > 0;
+    }
+
+    public void AddRequired(IAttackOpportunity ao)
+    {
+        RequiredAttackQueue.Enqueue(ao);
     }
 
     public void UpdateState()
@@ -35,10 +49,21 @@ public class AttackOpportunityCalculator
     {
         Used.Clear();
         Available.Clear();
+        RequiredAttackQueue.Clear();
     }
 
     public void ProcessAttackedSlot(int chosenSlotIdx)
     {
+        if (RequiredAttackQueue.TryPeek(out var requiredTop))
+        {
+            if (!requiredTop.CanAttackSlot(chosenSlotIdx))
+            {
+                throw new Exception($"Mismatch of chosen monster slot idx for attacking and top of required attack queue"); // TODO type
+            }
+            RequiredAttackQueue.Dequeue();
+            return;
+        } 
+
         IAttackOpportunity? bestAo = null;
         int bestAoSize = -1;
         foreach (var pair in State.Available)
@@ -89,6 +114,11 @@ public class AttackOpportunityCalculator
 
     public IEnumerable<int> GetAvailableSlots()
     {
+        if (RequiredAttackQueue.TryPeek(out var requiredTop))
+        {
+            return requiredTop.GetAvailableAttackSlots(_player.Match);
+        }
+
         HashSet<int> result = [];
 
         foreach (var pair in State.Available)
@@ -120,7 +150,7 @@ public class AttackOpportunityCalculator
             result += available - diff;
         }
 
-        return result;
+        return result + RequiredAttackQueue.Count;
     }
 
 
@@ -129,7 +159,7 @@ public class AttackOpportunityCalculator
     {
         public Dictionary<IAttackOpportunity, int> Available { get; set; }
 
-        public StateT(AttackOpportunityCalculator parent)
+        public StateT(AttackOpportunityManager parent)
         {
             Available = new(parent.Available);
         }
