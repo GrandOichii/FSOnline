@@ -20,7 +20,7 @@ public class TheTowerTests
             .InitialCoins(0)
             .InitialLoot(0)
             .InitialTreasureSlots(0)
-            .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -77,8 +77,8 @@ public class TheTowerTests
             .InitialLoot(0)
             .InitialTreasureSlots(0)
             .InitialMonsterSlots(monsterSlots)
-            .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
-            .ConfigMonsterDeck().AddMonster("clotty-b").AddMonster("fatty-b").Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
+            .ConfigMonsterDeck(d => d.AddMonster("clotty-b").AddMonster("fatty-b"))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

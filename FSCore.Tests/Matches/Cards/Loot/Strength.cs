@@ -13,8 +13,8 @@ public class StrengthTests
             .InitialCoins(0)
             .InitialLoot(0)
             .AttackCountDefault(0)
-            .ConfigLootDeck().Add(cardKey, lootDeckSize).Done()
-            .ConfigMonsterDeck().AddMonster("clotty-b").Done()
+            .ConfigLootDeck(d => d.Add(cardKey, lootDeckSize))
+            .ConfigMonsterDeck(d => d.AddMonster("clotty-b"))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

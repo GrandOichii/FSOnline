@@ -19,7 +19,7 @@
 //             .InitialCoins(0)
 //             .InitialLoot(0)
 //             .LootStepLootAmount(0)
-//             .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
+//             .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
 //             .Build();
 
 //         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

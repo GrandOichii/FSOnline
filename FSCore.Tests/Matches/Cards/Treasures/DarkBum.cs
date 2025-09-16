@@ -65,7 +65,7 @@ public class DarkBumTests
             .LootStepLootAmount(0)
             .LootPlay(0)
             .InitialTreasureSlots(0)
-            .ConfigLootDeck().Add(lootCard, lootDeckSize).Done()
+            .ConfigLootDeck(d => d.Add(lootCard, lootDeckSize))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

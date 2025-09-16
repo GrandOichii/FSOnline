@@ -19,7 +19,7 @@ public class TheHighPriestessTests
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
-            .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -71,7 +71,7 @@ public class TheHighPriestessTests
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
-            .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -131,8 +131,8 @@ public class TheHighPriestessTests
             .InitialCoins(0)
             .InitialLoot(0)
             .InitialMonsterSlots(1)
-            .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
-            .ConfigMonsterDeck().AddMonster("monstro-b").Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
+            .ConfigMonsterDeck(d => d.AddMonster("monstro-b"))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -188,7 +188,7 @@ public class TheHighPriestessTests
     //         .InitialCoins(0)
     //         .InitialLoot(0)
     //         .InitialMonsterSlots(1)
-    //         .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
+    //         .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
     //         .Build();
 
     //     var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

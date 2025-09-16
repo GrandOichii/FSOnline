@@ -18,7 +18,7 @@ public static class Common
             .LootStepLootAmount(0)
             .LootPlay(0)
             .InitialTreasureSlots(0)
-            .ConfigLootDeck().Add("a-penny-b", 10).Done()
+            .ConfigLootDeck(d => d.Add("a-penny-b", 10))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -68,9 +68,9 @@ public static class Common
             .LootPlay(0)
             .InitialTreasureSlots(0)
             .InitialMonsterSlots(1)
-            .ConfigLootDeck().Add("a-dime-b", 10).Done() // TODO add configuration
-            .ConfigTreasureDeck().Add("the-butter-bean-b2").Done() // TODO add configuration
-            .ConfigMonsterDeck().AddMonster(monsterCardKey).Done()
+            .ConfigLootDeck(d => d.Add("a-dime-b", 10)) // TODO add configuration
+            .ConfigTreasureDeck(d => d.Add("the-butter-bean-b2")) // TODO add configuration
+            .ConfigMonsterDeck(d => d.AddMonster(monsterCardKey))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

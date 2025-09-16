@@ -12,7 +12,7 @@ public class DeathTests
         var lootDeckSize = 10;
         var config = new MatchConfigBuilder()
             .DisableDeathPenalty()
-            .ConfigLootDeck().Add(cardKey, lootDeckSize).Done()
+            .ConfigLootDeck(d => d.Add(cardKey, lootDeckSize))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

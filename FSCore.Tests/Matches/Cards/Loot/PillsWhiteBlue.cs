@@ -16,7 +16,7 @@ public class PillsWhiteBlueTests
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
-            .ConfigLootDeck().Add(cardKey, lootDeckSize).Done()
+            .ConfigLootDeck(d => d.Add(cardKey, lootDeckSize))
             .Build();
 
         var roller = new ProgrammedRollerBuilder()
@@ -62,7 +62,7 @@ public class PillsWhiteBlueTests
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(3)
-            .ConfigLootDeck().Add(cardKey, lootDeckSize).Done()
+            .ConfigLootDeck(d => d.Add(cardKey, lootDeckSize))
             .Build();
 
         var roller = new ProgrammedRollerBuilder()

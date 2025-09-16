@@ -13,7 +13,7 @@ public class GoldenRazorTests
             .InitialCoins(4)
             .InitialLoot(0)
             .InitialMonsterSlots(1)
-            .ConfigMonsterDeck().AddMonster("clotty-b").Done()
+            .ConfigMonsterDeck(d => d.AddMonster("clotty-b"))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -51,7 +51,7 @@ public class GoldenRazorTests
             .InitialCoins(10)
             .InitialLoot(0)
             .InitialMonsterSlots(1)
-            .ConfigMonsterDeck().AddMonster("clotty-b").Done()
+            .ConfigMonsterDeck(d => d.AddMonster("clotty-b"))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -93,7 +93,7 @@ public class GoldenRazorTests
             .InitialCoins(10)
             .InitialLoot(0)
             .InitialMonsterSlots(1)
-            .ConfigMonsterDeck().AddMonster("clotty-b").Done()
+            .ConfigMonsterDeck(d => d.AddMonster("clotty-b"))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -138,8 +138,8 @@ public class GoldenRazorTests
             .InitialCoins(10)
             .InitialLoot(0)
             .InitialMonsterSlots(1)
-            .ConfigMonsterDeck().AddMonster("clotty-b").Done()
-            .ConfigLootDeck().Add(cardKey, lootDeckSize).Done()
+            .ConfigMonsterDeck(d => d.AddMonster("clotty-b"))
+            .ConfigLootDeck(d => d.Add(cardKey, lootDeckSize))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

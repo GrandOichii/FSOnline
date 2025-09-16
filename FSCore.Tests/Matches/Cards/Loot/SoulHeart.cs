@@ -12,7 +12,7 @@ public class SoulHeartTests
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
-            .ConfigLootDeck().Add(cardKey, lootDeckSize).Done()
+            .ConfigLootDeck(d => d.Add(cardKey, lootDeckSize))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -53,7 +53,7 @@ public class SoulHeartTests
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
-            .ConfigLootDeck().Add(cardKey, lootDeckSize).Done()
+            .ConfigLootDeck(d => d.Add(cardKey, lootDeckSize))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

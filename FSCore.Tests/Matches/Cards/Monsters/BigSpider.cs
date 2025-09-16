@@ -16,8 +16,8 @@ public class BigSpiderTests
             .LootPlay(0)
             .InitialTreasureSlots(0)
             .InitialMonsterSlots(1)
-            .ConfigLootDeck().Add("a-dime-b", 10).Done() // TODO add configuration
-            .ConfigMonsterDeck().AddMonster(CARD_KEY).Done()
+            .ConfigLootDeck(d => d.Add("a-dime-b", 10))
+            .ConfigMonsterDeck(d => d.AddMonster(CARD_KEY))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

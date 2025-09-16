@@ -12,7 +12,7 @@ public class TemperanceTests
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
-            .ConfigLootDeck().Add(CARD_KEY, 10).Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, 10))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -51,7 +51,7 @@ public class TemperanceTests
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
-            .ConfigLootDeck().Add(CARD_KEY, 10).Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, 10))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

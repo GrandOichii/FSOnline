@@ -15,7 +15,7 @@ public class BlankRuneTests
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
-            .ConfigLootDeck().Add(cardKey, 10).Done()
+            .ConfigLootDeck(d => d.Add(cardKey, 10))
             .Build();
 
         var roller = new ProgrammedRollerBuilder()
@@ -64,7 +64,7 @@ public class BlankRuneTests
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
-            .ConfigLootDeck().Add(cardKey, lootDeckSize).Done()
+            .ConfigLootDeck(d => d.Add(cardKey, lootDeckSize))
             .Build();
 
         var roller = new ProgrammedRollerBuilder()

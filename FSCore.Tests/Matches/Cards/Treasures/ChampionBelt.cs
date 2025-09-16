@@ -56,8 +56,8 @@ public class ChampionBeltTests
             .LootStepLootAmount(1)
             .LootPlay(1)
             .InitialTreasureSlots(0)
-            .ConfigLootDeck().Add("xvii-the-stars-b", 10).Done()
-            .ConfigTreasureDeck().Add(CARD_KEY).Done()
+            .ConfigLootDeck(d => d.Add("xvii-the-stars-b", 10))
+            .ConfigTreasureDeck(d => d.Add(CARD_KEY))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

@@ -15,8 +15,8 @@ public class TheStarsTests
             .InitialCoins(0)
             .InitialLoot(0)
             .InitialTreasureSlots(0)
-            .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
-            .ConfigTreasureDeck().Add(itemKey).Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
+            .ConfigTreasureDeck(d => d.Add(itemKey))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

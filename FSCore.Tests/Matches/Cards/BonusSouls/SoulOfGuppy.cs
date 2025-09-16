@@ -29,9 +29,9 @@ public class SoulOfGuppyTests
                     .LootStepLootAmount(2)
                     .LootPlay(2)
                     .InitialTreasureSlots(0)
-                    .ConfigLootDeck().Add(lootKey, 2).Done()
-                    .ConfigBonusSouls().Add(CARD_KEY).Done()
-                    .ConfigTreasureDeck().Add(firstKey).Add(secondKey).Done()
+                    .ConfigLootDeck(d => d.Add(lootKey, 2))
+                    .ConfigBonusSouls(d => d.Add(CARD_KEY))
+                    .ConfigTreasureDeck(d => d.Add(firstKey).Add(secondKey))
                     .Build();
 
                 var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

@@ -14,8 +14,8 @@ public class SoulOfGreedTests
             .InitialCoins(24)
             .InitialLoot(0)
             .InitialTreasureSlots(0)
-            .ConfigLootDeck().Add(lootKey).Done()
-            .ConfigBonusSouls().Add(CARD_KEY).Done()
+            .ConfigLootDeck(d => d.Add(lootKey))
+            .ConfigBonusSouls(d => d.Add(CARD_KEY))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

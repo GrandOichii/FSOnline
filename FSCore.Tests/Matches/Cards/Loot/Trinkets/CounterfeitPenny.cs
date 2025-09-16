@@ -19,7 +19,7 @@ public class CounterfeitPennyTests
             .InitialLoot(0)
             .LootStepLootAmount(3)
             .LootPlay(3)
-            .ConfigLootDeck().Add(coinCardKey, 2).Add(cardKey).Done()
+            .ConfigLootDeck(d => d.Add(coinCardKey, 2).Add(cardKey))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

@@ -14,8 +14,8 @@ public class GoldBombTests
             .InitialCoins(0)
             .InitialLoot(0)
             .InitialMonsterSlots(1)
-            .ConfigMonsterDeck().AddMonster("clotty-b").Done()
-            .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
+            .ConfigMonsterDeck(d => d.AddMonster("clotty-b"))
+            .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -58,8 +58,8 @@ public class GoldBombTests
             .InitialCoins(0)
             .InitialLoot(0)
             .InitialMonsterSlots(1)
-            .ConfigMonsterDeck().AddMonster("clotty-b").Done()
-            .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
+            .ConfigMonsterDeck(d => d.AddMonster("clotty-b"))
+            .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -106,8 +106,8 @@ public class GoldBombTests
             .InitialCoins(0)
             .InitialLoot(0)
             .InitialMonsterSlots(1)
-            .ConfigMonsterDeck().AddMonster("monstro-b").Done()
-            .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
+            .ConfigMonsterDeck(d => d.AddMonster("monstro-b"))
+            .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

@@ -13,8 +13,8 @@ public class SoulOfGluttonyTests
         var config = new MatchConfigBuilder()
             .InitialLoot(9)
             .InitialTreasureSlots(0)
-            .ConfigLootDeck().Add(lootKey, 100).Done()
-            .ConfigBonusSouls().Add(CARD_KEY).Done()
+            .ConfigLootDeck(d => d.Add(lootKey, 100))
+            .ConfigBonusSouls(d => d.Add(CARD_KEY))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

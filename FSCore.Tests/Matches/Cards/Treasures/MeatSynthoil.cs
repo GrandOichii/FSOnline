@@ -17,7 +17,7 @@ public class MeatSynthoilTests
             .LootPlay(0)
             .InitialTreasureSlots(0)
             .InitialMonsterSlots(1)
-            .ConfigMonsterDeck().AddMonster(monsterKey).Done()
+            .ConfigMonsterDeck(d => d.AddMonster(monsterKey))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

@@ -16,7 +16,7 @@ public class MrBoomTests
             .LootPlay(0)
             .InitialTreasureSlots(0)
             .InitialMonsterSlots(1)
-            .ConfigMonsterDeck().AddMonster("clotty-b").Done()
+            .ConfigMonsterDeck(d => d.AddMonster("clotty-b"))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

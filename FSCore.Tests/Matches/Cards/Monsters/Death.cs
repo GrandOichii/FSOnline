@@ -16,8 +16,8 @@ public class DeathTests
             .LootPlay(0)
             .InitialTreasureSlots(0)
             .InitialMonsterSlots(1)
-            .ConfigTreasureDeck().Add("the-butter-bean-b2").Done() // TODO add configuration
-            .ConfigMonsterDeck().AddMonster(monsterCardKey).Done()
+            .ConfigTreasureDeck(d => d.Add("the-butter-bean-b2")) // TODO add configuration
+            .ConfigMonsterDeck(d => d.AddMonster(monsterCardKey))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

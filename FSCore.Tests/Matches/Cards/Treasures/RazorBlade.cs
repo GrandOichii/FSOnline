@@ -56,7 +56,7 @@ public class RazorBladeTests
             .LootStepLootAmount(0)
             .LootPlay(0)
             .InitialTreasureSlots(0)
-            .ConfigTreasureDeck().Add(CARD_KEY).Done()
+            .ConfigTreasureDeck(d => d.Add(CARD_KEY))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

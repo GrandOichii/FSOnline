@@ -59,7 +59,7 @@ public class PortableSlotMachineTests
             .LootStepLootAmount(0)
             .LootPlay(0)
             .InitialTreasureSlots(0)
-            .ConfigLootDeck().Add("a-dime-b", 10).Done()
+            .ConfigLootDeck(d => d.Add("a-dime-b", 10))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

@@ -55,10 +55,30 @@ public class MatchConfigBuilder
         };
     }
 
-    public LootDeckBuilder ConfigLootDeck() => _lootBuilder;
-    public TreasureDeckBuilder ConfigTreasureDeck() => _treasureBuilder;
-    public MonsterDeckBuilder ConfigMonsterDeck() => _monsterBuilder;
-    public BonusSoulDeckBuilder ConfigBonusSouls() => _bonusSoulsBuilder;
+    public MatchConfigBuilder ConfigLootDeck(Action<LootDeckBuilder> configFunc)
+    {
+        configFunc.Invoke(_lootBuilder);    
+        return this;
+    }
+
+    public MatchConfigBuilder ConfigTreasureDeck(Action<TreasureDeckBuilder> configFunc)
+    {
+        configFunc.Invoke(_treasureBuilder);    
+        return this;
+    }
+
+    public MatchConfigBuilder ConfigMonsterDeck(Action<MonsterDeckBuilder> configFunc)
+    {
+        configFunc.Invoke(_monsterBuilder);    
+        return this;
+    }
+
+    public MatchConfigBuilder ConfigBonusSouls(Action<BonusSoulDeckBuilder> configFunc)
+    {
+        configFunc.Invoke(_bonusSoulsBuilder);    
+        return this;
+    }
+
 
 
     public MatchConfigBuilder AttackCountDefault(int amount)

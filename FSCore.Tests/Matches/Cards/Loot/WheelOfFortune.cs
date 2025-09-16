@@ -15,7 +15,7 @@ public class WheelOfFortuneTests
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
-            .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
             .Build();
 
         var roller = new ProgrammedRollerBuilder()
@@ -60,7 +60,7 @@ public class WheelOfFortuneTests
         var config = new MatchConfigBuilder()
             .InitialCoins(0)
             .InitialLoot(0)
-            .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
             .Build();
 
         var roller = new ProgrammedRollerBuilder()
@@ -104,7 +104,7 @@ public class WheelOfFortuneTests
         var config = new MatchConfigBuilder()
             .InitialCoins(initialCoins)
             .InitialLoot(0)
-            .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
             .Build();
 
         var roller = new ProgrammedRollerBuilder()
@@ -149,8 +149,8 @@ public class WheelOfFortuneTests
             .InitialCoins(0)
             .InitialLoot(0)
             .InitialTreasureSlots(0)
-            .ConfigLootDeck().Add(CARD_KEY, lootDeckSize).Done()
-            .ConfigTreasureDeck().Add(itemKey).Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, lootDeckSize))
+            .ConfigTreasureDeck(d => d.Add(itemKey))
             .Build();
 
         var roller = new ProgrammedRollerBuilder()

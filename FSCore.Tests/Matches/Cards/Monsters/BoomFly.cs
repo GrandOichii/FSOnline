@@ -16,7 +16,7 @@ public class BoomFlyTests
             .LootPlay(0)
             .InitialTreasureSlots(0)
             .InitialMonsterSlots(1)
-            .ConfigMonsterDeck().AddMonster(monsterCardKey).Done()
+            .ConfigMonsterDeck(d => d.AddMonster(monsterCardKey))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

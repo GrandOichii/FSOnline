@@ -17,9 +17,9 @@ public class DiceShardTests
             .InitialTreasureSlots(0)
             .LootStepLootAmount(2)
             .LootPlay(2)
-            .ConfigLootDeck().Add(CARD_KEY, 1).Done()
-            .ConfigLootDeck().Add(firstLootKey, 1).Done()
-            .ConfigTreasureDeck().Add(treasureKey).Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, 1))
+            .ConfigLootDeck(d => d.Add(firstLootKey, 1))
+            .ConfigTreasureDeck(d => d.Add(treasureKey))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -71,9 +71,9 @@ public class DiceShardTests
             .InitialTreasureSlots(0)
             .LootStepLootAmount(2)
             .LootPlay(2)
-            .ConfigLootDeck().Add(CARD_KEY, 1).Done()
-            .ConfigLootDeck().Add(firstLootKey, 1).Done()
-            .ConfigTreasureDeck().Add(treasureKey).Done()
+            .ConfigLootDeck(d => d.Add(CARD_KEY, 1))
+            .ConfigLootDeck(d => d.Add(firstLootKey, 1))
+            .ConfigTreasureDeck(d => d.Add(treasureKey))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")

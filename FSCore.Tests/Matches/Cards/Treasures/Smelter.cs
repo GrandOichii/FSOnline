@@ -15,7 +15,7 @@ public class SmelterTests
             .LootStepLootAmount(0)
             .LootPlay(0)
             .InitialTreasureSlots(0)
-            .ConfigLootDeck().Add("a-penny-b", 3).Done()
+            .ConfigLootDeck(d => d.Add("a-penny-b", 3))
             .Build();
 
         var mainPlayer = new ProgrammedPlayerControllerBuilder("isaac-b")
@@ -62,7 +62,7 @@ public class SmelterTests
             .LootStepLootAmount(0)
             .LootPlay(0)
             .InitialTreasureSlots(0)
-            .ConfigLootDeck().Add("a-penny-b", 3).Done()
+            .ConfigLootDeck(d => d.Add("a-penny-b", 3))
             .Build();
 
         var builder = new ProgrammedPlayerControllerBuilder("isaac-b")
