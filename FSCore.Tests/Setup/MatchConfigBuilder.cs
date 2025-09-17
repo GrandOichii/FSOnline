@@ -12,9 +12,9 @@ public class MatchConfigBuilder
     public MatchConfigBuilder()
     {
         _lootBuilder = new(this);
-        _treasureBuilder = new(this);
-        _monsterBuilder = new(this);
-        _bonusSoulsBuilder = new(this);
+        _treasureBuilder = new();
+        _monsterBuilder = new();
+        _bonusSoulsBuilder = new();
 
         _result = new()
         {
@@ -143,10 +143,8 @@ public class MatchConfigBuilder
     }
 }
 
-public class TreasureDeckBuilder(MatchConfigBuilder parent)
+public class TreasureDeckBuilder
 {
-    public MatchConfigBuilder Done() => parent;
-
     public List<string> Cards { get; } = [];
 
     public TreasureDeckBuilder Add(string key)
@@ -157,10 +155,8 @@ public class TreasureDeckBuilder(MatchConfigBuilder parent)
     }
 }
 
-public class MonsterDeckBuilder(MatchConfigBuilder parent)
+public class MonsterDeckBuilder
 {
-    public MatchConfigBuilder Done() => parent;
-
     public List<string> Monsters { get; } = [];
 
     public MonsterDeckBuilder AddMonster(string key)
@@ -171,10 +167,8 @@ public class MonsterDeckBuilder(MatchConfigBuilder parent)
     }
 }
 
-public class BonusSoulDeckBuilder(MatchConfigBuilder parent)
+public class BonusSoulDeckBuilder
 {
-    public MatchConfigBuilder Done() => parent;
-
     public List<string> Cards { get; } = [];
 
     public BonusSoulDeckBuilder Add(string key)
